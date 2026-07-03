@@ -21,6 +21,22 @@ spec:
     grafana:
       persistence:
         storageClassName: nishir-standard
+    prometheus-node-exporter:
+      disabledCollectors:
+        - bcachefs
+        - zfs
+        - bcache
+        - btrfs
+        - fibrechannel
+        - infiniband
+        - tapestats
+        - ipvs
+        - mdadm
+        - nfs
+        - nfsd
+      permissionInitContainer:
+        fixes:
+          rapl: true
     vmcluster:
       spec:
         vminsert:
