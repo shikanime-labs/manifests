@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aperture
+  annotations:
+    tailscale.com/tailnet-fqdn: ai.taila659a.ts.net
+spec:
+  type: ExternalName
+  externalName: ai.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
