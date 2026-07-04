@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - ks.yaml
 components:
   - ../../components/autoscaler
   - ../../components/cert-manager

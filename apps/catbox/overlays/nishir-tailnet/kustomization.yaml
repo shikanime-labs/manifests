@@ -1,4 +1,4 @@
 resources:
-  - ../telsha
+  - ../nishir
 patches:
   - path: patch-svc.yaml
