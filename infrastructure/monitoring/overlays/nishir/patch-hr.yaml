@@ -23,6 +23,7 @@ spec:
         storageClassName: nishir-standard
     prometheus-node-exporter:
       disabledCollectors:
+        - os
         - bcachefs
         - zfs
         - bcache
