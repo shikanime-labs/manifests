@@ -4,6 +4,7 @@ resources:
 components:
   - ../../components/autoscaler
   - ../../components/cert-manager
+  - ../../components/cluster-api
   - ../../components/descheduler
   - ../../components/gatekeeper
   - ../../components/longhorn
