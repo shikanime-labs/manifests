@@ -12,7 +12,7 @@ spec:
                 path: /spec/tls
                 value:
                   - hosts:
-                      - nishir-telemetry
+                      - telemetry
             target:
               name: vminsert-vmks-victoria-metrics-k8s-stack
               version: v1
@@ -53,5 +53,5 @@ spec:
             tailscale.com/tags: tag:web
           enabled: true
           hosts:
-            - nishir-telemetry
+            - telemetry
           ingressClassName: tailscale
