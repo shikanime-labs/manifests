@@ -25,15 +25,8 @@ spec:
         type: pvc
         enabled: true
         size: 2Gi
-    kubeControllerManager:
-      service:
-        enabled: false
-    kubeEtcd:
-      service:
-        enabled: false
-    kubeScheduler:
-      service:
-        enabled: false
+    kubeProxy:
+      enabled: true
     prometheus-node-exporter:
       enabled: false
     vmalert:
