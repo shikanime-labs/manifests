@@ -105,8 +105,7 @@ Most apps follow the same pattern:
   - tailnet overlays own the rendered `ingress.yaml` and set
     `ingressClassName: tailscale` plus Tailscale annotations (example:
     [ingress.yaml](apps/jellyfin/overlays/nishir-tailnet/ingress.yaml))
-  - cluster-local internal hosts are prefixed where needed, such as
-    `nishir-grafana`
+  - cluster-local internal hosts are prefixed where needed, such as `grafana`
 - Storage: a `PVC` in `apps/<app>/overlays/<cluster>/` (or `*-tailnet/`) bound
   to a Longhorn `PV`
 - Secrets/config: stored as `*.enc.*` and fed into `secretGenerator` (see

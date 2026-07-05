@@ -11,10 +11,10 @@ spec:
           tailscale.com/tags: tag:web
         enabled: true
         hosts:
-          - nishir-grafana
+          - grafana
         ingressClassName: tailscale
         path: /
         pathType: Prefix
         tls:
           - hosts:
-              - nishir-grafana
+              - grafana
