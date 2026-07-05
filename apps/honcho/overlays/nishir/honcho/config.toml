@@ -65,7 +65,7 @@ FLUSH_ENABLED = false
 
 [deriver.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [deriver.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -88,7 +88,7 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.minimal.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dialectic.levels.minimal.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -99,7 +99,7 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.low.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dialectic.levels.low.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -109,7 +109,7 @@ MAX_TOOL_ITERATIONS = 2
 
 [dialectic.levels.medium.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dialectic.levels.medium.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -119,7 +119,7 @@ MAX_TOOL_ITERATIONS = 4
 
 [dialectic.levels.high.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dialectic.levels.high.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -129,7 +129,7 @@ MAX_TOOL_ITERATIONS = 10
 
 [dialectic.levels.max.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dialectic.levels.max.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -144,7 +144,7 @@ MAX_TOKENS_LONG = 4000
 
 [summary.model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [summary.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
@@ -161,14 +161,14 @@ HISTORY_TOKEN_LIMIT = 16384
 
 [dream.deduction_model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dream.deduction_model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
 
 [dream.induction_model_config]
 transport = "openai"
-model = "openrouter/owl-alpha"
+model = "openrouter/free"
 
 [dream.induction_model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
