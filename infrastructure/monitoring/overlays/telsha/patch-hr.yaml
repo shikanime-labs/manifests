@@ -30,6 +30,7 @@ spec:
             requests:
               storage: 8Gi
           storageClassName: local-path
+      enabled: true
       ingress:
         annotations:
           tailscale.com/tags: tag:web
