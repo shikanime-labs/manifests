@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - proxyclass.yaml
 patches:
   - path: patch-hr.yaml
 secretGenerator:
