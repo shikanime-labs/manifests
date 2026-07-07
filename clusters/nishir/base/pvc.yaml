@@ -68,7 +68,7 @@ spec:
   resources:
     requests:
       storage: 64Gi
-  storageClassName: nishir-ephemeral
+  storageClassName: nishir-standard
   volumeMode: Filesystem
   volumeName: music-data
   accessModes:
