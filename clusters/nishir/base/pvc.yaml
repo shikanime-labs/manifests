@@ -68,7 +68,7 @@ spec:
   resources:
     requests:
       storage: 64Gi
-  storageClassName: nishir-standard
+  storageClassName: nishir-nearline
   volumeMode: Filesystem
   volumeName: music-data
   accessModes:
