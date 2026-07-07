@@ -22,14 +22,19 @@ spec:
     crds: CreateReplace
   values:
     bootstrap:
-      rke2: {}
+      rke2:
+        version: v0.22.0
     cert-manager:
       enabled: true
     controlPlane:
-      rke2: {}
+      rke2:
+        version: v0.22.0
+    core:
+      version: v1.11.5
     enableHelmHook: false
     infrastructure:
-      hetzner: {}
+      hetzner:
+        version: v1.4.2
     leaderElection:
       enabled: true
     replicaCount: 2
