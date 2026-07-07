@@ -21,6 +21,7 @@ spec:
           stdin: true
           tty: true
           securityContext:
+            allowPrivilegeEscalation: true
             privileged: true
           livenessProbe:
             initialDelaySeconds: 30
