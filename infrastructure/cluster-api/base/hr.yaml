@@ -12,9 +12,9 @@ spec:
       sourceRef:
         name: cluster-api-operator
         kind: HelmRepository
-  createNamespace: true
   install:
     crds: Create
+    createNamespace: true
   interval: 10m
   releaseName: cluster-api-operator
   targetNamespace: capi-operator-system
