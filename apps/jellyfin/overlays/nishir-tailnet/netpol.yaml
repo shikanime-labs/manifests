@@ -16,3 +16,23 @@ spec:
       app.kubernetes.io/name: jellyfin
   policyTypes:
     - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: jellyfin-vmagent
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: flux-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: victoriametrics
+              app.kubernetes.io/component: vmagent
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: jellyfin
+  policyTypes:
+    - Ingress
