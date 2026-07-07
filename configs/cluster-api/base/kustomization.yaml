@@ -2,8 +2,8 @@ resources:
   - cluster.yaml
   - hcloud-machine-template.yaml
   - hetzner-cluster.yaml
-  - k0s-control-plane.yaml
-  - k0s-worker-config-template.yaml
+  - rke2-control-plane.yaml
+  - rke2-worker-config-template.yaml
   - machine-deployment.yaml
   - ns.yaml
 configurations:

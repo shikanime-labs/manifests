@@ -1,0 +1,134 @@
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: RKE2ControlPlane
+metadata:
+  name: shana
+spec:
+  version: v1.33.3+rke2.0
+  replicas: 1
+  machineTemplate:
+    infrastructureRef:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: HCloudMachineTemplate
+      name: shana-control-plane
+  rke2ConfigSpec:
+    version: v1.33.3+rke2.0
+    serverConfig:
+      disable:
+        - servicelb
+        - traefik
+        - localstorage
+        - cloud-provider
+        - network-policy
+        - etcd-timeline-hint-handler
+        - etcd-etcd-leader-health-check-handler
+      kubeconfigRequestProxyEnabled: true
+    agentConfig:
+      disable:
+        - servicelb
+        - traefik
+        - localstorage
+        - cloud-provider
+        - network-policy
+      kubeletArgs:
+        - --cpu-cfs-quota=false
+    etcd:
+      etcdArgs:
+        - --server-heartbeat-interval=250000
+        - --server-election-timeout=500000
+        - --quota-backend-bytes=8589934592
+    services:
+      kubeAPI:
+        serviceType: LoadBalancer
+        annotations:
+          tailscale.com/external: "true"
+          tailscale.com/hostname: "shana-api"
+      etcd:
+        external:
+          enabled: false
+      kubelet:
+        preferCurrentNode: true
+      kubeProxy:
+        disabled: false
+        mode: iptables
+      etcdMetric:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          interval: 60s
+          scrapeTimeout: 30s
+          labels:
+            app.kubernetes.io/name: etcd
+            app.kubernetes.io/part-of: shana
+    registry:
+      insecure:
+        - 10.0.0.0/8
+        - 127.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        - 100.64.0.0/10
+    csi:
+      external: false
+    cloudProviderName: hcloud
+    cloudProviderConfig: |
+      token: ${HCLOUD_TOKEN}
+      loadBalancerType: "lbtype"
+      loadBalancerAlgorithm: "roundrobin"
+    certSANs:
+      - shana.taila659a.ts.net
+    kubeAPIServer:
+      extraArgs:
+        - --etcd-prefix=/registry
+        - --event-ttl=48h
+        - --kubelet-certificate-authority=/var/lib/rancher/rke2/agent/kube-apiserver-ca.crt
+        - --anonymous-auth=false
+        - --profiling=false
+        - --secrets-encryption=true
+        - --service-node-port-range=30000-32767
+        - --cluster-name=shana
+    kubeControllerManager:
+      extraArgs:
+        - --allocate-node-cidrs=true
+        - --cluster-cidr=10.244.0.0/16
+        - --cluster-name=shana
+        - --leader-elect=true
+        - --node-cidr-mask-size=24
+        - --requests-cpu=500m
+        - --requests-memory=512Mi
+        - --authentication-kubeconfig=/var/lib/rancher/rke2/kube-controller-manager/kubeconfig.conf
+        - --authorization-kubeconfig=/var/lib/rancher/rke2/kube-controller-manager/kubeconfig.conf
+        - --bind-address=127.0.0.1
+        - --cluster-signing-cert-file=/var/lib/rancher/rke2/server/tls/etcd/server-ca.crt
+        - --cluster-signing-key-file=/var/lib/rancher/rke2/server/tls/etcd/server-ca.key
+    kubeScheduler:
+      extraArgs:
+        - --authentication-kubeconfig=/var/lib/rancher/rke2/kube-scheduler/kubeconfig.conf
+        - --authorization-kubeconfig=/var/lib/rancher/rke2/kube-scheduler/kubeconfig.conf
+        - --bind-address=127.0.0.1
+        - --leader-elect=true
+    ingress:
+      enabled: false
+    cni:
+      enabled: true
+      flannel:
+        backend: host-gw
+      multus:
+        enabled: true
+    serviceLB:
+      enabled: false
+    loadBalancer:
+      enabled: true
+      type: "lbtype"
+      algorithm: "roundrobin"
+    kubeProxy:
+      enabled: true
+      mode: iptables
+    networkPolicy:
+      enabled: false
+    auditPolicy:
+      enabled: false
+    secretsEncryption:
+      enabled: true
+    etcdArgs:
+      - --server-heartbeat-interval=250000
+      - --server-election-timeout=500000
+      - --quota-backend-bytes=8589934592

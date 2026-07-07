@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       type: cax11
-      imageName: fedora-43
+      image: fedora-43
       placementGroupName: control-plane
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
@@ -19,5 +19,5 @@ spec:
   template:
     spec:
       type: cax11
-      imageName: fedora-43
+      image: fedora-43
       placementGroupName: workers

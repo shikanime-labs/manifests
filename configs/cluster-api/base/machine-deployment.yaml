@@ -16,7 +16,7 @@ spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
-          kind: K0sWorkerConfigTemplate
+          kind: RKE2WorkerConfigTemplate
           name: shana
       clusterName: shana
       infrastructureRef:
