@@ -21,15 +21,14 @@ spec:
     crds: CreateReplace
   values:
     bootstrap:
-      k0sproject-k0smotron: {}
+      rke2: {}
     cert-manager:
       enabled: true
     controlPlane:
-      k0sproject-k0smotron: {}
+      rke2: {}
     enableHelmHook: false
     infrastructure:
       hetzner: {}
-      k0sproject-k0smotron: {}
     leaderElection:
       enabled: true
     replicaCount: 2
