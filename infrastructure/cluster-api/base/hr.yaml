@@ -12,6 +12,7 @@ spec:
       sourceRef:
         name: cluster-api-operator
         kind: HelmRepository
+  createNamespace: true
   install:
     crds: Create
   interval: 10m
