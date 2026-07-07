@@ -1,6 +1,8 @@
 resources:
   - ../../base
 namespace: shikanime
+patches:
+  - path: patch-pvc.yaml
 labels:
   - includeTemplates: true
     pairs:
