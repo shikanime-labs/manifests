@@ -2,7 +2,7 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: node-feature-discovery
-  namespace: node-feature-discovery
+  Namespace: node-feature-discovery-system
   labels:
     app.kubernetes.io/name: node-feature-discovery
     app.kubernetes.io/part-of: node-feature-discovery

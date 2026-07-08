@@ -2,7 +2,7 @@ apiVersion: nfd.k8s-sigs.io/v1alpha1
 kind: NodeFeatureRule
 metadata:
   name: intel-quicksync-video
-  namespace: node-feature-discovery
+  Namespace: node-feature-discovery-system
 spec:
   featureRules:
     - name: qsv.capable
