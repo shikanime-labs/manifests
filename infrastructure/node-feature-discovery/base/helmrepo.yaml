@@ -4,5 +4,5 @@ metadata:
   name: kubernetes-sigs-nfd
   namespace: flux-system
 spec:
-  url: https://kubernetes-sigs.github.io/node-feature-discovery
+  url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
   interval: 1h
