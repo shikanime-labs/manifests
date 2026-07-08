@@ -8,20 +8,20 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              preference:
+            - preference:
                 matchExpressions:
                   - key: qsv.enabled
                     operator: In
                     values:
                       - "true"
-            - weight: 50
-              preference:
+              weight: 100
+            - preference:
                 matchExpressions:
                   - key: network.speed.2.5g
                     operator: In
                     values:
                       - "true"
+              weight: 50
       containers:
         - name: jellyfin
           securityContext:

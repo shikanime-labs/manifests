@@ -8,13 +8,13 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 50
-              preference:
+            - preference:
                 matchExpressions:
                   - key: network.speed.2.5g
                     operator: In
                     values:
                       - "true"
+              weight: 50
       containers:
         - name: bazarr
           volumeMounts:

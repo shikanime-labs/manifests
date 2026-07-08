@@ -17,5 +17,5 @@ spec:
       - node-feature-discovery
   selector:
     matchLabels:
-      app.kubernetes.io/name: node-feature-discovery
       app.kubernetes.io/component: worker
+      app.kubernetes.io/name: node-feature-discovery

@@ -6,20 +6,8 @@ metadata:
 spec:
   featureRules:
     - name: qsv.capable
-      matchFeatures:
-        - domain: cpu
-          feature: vendor_id
-          op: In
-          value:
-            - GenuineIntel
-        - domain: pci
-          feature: class
-          op: In
-          value:
-            - "0300"
       labelsTemplate:
         qsv.enabled: "true"
-    - name: qsv.device
       matchFeatures:
         - domain: cpu
           feature: vendor_id
@@ -31,7 +19,19 @@ spec:
           op: In
           value:
             - "0300"
+    - name: qsv.device
       labelsTemplate:
         qsv.device: "{{ .domain }}.{{ .feature }}"
       matchLabels:
         feature.node.kubernetes.io/pci-vendor.8086.present: "true"
+      matchFeatures:
+        - domain: cpu
+          feature: vendor_id
+          op: In
+          value:
+            - GenuineIntel
+        - domain: pci
+          feature: class
+          op: In
+          value:
+            - "0300"

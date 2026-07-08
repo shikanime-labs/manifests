@@ -17,6 +17,8 @@ spec:
   releaseName: node-feature-discovery
   targetNamespace: node-feature-discovery
   values:
+    master:
+      replicaCount: 1
     worker:
       config:
         core:
@@ -24,13 +26,6 @@ spec:
             - system
             - kernel
             - network
-        featureSources:
-          - system
-          - kernel
-          - network
-          - cpu
-          - local
-          - pci
         custom:
           - name: network.1g
             labels:
@@ -38,15 +33,15 @@ spec:
             matchFeatures:
               - feature: kernel.loadedmodule
                 matchExpressions:
-                  igb:
-                    op: Exists
                   e1000e:
+                    op: Exists
+                  igb:
                     op: Exists
                   r8169:
                     op: Exists
-                  virtio_net:
-                    op: Exists
                   tg3:
+                    op: Exists
+                  virtio_net:
                     op: Exists
           - name: network.2.5g
             labels:
@@ -58,53 +53,10 @@ spec:
                     op: Exists
                   r8125:
                     op: Exists
-          - name: network.10g
-            labels:
-              network.speed.10g: "true"
-            matchFeatures:
-              - feature: kernel.loadedmodule
-                matchExpressions:
-                  bnx2x:
-                    op: Exists
-                  be2net:
-                    op: Exists
-                  qlcnic:
-                    op: Exists
-                  i40e:
-                    op: Exists
-                  ice:
-                    op: Exists
-                  mlx5_core:
-                    op: Exists
-          - name: network.25g
-            labels:
-              network.speed.25g: "true"
-            matchFeatures:
-              - feature: kernel.loadedmodule
-                matchExpressions:
-                  i40e:
-                    op: Exists
-                  ice:
-                    op: Exists
-                  mlx5_core:
-                    op: Exists
-          - name: network.40g
-            labels:
-              network.speed.40g: "true"
-            matchFeatures:
-              - feature: kernel.loadedmodule
-                matchExpressions:
-                  mlx4_core:
-                    op: Exists
-          - name: network.100g
-            labels:
-              network.speed.100g: "true"
-            matchFeatures:
-              - feature: kernel.loadedmodule
-                matchExpressions:
-                  ionic:
-                    op: Exists
-                  qed:
-                    op: Exists
-    master:
-      replicaCount: 1
+        featureSources:
+          - system
+          - kernel
+          - network
+          - cpu
+          - local
+          - pci
