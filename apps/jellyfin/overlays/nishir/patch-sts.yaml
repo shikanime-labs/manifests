@@ -5,6 +5,23 @@ metadata:
 spec:
   template:
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: qsv.enabled
+                    operator: In
+                    values:
+                      - "true"
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: jellyfin
           securityContext:

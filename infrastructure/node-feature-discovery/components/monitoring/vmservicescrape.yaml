@@ -1,0 +1,21 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: node-feature-discovery
+  namespace: node-feature-discovery
+  labels:
+    app.kubernetes.io/name: node-feature-discovery
+    app.kubernetes.io/part-of: node-feature-discovery
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - node-feature-discovery
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: node-feature-discovery
+      app.kubernetes.io/component: worker

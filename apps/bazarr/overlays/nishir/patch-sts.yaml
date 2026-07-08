@@ -5,6 +5,16 @@ metadata:
 spec:
   template:
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: bazarr
           volumeMounts:
