@@ -18,21 +18,7 @@ spec:
   targetNamespace: monitoring-system
   values:
     defaultDashboards:
-      grafanaOperator:
-        enabled: true
-        spec:
-          instanceSelector:
-            matchLabels:
-              dashboards: grafana
-          allowCrossNamespaceImport: false
-    defaultDatasources:
-      grafanaOperator:
-        enabled: true
-        spec:
-          instanceSelector:
-            matchLabels:
-              datasources: grafana
-          allowCrossNamespaceImport: false
+      enabled: true
     grafana:
       enabled: true
       persistence:

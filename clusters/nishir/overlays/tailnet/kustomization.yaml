@@ -7,7 +7,6 @@ components:
   - ../../components/cluster-api
   - ../../components/descheduler
   - ../../components/gatekeeper
-  - ../../components/grafana
   - ../../components/longhorn
   - ../../components/monitoring
   - ../../components/node-feature-discovery
