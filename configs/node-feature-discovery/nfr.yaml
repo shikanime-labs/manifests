@@ -1,0 +1,37 @@
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: intel-quicksync-video
+  namespace: node-feature-discovery
+spec:
+  featureRules:
+    - name: qsv.capable
+      labelsTemplate:
+        qsv.enabled: "true"
+      matchFeatures:
+        - domain: cpu
+          feature: vendor_id
+          op: In
+          value:
+            - GenuineIntel
+        - domain: pci
+          feature: class
+          op: In
+          value:
+            - "0300"
+    - name: qsv.device
+      labelsTemplate:
+        qsv.device: "{{ .domain }}.{{ .feature }}"
+      matchLabels:
+        feature.node.kubernetes.io/pci-vendor.8086.present: "true"
+      matchFeatures:
+        - domain: cpu
+          feature: vendor_id
+          op: In
+          value:
+            - GenuineIntel
+        - domain: pci
+          feature: class
+          op: In
+          value:
+            - "0300"
