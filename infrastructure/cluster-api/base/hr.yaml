@@ -32,7 +32,7 @@ spec:
     core:
       cluster-api:
         version: v1.11.5
-    enableHelmHook: false
+    enableHelmHook: true
     infrastructure:
       hetzner:
         version: v1.4.2
