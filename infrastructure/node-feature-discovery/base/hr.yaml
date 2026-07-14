@@ -17,7 +17,11 @@ spec:
   releaseName: node-feature-discovery
   targetNamespace: node-feature-discovery-system
   values:
+    featureGates:
+      NodeFeatureGroupAPI: true
     master:
+      extraArgs:
+        - -feature-gates=NodeFeatureGroupAPI=true
       replicaCount: 1
     worker:
       config:
