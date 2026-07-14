@@ -9,9 +9,9 @@ spec:
       labels:
         qsv.enabled: "true"
       matchFeatures:
-        - feature: pci.class
+        - feature: pci.device
           matchExpressions:
-            value:
+            class:
               op: In
               value:
                 - "0300"
@@ -19,9 +19,9 @@ spec:
       labels:
         qsv.device: '{{ .domain }}.{{ .feature }}'
       matchFeatures:
-        - feature: pci.class
+        - feature: pci.device
           matchExpressions:
-            value:
+            class:
               op: In
               value:
                 - "0300"
