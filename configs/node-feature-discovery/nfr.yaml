@@ -4,34 +4,36 @@ metadata:
   name: intel-quicksync-video
   namespace: node-feature-discovery-system
 spec:
-  featureRules:
+  rules:
     - name: qsv.capable
-      labelsTemplate:
+      labels:
         qsv.enabled: "true"
       matchFeatures:
-        - domain: cpu
-          feature: vendor_id
-          op: In
-          value:
-            - GenuineIntel
-        - domain: pci
-          feature: class
-          op: In
-          value:
-            - "0300"
+        - feature: cpu.vendor_id
+          matchExpressions:
+            value:
+              op: In
+              value:
+                - GenuineIntel
+        - feature: pci.class
+          matchExpressions:
+            value:
+              op: In
+              value:
+                - "0300"
     - name: qsv.device
-      labelsTemplate:
+      labels:
         qsv.device: "{{ .domain }}.{{ .feature }}"
-      matchLabels:
-        feature.node.kubernetes.io/pci-vendor.8086.present: "true"
       matchFeatures:
-        - domain: cpu
-          feature: vendor_id
-          op: In
-          value:
-            - GenuineIntel
-        - domain: pci
-          feature: class
-          op: In
-          value:
-            - "0300"
+        - feature: cpu.vendor_id
+          matchExpressions:
+            value:
+              op: In
+              value:
+                - GenuineIntel
+        - feature: pci.class
+          matchExpressions:
+            value:
+              op: In
+              value:
+                - "0300"
