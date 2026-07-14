@@ -1,0 +1,10 @@
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: nishir-ai-egress
+  namespace: shikanime
+spec:
+  type: egress
+  replicas: 2
+  tags:
+    - tag:nishir-k8s-egress
