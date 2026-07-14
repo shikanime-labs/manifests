@@ -397,9 +397,9 @@ memory:
   user_char_limit: 1375
   user_profile_enabled: true
 model:
-  base_url: https://inference-api.nousresearch.com/v1
-  default: tencent/hy3:free
-  provider: nous
+  base_url: https://openrouter.ai/api/v1
+  default: openrouter/free
+  provider: openrouter
 model_catalog:
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
   enabled: true
