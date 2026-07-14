@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: whisparr-config
-spec:
-  storageClassName: nishir-standard
-  volumeName: whisparr-config

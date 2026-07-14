@@ -1,5 +1,0 @@
-resources:
-  - ../../base
-namespace: shikanime
-patches:
-  - path: patch-pvc.yaml

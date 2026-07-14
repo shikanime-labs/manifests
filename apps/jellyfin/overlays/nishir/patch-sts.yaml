@@ -10,18 +10,18 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
             - preference:
                 matchExpressions:
-                  - key: qsv.enabled
-                    operator: In
-                    values:
-                      - "true"
-              weight: 100
-            - preference:
-                matchExpressions:
                   - key: network.speed.2.5g
                     operator: In
                     values:
                       - "true"
               weight: 50
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/qsv.enabled
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: jellyfin
           securityContext:

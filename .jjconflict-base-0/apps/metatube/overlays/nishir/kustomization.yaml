@@ -1,9 +1,0 @@
-resources:
-  - ../../base
-namespace: shikanime
-patches:
-  - path: patch-pvc.yaml
-secretGenerator:
-  - name: metatube
-    envs:
-      - metatube/.enc.env

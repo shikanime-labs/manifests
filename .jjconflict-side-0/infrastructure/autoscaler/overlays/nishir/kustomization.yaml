@@ -1,5 +1,0 @@
-resources:
-  - ../../base
-  - cert.yaml
-components:
-  - ../../components/monitoring

@@ -1,8 +1,0 @@
-resources:
-  - alert.yaml
-  - ingress.yaml
-  - ns.yaml
-  - provider.yaml
-  - receiver.yaml
-configurations:
-  - config.yaml

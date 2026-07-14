@@ -1,6 +1,0 @@
-resources:
-  - gitrepo.yaml
-  - helmrepo.yaml
-  - hr.yaml
-  - ks.yaml
-  - ns.yaml

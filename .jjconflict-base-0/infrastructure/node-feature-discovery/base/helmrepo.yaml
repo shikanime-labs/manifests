@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: kubernetes-sigs-nfd
-  namespace: flux-system
-spec:
-  url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-  interval: 1h
