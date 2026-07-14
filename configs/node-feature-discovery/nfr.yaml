@@ -17,7 +17,7 @@ spec:
                 - "0300"
     - name: qsv.device
       labels:
-        qsv.device: '{{ .domain }}.{{ .feature }}'
+        qsv.device: '{{ index .Elements 0 "attributes" "device" }}'
       matchFeatures:
         - feature: pci.device
           matchExpressions:
