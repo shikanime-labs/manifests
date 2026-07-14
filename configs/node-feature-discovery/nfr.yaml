@@ -9,12 +9,6 @@ spec:
       labels:
         qsv.enabled: "true"
       matchFeatures:
-        - feature: cpu.vendor_id
-          matchExpressions:
-            value:
-              op: In
-              value:
-                - GenuineIntel
         - feature: pci.class
           matchExpressions:
             value:
@@ -23,14 +17,8 @@ spec:
                 - "0300"
     - name: qsv.device
       labels:
-        qsv.device: "{{ .domain }}.{{ .feature }}"
+        qsv.device: '{{ .domain }}.{{ .feature }}'
       matchFeatures:
-        - feature: cpu.vendor_id
-          matchExpressions:
-            value:
-              op: In
-              value:
-                - GenuineIntel
         - feature: pci.class
           matchExpressions:
             value:
