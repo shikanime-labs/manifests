@@ -1,0 +1,38 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: nishir
+  namespace: shikanime
+spec:
+  gatewayClassName: traefik
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        certificateRefs:
+          - name: nishir-tls
+            group: ""
+            kind: Secret
+        mode: Terminate
+    - name: https
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        certificateRefs:
+          - name: nishir-tls
+            group: ""
+            kind: Secret
+        mode: Terminate
+    - name: syncthing
+      port: 22000
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: Same

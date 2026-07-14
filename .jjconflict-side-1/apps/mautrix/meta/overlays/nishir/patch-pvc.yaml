@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mautrix-meta-data
+spec:
+  storageClassName: nishir-standard
+  volumeName: mautrix-meta-data

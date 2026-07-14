@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gitea-mirror
+spec:
+  template:
+    spec:
+      containers:
+        - name: gitea-mirror
+          volumeMounts:
+            - name: tls
+              mountPath: /etc/ssl/private
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            items:
+              - key: tls.crt
+                path: tls.crt
+              - key: tls.key
+                mode: 416
+                path: tls.key
+            secretName: forgejo-tls

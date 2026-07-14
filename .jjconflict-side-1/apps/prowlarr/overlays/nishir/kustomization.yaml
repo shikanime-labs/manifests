@@ -1,0 +1,14 @@
+resources:
+  - ../../base
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-pvc.yaml
+secretGenerator:
+  - name: prowlarr-pkcs12-password
+    envs:
+      - prowlarr/.enc.env

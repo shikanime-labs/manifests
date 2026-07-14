@@ -1,0 +1,43 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infrastructure-cert-manager
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  deletionPolicy: Orphan
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: cert-manager
+      namespace: flux-system
+  interval: 10m
+  path: ./infrastructure/cert-manager/overlays/telsha
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: config-cert-manager
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  deletionPolicy: Orphan
+  dependsOn:
+    - name: infrastructure-cert-manager
+  interval: 10m
+  path: ./configs/cert-manager/overlays/telsha
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository

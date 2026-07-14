@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: honcho-postgres
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: honcho
+      ports:
+        - port: postgres
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: honcho-postgres
+      app.kubernetes.io/name: postgres
+  policyTypes:
+    - Ingress

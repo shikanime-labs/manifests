@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+spec:
+  defaultBackend:
+    service:
+      name: qbittorrent
+      port:
+        name: https
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - qbittorrent

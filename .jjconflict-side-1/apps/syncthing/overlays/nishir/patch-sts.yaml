@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: syncthing
+spec:
+  template:
+    spec:
+      containers:
+        - name: syncthing
+          volumeMounts:
+            - name: archives-data
+              mountPath: /var/syncthing/Archives
+            - name: downloads-data
+              mountPath: /var/syncthing/Downloads
+            - name: games-data
+              mountPath: /var/syncthing/Games
+            - name: movies-data
+              mountPath: /var/syncthing/Movies
+            - name: music-data
+              mountPath: /var/syncthing/Music
+            - name: shows-data
+              mountPath: /var/syncthing/Shows
+            - name: staging-data
+              mountPath: /var/syncthing/Staging
+            - name: sukebe-doujins-data
+              mountPath: /var/syncthing/Sukebe/Doujins
+            - name: sukebe-games-data
+              mountPath: /var/syncthing/Sukebe/Games
+            - name: sukebe-scenes-data
+              mountPath: /var/syncthing/Sukebe/Videos
+            - name: sukebe-shows-data
+              mountPath: /var/syncthing/Sukebe/Shows
+            - name: sync-data
+              mountPath: /var/syncthing/Sync
+            - name: timeline-data
+              mountPath: /var/syncthing/Timeline
+      volumes:
+        - name: archives-data
+          persistentVolumeClaim:
+            claimName: archives-data
+        - name: downloads-data
+          persistentVolumeClaim:
+            claimName: downloads-data
+        - name: games-data
+          persistentVolumeClaim:
+            claimName: games-data
+        - name: movies-data
+          persistentVolumeClaim:
+            claimName: movies-data
+        - name: music-data
+          persistentVolumeClaim:
+            claimName: music-data
+        - name: shows-data
+          persistentVolumeClaim:
+            claimName: shows-data
+        - name: staging-data
+          persistentVolumeClaim:
+            claimName: staging-data
+        - name: sukebe-doujins-data
+          persistentVolumeClaim:
+            claimName: sukebe-doujins-data
+        - name: sukebe-games-data
+          persistentVolumeClaim:
+            claimName: sukebe-games-data
+        - name: sukebe-scenes-data
+          persistentVolumeClaim:
+            claimName: sukebe-scenes-data
+        - name: sukebe-shows-data
+          persistentVolumeClaim:
+            claimName: sukebe-shows-data
+        - name: sync-data
+          persistentVolumeClaim:
+            claimName: sync-data
+        - name: timeline-data
+          persistentVolumeClaim:
+            claimName: timeline-data

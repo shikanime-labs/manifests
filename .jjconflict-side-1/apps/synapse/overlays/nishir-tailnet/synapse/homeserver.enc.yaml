@@ -1,0 +1,93 @@
+app_service_config_files:
+  - /data/appservices/matrix-discord.yaml
+  - /data/appservices/matrix-discord-doublepuppet.yaml
+  - /data/appservices/matrix-googlechat.yaml
+  - /data/appservices/matrix-googlechat-doublepuppet.yaml
+  - /data/appservices/matrix-linkedin.yaml
+  - /data/appservices/matrix-linkedin-doublepuppet.yaml
+  - /data/appservices/matrix-meta.yaml
+  - /data/appservices/matrix-meta-doublepuppet.yaml
+  - /data/appservices/matrix-signal.yaml
+  - /data/appservices/matrix-signal-doublepuppet.yaml
+  - /data/appservices/matrix-slack.yaml
+  - /data/appservices/matrix-slack-doublepuppet.yaml
+  - /data/appservices/matrix-twitter.yaml
+  - /data/appservices/matrix-twitter-doublepuppet.yaml
+  - /data/appservices/matrix-whatsapp.yaml
+  - /data/appservices/matrix-whatsapp-doublepuppet.yaml
+auto_accept_invites:
+  enabled: true
+  only_from_local_users: true
+database:
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
+encryption_enabled_by_default_for_room_type: all
+form_secret: ENC[AES256_GCM,data:dtH2CvdxvzM8un1ZoqhvEsPb9fuzm6wIlnWfKd3RTVjEQ9OUJ5FJiDZwjruKp4Tj+S0=,iv:PRbUJUu4q5zlocKEsVqJeIawflpGRDmPkt3HOarkkrk=,tag:pGXc5zqzBt4iuhXE/vzFug==,type:str]
+listeners:
+  - resources:
+      - compress: false
+        names:
+          - client
+          - federation
+    port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+  - resources:
+      - compress: false
+        names:
+          - client
+          - federation
+    port: 8448
+    tls: true
+    type: http
+    x_forwarded: true
+log_config: /data/matrix.taila659a.ts.net.log.config
+macaroon_secret_key: ENC[AES256_GCM,data:nF8Jb+Coot2z33u9wZfA9FoJ9cj7BbY8O/q7nZU8w6/VCLFI1ytj4Z2fHN7rbDox1iA=,iv:vPl3o5JdMaaqcyKJhE/NpDOcOzM8nipYBIeWgTo8yuA=,tag:Bl0tT6TUiUT451M+MoWwKQ==,type:str]
+media_store_path: /data/media_store
+pid_file: /data/homeserver.pid
+registration_shared_secret: ENC[AES256_GCM,data:m3OOcC61IiTUPZfD3shWBPqafNtKBCN+s7P8L/C3yiUkP1R05wJhegtJ0Gf3oC0aK4w=,iv:L++ujelKjJCxz8H7Gm54MgiMEaLlUZFcamM9UjFW2Ak=,tag:b9+forcTTlp8/Oqc4W1SKw==,type:str]
+report_stats: false
+serve_server_wellknown: true
+server_name: matrix.taila659a.ts.net
+signing_key_path: /data/matrix.taila659a.ts.net.signing.key
+sops:
+  version: 3.12.2
+  encrypted_regex: ^(registration_shared_secret|form_secret|macaroon_secret_key)$
+  lastmodified: "2026-04-24T00:43:22Z"
+  mac: ENC[AES256_GCM,data:PvlnSKl2CTvTZYXlT4BGmaIcYYwjGCIT2UzYLRd6h1oEye4/G8aew5gozbvxTw98GZbjclQY/TMq14WHsOv9GjD9Xo2N2G09eyEa0PZf2t0YF9hjPAKUcG0lrDMwehI2/dteelac+cDq8ZdzfF0gmYoMcD24dt/gtm9lYa0By88=,iv:D6ZXryj+DseK3H3IjrkrW4a5FnXBZPScV/zfHoy2kjQ=,tag:dPs/5Zmt0Z8MqilwYUJKrg==,type:str]
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHSjMzZk5abm91S2d3cjJv
+        SEZZN0tGU2VqQnRTc29SM1lsWWhQS0NZSEM4CjlDa0p3eGVjV2ZrcnFLQS9FYU5I
+        VmE5dVIwdHZ3NTgxbUczejNaWW1HaWcKLS0tIEVEdlErU3NaQUkvRUI5dC9panFE
+        K00rcVlHWjh0YXNSaWZueHpncm9KR1UKUTNVmuVrwJl8Q7ir2WxZTYkTR+RcmPqY
+        YEkEk9Telhd25CJeppY3X6qgvMKKnx5bL+hm+nEucL57DpOpC3bleQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQSCtLZC9CbTkzaUVraEhy
+        R3cwVEJSSHk2ckUxaWhuU2tDTExlOSsyeXpvCkZ2UHlySmhoYTliNGNTN0wwQmhK
+        b2h1R21mc2htOFhqSXh3bEJiUnpJd0UKLS0tIHgzbGo1L0VUeTdZNjVPUVp3eWt3
+        cy9FU3Jha1BRUlJCZEtlVFRnZmo5ak0KHuOI7ngX7NQzk9eBwGP9fBA+8auSvsyR
+        t6o6DrscVPLXWBhJcsBpsCcHQgi0lCBCK9S4uDYURTCdXwx7sMyEhw==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtdUpLMFZQbGE0VFF5MC8x
+        azdCYmlPcHIwaUpIdk1DczBvb21BQysrSVVFCnJsVXk4cTVvRW1qcmZBWW1iT1RD
+        NjZXUHc5VXlldTJKTzRYeEtRSklhdDAKLS0tIG53dENyQ1dqbzlHYjFpVU9xaGgx
+        STVlTzBhdEtCKzV1NkRqczJYTVp5d1UKf5vHPmsycJDL2mitxR471iKaOsXVearU
+        DAyXtDBnkQS4fLYNVZckqdSgNdS4zTD0V9Qn+UtknLxje76qSHYuYQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+suppress_key_server_warning: true
+tls_certificate_path: /etc/ssl/private/tls.crt
+tls_private_key_path: /etc/ssl/private/tls.key
+trusted_key_servers:
+  - server_name: matrix.org
+  - server_name: nixos.org

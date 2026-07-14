@@ -1,0 +1,21 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: mautrix-slack
+  namespace: shikanime
+  labels:
+    app.kubernetes.io/name: mautrix-slack
+    app.kubernetes.io/part-of: mautrix-slack
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - shikanime
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: mautrix-slack
+      app.kubernetes.io/name: mautrix-slack

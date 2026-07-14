@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: copyparty
+  annotations:
+    tailscale.com/funnel: "true"
+    tailscale.com/tags: tag:web
+spec:
+  defaultBackend:
+    service:
+      name: copyparty
+      port:
+        name: https
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - copyparty

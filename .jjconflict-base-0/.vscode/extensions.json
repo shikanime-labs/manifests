@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "googlecloudtools.cloudcode",
+    "ms-azuretools.vscode-docker",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

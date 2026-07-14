@@ -1,0 +1,8 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: UDPRoute
+metadata:
+  name: syncthing
+spec:
+  parentRefs:
+    - name: nishir
+      sectionName: syncthing-udp

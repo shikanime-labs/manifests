@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gitea-mirror
+spec:
+  template:
+    spec:
+      containers:
+        - name: gitea-mirror
+          env:
+            - name: BETTER_AUTH_TRUSTED_ORIGINS
+              value: https://100.88.146.24,https://gitea-mirror.taila659a.ts.net
+            - name: BETTER_AUTH_URL
+              value: http://gitea-mirror:4321
+            - name: GITEA_USERNAME
+              value: shikanime
+            - name: GITHUB_USERNAME
+              value: shikanime
+            - name: GITEA_EXTERNAL_URL
+              value: https://forgejo.taila659a.ts.net
+            - name: HEADER_AUTH_ENABLED
+              value: "true"
+            - name: HEADER_AUTH_ALLOWED_DOMAINS
+              value: gitea-mirror.taila659a.ts.net
+            - name: HEADER_AUTH_AUTO_PROVISION
+              value: "true"
+            - name: HEADER_AUTH_EMAIL_HEADER
+              value: Tailscale-User-Login
+            - name: HEADER_AUTH_NAME_HEADER
+              value: Tailscale-User-Name
+            - name: PUBLIC_BETTER_AUTH_URL
+              value: https://gitea-mirror.taila659a.ts.net
+          envFrom:
+            - secretRef:
+                name: gitea-mirror

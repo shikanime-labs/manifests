@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: copyparty
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: tls-sync
+          image: rclone
+          args:
+            - copy
+            - --copy-links
+            - --filter
+            - + /cert.pem
+            - --filter
+            - + /key.pem
+            - --filter
+            - "- *"
+            - /mnt/tls
+            - /mnt/cfg/copyparty
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/cfg
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
+            - name: tls
+              mountPath: /mnt/tls
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            items:
+              - key: tls-combined.pem
+                path: cert.pem
+            secretName: copyparty-tls

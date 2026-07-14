@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoriametrics
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 0.82.0
+      chart: victoria-metrics-k8s-stack
+      interval: 1h
+      sourceRef:
+        name: vm
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: vmks
+  targetNamespace: monitoring-system
+  values:
+    defaultDashboards:
+      enabled: true
+    grafana:
+      enabled: true
+      persistence:
+        type: pvc
+        enabled: true
+        size: 2Gi
+    kubeEtcd:
+      vmScrape:
+        enabled: false
+    prometheus-node-exporter:
+      enabled: false
+    vmalert:
+      extraArgs:
+        enableTCP6: "true"
+    vmsingle:
+      enabled: false

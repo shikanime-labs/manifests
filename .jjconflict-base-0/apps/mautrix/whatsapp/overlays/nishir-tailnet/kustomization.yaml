@@ -1,0 +1,13 @@
+resources:
+  - ../nishir
+  - netpol.yaml
+  - ingress.yaml
+namespace: shikanime
+secretGenerator:
+  - name: mautrix-whatsapp
+    files:
+      - config.yaml=matrix-whatsapp/config.enc.yaml
+      - doublepuppet.yaml=matrix-whatsapp/doublepuppet.enc.yaml
+      - registration.yaml=matrix-whatsapp/registration.enc.yaml
+    options:
+      disableNameSuffixHash: true

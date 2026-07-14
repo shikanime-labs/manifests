@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lidarr
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
+              weight: 50
+      containers:
+        - name: lidarr
+          volumeMounts:
+            - name: music-data
+              mountPath: /data/music
+            - name: downloads-data
+              mountPath: /downloads
+      volumes:
+        - name: music-data
+          persistentVolumeClaim:
+            claimName: music-data
+        - name: downloads-data
+          persistentVolumeClaim:
+            claimName: downloads-data

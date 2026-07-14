@@ -1,0 +1,69 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: node-feature-discovery
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 0.18.0
+      chart: node-feature-discovery
+      interval: 1h
+      sourceRef:
+        name: kubernetes-sigs-nfd
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: node-feature-discovery
+  targetNamespace: node-feature-discovery-system
+  values:
+    featureGates:
+      NodeFeatureGroupAPI: true
+    master:
+      extraArgs:
+        - -feature-gates=NodeFeatureGroupAPI=true
+      replicaCount: 1
+    worker:
+      config:
+        core:
+          labelSources:
+            - system
+            - kernel
+            - network
+            - cpu
+            - local
+            - pci
+        custom:
+          - name: network.1g
+            labels:
+              network.speed.1g: "true"
+            matchFeatures:
+              - feature: kernel.loadedmodule
+                matchExpressions:
+                  e1000e:
+                    op: Exists
+                  igb:
+                    op: Exists
+                  r8169:
+                    op: Exists
+                  tg3:
+                    op: Exists
+                  virtio_net:
+                    op: Exists
+          - name: network.2.5g
+            labels:
+              network.speed.2.5g: "true"
+            matchFeatures:
+              - feature: kernel.loadedmodule
+                matchExpressions:
+                  igc:
+                    op: Exists
+                  r8125:
+                    op: Exists
+        featureSources:
+          - system
+          - kernel
+          - network
+          - cpu
+          - local
+          - pci

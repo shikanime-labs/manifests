@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/monitoring
+  - ../../components/tls
+patches:
+  - path: patch-pvc.yaml

@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: matrix-twitter
+spec:
+  defaultBackend:
+    service:
+      name: mautrix-twitter
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - matrix-twitter

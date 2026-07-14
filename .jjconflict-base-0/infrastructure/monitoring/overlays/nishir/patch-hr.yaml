@@ -1,0 +1,77 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoriametrics
+  namespace: flux-system
+spec:
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |
+              - op: add
+                path: /spec/tls
+                value:
+                  - hosts:
+                      - telemetry
+            target:
+              name: vminsert-vmks-victoria-metrics-k8s-stack
+              version: v1
+              kind: Ingress
+  values:
+    grafana:
+      persistence:
+        storageClassName: nishir-standard
+    kubeControllerManager:
+      vmScrape:
+        spec:
+          endpoints:
+            - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+              port: http-metrics
+              scheme: https
+              tlsConfig:
+                caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+                serverName: 127.0.0.1
+    kubeScheduler:
+      vmScrape:
+        spec:
+          endpoints:
+            - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+              port: http-metrics
+              scheme: https
+              tlsConfig:
+                caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+                serverName: 127.0.0.1
+    vmcluster:
+      spec:
+        vminsert:
+          extraArgs:
+            enableTCP6: "true"
+        vmselect:
+          extraArgs:
+            enableTCP6: "true"
+          storage:
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage: 2Gi
+                storageClassName: nishir-standard
+        vmstorage:
+          extraArgs:
+            enableTCP6: "true"
+          storage:
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage: 8Gi
+                storageClassName: nishir-standard
+      enabled: true
+      ingress:
+        insert:
+          annotations:
+            tailscale.com/tags: tag:web
+          enabled: true
+          hosts:
+            - telemetry
+          ingressClassName: tailscale

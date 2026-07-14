@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lidarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: lidarr
+      app.kubernetes.io/name: lidarr
+  serviceName: lidarr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: lidarr
+        app.kubernetes.io/name: lidarr
+    spec:
+      containers:
+        - name: lidarr
+          image: lidarr
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
+            - name: TZ
+              value: Europe/Paris
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 8686
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 360
+            httpGet:
+              path: /ping
+              port: http
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: run
+              mountPath: /run
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETGID
+                - SETUID
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/config.xml
+            - /mnt/config/config.xml
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: lidarr-config
+        - name: rclone-config
+          configMap:
+            name: lidarr-rclone
+        - name: run
+          emptyDir:
+            medium: Memory
+        - name: startup-config
+          secret:
+            secretName: lidarr

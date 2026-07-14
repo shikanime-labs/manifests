@@ -1,0 +1,25 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: radarr
+    newName: lscr.io/linuxserver/radarr
+    newTag: 6.2.1
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.71.2
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "whisparr", "tag-regex":
+      "^v(?P<channel>\\d+)-(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?$"
+      }, { "name": "radarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }
+      ]'
+configMapGenerator:
+  - name: radarr-rclone
+    namespace: shikanime
+    files:
+      - rclone/rclone.conf

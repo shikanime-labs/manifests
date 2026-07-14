@@ -1,0 +1,12 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: syncthing
+spec:
+  hostnames:
+    - syncthing.taila659a.ts.net
+  parentRefs:
+    - name: nishir
+      sectionName: http
+    - name: nishir
+      sectionName: https

@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tailscale-operator
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.98.4
+      chart: tailscale-operator
+      interval: 1h
+      sourceRef:
+        name: tailscale
+        kind: HelmRepository
+        namespace: flux-system
+  install:
+    crds: Create
+  interval: 10m
+  releaseName: tailscale-operator
+  targetNamespace: tailscale-system
+  upgrade:
+    crds: CreateReplace
+  values:
+    apiServerProxyConfig:
+      allowImpersonation: "true"
+      mode: "true"
+    proxyConfig:
+      defaultTags: tag:web

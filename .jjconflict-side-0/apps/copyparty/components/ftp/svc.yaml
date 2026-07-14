@@ -1,0 +1,313 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftp
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/instance: copyparty
+    app.kubernetes.io/name: copyparty
+  ports:
+    - name: ftp-control
+      port: 21
+      targetPort: ftp-control
+    - name: ftp-data-12000
+      port: 12000
+      targetPort: ftp-data-12000
+    - name: ftp-data-12001
+      port: 12001
+      targetPort: ftp-data-12001
+    - name: ftp-data-12002
+      port: 12002
+      targetPort: ftp-data-12002
+    - name: ftp-data-12003
+      port: 12003
+      targetPort: ftp-data-12003
+    - name: ftp-data-12004
+      port: 12004
+      targetPort: ftp-data-12004
+    - name: ftp-data-12005
+      port: 12005
+      targetPort: ftp-data-12005
+    - name: ftp-data-12006
+      port: 12006
+      targetPort: ftp-data-12006
+    - name: ftp-data-12007
+      port: 12007
+      targetPort: ftp-data-12007
+    - name: ftp-data-12008
+      port: 12008
+      targetPort: ftp-data-12008
+    - name: ftp-data-12009
+      port: 12009
+      targetPort: ftp-data-12009
+    - name: ftp-data-12010
+      port: 12010
+      targetPort: ftp-data-12010
+    - name: ftp-data-12011
+      port: 12011
+      targetPort: ftp-data-12011
+    - name: ftp-data-12012
+      port: 12012
+      targetPort: ftp-data-12012
+    - name: ftp-data-12013
+      port: 12013
+      targetPort: ftp-data-12013
+    - name: ftp-data-12014
+      port: 12014
+      targetPort: ftp-data-12014
+    - name: ftp-data-12015
+      port: 12015
+      targetPort: ftp-data-12015
+    - name: ftp-data-12016
+      port: 12016
+      targetPort: ftp-data-12016
+    - name: ftp-data-12017
+      port: 12017
+      targetPort: ftp-data-12017
+    - name: ftp-data-12018
+      port: 12018
+      targetPort: ftp-data-12018
+    - name: ftp-data-12019
+      port: 12019
+      targetPort: ftp-data-12019
+    - name: ftp-data-12020
+      port: 12020
+      targetPort: ftp-data-12020
+    - name: ftp-data-12021
+      port: 12021
+      targetPort: ftp-data-12021
+    - name: ftp-data-12022
+      port: 12022
+      targetPort: ftp-data-12022
+    - name: ftp-data-12023
+      port: 12023
+      targetPort: ftp-data-12023
+    - name: ftp-data-12024
+      port: 12024
+      targetPort: ftp-data-12024
+    - name: ftp-data-12025
+      port: 12025
+      targetPort: ftp-data-12025
+    - name: ftp-data-12026
+      port: 12026
+      targetPort: ftp-data-12026
+    - name: ftp-data-12027
+      port: 12027
+      targetPort: ftp-data-12027
+    - name: ftp-data-12028
+      port: 12028
+      targetPort: ftp-data-12028
+    - name: ftp-data-12029
+      port: 12029
+      targetPort: ftp-data-12029
+    - name: ftp-data-12030
+      port: 12030
+      targetPort: ftp-data-12030
+    - name: ftp-data-12031
+      port: 12031
+      targetPort: ftp-data-12031
+    - name: ftp-data-12032
+      port: 12032
+      targetPort: ftp-data-12032
+    - name: ftp-data-12033
+      port: 12033
+      targetPort: ftp-data-12033
+    - name: ftp-data-12034
+      port: 12034
+      targetPort: ftp-data-12034
+    - name: ftp-data-12035
+      port: 12035
+      targetPort: ftp-data-12035
+    - name: ftp-data-12036
+      port: 12036
+      targetPort: ftp-data-12036
+    - name: ftp-data-12037
+      port: 12037
+      targetPort: ftp-data-12037
+    - name: ftp-data-12038
+      port: 12038
+      targetPort: ftp-data-12038
+    - name: ftp-data-12039
+      port: 12039
+      targetPort: ftp-data-12039
+    - name: ftp-data-12040
+      port: 12040
+      targetPort: ftp-data-12040
+    - name: ftp-data-12041
+      port: 12041
+      targetPort: ftp-data-12041
+    - name: ftp-data-12042
+      port: 12042
+      targetPort: ftp-data-12042
+    - name: ftp-data-12043
+      port: 12043
+      targetPort: ftp-data-12043
+    - name: ftp-data-12044
+      port: 12044
+      targetPort: ftp-data-12044
+    - name: ftp-data-12045
+      port: 12045
+      targetPort: ftp-data-12045
+    - name: ftp-data-12046
+      port: 12046
+      targetPort: ftp-data-12046
+    - name: ftp-data-12047
+      port: 12047
+      targetPort: ftp-data-12047
+    - name: ftp-data-12048
+      port: 12048
+      targetPort: ftp-data-12048
+    - name: ftp-data-12049
+      port: 12049
+      targetPort: ftp-data-12049
+    - name: ftp-data-12050
+      port: 12050
+      targetPort: ftp-data-12050
+    - name: ftp-data-12051
+      port: 12051
+      targetPort: ftp-data-12051
+    - name: ftp-data-12052
+      port: 12052
+      targetPort: ftp-data-12052
+    - name: ftp-data-12053
+      port: 12053
+      targetPort: ftp-data-12053
+    - name: ftp-data-12054
+      port: 12054
+      targetPort: ftp-data-12054
+    - name: ftp-data-12055
+      port: 12055
+      targetPort: ftp-data-12055
+    - name: ftp-data-12056
+      port: 12056
+      targetPort: ftp-data-12056
+    - name: ftp-data-12057
+      port: 12057
+      targetPort: ftp-data-12057
+    - name: ftp-data-12058
+      port: 12058
+      targetPort: ftp-data-12058
+    - name: ftp-data-12059
+      port: 12059
+      targetPort: ftp-data-12059
+    - name: ftp-data-12060
+      port: 12060
+      targetPort: ftp-data-12060
+    - name: ftp-data-12061
+      port: 12061
+      targetPort: ftp-data-12061
+    - name: ftp-data-12062
+      port: 12062
+      targetPort: ftp-data-12062
+    - name: ftp-data-12063
+      port: 12063
+      targetPort: ftp-data-12063
+    - name: ftp-data-12064
+      port: 12064
+      targetPort: ftp-data-12064
+    - name: ftp-data-12065
+      port: 12065
+      targetPort: ftp-data-12065
+    - name: ftp-data-12066
+      port: 12066
+      targetPort: ftp-data-12066
+    - name: ftp-data-12067
+      port: 12067
+      targetPort: ftp-data-12067
+    - name: ftp-data-12068
+      port: 12068
+      targetPort: ftp-data-12068
+    - name: ftp-data-12069
+      port: 12069
+      targetPort: ftp-data-12069
+    - name: ftp-data-12070
+      port: 12070
+      targetPort: ftp-data-12070
+    - name: ftp-data-12071
+      port: 12071
+      targetPort: ftp-data-12071
+    - name: ftp-data-12072
+      port: 12072
+      targetPort: ftp-data-12072
+    - name: ftp-data-12073
+      port: 12073
+      targetPort: ftp-data-12073
+    - name: ftp-data-12074
+      port: 12074
+      targetPort: ftp-data-12074
+    - name: ftp-data-12075
+      port: 12075
+      targetPort: ftp-data-12075
+    - name: ftp-data-12076
+      port: 12076
+      targetPort: ftp-data-12076
+    - name: ftp-data-12077
+      port: 12077
+      targetPort: ftp-data-12077
+    - name: ftp-data-12078
+      port: 12078
+      targetPort: ftp-data-12078
+    - name: ftp-data-12079
+      port: 12079
+      targetPort: ftp-data-12079
+    - name: ftp-data-12080
+      port: 12080
+      targetPort: ftp-data-12080
+    - name: ftp-data-12081
+      port: 12081
+      targetPort: ftp-data-12081
+    - name: ftp-data-12082
+      port: 12082
+      targetPort: ftp-data-12082
+    - name: ftp-data-12083
+      port: 12083
+      targetPort: ftp-data-12083
+    - name: ftp-data-12084
+      port: 12084
+      targetPort: ftp-data-12084
+    - name: ftp-data-12085
+      port: 12085
+      targetPort: ftp-data-12085
+    - name: ftp-data-12086
+      port: 12086
+      targetPort: ftp-data-12086
+    - name: ftp-data-12087
+      port: 12087
+      targetPort: ftp-data-12087
+    - name: ftp-data-12088
+      port: 12088
+      targetPort: ftp-data-12088
+    - name: ftp-data-12089
+      port: 12089
+      targetPort: ftp-data-12089
+    - name: ftp-data-12090
+      port: 12090
+      targetPort: ftp-data-12090
+    - name: ftp-data-12091
+      port: 12091
+      targetPort: ftp-data-12091
+    - name: ftp-data-12092
+      port: 12092
+      targetPort: ftp-data-12092
+    - name: ftp-data-12093
+      port: 12093
+      targetPort: ftp-data-12093
+    - name: ftp-data-12094
+      port: 12094
+      targetPort: ftp-data-12094
+    - name: ftp-data-12095
+      port: 12095
+      targetPort: ftp-data-12095
+    - name: ftp-data-12096
+      port: 12096
+      targetPort: ftp-data-12096
+    - name: ftp-data-12097
+      port: 12097
+      targetPort: ftp-data-12097
+    - name: ftp-data-12098
+      port: 12098
+      targetPort: ftp-data-12098
+    - name: ftp-data-12099
+      port: 12099
+      targetPort: ftp-data-12099

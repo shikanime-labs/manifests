@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sonarr
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
+              weight: 50
+      containers:
+        - name: sonarr
+          volumeMounts:
+            - name: shows-data
+              mountPath: /data/shows
+            - name: downloads-data
+              mountPath: /downloads
+      volumes:
+        - name: shows-data
+          persistentVolumeClaim:
+            claimName: shows-data
+        - name: downloads-data
+          persistentVolumeClaim:
+            claimName: downloads-data

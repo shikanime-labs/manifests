@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: matrix-googlechat
+spec:
+  defaultBackend:
+    service:
+      name: mautrix-googlechat
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - matrix-googlechat

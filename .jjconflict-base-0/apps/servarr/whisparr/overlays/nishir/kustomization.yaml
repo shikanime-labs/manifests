@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
+secretGenerator:
+  - name: whisparr
+    files:
+      - config.xml=whisparr/config.enc.xml
+  - name: whisparr-pkcs12-password
+    envs:
+      - whisparr/.enc.env

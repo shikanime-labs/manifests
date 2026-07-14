@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: matrix-slack
+spec:
+  defaultBackend:
+    service:
+      name: mautrix-slack
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - matrix-slack

@@ -1,0 +1,12 @@
+resources:
+  - ../nishir
+  - ingress.yaml
+namespace: shikanime
+secretGenerator:
+  - name: mautrix-twitter
+    files:
+      - config.yaml=matrix-twitter/config.enc.yaml
+      - doublepuppet.yaml=matrix-twitter/doublepuppet.enc.yaml
+      - registration.yaml=matrix-twitter/registration.enc.yaml
+    options:
+      disableNameSuffixHash: true

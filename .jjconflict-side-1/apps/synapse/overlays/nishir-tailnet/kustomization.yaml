@@ -1,0 +1,17 @@
+resources:
+  - ../nishir
+  - netpol.yaml
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: communication
+      app.kubernetes.io/instance: synapse
+      app.kubernetes.io/name: synapse
+      app.kubernetes.io/part-of: nishir-office
+      app.kubernetes.io/version: 1.154.0
+secretGenerator:
+  - name: synapse
+    files:
+      - homeserver.yaml=synapse/homeserver.enc.yaml
+      - synapse/matrix.taila659a.ts.net.log.config

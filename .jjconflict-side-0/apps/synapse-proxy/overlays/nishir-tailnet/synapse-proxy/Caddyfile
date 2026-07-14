@@ -1,0 +1,58 @@
+{
+	auto_https off
+}
+
+(mautrix) {
+	@isMautrixWellKnown path /.well-known/matrix/mautrix
+	handle @isMautrixWellKnown {
+		header Content-Type application/json
+		header Access-Control-Allow-Origin "*"
+		header Access-Control-Allow-Methods "GET, OPTIONS"
+		header Access-Control-Allow-Headers "Origin, Content-Type, Accept"
+		header Access-Control-Max-Age "86400"
+		respond `{"fi.mau.bridges":["https://matrix-discord.taila659a.ts.net","https://matrix-googlechat.taila659a.ts.net","https://matrix-linkedin.taila659a.ts.net","https://matrix-meta.taila659a.ts.net","https://matrix-signal.taila659a.ts.net","https://matrix-slack.taila659a.ts.net","https://matrix-twitter.taila659a.ts.net","https://matrix-whatsapp.taila659a.ts.net"]}` 200
+	}
+}
+
+(matrix-discord-media) {
+	@isDiscordDirectMediaApi path /.well-known/matrix/server /_matrix/federation/v1/media/download/* /_matrix/client/v1/media/* /_matrix/media/* /_matrix/key/* /_matrix/federation/v1/version
+	handle @isDiscordDirectMediaApi {
+		reverse_proxy http://{$MAUTRIX_DISCORD_SERVICE_HOST:matrix-discord}:{$MAUTRIX_DISCORD_SERVICE_PORT_HTTP:29334}
+	}
+}
+
+(matrix) {
+	import mautrix
+	@isMatrixClient path /.well-known/matrix/server /_matrix/* /_synapse/client/*
+	handle @isMatrixClient {
+		reverse_proxy https://{$SYNAPSE_SERVICE_HOST:synapse}:{$SYNAPSE_SERVICE_PORT_HTTPS:8448} {
+			transport http {
+				tls_server_name synapse
+			}
+		}
+	}
+	handle {
+		respond 404
+	}
+}
+
+:8008 {
+	@isDiscordDirectMedia host matrix-discord-media.taila659a.ts.net
+	handle @isDiscordDirectMedia {
+		import matrix-discord-media
+	}
+	handle {
+		import matrix
+	}
+}
+
+:8448 {
+	tls /etc/ssl/private/tls.crt /etc/ssl/private/tls.key
+	@isDiscordDirectMedia host matrix-discord-media.taila659a.ts.net
+	handle @isDiscordDirectMedia {
+		import matrix-discord-media
+	}
+	handle {
+		import matrix
+	}
+}

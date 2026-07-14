@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hermes-agent-gateway
+spec:
+  ports:
+    - name: webhook
+      port: 8644
+      targetPort: webhook

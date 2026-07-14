@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      containers:
+        - name: jellyfin
+          env:
+            - name: JELLYFIN_PublishedServerUrl
+              value: 100.64.0.0/10=jellyfin.taila659a.ts.net,10.0.0.0/8=jellyfin.taila659a.ts.net,192.168.0.0/16=jellyfin.taila659a.ts.net

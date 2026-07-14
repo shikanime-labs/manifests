@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whisparr
+spec:
+  defaultBackend:
+    service:
+      name: whisparr
+      port:
+        name: https
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - whisparr

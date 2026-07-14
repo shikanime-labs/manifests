@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chrome
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: chrome
+      app.kubernetes.io/name: chrome
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: chrome
+        app.kubernetes.io/name: chrome
+    spec:
+      containers:
+        - name: chrome
+          image: chrome
+          args:
+            - --remote-debugging-address=0.0.0.0
+            - --remote-allow-origins=*
+          livenessProbe:
+            initialDelaySeconds: 30
+            tcpSocket:
+              port: cdp
+            timeoutSeconds: 5
+          ports:
+            - name: cdp
+              containerPort: 9222
+          readinessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: cdp
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 180
+            initialDelaySeconds: 3
+            tcpSocket:
+              port: cdp
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory

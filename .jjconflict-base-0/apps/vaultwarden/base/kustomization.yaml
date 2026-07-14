@@ -1,0 +1,15 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: vaultwarden
+    newName: vaultwarden/server
+    newTag: 1.36.0
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "vaultwarden", "tag-regex":
+      "^(?P<version>\\d+\\.\\d+\\.\\d+)$", "exclude-tags": ["1.34.3"] } ]'

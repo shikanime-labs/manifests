@@ -1,0 +1,19 @@
+apiVersion: skaffold/v4beta9
+kind: Config
+metadata:
+  name: shikanime
+profiles:
+  - name: nishir-tailnet
+    activation:
+      - kubeContext: nishir-k8s-operator.taila659a.ts.net
+    manifests:
+      kustomize:
+        paths:
+          - clusters/nishir/overlays/tailnet
+  - name: telsha-tailnet
+    activation:
+      - kubeContext: rancher-desktop
+    manifests:
+      kustomize:
+        paths:
+          - clusters/telsha/overlays/tailnet

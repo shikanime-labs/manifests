@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: whisparr
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
+              weight: 50
+      containers:
+        - name: whisparr
+          volumeMounts:
+            - name: sukebe-scenes-data
+              mountPath: /data/videos
+            - name: downloads-data
+              mountPath: /downloads
+      volumes:
+        - name: sukebe-scenes-data
+          persistentVolumeClaim:
+            claimName: sukebe-scenes-data
+        - name: downloads-data
+          persistentVolumeClaim:
+            claimName: downloads-data

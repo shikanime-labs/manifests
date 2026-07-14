@@ -1,0 +1,21 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: vpa
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/part-of: vpa
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - autoscaler-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: admission-controller
+      app.kubernetes.io/name: vpa

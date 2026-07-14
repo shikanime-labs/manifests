@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: copyparty
+spec:
+  template:
+    spec:
+      containers:
+        - name: copyparty
+          ports:
+            - name: mdns
+              containerPort: 5353
+              protocol: UDP
+            - name: ssdp
+              containerPort: 1900
+              protocol: UDP

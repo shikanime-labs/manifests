@@ -1,0 +1,31 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+images:
+  - name: mautrix
+    newName: dock.mau.dev/mautrix/signal
+    newTag: v0.2605.0
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.74.3
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "mautrix", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$"
+      }, { "name": "rclone", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }
+      ]'
+configMapGenerator:
+  - name: mautrix-signal-rclone
+    namespace: shikanime
+    files:
+      - rclone/rclone.conf
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: communication
+      app.kubernetes.io/instance: mautrix-signal
+      app.kubernetes.io/name: mautrix-signal
+      app.kubernetes.io/part-of: nishir-office
+      app.kubernetes.io/version: 0.2605.0

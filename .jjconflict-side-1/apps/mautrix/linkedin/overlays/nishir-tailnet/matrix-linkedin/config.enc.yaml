@@ -1,0 +1,221 @@
+analytics:
+  url: https://api.segment.io/v1/track
+  token: null
+  user_id: null
+appservice:
+  id: linkedin
+  address: http://mautrix-linkedin:29341
+  as_token: ENC[AES256_GCM,data:hi0Agd05kX73SuiUsDHDcfDbvGmC9n5oLNbBvvstvcJ+JEBaBouWYrmubltwMcVolVFDyA/RT01keOmGEuIrLw==,iv:1a9vBTXYhpXeebpld2rbD7sbRNhgJgXIIuZj8BvxJvI=,tag:pHy7WB5RS4OEvWH9Epv+ww==,type:str]
+  async_transactions: false
+  ephemeral_events: true
+  hostname: 0.0.0.0
+  hs_token: ENC[AES256_GCM,data:B1AIspXdIsUCkKaSn0R+CVJ8cjsdZcCbEvPsovIJVkKXbAVhXqlj+4j/leM2Xwy6afVpD+H3dIOmQAamvineRA==,iv:ug2PG//v5m1pNAi4Q4136W1C8APnH4JWl0MDC/AzB/Y=,tag:1GVjcji87jvSQirDEMqOsQ==,type:str]
+  port: 29341
+  public_address: https://matrix-linkedin.taila659a.ts.net
+  username_template: linkedin_{{.}}
+  bot:
+    avatar: mxc://maunium.net/CqzBEHjrLsfdqixWZgNHMlRT
+    displayname: LinkedIn bridge bot
+    username: linkedinbot
+backfill:
+  enabled: true
+  max_catchup_messages: 500
+  max_initial_messages: 50
+  queue:
+    batch_delay: 20
+    batch_size: 100
+    enabled: false
+    max_batches: -1
+    max_batches_override: {}
+  threads:
+    max_initial_messages: 50
+  unread_hours_threshold: 720
+bridge:
+  async_events: false
+  bridge_matrix_leave: false
+  bridge_notices: false
+  bridge_status_notices: errors
+  cleanup_on_logout:
+    bad_credentials:
+      private: nothing
+      relayed: nothing
+      shared_has_users: nothing
+      shared_no_users: nothing
+    enabled: false
+    manual:
+      private: nothing
+      relayed: nothing
+      shared_has_users: nothing
+      shared_no_users: nothing
+  command_prefix: "!linkedin"
+  cross_room_replies: false
+  deduplicate_matrix_messages: false
+  kick_matrix_users: true
+  mute_only_on_create: true
+  no_bridge_info_state_key: false
+  only_bridge_tags:
+    - m.favourite
+    - m.lowpriority
+  permissions:
+    "*": relay
+    "@root:matrix.taila659a.ts.net": admin
+    matrix.taila659a.ts.net: user
+  personal_filtering_spaces: true
+  private_chat_portal_meta: true
+  relay:
+    admin_only: true
+    default_relays: []
+    displayname_format: "{{ .DisambiguatedName }}"
+    enabled: false
+    message_formats:
+      m.audio:
+        "<b>{{ .Sender.DisambiguatedName }}</b> sent an audio file{{ if .Caption
+        }}: {{ .Caption }}{{ end }}"
+      m.emote: "* <b>{{ .Sender.DisambiguatedName }}</b> {{ .Message }}"
+      m.file:
+        "<b>{{ .Sender.DisambiguatedName }}</b> sent a file{{ if .Caption }}: {{
+        .Caption }}{{ end }}"
+      m.image:
+        "<b>{{ .Sender.DisambiguatedName }}</b> sent an image{{ if .Caption }}:
+        {{ .Caption }}{{ end }}"
+      m.location:
+        "<b>{{ .Sender.DisambiguatedName }}</b> sent a location{{ if .Caption
+        }}: {{ .Caption }}{{ end }}"
+      m.notice: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
+      m.text: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
+      m.video:
+        "<b>{{ .Sender.DisambiguatedName }}</b> sent a video{{ if .Caption }}:
+        {{ .Caption }}{{ end }}"
+  resend_bridge_info: false
+  revert_failed_state_changes: false
+  split_portals: false
+  tag_only_on_create: true
+  unknown_error_auto_reconnect: null
+database:
+  type: sqlite3-fk-wal
+  max_conn_idle_time: null
+  max_conn_lifetime: null
+  max_idle_conns: 1
+  max_open_conns: 5
+  uri: file:/data/linkedin.db?_txlock=immediate
+direct_media:
+  allow_proxy: true
+  enabled: false
+  media_id_prefix: null
+  server_key: ENC[AES256_GCM,data:CCmgVGWrZB17wugmcsII55k1izU8HnRXotoYnjz/BGh1SlE4oeeyyNcFAw6lOLMEXiqMirO0g8OiPQ==,iv:idLkJ1xtFeQ2psW+f7PjtyCZjn4EzJTuD3iQCslRnB8=,tag:CzZoeroCQRuKsotOMy3Ktw==,type:str]
+  server_name: matrix-discord-media.taila659a.ts.net
+  well_known_response: null
+double_puppet:
+  allow_discovery: false
+  secrets:
+    matrix.taila659a.ts.net: ENC[AES256_GCM,data:DbBB3L9WFdLC/TYv/FUL+Eb+tDlI+9NWr3yIGmE44ytUdORAS9It4g8iaPewiOMiffX3VBpqDrZdsRZJ83dKla0+jYSvtNO0iw==,iv:u05OCySkRWqJRRUrdhh3EogenPNJvzDCZK2orXTPnaA=,tag:Pac/LeSAO+fRrkv3YLxE4w==,type:str]
+  servers:
+    anotherserver.example.org: https://matrix.anotherserver.example.org
+encryption:
+  allow: true
+  allow_key_sharing: true
+  appservice: false
+  default: true
+  delete_keys:
+    delete_fully_used_on_decrypt: true
+    delete_on_device_delete: true
+    delete_outbound_on_ack: false
+    delete_outdated_inbound: true
+    delete_prev_on_new_session: true
+    dont_store_outbound: true
+    periodically_delete_expired: true
+    ratchet_on_decrypt: true
+  msc4190: false
+  msc4392: false
+  pickle_key: ENC[AES256_GCM,data:Q92SNB3El5xilyn5buj8JJngkh0yIEhyWgEoBQL6dMPNHREVNNued3MvJUXEySlTj7fcj251ZUMIZM85OREhig==,iv:tDSVrG2yG6FuyF7ti6jjamqX/03VaEkbAnSdZZnLVSw=,tag:8UMMprLGZ2b00pVsEsjxaA==,type:str]
+  require: false
+  rotation:
+    disable_device_change_key_rotation: false
+    enable_custom: false
+    messages: 100
+    milliseconds: 6.048e+08
+  self_sign: true
+  verification_levels:
+    receive: cross-signed-tofu
+    send: cross-signed-tofu
+    share: cross-signed-tofu
+env_config_prefix: null
+homeserver:
+  address: https://synapse:8448
+  async_media: false
+  domain: matrix.taila659a.ts.net
+  message_send_checkpoint_endpoint: null
+  ping_interval_seconds: 0
+  software: standard
+  status_endpoint: null
+  websocket: false
+logging:
+  min_level: debug
+  writers:
+    - type: stdout
+      format: pretty-colored
+    - type: file
+      compress: false
+      filename: ./logs/bridge.log
+      format: json
+      max_backups: 10
+      max_size: 100
+matrix:
+  delivery_receipts: false
+  federate_rooms: true
+  message_error_notices: true
+  message_status_events: false
+  sync_direct_chat_list: true
+  upload_file_threshold: 5.24288e+06
+network:
+  displayname_template:
+    "{{ with .Organization }}{{ . }}{{ else }}{{ .FirstName }} {{ .LastName }}{{
+    end }} (LinkedIn)"
+  sync:
+    create_limit: 10
+    update_limit: 0
+provisioning:
+  allow_matrix_auth: true
+  debug_endpoints: false
+  enable_session_transfers: false
+  shared_secret: ENC[AES256_GCM,data:lG3ArZyri9fMr3Ayyit0GELlcd/kiOKXFAgVVl2ToTHQxsqWzXXUB/sthOTfvcWt98isGDEOhOQkxBNJBmPNGQ==,iv:D+8cw0fpx++VWlWY5PfP75NBzuAzoT42hCFsSHecqFU=,tag:U3bqYsiK0KtEf4Jj9dVYmA==,type:str]
+public_media:
+  enabled: false
+  expiry: 0
+  hash_length: 32
+  path_prefix: /_mautrix/publicmedia
+  signing_key: ENC[AES256_GCM,data:e2umNnrUTwDg5fi3QjSWJR5AVCUL4/LwGVmfrrcn4cz0tqCLQGhk5wAbBiPk2UPidwQvostP4BpACxb55XR7Uw==,iv:04C2+i6ixbZ5M1hSBbl+41W9v29BmrPBgGs99N35+U8=,tag:+urWaydjs1PbcSg9WxIpCg==,type:str]
+  use_database: false
+sops:
+  version: 3.12.2
+  encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
+  lastmodified: "2026-04-14T23:44:09Z"
+  mac: ENC[AES256_GCM,data:5YYXZRzKt9x39S+hROe9D/GmNmX9sSp1c6CMGrAZGwWD+H1ijoK6lUuXA1p0IdAhtMu0A6bJ1oPQ4LHCY/ZGEEJLodeAvSXRQbbMcqJQnPur8Lc+1AKNv001Kvgf3ldGouLRWtSPdr/ODAPOfLCbCGgVfSmiovBFsmvrbINRUYM=,iv:7We2rUhbX/y4Cx0OFVIOwkJGzPmE6YTmsCmLetyXQ0s=,tag:04vtsonnrtAU57nBEQDYVA==,type:str]
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAxUGJhNWl2bU1WZXZSZ3h2
+        NXg1UFEwY1hOUjAwdUlENEZKTGpweVVISjIwCmlLREtDRURYU0JnUGU0VDVzc0lQ
+        N3haN0owRGlqbTRwSktGNUVRaHVNVDQKLS0tIHpEbDNpMDN0U1pwaWFBUE1pVE5C
+        Nkg4SEVjWHl2TlZHUXhxeDQrVC9YWXMKyEh8mPHpgrSLFSdKP6Nd8m1xrUDSttYF
+        z+RRh7hJwak2hxT3YVtGgr0zaAM9oFHKHfSLtXnOCqkLCpBWkhy24w==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6cHZ4TVZKZkQwdHBGR1o1
+        bFo3RWlKNTV0SHJpdzlqamJrV0svcS9EaW13Clk5SHBucjAxY2cyS2RhMkVTdVNL
+        N2hYZnNxbGwxamhhMkVqeHd2MGZCSGcKLS0tIDVydnYvSG5pNVBLQkdYSG1veUMw
+        b0JWWlRLQTFycVdGNitHRW54L0ZzdFEKuXr2yjPYGO9kgWKJ+8jVkyA/FsFUX/Nd
+        3Otwl+ULRf4ZYzyci3zZx1gl3RFAwMz7YzFfQVzNcDbAO9XvqV7h7g==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOYkxORTZBa1J4Q29EVjVL
+        UUxGVWdTbmpZd3E4Rm15cVZkUVZHNUNXRVZVCm9TRUdvT044VWxwdWRsdDBoWEd6
+        eHJkUmUvMnZTV1NBUWlSc2VCQnFaTW8KLS0tIENNblNJUEdxVFdoMUdTVjU5QmNm
+        NEtNYlJ1NDlCWldKM0kvaU9kVGx5OFUKEOJCPIFjPjXU33Bc9WLni8ejG5ThQMHc
+        9MsaaYo9LD73IRtnVWK7YXtWHUrNiVXHUxR0yftMmDdnDTGBwDl4OQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64

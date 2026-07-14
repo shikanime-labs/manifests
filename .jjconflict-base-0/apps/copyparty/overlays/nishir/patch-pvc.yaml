@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: copyparty-config
+spec:
+  storageClassName: nishir-standard
+  volumeName: copyparty-config

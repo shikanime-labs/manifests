@@ -1,0 +1,13 @@
+resources:
+  - ../nishir
+  - ingress.yaml
+  - netpol.yaml
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: agent
+      app.kubernetes.io/instance: honcho
+      app.kubernetes.io/name: honcho
+      app.kubernetes.io/part-of: nishir-automata
+      app.kubernetes.io/version: 3.0.9

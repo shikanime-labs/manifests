@@ -1,0 +1,13 @@
+resources:
+  - ../nishir
+  - netpol.yaml
+  - ingress.yaml
+namespace: shikanime
+secretGenerator:
+  - name: mautrix-googlechat
+    files:
+      - config.yaml=matrix-googlechat/config.enc.yaml
+      - doublepuppet.yaml=matrix-googlechat/doublepuppet.enc.yaml
+      - registration.yaml=matrix-googlechat/registration.enc.yaml
+    options:
+      disableNameSuffixHash: true

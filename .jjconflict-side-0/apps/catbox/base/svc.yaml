@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: catbox
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/instance: catbox
+    app.kubernetes.io/name: catbox
+  ports:
+    - name: ssh
+      port: 22
+      targetPort: ssh
+    - name: mdns
+      port: 5353
+      protocol: UDP
+      targetPort: mdns

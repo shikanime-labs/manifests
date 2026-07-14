@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: synapse-proxy
+spec:
+  egress:
+    - ports:
+        - port: https
+      to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: synapse
+    - ports:
+        - port: http
+      to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: mautrix-discord
+    - ports:
+        - port: 53
+          protocol: TCP
+        - port: 53
+          protocol: UDP
+      to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: synapse
+      ports:
+        - port: https
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: synapse-proxy
+      app.kubernetes.io/name: synapse-proxy
+  policyTypes:
+    - Ingress
+    - Egress

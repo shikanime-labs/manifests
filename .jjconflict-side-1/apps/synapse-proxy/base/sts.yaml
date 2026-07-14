@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: synapse-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: synapse-proxy
+      app.kubernetes.io/name: synapse-proxy
+  serviceName: synapse-proxy
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: synapse-proxy
+        app.kubernetes.io/name: synapse-proxy
+    spec:
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - synapse
+                        - matrix-discord
+                topologyKey: kubernetes.io/hostname
+              weight: 100
+      containers:
+        - name: caddy
+          image: caddy
+          livenessProbe:
+            initialDelaySeconds: 60
+            tcpSocket:
+              port: http
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 8008
+          readinessProbe:
+            initialDelaySeconds: 30
+            tcpSocket:
+              port: http
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 180
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: http
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: synapse-proxy
+              mountPath: /etc/caddy
+              readOnly: true
+            - name: synapse-proxy-data
+              mountPath: /var/caddy
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              add:
+                - NET_BIND_SERVICE
+                - NET_RAW
+      volumes:
+        - name: synapse-proxy
+          configMap:
+            name: synapse-proxy
+        - name: synapse-proxy-data
+          persistentVolumeClaim:
+            claimName: synapse-proxy-data

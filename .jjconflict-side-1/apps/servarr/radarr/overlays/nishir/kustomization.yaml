@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
+secretGenerator:
+  - name: radarr
+    files:
+      - config.xml=radarr/config.enc.xml
+  - name: radarr-pkcs12-password
+    envs:
+      - radarr/.enc.env

@@ -1,0 +1,15 @@
+resources:
+  - ../../base
+components:
+  - ../../components/monitoring
+patches:
+  - path: patch-hr.yaml
+secretGenerator:
+  - name: longhorn-hetzner-backups
+    namespace: longhorn-system
+    envs:
+      - longhorn-hetzner-backups/.enc.env
+    options:
+      annotations:
+        longhorn.io/backup-target: s3://shikanime-studio-nishir-longhorn-backups-e9750005@fsn1/
+      disableNameSuffixHash: true

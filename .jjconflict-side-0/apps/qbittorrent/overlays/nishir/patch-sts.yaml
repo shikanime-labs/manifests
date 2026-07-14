@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: qbittorrent
+spec:
+  template:
+    spec:
+      containers:
+        - name: qbittorrent
+          volumeMounts:
+            - name: downloads-data
+              mountPath: /downloads
+      volumes:
+        - name: downloads-data
+          persistentVolumeClaim:
+            claimName: downloads-data

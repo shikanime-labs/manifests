@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: whisparr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: whisparr
+      app.kubernetes.io/name: whisparr
+  serviceName: whisparr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: whisparr
+        app.kubernetes.io/name: whisparr
+    spec:
+      containers:
+        - name: whisparr
+          image: whisparr
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Paris
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 6969
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 180
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: false
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/config.xml
+            - /mnt/config/config.xml
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: whisparr-config
+        - name: rclone-config
+          configMap:
+            name: whisparr-rclone
+        - name: startup-config
+          secret:
+            secretName: whisparr

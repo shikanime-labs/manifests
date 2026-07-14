@@ -1,0 +1,13 @@
+resources:
+  - ../../base
+  - backendtlspolicy.yaml
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+patches:
+  - path: patch-httproute.yaml
+  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
+  - path: patch-tcproute.yaml
+  - path: patch-udproute.yaml

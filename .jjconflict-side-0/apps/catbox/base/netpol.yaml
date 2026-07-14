@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: catbox
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tailscale-system
+      ports:
+        - port: ssh
+        - port: mdns
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: catbox
+      app.kubernetes.io/name: catbox
+  policyTypes:
+    - Ingress

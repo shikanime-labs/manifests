@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: copyparty-tls
+spec:
+  additionalOutputFormats:
+    - type: CombinedPEM
+  commonName: copyparty
+  dnsNames:
+    - copyparty
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: copyparty-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

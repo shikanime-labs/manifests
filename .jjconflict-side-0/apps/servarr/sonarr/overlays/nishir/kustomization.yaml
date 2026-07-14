@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+  - cert.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
+secretGenerator:
+  - name: sonarr
+    files:
+      - config.xml=sonarr/config.enc.xml
+  - name: sonarr-pkcs12-password
+    envs:
+      - sonarr/.enc.env

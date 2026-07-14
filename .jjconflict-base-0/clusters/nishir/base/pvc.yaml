@@ -1,0 +1,195 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: archives-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 64Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: archives-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 1Ti
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  volumeName: downloads-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: games-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 32Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: games-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: movies-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 64Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  volumeName: movies-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: music-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 64Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: music-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: shows-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 512Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  volumeName: shows-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: staging-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 128Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: staging-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sukebe-doujins-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 1Ti
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: sukebe-doujins-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sukebe-games-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 128Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: sukebe-games-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sukebe-scenes-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: sukebe-scenes-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sukebe-shows-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 512Gi
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: sukebe-shows-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sync-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: sync-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: timeline-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: nishir-nearline
+  volumeMode: Filesystem
+  volumeName: timeline-data
+  accessModes:
+    - ReadWriteMany

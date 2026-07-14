@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: forgejo-data
+spec:
+  storageClassName: nishir-standard
+  volumeName: forgejo-data

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: seerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: seerr
+      app.kubernetes.io/name: seerr
+  serviceName: seerr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: seerr
+        app.kubernetes.io/name: seerr
+    spec:
+      containers:
+        - name: seerr
+          image: seerr
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/v1/status
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 5055
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/v1/status
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 360
+            httpGet:
+              path: /api/v1/status
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: seerr-config

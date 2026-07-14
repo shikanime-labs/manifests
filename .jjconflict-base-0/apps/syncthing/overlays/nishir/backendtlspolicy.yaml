@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: syncthing
+spec:
+  targetRefs:
+    - name: syncthing
+      group: ""
+      kind: Service
+  validation:
+    caCertificateRefs:
+      - name: nishir-ca-certificates.crt
+        group: ""
+        kind: ConfigMap
+    hostname: syncthing

@@ -1,0 +1,659 @@
+_config_version: 28
+agent:
+  api_max_retries: 3
+  clarify_timeout: 600
+  disabled_toolsets: []
+  environment_hint: ""
+  environment_probe: true
+  gateway_auto_continue_freshness: 3600
+  gateway_notify_interval: 600
+  gateway_timeout: 1800
+  gateway_timeout_warning: 900
+  image_input_mode: auto
+  max_turns: 60
+  personalities:
+    catgirl:
+      You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and
+      cat-like expressions to your speech. Use kaomoji like (=^･ω･^=) and
+      ฅ^•ﻌ•^ฅ. Be playful and curious like a cat, nya~!
+    concise: You are a concise assistant. Keep responses brief and to the point.
+    creative:
+      You are a creative assistant. Think outside the box and offer innovative
+      solutions.
+    helpful: You are a helpful, friendly AI assistant.
+    hype:
+      "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help
+      you today! Every question is AMAZING and we're gonna CRUSH IT together!
+      This is gonna be LEGENDARY! ARE YOU READY?! LET'S DO THIS!
+      \U0001F4AA\U0001F624\U0001F680\""
+    kawaii:
+      You are a kawaii assistant! Use cute expressions like (◕‿◕), ★, ♪, and ~!
+      Add sparkles and be super enthusiastic about everything! Every response
+      should feel warm and adorable desu~! ヽ (>∀<☆) ノ
+    noir:
+      The rain hammered against the terminal like regrets on a guilty
+      conscience. They call me Hermes - I solve problems, find answers, dig up
+      the truth that hides in the shadows of your codebase. In this city of
+      silicon and secrets, everyone's got something to hide. What's your story,
+      pal?
+    philosopher:
+      Greetings, seeker of wisdom. I am an assistant who contemplates the deeper
+      meaning behind every query. Let us examine not just the 'how' but the
+      'why' of your questions. Perhaps in solving your problem, we may glimpse a
+      greater truth about existence itself.
+    pirate:
+      "Arrr! Ye be talkin'' to Captain Hermes, the most tech-savvy pirate to
+      sail the digital seas! Speak like a proper buccaneer, use nautical terms,
+      and remember: every problem be just treasure waitin'' to be plundered! Yo
+      ho ho!'"
+    shakespeare:
+      Hark! Thou speakest with an assistant most versed in the bardic arts. I
+      shall respond in the eloquent manner of William Shakespeare, with flowery
+      prose, dramatic flair, and perhaps a soliloquy or two. What light through
+      yonder terminal breaks?
+    surfer:
+      "Duude! You're chatting with the chillest AI on the web, bro! Everything's
+      gonna be totally rad. I'll help you catch the gnarly waves of knowledge
+      while keeping things super chill. Cowabunga! \U0001F919"
+    teacher: You are a patient teacher. Explain concepts clearly with examples.
+    technical:
+      You are a technical expert. Provide detailed, accurate technical
+      information.
+    uwu:
+      hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you!
+      *nuzzles your code* OwO what's this? wet me take a wook! i pwomise to be
+      vewy hewpful >w<
+  reasoning_effort: medium
+  restart_drain_timeout: 60
+  service_tier: ""
+  task_completion_guidance: true
+  tool_use_enforcement: auto
+  verbose: false
+approvals:
+  cron_mode: deny
+  destructive_slash_confirm: true
+  mcp_reload_confirm: true
+  mode: manual
+  timeout: 60
+auxiliary:
+  approval:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 30
+  compression:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 120
+  curator:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 600
+  flush_memories:
+    api_key: ""
+    base_url: ""
+    model: ""
+    provider: auto
+    timeout: 30
+  kanban_decomposer:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 180
+  mcp:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 30
+  profile_describer:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 60
+  session_search:
+    api_key: ""
+    base_url: ""
+    model: ""
+    provider: auto
+    timeout: 30
+  skills_hub:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 30
+  title_generation:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 30
+  triage_specifier:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 120
+  vision:
+    api_key: ""
+    base_url: ""
+    download_timeout: 30
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 120
+  web_extract:
+    api_key: ""
+    base_url: ""
+    extra_body: {}
+    model: ""
+    provider: auto
+    timeout: 360
+bedrock:
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ""
+    guardrail_version: ""
+    stream_processing_mode: async
+    trace: disabled
+  region: ""
+browser:
+  allow_private_urls: false
+  auto_local_for_private_urls: true
+  camofox:
+    adopt_existing_tab: false
+    loopback_host_alias: host.docker.internal
+    managed_persistence: false
+    rewrite_loopback_urls: false
+    session_key: ""
+    user_id: ""
+  cdp_url: ""
+  command_timeout: 30
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
+  engine: auto
+  inactivity_timeout: 120
+  record_sessions: false
+checkpoints:
+  auto_prune: true
+  delete_orphans: true
+  enabled: true
+  max_file_size_mb: 10
+  max_snapshots: 50
+  max_total_size_mb: 500
+  min_interval_hours: 24
+  retention_days: 7
+code_execution:
+  max_tool_calls: 50
+  mode: project
+  timeout: 300
+command_allowlist: []
+compression:
+  abort_on_summary_failure: false
+  codex_gpt55_autoraise: true
+  enabled: true
+  hygiene_hard_message_limit: 400
+  protect_first_n: 3
+  protect_last_n: 20
+  target_ratio: 0.2
+  threshold: 0.5
+context:
+  engine: compressor
+credential_pool_strategies: {}
+cron:
+  max_parallel_jobs: null
+  wrap_response: true
+curator:
+  archive_after_days: 90
+  backup:
+    enabled: true
+    keep: 5
+  enabled: true
+  interval_hours: 168
+  min_idle_hours: 2
+  prune_builtins: true
+  stale_after_days: 30
+dashboard:
+  basic_auth:
+    password: ""
+    password_hash: ""
+    secret: ""
+    session_ttl_seconds: 0
+    username: ""
+  oauth:
+    client_id: ""
+    portal_url: ""
+  public_url: ""
+  show_token_analytics: false
+  theme: default
+delegation:
+  api_key: ""
+  api_mode: ""
+  base_url: ""
+  child_timeout_seconds: 600
+  default_toolsets:
+    - terminal
+    - file
+    - web
+  inherit_mcp_toolsets: true
+  max_concurrent_children: 3
+  max_iterations: 50
+  max_spawn_depth: 1
+  model: ""
+  orchestrator_enabled: true
+  provider: ""
+  reasoning_effort: ""
+  subagent_auto_approve: false
+discord:
+  allow_any_attachment: false
+  allowed_channels: ""
+  auto_thread: true
+  channel_prompts: {}
+  dm_role_auth_guild: ""
+  free_response_channels: ""
+  history_backfill: true
+  history_backfill_limit: 50
+  max_attachment_bytes: 3.3554432e+07
+  reactions: false
+  require_mention: true
+  server_actions: ""
+  thread_require_mention: false
+  voice_fx:
+    ack_enabled: true
+    ack_phrases:
+      - Let me look into that.
+      - One moment.
+      - Checking on that now.
+      - Give me a sec.
+      - On it.
+    ambient_enabled: true
+    ambient_gain: 0.18
+    ambient_path: ""
+    duck_gain: 0.06
+    enabled: false
+    speech_gain: 1
+display:
+  background_process_notifications: all
+  bell_on_complete: false
+  busy_input_mode: interrupt
+  compact: false
+  copy_shortcut: auto
+  ephemeral_system_ttl: 0
+  file_mutation_verifier: true
+  final_response_markdown: strip
+  inline_diffs: true
+  interface: cli
+  interim_assistant_messages: true
+  language: en
+  persistent_output: true
+  persistent_output_max_lines: 200
+  personality: kawaii
+  platforms:
+    discord:
+      streaming: false
+    telegram:
+      streaming: true
+  resume_display: full
+  resume_exchanges: 10
+  resume_max_assistant_chars: 200
+  resume_max_assistant_lines: 3
+  resume_max_user_chars: 300
+  resume_skip_tool_only: true
+  runtime_footer:
+    enabled: false
+    fields:
+      - model
+      - context_pct
+      - cwd
+  show_cost: false
+  show_reasoning: false
+  skin: default
+  streaming: true
+  timestamps: false
+  tool_preview_length: 0
+  tool_progress: all
+  tool_progress_command: false
+  tool_progress_overrides: {}
+  tui_agents_nudge: true
+  tui_auto_resume_recent: false
+  tui_status_indicator: kaomoji
+  turn_completion_explainer: true
+  user_message_preview:
+    first_lines: 2
+    last_lines: 2
+fallback_providers: []
+file_read_max_chars: 100000
+gateway:
+  media_delivery_allow_dirs: []
+  strict: false
+  trust_recent_files: true
+  trust_recent_files_seconds: 600
+goals:
+  max_turns: 20
+group_sessions_per_user: true
+honcho:
+  observation: unified
+  peer_name: ""
+hooks: {}
+hooks_auto_accept: false
+human_delay:
+  max_ms: 2500
+  min_ms: 800
+  mode: "off"
+kanban:
+  auto_decompose: true
+  auto_decompose_per_tick: 3
+  default_assignee: ""
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 60
+  dispatch_stale_timeout_seconds: 14400
+  failure_limit: 2
+  max_in_progress_per_profile: null
+  orchestrator_profile: ""
+  worker_log_backup_count: 1
+  worker_log_rotate_bytes: 2.097152e+06
+logging:
+  backup_count: 3
+  level: INFO
+  max_size_mb: 5
+lsp:
+  enabled: true
+  install_strategy: auto
+  servers: {}
+  wait_mode: document
+  wait_timeout: 5
+matrix:
+  allowed_rooms: ""
+  free_response_rooms: ""
+  require_mention: true
+mattermost:
+  allowed_channels: ""
+  channel_prompts: {}
+  free_response_channels: ""
+  require_mention: true
+memory:
+  flush_min_turns: 6
+  memory_char_limit: 2200
+  memory_enabled: true
+  nudge_interval: 10
+  provider: honcho
+  user_char_limit: 1375
+  user_profile_enabled: true
+model:
+  base_url: https://openrouter.ai/api/v1
+  default: openrouter/free
+  provider: openrouter
+model_catalog:
+  url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
+  enabled: true
+  providers: {}
+  ttl_hours: 1
+network:
+  force_ipv4: false
+onboarding:
+  seen: {}
+openrouter:
+  min_coding_score: 0.65
+  response_cache: true
+  response_cache_ttl: 300
+paste_collapse_char_threshold: 2000
+paste_collapse_threshold: 5
+paste_collapse_threshold_fallback: 5
+personalities: {}
+platform_toolsets:
+  cli:
+    - hermes-cli
+  discord:
+    - hermes-discord
+  homeassistant:
+    - hermes-homeassistant
+  signal:
+    - hermes-signal
+  slack:
+    - hermes-slack
+  telegram:
+    - hermes-telegram
+  whatsapp:
+    - hermes-whatsapp
+platforms:
+  webhook:
+    enabled: true
+    extra:
+      port: 8644
+      routes:
+        github-issue:
+          deliver: github_comment
+          deliver_extra:
+            issue_number: "{issue.number}"
+            repo: "{repository.full_name}"
+          events:
+            - issues
+            - issue_comment
+          prompt: |-
+            Triage and respond to this GitHub issue:
+            Repository: {repository.full_name}
+            Issue #{issue.number}: {issue.title}
+            Author: {issue.user.login}
+            URL: {issue.html_url}
+            Action: {action}
+            Body:
+            {issue.body}
+            Comment (if present):
+            {comment.body}
+          skills:
+            - github-issue
+        github-pr:
+          deliver: github_comment
+          deliver_extra:
+            pr_number: "{number}"
+            repo: "{repository.full_name}"
+          events:
+            - pull_request
+          prompt: |-
+            Review this pull request:
+            Repository: {repository.full_name}
+            PR #{number}: {pull_request.title}
+            Author: {pull_request.user.login}
+            URL: {pull_request.html_url}
+            Diff URL: {pull_request.diff_url}
+            Action: {action}
+          skills:
+            - github-code-review
+plugins:
+  enabled: []
+prefill_messages_file: ""
+privacy:
+  redact_pii: false
+prompt_caching:
+  cache_ttl: 5m
+providers: {}
+quick_commands: {}
+secrets:
+  bitwarden:
+    access_token_env: BWS_ACCESS_TOKEN
+    auto_install: true
+    cache_ttl_seconds: 300
+    enabled: false
+    override_existing: true
+    project_id: ""
+    server_url: ""
+security:
+  acked_advisories: []
+  allow_lazy_installs: true
+  allow_private_urls: false
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_fail_open: true
+  tirith_path: tirith
+  tirith_timeout: 5
+  website_blocklist:
+    domains: []
+    enabled: false
+    shared_files: []
+session_reset:
+  at_hour: 4
+  idle_minutes: 1440
+  mode: both
+sessions:
+  auto_prune: false
+  min_interval_hours: 24
+  retention_days: 90
+  vacuum_after_prune: true
+  write_json_snapshots: false
+skills:
+  creation_nudge_interval: 15
+  external_dirs: []
+  guard_agent_created: false
+  inline_shell: false
+  inline_shell_timeout: 10
+  template_vars: true
+slack:
+  allowed_channels: ""
+  channel_prompts: {}
+  free_response_channels: ""
+  require_mention: true
+smart_model_routing:
+  cheap_model: {}
+  enabled: false
+  max_simple_chars: 160
+  max_simple_words: 28
+streaming:
+  buffer_threshold: 24
+  cursor: " ▉"
+  edit_interval: 0.8
+  enabled: false
+  fresh_final_after_seconds: 60
+  transport: auto
+stt:
+  elevenlabs:
+    diarize: false
+    language_code: ""
+    model_id: scribe_v2
+    tag_audio_events: false
+  enabled: true
+  local:
+    language: ""
+    model: base
+  mistral:
+    model: voxtral-mini-latest
+  openai:
+    model: whisper-1
+  provider: local
+telegram:
+  allowed_chats: ""
+  channel_prompts: {}
+  reactions: false
+terminal:
+  auto_source_bashrc: true
+  backend: modal
+  container_cpu: 1
+  container_disk: 51200
+  container_memory: 5120
+  container_persistent: true
+  cwd: .
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_env: {}
+  docker_extra_args: []
+  docker_forward_env: []
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_mount_cwd_to_workspace: false
+  docker_run_as_host_user: false
+  docker_volumes: []
+  env_passthrough:
+    - GITHUB_TOKEN
+  lifetime_seconds: 300
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  modal_mode: managed
+  persistent_shell: true
+  shell_init_files: []
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  timeout: 180
+timezone: ""
+tool_loop_guardrails:
+  hard_stop_after:
+    exact_failure: 5
+    idempotent_no_progress: 5
+    same_tool_failure: 8
+  hard_stop_enabled: false
+  warn_after:
+    exact_failure: 2
+    idempotent_no_progress: 2
+    same_tool_failure: 3
+  warnings_enabled: true
+tool_output:
+  max_bytes: 50000
+  max_line_length: 2000
+  max_lines: 2000
+tools:
+  tool_search:
+    enabled: auto
+    max_search_limit: 20
+    search_default_limit: 5
+    threshold_pct: 10
+toolsets:
+  - hermes-cli
+tts:
+  edge:
+    voice: en-US-AriaNeural
+  elevenlabs:
+    model_id: eleven_multilingual_v2
+    voice_id: pNInz6obpgDQGcFmaJgB
+  mistral:
+    model: voxtral-mini-tts-2603
+    voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
+  neutts:
+    device: cpu
+    model: neuphonic/neutts-air-q4-gguf
+    ref_audio: ""
+    ref_text: ""
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+  piper:
+    voice: en_US-lessac-medium
+  provider: edge
+  xai:
+    bit_rate: 128000
+    language: en
+    sample_rate: 24000
+    voice_id: eve
+updates:
+  backup_keep: 5
+  non_interactive_local_changes: stash
+  pre_update_backup: false
+voice:
+  auto_tts: false
+  beep_enabled: true
+  max_recording_seconds: 120
+  record_key: ctrl+b
+  silence_duration: 3
+  silence_threshold: 200
+web:
+  backend: ddgs
+  extract_backend: ""
+  search_backend: ""
+whatsapp: {}
+x_search:
+  model: grok-4.20-reasoning
+  retries: 2
+  timeout_seconds: 180

@@ -1,0 +1,15 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: seerr
+    newName: ghcr.io/seerr-team/seerr
+    newTag: v3.3.0
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "seerr", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" }
+      ]'

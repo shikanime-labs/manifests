@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vaultwarden-tls
+spec:
+  commonName: vaultwarden
+  dnsNames:
+    - vaultwarden
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: vaultwarden-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

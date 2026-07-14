@@ -1,0 +1,25 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.71.2
+  - name: sonarr
+    newName: lscr.io/linuxserver/sonarr
+    newTag: 4.0.17
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "whisparr", "tag-regex":
+      "^v(?P<channel>\\d+)-(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?$"
+      }, { "name": "sonarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }
+      ]'
+configMapGenerator:
+  - name: sonarr-rclone
+    namespace: shikanime
+    files:
+      - rclone/rclone.conf

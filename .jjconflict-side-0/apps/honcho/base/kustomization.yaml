@@ -1,0 +1,13 @@
+resources:
+  - deploy.yaml
+  - netpol.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: honcho
+    newName: ghcr.io/plastic-labs/honcho
+    newTag: v3.0.9
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "honcho", "tag-regex": "^(?P<version>.+)$" } ]'

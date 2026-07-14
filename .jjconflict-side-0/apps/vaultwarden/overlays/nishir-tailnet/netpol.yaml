@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: vaultwarden-tailscale
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tailscale-system
+      ports:
+        - port: https
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: vaultwarden
+      app.kubernetes.io/name: vaultwarden
+  policyTypes:
+    - Ingress

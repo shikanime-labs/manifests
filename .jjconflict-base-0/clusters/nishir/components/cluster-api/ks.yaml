@@ -1,0 +1,24 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infrastructure-cluster-api
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  deletionPolicy: Orphan
+  dependsOn:
+    - name: infrastructure-cert-manager
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: vpa
+      namespace: flux-system
+  interval: 10m
+  path: ./infrastructure/cluster-api/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository

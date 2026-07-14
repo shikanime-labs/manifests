@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: catbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: catbox
+      app.kubernetes.io/name: catbox
+  serviceName: catbox
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: catbox
+        app.kubernetes.io/name: catbox
+    spec:
+      containers:
+        - name: catbox
+          image: catbox
+          stdin: true
+          tty: true
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          livenessProbe:
+            initialDelaySeconds: 30
+            tcpSocket:
+              port: ssh
+            timeoutSeconds: 5
+          ports:
+            - name: ssh
+              containerPort: 22
+            - name: mdns
+              containerPort: 5353
+              protocol: UDP
+          readinessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: ssh
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 180
+            initialDelaySeconds: 3
+            tcpSocket:
+              port: ssh
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: catbox-workspaces
+              mountPath: /workspaces
+            - name: run
+              mountPath: /run
+            - name: sys-kernel-debug
+              mountPath: /sys/kernel/debug
+            - name: sys-kernel-tracing
+              mountPath: /sys/kernel/tracing
+            - name: var-db-nscd
+              mountPath: /var/db/nscd
+      hostname: catbox
+      securityContext:
+        fsGroup: 100
+      volumes:
+        - name: catbox-workspaces
+          persistentVolumeClaim:
+            claimName: catbox-workspaces
+        - name: run
+          emptyDir:
+            medium: Memory
+        - name: sys-kernel-debug
+          hostPath:
+            type: Directory
+            path: /sys/kernel/debug
+        - name: sys-kernel-tracing
+          hostPath:
+            type: Directory
+            path: /sys/kernel/tracing
+        - name: var-db-nscd
+          emptyDir: {}

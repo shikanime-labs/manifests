@@ -1,0 +1,21 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: mautrix-linkedin
+  namespace: shikanime
+  labels:
+    app.kubernetes.io/name: mautrix-linkedin
+    app.kubernetes.io/part-of: mautrix-linkedin
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - shikanime
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: mautrix-linkedin
+      app.kubernetes.io/name: mautrix-linkedin

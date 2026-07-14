@@ -1,0 +1,24 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.74.3
+  - name: forgejo
+    newName: codeberg.org/forgejo/forgejo
+    newTag: 15.0.3-rootless
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "forgejo", "tag-regex":
+      "^(?P<version>\\d+\\.\\d+\\.\\d+-rootless)$" }, { "name": "rclone",
+      "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+.*)$" } ]'
+configMapGenerator:
+  - name: forgejo-rclone
+    namespace: shikanime
+    files:
+      - rclone/rclone.conf

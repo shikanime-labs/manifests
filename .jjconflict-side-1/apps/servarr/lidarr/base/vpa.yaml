@@ -1,0 +1,11 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: lidarr
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: lidarr
+  updatePolicy:
+    updateMode: Auto

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mautrix-discord
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: synapse
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: synapse-proxy
+      ports:
+        - port: http
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: mautrix-discord
+      app.kubernetes.io/name: mautrix-discord
+  policyTypes:
+    - Ingress
