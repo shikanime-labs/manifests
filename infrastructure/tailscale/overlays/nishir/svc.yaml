@@ -4,6 +4,7 @@ metadata:
   name: ai-tailscale
   namespace: shikanime
   annotations:
+    tailscale.com/tags: tag:k8s-egress
     tailscale.com/tailnet-fqdn: ai.taila659a.ts.net
 spec:
   type: ExternalName
