@@ -26,6 +26,9 @@ spec:
             - system
             - kernel
             - network
+            - cpu
+            - local
+            - pci
         custom:
           - name: network.1g
             labels:
