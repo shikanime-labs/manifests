@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - svc.yaml
 patches:
   - path: patch-hr.yaml
 secretGenerator:
