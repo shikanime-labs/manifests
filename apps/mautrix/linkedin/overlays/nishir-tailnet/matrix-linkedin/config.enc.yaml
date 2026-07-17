@@ -5,11 +5,11 @@ analytics:
 appservice:
   id: linkedin
   address: http://mautrix-linkedin:29341
-  as_token: ENC[AES256_GCM,data:hi0Agd05kX73SuiUsDHDcfDbvGmC9n5oLNbBvvstvcJ+JEBaBouWYrmubltwMcVolVFDyA/RT01keOmGEuIrLw==,iv:1a9vBTXYhpXeebpld2rbD7sbRNhgJgXIIuZj8BvxJvI=,tag:pHy7WB5RS4OEvWH9Epv+ww==,type:str]
+  as_token: ENC[AES256_GCM,data:5k3EbFqsA9yfmUrGJ3OJBodZQ9qvRw/LTtyei40w2e5/lDd2ZWhwbLt+0ss20w57SASyCdIweA8ySfFNZb/bvw==,iv:8QCHdkR751exbs6O+b97x3RWOeDQIjcKD4iEJsWZOvg=,tag:7OeVNgJeYIb5yskmTN8AsQ==,type:str]
   async_transactions: false
   ephemeral_events: true
   hostname: 0.0.0.0
-  hs_token: ENC[AES256_GCM,data:B1AIspXdIsUCkKaSn0R+CVJ8cjsdZcCbEvPsovIJVkKXbAVhXqlj+4j/leM2Xwy6afVpD+H3dIOmQAamvineRA==,iv:ug2PG//v5m1pNAi4Q4136W1C8APnH4JWl0MDC/AzB/Y=,tag:1GVjcji87jvSQirDEMqOsQ==,type:str]
+  hs_token: ENC[AES256_GCM,data:WOCUIX/FO4jInfK2MhHAPLysAK2EMT0Mfo8c8jPDxJvShp6jwNo3D+JITOUy9UHlytvCxl7aPtg+S8XnZnx8dQ==,iv:KVkNihwb8fYyXhnQdJYWnVCb2sTb19ge+Rqw1dig71I=,tag:6Wtg0+10aPKfjsFlDEEViQ==,type:str]
   port: 29341
   public_address: https://matrix-linkedin.taila659a.ts.net
   username_template: linkedin_{{.}}
@@ -102,13 +102,13 @@ direct_media:
   allow_proxy: true
   enabled: false
   media_id_prefix: null
-  server_key: ENC[AES256_GCM,data:CCmgVGWrZB17wugmcsII55k1izU8HnRXotoYnjz/BGh1SlE4oeeyyNcFAw6lOLMEXiqMirO0g8OiPQ==,iv:idLkJ1xtFeQ2psW+f7PjtyCZjn4EzJTuD3iQCslRnB8=,tag:CzZoeroCQRuKsotOMy3Ktw==,type:str]
+  server_key: ENC[AES256_GCM,data:dhpGox7T+3Gc3YmOc1wMD0JMczRaW5aDWSWSfkTjdaWvSoPcf6ZnAauq6OLD7LQmkP4UG47Eq7v4sw==,iv:V/dkCB1JLbj1WGSYfEMzrSNprYQwBfqmlI3JB9pTZbA=,tag:dgUU8sv3iFhn46f1VV/PPw==,type:str]
   server_name: matrix-discord-media.taila659a.ts.net
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:DbBB3L9WFdLC/TYv/FUL+Eb+tDlI+9NWr3yIGmE44ytUdORAS9It4g8iaPewiOMiffX3VBpqDrZdsRZJ83dKla0+jYSvtNO0iw==,iv:u05OCySkRWqJRRUrdhh3EogenPNJvzDCZK2orXTPnaA=,tag:Pac/LeSAO+fRrkv3YLxE4w==,type:str]
+    matrix.taila659a.ts.net: ENC[AES256_GCM,data:Nrk8Z/JAH/mBPlorDXdnhbTunaqEtWAK0M6pAtxq3onzLQMcAtZvY7usviXSKhiXigEmaL4c8F4/8acx/txNjsegxvPYOoXzdA==,iv:na2IjQ9O5W3BJzEIYTioNGcuWifwgtME/Z29tWzk1GA=,tag:zXDxT/90jcb3HSQQOGIl3Q==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -127,7 +127,7 @@ encryption:
     ratchet_on_decrypt: true
   msc4190: false
   msc4392: false
-  pickle_key: ENC[AES256_GCM,data:Q92SNB3El5xilyn5buj8JJngkh0yIEhyWgEoBQL6dMPNHREVNNued3MvJUXEySlTj7fcj251ZUMIZM85OREhig==,iv:tDSVrG2yG6FuyF7ti6jjamqX/03VaEkbAnSdZZnLVSw=,tag:8UMMprLGZ2b00pVsEsjxaA==,type:str]
+  pickle_key: ENC[AES256_GCM,data:rs8BYLDWNAyGW1lHs6/JRUS9lLP7V2MavLUCyUjxVg0NtjyuGoEFsprdSyIjgEWvEfNyq+G21HrnDgYuE0Nhmg==,iv:SKfo7Gq6XkJYQTTbY/ZeztGd9QNDb5sU/0ReWfKRmMk=,tag:kqaWhLzQ/1bHckgN9zTbog==,type:str]
   require: false
   rotation:
     disable_device_change_key_rotation: false
@@ -167,6 +167,9 @@ matrix:
   message_status_events: false
   sync_direct_chat_list: true
   upload_file_threshold: 5.24288e+06
+metrics:
+  enabled: ENC[AES256_GCM,data:mZOv3Q==,iv:RkIqza6T9ua70bKVNThOV1u3zw/KYXIK9SC6q0108LQ=,tag:yrLmlcPwaJsN763Lw5AlGw==,type:bool]
+  listen_port: ENC[AES256_GCM,data:7U3YqRs=,iv:yws2w2odl2f8v6dhbGN/fPbdpH7cikg03ohwNYs4Zo8=,tag:RI4YD0+kETZtZWQ9ojHyaQ==,type:int]
 network:
   displayname_template:
     "{{ with .Organization }}{{ . }}{{ else }}{{ .FirstName }} {{ .LastName }}{{
@@ -178,44 +181,44 @@ provisioning:
   allow_matrix_auth: true
   debug_endpoints: false
   enable_session_transfers: false
-  shared_secret: ENC[AES256_GCM,data:lG3ArZyri9fMr3Ayyit0GELlcd/kiOKXFAgVVl2ToTHQxsqWzXXUB/sthOTfvcWt98isGDEOhOQkxBNJBmPNGQ==,iv:D+8cw0fpx++VWlWY5PfP75NBzuAzoT42hCFsSHecqFU=,tag:U3bqYsiK0KtEf4Jj9dVYmA==,type:str]
+  shared_secret: ENC[AES256_GCM,data:V8ettsi9KziJUm+Qhjanwf1u0xHsyXH5X7cSFzu4kAZOp2we0SI+1kgiFVBjjSQTPN5J74vfxwr+lvwHJoVbsw==,iv:gfSQs6TGySe8KD0vWJXDIHCfvVzExQd38nHBXEWqRGA=,tag:5WgpWTFp+MaIHU5uc65DLw==,type:str]
 public_media:
   enabled: false
   expiry: 0
   hash_length: 32
   path_prefix: /_mautrix/publicmedia
-  signing_key: ENC[AES256_GCM,data:e2umNnrUTwDg5fi3QjSWJR5AVCUL4/LwGVmfrrcn4cz0tqCLQGhk5wAbBiPk2UPidwQvostP4BpACxb55XR7Uw==,iv:04C2+i6ixbZ5M1hSBbl+41W9v29BmrPBgGs99N35+U8=,tag:+urWaydjs1PbcSg9WxIpCg==,type:str]
+  signing_key: ENC[AES256_GCM,data:5S2vpsZ2WHl7wAe5zRZSe5qvTpYL6gCks57wkPouBOCbK/QdM1v1zV95BbuOTNIszWlg1S9OuY5/Dz+pF6Sfdw==,iv:X+hsjfoUL0eN34hUaAfVJXdHvwGqJVHsQDt62Rw7okM=,tag:a74mc6oEcWkpzkZBbBjI1A==,type:str]
   use_database: false
 sops:
-  version: 3.12.2
-  encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-04-14T23:44:09Z"
-  mac: ENC[AES256_GCM,data:5YYXZRzKt9x39S+hROe9D/GmNmX9sSp1c6CMGrAZGwWD+H1ijoK6lUuXA1p0IdAhtMu0A6bJ1oPQ4LHCY/ZGEEJLodeAvSXRQbbMcqJQnPur8Lc+1AKNv001Kvgf3ldGouLRWtSPdr/ODAPOfLCbCGgVfSmiovBFsmvrbINRUYM=,iv:7We2rUhbX/y4Cx0OFVIOwkJGzPmE6YTmsCmLetyXQ0s=,tag:04vtsonnrtAU57nBEQDYVA==,type:str]
+  version: 3.13.1
+  encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets|metrics)$
+  lastmodified: "2026-07-17T12:16:18Z"
+  mac: ENC[AES256_GCM,data:bfPdN1BbGfx7ZCYG5oGDSjV58SgOKAqh8dmwkVNwT7o/YpAE4WX2TsavaWimCoXXynNCDaz4AI4OrPkWD2CF+UgO/zpDtJgKBTeTEB8GJPQjlAezMi7DVzA6bwpstovqKKdJ48MgLwvXwPREPgHoOJrcylpnIXsXB9cPLrGhRYg=,iv:VJzL3mfYajtX1GdPInipmXkkLURmysi7Dy72fNZdZa8=,tag:/TffvPcQLN8NVrBZauUGSQ==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAxUGJhNWl2bU1WZXZSZ3h2
-        NXg1UFEwY1hOUjAwdUlENEZKTGpweVVISjIwCmlLREtDRURYU0JnUGU0VDVzc0lQ
-        N3haN0owRGlqbTRwSktGNUVRaHVNVDQKLS0tIHpEbDNpMDN0U1pwaWFBUE1pVE5C
-        Nkg4SEVjWHl2TlZHUXhxeDQrVC9YWXMKyEh8mPHpgrSLFSdKP6Nd8m1xrUDSttYF
-        z+RRh7hJwak2hxT3YVtGgr0zaAM9oFHKHfSLtXnOCqkLCpBWkhy24w==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvd25BL21NOVd3aFgwNjkx
+        ci9ZZ1RZLzdzdFU0VDNhLzJvcjlLdEdJRWpzCkluVEtQL0ZzUDJNVmRtTEw3UGhU
+        Smw1UUVpRmJVNExpaFVpVVN6ZXVhc28KLS0tIE1pNTgyZk03S0tsTFZQOGxmbW8v
+        ZTlmbkptUjh5WGYvNWJ4aEFYUFpNRGsKSd3R14lLAqglJHFS0BzBPzYjKLjlqyt8
+        bvdDamY0NjAMI0BRLAvvGexAYYLW4TJpoJgGZ9WKRE9WEZncdp3vXA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6cHZ4TVZKZkQwdHBGR1o1
-        bFo3RWlKNTV0SHJpdzlqamJrV0svcS9EaW13Clk5SHBucjAxY2cyS2RhMkVTdVNL
-        N2hYZnNxbGwxamhhMkVqeHd2MGZCSGcKLS0tIDVydnYvSG5pNVBLQkdYSG1veUMw
-        b0JWWlRLQTFycVdGNitHRW54L0ZzdFEKuXr2yjPYGO9kgWKJ+8jVkyA/FsFUX/Nd
-        3Otwl+ULRf4ZYzyci3zZx1gl3RFAwMz7YzFfQVzNcDbAO9XvqV7h7g==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5Vk9rOGZFTEpZdUhub2tv
+        TDdzQW5haTdXMUZ4MFZlWVlQbUFQWVpKZVY0CkRCVUtEK1lVbjFla3k4d3hCazNX
+        L1ZpWVdvVUdQV1h5VVBTQXFmR0hVTDgKLS0tIDA0amkxS0xPbVdRTndtUU9LVzI3
+        K2ZKd3pDVmVoR3NqS04wNnpJS1I3UTQKZ642uUeVdVR/esOt8UlFWiStHpzl7PjL
+        ss35wbfvN0hXoWz0GfEwLKJZBtuIKh6MqPg70WEkn82zbPRLXCNHAA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOYkxORTZBa1J4Q29EVjVL
-        UUxGVWdTbmpZd3E4Rm15cVZkUVZHNUNXRVZVCm9TRUdvT044VWxwdWRsdDBoWEd6
-        eHJkUmUvMnZTV1NBUWlSc2VCQnFaTW8KLS0tIENNblNJUEdxVFdoMUdTVjU5QmNm
-        NEtNYlJ1NDlCWldKM0kvaU9kVGx5OFUKEOJCPIFjPjXU33Bc9WLni8ejG5ThQMHc
-        9MsaaYo9LD73IRtnVWK7YXtWHUrNiVXHUxR0yftMmDdnDTGBwDl4OQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAxc1diVXRSajdkWGZCZ0d4
+        MXp2dzR4a0M0S0xyV0ROcFJ1ZmphdzZWWW4wCmZ3L0N6WGRqVXVsaFpjNDRmM0dJ
+        dkE0UlcvY2ZJOGxTUW5LWkYvNW5QMTAKLS0tIGtSRkZlYTJSYTFGak5CNDdIMHgy
+        MXArVmxZRkU3bW5FRytxK3VSMnFJa2sK5zlZFU1kN8yWwsM7cJmwts0tpY2jSc7I
+        q8++1I/EO8EJ2VngOGcdMfznOOdJLpb3k1Y4mJx/Nc2I+kGYTSDEuQ==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
