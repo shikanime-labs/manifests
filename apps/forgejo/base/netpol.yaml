@@ -8,6 +8,12 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: gitea-mirror
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
       ports:
         - port: http
         - port: ssh

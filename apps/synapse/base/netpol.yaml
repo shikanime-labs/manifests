@@ -34,6 +34,15 @@ spec:
               app.kubernetes.io/name: synapse-proxy
       ports:
         - port: https
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: metrics
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: synapse

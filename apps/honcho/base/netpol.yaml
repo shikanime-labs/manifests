@@ -8,6 +8,12 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: hermes-agent
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
       ports:
         - port: http
   podSelector:
