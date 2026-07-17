@@ -11,6 +11,7 @@ spec:
     - interval: 60s
       path: /metrics
       port: http
+      scheme: https
       scrapeTimeout: 30s
   namespaceSelector:
     matchNames:
