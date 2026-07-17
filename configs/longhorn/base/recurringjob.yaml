@@ -15,6 +15,19 @@ spec:
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 metadata:
+  name: ephemeral-backup
+  namespace: longhorn-system
+spec:
+  task: backup
+  concurrency: 1
+  cron: 0 4 * * *
+  retain: 1
+  groups:
+    - ephemeral
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
   name: daily-backup
   namespace: longhorn-system
 spec:

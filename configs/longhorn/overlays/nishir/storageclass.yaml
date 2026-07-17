@@ -30,7 +30,8 @@ parameters:
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
-      {"name": "default", "isGroup": true}
+      {"name": "default", "isGroup": true},
+      {"name": "ephemeral", "isGroup": true}
     ]
 ---
 apiVersion: storage.k8s.io/v1
