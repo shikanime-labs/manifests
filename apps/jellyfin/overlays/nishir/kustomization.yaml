@@ -3,7 +3,6 @@ resources:
   - cert.yaml
 namespace: shikanime
 components:
-  - ../../components/monitoring
   - ../../components/tls
 configurations:
   - namereference.yaml
