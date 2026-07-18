@@ -13,6 +13,11 @@ spec:
       port: http
       scheme: https
       scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          name: forgejo-tls
+          key: ca.crt
+        serverName: forgejo
   namespaceSelector:
     matchNames:
       - shikanime
