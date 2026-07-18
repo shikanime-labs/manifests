@@ -337,9 +337,6 @@ gateway:
 goals:
   max_turns: 20
 group_sessions_per_user: true
-honcho:
-  observation: unified
-  peer_name: ""
 hooks_auto_accept: false
 human_delay:
   max_ms: 2500
@@ -365,14 +362,6 @@ lsp:
   install_strategy: auto
   wait_mode: document
   wait_timeout: 5
-matrix:
-  allowed_rooms:
-    - "!QUaAaCBlSIBcYyOyLb:matrix.taila659a.ts.net"
-  allowed_users:
-    - "@admin:matrix.taila659a.ts.net"
-    - "@shikanime:matrix.taila659a.ts.net"
-  free_response_rooms: ""
-  require_mention: true
 mattermost:
   allowed_channels: ""
   free_response_channels: ""
@@ -382,7 +371,7 @@ memory:
   memory_char_limit: 2200
   memory_enabled: true
   nudge_interval: 10
-  provider: honcho
+  provider: local
   user_char_limit: 1375
   user_profile_enabled: true
 model:
@@ -543,7 +532,7 @@ telegram:
   reactions: false
 terminal:
   auto_source_bashrc: true
-  backend: modal
+  backend: local
   container_cpu: 1
   container_disk: 51200
   container_memory: 5120

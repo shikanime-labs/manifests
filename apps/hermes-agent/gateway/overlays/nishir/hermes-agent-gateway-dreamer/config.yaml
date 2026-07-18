@@ -153,9 +153,6 @@ gateway:
 goals:
   max_turns: 20
 group_sessions_per_user: true
-honcho:
-  observation: unified
-  peer_name: ""
 hooks_auto_accept: false
 human_delay:
   max_ms: 2500
@@ -186,7 +183,7 @@ memory:
   memory_char_limit: 2200
   memory_enabled: true
   nudge_interval: 10
-  provider: honcho
+  provider: local
   user_char_limit: 1375
   user_profile_enabled: true
 model:
