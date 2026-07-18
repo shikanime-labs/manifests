@@ -1,0 +1,39 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: virt-api
+  namespace: kubevirt
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: virt-api
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: virt-controller
+  namespace: kubevirt
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: virt-controller
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: virt-handler
+  namespace: kubevirt
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: DaemonSet
+    name: virt-handler
+  updatePolicy:
+    updateMode: Auto

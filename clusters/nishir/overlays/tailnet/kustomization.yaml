@@ -9,6 +9,7 @@ components:
   - ../../components/gatekeeper
   - ../../components/longhorn
   - ../../components/monitoring
+  - ../../components/kubevirt
   - ../../components/node-feature-discovery
   - ../../components/tailscale
   - ../../components/trust-manager

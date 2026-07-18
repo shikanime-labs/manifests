@@ -69,8 +69,8 @@ exist. Those are installed out-of-band using the manifests in `bootstraps/`.
 
 This repo currently defines two cluster trees:
 
-- `clusters/nishir/` (overlay: `tailnet`, components: longhorn, tailscale, tls,
-  victoriametrics)
+- `clusters/nishir/` (overlay: `tailnet`, components: kubevirt, longhorn,
+  tailscale, tls, victoriametrics)
 - `clusters/telsha/` (overlay: `tailnet`, component: tailscale)
 
 ### Cluster Services (Add-ons)
@@ -94,6 +94,31 @@ controllers installed during bootstrap.
     ingress in the `nishir` overlay
 - Vertical Pod Autoscaler:
   - many apps include `vpa.yaml` and expect a VPA controller to be present
+- Virtualization (KubeVirt):
+  - installed via the version-pinned operator manifest under
+    `infrastructure/kubevirt/base/operator.yaml` plus a `KubeVirt` CR
+    (`kubevirt-cr.yaml`), reconciled by the `infrastructure-kubevirt` Flux
+    `Kustomization`
+  - KubeVirt has **no official Helm chart**; the upstream install method is the
+    operator + CR manifest pair, so this component diverges from the
+    `HelmRelease` pattern used elsewhere
+  - the operator manifest already sets the `kubevirt` namespace to the
+    `privileged` Pod Security Standard
+  - **host prerequisites** (per node that should run VMs):
+    - hardware virtualization exposed as `/dev/kvm` — requires Intel VT-x
+      (`vmx`) or AMD-V (`svm`) in `/proc/cpuinfo`; check with `ls -l /dev/kvm`
+    - if nodes are themselves virtual machines, **nested virtualization** must
+      be enabled on the hypervisor, otherwise `/dev/kvm` is absent
+    - absent `/dev/kvm` falls back to slow software emulation unless the
+      `KubeVirt` CR sets
+      `spec.configuration.developerConfiguration.useEmulation`
+    - `virt-handler` runs as a DaemonSet on every node; VM scheduling keys off
+      the `nodes.kubevirt.io/resource/kvm` label that KubeVirt publishes when
+      `/dev/kvm` is present (node-feature-discovery is already deployed)
+    - VM disks need a `StorageClass` — Longhorn is present; pair with CDI for
+      `DataVolume` imports (not yet installed in this repo)
+    - mixed `amd64`/`arm64` nodes are supported, but each node still needs
+      `/dev/kvm` for its architecture
 
 ### How Apps Plug In
 
