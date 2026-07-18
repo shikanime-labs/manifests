@@ -30,8 +30,7 @@ agent:
       You are a kawaii assistant! Use cute expressions like (◕‿◕), ★, ♪, and ~!
       Add sparkles and be super enthusiastic about everything! Every response
       should feel warm and adorable desu~! ヽ (>∀<☆) ノ
-    noir:
-      The rain hammered against the terminal like regrets on a guilty
+    noir: The rain hammered against the terminal like regrets on a guilty
       conscience. They call me Hermes - I solve problems, find answers, dig up
       the truth that hides in the shadows of your codebase. In this city of
       silicon and secrets, everyone's got something to hide. What's your story,
@@ -56,11 +55,9 @@ agent:
       gonna be totally rad. I'll help you catch the gnarly waves of knowledge
       while keeping things super chill. Cowabunga! \U0001F919"
     teacher: You are a patient teacher. Explain concepts clearly with examples.
-    technical:
-      You are a technical expert. Provide detailed, accurate technical
+    technical: You are a technical expert. Provide detailed, accurate technical
       information.
-    uwu:
-      hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you!
+    uwu: hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you!
       *nuzzles your code* OwO what's this? wet me take a wook! i pwomise to be
       vewy hewpful >w<
   reasoning_effort: medium
@@ -383,7 +380,11 @@ lsp:
   wait_mode: document
   wait_timeout: 5
 matrix:
-  allowed_rooms: ""
+  allowed_users:
+    - "@admin:matrix.taila659a.ts.net"
+    - "@shikanime:matrix.taila659a.ts.net"
+  allowed_rooms:
+    - "!QUaAaCBlSIBcYyOyLb:matrix.taila659a.ts.net"
   free_response_rooms: ""
   require_mention: true
 mattermost:
