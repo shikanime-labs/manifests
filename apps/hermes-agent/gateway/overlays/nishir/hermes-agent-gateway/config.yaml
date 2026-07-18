@@ -1,4 +1,4 @@
-_config_version: 28
+_config_version: 33
 agent:
   api_max_retries: 3
   clarify_timeout: 600
@@ -69,6 +69,7 @@ agent:
   task_completion_guidance: true
   tool_use_enforcement: auto
   verbose: false
+  verify_on_stop: false
 approvals:
   cron_mode: deny
   destructive_slash_confirm: true
@@ -79,21 +80,18 @@ auxiliary:
   approval:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 30
   compression:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 120
   curator:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 600
@@ -106,21 +104,18 @@ auxiliary:
   kanban_decomposer:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 180
   mcp:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 30
   profile_describer:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 60
@@ -133,21 +128,18 @@ auxiliary:
   skills_hub:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 30
   title_generation:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 30
   triage_specifier:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 120
@@ -155,14 +147,12 @@ auxiliary:
     api_key: ""
     base_url: ""
     download_timeout: 30
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 120
   web_extract:
     api_key: ""
     base_url: ""
-    extra_body: {}
     model: ""
     provider: auto
     timeout: 360
@@ -219,9 +209,7 @@ compression:
   threshold: 0.5
 context:
   engine: compressor
-credential_pool_strategies: {}
 cron:
-  max_parallel_jobs: null
   wrap_response: true
 curator:
   archive_after_days: 90
@@ -268,7 +256,6 @@ discord:
   allow_any_attachment: false
   allowed_channels: ""
   auto_thread: true
-  channel_prompts: {}
   dm_role_auth_guild: ""
   free_response_channels: ""
   history_backfill: true
@@ -333,7 +320,6 @@ display:
   tool_preview_length: 0
   tool_progress: all
   tool_progress_command: false
-  tool_progress_overrides: {}
   tui_agents_nudge: true
   tui_auto_resume_recent: false
   tui_status_indicator: kaomoji
@@ -354,7 +340,6 @@ group_sessions_per_user: true
 honcho:
   observation: unified
   peer_name: ""
-hooks: {}
 hooks_auto_accept: false
 human_delay:
   max_ms: 2500
@@ -368,7 +353,6 @@ kanban:
   dispatch_interval_seconds: 60
   dispatch_stale_timeout_seconds: 14400
   failure_limit: 2
-  max_in_progress_per_profile: null
   orchestrator_profile: ""
   worker_log_backup_count: 1
   worker_log_rotate_bytes: 2.097152e+06
@@ -379,7 +363,6 @@ logging:
 lsp:
   enabled: true
   install_strategy: auto
-  servers: {}
   wait_mode: document
   wait_timeout: 5
 matrix:
@@ -392,7 +375,6 @@ matrix:
   require_mention: true
 mattermost:
   allowed_channels: ""
-  channel_prompts: {}
   free_response_channels: ""
   require_mention: true
 memory:
@@ -410,12 +392,9 @@ model:
 model_catalog:
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
   enabled: true
-  providers: {}
   ttl_hours: 1
 network:
   force_ipv4: false
-onboarding:
-  seen: {}
 openrouter:
   min_coding_score: 0.65
   response_cache: true
@@ -423,7 +402,6 @@ openrouter:
 paste_collapse_char_threshold: 2000
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
-personalities: {}
 platform_toolsets:
   cli:
     - hermes-cli
@@ -490,8 +468,6 @@ privacy:
   redact_pii: false
 prompt_caching:
   cache_ttl: 5m
-providers: {}
-quick_commands: {}
 secrets:
   bitwarden:
     access_token_env: BWS_ACCESS_TOKEN
@@ -533,7 +509,6 @@ skills:
   template_vars: true
 slack:
   allowed_channels: ""
-  channel_prompts: {}
   free_response_channels: ""
   require_mention: true
 smart_model_routing:
@@ -565,7 +540,6 @@ stt:
   provider: local
 telegram:
   allowed_chats: ""
-  channel_prompts: {}
   reactions: false
 terminal:
   auto_source_bashrc: true
@@ -576,7 +550,6 @@ terminal:
   container_persistent: true
   cwd: .
   daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
-  docker_env: {}
   docker_extra_args: []
   docker_forward_env: []
   docker_image: nikolaik/python-nodejs:python3.11-nodejs20
@@ -656,7 +629,6 @@ web:
   backend: ddgs
   extract_backend: ""
   search_backend: ""
-whatsapp: {}
 x_search:
   model: grok-4.20-reasoning
   retries: 2
