@@ -7,5 +7,6 @@ resources:
   - provider.yaml
   - pvc.yaml
   - receiver.yaml
+  - vpa.yaml
 configurations:
   - config.yaml

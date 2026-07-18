@@ -1,0 +1,78 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: csi-attacher
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: csi-attacher
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: csi-provisioner
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: csi-provisioner
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: csi-resizer
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: csi-resizer
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: csi-snapshotter
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: csi-snapshotter
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: longhorn-driver-deployer
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: longhorn-driver-deployer
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: longhorn-ui
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: longhorn-ui
+  updatePolicy:
+    updateMode: Auto

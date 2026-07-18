@@ -4,3 +4,4 @@ resources:
   - hr.yaml
   - ks.yaml
   - ns.yaml
+  - vpa.yaml

@@ -1,0 +1,26 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: gatekeeper-audit
+  namespace: gatekeeper-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gatekeeper-audit
+  updatePolicy:
+    updateMode: Auto
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: gatekeeper-controller-manager
+  namespace: gatekeeper-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gatekeeper-controller-manager
+  updatePolicy:
+    updateMode: Auto
