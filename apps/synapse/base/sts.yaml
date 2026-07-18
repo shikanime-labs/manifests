@@ -32,51 +32,18 @@ spec:
           args:
             - copy
             - --copy-links
-            - --filter
-            - + /*.log.config
-            - --filter
-            - + /*.signing.key
-            - --filter
-            - + /homeserver.yaml
-            - --filter
-            - "- *"
             - /mnt/startup-config
             - /mnt/data
           volumeMounts:
             - name: data
               mountPath: /mnt/data
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
             - name: startup-config
               mountPath: /mnt/startup-config
               readOnly: true
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
-        - name: appservices-config-sync
-          image: rclone
-          args:
-            - copy
-            - --copy-links
-            - --filter
-            - + /matrix-*.yaml
-            - --filter
-            - "- *"
-            - /mnt/startup-config
-            - /mnt/data/appservices
-          volumeMounts:
-            - name: data
-              mountPath: /mnt/data
-            - name: appservices-startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
           securityContext:
             capabilities:
               add:
@@ -91,64 +58,63 @@ spec:
           configMap:
             name: synapse-rclone
         - name: startup-config
-          secret:
-            secretName: synapse
-        - name: appservices-startup-config
           projected:
             sources:
+              - secret:
+                  name: synapse
               - secret:
                   name: mautrix-discord
                   items:
                     - key: registration.yaml
-                      path: matrix-discord.yaml
+                      path: appservices/matrix-discord.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-discord-doublepuppet.yaml
+                      path: appservices/matrix-discord-doublepuppet.yaml
               - secret:
                   name: mautrix-googlechat
                   items:
                     - key: registration.yaml
-                      path: matrix-googlechat.yaml
+                      path: appservices/matrix-googlechat.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-googlechat-doublepuppet.yaml
+                      path: appservices/matrix-googlechat-doublepuppet.yaml
               - secret:
                   name: mautrix-linkedin
                   items:
                     - key: registration.yaml
-                      path: matrix-linkedin.yaml
+                      path: appservices/matrix-linkedin.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-linkedin-doublepuppet.yaml
+                      path: appservices/matrix-linkedin-doublepuppet.yaml
               - secret:
                   name: mautrix-meta
                   items:
                     - key: registration.yaml
-                      path: matrix-meta.yaml
+                      path: appservices/matrix-meta.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-meta-doublepuppet.yaml
+                      path: appservices/matrix-meta-doublepuppet.yaml
               - secret:
                   name: mautrix-signal
                   items:
                     - key: registration.yaml
-                      path: matrix-signal.yaml
+                      path: appservices/matrix-signal.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-signal-doublepuppet.yaml
+                      path: appservices/matrix-signal-doublepuppet.yaml
               - secret:
                   name: mautrix-slack
                   items:
                     - key: registration.yaml
-                      path: matrix-slack.yaml
+                      path: appservices/matrix-slack.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-slack-doublepuppet.yaml
+                      path: appservices/matrix-slack-doublepuppet.yaml
               - secret:
                   name: mautrix-twitter
                   items:
                     - key: registration.yaml
-                      path: matrix-twitter.yaml
+                      path: appservices/matrix-twitter.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-twitter-doublepuppet.yaml
+                      path: appservices/matrix-twitter-doublepuppet.yaml
               - secret:
                   name: mautrix-whatsapp
                   items:
                     - key: registration.yaml
-                      path: matrix-whatsapp.yaml
+                      path: appservices/matrix-whatsapp.yaml
                     - key: doublepuppet.yaml
-                      path: matrix-whatsapp-doublepuppet.yaml
+                      path: appservices/matrix-whatsapp-doublepuppet.yaml
