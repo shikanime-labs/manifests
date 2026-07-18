@@ -61,20 +61,8 @@ spec:
           args:
             - copy
             - --copy-links
-            - --filter
-            - + /.env
-            - --filter
-            - + /config.yaml
-            - --filter
-            - + /honcho.json
-            - --filter
-            - + /SOUL.md
-            - --filter
-            - "- *"
             - /mnt/startup-config
             - /opt/data
-          command:
-            - rclone
           volumeMounts:
             - name: data
               mountPath: /opt/data
@@ -102,8 +90,19 @@ spec:
           emptyDir:
             medium: Memory
         - name: startup-config
-          secret:
-            secretName: hermes-agent-gateway-startup-config
+          projected:
+            sources:
+              - secret:
+                  name: hermes-agent-gateway-startup-config
+              - configMap:
+                  name: hermes-agent-gateway-dreamer
+                  items:
+                    - key: config.yaml
+                      path: profiles/dreamer/config.yaml
+                    - key: SOUL.md
+                      path: profiles/dreamer/SOUL.md
+                    - key: .enc.env
+                      path: profiles/dreamer/.enc.env
         - name: ssh-key
           secret:
             defaultMode: 400

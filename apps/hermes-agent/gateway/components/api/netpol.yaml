@@ -11,6 +11,13 @@ spec:
               app.kubernetes.io/name: hermes-agent
       ports:
         - port: http
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: honcho
+              app.kubernetes.io/name: honcho
+      ports:
+        - port: http
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: hermes-agent-gateway

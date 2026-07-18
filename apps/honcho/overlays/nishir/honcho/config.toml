@@ -65,10 +65,10 @@ FLUSH_ENABLED = false
 
 [deriver.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [deriver.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 # Peer card settings
 [peer_card]
@@ -88,10 +88,10 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.minimal.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dialectic.levels.minimal.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.low]
 MAX_TOOL_ITERATIONS = 5
@@ -99,40 +99,40 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.low.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dialectic.levels.low.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.medium]
 MAX_TOOL_ITERATIONS = 2
 
 [dialectic.levels.medium.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dialectic.levels.medium.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.high]
 MAX_TOOL_ITERATIONS = 4
 
 [dialectic.levels.high.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dialectic.levels.high.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.max]
 MAX_TOOL_ITERATIONS = 10
 
 [dialectic.levels.max.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dialectic.levels.max.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 # Summary settings
 [summary]
@@ -144,10 +144,10 @@ MAX_TOKENS_LONG = 4000
 
 [summary.model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [summary.model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 # Dream settings
 [dream]
@@ -161,17 +161,17 @@ HISTORY_TOKEN_LIMIT = 16384
 
 [dream.deduction_model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dream.deduction_model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 [dream.induction_model_config]
 transport = "openai"
-model = "openrouter/free"
+model = "dreamer"
 
 [dream.induction_model_config.overrides]
-base_url = "https://openrouter.ai/api/v1"
+base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]

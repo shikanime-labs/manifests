@@ -20,3 +20,9 @@ secretGenerator:
       - id_ed25519=hermes-agent-gateway-ssh/id_ed25519.enc
     options:
       disableNameSuffixHash: true
+configMapGenerator:
+  - name: hermes-agent-gateway-dreamer
+    files:
+      - config.yaml=hermes-agent-gateway-dreamer/config.yaml
+      - SOUL.md=hermes-agent-gateway-dreamer/SOUL.md
+      - .enc.env=hermes-agent-gateway-dreamer/.enc.env
