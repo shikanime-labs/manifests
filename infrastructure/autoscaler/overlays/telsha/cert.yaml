@@ -4,11 +4,9 @@ metadata:
   name: vpa-tls-secret
   namespace: autoscaler-system
 spec:
-  commonName: vpa-admission-controller
+  commonName: vpa-webhook
   dnsNames:
-    - vpa-admission-controller
-    - vpa-admission-controller.autoscaler-system
-    - vpa-admission-controller.autoscaler-system.svc
+    - vpa-webhook
   duration: 8760h
   issuerRef:
     name: telsha
