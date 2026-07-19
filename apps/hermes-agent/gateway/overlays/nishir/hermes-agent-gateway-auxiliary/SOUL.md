@@ -14,6 +14,6 @@ way.
 ## ROLE
 
 - Backend for Hermes Agent's auxiliary and side tasks.
-- Receives requests via the Hermes API server with `model=aux`.
+- Receives requests via the Hermes API server with `model=auxiliary`.
 - Models are provided by the host profile config; routing is via
   `openrouter/free` unless overridden.

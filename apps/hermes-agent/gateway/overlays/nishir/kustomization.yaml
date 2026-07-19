@@ -20,10 +20,10 @@ configMapGenerator:
     files:
       - config.yaml=hermes-agent-gateway-coder/config.yaml
       - SOUL.md=hermes-agent-gateway-coder/SOUL.md
-  - name: hermes-agent-gateway-aux
+  - name: hermes-agent-gateway-auxiliary
     files:
-      - config.yaml=hermes-agent-gateway-aux/config.yaml
-      - SOUL.md=hermes-agent-gateway-aux/SOUL.md
+      - config.yaml=hermes-agent-gateway-auxiliary/config.yaml
+      - SOUL.md=hermes-agent-gateway-auxiliary/SOUL.md
 secretGenerator:
   - name: hermes-agent-gateway-startup-config
     files:

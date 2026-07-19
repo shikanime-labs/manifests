@@ -116,12 +116,12 @@ spec:
                     - key: SOUL.md
                       path: profiles/coder/SOUL.md
               - configMap:
-                  name: hermes-agent-gateway-aux
+                  name: hermes-agent-gateway-auxiliary
                   items:
                     - key: config.yaml
-                      path: profiles/aux/config.yaml
+                      path: profiles/auxiliary/config.yaml
                     - key: SOUL.md
-                      path: profiles/aux/SOUL.md
+                      path: profiles/auxiliary/SOUL.md
         - name: ssh-key
           secret:
             defaultMode: 400
