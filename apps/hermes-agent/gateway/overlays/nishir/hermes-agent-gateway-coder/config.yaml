@@ -402,3 +402,25 @@ x_search:
   model: grok-4.20-reasoning
   retries: 2
   timeout_seconds: 180
+mcp_servers:
+  zread:
+    url: https://api.z.ai/api/mcp/zread/mcp
+    headers:
+      Authorization: "Bearer ${GLM_API_KEY}"
+    enabled: true
+    connect_timeout: 60
+    timeout: 120
+  web-search-prime:
+    url: https://api.z.ai/api/mcp/web_search_prime/mcp
+    headers:
+      Authorization: "Bearer ${GLM_API_KEY}"
+    enabled: true
+    connect_timeout: 60
+    timeout: 120
+  web-reader:
+    url: https://api.z.ai/api/mcp/web_reader/mcp
+    headers:
+      Authorization: "Bearer ${GLM_API_KEY}"
+    enabled: true
+    connect_timeout: 60
+    timeout: 120
