@@ -2,19 +2,6 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: vmagent-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: vmagent-vmks-victoria-metrics-k8s-stack
-  updatePolicy:
-    updateMode: Auto
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
   name: vmalert-vmks-victoria-metrics-k8s-stack
   namespace: monitoring-system
 spec:
