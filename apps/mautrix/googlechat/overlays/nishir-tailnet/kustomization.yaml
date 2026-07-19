@@ -2,6 +2,7 @@ resources:
   - ../nishir
   - netpol.yaml
   - ingress.yaml
+  - vmservicescrape.yaml
 namespace: shikanime
 secretGenerator:
   - name: mautrix-googlechat

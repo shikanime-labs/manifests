@@ -7,6 +7,9 @@ spec:
     - name: http
       port: 29320
       targetPort: http
+    - name: metrics
+      port: 9100
+      targetPort: metrics
   publishNotReadyAddresses: true
   selector:
     app.kubernetes.io/instance: mautrix-googlechat
