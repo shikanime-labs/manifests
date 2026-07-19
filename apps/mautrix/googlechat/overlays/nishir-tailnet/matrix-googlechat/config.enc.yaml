@@ -1,150 +1,150 @@
 appservice:
-  id: googlechat
-  address: http://mautrix-googlechat:29320
-  as_token: ENC[AES256_GCM,data:VBDUMZtZu7AMXnvzDR9skoeRaVqAqEgTdDgoDiTEELE1FMwEGm+igV4oggknq3efgnsGveFRZoiQYcB4iUbT4Q==,iv:vGVxOb+IJY8YLHTM3pP9i8SUuEkmw4qfz9DZm8zo+d8=,tag:9MMWJ7zjfzEAAoPc3PS2Ww==,type:str]
-  bot_avatar: mxc://maunium.net/BDIWAQcbpPGASPUUBuEGWXnQ
-  bot_displayname: Google Chat bridge bot
-  bot_username: googlechatbot
-  database: sqlite:/data/googlechat.db
-  ephemeral_events: true
-  hostname: 0.0.0.0
-  hs_token: ENC[AES256_GCM,data:GyZFotY9nN0N+R/D75/N16YUNw2WD28dJyof3EeatJGmm8bgbKvdoCmjdMpeHSpHFl6vKqvLVfUdtBBH5iGMqg==,iv:amvfIxbgi0D8OPGVo0QBg+MCXVvRHeTOZOZBDu3zKBU=,tag:i6wb1C4EJLe2VNzgvqxj4w==,type:str]
-  max_body_size: 1
-  port: 29320
-  database_opts:
-    max_size: 10
-    min_size: 1
+    id: googlechat
+    address: http://mautrix-googlechat:29320
+    as_token: ENC[AES256_GCM,data:VBDUMZtZu7AMXnvzDR9skoeRaVqAqEgTdDgoDiTEELE1FMwEGm+igV4oggknq3efgnsGveFRZoiQYcB4iUbT4Q==,iv:vGVxOb+IJY8YLHTM3pP9i8SUuEkmw4qfz9DZm8zo+d8=,tag:9MMWJ7zjfzEAAoPc3PS2Ww==,type:str]
+    bot_avatar: mxc://maunium.net/BDIWAQcbpPGASPUUBuEGWXnQ
+    bot_displayname: Google Chat bridge bot
+    bot_username: googlechatbot
+    database: sqlite:/data/googlechat.db
+    ephemeral_events: true
+    hostname: 0.0.0.0
+    hs_token: ENC[AES256_GCM,data:GyZFotY9nN0N+R/D75/N16YUNw2WD28dJyof3EeatJGmm8bgbKvdoCmjdMpeHSpHFl6vKqvLVfUdtBBH5iGMqg==,iv:amvfIxbgi0D8OPGVo0QBg+MCXVvRHeTOZOZBDu3zKBU=,tag:i6wb1C4EJLe2VNzgvqxj4w==,type:str]
+    max_body_size: 1
+    port: 29320
+    database_opts:
+        max_size: 10
+        min_size: 1
 bridge:
-  backfill:
-    disable_notifications: false
-    initial_nonthread_limit: 100
-    initial_thread_limit: 10
-    initial_thread_reply_limit: 500
-    invite_own_puppet: true
-    missed_event_limit: 5000
-    missed_event_page_size: 100
-  command_prefix: "!gc"
-  delivery_error_reports: true
-  delivery_receipts: false
-  disable_bridge_notices: false
-  displayname_template: "{full_name} (Google Chat)"
-  double_puppet_allow_discovery: false
-  double_puppet_server_map:
-    anotherserver.example.org: https://matrix.anotherserver.example.org
-  encryption:
-    allow: true
-    allow_key_sharing: false
-    appservice: false
-    default: true
-    delete_keys:
-      delete_fully_used_on_decrypt: true
-      delete_on_device_delete: true
-      delete_outbound_on_ack: false
-      delete_outdated_inbound: true
-      delete_prev_on_new_session: true
-      dont_store_outbound: true
-      periodically_delete_expired: true
-      ratchet_on_decrypt: true
-    require: false
-    rotation:
-      disable_device_change_key_rotation: false
-      enable_custom: false
-      messages: 100
-      milliseconds: 6.048e+08
-    self_sign: true
-    verification_levels:
-      receive: cross-signed-tofu
-      send: cross-signed-tofu
-      share: cross-signed-tofu
-  federate_rooms: true
-  initial_chat_sync: 10
-  invite_own_puppet_to_pm: false
-  login_shared_secret_map:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:qlajQI4xIpq17vvCaEv2IOprPpcOl1lIoaPDzp25ZbCAmjE/URGmCLE8mzjJI+vzMP4rwXfourBPCKEdHLDeSA==,iv:l88klNS72gcDVaMIMTHXbCsZVgrpaaoyAKOpxurmvPk=,tag:ZKxblFz/TyLg+3lcyujPFw==,type:str]
-  message_status_events: false
-  permissions:
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
-  private_chat_portal_meta: default
-  provisioning:
-    prefix: /_matrix/provision
-    shared_secret: ENC[AES256_GCM,data:r3NQ9Wz4jAmk18V9Biy++stk3duhK+fj2KUEFh/AFsk77KDkCofnAzl1sP0ap/TBbp50VJuCctlF1YbAp+XHWQ==,iv:udEOOO90XNNzRTD8JHCzch7u3/FMdiD3sYh+dsTbeD0=,tag:Nl9jI0BoOUcMIsKrilKPbA==,type:str]
-  resend_bridge_info: false
-  sync_direct_chat_list: false
-  sync_with_custom_puppets: false
-  unimportant_bridge_notices: false
-  update_avatar_initial_sync: true
-  username_template: googlechat_{userid}
+    backfill:
+        disable_notifications: false
+        initial_nonthread_limit: 100
+        initial_thread_limit: 10
+        initial_thread_reply_limit: 500
+        invite_own_puppet: true
+        missed_event_limit: 5000
+        missed_event_page_size: 100
+    command_prefix: '!gc'
+    delivery_error_reports: true
+    delivery_receipts: false
+    disable_bridge_notices: false
+    displayname_template: '{full_name} (Google Chat)'
+    double_puppet_allow_discovery: false
+    double_puppet_server_map:
+        anotherserver.example.org: https://matrix.anotherserver.example.org
+    encryption:
+        allow: true
+        allow_key_sharing: false
+        appservice: false
+        default: true
+        delete_keys:
+            delete_fully_used_on_decrypt: true
+            delete_on_device_delete: true
+            delete_outbound_on_ack: false
+            delete_outdated_inbound: true
+            delete_prev_on_new_session: true
+            dont_store_outbound: true
+            periodically_delete_expired: true
+            ratchet_on_decrypt: true
+        require: false
+        rotation:
+            disable_device_change_key_rotation: false
+            enable_custom: false
+            messages: 100
+            milliseconds: 6.048e+08
+        self_sign: true
+        verification_levels:
+            receive: cross-signed-tofu
+            send: cross-signed-tofu
+            share: cross-signed-tofu
+    federate_rooms: true
+    initial_chat_sync: 10
+    invite_own_puppet_to_pm: false
+    login_shared_secret_map:
+        matrix.taila659a.ts.net: ENC[AES256_GCM,data:qlajQI4xIpq17vvCaEv2IOprPpcOl1lIoaPDzp25ZbCAmjE/URGmCLE8mzjJI+vzMP4rwXfourBPCKEdHLDeSA==,iv:l88klNS72gcDVaMIMTHXbCsZVgrpaaoyAKOpxurmvPk=,tag:ZKxblFz/TyLg+3lcyujPFw==,type:str]
+    message_status_events: false
+    permissions:
+        '@root:matrix.taila659a.ts.net': admin
+        matrix.taila659a.ts.net: user
+    private_chat_portal_meta: default
+    provisioning:
+        prefix: /_matrix/provision
+        shared_secret: ENC[AES256_GCM,data:r3NQ9Wz4jAmk18V9Biy++stk3duhK+fj2KUEFh/AFsk77KDkCofnAzl1sP0ap/TBbp50VJuCctlF1YbAp+XHWQ==,iv:udEOOO90XNNzRTD8JHCzch7u3/FMdiD3sYh+dsTbeD0=,tag:Nl9jI0BoOUcMIsKrilKPbA==,type:str]
+    resend_bridge_info: false
+    sync_direct_chat_list: false
+    sync_with_custom_puppets: false
+    unimportant_bridge_notices: false
+    update_avatar_initial_sync: true
+    username_template: googlechat_{userid}
 homeserver:
-  address: https://synapse:8448
-  async_media: false
-  domain: matrix.taila659a.ts.net
-  http_retry_count: 4
-  message_send_checkpoint_endpoint: null
-  software: standard
-  status_endpoint: null
-  verify_ssl: true
+    address: https://synapse:8448
+    async_media: false
+    domain: matrix.taila659a.ts.net
+    http_retry_count: 4
+    message_send_checkpoint_endpoint: null
+    software: standard
+    status_endpoint: null
+    verify_ssl: true
 logging:
-  version: 1
-  formatters:
-    colored:
-      (): mautrix_googlechat.util.ColorFormatter
-      format: "[%(asctime)s] [%(levelname)s@%(name)s] %(message)s"
-    normal:
-      format: "[%(asctime)s] [%(levelname)s@%(name)s] %(message)s"
-  handlers:
-    console:
-      class: logging.StreamHandler
-      formatter: colored
-  loggers:
-    aiohttp:
-      level: INFO
-    mau:
-      level: DEBUG
-    maugclib:
-      level: INFO
-  root:
+    version: 1
+    formatters:
+        colored:
+            (): mautrix_googlechat.util.ColorFormatter
+            format: '[%(asctime)s] [%(levelname)s@%(name)s] %(message)s'
+        normal:
+            format: '[%(asctime)s] [%(levelname)s@%(name)s] %(message)s'
     handlers:
-      - console
-    level: DEBUG
+        console:
+            class: logging.StreamHandler
+            formatter: colored
+    loggers:
+        aiohttp:
+            level: INFO
+        mau:
+            level: DEBUG
+        maugclib:
+            level: INFO
+    root:
+        handlers:
+            - console
+        level: DEBUG
 manhole:
-  enabled: true
-  path: /var/tmp/mautrix-googlechat.manhole
-  whitelist:
-    - 0
+    enabled: true
+    path: /var/tmp/mautrix-googlechat.manhole
+    whitelist:
+        - 0
 metrics:
-  enabled: ENC[AES256_GCM,data:09ucXg==,iv:9l6TlKpUVdkhVrWZJ5XiUGedW9css9MN6C869mPapgY=,tag:H3+8gPxj8C671mVT1Jevuw==,type:bool]
-  listen_port: ENC[AES256_GCM,data:WTVT4ec=,iv:AY1UC5zfTTe18g489FMuOZ8cABdMV9lYOqzwkYc/3Uc=,tag:gPD+aW/SCeD3DQ94pwGZIw==,type:int]
+    enabled: true
+    listen_port: 9100
 sops:
-  version: 3.13.1
-  encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets|metrics)$
-  lastmodified: "2026-07-17T12:12:07Z"
-  mac: ENC[AES256_GCM,data:q8Tx0gFwgVBgLQniSw9CAEzork9j9YU7HtrmU3ySwEt41+gvFFF4utD9f1wulYgHIgHUuudx6wbkkSon/NebgG4Ii2oTO5EoJZgfmLOASVAnb8ytZdjLN2BNZlesUdZ7OXgOROl3TR9sIsHmMNw1QUMnrX72Mlhpx7hMfP1IEGk=,iv:fwdSG7yi41dEBuDqS+Dr6XqLB4Ql2NbKI8Szvpgarfg=,tag:j0Z9Zz8wBFcUT/62pp9tvA==,type:str]
-  age:
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvMStpejNaTmxDamhmbkZt
-        UjBvQUhiV0RyVld3YzEyNzhzcFd2c3VIT2dZClNGVW5ZNU9aOEQ0M0Rld29ST1hV
-        MGJJVGdWZGhDYVRxRUVNVWdhdkcza2sKLS0tIHpvSnRnYW9uN3pJNmJWblNTK0Ro
-        dTl2bFBXa1FqZE45bGs4YlFoWmZ2UzQK5hgb3UjfR5pOf1u+ip9ZI4XsIl/znnhD
-        RZb2Iipi/Ex6nDEP3WTZm6fPDPeWlFkBAZw1D3bUP8d4N8rTmgYfHg==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkNEtRQVJ0UmJaSXZvb0t3
-        QmFZSVhFc2ZyRDFtZVRMMWhmdHUzYUNrUEMwCjM5dzAxSXRSbzl2OFg3UkhxbUh6
-        bFpMK0FmNUVUcWZ0QnAzK0E5U0hIWEkKLS0tIEpTOXF4L3JxNWRnWlJQWHlzS1hj
-        YjVIcDlkVDBVbnBCTFZuWnlPbHVXNTQK/pEi8nXrLFWGbHziQ1HfCyNSi9/lkxcg
-        BkFMnCyyu24+EqFEBMAAZqvpOMiC/L21J7d8At6WIvLc8/eIFmZlzw==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrZTRId3FWWE5TT3dQZ2c5
-        S2YzTVdQZWwrdFdRTWJqakM5N29DRENzUkhnClY4OHc1Qk9hdDNhaVc1MHdjKy9D
-        MTNlVzBpK2RuQzdVUHV4a3RlSWtFcWMKLS0tIE4zT3lnS2lMQkx3bFlkSTRtM3VY
-        Z1BOVTZ2aDdxVjhkby9EY0hubmRRdjgKdPkHgWKUueHDqVKIOgH8lqBPNmld1/c3
-        a5cy7L5qgetzTTtX9P+lr7UbZXJnKYJesOKpgCLCWK8M4beHQjsWew==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvMStpejNaTmxDamhmbkZt
+            UjBvQUhiV0RyVld3YzEyNzhzcFd2c3VIT2dZClNGVW5ZNU9aOEQ0M0Rld29ST1hV
+            MGJJVGdWZGhDYVRxRUVNVWdhdkcza2sKLS0tIHpvSnRnYW9uN3pJNmJWblNTK0Ro
+            dTl2bFBXa1FqZE45bGs4YlFoWmZ2UzQK5hgb3UjfR5pOf1u+ip9ZI4XsIl/znnhD
+            RZb2Iipi/Ex6nDEP3WTZm6fPDPeWlFkBAZw1D3bUP8d4N8rTmgYfHg==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkNEtRQVJ0UmJaSXZvb0t3
+            QmFZSVhFc2ZyRDFtZVRMMWhmdHUzYUNrUEMwCjM5dzAxSXRSbzl2OFg3UkhxbUh6
+            bFpMK0FmNUVUcWZ0QnAzK0E5U0hIWEkKLS0tIEpTOXF4L3JxNWRnWlJQWHlzS1hj
+            YjVIcDlkVDBVbnBCTFZuWnlPbHVXNTQK/pEi8nXrLFWGbHziQ1HfCyNSi9/lkxcg
+            BkFMnCyyu24+EqFEBMAAZqvpOMiC/L21J7d8At6WIvLc8/eIFmZlzw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrZTRId3FWWE5TT3dQZ2c5
+            S2YzTVdQZWwrdFdRTWJqakM5N29DRENzUkhnClY4OHc1Qk9hdDNhaVc1MHdjKy9D
+            MTNlVzBpK2RuQzdVUHV4a3RlSWtFcWMKLS0tIE4zT3lnS2lMQkx3bFlkSTRtM3VY
+            Z1BOVTZ2aDdxVjhkby9EY0hubmRRdjgKdPkHgWKUueHDqVKIOgH8lqBPNmld1/c3
+            a5cy7L5qgetzTTtX9P+lr7UbZXJnKYJesOKpgCLCWK8M4beHQjsWew==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
+    lastmodified: "2026-07-19T13:50:17Z"
+    mac: ENC[AES256_GCM,data:ZAd4pSO0U4XnsfwyJvP/MWVGk9u9qankzdkKH55I8zA8eDcfacAiqRArt5o2CWk4uhYqkwINfe3LuRcIXC1YPenPPEIgsXWGYMMtUuNd5x2yWkGD+1NPzWoXcu5aoJolGvXG8yYrk+S5Glzmm4FDM292HMb/DLNgQruNdTGp5ZM=,iv:AEQSAQNzrs4NqJAFiUKac0vn01Ow3p202sM7gjQxP0A=,tag:Ek6HB6C3AgYw8h+dWCUu2A==,type:str]
+    version: 3.13.1
