@@ -30,6 +30,9 @@ spec:
         enabled: false
     prometheus-node-exporter:
       enabled: false
+    vmagent:
+      extraArgs:
+        enableTCP6: "true"
     vmalert:
       extraArgs:
         enableTCP6: "true"
