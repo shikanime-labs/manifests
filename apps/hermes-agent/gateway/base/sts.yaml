@@ -101,8 +101,6 @@ spec:
                       path: profiles/dreamer/config.yaml
                     - key: SOUL.md
                       path: profiles/dreamer/SOUL.md
-                    - key: .enc.env
-                      path: profiles/dreamer/.enc.env
               - configMap:
                   name: hermes-agent-gateway-operator
                   items:
@@ -110,8 +108,6 @@ spec:
                       path: profiles/operator/config.yaml
                     - key: SOUL.md
                       path: profiles/operator/SOUL.md
-                    - key: .enc.env
-                      path: profiles/operator/.enc.env
               - configMap:
                   name: hermes-agent-gateway-coder
                   items:
@@ -119,8 +115,13 @@ spec:
                       path: profiles/coder/config.yaml
                     - key: SOUL.md
                       path: profiles/coder/SOUL.md
-                    - key: .enc.env
-                      path: profiles/coder/.enc.env
+              - configMap:
+                  name: hermes-agent-gateway-aux
+                  items:
+                    - key: config.yaml
+                      path: profiles/aux/config.yaml
+                    - key: SOUL.md
+                      path: profiles/aux/SOUL.md
         - name: ssh-key
           secret:
             defaultMode: 400

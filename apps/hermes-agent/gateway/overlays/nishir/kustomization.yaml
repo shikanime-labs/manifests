@@ -12,17 +12,18 @@ configMapGenerator:
     files:
       - config.yaml=hermes-agent-gateway-dreamer/config.yaml
       - SOUL.md=hermes-agent-gateway-dreamer/SOUL.md
-      - .enc.env=hermes-agent-gateway-dreamer/.enc.env
   - name: hermes-agent-gateway-operator
     files:
       - config.yaml=hermes-agent-gateway-operator/config.yaml
       - SOUL.md=hermes-agent-gateway-operator/SOUL.md
-      - .enc.env=hermes-agent-gateway-operator/.enc.env
   - name: hermes-agent-gateway-coder
     files:
       - config.yaml=hermes-agent-gateway-coder/config.yaml
       - SOUL.md=hermes-agent-gateway-coder/SOUL.md
-      - .enc.env=hermes-agent-gateway-coder/.enc.env
+  - name: hermes-agent-gateway-aux
+    files:
+      - config.yaml=hermes-agent-gateway-aux/config.yaml
+      - SOUL.md=hermes-agent-gateway-aux/SOUL.md
 secretGenerator:
   - name: hermes-agent-gateway-startup-config
     files:
