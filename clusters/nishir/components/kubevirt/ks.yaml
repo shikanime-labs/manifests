@@ -14,7 +14,7 @@ spec:
     - apiVersion: apps/v1
       kind: Deployment
       name: virt-operator
-      namespace: kubevirt
+      namespace: kubevirt-system
   interval: 10m
   path: ./infrastructure/kubevirt/overlays/nishir
   prune: true
@@ -39,7 +39,7 @@ spec:
     - apiVersion: kubevirt.io/v1
       kind: KubeVirt
       name: kubevirt
-      namespace: kubevirt
+      namespace: kubevirt-system
   interval: 10m
   path: ./configs/kubevirt/overlays/nishir
   prune: true
