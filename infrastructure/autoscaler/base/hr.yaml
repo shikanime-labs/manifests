@@ -23,6 +23,9 @@ spec:
   values:
     admissionController:
       generateCertificate: false
+      mutatingWebhookConfiguration:
+        annotations:
+          cert-manager.io/inject-ca-from: autoscaler-system/vpa-tls-secret
       podDisruptionBudget:
         maxUnavailable: 1
       replicaCount: 2
