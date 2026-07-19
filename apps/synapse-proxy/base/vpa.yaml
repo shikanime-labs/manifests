@@ -5,7 +5,7 @@ metadata:
 spec:
   targetRef:
     apiVersion: apps/v1
-    kind: Deployment
+    kind: StatefulSet
     name: synapse-proxy
   updatePolicy:
     updateMode: Auto
