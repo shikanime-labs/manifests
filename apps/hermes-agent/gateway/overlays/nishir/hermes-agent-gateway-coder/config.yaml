@@ -211,7 +211,7 @@ memory:
 moa:
   active_preset: ""
   aggregator:
-    model: tencent/hy3:free
+    model: openrouter/free
     provider: nous
   aggregator_temperature: 0.4
   default_preset: default
@@ -221,14 +221,14 @@ moa:
   presets:
     default:
       aggregator:
-        model: tencent/hy3:free
+        model: openrouter/free
         provider: nous
       aggregator_temperature: 0.4
       enabled: true
       fanout: per_iteration
       max_tokens: 4096
       reference_models:
-        - model: tencent/hy3:free
+        - model: openrouter/free
           provider: nous
         - model: stepfun/step-3.7-flash:free
           provider: nous
@@ -236,7 +236,7 @@ moa:
           provider: mistral
       reference_temperature: 0.6
   reference_models:
-    - model: tencent/hy3:free
+    - model: openrouter/free
       provider: nous
     - model: stepfun/step-3.7-flash:free
       provider: nous
