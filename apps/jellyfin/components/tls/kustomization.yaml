@@ -3,3 +3,4 @@ kind: Component
 patches:
   - path: patch-sts.yaml
   - path: patch-svc.yaml
+  - path: patch-netpol.yaml
