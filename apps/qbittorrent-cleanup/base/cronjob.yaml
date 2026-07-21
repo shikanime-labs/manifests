@@ -18,7 +18,7 @@ spec:
               image: qbittorrent-cleanup
               env:
                 - name: QBT_URL
-                  value: https://$(QBITTORRENT_SERVICE_HOST):$(QBITTORRENT_SERVICE_PORT)
+                  value: https://qbittorrent:443
               envFrom:
                 - secretRef:
                     name: qbittorrent-cleanup

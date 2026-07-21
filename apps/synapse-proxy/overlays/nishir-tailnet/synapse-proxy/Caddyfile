@@ -25,7 +25,7 @@
 	import mautrix
 	@isMatrixClient path /.well-known/matrix/server /_matrix/* /_synapse/client/*
 	handle @isMatrixClient {
-		reverse_proxy https://{$SYNAPSE_SERVICE_HOST:synapse}:{$SYNAPSE_SERVICE_PORT_HTTPS:8448} {
+		reverse_proxy https://synapse:8448 {
 			transport http {
 				tls_server_name synapse
 			}
