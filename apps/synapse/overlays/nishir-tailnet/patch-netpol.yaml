@@ -1,0 +1,25 @@
+- op: add
+  path: /spec/ingress/0/ports/-
+  value:
+    port: https
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-system
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: vmagent
+    ports:
+      - port: metrics
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: tailscale-system
+    ports:
+      - port: https

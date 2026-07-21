@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
 labels:
@@ -11,3 +10,9 @@ labels:
       app.kubernetes.io/name: whisparr
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 3-3.1.0.2040
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: whisparr
+      version: v1
+      kind: NetworkPolicy

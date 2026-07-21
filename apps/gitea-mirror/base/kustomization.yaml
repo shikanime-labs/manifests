@@ -3,6 +3,7 @@ resources:
   - sts.yaml
   - svc.yaml
   - vpa.yaml
+  - netpol.yaml
 images:
   - name: gitea-mirror
     newName: ghcr.io/raylabshq/gitea-mirror

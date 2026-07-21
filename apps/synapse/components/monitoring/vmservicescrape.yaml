@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: synapse
-  namespace: shikanime
   labels:
     app.kubernetes.io/name: synapse
     app.kubernetes.io/part-of: synapse

@@ -1,10 +1,7 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
-patches:
-  - path: patch-sts.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -13,6 +10,13 @@ labels:
       app.kubernetes.io/name: gitea-mirror
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 3.17.1
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: gitea-mirror
+      version: v1
+      kind: NetworkPolicy
+  - path: patch-sts.yaml
 secretGenerator:
   - name: gitea-mirror
     envs:

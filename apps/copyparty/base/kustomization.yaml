@@ -3,6 +3,7 @@ resources:
   - sts.yaml
   - svc.yaml
   - vpa.yaml
+  - netpol.yaml
 images:
   - name: copyparty
     newName: copyparty/dj

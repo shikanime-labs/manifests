@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
 labels:
@@ -11,3 +10,9 @@ labels:
       app.kubernetes.io/name: hermes-agent
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 2026.6.5
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: hermes-agent-gateway
+      version: v1
+      kind: NetworkPolicy

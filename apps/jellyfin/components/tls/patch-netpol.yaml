@@ -1,25 +1,4 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: jellyfin
-spec:
-  ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: lidarr
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: radarr
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: seerr
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: sonarr
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: whisparr
-      ports:
-        - port: http
-        - port: https
+- op: add
+  path: /spec/ingress/0/ports/-
+  value:
+    port: https

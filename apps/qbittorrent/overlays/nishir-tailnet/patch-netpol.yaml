@@ -1,0 +1,12 @@
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: tailscale-system
+    ports:
+      - port: https
+      - port: bittorrent
+      - port: bittorrent-udp
+        protocol: UDP

@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: mautrix-googlechat
-  namespace: shikanime
   labels:
     app.kubernetes.io/name: mautrix-googlechat
     app.kubernetes.io/part-of: nishir-office

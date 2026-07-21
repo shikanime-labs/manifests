@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
 labels:
@@ -11,3 +10,9 @@ labels:
       app.kubernetes.io/name: vaultwarden
       app.kubernetes.io/part-of: nishir-security
       app.kubernetes.io/version: 1.36.0
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: vaultwarden
+      version: v1
+      kind: NetworkPolicy

@@ -1,10 +1,7 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
-patches:
-  - path: patch-svc.yaml
 configMapGenerator:
   - name: copyparty
     files:
@@ -17,3 +14,10 @@ labels:
       app.kubernetes.io/name: copyparty
       app.kubernetes.io/part-of: nishir-operation
       app.kubernetes.io/version: 1.20.16
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: copyparty
+      version: v1
+      kind: NetworkPolicy
+  - path: patch-svc.yaml

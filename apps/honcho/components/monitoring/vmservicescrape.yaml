@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: honcho
-  namespace: shikanime
   labels:
     app.kubernetes.io/name: honcho
     app.kubernetes.io/part-of: honcho

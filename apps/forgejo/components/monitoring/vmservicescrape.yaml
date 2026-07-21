@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: forgejo
-  namespace: shikanime
   labels:
     app.kubernetes.io/name: forgejo
     app.kubernetes.io/part-of: forgejo

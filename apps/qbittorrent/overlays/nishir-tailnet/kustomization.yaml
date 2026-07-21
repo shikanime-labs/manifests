@@ -1,10 +1,7 @@
 resources:
   - ../nishir
-  - netpol.yaml
   - ingress.yaml
 namespace: shikanime
-patches:
-  - path: patch-svc.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -13,3 +10,10 @@ labels:
       app.kubernetes.io/name: qbittorrent
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 5.1.4-2
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: qbittorrent
+      version: v1
+      kind: NetworkPolicy
+  - path: patch-svc.yaml

@@ -1,7 +1,6 @@
 resources:
   - ../nishir
   - ingress.yaml
-  - netpol.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -11,3 +10,9 @@ labels:
       app.kubernetes.io/name: honcho
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 3.0.9
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: honcho
+      version: v1
+      kind: NetworkPolicy

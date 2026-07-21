@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - netpol.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -10,6 +9,12 @@ labels:
       app.kubernetes.io/name: synapse
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 1.154.0
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: synapse
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: synapse
     files:
