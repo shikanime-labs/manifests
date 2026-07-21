@@ -103,7 +103,7 @@ controllers installed during bootstrap.
     operator + CR manifest pair, so this component diverges from the
     `HelmRelease` pattern used elsewhere
   - the operator manifest already sets the `kubevirt-system` namespace to the
- `privileged` Pod Security Standard
+    `privileged` Pod Security Standard
   - **host prerequisites** (per node that should run VMs):
     - hardware virtualization exposed as `/dev/kvm` — requires Intel VT-x
       (`vmx`) or AMD-V (`svm`) in `/proc/cpuinfo`; check with `ls -l /dev/kvm`
