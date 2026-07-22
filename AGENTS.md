@@ -38,6 +38,22 @@ managed via FluxCD and structured around Kustomize.
 - **Observability:** VictoriaMetrics stack + Grafana (exposed over Tailscale)
 - **VPA:** Many apps include `vpa.yaml` — ensure VPA controller is present
 
+## Repository Layout
+
+- `apps/` — application manifests
+  - nested examples: `hermes-agent/{dashboard,gateway}`,
+    `servarr/{lidarr,radarr,sonarr,whisparr}`, `mautrix/{discord,whatsapp,...}`
+- `clusters/` — cluster entrypoints
+- `bootstraps/` — controller/operator installation
+- `configs/` — reusable configuration blocks (`cert-manager`, `cluster-api`,
+  `gatekeeper`, `longhorn`, `tailscale`, ...)
+- `infrastructure/` — infrastructure providers/manifests
+  - examples: `cert-manager`, `cluster-api`, `longhorn`, `tailscale`,
+    `monitoring`, `trust-manager`
+- `modules/` — reusable Kustomize modules
+- `skaffold.yaml` — render profiles
+- `flake.lock` / AGENTS.md / `README.md` at repo root
+
 ## App Pattern
 
 - Workload: `Deployment` or `StatefulSet` in `apps/<app>/base/`
