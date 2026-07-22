@@ -17,7 +17,7 @@
 (matrix-discord-media) {
 	@isDiscordDirectMediaApi path /.well-known/matrix/server /_matrix/federation/v1/media/download/* /_matrix/client/v1/media/* /_matrix/media/* /_matrix/key/* /_matrix/federation/v1/version
 	handle @isDiscordDirectMediaApi {
-		reverse_proxy http://{$MAUTRIX_DISCORD_SERVICE_HOST:matrix-discord}:{$MAUTRIX_DISCORD_SERVICE_PORT_HTTP:29334}
+		reverse_proxy http://matrix-discord:29334
 	}
 }
 

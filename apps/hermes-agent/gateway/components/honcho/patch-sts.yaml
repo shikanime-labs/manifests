@@ -9,4 +9,4 @@ spec:
         - name: hermes-agent-gateway
           env:
             - name: HONCHO_BASE_URL
-              value: http://$(HONCHO_SERVICE_HOST):$(HONCHO_SERVICE_PORT)
+              value: http://hermes-agent-gateway:8000

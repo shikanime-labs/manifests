@@ -9,4 +9,4 @@ spec:
         - name: hermes-agent-gateway
           env:
             - name: BROWSER_CDP_URL
-              value: ws://$(CHROME_SERVICE_HOST):$(CHROME_SERVICE_PORT)
+              value: ws://chrome:9222

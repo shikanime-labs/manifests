@@ -25,7 +25,7 @@ spec:
             - --insecure
           env:
             - name: GATEWAY_HEALTH_URL
-              value: http://$(HERMES_AGENT_GATEWAY_SERVICE_HOST):$(HERMES_AGENT_GATEWAY_SERVICE_PORT)
+              value: http://hermes-agent-gateway:8000
           livenessProbe:
             initialDelaySeconds: 15
             periodSeconds: 20

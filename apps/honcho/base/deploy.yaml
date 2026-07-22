@@ -65,7 +65,7 @@ spec:
                   name: honcho-postgres
                   key: database
             - name: DB_CONNECTION_URI
-              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@$(HONCHO_POSTGRES_SERVICE_HOST):$(HONCHO_POSTGRES_SERVICE_PORT)/$(DB_NAME)
+              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres:5432/$(DB_NAME)
       initContainers:
         - name: alembic-upgrade
           image: honcho
@@ -93,7 +93,7 @@ spec:
                   name: honcho-postgres
                   key: database
             - name: DB_CONNECTION_URI
-              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@$(HONCHO_POSTGRES_SERVICE_HOST):$(HONCHO_POSTGRES_SERVICE_PORT)/$(DB_NAME)
+              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres:5432/$(DB_NAME)
       volumes:
         - name: config
           configMap:

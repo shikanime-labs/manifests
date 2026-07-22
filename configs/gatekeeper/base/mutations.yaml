@@ -818,3 +818,32 @@ spec:
     pathTests:
       - condition: MustNotExist
         subPath: spec.containers[name:*].volumeMounts[mountPath:"/tmp"]
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: set-pod-enable-service-links-false
+spec:
+  applyTo:
+    - groups:
+        - ""
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.enableServiceLinks
+  match:
+    kinds:
+      - apiGroups:
+          - ""
+        kinds:
+          - Pod
+    namespaces:
+      - shikanime
+    scope: Namespaced
+  parameters:
+    assign:
+      value: false
+    pathTests:
+      - condition: MustNotExist
+        subPath: spec.enableServiceLinks
