@@ -19,8 +19,8 @@ appservice:
     username: signalbot
 backfill:
   enabled: true
-  max_catchup_messages: 500
-  max_initial_messages: 50
+  max_catchup_messages: -1
+  max_initial_messages: -1
   queue:
     batch_delay: 20
     batch_size: 100
@@ -28,7 +28,7 @@ backfill:
     max_batches: -1
     max_batches_override: {}
   threads:
-    max_initial_messages: 50
+    max_initial_messages: -1
   unread_hours_threshold: 720
 bridge:
   async_events: false
@@ -186,8 +186,8 @@ public_media:
 sops:
   version: 3.13.1
   encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-07-17T14:02:21Z"
-  mac: ENC[AES256_GCM,data:HczncaxHHNfzcaG1H7n5NoY6QzM1pCHkZOHgYbucYqCEuYzmjJtWV34h6Yr2BihTe5cJs60K1K26CzWIPFkYdY+Q532KO2MM568xtnxp/IsotbnfmjV1T7hdfh0deM9O0SMO4a+dvslOrka2gHrH3HksuBZI4tXjqWnh01rUtFI=,iv:Wu1LVQ3K8GB4/NNU+0Q/34Oa4MnTworeVrHoXe1UEFM=,tag:Q2RBChQ3SCMzVhF27W3QyQ==,type:str]
+  lastmodified: "2026-07-22T13:47:03Z"
+  mac: ENC[AES256_GCM,data:qnSpjCdwT5SHcEXpZ/bdL6cdeeR7cwCY0xtZDArwA+irgbUwv9Gcbdl5BfZ+s3Xd7T0vpo4xht18p2/MBFGK0q1ZIlODkT9KYE0dGeh6BOttTX3lM1L8fBpw684sZnU6JjGIbug+B2dumUaIaHtQipB+cQF8yuxIK5D6dEl9/+g=,iv:5SegM3PQ36K43lG+3ERSaQ3k0vx7NHzhmvtH0PlRQEE=,tag:vUwmf9YCr+IzZFW77GP+8Q==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----

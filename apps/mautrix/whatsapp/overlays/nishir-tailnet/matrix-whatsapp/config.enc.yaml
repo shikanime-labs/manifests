@@ -19,8 +19,8 @@ appservice:
     username: whatsappbot
 backfill:
   enabled: true
-  max_catchup_messages: 500
-  max_initial_messages: 50
+  max_catchup_messages: -1
+  max_initial_messages: -1
   queue:
     batch_delay: 20
     batch_size: 100
@@ -28,7 +28,7 @@ backfill:
     max_batches: -1
     max_batches_override: {}
   threads:
-    max_initial_messages: 50
+    max_initial_messages: -1
   unread_hours_threshold: 720
 bridge:
   async_events: false
@@ -194,7 +194,7 @@ network:
       max_async_handle: 2
       request_local_time: 120
       request_method: immediate
-    request_full_sync: false
+    request_full_sync: true
   identity_change_notices: false
   initial_auto_reconnect: true
   mute_status_broadcast: true
@@ -219,8 +219,8 @@ public_media:
 sops:
   version: 3.12.2
   encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-04-14T23:46:04Z"
-  mac: ENC[AES256_GCM,data:nilBLpNQYQC5zbi54HJtCO1Uvt2MFQfc4VgbfDSwA5+RR5ZBjLcjLrJk6o0JaK4GdFXJrgy78ZQBeFCWB+e6ElmMdOm26wPhAL149GtUYDAXCb+ppwmfQRCImGv9voMWYS1w1MadI6ZvbV6JICWarNJQUy7qYccQtYcIxgaAHzY=,iv:Hmhno0OCQQX8jxrbb+AvjCykF8lc8La7D+JKg1HbKIY=,tag:B7mqmZOK9SqswpcfcSGxdw==,type:str]
+  lastmodified: "2026-07-22T13:46:47Z"
+  mac: ENC[AES256_GCM,data:2U1uSkG6/gSdZgn2+LVkjeIszM8ne1fLe+/QEb75skwGWlCwRtIa53iVUXR7a33o3Gq74R7OWi1RmpRcaxgnM+C3y2ZBO6uYabkCVd9vV7k5OzjFunUVz4tQfD6/u1pkwna36VoCvjgj81VRrE/FRBzi1/6zsyFzjKSE8150r80=,iv:6Lp6JfPvwFUDXJ4K+DTASbhQNmhQQqKgOd0vp5IpRjM=,tag:LjGCz0N/TULb+4ct6+FFBQ==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
