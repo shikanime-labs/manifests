@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: copyparty
   annotations:
-    tailscale.com/funnel: "true"
     tailscale.com/tags: tag:web
 spec:
   defaultBackend:
