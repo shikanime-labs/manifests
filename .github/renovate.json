@@ -1,7 +1,32 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", "security:openssf-scorecard"],
+  "flux": {
+    "fileMatch": [
+      "(^|/)apps/.*kustomization\\.yaml$",
+      "(^|/)clusters/.*kustomization\\.yaml$",
+      "(^|/)infrastructure/.*hr\\.yaml$"
+    ]
+  },
   "nix": { "enabled": true },
+  "packageRules": [
+    {
+      "groupName": "flux-helm-releases",
+      "matchDepTypes": ["helm"],
+      "matchManagers": ["flux"]
+    },
+    { "groupName": "rclone-sidecars", "matchPackageNames": ["rclone/rclone"] },
+    {
+      "description": "Private registry (dock.mau.dev) requires auth; bump manually.",
+      "enabled": false,
+      "matchPackagePatterns": ["^dock\\.mau\\.dev/"]
+    },
+    {
+      "description": "Pinned to a Postgres major (pg15); do not auto-jump majors.",
+      "matchCurrentVersion": "!/^pg\\d+$/",
+      "matchPackagePatterns": ["^pgvector/pgvector$"]
+    }
+  ],
   "postUpgradeTasks": {
     "nixFmt": { "commands": ["nix", "fmt"], "installTools": { "nix": {} } }
   }

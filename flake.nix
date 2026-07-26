@@ -185,6 +185,35 @@
                 pkgs.skaffold
               ];
 
+              renovate.settings = {
+                flux.fileMatch = [
+                  "(^|/)apps/.*kustomization\\.yaml$"
+                  "(^|/)clusters/.*kustomization\\.yaml$"
+                  "(^|/)infrastructure/.*hr\\.yaml$"
+                ];
+                packageRules = [
+                  {
+                    matchManagers = [ "flux" ];
+                    matchDepTypes = [ "helm" ];
+                    groupName = "flux-helm-releases";
+                  }
+                  {
+                    matchPackageNames = [ "rclone/rclone" ];
+                    groupName = "rclone-sidecars";
+                  }
+                  {
+                    matchPackagePatterns = [ "^dock\\.mau\\.dev/" ];
+                    enabled = false;
+                    description = "Private registry (dock.mau.dev) requires auth; bump manually.";
+                  }
+                  {
+                    matchPackagePatterns = [ "^pgvector/pgvector$" ];
+                    matchCurrentVersion = "!/^pg\\d+$/";
+                    description = "Pinned to a Postgres major (pg15); do not auto-jump majors.";
+                  }
+                ];
+              };
+
               tasks = {
                 "manifests:kubeconform" = {
                   before = [ "devenv:enterTest" ];
