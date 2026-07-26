@@ -7,10 +7,10 @@ resources:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.74.3
+    newTag: 1.74.4
   - name: synapse
     newName: matrixdotorg/synapse
-    newTag: v1.154.0
+    newTag: v1.157.1
 metadata:
   annotations:
     automata.shikanime.studio/images:

@@ -7,7 +7,7 @@ resources:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.74.3
+    newTag: 1.74.4
   - name: whisparr
     newName: ghcr.io/hotio/whisparr
     newTag: v3-3.1.0.2040

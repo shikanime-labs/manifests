@@ -8,7 +8,7 @@ labels:
       app.kubernetes.io/instance: synapse
       app.kubernetes.io/name: synapse
       app.kubernetes.io/part-of: nishir-office
-      app.kubernetes.io/version: 1.154.0
+      app.kubernetes.io/version: 1.157.1
 patches:
   - path: patch-netpol.yaml
     target:

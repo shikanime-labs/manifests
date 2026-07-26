@@ -8,7 +8,7 @@ metadata:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.72.0
+    newTag: 1.74.4
 patches:
   - path: patch-sts.yaml
   - path: patch-svc.yaml

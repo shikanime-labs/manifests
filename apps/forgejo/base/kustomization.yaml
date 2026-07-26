@@ -7,7 +7,7 @@ resources:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.74.3
+    newTag: 1.74.4
   - name: forgejo
     newName: codeberg.org/forgejo/forgejo
     newTag: 15.0.3-rootless

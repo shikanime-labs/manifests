@@ -10,7 +10,7 @@ images:
     newTag: 6.2.1
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.71.2
+    newTag: 1.74.4
 metadata:
   annotations:
     automata.shikanime.studio/images:

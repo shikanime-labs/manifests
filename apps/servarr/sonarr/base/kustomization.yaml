@@ -7,7 +7,7 @@ resources:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.71.2
+    newTag: 1.74.4
   - name: sonarr
     newName: lscr.io/linuxserver/sonarr
     newTag: 4.0.17
