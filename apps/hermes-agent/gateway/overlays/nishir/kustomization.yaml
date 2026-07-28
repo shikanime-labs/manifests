@@ -7,23 +7,6 @@ components:
   - ../../components/webhook
 patches:
   - path: patch-pvc.yaml
-configMapGenerator:
-  - name: hermes-agent-gateway-dreamer
-    files:
-      - config.yaml=hermes-agent-gateway-dreamer/config.yaml
-      - SOUL.md=hermes-agent-gateway-dreamer/SOUL.md
-  - name: hermes-agent-gateway-operator
-    files:
-      - config.yaml=hermes-agent-gateway-operator/config.yaml
-      - SOUL.md=hermes-agent-gateway-operator/SOUL.md
-  - name: hermes-agent-gateway-coder
-    files:
-      - config.yaml=hermes-agent-gateway-coder/config.yaml
-      - SOUL.md=hermes-agent-gateway-coder/SOUL.md
-  - name: hermes-agent-gateway-auxiliary
-    files:
-      - config.yaml=hermes-agent-gateway-auxiliary/config.yaml
-      - SOUL.md=hermes-agent-gateway-auxiliary/SOUL.md
 secretGenerator:
   - name: hermes-agent-gateway-startup-config
     files:
