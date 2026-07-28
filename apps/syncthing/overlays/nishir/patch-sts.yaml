@@ -36,7 +36,6 @@ spec:
               mountPath: /var/syncthing/Timeline
             - name: hermes-agent-data
               mountPath: /var/syncthing/Hermes
-              readOnly: true
       volumes:
         - name: archives-data
           persistentVolumeClaim:
