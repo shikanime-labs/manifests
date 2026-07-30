@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: qbittorrent
+  name: forgejo
 spec:
   template:
     spec:
@@ -15,12 +15,3 @@ spec:
                     values:
                       - "true"
               weight: 50
-      containers:
-        - name: qbittorrent
-          volumeMounts:
-            - name: downloads-data
-              mountPath: /downloads
-      volumes:
-        - name: downloads-data
-          persistentVolumeClaim:
-            claimName: downloads-data
