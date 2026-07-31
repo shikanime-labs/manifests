@@ -1,0 +1,792 @@
+# FluxCD-native VPA manifests replacing the fairwinds Helm chart.
+# Generated from fairwinds/vpa chart version 4.11.0 with the values
+# previously configured in the HelmRelease (autoscaler-system namespace).
+# CRDs are managed separately in vpa-crd.yaml via the Flux Kustomization.
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: vpa-admission-controller-pdb
+  namespace: autoscaler-system
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: admission-controller
+      app.kubernetes.io/name: vpa
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: vpa-recommender-pdb
+  namespace: autoscaler-system
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: recommender
+      app.kubernetes.io/name: vpa
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: vpa-updater-pdb
+  namespace: autoscaler-system
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: updater
+      app.kubernetes.io/name: vpa
+
+---
+apiVersion: v1
+kind: ServiceAccount
+automountServiceAccountToken: true
+metadata:
+  name: vpa-admission-controller
+  namespace: autoscaler-system
+  labels:
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: admission-controller
+
+---
+apiVersion: v1
+kind: ServiceAccount
+automountServiceAccountToken: true
+metadata:
+  name: vpa-recommender
+  namespace: autoscaler-system
+  labels:
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: recommender
+
+---
+apiVersion: v1
+kind: ServiceAccount
+automountServiceAccountToken: true
+metadata:
+  name: vpa-updater
+  namespace: autoscaler-system
+  labels:
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: updater
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-admission-controller
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  - configmaps
+  - nodes
+  - limitranges
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+- apiGroups:
+  - poc.autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - update
+  - get
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-metrics-reader
+rules:
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-actor
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  - nodes
+  - limitranges
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+- apiGroups:
+  - poc.autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+  - patch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-status-actor
+rules:
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers/status
+  verbs:
+  - get
+  - patch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-checkpoint-actor
+rules:
+- apiGroups:
+  - poc.autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalercheckpoints
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - patch
+  - delete
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalercheckpoints
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - patch
+  - delete
+- apiGroups:
+  - ''
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-evictioner
+rules:
+- apiGroups:
+  - apps
+  - extensions
+  resources:
+  - replicasets
+  verbs:
+  - get
+- apiGroups:
+  - ''
+  resources:
+  - pods/eviction
+  verbs:
+  - create
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-target-reader
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*/scale'
+  verbs:
+  - get
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - replicationcontrollers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - daemonsets
+  - deployments
+  - replicasets
+  - statefulsets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-status-reader
+rules:
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vpa-updater-in-place
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods/resize
+  - pods
+  verbs:
+  - patch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-admission-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-admission-controller
+subjects:
+- kind: ServiceAccount
+  name: vpa-admission-controller
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-metrics-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-metrics-reader
+subjects:
+- kind: ServiceAccount
+  name: vpa-recommender
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-checkpoint-actor
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-checkpoint-actor
+subjects:
+- kind: ServiceAccount
+  name: vpa-recommender
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-status-actor
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-status-actor
+subjects:
+- kind: ServiceAccount
+  name: vpa-recommender
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-evictionter-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-evictioner
+subjects:
+- kind: ServiceAccount
+  name: vpa-updater
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-status-reader-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-status-reader
+subjects:
+- kind: ServiceAccount
+  name: vpa-updater
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-updater-in-place-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-updater-in-place
+subjects:
+- kind: ServiceAccount
+  name: vpa-updater
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-actor
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-actor
+subjects:
+- kind: ServiceAccount
+  name: vpa-recommender
+  namespace: autoscaler-system
+- kind: ServiceAccount
+  name: vpa-updater
+  namespace: autoscaler-system
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vpa-target-reader-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vpa-target-reader
+subjects:
+- kind: ServiceAccount
+  name: vpa-recommender
+  namespace: autoscaler-system
+- kind: ServiceAccount
+  name: vpa-admission-controller
+  namespace: autoscaler-system
+- kind: ServiceAccount
+  name: vpa-updater
+  namespace: autoscaler-system
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpa-webhook
+  namespace: autoscaler-system
+spec:
+  ports:
+  - port: 443
+    targetPort: 8000
+  selector:
+    app.kubernetes.io/component: admission-controller
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpa-admission-controller
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/component: admission-controller
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: admission-controller
+      app.kubernetes.io/name: vpa
+      app.kubernetes.io/instance: vpa
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: admission-controller
+        app.kubernetes.io/name: vpa
+        app.kubernetes.io/instance: vpa
+    spec:
+      serviceAccountName: vpa-admission-controller
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: vpa
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        image: registry.k8s.io/autoscaling/vpa-admission-controller:1.6.0
+        imagePullPolicy: Always
+        args:
+        - --register-webhook=false
+        - --webhook-service=vpa-webhook
+        volumeMounts:
+        - name: tls-certs
+          mountPath: /etc/tls-certs
+          readOnly: true
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        readinessProbe:
+          failureThreshold: 120
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        ports:
+        - name: http
+          containerPort: 8000
+          protocol: TCP
+        - name: metrics
+          containerPort: 8944
+          protocol: TCP
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        resources:
+          limits: {}
+          requests:
+            cpu: 50m
+            memory: 200Mi
+      hostNetwork: false
+      volumes:
+      - name: tls-certs
+        secret:
+          secretName: vpa-tls-secret
+          items:
+          - key: ca.crt
+            path: caCert.pem
+          - key: tls.crt
+            path: serverCert.pem
+          - key: tls.key
+            path: serverKey.pem
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpa-recommender
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/component: recommender
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: recommender
+      app.kubernetes.io/name: vpa
+      app.kubernetes.io/instance: vpa
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: recommender
+        app.kubernetes.io/name: vpa
+        app.kubernetes.io/instance: vpa
+    spec:
+      serviceAccountName: vpa-recommender
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: vpa
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        image: registry.k8s.io/autoscaling/vpa-recommender:1.6.0
+        imagePullPolicy: Always
+        args:
+        - --pod-recommendation-min-cpu-millicores=15
+        - --pod-recommendation-min-memory-mb=100
+        - --v=4
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        readinessProbe:
+          failureThreshold: 120
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        ports:
+        - name: metrics
+          containerPort: 8942
+          protocol: TCP
+        resources:
+          limits: {}
+          requests:
+            cpu: 50m
+            memory: 500Mi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpa-updater
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/component: updater
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: updater
+      app.kubernetes.io/name: vpa
+      app.kubernetes.io/instance: vpa
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: updater
+        app.kubernetes.io/name: vpa
+        app.kubernetes.io/instance: vpa
+    spec:
+      serviceAccountName: vpa-updater
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: vpa
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        image: registry.k8s.io/autoscaling/vpa-updater:1.6.0
+        imagePullPolicy: Always
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        readinessProbe:
+          failureThreshold: 120
+          httpGet:
+            path: /health-check
+            port: metrics
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        ports:
+        - name: metrics
+          containerPort: 8943
+          protocol: TCP
+        resources:
+          limits: {}
+          requests:
+            cpu: 50m
+            memory: 500Mi
+
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: vpa-webhook-config
+  labels:
+    app.kubernetes.io/component: admission-controller
+    helm.sh/chart: vpa-4.11.0
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/instance: vpa
+    app.kubernetes.io/version: 1.6.0
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    cert-manager.io/inject-ca-from: autoscaler-system/vpa-tls-secret
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: vpa-webhook
+      namespace: autoscaler-system
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: vpa.k8s.io
+  namespaceSelector: {}
+  objectSelector: {}
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - ''
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    resources:
+    - pods
+    scope: '*'
+  - apiGroups:
+    - autoscaling.k8s.io
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - verticalpodautoscalers
+    scope: '*'
+  sideEffects: None
+  timeoutSeconds: 5

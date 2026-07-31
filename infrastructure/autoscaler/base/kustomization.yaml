@@ -1,4 +1,4 @@
 resources:
-  - helmrepo.yaml
-  - hr.yaml
   - ns.yaml
+  - flux-vpa.yaml
+  - vpa-crd.yaml
