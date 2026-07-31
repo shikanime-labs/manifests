@@ -42,8 +42,10 @@ spec:
               args:
                 maxPodLifeTimeSeconds: 3600
                 states:
+                  - CreateContainerError
                   - Pending
                   - PodInitializing
+                  - Terminating
             - name: RemoveFailedPods
               args:
                 includingInitContainers: true
