@@ -64,6 +64,8 @@ spec:
             - /mnt/startup-config
             - /opt/data
           volumeMounts:
+            - name: cache
+              mountPath: /root/.cache
             - name: data
               mountPath: /opt/data
             - name: rclone-config
@@ -80,6 +82,9 @@ spec:
       securityContext:
         fsGroup: 10000
       volumes:
+        - name: cache
+          emptyDir:
+            medium: Memory
         - name: data
           persistentVolumeClaim:
             claimName: hermes-agent-data
