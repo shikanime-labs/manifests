@@ -12,13 +12,22 @@ spec:
   dependsOn:
     - name: infrastructure-cert-manager
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
-      name: vpa
-      namespace: flux-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: vpa-admission-controller
+      namespace: autoscaler-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: vpa-recommender
+      namespace: autoscaler-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: vpa-updater
+      namespace: autoscaler-system
   interval: 10m
   path: ./infrastructure/autoscaler/overlays/telsha
   prune: true
   sourceRef:
     name: flux-system
     kind: GitRepository
+  timeout: 5m

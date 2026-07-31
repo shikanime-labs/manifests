@@ -1,4 +1,40 @@
+namespace: autoscaler-system
 resources:
-  - helmrepo.yaml
-  - hr.yaml
   - ns.yaml
+  - vpa-official.yaml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: cluster
+      app.kubernetes.io/instance: vpa
+      app.kubernetes.io/name: vpa
+      app.kubernetes.io/part-of: autoscaler
+      app.kubernetes.io/version: 1.0.0
+patches:
+  - target:
+      kind: Deployment
+      name: vpa-admission-controller
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: vpa-admission-controller
+      spec:
+        template:
+          metadata:
+            annotations:
+              cert-manager.io/inject-ca-from: autoscaler-system/vpa-tls-secret
+          spec:
+            securityContext:
+              seccompProfile:
+                type: RuntimeDefault
+            containers:
+              - name: admission-controller
+                volumeMounts:
+                  - mountPath: /etc/tls-certs
+                    name: tls-certs
+                    readOnly: true
+            volumes:
+              - name: tls-certs
+                secret:
+                  secretName: vpa-tls-secret
