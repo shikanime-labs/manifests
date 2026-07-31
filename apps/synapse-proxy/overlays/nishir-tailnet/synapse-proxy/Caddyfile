@@ -17,7 +17,7 @@
 (matrix-discord-media) {
 	@isDiscordDirectMediaApi path /.well-known/matrix/server /_matrix/federation/v1/media/download/* /_matrix/client/v1/media/* /_matrix/media/* /_matrix/key/* /_matrix/federation/v1/version
 	handle @isDiscordDirectMediaApi {
-		reverse_proxy http://matrix-discord:29334
+		reverse_proxy http://mautrix-discord.shikanime.svc.cluster.local:29334
 	}
 }
 
@@ -25,7 +25,7 @@
 	import mautrix
 	@isMatrixClient path /.well-known/matrix/server /_matrix/* /_synapse/client/*
 	handle @isMatrixClient {
-		reverse_proxy https://synapse:8448 {
+		reverse_proxy https://synapse.shikanime.svc.cluster.local:8448 {
 			transport http {
 				tls_server_name synapse
 			}
