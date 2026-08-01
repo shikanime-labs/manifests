@@ -6,6 +6,7 @@ spec:
   commonName: prowlarr
   dnsNames:
     - prowlarr
+    - prowlarr.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
     kind: ClusterIssuer

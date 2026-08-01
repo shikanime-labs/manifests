@@ -6,6 +6,7 @@ spec:
   commonName: synapse
   dnsNames:
     - synapse-proxy
+    - synapse-proxy.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
     kind: ClusterIssuer

@@ -6,6 +6,7 @@ spec:
   commonName: forgejo
   dnsNames:
     - forgejo
+    - forgejo.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
     kind: ClusterIssuer

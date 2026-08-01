@@ -6,6 +6,7 @@ spec:
   commonName: sonarr
   dnsNames:
     - sonarr
+    - sonarr.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
     kind: ClusterIssuer
