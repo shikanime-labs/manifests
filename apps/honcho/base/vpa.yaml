@@ -8,4 +8,4 @@ spec:
     kind: Deployment
     name: honcho
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

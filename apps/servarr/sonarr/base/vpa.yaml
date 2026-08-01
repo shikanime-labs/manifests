@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: sonarr
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: hermes-agent-gateway
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

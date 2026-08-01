@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: virt-api
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -23,7 +23,7 @@ spec:
     kind: Deployment
     name: virt-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -36,4 +36,4 @@ spec:
     kind: DaemonSet
     name: virt-handler
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

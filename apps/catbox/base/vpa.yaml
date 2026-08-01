@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: catbox
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

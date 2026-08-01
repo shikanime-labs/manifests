@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: synapse-proxy
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

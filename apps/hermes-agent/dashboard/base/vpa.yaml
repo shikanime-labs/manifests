@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: hermes-agent-dashboard
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

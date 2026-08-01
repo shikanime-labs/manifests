@@ -9,4 +9,4 @@ spec:
     kind: Deployment
     name: trust-manager
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: vmalert-vmks-victoria-metrics-k8s-stack
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -23,7 +23,7 @@ spec:
     kind: Deployment
     name: vminsert-vmks-victoria-metrics-k8s-stack
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -36,7 +36,7 @@ spec:
     kind: Deployment
     name: vmks-grafana
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -49,7 +49,7 @@ spec:
     kind: Deployment
     name: vmks-kube-state-metrics
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -62,7 +62,7 @@ spec:
     kind: Deployment
     name: vmks-victoria-metrics-operator
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -75,7 +75,7 @@ spec:
     kind: Deployment
     name: monitoring-system-grafana-operator
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -88,7 +88,7 @@ spec:
     kind: StatefulSet
     name: vmalertmanager-vmks-victoria-metrics-k8s-stack
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -101,7 +101,7 @@ spec:
     kind: StatefulSet
     name: vmselect-vmks-victoria-metrics-k8s-stack
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -114,4 +114,4 @@ spec:
     kind: StatefulSet
     name: vmstorage-vmks-victoria-metrics-k8s-stack
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

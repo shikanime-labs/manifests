@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: lidarr
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

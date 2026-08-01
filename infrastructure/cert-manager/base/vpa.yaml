@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: cert-manager
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -23,7 +23,7 @@ spec:
     kind: Deployment
     name: cert-manager-cainjector
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -36,4 +36,4 @@ spec:
     kind: Deployment
     name: cert-manager-webhook
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

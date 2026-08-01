@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: syncthing
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

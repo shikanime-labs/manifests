@@ -9,4 +9,4 @@ spec:
     kind: Deployment
     name: virt-operator
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

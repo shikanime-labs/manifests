@@ -8,4 +8,4 @@ spec:
     kind: Deployment
     name: chrome
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

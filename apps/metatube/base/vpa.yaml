@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: metatube
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate

@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: flux-operator
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -23,7 +23,7 @@ spec:
     kind: Deployment
     name: helm-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -36,7 +36,7 @@ spec:
     kind: Deployment
     name: kustomize-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -49,7 +49,7 @@ spec:
     kind: Deployment
     name: notification-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -62,7 +62,7 @@ spec:
     kind: Deployment
     name: source-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -75,7 +75,7 @@ spec:
     kind: Deployment
     name: tofu-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -88,7 +88,7 @@ spec:
     kind: Deployment
     name: cluster-api-operator
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -101,7 +101,7 @@ spec:
     kind: Deployment
     name: rke2-coredns-rke2-coredns
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -114,7 +114,7 @@ spec:
     kind: Deployment
     name: rke2-coredns-rke2-coredns-autoscaler
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -127,7 +127,7 @@ spec:
     kind: Deployment
     name: rke2-metrics-server
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -140,7 +140,7 @@ spec:
     kind: Deployment
     name: rke2-snapshot-controller
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -153,7 +153,7 @@ spec:
     kind: Deployment
     name: rke2-control-plane-controller-manager
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -166,4 +166,4 @@ spec:
     kind: Deployment
     name: rke2-bootstrap-controller-manager
   updatePolicy:
-    updateMode: Auto
+    updateMode: InPlaceOrRecreate
