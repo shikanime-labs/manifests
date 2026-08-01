@@ -18,7 +18,7 @@ spec:
               image: qbittorrent-cleanup
               env:
                 - name: QBT_URL
-                  value: https://qbittorrent:443
+                  value: https://qbittorrent.shikanime.svc.cluster.local
               envFrom:
                 - secretRef:
                     name: qbittorrent-cleanup

@@ -1,6 +1,6 @@
 appservice:
   id: discord
-  address: http://mautrix-discord:29334
+  address: http://mautrix-discord.shikanime.svc.cluster.local:29334
   as_token: ENC[AES256_GCM,data:s5yc1b7IRmnX/++9HxkJI2ST5MYKTvykP3M42FYIUjm/2x3YGKxuJowczNtOIktNL5w/ral0UdQjZGxTsRjy2g==,iv:obVV9BSbQ6nRyVCP5J36w5En+xdqJt8HJDHxKpyyLAo=,tag:+sIM5wEimN+740ZFA9x2ug==,type:str]
   async_transactions: false
   ephemeral_events: true
@@ -119,7 +119,7 @@ bridge:
   use_discord_cdn_upload: true
   username_template: discord_{{.}}
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   message_send_checkpoint_endpoint: null

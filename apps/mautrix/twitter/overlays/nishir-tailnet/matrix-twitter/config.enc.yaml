@@ -4,7 +4,7 @@ analytics:
   user_id: null
 appservice:
   id: twitter
-  address: http://mautrix-twitter:29327
+  address: http://mautrix-twitter.shikanime.svc.cluster.local:29327
   as_token: ENC[AES256_GCM,data:HIrayxQsM5tMIwduVt/1fcb/Oy28hrdJlEQqkSahM46bvoYrV5nFXBAuAiro4CYyAjTozIdDFxIuJ4Mb1r8GqA==,iv:Xe6jHD5HTfuzX6qSEAc3nFHpEk59YeLsJlFme2oLwjA=,tag:ZsQ9OYp05gQdYiITUv1Fbg==,type:str]
   async_transactions: false
   ephemeral_events: true
@@ -142,7 +142,7 @@ encryption:
     share: cross-signed-tofu
 env_config_prefix: null
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   message_send_checkpoint_endpoint: null

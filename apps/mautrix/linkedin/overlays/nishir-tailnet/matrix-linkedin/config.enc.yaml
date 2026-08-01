@@ -4,7 +4,7 @@ analytics:
   user_id: null
 appservice:
   id: linkedin
-  address: http://mautrix-linkedin:29341
+  address: http://mautrix-linkedin.shikanime.svc.cluster.local:29341
   as_token: ENC[AES256_GCM,data:VzZJIfROE04vre1wBXv3J/gNcVA857fekomAmuRFIrt5NltXwOp8ah9DewEJFlDKibzzQ5JwlNKS+Yyc71eYGQ==,iv:Weg/P01MPIt2DtaJCEFh3/quZ+S+E9WeGPAe/Q6bzuY=,tag:Rs+EbplYJV5bCskuljh1ew==,type:str]
   async_transactions: false
   ephemeral_events: true
@@ -141,7 +141,7 @@ encryption:
     share: cross-signed-tofu
 env_config_prefix: null
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   message_send_checkpoint_endpoint: null

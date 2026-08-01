@@ -1,6 +1,6 @@
 appservice:
   id: googlechat
-  address: http://mautrix-googlechat:29320
+  address: http://mautrix-googlechat.shikanime.svc.cluster.local:29320
   as_token: ENC[AES256_GCM,data:VBDUMZtZu7AMXnvzDR9skoeRaVqAqEgTdDgoDiTEELE1FMwEGm+igV4oggknq3efgnsGveFRZoiQYcB4iUbT4Q==,iv:vGVxOb+IJY8YLHTM3pP9i8SUuEkmw4qfz9DZm8zo+d8=,tag:9MMWJ7zjfzEAAoPc3PS2Ww==,type:str]
   bot_avatar: mxc://maunium.net/BDIWAQcbpPGASPUUBuEGWXnQ
   bot_displayname: Google Chat bridge bot
@@ -76,7 +76,7 @@ bridge:
   update_avatar_initial_sync: true
   username_template: googlechat_{userid}
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   http_retry_count: 4

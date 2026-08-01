@@ -4,7 +4,7 @@ analytics:
   user_id: null
 appservice:
   id: slack
-  address: http://mautrix-slack:29335
+  address: http://mautrix-slack.shikanime.svc.cluster.local:29335
   as_token: ENC[AES256_GCM,data:1gNxwhN3G71C7N2Q3N3Xl79iq5ADHpFCIqqt7SJSZ97YwPIg9F2ZK942JvauTOaxzM+BiRn0kk95yxImiKjz1g==,iv:vFCWLjzURNf0/JvtHVWeYWC4qKixKLNLlezA+DQsy2Y=,tag:uWfd7lNVvWtQd+2fB/SftQ==,type:str]
   async_transactions: false
   ephemeral_events: true
@@ -137,7 +137,7 @@ encryption:
     send: cross-signed-tofu
     share: cross-signed-tofu
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   message_send_checkpoint_endpoint: null

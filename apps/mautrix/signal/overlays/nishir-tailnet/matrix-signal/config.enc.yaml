@@ -4,7 +4,7 @@ analytics:
   user_id: null
 appservice:
   id: signal
-  address: http://mautrix-signal:29328
+  address: http://mautrix-signal.shikanime.svc.cluster.local:29328
   as_token: ENC[AES256_GCM,data:IfJftw5DZg0DpQ90jv+i5Oly2ZO8AeyaX57AKiXoEE6du9RqYA9HyIoseR3FFtaj5eMUWNryWtCn+EXwyvbkFg==,iv:HHms+EF2W31G8dHNPyubqUHTbf2092li6yvypXqpeZc=,tag:9wci2DXm2eMiX5Ib3NNxig==,type:str]
   async_transactions: false
   ephemeral_events: true
@@ -137,7 +137,7 @@ encryption:
     send: cross-signed-tofu
     share: cross-signed-tofu
 homeserver:
-  address: https://synapse:8448
+  address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
   domain: matrix.taila659a.ts.net
   message_send_checkpoint_endpoint: null
