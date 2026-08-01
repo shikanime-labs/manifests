@@ -7,6 +7,7 @@ spec:
   commonName: vpa-webhook
   dnsNames:
     - vpa-webhook
+    - vpa-webhook.shikanime
     - vpa-webhook.autoscaler-system.svc.cluster.local
   duration: 8760h
   issuerRef:

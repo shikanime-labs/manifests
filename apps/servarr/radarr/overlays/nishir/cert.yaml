@@ -6,6 +6,7 @@ spec:
   commonName: radarr
   dnsNames:
     - radarr
+    - radarr.shikanime
     - radarr.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

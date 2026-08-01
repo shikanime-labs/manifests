@@ -8,6 +8,7 @@ spec:
   commonName: copyparty
   dnsNames:
     - copyparty
+    - copyparty.shikanime
     - copyparty.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

@@ -8,6 +8,7 @@ spec:
   commonName: nishir
   dnsNames:
     - syncthing.taila659a.ts.net
+    - syncthing.taila659a.ts.net.shikanime
   issuerRef:
     name: nishir
     kind: ClusterIssuer

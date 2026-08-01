@@ -6,6 +6,7 @@ spec:
   commonName: synapse
   dnsNames:
     - synapse
+    - synapse.shikanime
     - synapse.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

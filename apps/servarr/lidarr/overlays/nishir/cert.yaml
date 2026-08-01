@@ -6,6 +6,7 @@ spec:
   commonName: lidarr
   dnsNames:
     - lidarr
+    - lidarr.shikanime
     - lidarr.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

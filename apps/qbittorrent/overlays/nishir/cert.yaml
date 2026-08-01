@@ -6,6 +6,7 @@ spec:
   commonName: qbittorrent
   dnsNames:
     - qbittorrent
+    - qbittorrent.shikanime
     - qbittorrent.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

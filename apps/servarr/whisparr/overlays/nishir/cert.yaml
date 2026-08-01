@@ -6,6 +6,7 @@ spec:
   commonName: whisparr
   dnsNames:
     - whisparr
+    - whisparr.shikanime
     - whisparr.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

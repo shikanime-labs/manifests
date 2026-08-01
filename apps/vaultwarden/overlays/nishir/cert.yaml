@@ -6,6 +6,7 @@ spec:
   commonName: vaultwarden
   dnsNames:
     - vaultwarden
+    - vaultwarden.shikanime
     - vaultwarden.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

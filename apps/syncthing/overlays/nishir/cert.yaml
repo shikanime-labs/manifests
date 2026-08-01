@@ -6,6 +6,7 @@ spec:
   commonName: syncthing
   dnsNames:
     - syncthing
+    - syncthing.shikanime
     - syncthing.shikanime.svc.cluster.local
   issuerRef:
     name: nishir

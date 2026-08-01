@@ -6,6 +6,7 @@ spec:
   commonName: jellyfin
   dnsNames:
     - jellyfin
+    - jellyfin.shikanime
     - jellyfin.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
