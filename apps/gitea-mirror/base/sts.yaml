@@ -30,7 +30,7 @@ spec:
             - name: GITEA_PRESERVE_VISIBILITY
               value: "true"
             - name: GITEA_URL
-              value: https://forgejo
+              value: https://forgejo.shikanime.svc.cluster.local
             - name: INCLUDE_ARCHIVED
               value: "true"
             - name: MIRROR_ISSUES

@@ -231,7 +231,7 @@ translator:
   default_score: 50
   gemini_key: ""
   gemini_model: gemini-2.0-flash
-  lingarr_url: http://lingarr:9876
+  lingarr_url: http://lingarr.shikanime.svc.cluster.local:9876
   translator_info: true
   translator_type: google_translate
 proxy:
@@ -338,10 +338,10 @@ general:
   wanted_search_frequency: 6
   wanted_search_frequency_movie: 6
 sops:
-  version: 3.12.1
+  version: 3.13.1
   encrypted_regex: ^(apikey|api_key|password|token|cookies|passkey|flask_secret_key|encryption_key|hashed_password|anti_captcha_key|gemini_key)$
-  lastmodified: "2026-03-17T00:26:53Z"
-  mac: ENC[AES256_GCM,data:1UuUsGNGSvP/9PODygPrk60P7FoAGyAz4du8poP8MXmBglBwGX4hdxr0UHx6Xn0cH/qFyFRK5IWoznggHKcS+tfy28QzmHrkVPg7SYlpmsMPh802GabjrvLCaGbPYxP95zbHknoCZYyp7aDoN6RX665QEC6QX0BnYTegWTk6Yos=,iv:OqV5FZHW+32cuLPu0NkygpCsTDUxSsUqWmsGfkbTEAo=,tag:HBmp4UngccaHXGeRRMcr5Q==,type:str]
+  lastmodified: "2026-08-01T11:24:42Z"
+  mac: ENC[AES256_GCM,data:rggbp4KCLvaogwOIALWbdbmH/gEih2nnai2xoLigO03qmcYroNEgY+GbWK5yhNMMGi37T14sQjLWbqoI6k4RWEkCMUmfbpOKIlN7lYnQbnTolrRZ6rWIhA3+YNyh8KFa+ke2EIjTuZ023xGo1DJp0qoMpjcvD8F+/OHOfNC5qgs=,iv:UG1h27j05JKpnvhS1pCH2DQG4BpoYvau/KsTJ4eY1Lg=,tag:svFPURR4bIeKpfJTXk9G4A==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----

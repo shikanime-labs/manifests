@@ -9,4 +9,4 @@ spec:
         - name: hermes-agent-gateway
           env:
             - name: HONCHO_BASE_URL
-              value: http://hermes-agent-gateway:8000
+              value: http://hermes-agent-gateway.shikanime.svc.cluster.local:8000
