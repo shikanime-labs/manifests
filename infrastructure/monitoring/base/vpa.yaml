@@ -2,32 +2,6 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: vmalert-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: vmalert-vmks-victoria-metrics-k8s-stack
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: vminsert-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: vminsert-vmks-victoria-metrics-k8s-stack
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
   name: vmks-grafana
   namespace: monitoring-system
 spec:
@@ -74,44 +48,5 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: monitoring-system-grafana-operator
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: vmalertmanager-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: StatefulSet
-    name: vmalertmanager-vmks-victoria-metrics-k8s-stack
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: vmselect-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: StatefulSet
-    name: vmselect-vmks-victoria-metrics-k8s-stack
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: vmstorage-vmks-victoria-metrics-k8s-stack
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: StatefulSet
-    name: vmstorage-vmks-victoria-metrics-k8s-stack
   updatePolicy:
     updateMode: InPlaceOrRecreate
