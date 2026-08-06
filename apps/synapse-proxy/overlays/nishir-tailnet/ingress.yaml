@@ -5,6 +5,7 @@ metadata:
   annotations:
     tailscale.com/funnel: "true"
     tailscale.com/tags: tag:web
+    tailscale.com/proxy-class: nishir
 spec:
   defaultBackend:
     service:

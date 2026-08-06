@@ -15,6 +15,22 @@ spec:
         app.kubernetes.io/instance: synapse-proxy
         app.kubernetes.io/name: synapse-proxy
     spec:
+      # Dual-stack cluster but the IPv6 kube-dns VIP (fd01::a) is unreachable
+      # under canal/flannel host-gw + ipvs, and Go's resolver round-robins onto
+      # it -> 502s. Pin the IPv4 VIP (allowed by the netpol ipBlock) and drop
+      # the dead IPv6 entry. Removable once knix drops the IPv6 service CIDR.
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 10.96.0.10
+        searches:
+          - shikanime.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+          - taila659a.ts.net
+        options:
+          - name: ndots
+            value: "5"
       affinity:
         podAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

@@ -25,6 +25,10 @@ spec:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: kube-system
+        # kube-dns Service VIP is virtual (no backing pod), so Canal cannot
+        # match it via the namespaceSelector above. Allow it explicitly.
+        - ipBlock:
+            cidr: 10.96.0.10/32
   ingress:
     - from:
         - namespaceSelector:
