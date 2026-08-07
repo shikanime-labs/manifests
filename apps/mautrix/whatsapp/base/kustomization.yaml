@@ -6,7 +6,7 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/whatsapp
-    newTag: v0.2605.0
+    newTag: v0.2607.0
   - name: rclone
     newName: rclone/rclone
     newTag: 1.74.4
@@ -28,4 +28,4 @@ labels:
       app.kubernetes.io/instance: mautrix-whatsapp
       app.kubernetes.io/name: mautrix-whatsapp
       app.kubernetes.io/part-of: nishir-office
-      app.kubernetes.io/version: 0.2605.0
+      app.kubernetes.io/version: 0.2607.0
