@@ -12,7 +12,7 @@ resources:
 images:
   - name: dex
     newName: dexidp/dex
-    newTag: 2.45.0
+    newTag: v2.45.0
 secretGenerator:
   - name: dex-config
     files:
