@@ -6,6 +6,7 @@ spec:
   ingress:
     - ports:
         - port: http
+        - port: telemetry
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: dex
