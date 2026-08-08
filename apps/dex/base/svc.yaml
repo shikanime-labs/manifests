@@ -7,6 +7,9 @@ spec:
     - name: http
       port: 5556
       targetPort: http
+    - name: telemetry
+      port: 5558
+      targetPort: telemetry
   selector:
     app.kubernetes.io/instance: dex
     app.kubernetes.io/name: dex

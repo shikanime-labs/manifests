@@ -9,3 +9,5 @@ labels:
       app.kubernetes.io/name: dex
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 2.45.0
+components:
+  - ../../components/monitoring

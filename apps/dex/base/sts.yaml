@@ -34,6 +34,8 @@ spec:
           ports:
             - name: http
               containerPort: 5556
+            - name: telemetry
+              containerPort: 5558
           readinessProbe:
             httpGet:
               path: /healthz
