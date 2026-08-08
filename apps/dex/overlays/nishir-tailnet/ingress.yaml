@@ -7,7 +7,7 @@ spec:
     service:
       name: dex
       port:
-        name: http
+        name: https
   ingressClassName: tailscale
   tls:
     - hosts:
