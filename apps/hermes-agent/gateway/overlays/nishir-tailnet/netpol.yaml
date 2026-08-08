@@ -11,6 +11,7 @@ spec:
       ports:
         - port: http
         - port: webhook
+        - port: dashboard
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: hermes-agent-gateway

@@ -5,13 +5,6 @@ metadata:
 spec:
   ingress:
     - from:
-        - namespaceSelector:
-            matchLabels:
-              app.kubernetes.io/instance: hermes-agent-dashboard
-              app.kubernetes.io/name: hermes-agent
-      ports:
-        - port: http
-    - from:
         - podSelector:
             matchLabels:
               app.kubernetes.io/instance: honcho

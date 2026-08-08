@@ -27,6 +27,19 @@ spec:
               value: mentions
             - name: S6_READ_ONLY_ROOT
               value: "1"
+            # ponytail: dashboard colocated via s6 supervise (docs topology A).
+            # basic-auth creds HERMES_DASHBOARD_BASIC_AUTH_* live in the decrypted
+            # .env (hermes-agent-gateway-startup-config .env key), copied to
+            # /opt/data by config-sync. No secretKeyRef: that Secret is a single
+            # opaque .env blob, so per-key refs would not resolve (pod stalls).
+            - name: HERMES_DASHBOARD
+              value: "1"
+            - name: HERMES_DASHBOARD_HOST
+              value: 0.0.0.0
+            - name: HERMES_DASHBOARD_PORT
+              value: "9119"
+            - name: HERMES_DASHBOARD_AUTH_PROVIDER
+              value: basic-auth
           volumeMounts:
             - name: data
               mountPath: /opt/data
@@ -39,6 +52,9 @@ spec:
             - name: ssh-key
               mountPath: /root/.ssh
               readOnly: true
+          ports:
+            - name: dashboard
+              containerPort: 9119
           securityContext:
             capabilities:
               add:

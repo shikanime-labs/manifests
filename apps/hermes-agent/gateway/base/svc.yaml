@@ -3,7 +3,10 @@ kind: Service
 metadata:
   name: hermes-agent-gateway
 spec:
-  ports: []
+  ports:
+    - name: dashboard
+      port: 9119
+      targetPort: dashboard
   selector:
     app.kubernetes.io/instance: hermes-agent-gateway
     app.kubernetes.io/name: hermes-agent

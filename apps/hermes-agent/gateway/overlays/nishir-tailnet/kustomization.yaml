@@ -9,7 +9,7 @@ labels:
       app.kubernetes.io/instance: hermes-agent-gateway
       app.kubernetes.io/name: hermes-agent
       app.kubernetes.io/part-of: nishir-automata
-      app.kubernetes.io/version: 2026.6.5
+      app.kubernetes.io/version: v2026.7.7.2
 patches:
   - path: patch-netpol.yaml
     target:
