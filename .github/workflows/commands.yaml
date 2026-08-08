@@ -50,7 +50,7 @@ jobs:
       - uses: shikanime-studio/actions/command/close@v9
         with:
           github-token: ${{ steps.createGithubAppToken.outputs.token }}
-          username: operator6o
+          username: yorha-automata
   land:
     if:
       github.event.issue.pull_request != null &&
@@ -73,13 +73,13 @@ jobs:
           github-token: ${{ steps.createGithubAppToken.outputs.token }}
       - uses: shikanime-studio/actions/command/land@v9
         with:
-          email: operator6o@shikanime.studio
-          fullname: Operator 6O
+          email: automata@shikanime.studio
+          fullname: Automata
           github-token: ${{ steps.createGithubAppToken.outputs.token }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           sign-commits: true
-          username: operator6o
+          username: yorha-automata
   rebase:
     if:
       github.event.issue.pull_request != null &&
@@ -100,13 +100,13 @@ jobs:
           github-token: ${{ steps.createGithubAppToken.outputs.token }}
       - uses: shikanime-studio/actions/command/rebase@v9
         with:
-          email: operator6o@shikanime.studio
-          fullname: Operator 6O
+          email: automata@shikanime.studio
+          fullname: Automata
           github-token: ${{ steps.createGithubAppToken.outputs.token }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           sign-commits: true
-          username: operator6o
+          username: yorha-automata
   run:
     if:
       github.event.issue.pull_request != null &&
