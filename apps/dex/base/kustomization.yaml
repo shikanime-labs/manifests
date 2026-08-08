@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "dex", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
+resources:
+  - netpol.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: dex
+    newName: dexidp/dex
+    newTag: 2.45.0
+secretGenerator:
+  - name: dex-config
+    files:
+      - config.yaml=dex/config.enc.yaml

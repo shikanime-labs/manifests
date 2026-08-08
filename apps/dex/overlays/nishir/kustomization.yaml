@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: oauth2-provider
+      app.kubernetes.io/instance: dex
+      app.kubernetes.io/name: dex
+      app.kubernetes.io/part-of: nishir-platform
+      app.kubernetes.io/version: 2.45.0

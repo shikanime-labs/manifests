@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: dex
+      app.kubernetes.io/name: dex
+  serviceName: dex
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: dex
+        app.kubernetes.io/name: dex
+    spec:
+      containers:
+        - name: dex
+          image: dex
+          args:
+            - dex
+            - serve
+            - /etc/dex/config.yaml
+          env:
+            - name: TZ
+              value: Europe/Paris
+          livenessProbe:
+            httpGet:
+              path: /dex/healthz
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 5556
+          readinessProbe:
+            httpGet:
+              path: /dex/healthz
+              port: http
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /dex/healthz
+              port: http
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /etc/dex
+              readOnly: true
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config
+          secret:
+            secretName: dex-config
