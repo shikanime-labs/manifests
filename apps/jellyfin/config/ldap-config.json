@@ -1,0 +1,22 @@
+{
+  "Server": "ldap.shikanime.svc.cluster.local",
+  "Port": 389,
+  "UseSsl": false,
+  "UseStartTls": false,
+  "TrustAllCertificates": false,
+  "BindDN": "cn=admin,dc=jellyfin,dc=local",
+  "Password": "",
+  "SearchBase": "ou=Users,dc=jellyfin,dc=local",
+  "SearchFilter": "(uid={0})",
+  "UserNameAttribute": "uid",
+  "GroupSearchBase": "ou=Groups,dc=jellyfin,dc=local",
+  "GroupSearchFilter": "(memberUid={0})",
+  "GroupNameAttribute": "cn",
+  "MemberUidAttribute": "memberUid",
+  "LdapQueryTimeoutMs": 30000,
+  "ConnectionTimeoutMs": 10000,
+  "EnableLdapAuth": true,
+  "EnableLdapGroupImport": true,
+  "LdapGroupsAsRoles": false,
+  "LdapGroupImportIntervalHours": 24
+}

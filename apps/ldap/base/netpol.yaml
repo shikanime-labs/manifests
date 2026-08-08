@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ldap
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jellyfin
+      ports:
+        - port: ldap
+        - port: ldaps
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: ldap
+      app.kubernetes.io/name: ldap
+  policyTypes:
+    - Ingress

@@ -1,0 +1,7 @@
+# posixGroup for Jellyfin users
+# gidNumber 5000 matches the jellyfin-admin user.
+
+dn: cn=jellyfin-users,ou=Groups,dc=jellyfin,dc=local
+objectClass: posixGroup
+cn: jellyfin-users
+gidNumber: 5000

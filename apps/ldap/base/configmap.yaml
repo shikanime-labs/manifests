@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ldap
+data:
+  slapd.conf: |
+    # Minimal slapd.conf for OpenLDAP with MDB backend
+    # Managed by Kustomize — do not edit directly
+    include /etc/openldap/schema/core.schema
+    include /etc/openldap/schema/cosine.schema
+    include /etc/openldap/schema/inetorgperson.schema
+    include /etc/openldap/schema/nis.schema
+
+    # MDB backend configuration
+    database mdb
+    maxsize 1073741824
+    suffix "dc=jellyfin,dc=local"
+    rootdn "cn=admin,dc=jellyfin,dc=local"
+    rootpw {SSHA}REPLACE_ME
+
+    # Indices to maintain
+    index objectClass=create
+    index objectClass eq
+
+    # TLS configuration
+    TLSCertificateFile /etc/openldap/tls/tls.crt
+    TLSCertificateKeyFile /etc/openldap/tls/tls.key
+    TLSCACertificateFile /etc/openldap/tls/ca.crt
+
+    # Access controls
+    access to attrs=userPassword
+        by dn="cn=admin,dc=jellyfin,dc=local" write
+        by anonymous auth
+        by self write
+        by * none
+
+    # memberOf overlay — maintains reverse group membership
+    moduleload memberof
+    overlay memberof
+    memberof-refint true
