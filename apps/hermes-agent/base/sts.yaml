@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: hermes-agent-gateway
+  name: hermes-agent
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/instance: hermes-agent-gateway
+      app.kubernetes.io/instance: hermes-agent
       app.kubernetes.io/name: hermes-agent
-  serviceName: hermes-agent-gateway
+  serviceName: hermes-agent
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: hermes-agent-gateway
+        app.kubernetes.io/instance: hermes-agent
         app.kubernetes.io/name: hermes-agent
     spec:
       containers:
-        - name: hermes-agent-gateway
+        - name: hermes-agent
           image: hermes-agent
           args:
             - gateway
@@ -90,7 +90,7 @@ spec:
             claimName: hermes-agent-data
         - name: rclone-config
           configMap:
-            name: hermes-agent-gateway-rclone
+            name: hermes-agent-rclone
         - name: run
           emptyDir:
             medium: Memory
@@ -98,30 +98,30 @@ spec:
           projected:
             sources:
               - secret:
-                  name: hermes-agent-gateway-startup-config
+                  name: hermes-agent-startup-config
               - configMap:
-                  name: hermes-agent-gateway-dreamer
+                  name: hermes-agent-dreamer
                   items:
                     - key: config.yaml
                       path: profiles/dreamer/config.yaml
                     - key: SOUL.md
                       path: profiles/dreamer/SOUL.md
               - configMap:
-                  name: hermes-agent-gateway-operator
+                  name: hermes-agent-operator
                   items:
                     - key: config.yaml
                       path: profiles/operator/config.yaml
                     - key: SOUL.md
                       path: profiles/operator/SOUL.md
               - configMap:
-                  name: hermes-agent-gateway-coder
+                  name: hermes-agent-coder
                   items:
                     - key: config.yaml
                       path: profiles/coder/config.yaml
                     - key: SOUL.md
                       path: profiles/coder/SOUL.md
               - configMap:
-                  name: hermes-agent-gateway-auxiliary
+                  name: hermes-agent-auxiliary
                   items:
                     - key: config.yaml
                       path: profiles/auxiliary/config.yaml
@@ -130,4 +130,4 @@ spec:
         - name: ssh-key
           secret:
             defaultMode: 400
-            secretName: hermes-agent-gateway-ssh
+            secretName: hermes-agent-ssh

@@ -124,7 +124,7 @@
                             key_groups = keyGroup;
                           }
                           {
-                            path_regex = "apps/hermes-agent/gateway/overlays/${env.name}(.*)?/hermes-agent-gateway-ssh/id_ed25519\\.enc\\.yaml";
+                            path_regex = "apps/hermes-agent/gateway/overlays/${env.name}(.*)?/hermes-agent-ssh/id_ed25519\\.enc\\.yaml";
                             key_groups = keyGroup;
                           }
                           {

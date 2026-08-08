@@ -68,7 +68,7 @@ transport = "openai"
 model = "auxiliary"
 
 [deriver.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 # Peer card settings
 [peer_card]
@@ -91,7 +91,7 @@ transport = "openai"
 model = "auxiliary"
 
 [dialectic.levels.minimal.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.low]
 MAX_TOOL_ITERATIONS = 5
@@ -102,7 +102,7 @@ transport = "openai"
 model = "auxiliary"
 
 [dialectic.levels.low.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.medium]
 MAX_TOOL_ITERATIONS = 2
@@ -112,7 +112,7 @@ transport = "openai"
 model = "auxiliary"
 
 [dialectic.levels.medium.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.high]
 MAX_TOOL_ITERATIONS = 4
@@ -122,7 +122,7 @@ transport = "openai"
 model = "auxiliary"
 
 [dialectic.levels.high.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 [dialectic.levels.max]
 MAX_TOOL_ITERATIONS = 10
@@ -132,7 +132,7 @@ transport = "openai"
 model = "auxiliary"
 
 [dialectic.levels.max.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 # Summary settings
 [summary]
@@ -147,7 +147,7 @@ transport = "openai"
 model = "auxiliary"
 
 [summary.model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 # Dream settings
 [dream]
@@ -164,14 +164,14 @@ transport = "openai"
 model = "dreamer"
 
 [dream.deduction_model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 [dream.induction_model_config]
 transport = "openai"
 model = "dreamer"
 
 [dream.induction_model_config.overrides]
-base_url = "http://hermes-agent-gateway.shikanime.svc.cluster.local:8642/v1"
+base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]

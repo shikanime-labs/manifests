@@ -6,7 +6,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: hermes-agent-gateway
+      name: hermes-agent
       port:
         name: http
   ingressClassName: tailscale
@@ -21,7 +21,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: hermes-agent-gateway
+      name: hermes-agent
       port:
         name: dashboard
   ingressClassName: tailscale
@@ -39,7 +39,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: hermes-agent-gateway
+      name: hermes-agent
       port:
         name: webhook
   ingressClassName: tailscale

@@ -15,6 +15,6 @@ metadata:
     automata.shikanime.studio/images:
       '[ { "name": "hermes-agent", "tag-regex": "^(?P<version>.+)$" } ]'
 configMapGenerator:
-  - name: hermes-agent-gateway-rclone
+  - name: hermes-agent-rclone
     files:
       - rclone/rclone.conf

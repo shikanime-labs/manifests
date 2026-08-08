@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: hermes-agent-gateway
+  name: hermes-agent
 spec:
   template:
     spec:
       containers:
-        - name: hermes-agent-gateway
+        - name: hermes-agent
           env:
             - name: HONCHO_BASE_URL
-              value: http://hermes-agent-gateway.shikanime.svc.cluster.local:8000
+              value: http://hermes-agent.shikanime.svc.cluster.local:8000
