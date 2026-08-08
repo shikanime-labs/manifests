@@ -13,7 +13,3 @@ images:
   - name: dex
     newName: dexidp/dex
     newTag: v2.45.0
-secretGenerator:
-  - name: dex-config
-    files:
-      - config.yaml=dex/config.enc.yaml

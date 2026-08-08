@@ -1,0 +1,67 @@
+enablePasswordDB: true
+staticPasswords:
+    - email: admin@nishir.cluster
+      username: admin
+      hash: $2a$10$7EqJtq98hPqEX7fNZaFWoOHiZHO0OAJ6Digw1k3DybZ0fjQ2hypeW
+      userID: 08a8684b-345c-4733-99a9-2d15f0fbd4f6
+issuer: https://accounts.taila659a.ts.net
+oauth2:
+    skipApprovalScreen: true
+staticClients:
+    - name: Forgejo
+      id: forgejo
+      secret: ENC[AES256_GCM,data:hAZAtOg/88uMjfyuMxw7iz8wCX/476Gxg8oWKTKKf1FXoZMUodMNvpczHr2+Wux311Kz3LRMVfhXNdiyT1hUGw==,iv:oIGWDek0BDIJvPscUMcEo8poEDZX23RYKFOhrY+G9sU=,tag:8diiwGZ0lFGKWDP9sRbpXg==,type:str]
+      redirectURIs:
+        - https://forgejo.taila659a.ts.net/user/oauth2/dex/callback
+      trustedPeers:
+        - '*'
+    - name: Gitea Mirror
+      id: gitea-mirror
+      secret: ENC[AES256_GCM,data:QTcO9ValtwAqAvwzHcgNIOKIWgByzCNweJwCIdss39t1+5hY1i0CMl55TRMucrLCMdOeonEyrc9Ztvl0EXGjFg==,iv:PleV7hql1G1TfngUQDw1ciNRPW9mfCd117YH6q9lFd0=,tag:f3guti+pajSZCzZE90ej2A==,type:str]
+      redirectURIs:
+        - https://gitea-mirror.taila659a.ts.net/api/auth/sso/callback/dex
+      trustedPeers:
+        - '*'
+storage:
+    type: memory
+telemetry:
+    http: 0.0.0.0:5558
+web:
+    gracefulShutdownTimeout: 5s
+    healthz: 0.0.0.0:5556
+    https: 0.0.0.0:5556
+    tlsCert: /etc/ssl/private/tls.crt
+    tlsKey: /etc/ssl/private/tls.key
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1b2x3YlNLMVQ5N291WFhL
+            UTg3MElQOERLMUJiUmRrWVFrVkc5TkJlM1M0Cmtna0tESTN1SFBPcWV3T0pVUlV4
+            cTl1Q0UvNERTSmtPQTEvY21BL2k5MUkKLS0tIDlTR28yUjN4emRDZ2hGMFVUYnNw
+            ckk2THE0WWdQMmx2alpzZEZRWHloTDQKKiMzJy85SJPGRc61xIjgtNWyrMYKWZBs
+            C3bCuQfyZnqSaDBooo51wKB/Pcel0cxOdLxCn6CORE/6hdStUgrKnQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQRUtLM296bEJyOG03Yitk
+            MDB2cDFLRmFwUDRQUnZWNWZyS05TWDNuZ1FFClh0bEFnVVVhWjZVWkdWb1V0cjRT
+            aC9OUjMzWVFmbmJFL3hjTitvQk9nSTQKLS0tIC9rUjY4Znl1aUJYUHkvUUZqLzNI
+            R0FsUm9PSUc3cWVOM1hXQ1Yvbjd4ZmMKvZoHH52tmD1Cq4AhVZioaPAbcQJ8VXe0
+            0XMG4nwEyAyuu3dadQ1lxA+1KxpDe1c9PD9GyIxgbTJtOSNqQsnz1Q==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoOXJDS1VHYzBlbDdTcjha
+            M3BqZFYzOC96UEtBaDIrb09BU1NhcTR0cmlZCmFzY1BreUNUcHVhZGV5eU9SVURQ
+            Yk9TbmFkNUhQNG5oRTNLay9lRUkvb0kKLS0tIEl3NDQ2UTduSUNiTEc0U0JoKzJT
+            cW9vZjQwWm1JNXZ4d2J5c2UvTmpDSVEKyTejMyUeWahvS0mZdP3MJAAt+y3SL8Wh
+            8wCJ9iIby1nc0hl7KCDD+uQfqFXE3YKhtuzT6TFTp5ZgHwIs4pulmg==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: secret$
+    lastmodified: "2026-08-08T23:18:37Z"
+    mac: ENC[AES256_GCM,data:Aeia4Fga7xAx6SdMFxUBGaIbG42TyZhAgmtBkNFQwQb4dF8q9yuhgzuWysWJ69A4PF8MbZX6puqM0J1CVNXlummPXgI9xIkTFZc63Ydq3GaxeOxEmZyvRwDU7Unht84CnawobmBP+UDu7Eaj4CgJeB2VbmzVjX79t0JQwAljiss=,iv:drGbMjboOtEF03V1ReKSeGugzizSV2mcnK2STahivX0=,tag:etvZ3m/D+X9CoGfxmLTVTA==,type:str]
+    version: 3.13.3
