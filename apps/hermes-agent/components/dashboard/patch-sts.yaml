@@ -13,4 +13,6 @@ spec:
           ports:
             - name: dashboard
               containerPort: 9119
-      shareProcessNamespace: true
+# ponytail: shared PID namespace forced the pause container to PID 1,
+# breaking s6-overlay (/init must be PID 1 -> "can only run as pid 1").
+# Dashboard reaches the gateway over the network, so the share is unneeded.
