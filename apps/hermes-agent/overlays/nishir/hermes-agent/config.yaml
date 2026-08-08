@@ -224,10 +224,10 @@ curator:
 dashboard:
   basic_auth:
     password: ""
-    password_hash: ""
+    password_hash: $2y$05$vfQMVf.qFiTB62aGVmmL6OV3TXzcOORB5s3DHoXdQOIrTOS7IzMlm
     secret: ""
     session_ttl_seconds: 0
-    username: ""
+    username: hermes
   oauth:
     client_id: ""
     portal_url: ""
