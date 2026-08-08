@@ -1,0 +1,16 @@
+# Test admin user for Jellyfin LDAP authentication.
+# userPassword is SSHA-hashed (password: jellyfin).
+# posixAccount provides gidNumber/uidNumber for UID mapping.
+# inetOrgPerson provides uid, sn, cn, displayName for Jellyfin lookups.
+
+dn: uid=jellyfin-admin,ou=Users,dc=jellyfin,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uid: jellyfin-admin
+sn: Admin
+cn: Jellyfin Admin
+displayName: Jellyfin Admin
+uidNumber: 10000
+gidNumber: 5000
+homeDirectory: /home/jellyfin-admin
+userPassword: {SSHA}TpqkUkQVNpnCAvMPYgmgi6DCTiuuf/w8

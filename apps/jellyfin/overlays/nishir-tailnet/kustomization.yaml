@@ -17,3 +17,7 @@ patches:
       version: v1
       kind: NetworkPolicy
   - path: patch-sts.yaml
+secretGenerator:
+  - name: jellyfin-ldap-bind
+    envs:
+      - jellyfin/ldap/.enc.env

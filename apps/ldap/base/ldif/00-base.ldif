@@ -1,0 +1,17 @@
+# Base DN and organizational units
+# Loaded by bitnami/openldap from $LDAP_CUSTOM_LDIF_DIR (default /ldifs)
+# on first container initialization via ldapadd.
+
+dn: dc=jellyfin,dc=local
+objectClass: dcObject
+objectClass: organization
+o: jellyfin
+dc: jellyfin
+
+dn: ou=Users,dc=jellyfin,dc=local
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,dc=jellyfin,dc=local
+objectClass: organizationalUnit
+ou: Groups

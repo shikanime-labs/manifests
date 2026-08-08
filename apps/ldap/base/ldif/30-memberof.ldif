@@ -1,0 +1,25 @@
+# memberOf overlay configuration for cn=config.
+# Loaded via a shell wrapper in /docker-entrypoint-initdb.d/ because
+# bitnami/openldap only executes .sh scripts from that directory,
+# and slapadd/ldapmodify against cn=config requires slapd to be running.
+#
+# Applied as a cn=config modification (ldapmodify format) targeting:
+#   - cn=module{0},cn=config  (load the memberof module)
+#   - olcOverlay={0}memberof,olcDatabase={2}mdb,cn=config (add the overlay to
+#     the main MDB database, which is {2}mdb in bitnami/openldap's config)
+
+dn: cn=module{0},cn=config
+changeType: modify
+add: olcModuleLoad
+olcModuleLoad: memberof
+
+dn: olcOverlay={0}memberof,olcDatabase={2}mdb,cn=config
+changeType: add
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {0}memberof
+olcMemberOfDangling: ignore
+olcMemberOfRefInt: TRUE
+olcMemberOfGroupOC: groupOfUniqueNames
+olcMemberOfMemberAD: uniqueMember
+olcMemberOfMemberOfAD: memberOf

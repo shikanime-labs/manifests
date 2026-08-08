@@ -1,0 +1,12 @@
+creation_rules:
+  - path_regex: 'apps/jellyfin/overlays/(nishir|nishir-tailnet)/jellyfin/ldap/.*\.enc\.env$'
+    encrypted_regex: "^(password|sops_.*)$"
+    age:
+      - age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+      - age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+      - age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+  - encrypted_regex: "^(LDAP_ADMIN_PASSWORD|sops_.*)$"
+    age:
+      - age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+      - age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+      - age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64

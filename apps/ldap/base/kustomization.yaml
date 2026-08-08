@@ -1,0 +1,26 @@
+resources:
+  - configmap.yaml
+  - deploy.yaml
+  - netpol.yaml
+  - pvc.yaml
+  - svc.yaml
+images:
+  - name: openldap
+    newName: bitnami/openldap
+    newTag: 2.8.10
+configMapGenerator:
+  - name: ldap-seed-ldif
+    files:
+      - ldif/00-base.ldif
+      - ldif/10-groups.ldif
+      - ldif/20-users.ldif
+      - ldif/30-memberof.ldif
+      - ldif/99-memberof-init.sh
+secretGenerator:
+  - name: ldap
+    envs:
+      - ldap/.enc.env
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { \"name\": \"openldap\", \"tag-regex\": \"^(?P<version>\\\\\\\\d+\\\\\\\\.\\\\\\\\d+\\\\\\\\.\\\\\\\\d+)$\" } ]'

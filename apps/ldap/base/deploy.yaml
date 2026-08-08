@@ -1,0 +1,120 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ldap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: ldap
+      app.kubernetes.io/name: ldap
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: ldap
+        app.kubernetes.io/name: ldap
+    spec:
+      containers:
+        - name: ldap
+          image: openldap
+          env:
+            - name: LDAP_ORGANISATION
+              value: Shikanime Studio
+            - name: LDAP_DOMAIN
+              value: jellyfin.local
+            - name: LDAP_ROOT
+              value: dc=jellyfin,dc=local
+            - name: LDAP_SKIP_DEFAULT_TREE
+              value: "true"
+            - name: LDAP_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ldap
+                  key: LDAP_ADMIN_PASSWORD
+            - name: LDAP_CONFIG_FILE
+              value: /etc/openldap/slapd.conf
+            - name: LDAP_TLS_VERIFY_CLIENT
+              value: demand
+          livenessProbe:
+            failureThreshold: 5
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 5
+            tcpSocket:
+              port: ldap
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            tcpSocket:
+              port: ldap
+          ports:
+            - name: ldap
+              containerPort: 389
+            - name: ldaps
+              containerPort: 636
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          volumeMounts:
+            - name: config
+              mountPath: /etc/openldap/slapd.conf
+              subPath: slapd.conf
+            - name: data
+              mountPath: /bitnami/openldap
+            - name: seed-ldif
+              mountPath: /container-entrypoint-initdb.d
+              # bitnami/openldap does not process /container-entrypoint-initdb.d,
+              # but data LDIFs are also mounted at /ldifs for processing and
+              # the memberOf init script is mounted at /docker-entrypoint-initdb.d.
+            - name: seed-ldif-data
+              mountPath: /ldifs
+              items:
+                - key: 00-base.ldif
+                  path: 00-base.ldif
+                - key: 10-groups.ldif
+                  path: 10-groups.ldif
+                - key: 20-users.ldif
+                  path: 20-users.ldif
+            - name: seed-ldif-init
+              mountPath: /docker-entrypoint-initdb.d
+              defaultMode: 0755
+              items:
+                - key: 99-memberof-init.sh
+                  path: 99-memberof-init.sh
+                - key: 30-memberof.ldif
+                  path: 30-memberof.ldif
+      volumes:
+        - name: config
+          configMap:
+            name: ldap
+        - name: data
+          persistentVolumeClaim:
+            claimName: ldap
+        - name: seed-ldif
+          configMap:
+            name: ldap-seed-ldif
+        - name: seed-ldif-data
+          configMap:
+            name: ldap-seed-ldif
+            items:
+              - key: 00-base.ldif
+                path: 00-base.ldif
+              - key: 10-groups.ldif
+                path: 10-groups.ldif
+              - key: 20-users.ldif
+                path: 20-users.ldif
+        - name: seed-ldif-init
+          configMap:
+            name: ldap-seed-ldif
+            defaultMode: 0755
+            items:
+              - key: 99-memberof-init.sh
+                path: 99-memberof-init.sh
+              - key: 30-memberof.ldif
+                path: 30-memberof.ldif
