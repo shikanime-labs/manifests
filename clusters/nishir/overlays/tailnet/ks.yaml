@@ -179,7 +179,7 @@ spec:
       name: hermes-agent-dashboard
       namespace: shikanime
   interval: 10m
-  path: ./apps/hermes-agent/dashboard/overlays/nishir-tailnet
+  path: ./apps/hermes-agent/gateway/components/dashboard
   prune: true
   sourceRef:
     name: flux-system

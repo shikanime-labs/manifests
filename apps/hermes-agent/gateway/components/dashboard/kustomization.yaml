@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - sts.yaml
+  - svc.yaml
+  - hpa.yaml
+  - vpa.yaml
+  - ingress.yaml
+  - netpol.yaml
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: agent
+      app.kubernetes.io/instance: hermes-agent-dashboard
+      app.kubernetes.io/name: hermes-agent
+      app.kubernetes.io/part-of: nishir-automata
+      app.kubernetes.io/version: 2026.6.5
+images:
+  - name: hermes-agent
+    newName: nousresearch/hermes-agent
+    newTag: v2026.6.5
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "hermes-agent", "tag-regex": "^(?P<version>.+)$" } ]'
