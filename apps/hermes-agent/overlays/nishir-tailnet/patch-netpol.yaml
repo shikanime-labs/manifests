@@ -7,3 +7,4 @@
             kubernetes.io/metadata.name: tailscale-system
     ports:
       - port: http
+      - port: dashboard

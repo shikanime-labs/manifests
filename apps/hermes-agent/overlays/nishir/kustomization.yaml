@@ -4,6 +4,7 @@ namespace: shikanime
 components:
   - ../../components/api
   - ../../components/browser
+  - ../../components/dashboard
   - ../../components/webhook
 patches:
   - path: patch-pvc.yaml

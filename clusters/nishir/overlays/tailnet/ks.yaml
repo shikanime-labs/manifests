@@ -152,34 +152,7 @@ spec:
       name: hermes-agent-gateway
       namespace: shikanime
   interval: 10m
-  path: ./apps/hermes-agent/gateway/overlays/nishir-tailnet
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: apps-hermes-agent-dashboard
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
-    - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: hermes-agent-dashboard
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/hermes-agent/dashboard/overlays/nishir-tailnet
+  path: ./apps/hermes-agent/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
