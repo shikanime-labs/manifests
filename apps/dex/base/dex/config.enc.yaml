@@ -2,44 +2,51 @@ issuer: https://accounts.taila659a.ts.net
 oauth2:
   skipApprovalScreen: true
 sops:
-  version: 3.13.1
+  version: 3.13.3
   encrypted_regex: secret$
-  lastmodified: "2026-08-08T21:10:56Z"
-  mac: ENC[AES256_GCM,data:0tmw/Bpyi+/usexGBrEejvvCnLV5O9fK5jSr5kRR/77lq2x3SvjLm5wjkla0JbMu4iDPhJSP1qZc/5VvB2BPxRvjZgF7VHtylO0pRG1wyFm7ZuonrIoQHirShC4pGJGqjTk2w+9I1tbFEqcB3KzgsE5xZ9fbXt8mM+UnZetRfm8=,iv:AyQf0CgrLBzRUQtmPBvgI3XMW6ofj0GqRQcsuMmYlzw=,tag:dG4uqd11MRIwmtehDeBL5A==,type:str]
+  lastmodified: "2026-08-08T21:23:38Z"
+  mac: ENC[AES256_GCM,data:WZv6uds98xaH3IxkroQxA9Lh5FLc+Ydi/OHNvgkIzwSe71gdsHRp220Gp0CWA5/dHf/54qYX7Eu9O3YS/cTKV5Vkdh0aMstruhZmwD4xpCu30z5n8RxA5bgF2lInwt7zeFLzGJWA9SWrjrV77WbN60lSfoHJodAqLO6mczi9vak=,iv:hO0M3R//rT2rQfRFRkBS6d/iTJbw6aUlJVVMJU5x928=,tag:njoRBv+oE8oqLRZYWSlS7A==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBZXBVNXAyMUM0Z2Y2b3l2
-        b1BkYzBaVkRRY0MwUmZuNlB3eUN2MTBsYlFvCmFjcTNJZ3hlWGp2aU4wUWd0ZG90
-        cURxRWJhcmZJblFzbzZ5VWtQK2RIZHcKLS0tIFloNXNpVklwZURQeGplUlFZRU43
-        SllNWGpxbVp4MWE4ZUNDM004bnNiS0EKJ1lovzkzsbc/oodxWLhwh80pJufGpYre
-        8+cneHeHBknMZ53NIUhuLhL01vaDqoPMwTfwupG08gUioj/oQX21fw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkc29pZ3lCMStpaGdta1FN
+        b0dFbS9WZkhiQWFYWGxGU3BsOFYxai9qMG1rCjBBWTk2M3RkOUVUMk9OZll4UFdk
+        bzRjSkNkbGMrQ25QazkwNU9BeHZXa1kKLS0tIHRqZEEyeDRaTHZsWjF0cnhvZUp6
+        cDJkcTJPL3JMaGZmamFORWVIUFBrVnMK10daNjy7ouWdWexfbhiHXG8lm/CDJPJd
+        U0CiJkM4NjDYnczKwCmov8ZtIBo6TfbaGt2awMyOKxZGAVcxvI1QFw==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyMzljS2c4V1ZuM0l6K09Q
-        WVFGQmpwWDFLUWxBbi90Q2FEdU5BWEFYc2pvCkNwMTlaTG1DbXc5a3pUeWtvZEtO
-        dTh2RElJTmdiYmFSVnFDTVpXWUd4eFEKLS0tIDE4YUNKRGhnNTZQS0FQR3hRdWZh
-        RWF3UEhSRkd0SVd1M25BdGt4MkZYS3MKs+D+vkeelstliPywRaPulyMlLf9in+kx
-        F+ySFGFAPR6Fm0MeziDNPM9hAAsGfRabKFVVKiaBI2W9CBfJK0INyQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoaXNSejkxc2tFU0Q0Y1lM
+        c0xCRWxwdWdxbHhpOHdUbHRaVldSQjA2NVhvCnA4akR0REdQWHo5c2ZKcnAxOGN4
+        a25qeUhaZHRlMmRGMzZ5dFhuU1VRQ0EKLS0tIDVDZHgveXdOMkk0MS9MeFRHQ1ZY
+        aUUwcFdSamI5MnQzT1FWMmNSSytCNm8KbWVfaQ+q3vKpZyMYhMDT/ubEYemT4oYe
+        TFwsYWZz61XbmgnRaxHLGyNFVWEKZwLVUjd3dNO4gjAPrZa2a1kSGA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzdjBMdGppTytiVVQ5Ujlp
-        emV2bmxaUFE2UjdZNDkrcDV4ZU1iMkczdlRVCm1YSE1VZENrS2Q3NXRaM3lVbENy
-        a0ZwS3JkT3d5VDBMOElBMktPTGdoaEkKLS0tIERqYzZkZHdUbUZFZzdHSDRwRFJO
-        WDk3K3dSa0tIeTRiOU5yTVRXQXJhdFUKt2AROvrfdXYR8fwSHpQ6vbrTpxSIkKAQ
-        5h+dj0jCYm3I3U/6pOzEo+i/Q9UgFDIasT5fr7X7nrWJqbNq5SM2xw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2QmtOd2FWVEtlWENzQmZP
+        eUM3czNzWXBGUXFYS3l5ZUxTUmlHNHdzL0JnCmhiOUVSMHFmUGsvTUNoQUErMVo5
+        aXB5R1o1OXdJQldMb1ZQSUVYRE1oeTQKLS0tIDk2RFNjRFViTU1CTllyWFcvZW1C
+        UU5ZRUFwRmdVNWs1czlCNGdUQUZSSlEKpysgLy7EfHsE7IgTUGuv73Kd3+uiSTW2
+        AAUurCFfaV6wmPKtGWKCgDOLvzpWij6REIT57k90CpAh62HXpyGAbw==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
 staticClients:
   - name: Shikanime
     id: REPLACE_WITH_CLIENT_ID
-    secret: ENC[AES256_GCM,data:9PG1EHm74PAw0XL5/zjGgK22BhwvdOPEEPw=,iv:y42GRoPkAs9Ml36jhef3kLexAvxX9A2QZGSPPeqzbM4=,tag:/v2JFEu377NEXhN4uRY4Qg==,type:str]
+    secret: ENC[AES256_GCM,data:gBzw4nPQLqqsTcvIjTS/lcQlvBBfKlougYQ=,iv:i68ZDqG+/vkLLATqsNnQubgOVshx+NJkyEkym2uxK10=,tag:TES7AA7s2Hx7kDcQwIak9A==,type:str]
     redirectURIs:
       - https://accounts.taila659a.ts.net/callback
+    trustedPeers:
+      - "*"
+  - name: Forgejo
+    id: forgejo
+    secret: ENC[AES256_GCM,data:wi+vKXAXY2aqTq/7c2P7LHK3q93ca5tElJFr4GeKTfTIe42hAhsNoI3OuchksMRv2IH2O+ZK/b4wDdFme1ITLQ==,iv:Gm0jpFmrRhE3InAH6jzNBwfdc5iWE34IcohFEa63h9U=,tag:KNkoG9YvZP/ePPubvQ1KUw==,type:str]
+    redirectURIs:
+      - https://forgejo.taila659a.ts.net/user/oauth2/dex/callback
     trustedPeers:
       - "*"
 storage:
