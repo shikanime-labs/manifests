@@ -41,7 +41,8 @@ managed via FluxCD and structured around Kustomize.
 ## Repository Layout
 
 - `apps/` — application manifests
-  - nested examples: `hermes-agent/{dashboard,gateway}`,
+  - nested examples: `hermes-agent/gateway`,
+    `hermes-agent/gateway/components/{api,browser,honcho,webhook,dashboard}`,
     `servarr/{lidarr,radarr,sonarr,whisparr}`, `mautrix/{discord,whatsapp,...}`
 - `clusters/` — cluster entrypoints
 - `bootstraps/` — controller/operator installation
