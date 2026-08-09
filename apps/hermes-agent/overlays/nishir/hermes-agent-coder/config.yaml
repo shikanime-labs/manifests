@@ -212,7 +212,7 @@ moa:
   active_preset: ""
   aggregator:
     model: openrouter/free
-    provider: nous
+    provider: openrouter
   aggregator_temperature: 0.4
   default_preset: default
   enabled: true
@@ -222,14 +222,14 @@ moa:
     default:
       aggregator:
         model: openrouter/free
-        provider: nous
+        provider: openrouter
       aggregator_temperature: 0.4
       enabled: true
       fanout: per_iteration
       max_tokens: 4096
       reference_models:
         - model: openrouter/free
-          provider: nous
+          provider: openrouter
         - model: stepfun/step-3.7-flash:free
           provider: nous
         - model: labs-leanstral-2603
@@ -237,7 +237,7 @@ moa:
       reference_temperature: 0.6
   reference_models:
     - model: openrouter/free
-      provider: nous
+      provider: openrouter
     - model: stepfun/step-3.7-flash:free
       provider: nous
     - model: labs-leanstral-2603
