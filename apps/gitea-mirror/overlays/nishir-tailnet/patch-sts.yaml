@@ -11,9 +11,7 @@ spec:
             - name: BETTER_AUTH_TRUSTED_ORIGINS
               value: https://gitea-mirror.taila659a.ts.net
             - name: BETTER_AUTH_URL
-              value: http://gitea-mirror
-            - name: PUBLIC_BETTER_AUTH_URL
-              value: http://gitea-mirror.shikanime.svc.cluster.local:4321
+              value: https://gitea-mirror.taila659a.ts.net
             - name: GITEA_USERNAME
               value: shikanime
             - name: GITHUB_USERNAME
