@@ -26,9 +26,11 @@ configMapGenerator:
       - config.yaml=hermes-agent-auxiliary/config.yaml
       - SOUL.md=hermes-agent-auxiliary/SOUL.md
 secretGenerator:
+  - name: hermes-agent
+    envs:
+      - hermes-agent/.enc.env
   - name: hermes-agent-startup-config
     files:
-      - .env=hermes-agent/.enc.env
       - hermes-agent/config.yaml
       - hermes-agent/SOUL.md
   - name: hermes-agent-ssh
