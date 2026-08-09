@@ -27,9 +27,6 @@ spec:
               value: mentions
             - name: S6_READ_ONLY_ROOT
               value: "1"
-          envFrom:
-            - secretRef:
-                name: hermes-agent
           volumeMounts:
             - name: data
               mountPath: /opt/data
@@ -42,6 +39,9 @@ spec:
             - name: ssh-key
               mountPath: /root/.ssh
               readOnly: true
+          envFrom:
+            - secretRef:
+                name: hermes-agent
           securityContext:
             capabilities:
               add:
