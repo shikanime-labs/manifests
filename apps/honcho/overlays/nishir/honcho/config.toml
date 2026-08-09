@@ -42,7 +42,7 @@ model = "openai/text-embedding-3-small"
 
 [embedding.model_config.overrides]
 base_url = "https://inference-api.nousresearch.com/v1"
-api_key_env = "NOUS_API_KEY"
+api_key_env = "LLM_NOUS_API_KEY"
 
 # Deriver settings
 [deriver]
