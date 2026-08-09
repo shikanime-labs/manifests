@@ -190,7 +190,7 @@ moa:
   active_preset: ""
   aggregator:
     model: tencent/hy3:free
-    provider: nous
+    provider: custom:nous
   aggregator_temperature: 0.4
   default_preset: default
   enabled: true
@@ -200,22 +200,22 @@ moa:
     default:
       aggregator:
         model: tencent/hy3:free
-        provider: nous
+        provider: custom:nous
       aggregator_temperature: 0.4
       enabled: true
       fanout: per_iteration
       max_tokens: 4096
       reference_models:
         - model: stepfun/step-3.7-flash:free
-          provider: nous
+          provider: custom:nous
         - model: labs-leanstral-1-5
           provider: mistral
       reference_temperature: 0.6
   reference_models:
     - model: stepfun/step-3.7-flash:free
-      provider: nous
+      provider: custom:nous
     - model: labs-leanstral-1-5
-      provider: nous
+      provider: custom:nous
   reference_temperature: 0.6
 model:
   base_url: https://openrouter.ai/api/v1
@@ -398,3 +398,8 @@ x_search:
   model: grok-4.20-reasoning
   retries: 2
   timeout_seconds: 180
+providers:
+  nous:
+    base_url: https://inference-api.nousresearch.com/v1
+    api_key_env: NOUS_API_KEY
+    request_timeout_seconds: 120
