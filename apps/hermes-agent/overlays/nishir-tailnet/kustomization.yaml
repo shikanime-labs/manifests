@@ -1,6 +1,8 @@
 resources:
   - ../nishir
   - ingress.yaml
+components:
+  - ../../components/honcho
 namespace: shikanime
 labels:
   - includeTemplates: true
