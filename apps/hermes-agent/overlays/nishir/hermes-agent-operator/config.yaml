@@ -267,6 +267,11 @@ privacy:
   redact_pii: false
 prompt_caching:
   cache_ttl: 5m
+providers:
+  nous:
+    api_key_env: NOUS_API_KEY
+    base_url: https://inference-api.nousresearch.com/v1
+    request_timeout_seconds: 120
 security:
   acked_advisories: []
   allow_lazy_installs: true
@@ -420,8 +425,3 @@ x_search:
   model: grok-4.20-reasoning
   retries: 2
   timeout_seconds: 180
-providers:
-  nous:
-    base_url: https://inference-api.nousresearch.com/v1
-    api_key_env: NOUS_API_KEY
-    request_timeout_seconds: 120
