@@ -9,21 +9,21 @@ connectors:
 staticClients:
     - name: Forgejo
       id: forgejo
-      secret: ENC[AES256_GCM,data:Ypp51OvWG20ayd0P9QcbBYA1cYlrmBUhtjvMWNXVKjceL8/NHNJ68bf07dimzOSi7fcuPz9euFpWURFmjy4+Ug==,iv:Q8e9WhsaEOXBuRMxQsbVYO3ff//2LzjqnLftPsBLaOM=,tag:cnrC2uUOSBtZtXqp32eUcw==,type:str]
+      secret: ENC[AES256_GCM,data:pqKswVoeNugteoaH5BlGDdC/nW+OR0AUhc605MnS3ywEtrhm95xXSN5+pYxSvCla+Ey7HmS4bfxIXSsIeWDo6w==,iv:wBSYK+LR6L5AKEDBHPfDRjzvb/hMuFrxSufqeiZifEQ=,tag:qaZyo04/ndEdicuJ0eZ6BQ==,type:str]
       redirectURIs:
         - https://forgejo.taila659a.ts.net/user/oauth2/Dex/callback
       trustedPeers:
         - '*'
     - name: Gitea Mirror
       id: gitea-mirror
-      secret: ENC[AES256_GCM,data:+hAp0TlctD9dSGxvpT5AWWj0dy0C8gj35rgTjB5CO778OYn+MWKFxL+AwlAHkgObeVG3AEg4Xu+HcJgLHdhKxw==,iv:oDbpJaPuY42iVPIk2FqaQwRhW3Tbv3SllmDfTWlwmmg=,tag:Ua4Es6eTOhtvOFA9OHrmbg==,type:str]
+      secret: ENC[AES256_GCM,data:Y+XhApJJSdmdVRxKUBZcJlkb/2xpMN7C4KEATKYuQ60DNBD4Y62QYlgTJ/nMeE7pYRBuvdq1+JAngvuBfXGw3w==,iv:4RpFfiONR+Kbok7iiBJaL+f1X1jUE71ij4Ob/rODRsU=,tag:i31jTwYY8OubyZF+R/jh5Q==,type:str]
       redirectURIs:
         - https://gitea-mirror.taila659a.ts.net/api/auth/sso/callback/dex
       trustedPeers:
         - '*'
     - name: Synapse
       id: synapse
-      secret: ENC[AES256_GCM,data:waSFm+76QgLR8QNBXxb5z1ifTXV+NOOQtA1o04HEGDzvraCcWjTuAh7B829HlKMCYzt56fr2HCgJnDSbmkSFxA==,iv:orrSYiQLtEXHJZkixTGN5YuPOkp1OOk2rfX/UBeJ4qs=,tag:5/NeiT1f8gqh2T7NObsXqw==,type:str]
+      secret: ENC[AES256_GCM,data:/bMnbkqX9a4rWQbPPga6ZjM2cz2ZqVuDK7YEFVf7WJH7Lp4RVNvdWv+4kSmNosjJiszosQdNfwZ/Z/F4LLS5xQ==,iv:flc4lBIE5ucaIhE7azH93Nhi8x+laYSS5YoILf7pRQU=,tag:TO9BLogfBvUiPZn3ljh2JA==,type:str]
       redirectURIs:
         - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
       trustedPeers:
@@ -31,14 +31,14 @@ staticClients:
     - name: Hermes Agent Dashboard
       id: hermes-agent
       public: true
-      secret: ENC[AES256_GCM,data:wca3g22hSLYb9h94to1Cxi4N3w/7FrKazVHxTqHnUicqqxuAlkcpekxfc0xpxCyioxRAjUji9jjvC73eT3g+Gg==,iv:qBDi5Kk232DQ6TpOhwC+rn6Smy4shjrBMR8/whq/4s4=,tag:5/u7TfGua9iyN1tMMvdJBw==,type:str]
+      secret: ENC[AES256_GCM,data:psII+dJED5TzB+fCOhDlUkKwo9mnvY5gdcLfCyDf3YeQrPCTfisvkTEgT4RRQtDhBg7VsS3Rtwx7vywUHNrlFw==,iv:Ru2Q29L1hX+G9TD4GW+fSXYQY8xKpXBp3Hh4Y92/dxw=,tag:8eCq4ONpth+Miust2zTthA==,type:str]
       redirectURIs:
         - https://automata-dashboard.taila659a.ts.net/auth/callback
       trustedPeers:
         - '*'
     - name: Vaultwarden
       id: vaultwarden
-      secret: ENC[AES256_GCM,data:mqvVtEGTotfsQaTy4YaFdBzFY4KH8xk08HMqwLjEbXpJKf6k6cXqcLPVNiRX6PiFlDJ/qll02hNCnFS5PNs1wQ==,iv:LdFm5jlOnvD0+TQImcLaCVYVDq263jvQKuipscQdKtc=,tag:Fdcphbtxpd+V/iCLMOgqhA==,type:str]
+      secret: ENC[AES256_GCM,data:1ZDHtDe80fXOOulPxVq1xi7ziplQrcCvOl4n7X8a6XpGmTZ3bmMXkCwO8B6vwU+vuY/v8p5eIQTwb6Px5gtbDg==,iv:oLs4nsNxkxYAKTw8vdh6Oo0pR5oIPbzaDXA24ZpFZ1k=,tag:LJ3P0wBvbPk6hr916fVQzA==,type:str]
       redirectURIs:
         - https://vaultwarden.taila659a.ts.net/sso/oidc/callback
       trustedPeers:
@@ -57,32 +57,32 @@ sops:
     age:
         - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiV1RGV0NLT05GOHJsbXhT
-            Y0hUVExOSHZTTDAvZmNaYmx1M1k5c1UyYmdBCnhPSnk3Vm9lRmxDVFAwZ3ltRUZw
-            QXIvNUxGTzFSbEJVTXVkVUZrUTdLWmsKLS0tIHBvVUpYUDFiOVpZekhVcHlXMUdu
-            R0lVMVJyemJXU1NjSWQ4a2hySVA1REEKZ9rO2CgBLlPxn/hV8TxgNyI9KUZuAw/R
-            vLKfZLhN1rjNH7eG2NfmLeN3pP6RQrcWUtww6y1Sqs2fktM2QXGKyA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBeXU4MUkrVDhHYll2Vnhk
+            a3ZndXpQUWlodTQyVUVXc0I5dXIvM3A2cFZVCkVxOGk3TTF2U0YrcFRCMlNqN29r
+            bjRSeWhYVjVRNkF1ZFIyc1FLaXBXRHcKLS0tIFpmTGlZQ2FIbmdzRkNGQ2JTM2po
+            Zk5rNDh5eHdTelEwamo1NGdJYnhFeUUKW2tAv+ISUbO/x1Sc9Uz3shzkp7kUozlQ
+            L1oX8VehRW8QqkR/+QNiPxEw5qBs25RYNnEdM7fYn5+UlRb0t4UBHg==
             -----END AGE ENCRYPTED FILE-----
           recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
         - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOSncwUGUrVkRJNDNKc0wr
-            UHhleGlhcCtQS0RiTDZvQlhzc0UzZ0E5RkZBCmtVcC9BMG9CdjJkR29EZWlTaGZ0
-            d21BcnFLR0s2T0NZNzBvTWhSdGcvcWsKLS0tIERsV1Jsa044SWRwVWR1UkhvVEc4
-            b0tsMXVqOCsvM2k0MDdIVGRyZnVWZ2cK/Lzq5F6G6su6LQgplGgqqDiKFUzxDo5y
-            KAeicyPHqCcpcbRzT+alWekT68yLJGfv5A69cLpeMuV3MEpVfIyuzw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEbEgvVEpiNm45SDJOWStE
+            VmZsbHExMllrVUVGc0I3VmkxbGpNeWRJelZRCi9zN2RGMGtCT3U0SkVSWDR4T1BW
+            bnJMeDM3bXlTTHBGWTJlRlZtQXYyNFEKLS0tIDQ5bUhpdzUwTTM2cHpEbUVHQnNW
+            UFpqQ1BFZ1o3MkNnWW45VFNFZmJQVWMKsnQ1MfgNR4rGHiVr0e2DtS625dN9e5b0
+            uBe38Tx8gHw8lrCe3TAA68H+PJY5vcNsjDz31OeI14D2ZCvV4LYXzw==
             -----END AGE ENCRYPTED FILE-----
           recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
         - enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RzhwMTJ5cGdnaE0xYlF1
-            SVhqUllkZFVJbWdqOUwrUmV4WWNpUDYwa2tvCm5JUzloQkJiZ0I2UlpVUTd3SXUy
-            WWsrSFZsTUlyWDhxd1BaSnFVY1NOcFkKLS0tIDZDWnpzZ2NIajN5UlpMSkorYSsz
-            K3VTMWwvbU1oaFNmY1dIRDYrY0c0c0UK420RRkx8e3Vqa5FxILztxMGa/w1ucEW6
-            GgZN3dqhDCLsjSB6aEBQfRv27LfhBuzW063p6VfvbwuW/ndnnVM7zw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4SGNvK0JaaDJkQ1lhckdO
+            ZEFXSnBETmpMZDYzOE45Z2VaVXUzZ3hlRXlFCndwSE5sTFh4aFpGeWZ2M1lub2RT
+            cy81OFdQT0NUT1plVWRaNVlXOHUzQXcKLS0tIGp6OTZWNUFwVXZ3dGUyaWQ5eG82
+            ZUdkVEo5cGxiQU5UVFBObXVuUUJ4Z0UKU6HvFxwnKqUDF7PGIMXKvis+ribNYFBg
+            CERGM+XoZ+lUzuu2G6ywxUomjJAL3eE6WaDuGQrEvlSND1cv82pfPA==
             -----END AGE ENCRYPTED FILE-----
           recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
     encrypted_regex: secret$
-    lastmodified: "2026-08-09T10:54:13Z"
-    mac: ENC[AES256_GCM,data:0AVYJUe76738CoTa2PWqY4/ZHpywfUChAs/Z0EtB4kxdQvE8f+WpqYImIzjxtGKxYrDnRBrgNIeRa6SxxIfVqRAfYi9RK4FkQ6OHlb4Z1WfDomoZAXC+ZlOtQMF4YJRsz0eEj3mTPm6KgjLpYFkpgFZMw/+aSi15EGRP5151GVs=,iv:B+xeYRbeOmauyZfQecpgLvrc90WyoQZI0/GnoUiyoBM=,tag:OvgVeh9m7lvfDnbC+yWfCg==,type:str]
+    lastmodified: "2026-08-09T10:54:50Z"
+    mac: ENC[AES256_GCM,data:gHR32JBiYh6WmyHvkW3o7NT2juBxoWnJ8hk+Zgk+RetPoXBBHXh4FJuzSVXji9EUo+4a+k2PDfQyD2B68eF0P0jCBa3MHAFlohWosn5GZITT4kHug3yuiRGKe6ysvLcfC/zEZzSgSEYInXIFOzOusoRqG2y4VmpeJMJCPzev6S0=,iv:L+Tb5Om73+2LygqOnU7NtRkQEuODoloRFuHn5jJrtFc=,tag:7DOMtc3ZVziyRBCb3/snRg==,type:str]
     version: 3.13.3
