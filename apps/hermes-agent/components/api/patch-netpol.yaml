@@ -1,0 +1,10 @@
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - podSelector:
+          matchLabels:
+            app.kubernetes.io/instance: honcho
+            app.kubernetes.io/name: honcho
+    ports:
+      - port: http
