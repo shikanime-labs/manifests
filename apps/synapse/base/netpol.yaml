@@ -32,6 +32,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: synapse-proxy
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: hermes-agent
       ports:
         - port: https
   podSelector:
