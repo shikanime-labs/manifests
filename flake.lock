@@ -101,13 +101,13 @@
       "locked": {
         "lastModified": 1786092510,
         "narHash": "sha256-9d1tXkb7VOZIyQJtB7DioV1qQjR1WvstL6qg8L/VeqI=",
-        "owner": "shikanime-studio",
+        "owner": "shikanime-labs",
         "repo": "devlib",
         "rev": "e7559778da2b066ece4a4cd36b402edf6b5333a4",
         "type": "github"
       },
       "original": {
-        "owner": "shikanime-studio",
+        "owner": "shikanime-labs",
         "repo": "devlib",
         "type": "github"
       }

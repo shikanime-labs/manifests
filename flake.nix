@@ -10,7 +10,7 @@
     };
 
     devlib = {
-      url = "github:shikanime-studio/devlib";
+      url = "github:shikanime-labs/devlib";
       inputs = {
         devenv.follows = "devenv";
         nixpkgs.follows = "nixpkgs";
