@@ -7,6 +7,9 @@ spec:
     - from:
         - podSelector:
             matchLabels:
+              app.kubernetes.io/name: hermes-agent
+        - podSelector:
+            matchLabels:
               app.kubernetes.io/name: mautrix-discord
         - podSelector:
             matchLabels:
