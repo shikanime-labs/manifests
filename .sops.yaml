@@ -1,0 +1,13 @@
+creation_rules:
+  - age:
+      age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c,
+      age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay,
+      age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: secret$
+    path_regex: apps/dex/overlays/.*/dex/config\.enc\.yaml
+  - age:
+      age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c,
+      age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay,
+      age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: (registration_shared_secret|form_secret|macaroon_secret_key|client_secret)$
+    path_regex: apps/synapse/overlays/.*/synapse/homeserver\.enc\.yaml
