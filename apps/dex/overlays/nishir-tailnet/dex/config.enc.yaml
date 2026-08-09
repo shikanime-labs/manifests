@@ -1,59 +1,82 @@
+connectors:
+  - name: LDAP
+    type: ldap
+    id: ldap
+    config:
+      bindDN: uid=admin,ou=people,dc=shikanime,dc=studio
+      bindPW: ENC[AES256_GCM,data:/OdT3g/jkF2VAG6k6D/hKtGHVR5KODLsZ+Ijxg==,iv:7BIyMlF7anOSc5P81VaQWKMhp7vFHETjuRS09SvT2bI=,tag:whUmkQ6p7zrFGpSb/2wptw==,type:str]
+      groupSearch:
+        baseDN: ou=groups,dc=shikanime,dc=studio
+        filter: (objectClass=groupOfUniqueNames)
+        nameAttr: cn
+        userMatchers:
+          - groupAttr: member
+            userAttr: DN
+      host: lldap.shikanime.svc.cluster.local:3890
+      insecureNoSSL: true
+      insecureSkipVerify: true
+      userSearch:
+        baseDN: ou=people,dc=shikanime,dc=studio
+        emailAttr: mail
+        idAttr: uid
+        nameAttr: displayName
+        preferredUsernameAttr: uid
+        username: uid
 enablePasswordDB: true
 issuer: https://accounts.taila659a.ts.net
 oauth2:
-  passwordConnector: local
   skipApprovalScreen: true
 sops:
   version: 3.13.3
-  encrypted_regex: secret$
-  lastmodified: "2026-08-09T21:34:11Z"
-  mac: ENC[AES256_GCM,data:hGyGvOB5IPCKKoYWOBoUqE2MlxXR7DIkfEbVKPL4TdCJ12zDSE4C769OJ3EPnZFUB+d27XFKyMCHJ5VYL8pvbTqPrPsf/6NEXPGO4ijJy7n6DZ1RXzaa2MVAugG8UfCBgWRZELZQiE013TbyonuD/UYohAOgqNJJYbaVnyMNQ48=,iv:6GfCzXQ+inlHxRz4zVT9VM5LAo99xfGIGDcYVzMJH+o=,tag:JwRvJW0Q4L7evlNjmI8acg==,type:str]
+  encrypted_regex: ^(secret|bindPW)$
+  lastmodified: "2026-08-10T07:50:09Z"
+  mac: ENC[AES256_GCM,data:cCgzhsrvamia6nlTVVHDAXp44rKfmRcdJA2AA+KOwzsfT9jLobS8/WM7/tcAh658XFrFvK6sZsw+HbdewslkTbirFf9Tll6xK/qTsi+qEnyjgi4fuR8OyEilzc8EY1SSSlAHVdhyp+yhHNVnr+jCSK1Ac2bJ6BQKCTHTXlhMcx0=,iv:9RDL2QC92iPxhLiK+5sxD1MTq6W/KqT/RztgIB+PIqo=,tag:Pq/mIQkeXZ9Y4XLNo0cBcA==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOd1dKbFBoTUc5V0c5OHB4
-        cTlvMTQ3M1pRMTBNeWlLcEFBYTBycmxYaEdBCmxDaGNpc2g4Zm9XL2hCWTRURGMz
-        NWJ3LzBhSmxjTTFhdHpSa3N6aUpMWTAKLS0tIEpqYVZpNWRCN2VVNlM1dE9BVVR5
-        QmRWQWZSNEZrakVKS2RIZnEzT3hha2sKHeaV+SjPPZueKCqis7egniRWgNbUNWsK
-        Iyu0Ze5YsK3ZhIn+TGHFDKXCNuul913YncsFPWV7xrGwyVpkrl2puw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSByUVNjOGVPemphb3cxWC9l
+        WCtXa3kzZmZVOW5BKzZsekpYT0w0dU1HS3lZClJMTDBYUk9lQXFaYlBsL20yV0Qy
+        dENaSFNjQnlVbkg0NXhCNW1vUkZGT1kKLS0tIGtJT2toTDZPaDlGcDFJRHloRjR1
+        aDcxd0FEMytndEdNcS8ySE9ndEsxc2sKDFm1oNXNMcXDCO4+jtfLqgmXqgVlpepi
+        WO5sbJHLxHEJShVHHUEaCrvji7IgSbfWxNOOCAHlVTBlk9M1fUamCQ==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWZ2FtbFRXUkxCcU1PUXBy
-        Q2RXLzArYkUvNFJRVjdmbnJ0a3orVnM1RFNzCkZ4NVJFVGJRSzM3Smo4SWZtUS9x
-        V21CVlhNd1UzVkZRVktJQS9FT1g5dEEKLS0tIFh5OGxqbVZNSG9uOHl4WTM1Q0Jz
-        cEZWdWx2WUFDeFRLS0VPY1NMMzZSMW8KQVhPPYFhglr5eEQhHEweGr3oyjsACGoB
-        KaQj+fDrbTL2eXSXPAFcAtjSyzpimoVU62UIYsRE6shNnAbZcvxDYg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBwcWJUQUVTUTlnWWpUaVFy
+        WlYwRGVaWEJIV2xkRFgya0lvVWpQOC9IbXcwCm5iSkpPdDIweFhoVDEvcEtwOFpj
+        QkdHQWlaVTFzRHF3Nkdjb0xXUHJXQzAKLS0tIHljK0RPNEt4bXBwaTNCdjZwZ3Jn
+        YmF0WjhoZ3RpeEFVc25OQlpJTHVIb2sKXWnUhoND2eGAOCjbgZgyNNzLTR+1zT69
+        t77M4dVu7yM2A5s2/LSEjfHmOZdE59K01xRDm2v+7WY9Ns+enQ+S0Q==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEVVBrME9UYWR2WWhwbG9q
-        eDZpbmt1a3haNU1Vb0J3OFBjTjNKRTNKNmk0CmhCbXN3Y2loK2M4VWNkN3RDRGZJ
-        TmFFT1VQRnF1aVZ6clhWK1NNSVlkclEKLS0tIEhHOHdINHdoYnBSaFU0ZU51SGg2
-        emtmYTB6U2ZQRllVRmo1Z1lVTml5UkEK61ZPZiCLzehV0ggpDoTqWwYr3XiMbVMc
-        31j9qZtWDHxr/spMkn2VYOFgO/qDZpopKwtQk4UF6pvGzo/o9iVXzA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0a1RVdk93Y01IYThIMCtt
+        N1d6UU1OVG1hL0wvYVNWRE1Rb2JEaGRxV25jClEyem9qaW1jZ3ZtV250NkgydUFL
+        L2ZmMCs5NDhhcEp3VXZ1RkFSRkprd3MKLS0tIHYwVnJZelR2SFpFVHIrSk83aERL
+        RlRQUGVUc0VwcldCKzF6MWZPUkE5alUKWVurEMpZmP+VKovNRapP3S4HAMeEjXrp
+        TqGSjw2zyhvfyt6K6BNW7bQvDoVddNNy6rVOw2y7y++8yAoheXkjWg==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
 staticClients:
   - name: Forgejo
     id: forgejo
-    secret: ENC[AES256_GCM,data:j6brId61SU3RHfiB/xPgvyq+e8vDjHlu8gqV5Lbqv2yAYlUxW3SeZXJwt3X3cSwxV1lgHJISqLVUJnM7QEa/ng==,iv:n7xwIozJE2mWYGiMxBuwPW/ChPohJrsQnn1/u+wn5DA=,tag:ofiElz289zdLWEPwrvqCaA==,type:str]
+    secret: ENC[AES256_GCM,data:b2sLRuQ3rUNoVT3x6n5tK2chqdGD45VuftHrxttTK9rZyMTBhuHuDa5KFnZDTVsG1DEvRDny55NKfdBF2JoKVw==,iv:gYJuwV0wlQyWQsG5r13sAhhEM8S9N3WPL2wKgF6dci4=,tag:0NetraTTKj2HAeEC1SshbQ==,type:str]
     redirectURIs:
       - https://forgejo.taila659a.ts.net/user/oauth2/Dex/callback
     trustedPeers:
       - "*"
   - name: Gitea Mirror
     id: gitea-mirror
-    secret: ENC[AES256_GCM,data:forojSufuEawOOO4X7OE8M6FsJdJ3WLC4xEOAJtt0nzSWtdyWJrIrnnzKBY6ArY1bj/XLk0pqR0UsIA+eagOqw==,iv:S0kaRNttqpRa+AupMAbAVIggVZv3BO2GDTP1j44eDNc=,tag:b8uBOS9Yiphzy0WUZqXGnw==,type:str]
+    secret: ENC[AES256_GCM,data:5Dhap66glixgPWI1UgI59Gn1uCbrGQCX4xHcPuyah16vwdPmfaF7NBlPTrICD1uMSvMFuh6AEIuISVZ4KRrRhg==,iv:4U8VonY2R7oTjim7E4QxN4gFEtplZYFim0+FXdTSK7Y=,tag:mjp553unvvttdzr8rvz9pQ==,type:str]
     redirectURIs:
       - https://gitea-mirror.taila659a.ts.net/api/auth/sso/callback/dex
     trustedPeers:
       - "*"
   - name: Synapse
     id: synapse
-    secret: ENC[AES256_GCM,data:ga7qaMvEhzAsr4TvWnPlNQ13ryBfaojzLvZ12nYfdkfF1yC8COQboHm6ZOE0qn5XqnDcEEaDwQ8pNHQDCvgr7w==,iv:FrP/6ahjnxcXWW5mmYnxT7yc7lP+cSunKJii/jD5au0=,tag:Mf7hcmA1QmDqXsP672h7BA==,type:str]
+    secret: ENC[AES256_GCM,data:0yS+y8hUh/Igut4Y5MWXdzhuXNxCfLSJe9yruPF6YAohuk0Bvw0LltpS7a+SdW6WhLmg6O19JgMErjEy944KKA==,iv:7JzE6yL8jg5SE16hy9BQiqfSDGeRVtS37Hk+5r4ihj4=,tag:h/6pEoAp6mu5yT+yJm9X8g==,type:str]
     redirectURIs:
       - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
     trustedPeers:
@@ -61,23 +84,18 @@ staticClients:
   - name: Hermes Agent Dashboard
     id: hermes-agent
     public: true
-    secret: ENC[AES256_GCM,data:S1Ul2mrdAg69fVjh9dEnSJ8jDgnH/jkgmH8GsrzsWjfXMNoWnwxag2YnQSIlhKLs0dfZYPwyD4HBUHzxQoFNIw==,iv:784foPF5FF4OjmpUEEPhsK5VTsxj7Ht2SRbwn3/vvWM=,tag:r/vAU54pCe4LyQmnjV+Asg==,type:str]
+    secret: ENC[AES256_GCM,data:A5FI1Sb9xpaqTxJ25CQyY2zKjhcRToQaPUUVfXunxS3Z9n09ueu8iWnP5Rv8duVRybwgFg7Ly+D3CYTeMlN27w==,iv:mmZ0/tFRAGrdHw/b6dRAVBx3c6HYp4LMO1vkCdp3IME=,tag:LYty476D0qjdy3AL1qu9Kw==,type:str]
     redirectURIs:
       - https://automata-dashboard.taila659a.ts.net/auth/callback
     trustedPeers:
       - "*"
   - name: Vaultwarden
     id: vaultwarden
-    secret: ENC[AES256_GCM,data:/TCC4RO+Ka+2jN0bYP6U+6ab18NVbfQnIP2AZpkSWHcw7+p78HhGXcoknNr950d66XsFBNoMtCeX3H/E/i5rrw==,iv:f4aDh6TWSkXBDjVdsLjHlnHKhaTMk5Gt777aSnNM/dw=,tag:Ru2s+HywtkOWY5QLC9a0jQ==,type:str]
+    secret: ENC[AES256_GCM,data:u7EY3RcC2G6WJm7Szq3fnZT9MHEhdKsoiR+atvw+BLbcMfRkqwxL+krczhk8evm+ksRVLABdQ33SCeUdVKBMTA==,iv:HslfRgWnoH8N62+aq+ebaFUNBoBodvq8CJRfcs1Fk7I=,tag:KVlA9heLwuiHTAIYf3/CoA==,type:str]
     redirectURIs:
       - https://vaultwarden.taila659a.ts.net/sso/oidc/callback
     trustedPeers:
       - "*"
-staticPasswords:
-  - email: shikanime.deva@gmail.com
-    hash: $2a$10$d84E46KKU2/nWCgSKwKAeOd/4nc4Oo0ZSc12nNtwSHS3pwOQmTyDC
-    userID: 46076132-877a-4df0-a7ec-439b257d1505
-    username: shikanime.deva
 storage:
   type: memory
 telemetry:

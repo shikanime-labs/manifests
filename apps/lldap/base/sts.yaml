@@ -18,28 +18,38 @@ spec:
       containers:
         - name: lldap
           image: lldap
-          ports:
-            - name: ldap
-              containerPort: 3890
-          livenessProbe:
-            tcpSocket:
-              port: ldap
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-          readinessProbe:
-            tcpSocket:
-              port: ldap
-            initialDelaySeconds: 5
-            timeoutSeconds: 5
           env:
             - name: TZ
               value: Europe/Paris
-          envFrom:
-            - secretRef:
-                name: lldap
+          livenessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: ldap
+            timeoutSeconds: 5
+          ports:
+            - name: ldap
+              containerPort: 3890
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: ldap
+            timeoutSeconds: 5
           volumeMounts:
             - name: data
               mountPath: /data
+          envFrom:
+            - secretRef:
+                name: lldap
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETUID
+                - SETGID
+            readOnlyRootFilesystem: false
+      securityContext:
+        fsGroup: 1000
       volumes:
         - name: data
           persistentVolumeClaim:

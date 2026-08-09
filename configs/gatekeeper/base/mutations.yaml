@@ -648,6 +648,7 @@ spec:
           operator: NotIn
           values:
             - whisparr
+            - lldap
     namespaces:
       - shikanime
     scope: Namespaced
@@ -718,6 +719,7 @@ spec:
           operator: NotIn
           values:
             - whisparr
+            - lldap
     namespaces:
       - shikanime
     scope: Namespaced

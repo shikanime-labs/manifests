@@ -13,4 +13,4 @@ resources:
 images:
   - name: lldap
     newName: lldap/lldap
-    newTag: 2026-08-08
+    newTag: 2026-08-08-debian

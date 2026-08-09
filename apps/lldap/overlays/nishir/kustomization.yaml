@@ -8,7 +8,7 @@ labels:
       app.kubernetes.io/instance: lldap
       app.kubernetes.io/name: lldap
       app.kubernetes.io/part-of: nishir-platform
-      app.kubernetes.io/version: 2026-08-08
+      app.kubernetes.io/version: 2026-08-08-debian
 secretGenerator:
   - name: lldap
     envs:
