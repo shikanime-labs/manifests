@@ -106,9 +106,6 @@
                         }
                       ];
 
-                      # nishir cluster keys (dex config lives in base, shared by nishir overlays)
-                      nishirKeys = (lib.findFirst (o: o.name == "nishir") null overlays).keys;
-
                       # Helper function to generate rules for a specific overlay environment
                       makeRulesForOverlay =
                         env:
@@ -119,6 +116,11 @@
                           {
                             path_regex = "apps/bazarr/overlays/${env.name}(.*)?/bazarr/config\\.enc\\.yaml";
                             encrypted_regex = "^(apikey|api_key|password|token|cookies|passkey|flask_secret_key|encryption_key|hashed_password|anti_captcha_key|gemini_key)$";
+                            key_groups = keyGroup;
+                          }
+                          {
+                            path_regex = "apps/dex/overlays/${env.name}(.*)?/dex/config\\.enc\\.yaml";
+                            encrypted_regex = "^(secret|bindPW)$";
                             key_groups = keyGroup;
                           }
                           {
@@ -156,13 +158,7 @@
                         ];
                     in
                     {
-                      creation_rules = concatMap makeRulesForOverlay overlays ++ [
-                        {
-                          path_regex = "apps/dex/base/dex/config\\.enc\\.yaml";
-                          encrypted_regex = "secret$";
-                          key_groups = [ { age = workstations ++ nishirKeys; } ];
-                        }
-                      ];
+                      creation_rules = concatMap makeRulesForOverlay overlays;
                     };
                 };
               }
