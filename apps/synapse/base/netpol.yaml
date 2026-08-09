@@ -35,8 +35,6 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: synapse-proxy
-      ports:
-        - port: https
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: synapse
