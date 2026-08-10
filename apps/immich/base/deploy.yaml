@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: immich
+      app.kubernetes.io/name: immich
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: immich
+        app.kubernetes.io/name: immich
+    spec:
+      containers:
+        - name: immich
+          image: immich-server
+          livenessProbe:
+            httpGet:
+              path: /api/server-info/ping
+              port: http
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 2283
+          readinessProbe:
+            httpGet:
+              path: /api/server-info/ping
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /api/server-info/ping
+              port: http
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/app/upload
+          env:
+            - name: TZ
+              value: Europe/Paris
+            - name: IMMICH_SERVER_PORT
+              value: "2283"
+            - name: IMMICH_MEDIA_LOCATION
+              value: /usr/src/app/upload
+            - name: DB_HOSTNAME
+              value: immich-postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: db-username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: db-password
+            - name: DB_DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: db-database
+            - name: REDIS_HOSTNAME
+              value: immich-valkey
+            - name: REDIS_PORT
+              value: "6379"
+            - name: IMMICH_MACHINE_LEARNING_URL
+              value: http://immich-ml:3003
+            - name: IMMICH_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: jwt-secret
+            - name: IMMICH_OIDC_ENABLED
+              value: "true"
+            - name: IMMICH_OIDC_ISSUER_URL
+              value: https://accounts.taila659a.ts.net
+            - name: IMMICH_OIDC_CLIENT_ID
+              value: immich
+            - name: IMMICH_OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: oidc-secret
+            - name: IMMICH_OIDC_BUTTON_TEXT
+              value: Shikanime
+            - name: IMMICH_OIDC_AUTO_REGISTER
+              value: "true"
+            - name: IMMICH_OIDC_SCOPE
+              value: openid email profile
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: immich-data

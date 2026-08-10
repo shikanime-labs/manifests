@@ -1,0 +1,15 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - deploy.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: immich-server
+    newName: ghcr.io/immich-app/immich-server
+    newTag: v1.118.0
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "immich-server", "tag-regex":
+      "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+namespace: shikanime
+secretGenerator:
+  - name: immich
+    envs:
+      - immich/.enc.env
+    options:
+      disableNameSuffixHash: true

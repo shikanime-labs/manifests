@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: immich-valkey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: immich-valkey
+      app.kubernetes.io/name: valkey
+  serviceName: immich-valkey
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: immich-valkey
+        app.kubernetes.io/name: valkey
+    spec:
+      containers:
+        - name: valkey
+          image: valkey
+          args:
+            - --save
+            - ""
+            - --appendonly
+            - "no"
+          livenessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          ports:
+            - name: valkey
+              containerPort: 6379
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 30
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}
