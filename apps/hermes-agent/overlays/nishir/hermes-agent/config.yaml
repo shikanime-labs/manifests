@@ -195,7 +195,7 @@ compression:
   target_ratio: 0.2
   threshold: 0.5
 context:
-  engine: lcm
+  engine: compressor
 cron:
   wrap_response: true
 curator:
@@ -344,8 +344,6 @@ display:
   user_message_preview:
     first_lines: 2
     last_lines: 2
-documents:
-  honcho.json: '{"baseUrl":"https://honcho.taila659a.ts.net","hosts":{"hermes":{"peerName":"hermes-agent","aiPeer":"hermes","workspace":"hermes","observationMode":"directional","writeFrequency":"async","recallMode":"hybrid","dialecticCadence":3,"sessionStrategy":"per-session","enabled":true,"saveMessages":true,"dialecticReasoningLevel":"low","pinPeerName":false}}}'
 fallback_providers:
   - api_mode: chat_completions
     model: inclusionai/ling-3.0-flash:free
@@ -430,7 +428,7 @@ memory:
   memory_char_limit: 2200
   memory_enabled: true
   nudge_interval: 10
-  provider: honcho
+  provider: local
   user_char_limit: 1375
   user_profile_enabled: true
 model:
