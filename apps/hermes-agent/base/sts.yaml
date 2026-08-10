@@ -64,6 +64,12 @@ spec:
           args:
             - copy
             - --copy-links
+            - --filter
+            - + config.yaml
+            - --filter
+            - + SOUL.md
+            - --filter
+            - "- *"
             - /mnt/startup-config
             - /opt/data
           volumeMounts:
