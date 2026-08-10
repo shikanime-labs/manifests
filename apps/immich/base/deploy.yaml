@@ -99,6 +99,8 @@ spec:
               value: "true"
             - name: IMMICH_OIDC_SCOPE
               value: openid email profile
+            - name: IMMICH_TELEMETRY_EXCLUDE
+              value: all
       volumes:
         - name: data
           persistentVolumeClaim:
