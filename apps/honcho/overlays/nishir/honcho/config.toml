@@ -66,10 +66,11 @@ FLUSH_ENABLED = false
 
 [deriver.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [deriver.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 # Peer card settings
 [peer_card]
@@ -89,10 +90,11 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.minimal.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dialectic.levels.minimal.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.low]
 MAX_TOOL_ITERATIONS = 5
@@ -100,40 +102,44 @@ TOOL_CHOICE = "auto"
 
 [dialectic.levels.low.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dialectic.levels.low.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.medium]
 MAX_TOOL_ITERATIONS = 2
 
 [dialectic.levels.medium.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dialectic.levels.medium.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.high]
 MAX_TOOL_ITERATIONS = 4
 
 [dialectic.levels.high.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dialectic.levels.high.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.max]
 MAX_TOOL_ITERATIONS = 10
 
 [dialectic.levels.max.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dialectic.levels.max.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 # Summary settings
 [summary]
@@ -145,10 +151,11 @@ MAX_TOKENS_LONG = 4000
 
 [summary.model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [summary.model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 # Dream settings
 [dream]
@@ -162,17 +169,19 @@ HISTORY_TOKEN_LIMIT = 16384
 
 [dream.deduction_model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dream.deduction_model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 [dream.induction_model_config]
 transport = "openai"
-model = "dreamer"
+model = "tencent/hy3:free"
 
 [dream.induction_model_config.overrides]
-base_url = "http://hermes-agent.shikanime.svc.cluster.local:8642/v1"
+base_url = "https://ai.taila659a.ts.net/v1"
+api_key_env = "LLM_APERTURE_API_KEY"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]
