@@ -50,4 +50,14 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: lldap-data
+            claimName: data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

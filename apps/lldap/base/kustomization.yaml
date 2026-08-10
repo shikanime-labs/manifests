@@ -8,7 +8,6 @@ resources:
   - netpol.yaml
   - sts.yaml
   - svc.yaml
-  - pvc.yaml
   - vpa.yaml
 images:
   - name: lldap
