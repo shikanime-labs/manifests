@@ -6,14 +6,9 @@ spec:
   template:
     spec:
       containers:
-        - name: hermes-agent
-          env:
-            - name: BROWSER_CDP_URL
-              value: ws://127.0.0.1:9222
         - name: chrome
           image: chrome
           args:
-            - --headless=new
             - --no-sandbox
             - --disable-gpu
             - --disable-dev-shm-usage
@@ -25,10 +20,6 @@ spec:
             tcpSocket:
               port: cdp
             timeoutSeconds: 5
-          ports:
-            - name: cdp
-              containerPort: 9222
-              hostPort: 0
           readinessProbe:
             initialDelaySeconds: 5
             tcpSocket:
