@@ -10,3 +10,11 @@ secretGenerator:
       - registration.yaml=matrix-twitter/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: communication
+      app.kubernetes.io/instance: mautrix-twitter
+      app.kubernetes.io/name: mautrix-twitter
+      app.kubernetes.io/part-of: nishir-office
+      app.kubernetes.io/version: 0.2604.0

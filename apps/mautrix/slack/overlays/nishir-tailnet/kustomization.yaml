@@ -11,3 +11,11 @@ secretGenerator:
       - registration.yaml=matrix-slack/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: communication
+      app.kubernetes.io/instance: mautrix-slack
+      app.kubernetes.io/name: mautrix-slack
+      app.kubernetes.io/part-of: nishir-office
+      app.kubernetes.io/version: 0.2607.0

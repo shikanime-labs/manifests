@@ -73,8 +73,6 @@ spec:
             - "- *"
             - /mnt/config
             - /mnt/data
-          command:
-            - rclone
           volumeMounts:
             - name: config
               mountPath: /mnt/config

@@ -22,9 +22,6 @@ spec:
             - dex
             - serve
             - /etc/dex/config.yaml
-          env:
-            - name: TZ
-              value: Europe/Paris
           livenessProbe:
             httpGet:
               path: /healthz

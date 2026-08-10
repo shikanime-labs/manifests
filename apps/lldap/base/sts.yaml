@@ -18,9 +18,6 @@ spec:
       containers:
         - name: lldap
           image: lldap
-          env:
-            - name: TZ
-              value: Europe/Paris
           livenessProbe:
             initialDelaySeconds: 10
             tcpSocket:
