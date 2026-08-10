@@ -6,8 +6,8 @@ resources:
   - vpa.yaml
 images:
   - name: postgres
-    newName: pgvector/pgvector
-    newTag: pg15
+    newName: tensorchord/pgvecto-rs
+    newTag: pg14-v0.2.0
 metadata:
   annotations:
     automata.shikanime.studio/images:

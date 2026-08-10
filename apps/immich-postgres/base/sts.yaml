@@ -26,6 +26,17 @@ spec:
               mountPath: /var/lib/postgresql/data
             - name: run-postgresql
               mountPath: /var/run/postgresql
+          args:
+            - -c
+            - shared_preload_libraries=vectors.so
+            - -c
+            - search_path="$user", public, vectors
+            - -c
+            - logging_collector=on
+            - -c
+            - max_wal_size=2GB
+            - -c
+            - wal_compression=on
           livenessProbe:
             exec:
               command:
@@ -45,6 +56,8 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
           securityContext:
+            runAsUser: 999
+            runAsGroup: 999
             capabilities:
               add:
                 - CHOWN
