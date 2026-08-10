@@ -41,6 +41,9 @@ spec:
             tcpSocket:
               port: valkey
             timeoutSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /data
           securityContext:
             capabilities:
               add:
@@ -49,9 +52,6 @@ spec:
                 - SETUID
                 - SETGID
                 - DAC_OVERRIDE
-          volumeMounts:
-            - name: data
-              mountPath: /data
       securityContext:
         fsGroup: 999
       volumes:
