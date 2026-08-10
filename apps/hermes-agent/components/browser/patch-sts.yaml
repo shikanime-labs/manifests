@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hermes-agent
+spec:
+  template:
+    spec:
+      containers:
+        - name: hermes-agent
+          env:
+            - name: BROWSER_CDP_URL
+              value: ws://127.0.0.1:9222
+        - name: chrome
+          image: chrome
+          args:
+            - --remote-allow-origins=*
+          livenessProbe:
+            initialDelaySeconds: 15
+            tcpSocket:
+              port: 9222
+            timeoutSeconds: 5
+          ports:
+            - name: cdp
+              containerPort: 9222
+          startupProbe:
+            tcpSocket:
+              port: 9222
+            failureThreshold: 30
+            periodSeconds: 3
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: 9222
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 2Gi

@@ -3,6 +3,7 @@ resources:
 namespace: shikanime
 components:
   - ../../components/api
+  - ../../components/browser
   - ../../components/dashboard
   - ../../components/honcho
   - ../../components/webhook
