@@ -5,32 +5,13 @@ metadata:
 spec:
   template:
     spec:
-      initContainers:
-        - name: tls-sync
-          image: rclone
-          args:
-            - copy
-            - --copy-links
-            - --filter
-            - + /cert.pem
-            - --filter
-            - + /key.pem
-            - --filter
-            - "- *"
-            - /mnt/tls
-            - /mnt/cfg/copyparty
-          command:
-            - rclone
+      containers:
+        - name: copyparty
           volumeMounts:
-            - name: config
-              mountPath: /mnt/cfg
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
             - name: tls
-              mountPath: /mnt/tls
+              mountPath: /cfg/copyparty/cert.pem
               readOnly: true
+              subPath: cert.pem
       volumes:
         - name: tls
           secret:

@@ -50,6 +50,18 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
+            - name: startup-config
+              mountPath: /data/config.yaml
+              readOnly: true
+              subPath: config.yaml
+            - name: startup-config
+              mountPath: /data/doublepuppet.yaml
+              readOnly: true
+              subPath: doublepuppet.yaml
+            - name: startup-config
+              mountPath: /data/registration.yaml
+              readOnly: true
+              subPath: registration.yaml
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:
@@ -57,45 +69,12 @@ spec:
                 - CHOWN
                 - SETUID
                 - SETGID
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copy
-            - --copy-links
-            - --filter
-            - + /config.yaml
-            - --filter
-            - + /doublepuppet.yaml
-            - --filter
-            - + /registration.yaml
-            - --filter
-            - "- *"
-            - /mnt/config
-            - /mnt/data
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/config
-              readOnly: true
-            - name: data
-              mountPath: /mnt/data
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
       securityContext:
         fsGroup: 1337
       volumes:
-        - name: config
-          secret:
-            secretName: mautrix-googlechat
         - name: data
           persistentVolumeClaim:
             claimName: mautrix-googlechat-data
-        - name: rclone-config
-          configMap:
-            name: mautrix-googlechat-rclone
+        - name: startup-config
+          secret:
+            secretName: mautrix-googlechat

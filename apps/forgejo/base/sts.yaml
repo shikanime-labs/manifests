@@ -51,38 +51,16 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/gitea
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/app.ini
-            - /var/lib/gitea/custom/conf/app.ini
-          command:
-            - rclone
-          volumeMounts:
-            - name: data
-              mountPath: /var/lib/gitea
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
+            - name: startup-config
+              mountPath: /var/lib/gitea/custom/conf/app.ini
               readOnly: true
-              subPath: rclone.conf
-            - name: config
-              mountPath: /mnt/startup-config
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
+              subPath: app.ini
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
+        - name: startup-config
           secret:
             secretName: forgejo-config
-        - name: rclone-config
-          configMap:
-            name: forgejo-rclone
         - name: data
           persistentVolumeClaim:
             claimName: forgejo-data

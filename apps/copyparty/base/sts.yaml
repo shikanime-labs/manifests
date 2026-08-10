@@ -43,37 +43,14 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /cfg
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/config.conf
-            - /mnt/cfg/config.conf
-          command:
-            - rclone
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/cfg
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
             - name: startup-config
-              mountPath: /mnt/startup-config
+              mountPath: /cfg/config.conf
               readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
+              subPath: config.conf
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: copyparty-config
-        - name: rclone-config
-          configMap:
-            name: copyparty-rclone
         - name: startup-config
           configMap:
             name: copyparty

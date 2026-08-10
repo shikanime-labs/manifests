@@ -8,17 +8,8 @@ images:
   - name: bazarr
     newName: lscr.io/linuxserver/bazarr
     newTag: 1.5.6
-  - name: rclone
-    newName: rclone/rclone
-    newTag: 1.74.4
 metadata:
   annotations:
     automata.shikanime.studio/images:
-      '[ { "name": "rclone", "tag-regex":
-      "^(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)$" }, { "name":
-      "bazarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
-configMapGenerator:
-  - name: bazarr-rclone
-    namespace: shikanime
-    files:
-      - rclone/rclone.conf
+      '[ { "name": "bazarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }
+      ]'

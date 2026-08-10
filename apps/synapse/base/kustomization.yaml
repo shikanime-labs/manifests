@@ -5,19 +5,11 @@ resources:
   - svc.yaml
   - vpa.yaml
 images:
-  - name: rclone
-    newName: rclone/rclone
-    newTag: 1.74.4
   - name: synapse
     newName: matrixdotorg/synapse
     newTag: v1.157.1
 metadata:
   annotations:
     automata.shikanime.studio/images:
-      '[ { "name": "rclone", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" },
-      { "name": "synapse", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
-configMapGenerator:
-  - name: synapse-rclone
-    namespace: shikanime
-    files:
-      - rclone/rclone.conf
+      '[ { "name": "synapse", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$"
+      } ]'

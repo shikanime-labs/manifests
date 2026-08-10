@@ -47,6 +47,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: startup-config
+              mountPath: /config/config.yaml
+              readOnly: true
+              subPath: config.yaml
             - name: run
               mountPath: /run
           securityContext:
@@ -56,39 +60,12 @@ spec:
                 - FOWNER
                 - SETGID
                 - SETUID
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/config.yaml
-            - /mnt/config/config.yaml
-          command:
-            - rclone
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/config
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
       securityContext:
         fsGroup: 1000
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: bazarr-config
-        - name: rclone-config
-          configMap:
-            name: bazarr-rclone
         - name: run
           emptyDir:
             medium: Memory

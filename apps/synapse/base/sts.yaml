@@ -21,42 +21,21 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
+            - name: startup-config
+              mountPath: /data/homeserver.yaml
+              readOnly: true
+              subPath: homeserver.yaml
           securityContext:
             capabilities:
               add:
                 - SETUID
                 - SETGID
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copy
-            - --copy-links
-            - /mnt/startup-config
-            - /mnt/data
-          volumeMounts:
-            - name: data
-              mountPath: /mnt/data
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
       securityContext:
         fsGroup: 991
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: synapse-data
-        - name: rclone-config
-          configMap:
-            name: synapse-rclone
         - name: startup-config
           projected:
             sources:
