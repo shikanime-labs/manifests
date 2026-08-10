@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-ml
+spec:
+  ports:
+    - name: http
+      port: 3003
+      targetPort: http
+  selector:
+    app.kubernetes.io/instance: immich-ml
+    app.kubernetes.io/name: immich-ml

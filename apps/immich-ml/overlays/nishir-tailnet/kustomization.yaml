@@ -1,0 +1,13 @@
+resources:
+  - ../nishir
+namespace: shikanime
+patches:
+  - path: patch-pvc.yaml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: machine-learning
+      app.kubernetes.io/instance: immich-ml
+      app.kubernetes.io/name: immich-ml
+      app.kubernetes.io/part-of: nishir-media
+      app.kubernetes.io/version: v1.118.0

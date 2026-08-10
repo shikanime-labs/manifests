@@ -1,0 +1,13 @@
+resources:
+  - netpol.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: valkey
+    newName: valkey/valkey
+    newTag: 7-alpine
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "immich-valkey", "tag-regex": "^(?P<version>.+)$" } ]'

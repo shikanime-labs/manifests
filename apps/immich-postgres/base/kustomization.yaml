@@ -1,0 +1,14 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: postgres
+    newName: pgvector/pgvector
+    newTag: pg15
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "immich-postgres", "tag-regex": "^(?P<version>.+)$" } ]'

@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+namespace: shikanime
+patches:
+  - path: patch-pvc.yaml
+secretGenerator:
+  - name: immich-postgres
+    envs:
+      - immich-postgres/.enc.env
+    options:
+      disableNameSuffixHash: true
