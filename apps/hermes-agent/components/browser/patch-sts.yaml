@@ -14,6 +14,7 @@ spec:
           image: chrome
           args:
             - --remote-allow-origins=*
+            - --disable-gpu
           livenessProbe:
             initialDelaySeconds: 15
             tcpSocket:
