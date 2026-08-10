@@ -14,7 +14,6 @@ spec:
         app.kubernetes.io/instance: immich
         app.kubernetes.io/name: immich
     spec:
-      enableServiceLinks: false
       containers:
         - name: immich
           image: immich-server

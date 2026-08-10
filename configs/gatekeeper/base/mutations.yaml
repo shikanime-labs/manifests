@@ -102,9 +102,6 @@ spec:
     assign:
       value:
         - ALL
-    pathTests:
-      - condition: MustNotExist
-        subPath: spec.containers[name:*].securityContext.capabilities.drop
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
@@ -430,11 +427,6 @@ spec:
     assign:
       value:
         - ALL
-    pathTests:
-      - condition: MustExist
-        subPath: spec.initContainers
-      - condition: MustNotExist
-        subPath: spec.initContainers[name:*].securityContext.capabilities.drop
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
@@ -524,11 +516,6 @@ spec:
     assign:
       value:
         - ALL
-    pathTests:
-      - condition: MustExist
-        subPath: spec.ephemeralContainers
-      - condition: MustNotExist
-        subPath: spec.ephemeralContainers[name:*].securityContext.capabilities.drop
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
@@ -846,6 +833,3 @@ spec:
   parameters:
     assign:
       value: false
-    pathTests:
-      - condition: MustNotExist
-        subPath: spec.enableServiceLinks
