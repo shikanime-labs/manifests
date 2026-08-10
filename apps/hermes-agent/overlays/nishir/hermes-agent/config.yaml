@@ -199,27 +199,6 @@ mcp_servers:
   aperture:
     url: https://ai.taila659a.ts.net/v1/mcp
     enabled: true
-  web-reader:
-    url: https://api.z.ai/api/mcp/web_reader/mcp
-    connect_timeout: 60
-    enabled: true
-    timeout: 120
-    headers:
-      Authorization: Bearer ${GLM_API_KEY}
-  web-search-prime:
-    url: https://api.z.ai/api/mcp/web_search_prime/mcp
-    connect_timeout: 60
-    enabled: true
-    timeout: 120
-    headers:
-      Authorization: Bearer ${GLM_API_KEY}
-  zread:
-    url: https://api.z.ai/api/mcp/zread/mcp
-    connect_timeout: 60
-    enabled: true
-    timeout: 120
-    headers:
-      Authorization: Bearer ${GLM_API_KEY}
 memory:
   flush_min_turns: 6
   nudge_interval: 10
