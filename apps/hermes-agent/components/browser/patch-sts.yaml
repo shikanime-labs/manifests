@@ -9,4 +9,28 @@ spec:
         - name: hermes-agent
           env:
             - name: BROWSER_CDP_URL
-              value: ws://chrome.shikanime.svc.cluster.local:9222
+              value: ws://127.0.0.1:9222
+        - name: chrome
+          image: chrome
+          args:
+            - --headless=new
+            - --no-sandbox
+            - --disable-gpu
+            - --disable-dev-shm-usage
+            - --remote-debugging-address=127.0.0.1
+            - --remote-debugging-port=9222
+            - --remote-allow-origins=*
+          livenessProbe:
+            initialDelaySeconds: 15
+            tcpSocket:
+              port: cdp
+            timeoutSeconds: 5
+          ports:
+            - name: cdp
+              containerPort: 9222
+              hostPort: 0
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: cdp
+            timeoutSeconds: 5
