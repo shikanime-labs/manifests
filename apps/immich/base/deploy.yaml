@@ -19,7 +19,7 @@ spec:
           image: immich-server
           livenessProbe:
             httpGet:
-              path: /api/server-info/ping
+              path: /api/server/ping
               port: http
             initialDelaySeconds: 60
             timeoutSeconds: 5
@@ -28,7 +28,7 @@ spec:
               containerPort: 2283
           readinessProbe:
             httpGet:
-              path: /api/server-info/ping
+              path: /api/server/ping
               port: http
             initialDelaySeconds: 30
             timeoutSeconds: 5
@@ -39,7 +39,7 @@ spec:
           startupProbe:
             failureThreshold: 60
             httpGet:
-              path: /api/server-info/ping
+              path: /api/server/ping
               port: http
             timeoutSeconds: 5
           volumeMounts:
