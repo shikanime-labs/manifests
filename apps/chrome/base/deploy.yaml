@@ -18,6 +18,7 @@ spec:
         - name: chrome
           image: chrome
           args:
+            - --remote-debugging-address=0.0.0.0
             - --remote-allow-origins=*
           livenessProbe:
             initialDelaySeconds: 30
