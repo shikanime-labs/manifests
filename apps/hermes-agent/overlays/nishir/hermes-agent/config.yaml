@@ -428,7 +428,7 @@ memory:
   memory_char_limit: 2200
   memory_enabled: true
   nudge_interval: 10
-  provider: local
+  provider: honcho
   user_char_limit: 1375
   user_profile_enabled: true
 model:
