@@ -94,7 +94,7 @@ spec:
                   name: immich
                   key: oidc-secret
             - name: IMMICH_OIDC_BUTTON_TEXT
-              value: Shikanime
+              value: Dex
             - name: IMMICH_OIDC_AUTO_REGISTER
               value: "true"
             - name: IMMICH_OIDC_SCOPE
