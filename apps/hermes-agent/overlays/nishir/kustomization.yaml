@@ -5,6 +5,7 @@ components:
   - ../../components/api
   - ../../components/browser
   - ../../components/dashboard
+  - ../../components/honcho
   - ../../components/webhook
 patches:
   - path: patch-pvc.yaml
