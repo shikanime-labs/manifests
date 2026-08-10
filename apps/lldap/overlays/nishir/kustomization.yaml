@@ -2,7 +2,7 @@ resources:
   - ../../base
 namespace: shikanime
 patches:
-  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
 secretGenerator:
   - name: lldap
     envs:
