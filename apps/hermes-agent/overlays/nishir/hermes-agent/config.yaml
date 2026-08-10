@@ -79,68 +79,68 @@ approvals:
 auxiliary:
   approval:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   compression:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 120
   curator:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 600
   flush_memories:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   kanban_decomposer:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 180
   mcp:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   profile_describer:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 60
   session_search:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   skills_hub:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   title_generation:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   triage_specifier:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 120
   vision:
     base_url: https://ai.taila659a.ts.net/v1
     download_timeout: 30
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 120
   web_extract:
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 360
 bedrock:
@@ -213,7 +213,7 @@ custom_providers:
     api_key: ""
     api_mode: anthropic_messages
     base_url: https://ai.taila659a.ts.net/v1
-    model: glm-4.7
+    model: glm-5.2
     models:
       - glm-4.7
       - glm-5.2
@@ -221,7 +221,7 @@ custom_providers:
     api_key: ""
     api_mode: chat_completions
     base_url: https://ai.taila659a.ts.net/v1
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     models:
       - deepseek/deepseek-v4-flash
       - gemini-2.5-flash
@@ -360,7 +360,7 @@ fallback_providers:
     model: stepfun/step-3.7-flash:free
     provider: custom:aperture-openai
   - api_mode: chat_completions
-    model: openrouter/openrouter/free
+    model: tencent/hy3:free
     provider: custom:aperture-openai
 file_read_max_chars: 100000
 gateway:
