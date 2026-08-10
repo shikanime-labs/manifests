@@ -2,14 +2,6 @@ resources:
   - ../nishir
   - ingress.yaml
 namespace: shikanime
-secretGenerator:
-  - name: mautrix-twitter
-    files:
-      - config.yaml=matrix-twitter/config.enc.yaml
-      - doublepuppet.yaml=matrix-twitter/doublepuppet.enc.yaml
-      - registration.yaml=matrix-twitter/registration.enc.yaml
-    options:
-      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:
@@ -18,3 +10,11 @@ labels:
       app.kubernetes.io/name: mautrix-twitter
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2604.0
+secretGenerator:
+  - name: mautrix-twitter
+    files:
+      - config.yaml=matrix-twitter/config.enc.yaml
+      - doublepuppet.yaml=matrix-twitter/doublepuppet.enc.yaml
+      - registration.yaml=matrix-twitter/registration.enc.yaml
+    options:
+      disableNameSuffixHash: true

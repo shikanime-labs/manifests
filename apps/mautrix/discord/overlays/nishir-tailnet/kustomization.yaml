@@ -3,14 +3,6 @@ resources:
   - netpol.yaml
   - ingress.yaml
 namespace: shikanime
-secretGenerator:
-  - name: mautrix-discord
-    files:
-      - config.yaml=matrix-discord/config.enc.yaml
-      - doublepuppet.yaml=matrix-discord/doublepuppet.enc.yaml
-      - registration.yaml=matrix-discord/registration.enc.yaml
-    options:
-      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:
@@ -19,3 +11,11 @@ labels:
       app.kubernetes.io/name: mautrix-discord
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.7.6
+secretGenerator:
+  - name: mautrix-discord
+    files:
+      - config.yaml=matrix-discord/config.enc.yaml
+      - doublepuppet.yaml=matrix-discord/doublepuppet.enc.yaml
+      - registration.yaml=matrix-discord/registration.enc.yaml
+    options:
+      disableNameSuffixHash: true
