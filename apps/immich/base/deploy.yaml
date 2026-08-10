@@ -45,6 +45,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/src/app/upload
+            - name: config
+              mountPath: /etc/immich
+              readOnly: true
           env:
             - name: TZ
               value: Europe/Paris
@@ -82,26 +85,14 @@ spec:
                 secretKeyRef:
                   name: immich
                   key: jwt-secret
-            - name: IMMICH_OIDC_ENABLED
-              value: "true"
-            - name: IMMICH_OIDC_ISSUER_URL
-              value: https://accounts.taila659a.ts.net
-            - name: IMMICH_OIDC_CLIENT_ID
-              value: immich
-            - name: IMMICH_OIDC_CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: immich
-                  key: oidc-secret
-            - name: IMMICH_OIDC_BUTTON_TEXT
-              value: Dex
-            - name: IMMICH_OIDC_AUTO_REGISTER
-              value: "true"
-            - name: IMMICH_OIDC_SCOPE
-              value: openid email profile
+            - name: IMMICH_CONFIG_FILE
+              value: /etc/immich/config.yaml
             - name: IMMICH_TELEMETRY_EXCLUDE
               value: all
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: immich-data
+        - name: config
+          secret:
+            secretName: immich-config

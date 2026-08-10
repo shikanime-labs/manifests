@@ -124,6 +124,11 @@
                             key_groups = keyGroup;
                           }
                           {
+                            path_regex = "apps/immich/overlays/${env.name}(.*)?/immich/config\\.enc\\.yaml";
+                            encrypted_regex = "^(clientSecret)$";
+                            key_groups = keyGroup;
+                          }
+                          {
                             path_regex = "apps/forgejo/overlays/${env.name}(.*)?/forgejo/app\\.enc\\.ini";
                             encrypted_regex = "^(PASSWD|SECRET_KEY|INTERNAL_TOKEN|LFS_JWT_SECRET|JWT_SECRET|PASSWORD)$";
                             key_groups = keyGroup;
