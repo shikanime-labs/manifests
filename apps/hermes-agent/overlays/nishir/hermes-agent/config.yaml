@@ -78,83 +78,70 @@ approvals:
   timeout: 60
 auxiliary:
   approval:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   compression:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 120
   curator:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 600
   flush_memories:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   kanban_decomposer:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 180
   mcp:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   profile_describer:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 60
   session_search:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   skills_hub:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   title_generation:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 30
   triage_specifier:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 120
   vision:
-    api_key: ""
-    base_url: ""
+    base_url: https://ai.taila659a.ts.net/v1
     download_timeout: 30
-    model: ""
-    provider: auto
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 120
   web_extract:
-    api_key: ""
-    base_url: ""
-    model: ""
-    provider: auto
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
     timeout: 360
 bedrock:
   discovery:
@@ -208,7 +195,7 @@ compression:
   target_ratio: 0.2
   threshold: 0.5
 context:
-  engine: compressor
+  engine: lcm
 cron:
   wrap_response: true
 curator:
@@ -221,6 +208,33 @@ curator:
   min_idle_hours: 2
   prune_builtins: true
   stale_after_days: 30
+custom_providers:
+  - name: aperture-anthropic
+    api_mode: anthropic_messages
+    base_url: https://ai.taila659a.ts.net/v1
+    model: glm-4.7
+    models:
+      - glm-4.7
+      - glm-5.2
+  - name: aperture-openai
+    api_mode: chat_completions
+    base_url: https://ai.taila659a.ts.net/v1
+    model: openrouter/openrouter/free
+    models:
+      - deepseek/deepseek-v4-flash
+      - gemini-2.5-flash
+      - gemini-2.5-flash-lite
+      - gemini-2.5-pro
+      - gemini-3-flash-preview
+      - google/gemma-4-e2b
+      - inclusionai/ling-3.0-flash:free
+      - labs-leanstral-1-5
+      - nvidia/nemotron-3-ultra-550b-a55b:free
+      - openrouter/openrouter/free
+      - poolside/laguna-xs-2.1:free
+      - qwen/qwen3-8b
+      - stepfun/step-3.7-flash:free
+      - tencent/hy3:free
 dashboard:
   basic_auth:
     password: ""
@@ -330,7 +344,24 @@ display:
   user_message_preview:
     first_lines: 2
     last_lines: 2
-fallback_providers: []
+documents:
+  honcho.json: '{"baseUrl":"https://honcho.taila659a.ts.net","hosts":{"hermes":{"peerName":"hermes-agent","aiPeer":"hermes","workspace":"hermes","observationMode":"directional","writeFrequency":"async","recallMode":"hybrid","dialecticCadence":3,"sessionStrategy":"per-session","enabled":true,"saveMessages":true,"dialecticReasoningLevel":"low","pinPeerName":false}}}'
+fallback_providers:
+  - api_mode: chat_completions
+    model: inclusionai/ling-3.0-flash:free
+    provider: custom:aperture-openai
+  - api_mode: chat_completions
+    model: poolside/laguna-s-2.1:free
+    provider: custom:aperture-openai
+  - api_mode: chat_completions
+    model: labs-leanstral-1-5
+    provider: custom:aperture-openai
+  - api_mode: chat_completions
+    model: stepfun/step-3.7-flash:free
+    provider: custom:aperture-openai
+  - api_mode: chat_completions
+    model: openrouter/openrouter/free
+    provider: custom:aperture-openai
 file_read_max_chars: 100000
 gateway:
   media_delivery_allow_dirs: []
@@ -370,6 +401,9 @@ mattermost:
   free_response_channels: ""
   require_mention: true
 mcp_servers:
+  aperture:
+    url: https://ai.taila659a.ts.net/v1/mcp
+    enabled: true
   web-reader:
     url: https://api.z.ai/api/mcp/web_reader/mcp
     connect_timeout: 60
@@ -396,54 +430,19 @@ memory:
   memory_char_limit: 2200
   memory_enabled: true
   nudge_interval: 10
-  provider: local
+  provider: honcho
   user_char_limit: 1375
   user_profile_enabled: true
-moa:
-  active_preset: ""
-  aggregator:
-    model: tencent/hy3:free
-    provider: custom:nous
-  aggregator_temperature: 0.4
-  default_preset: default
-  enabled: true
-  fanout: per_iteration
-  max_tokens: 4096
-  presets:
-    default:
-      aggregator:
-        model: tencent/hy3:free
-        provider: custom:nous
-      aggregator_temperature: 0.4
-      enabled: true
-      fanout: per_iteration
-      max_tokens: 4096
-      reference_models:
-        - model: stepfun/step-3.7-flash:free
-          provider: custom:nous
-        - model: labs-leanstral-1-5
-          provider: mistral
-      reference_temperature: 0.6
-  reference_models:
-    - model: stepfun/step-3.7-flash:free
-      provider: custom:nous
-    - model: labs-leanstral-1-5
-      provider: custom:nous
-  reference_temperature: 0.6
 model:
-  base_url: https://openrouter.ai/api/v1
-  default: default
-  provider: moa
+  base_url: https://ai.taila659a.ts.net/v1
+  default: tencent/hy3:free
+  provider: custom:aperture-openai
 model_catalog:
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
   enabled: true
   ttl_hours: 1
 network:
   force_ipv4: false
-openrouter:
-  min_coding_score: 0.65
-  response_cache: true
-  response_cache_ttl: 300
 paste_collapse_char_threshold: 2000
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
@@ -513,11 +512,6 @@ privacy:
   redact_pii: false
 prompt_caching:
   cache_ttl: 5m
-providers:
-  nous:
-    api_key_env: NOUS_API_KEY
-    base_url: https://inference-api.nousresearch.com/v1
-    request_timeout_seconds: 120
 secrets:
   bitwarden:
     access_token_env: BWS_ACCESS_TOKEN

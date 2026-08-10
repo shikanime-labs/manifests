@@ -102,34 +102,6 @@ spec:
             sources:
               - secret:
                   name: hermes-agent-startup-config
-              - configMap:
-                  name: hermes-agent-dreamer
-                  items:
-                    - key: config.yaml
-                      path: profiles/dreamer/config.yaml
-                    - key: SOUL.md
-                      path: profiles/dreamer/SOUL.md
-              - configMap:
-                  name: hermes-agent-operator
-                  items:
-                    - key: config.yaml
-                      path: profiles/operator/config.yaml
-                    - key: SOUL.md
-                      path: profiles/operator/SOUL.md
-              - configMap:
-                  name: hermes-agent-coder
-                  items:
-                    - key: config.yaml
-                      path: profiles/coder/config.yaml
-                    - key: SOUL.md
-                      path: profiles/coder/SOUL.md
-              - configMap:
-                  name: hermes-agent-auxiliary
-                  items:
-                    - key: config.yaml
-                      path: profiles/auxiliary/config.yaml
-                    - key: SOUL.md
-                      path: profiles/auxiliary/SOUL.md
         - name: ssh-key
           secret:
             defaultMode: 400
