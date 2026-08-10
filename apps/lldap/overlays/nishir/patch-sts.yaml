@@ -1,10 +1,3 @@
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: lldap
-spec:
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        storageClassName: nishir-standard
+- op: add
+  path: /spec/volumeClaimTemplates/0/spec/storageClassName
+  value: nishir-standard

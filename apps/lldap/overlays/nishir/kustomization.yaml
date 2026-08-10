@@ -3,6 +3,9 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-sts.yaml
+    target:
+      name: lldap
+      kind: StatefulSet
 secretGenerator:
   - name: lldap
     envs:
