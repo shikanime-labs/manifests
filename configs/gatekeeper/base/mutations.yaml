@@ -128,9 +128,6 @@ spec:
   parameters:
     assign:
       value: false
-    pathTests:
-      - condition: MustNotExist
-        subPath: spec.hostIPC
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
@@ -157,9 +154,6 @@ spec:
   parameters:
     assign:
       value: false
-    pathTests:
-      - condition: MustNotExist
-        subPath: spec.hostNetwork
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
@@ -186,9 +180,6 @@ spec:
   parameters:
     assign:
       value: false
-    pathTests:
-      - condition: MustNotExist
-        subPath: spec.hostPID
 ---
 apiVersion: mutations.gatekeeper.sh/v1
 kind: Assign
