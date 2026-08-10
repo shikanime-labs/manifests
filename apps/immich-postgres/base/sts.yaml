@@ -90,6 +90,27 @@ spec:
                 secretKeyRef:
                   name: immich-postgres
                   key: db-password
+      initContainers:
+        - name: init-chown
+          image: immich-postgres
+          command:
+            - sh
+            - -c
+            - chown -R 999:999 /var/lib/postgresql/data /var/run/postgresql
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+            - name: run-postgresql
+              mountPath: /var/run/postgresql
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - DAC_OVERRIDE
+              drop:
+                - ALL
+            runAsUser: 0
       securityContext:
         fsGroup: 999
       volumes:
