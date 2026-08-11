@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: immich-ml
 spec:
@@ -8,6 +8,7 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: immich-ml
       app.kubernetes.io/name: immich-ml
+  serviceName: immich-ml
   template:
     metadata:
       labels:
@@ -43,7 +44,13 @@ spec:
           volumeMounts:
             - name: cache
               mountPath: /cache
-      volumes:
-        - name: cache
-          persistentVolumeClaim:
-            claimName: immich-ml-data
+  volumeClaimTemplates:
+    - metadata:
+        name: cache
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
