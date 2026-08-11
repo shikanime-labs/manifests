@@ -3,6 +3,7 @@ resources:
   - pvc.yaml
   - sts.yaml
   - svc.yaml
+  - vpa.yaml
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/discord
