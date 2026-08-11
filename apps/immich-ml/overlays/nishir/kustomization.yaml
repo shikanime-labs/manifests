@@ -3,3 +3,4 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-sts.yaml
+  - path: patch-pvc.yaml

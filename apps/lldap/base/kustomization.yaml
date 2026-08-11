@@ -6,6 +6,7 @@ metadata:
       '[ { "name": "lldap", "tag-regex": "^(?P<version>.+)$" } ]'
 resources:
   - netpol.yaml
+  - pvc.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml

@@ -2,10 +2,7 @@ resources:
   - ../../base
 namespace: shikanime
 patches:
-  - path: patch-sts.yaml
-    target:
-      name: lldap
-      kind: StatefulSet
+  - path: patch-pvc.yaml
 secretGenerator:
   - name: lldap
     envs:
