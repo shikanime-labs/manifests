@@ -125,7 +125,7 @@
                           }
                           {
                             path_regex = "apps/immich/overlays/${env.name}(.*)?/immich/config\\.enc\\.yaml";
-                            encrypted_regex = "^(clientSecret)$";
+                            encrypted_regex = "^(clientSecret|password)$";
                             key_groups = keyGroup;
                           }
                           {

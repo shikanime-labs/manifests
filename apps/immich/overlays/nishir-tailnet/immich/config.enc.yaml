@@ -10,7 +10,7 @@ notifications:
     transport:
       host: smtp.gmail.com
       ignoreCert: false
-      password: CHANGEME_PASSWORD
+      password: ENC[AES256_GCM,data:xgxdopmU3fcMifbcgm6mlw==,iv:5ExecemcEobbxOw9oxb01RdnB7REHy5FR0ziy12sQmY=,tag:OMk6GRkirgwo51+QTx8UkQ==,type:str]
       port: 587
       secure: false
       username: nishir.deva@gmail.com
@@ -28,9 +28,9 @@ oauth:
   storageQuotaClaim: immich_quota
 sops:
   version: 3.13.3
-  encrypted_regex: ^(clientSecret)$
-  lastmodified: "2026-08-11T11:23:36Z"
-  mac: ENC[AES256_GCM,data:cxJftWPaIAGu2xl48guKwuqWYsULFTDLKS+JjlajyK5n7e2LubTaGJKJFUNKmwvuOSQm9FR3mIB4iKuh5eIFjaghTDCeIJRgaGpBNzgHKsg1YPHHPiSqgbqSe8PlZ1tqvRhbyWcPSq6+Cw9VE/Ai3NyCi6I7khEnFKAywekVeeY=,iv:sTqldq60Xl8Y+vexfiL9Ruq9ieeHTm3jLXsXVRMGhbo=,tag:dx2mb8XmRt9Fhxym2gi3PA==,type:str]
+  encrypted_regex: ^(clientSecret|password)$
+  lastmodified: "2026-08-11T11:38:26Z"
+  mac: ENC[AES256_GCM,data:mKrcGJigPnKAyYfgdNuVbzBQphaqr4CZGbn9+ZY1Ogob5fQoELeNKtSZSbuWMhpk6toEf7ZfKjrtkni/GS4OgB6v2XJHXD5zfBPVS9TeHa7tuZIPC/d4siNzHXzhl337bOvvSNAugnhdtfbigpsOK9XzQWbE19hT/McFJxzYO9M=,iv:qE+GwjAA0lksOwWsDwtcmZJFO7UiN38SDhlMuogPXR0=,tag:O4fCzMlya88RSulkarvryA==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
