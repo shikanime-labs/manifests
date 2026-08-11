@@ -3,6 +3,7 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-deploy.yaml
+  - path: patch-pvc.yaml
 secretGenerator:
   - name: immich
     envs:

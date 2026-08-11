@@ -2,14 +2,6 @@ resources:
   - ../nishir
   - ingress.yaml
 namespace: shikanime
-patches:
-  - path: patch-pvc.yaml
-secretGenerator:
-  - name: immich-config
-    files:
-      - config.yaml=immich/config.enc.yaml
-    options:
-      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:
@@ -18,3 +10,9 @@ labels:
       app.kubernetes.io/name: immich
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: v1.118.0
+secretGenerator:
+  - name: immich-config
+    files:
+      - config.yaml=immich/config.enc.yaml
+    options:
+      disableNameSuffixHash: true
