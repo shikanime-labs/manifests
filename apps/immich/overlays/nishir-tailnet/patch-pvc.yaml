@@ -3,4 +3,4 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-upload-data
 spec:
-  storageClassName: nishir-standard
+  storageClassName: nishir-nearline
