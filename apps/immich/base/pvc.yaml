@@ -7,6 +7,5 @@ spec:
     requests:
       storage: 4Gi
   volumeMode: Filesystem
-  volumeName: immich-upload-data
   accessModes:
     - ReadWriteMany
