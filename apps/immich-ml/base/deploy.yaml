@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: immich-ml
 spec:
@@ -8,7 +8,6 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: immich-ml
       app.kubernetes.io/name: immich-ml
-  serviceName: immich-ml
   template:
     metadata:
       labels:
