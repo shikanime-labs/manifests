@@ -6,7 +6,7 @@ resources:
 images:
   - name: immich-machine-learning
     newName: ghcr.io/immich-app/immich-machine-learning
-    newTag: v1.118.0
+    newTag: v1.118.0-openvino
 metadata:
   annotations:
     automata.shikanime.studio/images:

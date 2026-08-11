@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: immich-ml
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/qsv.enabled
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: immich-ml
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          env:
+            - name: IMMICH_MACHINE_LEARNING_GPU_ACCELERATION
+              value: "true"
+          volumeMounts:
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
