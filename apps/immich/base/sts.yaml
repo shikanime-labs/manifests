@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: immich
 spec:
   replicas: 1
+  serviceName: immich
   selector:
     matchLabels:
       app.kubernetes.io/instance: immich
