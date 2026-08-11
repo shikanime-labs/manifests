@@ -92,7 +92,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: immich-data
+            claimName: immich-upload-data
         - name: config
           secret:
             secretName: immich-config

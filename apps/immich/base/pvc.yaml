@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: immich-data
+  name: immich-upload-data
 spec:
   resources:
     requests:
       storage: 1Gi
   volumeMode: Filesystem
+  volumeName: immich-upload-data
   accessModes:
     - ReadWriteMany
