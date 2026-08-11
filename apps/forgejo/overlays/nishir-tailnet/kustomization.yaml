@@ -9,7 +9,7 @@ labels:
       app.kubernetes.io/instance: forgejo
       app.kubernetes.io/name: forgejo
       app.kubernetes.io/part-of: nishir-platform
-      app.kubernetes.io/version: 15.0.3-rootless
+      app.kubernetes.io/version: 15.0.6-rootless
 patches:
   - path: patch-netpol.yaml
     target:
