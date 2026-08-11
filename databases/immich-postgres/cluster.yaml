@@ -1,0 +1,44 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-postgres
+  namespace: shikanime-postgres
+  labels:
+    app.kubernetes.io/instance: immich-postgres
+    app.kubernetes.io/name: postgres
+spec:
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+  imageName: tensorchord/pgvecto-rs:pg14-v0.2.0
+  instances: 1
+  storage:
+    size: 4Gi
+    storageClass: nishir-standard
+  postgresql:
+    parameters:
+      search_path: '"$user", public, vectors'
+    sharedPreloadLibraries:
+      - vectors.so
+  externalClusters:
+    - name: immich-postgres-old
+      connectionParameters:
+        dbname: immich
+        host: immich-postgres.shikanime.svc.cluster.local
+        user: immich
+      password:
+        name: immich-postgres-cnpg
+        key: password
+  bootstrap:
+    initdb:
+      database: immich
+      import:
+        type: monolith
+        source:
+          externalCluster: immich-postgres-old
+        databases:
+          - immich
+      owner: immich
+      secret:
+        name: immich-postgres-cnpg

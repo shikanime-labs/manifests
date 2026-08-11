@@ -1,0 +1,10 @@
+resources:
+  - cluster.yaml
+  - netpol.yaml
+secretGenerator:
+  - name: immich-postgres-cnpg
+    type: kubernetes.io/basic-auth
+    envs:
+      - immich-postgres-cnpg.enc.env
+    options:
+      disableNameSuffixHash: true

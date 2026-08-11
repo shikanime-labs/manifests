@@ -1,0 +1,4 @@
+resources:
+  - shikanime-postgres-ns.yaml
+  - immich-postgres
+  - honcho-postgres
