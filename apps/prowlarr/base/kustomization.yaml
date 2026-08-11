@@ -7,7 +7,7 @@ resources:
 images:
   - name: prowlarr
     newName: lscr.io/linuxserver/prowlarr
-    newTag: 2.4.0
+    newTag: 2.4.0@sha256:4fd7a166c8f46dd3370a871c250ee577d6c2ae97a0dbe0e3614b5ef736205620
 metadata:
   annotations:
     automata.shikanime.studio/images:

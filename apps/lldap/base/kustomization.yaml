@@ -13,4 +13,4 @@ resources:
 images:
   - name: lldap
     newName: lldap/lldap
-    newTag: 2026-08-08-debian
+    newTag: 2026-08-08-debian@sha256:f2e2d6b34ae063b4e83f700e63857ec1c9a10058ca0792dcb6bafeb1606386e1

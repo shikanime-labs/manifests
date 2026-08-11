@@ -10,7 +10,7 @@ images:
     newTag: 1.74.4
   - name: whisparr
     newName: ghcr.io/hotio/whisparr
-    newTag: v3-3.1.0.2040
+    newTag: v3-3.1.0.2040@sha256:fa5a7a8b2dd750591bfb6a49a3896b8db32317e2554ac302d15b6c68ed3bb356
 metadata:
   annotations:
     automata.shikanime.studio/images:
