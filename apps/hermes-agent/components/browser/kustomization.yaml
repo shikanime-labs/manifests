@@ -3,6 +3,6 @@ kind: Component
 images:
   - name: chrome
     newName: chromedp/headless-shell
-    newTag: 149.0.7779.3@sha256:b24482ae166e2c67135f5a8ba9575c257efdd8e2fd6b2e931f9d88ede3d72f3b
+    newTag: 149.0.7808.0@sha256:78109ccd8701fee19917ab416cf2b5ecc19042aa5298a840c137f83734e32883
 patches:
   - path: patch-sts.yaml
