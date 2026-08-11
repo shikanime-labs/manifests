@@ -1,0 +1,11 @@
+resources:
+  - cluster.yaml
+  - netpol.yaml
+  - honcho-init-configmap.yaml
+secretGenerator:
+  - name: honcho-postgres-cnpg
+    type: kubernetes.io/basic-auth
+    envs:
+      - honcho-postgres-cnpg.enc.env
+    options:
+      disableNameSuffixHash: true
