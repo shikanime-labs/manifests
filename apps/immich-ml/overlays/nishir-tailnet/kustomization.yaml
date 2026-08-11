@@ -9,8 +9,3 @@ labels:
       app.kubernetes.io/name: immich-ml
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: v1.118.0
-patches:
-  - path: patch-pvc.yaml
-    target:
-      name: immich-ml
-      kind: StatefulSet
