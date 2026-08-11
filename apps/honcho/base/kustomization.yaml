@@ -6,7 +6,7 @@ resources:
 images:
   - name: honcho
     newName: ghcr.io/plastic-labs/honcho
-    newTag: v3.0.9
+    newTag: v3.0.12@sha256:8ed9a3f50269f7f18c69848f8cc9b6ed54a24fd773fbea905cafae174174fab5
 metadata:
   annotations:
     automata.shikanime.studio/images:
