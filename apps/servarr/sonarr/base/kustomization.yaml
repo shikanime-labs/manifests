@@ -10,7 +10,7 @@ images:
     newTag: 1.74.4
   - name: sonarr
     newName: lscr.io/linuxserver/sonarr
-    newTag: 4.0.17
+    newTag: 4.0.19@sha256:373159ba768e23a3a1c497d9f2b936addf8fd5b1fdce7dd6a14080ac928bfda0
 metadata:
   annotations:
     automata.shikanime.studio/images:
