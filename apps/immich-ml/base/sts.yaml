@@ -50,7 +50,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 1Gi
+            storage: 8Gi
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod
