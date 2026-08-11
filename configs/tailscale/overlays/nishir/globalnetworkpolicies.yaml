@@ -1,0 +1,13 @@
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkPolicy
+metadata:
+  name: allow-egress-tailnet
+spec:
+  egress:
+    - action: Allow
+      destination:
+        nets:
+          - 100.64.0.0/10
+  order: 500
+  types:
+    - Egress
