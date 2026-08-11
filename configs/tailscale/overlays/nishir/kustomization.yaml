@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - globalnetworkpolicies.yaml
   - proxyclass.yaml
   - proxygroup.yaml
   - svc.yaml
