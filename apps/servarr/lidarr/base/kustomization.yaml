@@ -7,7 +7,7 @@ resources:
 images:
   - name: lidarr
     newName: lscr.io/linuxserver/lidarr
-    newTag: 3.1.0
+    newTag: 3.1.0@sha256:bfec0ec2dc351fa5928379d785b08be395886f109393b9040ed7973bd1008060
   - name: rclone
     newName: rclone/rclone
     newTag: 1.74.4

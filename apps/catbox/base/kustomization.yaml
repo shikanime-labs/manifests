@@ -7,7 +7,7 @@ resources:
 images:
   - name: catbox
     newName: ghcr.io/shikanime/shikanime/catbox
-    newTag: v0.17.1-612-g8107bb5
+    newTag: v0.17.1-612-g8107bb5@sha256:5ae04d6e40b6bf73c6c1219a54702bc973b35aa495445f1b8f9f5c24aa5998e9
 metadata:
   annotations:
     automata.shikanime.studio/images:

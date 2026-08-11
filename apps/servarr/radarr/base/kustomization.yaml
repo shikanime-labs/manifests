@@ -7,7 +7,7 @@ resources:
 images:
   - name: radarr
     newName: lscr.io/linuxserver/radarr
-    newTag: 6.2.1
+    newTag: 6.2.1@sha256:549c4a075496cf7584593bdc041407ddb38ee8958df8cf99938f8821467ea6f8
   - name: rclone
     newName: rclone/rclone
     newTag: 1.74.4

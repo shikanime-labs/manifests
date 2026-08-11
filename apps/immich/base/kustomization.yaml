@@ -7,7 +7,7 @@ resources:
 images:
   - name: immich-server
     newName: ghcr.io/immich-app/immich-server
-    newTag: v1.118.0
+    newTag: v1.118.0@sha256:3c4250f80ef0c38b70fb947c2c6688e07c737d2409c1d715a2f03fb7d75ba036
 metadata:
   annotations:
     automata.shikanime.studio/images:

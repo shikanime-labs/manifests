@@ -3,7 +3,7 @@ resources:
 images:
   - name: qbittorrent-cleanup
     newName: ghcr.io/shikanime-labs/xqbit/qbittorrent-cleanup
-    newTag: eb547ca
+    newTag: eb547ca@sha256:8805968e47076688e049e5907fbb3fa467ab0891f2368e555cf1382354ecdeb2
 metadata:
   annotations:
     automata.shikanime.studio/images:

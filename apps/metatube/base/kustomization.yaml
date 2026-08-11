@@ -7,7 +7,7 @@ resources:
 images:
   - name: metatube
     newName: ghcr.io/metatube-community/metatube-server
-    newTag: 1.4.0
+    newTag: 1.4.0@sha256:04d58879b76624e180cfdb24cde042b657189eabd3bd4cba851f1d56f7a5be82
 metadata:
   annotations:
     automata.shikanime.studio/images:
