@@ -44,13 +44,7 @@ spec:
           volumeMounts:
             - name: cache
               mountPath: /cache
-  volumeClaimTemplates:
-    - metadata:
-        name: cache
-      spec:
-        resources:
-          requests:
-            storage: 8Gi
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: cache-immich-ml
