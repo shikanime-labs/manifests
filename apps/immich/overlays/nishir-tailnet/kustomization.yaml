@@ -4,6 +4,12 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-pvc.yaml
+secretGenerator:
+  - name: immich-config
+    files:
+      - config.yaml=immich/config.enc.yaml
+    options:
+      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:

@@ -9,8 +9,3 @@ secretGenerator:
       - immich/.enc.env
     options:
       disableNameSuffixHash: true
-  - name: immich-config
-    files:
-      - config.yaml=immich/config.enc.yaml
-    options:
-      disableNameSuffixHash: true

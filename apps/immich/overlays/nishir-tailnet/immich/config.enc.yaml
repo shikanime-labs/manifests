@@ -1,0 +1,28 @@
+externalDomain: immich.taila659a.ts.net
+ffmpeg:
+  accel: qsv
+  accelDecode: true
+notifications:
+  smtp:
+    enabled: true
+    from: nishir.deva@gmail.com
+    replyTo: nishir.deva@gmail.com
+    transport:
+      host: smtp.gmail.com
+      ignoreCert: false
+      password: CHANGEME_PASSWORD
+      port: 587
+      secure: false
+      username: nishir.deva@gmail.com
+oauth:
+  autoRegister: true
+  buttonText: Dex
+  clientId: immich
+  clientSecret: ENC[AES256_GCM,data:IR1zylb50yMqYmIiGc+jI0XLp8MkmyNmtXW3F940ntQ=,iv:1idXom9hox25d4rlf2sDrPvbN2X4ST3qr9bXIlFnvf8=,tag:mWGi7Sio+Kkay/cu6qSf/w==,type:str]
+  enabled: true
+  issuerUrl: https://accounts.taila659a.ts.net
+  profileSigningAlgorithm: none
+  scope: openid email profile
+  signingAlgorithm: RS256
+  storageLabelClaim: preferred_username
+  storageQuotaClaim: immich_quota
