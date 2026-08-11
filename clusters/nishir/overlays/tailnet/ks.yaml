@@ -189,23 +189,15 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-honcho-postgres
+  name: infrastructure-cnpg
   namespace: flux-system
 spec:
   decryption:
     provider: sops
     secretRef:
       name: sops-age
-  dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: honcho-postgres
-      namespace: shikanime
   interval: 10m
-  path: ./apps/honcho-postgres/overlays/nishir-tailnet
+  path: ./infrastructure/cnpg/base
   prune: true
   sourceRef:
     name: flux-system
@@ -214,7 +206,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-immich-postgres
+  name: databases-shikanime-postgres
   namespace: flux-system
 spec:
   decryption:
@@ -222,17 +214,20 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-autoscaler
+    - name: infrastructure-cnpg
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
     - name: infrastructure-tailscale
   healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
+    - apiVersion: postgresql.cnpg.io/v1
+      kind: Cluster
       name: immich-postgres
-      namespace: shikanime
+      namespace: shikanime-postgres
+    - apiVersion: postgresql.cnpg.io/v1
+      kind: Cluster
+      name: honcho-postgres
+      namespace: shikanime-postgres
   interval: 10m
-  path: ./apps/immich-postgres/overlays/nishir-tailnet
+  path: ./databases
   prune: true
   sourceRef:
     name: flux-system
@@ -307,7 +302,7 @@ spec:
     - name: infrastructure-cert-manager
     - name: infrastructure-monitoring
     - name: infrastructure-tailscale
-    - name: apps-immich-postgres
+    - name: databases-shikanime-postgres
     - name: apps-immich-valkey
     - name: apps-immich-ml
   healthChecks:
@@ -333,7 +328,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: apps-honcho-postgres
+    - name: databases-shikanime-postgres
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
     - name: infrastructure-tailscale
