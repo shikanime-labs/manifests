@@ -63,8 +63,6 @@ spec:
                 - SETUID
                 - SETGID
                 - DAC_OVERRIDE
-            runAsGroup: 999
-            runAsUser: 999
           startupProbe:
             exec:
               command:
