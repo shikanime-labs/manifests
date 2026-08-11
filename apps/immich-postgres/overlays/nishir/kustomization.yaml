@@ -1,12 +1,3 @@
 resources:
   - ../../base
 namespace: shikanime
-patches:
-  - path: patch-pvc.yaml
-secretGenerator:
-  - name: immich-postgres
-    type: kubernetes.io/basic-auth
-    envs:
-      - immich-postgres/.enc.env
-    options:
-      disableNameSuffixHash: true
