@@ -74,6 +74,8 @@ spec:
                 secretKeyRef:
                   name: immich
                   key: db-database
+            - name: DB_VECTOR_EXTENSION
+              value: vectorchord
             - name: REDIS_HOSTNAME
               value: immich-valkey
             - name: REDIS_PORT

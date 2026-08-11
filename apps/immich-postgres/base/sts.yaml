@@ -18,17 +18,6 @@ spec:
       containers:
         - name: postgres
           image: postgres
-          args:
-            - -c
-            - shared_preload_libraries=vectors.so
-            - -c
-            - search_path="$user", public, vectors
-            - -c
-            - logging_collector=on
-            - -c
-            - max_wal_size=2GB
-            - -c
-            - wal_compression=on
           ports:
             - name: postgres
               containerPort: 5432
