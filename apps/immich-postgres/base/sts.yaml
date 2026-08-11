@@ -26,6 +26,8 @@ spec:
               mountPath: /var/lib/postgresql/data
             - name: run-postgresql
               mountPath: /var/run/postgresql
+            - name: pgconfig
+              mountPath: /etc/postgresql
           livenessProbe:
             exec:
               command:
@@ -84,4 +86,6 @@ spec:
           persistentVolumeClaim:
             claimName: immich-postgres-data
         - name: run-postgresql
+          emptyDir: {}
+        - name: pgconfig
           emptyDir: {}
