@@ -47,4 +47,4 @@ spec:
       volumes:
         - name: cache
           persistentVolumeClaim:
-            claimName: cache-immich-ml
+            claimName: immich-ml-cache
