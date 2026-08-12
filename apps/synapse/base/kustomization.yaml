@@ -7,7 +7,7 @@ resources:
 images:
   - name: synapse
     newName: matrixdotorg/synapse
-    newTag: v1.157.1@sha256:d1fce43d7501428c461f2758dc10342555b946dc9f1d03c1b1b8aec1a4e8d130
+    newTag: v1.158.0@sha256:5f868df1f5772907c6dbe973a9b69ab530a5d6bb317c011a3788f7ad78eb1292
 metadata:
   annotations:
     automata.shikanime.studio/images:
