@@ -22,7 +22,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 1Ti
+      storage: 512Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
   volumeName: downloads-data
