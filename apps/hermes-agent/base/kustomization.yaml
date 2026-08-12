@@ -7,7 +7,7 @@ resources:
 images:
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.74.4
+    newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
   - name: hermes-agent
     newName: nousresearch/hermes-agent
     newTag: v2026.7.7.2@sha256:9c841866021c54c4596849f6135717e8a4d52ba510b7f52c50aef1de1a283973
