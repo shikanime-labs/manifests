@@ -124,7 +124,6 @@ spec:
       storage: 64Gi
   storageClassName: nishir-nearline
   volumeMode: Filesystem
-  volumeName: music-data
   accessModes:
     - ReadWriteMany
 ---
