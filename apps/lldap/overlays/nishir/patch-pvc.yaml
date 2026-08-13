@@ -7,4 +7,10 @@ spec:
     - metadata:
         name: data
       spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
         storageClassName: nishir-standard
