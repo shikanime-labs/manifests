@@ -25,7 +25,6 @@ spec:
       storage: 64Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
-  volumeName: downloads-data
   accessModes:
     - ReadWriteMany
 ---
@@ -111,7 +110,6 @@ spec:
       storage: 64Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
-  volumeName: movies-data
   accessModes:
     - ReadWriteMany
 ---
@@ -141,7 +139,6 @@ spec:
       storage: 512Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
-  volumeName: shows-data
   accessModes:
     - ReadWriteMany
 ---
