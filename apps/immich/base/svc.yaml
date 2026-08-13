@@ -7,6 +7,9 @@ spec:
     - name: http
       port: 2283
       targetPort: http
+    - name: metrics
+      port: 8081
+      targetPort: metrics
   selector:
     app.kubernetes.io/instance: immich
     app.kubernetes.io/name: immich

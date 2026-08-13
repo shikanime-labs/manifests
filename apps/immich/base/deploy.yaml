@@ -26,6 +26,8 @@ spec:
           ports:
             - name: http
               containerPort: 2283
+            - name: metrics
+              containerPort: 8081
           readinessProbe:
             httpGet:
               path: /api/server/ping
@@ -48,6 +50,9 @@ spec:
             - name: config
               mountPath: /etc/immich
               readOnly: true
+            - name: secrets
+              mountPath: /run/secrets
+              readOnly: true
           env:
             - name: TZ
               value: Europe/Paris
@@ -59,21 +64,12 @@ spec:
               value: immich-postgres
             - name: DB_PORT
               value: "5432"
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: immich
-                  key: db-username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: immich
-                  key: db-password
-            - name: DB_DATABASE_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: immich
-                  key: db-database
+            - name: DB_USERNAME_FILE
+              value: /run/secrets/db-username
+            - name: DB_PASSWORD_FILE
+              value: /run/secrets/db-password
+            - name: DB_DATABASE_NAME_FILE
+              value: /run/secrets/db-database
             - name: DB_VECTOR_EXTENSION
               value: vectorchord
             - name: REDIS_HOSTNAME
@@ -89,7 +85,7 @@ spec:
                   key: jwt-secret
             - name: IMMICH_CONFIG_FILE
               value: /etc/immich/config.yaml
-            - name: IMMICH_TELEMETRY_EXCLUDE
+            - name: IMMICH_TELEMETRY_INCLUDE
               value: all
       volumes:
         - name: data
@@ -98,3 +94,6 @@ spec:
         - name: config
           secret:
             secretName: immich-config
+        - name: secrets
+          secret:
+            secretName: immich

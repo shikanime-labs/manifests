@@ -10,6 +10,15 @@ spec:
               kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: http
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: metrics
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: immich
