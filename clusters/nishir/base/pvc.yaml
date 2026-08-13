@@ -40,6 +40,7 @@ spec:
       storage: 4Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
+  volumeName: downloads-radarr-data
   accessModes:
     - ReadWriteMany
 ---
@@ -54,6 +55,7 @@ spec:
       storage: 64Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
+  volumeName: downloads-sonarr-data
   accessModes:
     - ReadWriteMany
 ---
@@ -68,6 +70,7 @@ spec:
       storage: 512Mi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
+  volumeName: downloads-lidarr-data
   accessModes:
     - ReadWriteMany
 ---
@@ -82,6 +85,7 @@ spec:
       storage: 8Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
+  volumeName: downloads-whisparr-data
   accessModes:
     - ReadWriteMany
 ---
