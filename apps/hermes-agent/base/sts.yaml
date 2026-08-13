@@ -30,6 +30,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /opt/data
+            - name: profiles-data
+              mountPath: /opt/data/profiles
             - name: rclone-config
               mountPath: /config/rclone/rclone.conf
               readOnly: true
@@ -92,6 +94,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: hermes-agent-data
+        - name: profiles-data
+          persistentVolumeClaim:
+            claimName: hermes-agent-profiles-data
         - name: rclone-config
           configMap:
             name: hermes-agent-rclone

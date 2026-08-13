@@ -1,7 +1,20 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: hermes-agent-data
+spec:
+  resources:
+    requests:
+      storage: 16Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOncePod
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hermes-agent-profiles-data
 spec:
   resources:
     requests:

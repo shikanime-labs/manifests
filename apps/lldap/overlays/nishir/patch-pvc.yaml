@@ -10,7 +10,7 @@ spec:
         resources:
           requests:
             storage: 512Mi
+        storageClassName: nishir-standard
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod
-        storageClassName: nishir-standard
