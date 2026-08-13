@@ -22,10 +22,66 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 1Ti
+      storage: 64Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
   volumeName: downloads-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-radarr-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 4Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-sonarr-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 64Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-lidarr-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 512Mi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-whisparr-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
 ---

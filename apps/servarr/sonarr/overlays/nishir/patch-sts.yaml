@@ -20,12 +20,12 @@ spec:
           volumeMounts:
             - name: shows-data
               mountPath: /data/shows
-            - name: downloads-data
-              mountPath: /downloads
+            - name: downloads-sonarr-data
+              mountPath: /downloads/sonarr
       volumes:
         - name: shows-data
           persistentVolumeClaim:
             claimName: shows-data
-        - name: downloads-data
+        - name: downloads-sonarr-data
           persistentVolumeClaim:
-            claimName: downloads-data
+            claimName: downloads-sonarr-data

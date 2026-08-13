@@ -20,12 +20,12 @@ spec:
           volumeMounts:
             - name: music-data
               mountPath: /data/music
-            - name: downloads-data
-              mountPath: /downloads
+            - name: downloads-lidarr-data
+              mountPath: /downloads/lidarr
       volumes:
         - name: music-data
           persistentVolumeClaim:
             claimName: music-data
-        - name: downloads-data
+        - name: downloads-lidarr-data
           persistentVolumeClaim:
-            claimName: downloads-data
+            claimName: downloads-lidarr-data

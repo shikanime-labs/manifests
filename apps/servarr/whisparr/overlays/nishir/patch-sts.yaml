@@ -20,12 +20,12 @@ spec:
           volumeMounts:
             - name: sukebe-scenes-data
               mountPath: /data/videos
-            - name: downloads-data
-              mountPath: /downloads
+            - name: downloads-whisparr-data
+              mountPath: /downloads/whisparr
       volumes:
         - name: sukebe-scenes-data
           persistentVolumeClaim:
             claimName: sukebe-scenes-data
-        - name: downloads-data
+        - name: downloads-whisparr-data
           persistentVolumeClaim:
-            claimName: downloads-data
+            claimName: downloads-whisparr-data

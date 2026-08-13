@@ -20,7 +20,27 @@ spec:
           volumeMounts:
             - name: downloads-data
               mountPath: /downloads
+            - name: downloads-radarr-data
+              mountPath: /downloads/radarr
+            - name: downloads-sonarr-data
+              mountPath: /downloads/sonarr
+            - name: downloads-lidarr-data
+              mountPath: /downloads/lidarr
+            - name: downloads-whisparr-data
+              mountPath: /downloads/whisparr
       volumes:
         - name: downloads-data
           persistentVolumeClaim:
             claimName: downloads-data
+        - name: downloads-radarr-data
+          persistentVolumeClaim:
+            claimName: downloads-radarr-data
+        - name: downloads-sonarr-data
+          persistentVolumeClaim:
+            claimName: downloads-sonarr-data
+        - name: downloads-lidarr-data
+          persistentVolumeClaim:
+            claimName: downloads-lidarr-data
+        - name: downloads-whisparr-data
+          persistentVolumeClaim:
+            claimName: downloads-whisparr-data

@@ -20,12 +20,12 @@ spec:
           volumeMounts:
             - name: movies-data
               mountPath: /data/movies
-            - name: downloads-data
-              mountPath: /downloads
+            - name: downloads-radarr-data
+              mountPath: /downloads/radarr
       volumes:
         - name: movies-data
           persistentVolumeClaim:
             claimName: movies-data
-        - name: downloads-data
+        - name: downloads-radarr-data
           persistentVolumeClaim:
-            claimName: downloads-data
+            claimName: downloads-radarr-data
