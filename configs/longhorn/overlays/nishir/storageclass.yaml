@@ -23,9 +23,10 @@ metadata:
   name: nishir-ephemeral
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
+reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
 parameters:
-  diskSelector: standard
+  diskSelector: nearline
   fsType: xfs
   numberOfReplicas: "2"
   recurringJobSelector: |
