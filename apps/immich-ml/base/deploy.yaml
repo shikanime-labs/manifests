@@ -41,8 +41,6 @@ spec:
               port: http
             timeoutSeconds: 5
           volumeMounts:
-            # Rootfs is overlay ro; HF (incl. xet staging) and matplotlib
-            # write under /root, so give them writable mounts there.
             - name: cache-huggingface
               mountPath: /root/.cache/huggingface
             - name: cache-matplotlib
