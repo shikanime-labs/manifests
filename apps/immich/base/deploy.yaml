@@ -51,7 +51,7 @@ spec:
               mountPath: /etc/immich
               readOnly: true
             - name: secrets
-              mountPath: /run/secrets
+              mountPath: /run/secrets/immich-postgres
               readOnly: true
           env:
             - name: TZ
@@ -65,11 +65,11 @@ spec:
             - name: DB_PORT
               value: "5432"
             - name: DB_USERNAME_FILE
-              value: /run/secrets/db-username
+              value: /run/secrets/immich-postgres/username
             - name: DB_PASSWORD_FILE
-              value: /run/secrets/db-password
+              value: /run/secrets/immich-postgres/password
             - name: DB_DATABASE_NAME_FILE
-              value: /run/secrets/db-database
+              value: /run/secrets/immich-postgres/database
             - name: DB_VECTOR_EXTENSION
               value: vectorchord
             - name: REDIS_HOSTNAME
@@ -96,4 +96,4 @@ spec:
             secretName: immich-config
         - name: secrets
           secret:
-            secretName: immich
+            secretName: immich-postgres

@@ -68,17 +68,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: immich-postgres
-                  key: db-database
+                  key: database
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: immich-postgres
-                  key: db-username
+                  key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: immich-postgres
-                  key: db-password
+                  key: password
       securityContext:
         fsGroup: 999
       volumes:

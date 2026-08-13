@@ -5,6 +5,7 @@ patches:
   - path: patch-pvc.yaml
 secretGenerator:
   - name: immich-postgres
+    type: basic-auth
     envs:
       - immich-postgres/.enc.env
     options:
