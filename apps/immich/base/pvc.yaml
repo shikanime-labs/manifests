@@ -7,5 +7,6 @@ spec:
     requests:
       storage: 64Gi
   volumeMode: Filesystem
+  volumeName: immich-upload-data
   accessModes:
     - ReadWriteOncePod
