@@ -8,4 +8,4 @@ spec:
       storage: 64Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOncePod
