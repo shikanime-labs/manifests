@@ -66,6 +66,8 @@ spec:
                 - SETUID
       securityContext:
         fsGroup: 1000
+        supplementalGroups:
+          - 10000
       volumes:
         - name: config
           persistentVolumeClaim:
