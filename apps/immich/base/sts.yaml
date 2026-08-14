@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: immich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: immich
+      app.kubernetes.io/name: immich
+  serviceName: immich
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: immich
+        app.kubernetes.io/name: immich
+    spec:
+      containers:
+        - name: immich
+          image: immich-server
+          livenessProbe:
+            httpGet:
+              path: /api/server/ping
+              port: http
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 2283
+            - name: metrics
+              containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /api/server/ping
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /api/server/ping
+              port: http
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/app/upload
+            - name: config
+              mountPath: /etc/immich
+              readOnly: true
+            - name: secrets
+              mountPath: /run/secrets/immich-postgres
+              readOnly: true
+          env:
+            - name: TZ
+              value: Europe/Paris
+            - name: IMMICH_SERVER_PORT
+              value: "2283"
+            - name: IMMICH_MEDIA_LOCATION
+              value: /usr/src/app/upload
+            - name: DB_HOSTNAME
+              value: immich-postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USERNAME_FILE
+              value: /run/secrets/immich-postgres/username
+            - name: DB_PASSWORD_FILE
+              value: /run/secrets/immich-postgres/password
+            - name: DB_DATABASE_NAME_FILE
+              value: /run/secrets/immich-postgres/database
+            - name: DB_VECTOR_EXTENSION
+              value: vectorchord
+            - name: REDIS_HOSTNAME
+              value: immich-valkey
+            - name: REDIS_PORT
+              value: "6379"
+            - name: IMMICH_MACHINE_LEARNING_URL
+              value: http://immich-ml:3003
+            - name: IMMICH_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: immich
+                  key: jwt-secret
+            - name: IMMICH_CONFIG_FILE
+              value: /etc/immich/config.yaml
+            - name: IMMICH_TELEMETRY_INCLUDE
+              value: all
+      volumes:
+        - name: config
+          secret:
+            secretName: immich-config
+        - name: secrets
+          secret:
+            secretName: immich-postgres
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 64Gi

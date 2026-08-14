@@ -4,11 +4,10 @@ namespace: shikanime
 components:
   - ../../components/monitoring
 patches:
-  - path: patch-deploy.yaml
-  - path: patch-pvc.yaml
+  - path: patch-sts.yaml
 secretGenerator:
   - name: immich
     envs:
-      - immich/.enc.env
+      - .enc.env
     options:
       disableNameSuffixHash: true

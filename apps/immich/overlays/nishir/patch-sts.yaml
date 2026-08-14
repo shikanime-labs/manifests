@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: immich
+spec:
+  template:
+    spec:
+      containers:
+        - name: immich
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/app/upload
+              volumeName: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: immich-data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        storageClassName: nishir-standard
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 64Gi

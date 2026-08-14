@@ -1,7 +1,6 @@
 resources:
   - netpol.yaml
-  - pvc.yaml
-  - deploy.yaml
+  - sts.yaml
   - svc.yaml
   - vpa.yaml
 images:
