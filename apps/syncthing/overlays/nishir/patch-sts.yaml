@@ -46,6 +46,8 @@ spec:
               mountPath: /var/syncthing/Timeline
             - name: hermes-agent-profiles-data
               mountPath: /var/syncthing/Hermes/Profiles
+            - name: hermes-agent-skills-data
+              mountPath: /var/syncthing/Hermes/Skills
       volumes:
         - name: archives-data
           persistentVolumeClaim:
@@ -89,3 +91,6 @@ spec:
         - name: hermes-agent-profiles-data
           persistentVolumeClaim:
             claimName: hermes-agent-profiles-data
+        - name: hermes-agent-skills-data
+          persistentVolumeClaim:
+            claimName: hermes-agent-skills-data

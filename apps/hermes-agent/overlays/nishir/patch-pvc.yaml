@@ -14,3 +14,11 @@ metadata:
 spec:
   storageClassName: nishir-standard
   volumeName: hermes-agent-profiles-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hermes-agent-skills-data
+spec:
+  storageClassName: nishir-standard
+  volumeName: hermes-agent-skills-data
