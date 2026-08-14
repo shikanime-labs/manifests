@@ -22,6 +22,7 @@ spec:
               mountPath: /data/shows
             - name: downloads-sonarr-data
               mountPath: /downloads/sonarr
+              subPath: sonarr
       volumes:
         - name: shows-data
           persistentVolumeClaim:

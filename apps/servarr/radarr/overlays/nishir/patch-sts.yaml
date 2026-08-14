@@ -22,6 +22,7 @@ spec:
               mountPath: /data/movies
             - name: downloads-radarr-data
               mountPath: /downloads/radarr
+              subPath: radarr
       volumes:
         - name: movies-data
           persistentVolumeClaim:

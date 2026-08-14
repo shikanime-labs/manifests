@@ -22,12 +22,28 @@ spec:
               mountPath: /downloads
             - name: downloads-radarr-data
               mountPath: /downloads/radarr
+              subPath: radarr
+            - name: downloads-radarr-data
+              mountPath: /downloads/incomplete/radarr
+              subPath: incomplete/radarr
             - name: downloads-sonarr-data
               mountPath: /downloads/sonarr
+              subPath: sonarr
+            - name: downloads-sonarr-data
+              mountPath: /downloads/incomplete/sonarr
+              subPath: incomplete/sonarr
             - name: downloads-lidarr-data
               mountPath: /downloads/lidarr
+              subPath: lidarr
+            - name: downloads-lidarr-data
+              mountPath: /downloads/incomplete/lidarr
+              subPath: incomplete/lidarr
             - name: downloads-whisparr-data
               mountPath: /downloads/whisparr
+              subPath: whisparr
+            - name: downloads-whisparr-data
+              mountPath: /downloads/incomplete/whisparr
+              subPath: incomplete/whisparr
       volumes:
         - name: downloads-data
           persistentVolumeClaim:

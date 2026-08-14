@@ -22,6 +22,7 @@ spec:
               mountPath: /data/videos
             - name: downloads-whisparr-data
               mountPath: /downloads/whisparr
+              subPath: whisparr
       volumes:
         - name: sukebe-scenes-data
           persistentVolumeClaim:
