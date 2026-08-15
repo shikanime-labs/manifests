@@ -62,6 +62,7 @@ spec:
           securityContext:
             capabilities:
               add:
+                - CHOWN
                 - SETGID
                 - SETUID
       securityContext:
