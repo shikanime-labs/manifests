@@ -11,6 +11,8 @@ spec:
   serviceName: qbittorrent
   template:
     metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: macvlan-br0
       labels:
         app.kubernetes.io/instance: qbittorrent
         app.kubernetes.io/name: qbittorrent

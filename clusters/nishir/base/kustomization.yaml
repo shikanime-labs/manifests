@@ -4,6 +4,7 @@ resources:
   - ingress.yaml
   - netpol.yaml
   - ns.yaml
+  - nad.yaml
   - provider.yaml
   - pvc.yaml
   - receiver.yaml
