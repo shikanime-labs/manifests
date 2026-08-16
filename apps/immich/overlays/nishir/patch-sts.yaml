@@ -19,9 +19,9 @@ spec:
     - metadata:
         name: data
       spec:
-        storageClassName: nishir-standard
-        accessModes:
-          - ReadWriteOnce
         resources:
           requests:
             storage: 64Gi
+        storageClassName: nishir-standard
+        accessModes:
+          - ReadWriteOnce
