@@ -82,7 +82,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 8Gi
+      storage: 64Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
   volumeName: downloads-whisparr-data
