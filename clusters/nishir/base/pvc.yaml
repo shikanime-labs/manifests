@@ -37,7 +37,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 4Gi
+      storage: 16Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
   volumeName: downloads-radarr-data
