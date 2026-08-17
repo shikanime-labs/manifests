@@ -5,7 +5,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 4Gi
+      storage: 8Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOncePod
