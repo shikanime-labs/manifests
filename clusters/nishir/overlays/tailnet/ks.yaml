@@ -312,7 +312,7 @@ spec:
     - name: apps-immich-ml
   healthChecks:
     - apiVersion: apps/v1
-      kind: Deployment
+      kind: StatefulSet
       name: immich
       namespace: shikanime
   interval: 10m
