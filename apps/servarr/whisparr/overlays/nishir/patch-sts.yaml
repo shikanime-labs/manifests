@@ -18,12 +18,18 @@ spec:
       containers:
         - name: whisparr
           volumeMounts:
-            - name: sukebe-scenes-data
+            - name: sukebe-videos-data
               mountPath: /data/videos
+            - name: sukebe-scenes-data
+              mountPath: /data/videos/Import
+              subPath: Import
             - name: downloads-whisparr-data
               mountPath: /downloads/whisparr
               subPath: whisparr
       volumes:
+        - name: sukebe-videos-data
+          persistentVolumeClaim:
+            claimName: sukebe-videos-data
         - name: sukebe-scenes-data
           persistentVolumeClaim:
             claimName: sukebe-scenes-data

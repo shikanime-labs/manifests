@@ -36,8 +36,11 @@ spec:
               mountPath: /var/syncthing/Sukebe/Doujins
             - name: sukebe-games-data
               mountPath: /var/syncthing/Sukebe/Games
-            - name: sukebe-scenes-data
+            - name: sukebe-videos-data
               mountPath: /var/syncthing/Sukebe/Videos
+            - name: sukebe-scenes-data
+              mountPath: /var/syncthing/Sukebe/Videos/Import
+              subPath: Import
             - name: sukebe-shows-data
               mountPath: /var/syncthing/Sukebe/Shows
             - name: sync-data
@@ -76,6 +79,9 @@ spec:
         - name: sukebe-games-data
           persistentVolumeClaim:
             claimName: sukebe-games-data
+        - name: sukebe-videos-data
+          persistentVolumeClaim:
+            claimName: sukebe-videos-data
         - name: sukebe-scenes-data
           persistentVolumeClaim:
             claimName: sukebe-scenes-data

@@ -226,6 +226,21 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: sukebe-videos-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 128Gi
+  storageClassName: nishir-ephemeral
+  volumeMode: Filesystem
+  volumeName: sukebe-videos-data
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
   name: sync-data
   namespace: shikanime
 spec:

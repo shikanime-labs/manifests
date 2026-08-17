@@ -36,8 +36,11 @@ spec:
               mountPath: /data/sukebe/Doujins
             - name: sukebe-games-data
               mountPath: /data/sukebe/Games
-            - name: sukebe-scenes-data
+            - name: sukebe-videos-data
               mountPath: /data/sukebe/Videos
+            - name: sukebe-scenes-data
+              mountPath: /data/sukebe/Videos/Import
+              subPath: Import
             - name: sukebe-shows-data
               mountPath: /data/sukebe/Shows
             - name: sync-data
@@ -75,6 +78,9 @@ spec:
         - name: sukebe-games-data
           persistentVolumeClaim:
             claimName: sukebe-games-data
+        - name: sukebe-videos-data
+          persistentVolumeClaim:
+            claimName: sukebe-videos-data
         - name: sukebe-scenes-data
           persistentVolumeClaim:
             claimName: sukebe-scenes-data
