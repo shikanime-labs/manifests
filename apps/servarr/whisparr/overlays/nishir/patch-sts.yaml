@@ -22,7 +22,6 @@ spec:
               mountPath: /data/videos
             - name: sukebe-scenes-data
               mountPath: /data/videos/Import
-              subPath: Import
             - name: downloads-whisparr-data
               mountPath: /downloads/whisparr
               subPath: whisparr

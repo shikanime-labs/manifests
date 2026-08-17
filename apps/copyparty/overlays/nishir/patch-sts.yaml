@@ -40,7 +40,6 @@ spec:
               mountPath: /data/sukebe/Videos
             - name: sukebe-scenes-data
               mountPath: /data/sukebe/Videos/Import
-              subPath: Import
             - name: sukebe-shows-data
               mountPath: /data/sukebe/Shows
             - name: sync-data

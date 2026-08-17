@@ -40,7 +40,6 @@ spec:
               mountPath: /var/syncthing/Sukebe/Videos
             - name: sukebe-scenes-data
               mountPath: /var/syncthing/Sukebe/Videos/Import
-              subPath: Import
             - name: sukebe-shows-data
               mountPath: /var/syncthing/Sukebe/Shows
             - name: sync-data
