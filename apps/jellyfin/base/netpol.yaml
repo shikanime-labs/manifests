@@ -7,6 +7,9 @@ spec:
     - from:
         - podSelector:
             matchLabels:
+              app.kubernetes.io/name: bazarr
+        - podSelector:
+            matchLabels:
               app.kubernetes.io/name: lidarr
         - podSelector:
             matchLabels:
