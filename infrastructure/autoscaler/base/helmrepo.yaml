@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: fairwinds-stable
+  name: kubernetes-autoscaler
   namespace: flux-system
 spec:
-  url: https://charts.fairwinds.com/stable
+  url: https://kubernetes.github.io/autoscaler
   interval: 1h

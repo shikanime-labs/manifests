@@ -6,11 +6,11 @@ metadata:
 spec:
   chart:
     spec:
-      version: 4.11.0
-      chart: vpa
+      version: 0.11.0
+      chart: vertical-pod-autoscaler
       interval: 1h
       sourceRef:
-        name: fairwinds-stable
+        name: kubernetes-autoscaler
         kind: HelmRepository
         namespace: flux-system
   install:
@@ -22,25 +22,20 @@ spec:
     crds: CreateReplace
   values:
     admissionController:
-      generateCertificate: false
-      mutatingWebhookConfiguration:
-        annotations:
-          cert-manager.io/inject-ca-from: autoscaler-system/vpa-tls-secret
+      certGen:
+        enabled: false
+      certManager:
+        enabled: true
       podDisruptionBudget:
         maxUnavailable: 1
-      replicaCount: 2
-      tlsSecretKeys:
-        - key: ca.crt
-          path: caCert.pem
-        - key: tls.crt
-          path: serverCert.pem
-        - key: tls.key
-          path: serverKey.pem
+      replicas: 2
+      tls:
+        create: false
     recommender:
       podDisruptionBudget:
         maxUnavailable: 1
-      replicaCount: 2
+      replicas: 2
     updater:
       podDisruptionBudget:
         maxUnavailable: 1
-      replicaCount: 2
+      replicas: 2
