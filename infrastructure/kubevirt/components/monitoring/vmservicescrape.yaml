@@ -1,0 +1,20 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: kubevirt
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - kubevirt-system
+  selector:
+    matchLabels:
+      prometheus.kubevirt.io: "true"
