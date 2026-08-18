@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vpa-metrics
+  name: vpa
   namespace: autoscaler-system
   labels:
     app.kubernetes.io/component: admission-controller
