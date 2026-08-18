@@ -1,3 +1,4 @@
+---
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
@@ -18,4 +19,48 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/component: admission-controller
+      app.kubernetes.io/name: vertical-pod-autoscaler
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: vpa-recommender
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/part-of: vpa
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - autoscaler-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: recommender
+      app.kubernetes.io/name: vertical-pod-autoscaler
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: vpa-updater
+  namespace: autoscaler-system
+  labels:
+    app.kubernetes.io/name: vpa
+    app.kubernetes.io/part-of: vpa
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - autoscaler-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: updater
       app.kubernetes.io/name: vertical-pod-autoscaler

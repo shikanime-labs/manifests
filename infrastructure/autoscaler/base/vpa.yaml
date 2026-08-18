@@ -1,0 +1,39 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-vertical-pod-autoscaler-admission-controller
+  namespace: autoscaler-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vpa-vertical-pod-autoscaler-admission-controller
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-vertical-pod-autoscaler-recommender
+  namespace: autoscaler-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vpa-vertical-pod-autoscaler-recommender
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-vertical-pod-autoscaler-updater
+  namespace: autoscaler-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vpa-vertical-pod-autoscaler-updater
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
