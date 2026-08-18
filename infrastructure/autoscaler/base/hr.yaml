@@ -27,15 +27,15 @@ spec:
       certManager:
         enabled: true
       podDisruptionBudget:
-        maxUnavailable: 1
+        minAvailable: 1
       replicas: 2
       tls:
         create: false
     recommender:
       podDisruptionBudget:
-        maxUnavailable: 1
+        minAvailable: 1
       replicas: 2
     updater:
       podDisruptionBudget:
-        maxUnavailable: 1
+        minAvailable: 1
       replicas: 2
