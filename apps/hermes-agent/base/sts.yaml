@@ -58,6 +58,7 @@ spec:
                 - FOWNER
                 - SETGID
                 - SETUID
+            readOnlyRootFilesystem: false
           lifecycle:
             preStop:
               exec:

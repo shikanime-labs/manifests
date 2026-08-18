@@ -60,6 +60,7 @@ spec:
                 - CHOWN
                 - SETGID
                 - SETUID
+            readOnlyRootFilesystem: false
       securityContext:
         fsGroup: 1000
       volumes:
