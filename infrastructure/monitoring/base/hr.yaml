@@ -25,6 +25,8 @@ spec:
         type: pvc
         enabled: true
         size: 2Gi
+        accessModes:
+          - ReadWriteOncePod
     kubeEtcd:
       vmScrape:
         enabled: false
