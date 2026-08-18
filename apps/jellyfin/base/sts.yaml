@@ -11,8 +11,6 @@ spec:
   serviceName: jellyfin
   template:
     metadata:
-      annotations:
-        k8s.v1.cni.cncf.io/networks: macvlan-br0
       labels:
         app.kubernetes.io/instance: jellyfin
         app.kubernetes.io/name: jellyfin
