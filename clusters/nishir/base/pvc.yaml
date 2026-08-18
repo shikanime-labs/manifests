@@ -231,7 +231,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 256Gi
+      storage: 512Gi
   storageClassName: nishir-ephemeral
   volumeMode: Filesystem
   volumeName: sukebe-videos-data
