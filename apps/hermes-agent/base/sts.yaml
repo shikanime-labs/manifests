@@ -27,6 +27,10 @@ spec:
               value: mentions
             - name: S6_READ_ONLY_ROOT
               value: "1"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
           volumeMounts:
             - name: data
               mountPath: /opt/data
@@ -90,8 +94,6 @@ spec:
             capabilities:
               add:
                 - FOWNER
-      securityContext:
-        fsGroup: 10000
       volumes:
         - name: data
           persistentVolumeClaim:
