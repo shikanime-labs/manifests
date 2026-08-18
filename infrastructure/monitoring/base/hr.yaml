@@ -10,7 +10,7 @@ spec:
       chart: victoria-metrics-k8s-stack
       interval: 1h
       sourceRef:
-        name: vm
+        name: victoriametrics
         kind: HelmRepository
         namespace: flux-system
   interval: 10m
