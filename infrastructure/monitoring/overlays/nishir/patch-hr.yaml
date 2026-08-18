@@ -17,6 +17,16 @@ spec:
               name: vminsert-vmks-victoria-metrics-k8s-stack
               version: v1
               kind: Ingress
+          - patch: |
+              - op: add
+                path: /spec/tls
+                value:
+                  - hosts:
+                      - vmselect
+            target:
+              name: vmselect-vmks-victoria-metrics-k8s-stack
+              version: v1
+              kind: Ingress
   values:
     grafana:
       persistence:
@@ -74,4 +84,11 @@ spec:
           enabled: true
           hosts:
             - telemetry
+          ingressClassName: tailscale
+        select:
+          annotations:
+            tailscale.com/tags: tag:web
+          enabled: true
+          hosts:
+            - vmselect
           ingressClassName: tailscale

@@ -32,6 +32,10 @@ spec:
       tls:
         create: false
     recommender:
+      extraArgs:
+        - --storage=prometheus
+        - --prometheus-address=https://vmselect.taila659a.ts.net/select/0/prometheus
+        - --prometheus-insecure=false
       podDisruptionBudget:
         minAvailable: 1
       replicas: 2
