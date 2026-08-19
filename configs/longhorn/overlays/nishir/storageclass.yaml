@@ -7,6 +7,8 @@ allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
+mountOptions:
+  - wsync
 parameters:
   diskSelector: nearline
   fsType: xfs
@@ -26,6 +28,8 @@ allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
+mountOptions:
+  - wsync
 parameters:
   diskSelector: nearline
   fsType: xfs
@@ -45,6 +49,8 @@ allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
+mountOptions:
+  - wsync
 parameters:
   dataLocality: best-effort
   diskSelector: standard
