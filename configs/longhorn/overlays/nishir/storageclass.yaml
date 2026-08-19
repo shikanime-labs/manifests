@@ -10,6 +10,7 @@ volumeBindingMode: WaitForFirstConsumer
 parameters:
   diskSelector: nearline
   fsType: xfs
+  nfsOptions: "vers=4.0,noresvport"
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
@@ -28,6 +29,7 @@ volumeBindingMode: WaitForFirstConsumer
 parameters:
   diskSelector: nearline
   fsType: xfs
+  nfsOptions: "vers=4.0,noresvport"
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
@@ -47,6 +49,7 @@ parameters:
   dataLocality: best-effort
   diskSelector: standard
   fsType: xfs
+  nfsOptions: "vers=4.0,noresvport"
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
