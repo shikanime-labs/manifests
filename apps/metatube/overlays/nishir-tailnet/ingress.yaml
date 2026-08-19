@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: metatube
+spec:
+  defaultBackend:
+    service:
+      name: metatube
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - metatube
