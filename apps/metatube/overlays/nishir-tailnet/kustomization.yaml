@@ -1,6 +1,7 @@
 resources:
   - ../nishir
   - ingress.yaml
+namespace: shikanime
 labels:
   - includeTemplates: true
     pairs:
