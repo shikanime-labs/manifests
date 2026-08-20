@@ -1,14 +1,18 @@
-# The kube-apiserver is hostNetwork, so its admission-webhook calls to
-# kubevirt-operator-webhook / virt-api originate from a node LAN IP
-# (192.168.1.0/24), not a pod IP. kubevirt-system otherwise has no ingress
-# policy for these pods, so Felix drops the cross-node webhook POST and the
-# Flux config-kubevirt dry-run fails with context deadline exceeded.
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: kubevirt-allow-ingress
   namespace: kubevirt-system
 spec:
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 192.168.1.0/24
+      ports:
+        - port: 8444
+          protocol: TCP
+        - port: 8443
+          protocol: TCP
   podSelector:
     matchExpressions:
       - key: kubevirt.io
@@ -18,12 +22,3 @@ spec:
           - virt-api
   policyTypes:
     - Ingress
-  ingress:
-    - from:
-        - ipBlock:
-            cidr: 192.168.1.0/24
-      ports:
-        - protocol: TCP
-          port: 8444
-        - protocol: TCP
-          port: 8443

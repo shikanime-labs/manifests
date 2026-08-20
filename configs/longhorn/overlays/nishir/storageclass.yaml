@@ -12,7 +12,7 @@ mountOptions:
 parameters:
   diskSelector: nearline
   fsType: xfs
-  nfsOptions: "vers=4.0,noresvport"
+  nfsOptions: vers=4.0,noresvport
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
@@ -33,7 +33,7 @@ mountOptions:
 parameters:
   diskSelector: nearline
   fsType: xfs
-  nfsOptions: "vers=4.0,noresvport"
+  nfsOptions: vers=4.0,noresvport
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
@@ -55,7 +55,7 @@ parameters:
   dataLocality: best-effort
   diskSelector: standard
   fsType: xfs
-  nfsOptions: "vers=4.0,noresvport"
+  nfsOptions: vers=4.0,noresvport
   numberOfReplicas: "2"
   recurringJobSelector: |
     [
