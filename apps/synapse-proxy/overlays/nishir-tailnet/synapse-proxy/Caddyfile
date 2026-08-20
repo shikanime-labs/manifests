@@ -23,7 +23,7 @@
 
 (matrix) {
 	import mautrix
-	@isMatrixClient path /.well-known/matrix/server /_matrix/* /_synapse/client/*
+	@isMatrixClient path /.well-known/matrix/* /_matrix/* /_synapse/client/*
 	handle @isMatrixClient {
 		reverse_proxy https://synapse.shikanime.svc.cluster.local:8448 {
 			transport http {
