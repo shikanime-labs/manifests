@@ -1,4 +1,5 @@
 resources:
   - https://github.com/kubevirt/kubevirt/releases/download/v1.7.4/kubevirt-operator.yaml
+  - netpol.yaml
   - vpa.yaml
 namespace: kubevirt-system
