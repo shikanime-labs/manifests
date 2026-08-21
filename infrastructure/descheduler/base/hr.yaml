@@ -42,8 +42,13 @@ spec:
               args:
                 maxPodLifeTimeSeconds: 3600
                 states:
-                  - Init
+                  - ContainerCreating
+                  - ContainerStatusUnknown
+                  - CrashLoopBackOff
                   - CreateContainerError
+                  - Error
+                  - Evicted
+                  - Init
                   - Pending
                   - PodInitializing
                   - Terminating
