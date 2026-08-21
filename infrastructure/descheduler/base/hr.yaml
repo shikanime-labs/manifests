@@ -43,7 +43,6 @@ spec:
                 maxPodLifeTimeSeconds: 3600
                 states:
                   - ContainerCreating
-                  - ContainerStatusUnknown
                   - CrashLoopBackOff
                   - CreateContainerError
                   - Error
