@@ -17,10 +17,6 @@ spec:
   releaseName: descheduler
   targetNamespace: descheduler-system
   values:
-    # descheduler cronjob pods must satisfy the namespace PodSecurity restricted label
-    podSecurityContext:
-      seccompProfile:
-        type: RuntimeDefault
     deschedulerPolicy:
       metricsProviders:
         - source: KubernetesMetrics
@@ -47,32 +43,20 @@ spec:
                 maxPodLifeTimeSeconds: 3600
                 states:
                   - ContainerCreating
-                  - ContainerStatusUnknown
                   - CrashLoopBackOff
                   - CreateContainerError
                   - Error
                   - Evicted
-                  - Init
                   - Pending
                   - PodInitializing
-                  - Terminating
-                  - ContainerCreating
-                  - ContainerStatusUnknown
-                  - CrashLoopBackOff
-                  - Error
-                  - Evicted
             - name: RemoveFailedPods
               args:
                 includingInitContainers: true
                 reasons:
                   - ContainerCannotRun
-                  - ContainerStatusUnknown
-                  - CrashLoopBackOff
                   - CreateContainerConfigError
                   - CreateContainerError
                   - ErrImagePull
-                  - Error
-                  - Evicted
                   - FailedMount
                   - ImagePullBackOff
                   - RunContainerError
@@ -129,3 +113,6 @@ spec:
               enabled:
                 - RemoveDuplicates
                 - RemovePodsViolatingTopologySpreadConstraint
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
