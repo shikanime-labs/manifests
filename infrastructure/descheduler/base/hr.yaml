@@ -17,6 +17,10 @@ spec:
   releaseName: descheduler
   targetNamespace: descheduler-system
   values:
+    # descheduler cronjob pods must satisfy the namespace PodSecurity restricted label
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
     deschedulerPolicy:
       metricsProviders:
         - source: KubernetesMetrics
