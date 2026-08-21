@@ -2,10 +2,10 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", "security:openssf-scorecard"],
   "flux": {
-    "fileMatch": [
-      "(^|/)apps/.*kustomization\\.yaml$",
-      "(^|/)clusters/.*kustomization\\.yaml$",
-      "(^|/)infrastructure/.*hr\\.yaml$"
+    "managerFilePatterns": [
+      "/(^|/)apps/.*kustomization\\.yaml$/",
+      "/(^|/)clusters/.*kustomization\\.yaml$/",
+      "/(^|/)infrastructure/.*hr\\.yaml$/"
     ]
   },
   "nix": { "enabled": true },
@@ -19,12 +19,16 @@
     {
       "description": "Private registry (dock.mau.dev) requires auth; bump manually.",
       "enabled": false,
-      "matchPackagePatterns": ["^dock\\.mau\\.dev/"]
+      "matchPackageNames": [
+        "/^dock\\.mau\\.dev//"
+      ]
     },
     {
       "description": "Pinned to a Postgres major (pg15); do not auto-jump majors.",
       "matchCurrentVersion": "!/^pg\\d+$/",
-      "matchPackagePatterns": ["^pgvector/pgvector$"]
+      "matchPackageNames": [
+        "/^pgvector/pgvector$/"
+      ]
     }
   ],
   "postUpgradeTasks": {
