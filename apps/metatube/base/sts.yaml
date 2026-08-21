@@ -26,6 +26,10 @@ spec:
               value: https://secure.mse.waseda.ac.jp
             - name: HTTPS_PROXY
               value: https://secure.mse.waseda.ac.jp
+            - name: MT_MOVIE_PROVIDER_JAVBUS__PRIORITY
+              value: "0"
+            - name: MT_MOVIE_PROVIDER_DUGA__PRIORITY
+              value: "0"
           livenessProbe:
             initialDelaySeconds: 60
             tcpSocket:
