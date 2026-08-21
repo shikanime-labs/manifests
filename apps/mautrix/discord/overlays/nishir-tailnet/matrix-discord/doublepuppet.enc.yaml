@@ -1,4 +1,3 @@
-url: ""
 as_token: ENC[AES256_GCM,data:akfC0gMcnTIFWYqkyebOOksMbRR8Dr8M0kM6785mtgTw4Bjf1j4pcJOpGbQXTLYtOcoCtSvQce48bdcoUqxDhQ==,iv:qfBzk3/1rAETuQEQIcUvZmZ8p46CDMZjZjPhnQy2M2Y=,tag:nCC3968t67zeSLEYl1QA1Q==,type:str]
 hs_token: ENC[AES256_GCM,data:1kfeht+KfO5IVIkmthici3opRCflV9xKde6Z/WrNJ07aylGz9keIkglEh+4Ds7bze8GrnWtziStquVGJ3wTtfg==,iv:J3ejuRmM4EXQIZ8IwhlibF4ko7jJrpjZtBxWOOh4Qeg=,tag:wwzoea4aBLebqqo/vykIsg==,type:str]
 id: discord-doublepuppet

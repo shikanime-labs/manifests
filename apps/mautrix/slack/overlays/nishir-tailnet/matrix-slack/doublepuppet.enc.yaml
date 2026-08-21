@@ -1,4 +1,3 @@
-url: ""
 as_token: ENC[AES256_GCM,data:AN0xFR9H2yNgL4y57OMZGAhgqRGzZXEh1XShanD15GGotLm7H0MgU65Vz0lKFMkscTgwogV4IFDyMFI7394zsg==,iv:dRgjaaloJzaX8Wv3F7sFjihZpB/0WjCSJQ4Dg+qo7Tk=,tag:juVgSYFdvpC3UXrOa+rXSA==,type:str]
 hs_token: ENC[AES256_GCM,data:o2z4HdKCXMSiuVyN/TXpCd5GfW/FIEzINS19T55mNKDzON2j7cHOzIzHhb/yVCvsECsmrIOy+ySycZ32sRjYVg==,iv:lQYTR/b+kLWXEJPenOv/tO30da+ssRDtP0dRaXcrIQM=,tag:BFFAKYO40Evyg/9ivMCtrA==,type:str]
 id: slack-doublepuppet
