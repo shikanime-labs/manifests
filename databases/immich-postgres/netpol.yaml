@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: immich-postgres-allow-shikanime
+  namespace: shikanime-postgres
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: shikanime
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: immich
+      ports:
+        - port: 5432
+  podSelector:
+    matchLabels:
+      cnpg.io/cluster: immich-postgres
+  policyTypes:
+    - Ingress

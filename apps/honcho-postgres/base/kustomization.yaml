@@ -1,9 +1,5 @@
 resources:
-  - netpol.yaml
-  - pvc.yaml
-  - sts.yaml
-  - svc.yaml
-  - vpa.yaml
+  - svc-externalname.yaml
 images:
   - name: postgres
     newName: pgvector/pgvector
