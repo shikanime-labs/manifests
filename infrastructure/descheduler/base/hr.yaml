@@ -47,6 +47,11 @@ spec:
                   - Pending
                   - PodInitializing
                   - Terminating
+                  - ContainerCreating
+                  - ContainerStatusUnknown
+                  - CrashLoopBackOff
+                  - Error
+                  - Evicted
             - name: RemoveFailedPods
               args:
                 includingInitContainers: true
@@ -58,6 +63,7 @@ spec:
                   - CreateContainerError
                   - ErrImagePull
                   - Error
+                  - Evicted
                   - FailedMount
                   - ImagePullBackOff
                   - RunContainerError
