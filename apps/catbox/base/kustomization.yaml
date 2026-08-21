@@ -1,16 +1,11 @@
 resources:
   - netpol.yaml
   - pvc.yaml
-  - sts.yaml
+  - vm.yaml
   - svc.yaml
-  - vpa.yaml
-images:
-  - name: catbox
-    newName: ghcr.io/shikanime/shikanime/catbox
-    newTag: v0.17.1-612-g8107bb5@sha256:5ae04d6e40b6bf73c6c1219a54702bc973b35aa495445f1b8f9f5c24aa5998e9
 metadata:
   annotations:
     automata.shikanime.studio/images:
-      '[ { "name": "catbox", "tag-regex":
+      '[ { "name": "ghcr.io/shikanime-labs/machines/catbox", "tag-regex":
       "^v(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)-(?P<build>\\d+)-g(?P<commit>[0-9a-f]+)$"
       } ]'

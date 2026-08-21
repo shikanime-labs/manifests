@@ -9,4 +9,4 @@ labels:
       app.kubernetes.io/instance: catbox
       app.kubernetes.io/name: catbox
       app.kubernetes.io/part-of: telsha-workstation
-      app.kubernetes.io/version: 0.17.1-612-g8107bb5
+      app.kubernetes.io/version: latest

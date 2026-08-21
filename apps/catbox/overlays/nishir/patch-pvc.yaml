@@ -4,4 +4,3 @@ metadata:
   name: catbox-workspaces
 spec:
   storageClassName: nishir-standard
-  volumeName: catbox-workspaces
