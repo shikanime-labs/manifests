@@ -12,8 +12,8 @@ connectors:
         userMatchers:
           - groupAttr: member
             userAttr: DN
-      host: lldap.shikanime.svc.cluster.local:3890
-      insecureNoSSL: true
+      host: lldap.shikanime.svc.cluster.local:6360
+      insecureNoSSL: false
       insecureSkipVerify: true
       userSearch:
         baseDN: ou=people,dc=shikanime,dc=studio
