@@ -59,6 +59,8 @@ spec:
               mountPath: /cache
             - name: config
               mountPath: /config
+      securityContext:
+        fsGroup: 1000
       volumes:
         - name: cache
           emptyDir: {}

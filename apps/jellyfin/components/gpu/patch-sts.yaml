@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      containers:
+        - name: jellyfin
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          volumeMounts:
+            - name: dev-dri
+              mountPath: /dev/dri
+      securityContext:
+        supplementalGroups:
+          - 26 # render device
+          - 303 # media storage
+      volumes:
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
