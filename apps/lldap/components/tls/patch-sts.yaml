@@ -12,15 +12,15 @@ spec:
               containerPort: 6360
           volumeMounts:
             - name: tls
-              mountPath: /data/ldap_tls
+              mountPath: /etc/ssl/private
               readOnly: true
           env:
             - name: LLDAP_LDAPS_OPTIONS__ENABLED
               value: "true"
             - name: LLDAP_LDAPS_OPTIONS__CERT_FILE
-              value: /data/ldap_tls/tls.crt
+              value: /etc/ssl/private/tls.crt
             - name: LLDAP_LDAPS_OPTIONS__KEY_FILE
-              value: /data/ldap_tls/tls.key
+              value: /etc/ssl/private/tls.key
       volumes:
         - name: tls
           secret:
