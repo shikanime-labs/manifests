@@ -11,10 +11,16 @@ spec:
             - name: data
               mountPath: /usr/src/app/upload
               volumeName: data
+            - name: timeline-data
+              mountPath: /mnt/timeline
+              readOnly: true
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: immich-data
+        - name: timeline-data
+          persistentVolumeClaim:
+            claimName: timeline-data
   volumeClaimTemplates:
     - metadata:
         name: data
