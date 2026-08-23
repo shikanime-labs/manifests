@@ -1,0 +1,55 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: catbox
+spec:
+  # Always keeps the guest running and auto-restarts it on failure.
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: catbox
+        app.kubernetes.io/name: catbox
+    spec:
+      domain:
+        machine:
+          type: q35
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: false
+        resources:
+          requests:
+            memory: 4Gi
+            cpu: "2"
+        devices:
+          disks:
+            - name: rootdisk
+              bootOrder: 1
+              disk:
+                bus: virtio
+            - name: workspaces
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              masquerade: {}
+              ports:
+                - name: ssh
+                  port: 22
+                  protocol: TCP
+                - name: mdns
+                  port: 5353
+                  protocol: UDP
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        # KubeVirt containerDisk: the NixOS qcow2 (nixos.qcow2) lives at /disk.
+        # CDI is absent in this cluster, so the VM boots directly from the image.
+        - name: rootdisk
+          containerDisk:
+            image: ghcr.io/shikanime-labs/machines/catbox:latest
+        - name: workspaces
+          persistentVolumeClaim:
+            claimName: catbox-workspaces
