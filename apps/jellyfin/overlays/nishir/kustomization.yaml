@@ -15,3 +15,6 @@ secretGenerator:
   - name: jellyfin-pkcs12-password
     envs:
       - jellyfin/.enc.env
+  - name: jellyfin-ldap
+    files:
+      - LDAP-Auth.xml=jellyfin/LDAP-Auth.enc.xml
