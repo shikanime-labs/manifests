@@ -1,0 +1,18 @@
+resources:
+  - ../nishir
+  - ingress.yaml
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: llm-inference
+      app.kubernetes.io/instance: deepseek-v4-flash
+      app.kubernetes.io/name: deepseek-v4-flash
+      app.kubernetes.io/part-of: nishir-inference
+      app.kubernetes.io/version: unknown
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: deepseek-v4-flash
+      version: v1
+      kind: NetworkPolicy

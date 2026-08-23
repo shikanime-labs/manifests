@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: deepseek-v4-flash
+spec:
+  defaultBackend:
+    service:
+      name: deepseek-v4-flash
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - deepseek-v4-flash
