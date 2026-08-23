@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      containers:
+        - name: jellyfin
+          volumeMounts:
+            - name: ldap-config
+              mountPath: /config/plugins/configurations/LDAP-Auth.xml
+              readOnly: true
+              subPath: LDAP-Auth.xml
+      volumes:
+        - name: ldap-config
+          secret:
+            secretName: jellyfin-ldap

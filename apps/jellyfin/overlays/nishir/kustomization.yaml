@@ -4,6 +4,8 @@ resources:
 namespace: shikanime
 components:
   - ../../components/tls
+  - ../../components/ldap
+  - ../../components/gpu
 configurations:
   - namereference.yaml
 patches:

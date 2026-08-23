@@ -9,15 +9,15 @@ without losing replicas.
 
 Longhorn fences a disk from scheduling on a transient fault — an I/O error, a
 stuck mount, or `storageMinimalAvailablePercentage` pressure — and records the
-fence in its in-memory disk state. That flips the node's `Schedulable`
-condition to `False`. If the storage plane is unhealthy enough, the kubelet
-follows the node to `NotReady`. The fault lives in Longhorn's state, not in a
-physically dead drive, so rebooting the node lets the manager re-probe the disk
-and drop the fence.
+fence in its in-memory disk state. That flips the node's `Schedulable` condition
+to `False`. If the storage plane is unhealthy enough, the kubelet follows the
+node to `NotReady`. The fault lives in Longhorn's state, not in a physically
+dead drive, so rebooting the node lets the manager re-probe the disk and drop
+the fence.
 
 This is a different failure from a dirty XFS log (see
-`longhorn-xfs-recovery.md`): that one is a per-volume mount refusal, this one
-is a node-wide scheduling block.
+`longhorn-xfs-recovery.md`): that one is a per-volume mount refusal, this one is
+a node-wide scheduling block.
 
 ## Diagnose
 
@@ -42,8 +42,8 @@ is a node-wide scheduling block.
 3. Rule out the cases where a reboot is wrong:
    - **Network partition** — node unreachable, no kubelet heartbeats. Fix the
      link first; a reboot does nothing.
-   - **Genuinely failed disk** — the disk reports a hardware error that
-     survives a reboot. Rebooting will not help; evacuate the node.
+   - **Genuinely failed disk** — the disk reports a hardware error that survives
+     a reboot. Rebooting will not help; evacuate the node.
    - Only proceed when the message names an I/O error / mount issue on a disk
      that was healthy before the event.
 
@@ -55,8 +55,9 @@ is a node-wide scheduling block.
    kubectl cordon <node>
    ```
 
-2. Reboot the node (Tailscale SSH / IPMI / BMC). Do **not** `kubectl delete
-   node` — that drops the node identity and its Longhorn membership:
+2. Reboot the node (Tailscale SSH / IPMI / BMC). Do **not**
+   `kubectl delete node` — that drops the node identity and its Longhorn
+   membership:
 
    ```sh
    ssh <node> sudo reboot
@@ -99,6 +100,6 @@ replace the drive / evacuate the node. Do not loop reboots.
 ## References
 
 - Longhorn node `Schedulable` condition and disk conditions:
-  https://longhorn.io/docs/
+  <https://longhorn.io/docs/>
 - Sister runbook: `longhorn-xfs-recovery.md` (per-volume dirty-log mount
   failure, not a node-wide fence)
