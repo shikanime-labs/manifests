@@ -1,0 +1,14 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: llama-cpp
+    newName: ghcr.io/ggml-org/llama.cpp
+    newTag: server@sha256:c005e79321f8e5731ec49a7f736aaeaac9465926c1e8f4c199c1d8a8996f26ef
+metadata:
+  annotations:
+    automata.shikanime.studio/images:
+      '[ { "name": "llama-cpp", "tag-regex": "^(?P<version>.+)$" } ]'
