@@ -34,13 +34,32 @@ spec:
             - "8080"
             - --rpc-port
             - "50052"
-            - --model
-            - /models/DeepSeek-V4-Flash-0731-Q4_K_M.gguf
+            - --rpc
+            - http://deepseek-v4-flash-rpc-server:50052
+            - -hf
+            - unsloth/DeepSeek-V4-Flash-0731-GGUF:Q4_K_M
             - --ctx-size
             - "8192"
+            - --gpu-layers
+            - "99"
+            - --no-mmap
+            - --flash-attn
+            - "on"
+            - --cache-type-k
+            - q8_0
+            - --cache-type-v
+            - q8_0
+            - --batch-size
+            - "2048"
+            - --ubatch-size
+            - "512"
+            - --n-cpu-moe
+            - "16"
+            - --mtp-n
+            - "1"
           env:
-            - name: HF_HUB_OFFLINE
-              value: "1"
+            - name: HF_HUB_CACHE
+              value: /models
           livenessProbe:
             failureThreshold: 10
             httpGet:
@@ -78,3 +97,18 @@ spec:
           volumeMounts:
             - name: models
               mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: models
+          emptyDir: {}
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri

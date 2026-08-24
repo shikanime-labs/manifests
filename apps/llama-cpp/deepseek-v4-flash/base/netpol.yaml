@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -22,12 +23,16 @@ kind: NetworkPolicy
 metadata:
   name: deepseek-v4-flash-rpc-server
 spec:
-  ingress: []  # ponytail: closed ingress; RPC shard reached only via proxy if needed.
-  egress: []   # ponytail: no egress; weights are pre-staged on Longhorn PVC.
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: deepseek-v4-flash
+      ports:
+        - port: rpc
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: deepseek-v4-flash-rpc-server
       app.kubernetes.io/name: deepseek-v4-flash-rpc-server
   policyTypes:
     - Ingress
-    - Egress

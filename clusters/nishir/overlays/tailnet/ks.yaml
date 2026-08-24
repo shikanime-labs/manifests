@@ -973,7 +973,7 @@ spec:
       name: deepseek-v4-flash
       namespace: shikanime
   interval: 10m
-  path: ./apps/deepseek-v4-flash/overlays/nishir-tailnet
+  path: ./apps/llama-cpp/deepseek-v4-flash/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
@@ -1000,7 +1000,7 @@ spec:
       name: qwen3.8-27b
       namespace: shikanime
   interval: 10m
-  path: ./apps/qwen3.8-27b/overlays/nishir-tailnet
+  path: ./apps/llama-cpp/qwen3.8-27b/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
@@ -1027,7 +1027,7 @@ spec:
       name: qwen3-embedding
       namespace: shikanime
   interval: 10m
-  path: ./apps/qwen3-embedding/overlays/nishir-tailnet
+  path: ./apps/llama-cpp/qwen3-embedding/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system

@@ -1,5 +1,5 @@
 resources:
   - ../../base
+namespace: shikanime
 components:
   - ../../components/monitoring
-namespace: shikanime

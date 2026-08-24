@@ -32,14 +32,27 @@ spec:
             - "0.0.0.0"
             - --port
             - "8080"
-            - --model
-            - /models/Qwen3-Embedding-4B-Q8_0.gguf
+            - -hf
+            - unsloth/Qwen3-Embedding-4B-GGUF:Q8_0
             - --embeddings
             - --ctx-size
             - "40000"
+            - --gpu-layers
+            - "99"
+            - --no-mmap
+            - --flash-attn
+            - "on"
+            - --cache-type-k
+            - q8_0
+            - --cache-type-v
+            - q8_0
+            - --batch-size
+            - "2048"
+            - --ubatch-size
+            - "512"
           env:
-            - name: HF_HUB_OFFLINE
-              value: "1"
+            - name: HF_HUB_CACHE
+              value: /models
           livenessProbe:
             failureThreshold: 10
             httpGet:
@@ -75,3 +88,18 @@ spec:
           volumeMounts:
             - name: models
               mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: models
+          emptyDir: {}
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
