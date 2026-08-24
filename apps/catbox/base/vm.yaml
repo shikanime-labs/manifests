@@ -11,6 +11,10 @@ spec:
         app.kubernetes.io/instance: catbox
         app.kubernetes.io/name: catbox
     spec:
+      # Schedule on nalsha: only amd64 node with headroom; KubeVirt injects
+      # kubernetes.io/arch=amd64, so arm64 nodes are infeasible.
+      nodeSelector:
+        kubernetes.io/hostname: nalsha
       domain:
         machine:
           type: q35
@@ -21,7 +25,7 @@ spec:
         resources:
           requests:
             memory: 4Gi
-            cpu: "2"
+            cpu: "1"
         devices:
           disks:
             - name: rootdisk
