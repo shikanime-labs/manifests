@@ -4,6 +4,6 @@ metadata:
   name: catbox
   annotations:
     tailscale.com/hostname: catbox
-    tailscale.com/tags: tag:automata,tag:machine,tag:workstation
+    tailscale.com/tags: tag:automata,tag:catbox
 spec:
   loadBalancerClass: tailscale
