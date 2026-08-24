@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: deepseek-v4-flash-models
+spec:
+  resources:
+    requests:
+      storage: 150Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOncePod
+  storageClassName: nishir-standard
