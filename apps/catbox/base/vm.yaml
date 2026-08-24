@@ -11,10 +11,10 @@ spec:
         app.kubernetes.io/instance: catbox
         app.kubernetes.io/name: catbox
     spec:
-      # Schedule on nalsha: only amd64 node with headroom; KubeVirt injects
-      # kubernetes.io/arch=amd64, so arm64 nodes are infeasible.
+      # KubeVirt boots an x86_64 qcow2, so the guest is infeasible on arm64
+      # nodes. Select amd64 generically rather than pinning one node.
       nodeSelector:
-        kubernetes.io/hostname: nalsha
+        kubernetes.io/arch: amd64
       domain:
         machine:
           type: q35
