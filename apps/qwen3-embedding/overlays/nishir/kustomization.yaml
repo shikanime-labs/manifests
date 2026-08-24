@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: llm-embedding
+      app.kubernetes.io/instance: qwen3-embedding
+      app.kubernetes.io/name: qwen3-embedding
+      app.kubernetes.io/part-of: nishir-llm-serving
+      app.kubernetes.io/version: "4b"

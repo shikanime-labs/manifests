@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deepseek-v4-flash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: deepseek-v4-flash
+      app.kubernetes.io/name: deepseek-v4-flash
+  serviceName: deepseek-v4-flash
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: deepseek-v4-flash
+        app.kubernetes.io/name: deepseek-v4-flash
+    spec:
+      # Pin to a Strix Halo APU node (kushira = orchestrator side of the RPC pair).
+      nodeSelector:
+        kubernetes.io/hostname: kushira
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/amd-gpu
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: deepseek-v4-flash
+          # ROCm llama.cpp server image built for gfx1151 (Strix Halo).
+          # Build with GGML_HIP=ON -DAMDGPU_TARGETS=gfx1151 and the grub GTT tweak.
+          image: ghcr.io/shikanime/shikanime/llama-cpp-rocm:gfx1151
+          # Orchestrator: serves API, splits layers 50/50 with the RPC shard on sashina.
+          args:
+            - --model
+            - /models/DeepSeek-V4-Flash-0731-UD-IQ4_XS-00001-of-00008.gguf
+            - --rpc
+            - sashina.taila659a.ts.net:50052
+            - --tensor-split
+            - 50,50
+            - --ctx-size
+            - "200000"
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8000"
+            - --n-cpu-moe
+            - "16"
+          ports:
+            - name: http
+              containerPort: 8000
+          # ROCm/APU device access (no NVIDIA gpu-operator on this cluster).
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: model
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+          resources:
+            requests:
+              cpu: "8"
+              memory: 110Gi
+              amd.com/gpu: 1
+            limits:
+              cpu: "16"
+              memory: 120Gi
+              amd.com/gpu: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 120
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+      volumes:
+        - name: model
+          persistentVolumeClaim:
+            claimName: deepseek-v4-flash-model
+        - name: dev-kfd
+          hostPath:
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri

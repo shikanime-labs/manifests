@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: deepseek-v4-flash-model
+spec:
+  resources:
+    requests:
+      storage: 200Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOncePod

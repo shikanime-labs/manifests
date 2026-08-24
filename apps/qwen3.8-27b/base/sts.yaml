@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: qwen3.8-27b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: qwen3.8-27b
+      app.kubernetes.io/name: qwen3.8-27b
+  serviceName: qwen3.8-27b
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: qwen3.8-27b
+        app.kubernetes.io/name: qwen3.8-27b
+    spec:
+      # Orchestrator side of the RPC pair; kushira holds the other half via --rpc.
+      nodeSelector:
+        kubernetes.io/hostname: sashina
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/amd-gpu
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: qwen3.8-27b
+          image: ghcr.io/shikanime/shikanime/llama-cpp-rocm:gfx1151
+          # Dense 27B VLM. RPC-split 50/50 with kushira; mmproj enables image input.
+          args:
+            - --model
+            - /models/Qwen3.8-27B-Q8_0.gguf
+            - --mmproj
+            - /models/Qwen3.8-27B-mmproj-F16.gguf
+            - --rpc
+            - kushira.taila659a.ts.net:50052
+            - --tensor-split
+            - 50,50
+            - --ctx-size
+            - "32000"
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8000"
+          ports:
+            - name: http
+              containerPort: 8000
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: model
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+          resources:
+            requests:
+              cpu: "8"
+              memory: 60Gi
+              amd.com/gpu: 1
+            limits:
+              cpu: "16"
+              memory: 70Gi
+              amd.com/gpu: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 120
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+      volumes:
+        - name: model
+          persistentVolumeClaim:
+            claimName: qwen3.8-27b-model
+        - name: dev-kfd
+          hostPath:
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri

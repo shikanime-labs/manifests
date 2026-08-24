@@ -1,0 +1,9 @@
+resources:
+  - netpol.yaml
+  - pvc.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: ghcr.io/shikanime/shikanime/llama-cpp-rocm
+    newTag: gfx1151

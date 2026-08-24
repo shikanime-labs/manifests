@@ -834,3 +834,81 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-deepseek-v4-flash
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-autoscaler
+    - name: infrastructure-cert-manager
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: deepseek-v4-flash
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/deepseek-v4-flash/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-qwen3.8-27b
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-autoscaler
+    - name: infrastructure-cert-manager
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: qwen3.8-27b
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/qwen3.8-27b/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-qwen3-embedding
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-autoscaler
+    - name: infrastructure-cert-manager
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: qwen3-embedding
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/qwen3-embedding/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository

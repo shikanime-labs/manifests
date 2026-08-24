@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: qwen3-embedding
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: qwen3-embedding
+      app.kubernetes.io/name: qwen3-embedding
+  serviceName: qwen3-embedding
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: qwen3-embedding
+        app.kubernetes.io/name: qwen3-embedding
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: sashina
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/amd-gpu
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: qwen3-embedding
+          image: ghcr.io/shikanime/shikanime/llama-cpp-rocm:gfx1151
+          # Small embedding model; no RPC, single-node. Capped at 40k ctx by arch.
+          args:
+            - --model
+            - /models/Qwen3-Embedding-4B-Q8_0.gguf
+            - --embedding
+            - --ctx-size
+            - "40000"
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8000"
+          ports:
+            - name: http
+              containerPort: 8000
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: model
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+          resources:
+            requests:
+              cpu: "4"
+              memory: 12Gi
+              amd.com/gpu: 1
+            limits:
+              cpu: "8"
+              memory: 16Gi
+              amd.com/gpu: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 90
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: model
+          persistentVolumeClaim:
+            claimName: qwen3-embedding-model
+        - name: dev-kfd
+          hostPath:
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri
