@@ -1,9 +1,7 @@
 resources:
   - netpol.yaml
   - sts.yaml
-  - rpc-server-sts.yaml
   - svc.yaml
-  - rpc-server-svc.yaml
   - vpa.yaml
 images:
   - name: llama-cpp
