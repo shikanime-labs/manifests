@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: envoy-ai-gateway
+  namespace: shikanime
+spec:
+  defaultBackend:
+    service:
+      name: envoy-ai-gateway
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - envoy-ai-gateway

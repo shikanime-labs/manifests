@@ -1,0 +1,20 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: envoy-ai-gateway
+  namespace: envoy-ai-gateway-system
+  labels:
+    app.kubernetes.io/name: envoy-ai-gateway
+    app.kubernetes.io/part-of: envoy-ai-gateway
+spec:
+  endpoints:
+    - interval: 30s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 15s
+  namespaceSelector:
+    matchNames:
+      - envoy-ai-gateway-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: envoy-ai-gateway

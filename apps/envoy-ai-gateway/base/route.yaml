@@ -1,0 +1,26 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: fleet-free
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: envoy-ai-gateway
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        # Consumers set this header to route to the free-tier pool.
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: fleet-free
+      backendRefs:
+        - name: nous-free
+          priority: 0
+        - name: openrouter-free
+          priority: 1
+        - name: ishtar-local
+          priority: 2
+        - name: telsha-local
+          priority: 3
