@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deepseek-v4-flash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: deepseek-v4-flash
+      app.kubernetes.io/name: deepseek-v4-flash
+  serviceName: deepseek-v4-flash
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: deepseek-v4-flash
+        app.kubernetes.io/name: deepseek-v4-flash
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/amd-gpu
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: deepseek-v4-flash
+          image: llama-cpp
+          args:
+            - --host
+            - "0.0.0.0"
+            - --port
+            - "8080"
+            - --rpc-port
+            - "50052"
+            - --rpc
+            - http://deepseek-v4-flash-rpc-server:50052
+            - -hf
+            - unsloth/DeepSeek-V4-Flash-0731-GGUF:Q4_K_M
+            - --ctx-size
+            - "8192"
+            - --gpu-layers
+            - "99"
+            - --no-mmap
+            - --flash-attn
+            - "on"
+            - --cache-type-k
+            - q8_0
+            - --cache-type-v
+            - q8_0
+            - --batch-size
+            - "2048"
+            - --ubatch-size
+            - "512"
+            - --n-cpu-moe
+            - "16"
+            - --mtp-n
+            - "1"
+          env:
+            - name: HF_HUB_CACHE
+              value: /models
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 300
+            periodSeconds: 30
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: rpc
+              containerPort: 50052
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 120
+            periodSeconds: 15
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 120
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            limits:
+              memory: 110Gi
+            requests:
+              cpu: "6"
+              memory: 16Gi
+          volumeMounts:
+            - name: models
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: models
+          emptyDir: {}
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
