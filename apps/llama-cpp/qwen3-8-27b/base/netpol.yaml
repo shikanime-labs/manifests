@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: qwen3.8-27b
+  name: qwen3-8-27b
 spec:
   ingress: []
   egress: []
   podSelector:
     matchLabels:
-      app.kubernetes.io/instance: qwen3.8-27b
-      app.kubernetes.io/name: qwen3.8-27b
+      app.kubernetes.io/instance: qwen3-8-27b
+      app.kubernetes.io/name: qwen3-8-27b
   policyTypes:
     - Ingress
     - Egress
