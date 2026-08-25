@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deepseek-flash-rpc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: deepseek-flash-rpc-server
+      app.kubernetes.io/name: deepseek-flash-rpc-server
+  serviceName: deepseek-flash-rpc-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: deepseek-flash-rpc-server
+        app.kubernetes.io/name: deepseek-flash-rpc-server
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/amd-gpu
+                    operator: In
+                    values:
+                      - "true"
+      containers:
+        - name: deepseek-flash-rpc-server
+          image: llama-cpp
+          args:
+            - --rpc-server
+            - --host
+            - "0.0.0.0"
+            - --port
+            - "50052"
+            - -hf
+            - unsloth/DeepSeek-V4-Flash-0731-GGUF:Q4_K_M
+            - --ctx-size
+            - "8192"
+            - --gpu-layers
+            - "99"
+            - --no-mmap
+            - --flash-attn
+            - "on"
+            - --cache-type-k
+            - q8_0
+            - --cache-type-v
+            - q8_0
+            - --batch-size
+            - "2048"
+            - --ubatch-size
+            - "512"
+            - --n-cpu-moe
+            - "16"
+            - --mtp-n
+            - "1"
+          env:
+            - name: HF_HUB_CACHE
+              value: /models
+          ports:
+            - name: rpc
+              containerPort: 50052
+          resources:
+            limits:
+              memory: 110Gi
+            requests:
+              cpu: "6"
+              memory: 16Gi
+          volumeMounts:
+            - name: models
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: models
+          emptyDir: {}
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
