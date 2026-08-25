@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deepseek-flash-rpc-server
+spec:
+  ports:
+    - name: rpc
+      port: 50052
+      targetPort: rpc
+  selector:
+    app.kubernetes.io/instance: deepseek-flash-rpc-server
+    app.kubernetes.io/name: deepseek-flash-rpc-server
