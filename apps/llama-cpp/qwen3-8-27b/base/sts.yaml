@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: qwen3.8-27b
+  name: qwen3-8-27b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/instance: qwen3.8-27b
-      app.kubernetes.io/name: qwen3.8-27b
-  serviceName: qwen3.8-27b
+      app.kubernetes.io/instance: qwen3-8-27b
+      app.kubernetes.io/name: qwen3-8-27b
+  serviceName: qwen3-8-27b
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: qwen3.8-27b
-        app.kubernetes.io/name: qwen3.8-27b
+        app.kubernetes.io/instance: qwen3-8-27b
+        app.kubernetes.io/name: qwen3-8-27b
     spec:
       affinity:
         nodeAffinity:
@@ -25,7 +25,7 @@ spec:
                     values:
                       - "true"
       containers:
-        - name: qwen3.8-27b
+        - name: qwen3-8-27b
           image: llama-cpp
           args:
             - --host

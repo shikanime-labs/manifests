@@ -1,10 +1,10 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
-  name: qwen3.8-27b
+  name: qwen3-8-27b
   labels:
-    app.kubernetes.io/name: qwen3.8-27b
-    app.kubernetes.io/part-of: qwen3.8-27b
+    app.kubernetes.io/name: qwen3-8-27b
+    app.kubernetes.io/part-of: qwen3-8-27b
 spec:
   endpoints:
     - interval: 60s
@@ -16,5 +16,5 @@ spec:
       - shikanime
   selector:
     matchLabels:
-      app.kubernetes.io/instance: qwen3.8-27b
-      app.kubernetes.io/name: qwen3.8-27b
+      app.kubernetes.io/instance: qwen3-8-27b
+      app.kubernetes.io/name: qwen3-8-27b
