@@ -4,6 +4,7 @@ metadata:
   name: ftp
 spec:
   type: LoadBalancer
+  sessionAffinity: ClientIP
   selector:
     app.kubernetes.io/instance: copyparty
     app.kubernetes.io/name: copyparty

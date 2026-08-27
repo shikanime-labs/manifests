@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: seerr
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 5055

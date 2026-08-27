@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: radarr
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 7878

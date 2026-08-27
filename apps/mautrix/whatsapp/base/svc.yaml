@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: mautrix-whatsapp
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 29318

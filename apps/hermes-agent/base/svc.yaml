@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: hermes-agent
 spec:
+  sessionAffinity: ClientIP
   ports: []
   selector:
     app.kubernetes.io/instance: hermes-agent

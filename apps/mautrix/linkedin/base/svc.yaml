@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: mautrix-linkedin
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 29341
