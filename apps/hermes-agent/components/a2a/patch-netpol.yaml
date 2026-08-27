@@ -2,11 +2,10 @@
   path: /spec/ingress/-
   value:
     from:
-      - namespaceSelector:
+      - podSelector:
           matchLabels:
-            kubernetes.io/metadata.name: tailscale-system
+            app.kubernetes.io/part-of: nishir-automata
+            app.kubernetes.io/name: a2a
     ports:
-      - port: http
-      - port: dashboard
       - port: a2a
       - port: api-server

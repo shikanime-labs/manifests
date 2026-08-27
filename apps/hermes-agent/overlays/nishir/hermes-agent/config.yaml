@@ -59,6 +59,117 @@ agent:
   restart_drain_timeout: 60
   verbose: false
   verify_on_stop: false
+a2a_agents:
+  ashira:
+    url: https://ashira.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-x86
+      - k8s-follower
+  fushi:
+    url: https://fushi.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-arm
+      - k8s-node
+  manash:
+    url: https://manash.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-x86
+      - k8s-leader
+  minish:
+    url: https://minish.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-arm
+      - k8s-node
+  nalsha:
+    url: https://nalsha.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-x86
+      - k8s-follower
+  nemishi:
+    url: https://nemishi.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build
+      - build-arm
+      - k8s-node
+  nixtar:
+    url: https://nixtar.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - graphical
+      - media
+      - nvidia
+      - k8s-leader
+  sashina:
+    url: https://sashina.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build-x86
+      - k8s-node
+  kushira:
+    url: https://kushira.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - build-x86
+      - k8s-node
+  telsha:
+    url: https://telsha.taila659a.ts.net:9900
+    auth:
+      type: bearer
+      token: ${env:A2A_OWN_TOKEN}
+    capabilities:
+      - command
+      - workstation
+      - darwin
+bot_peers:
+  ashira:
+    url: https://ashira.taila659a.ts.net:8642
+  fushi:
+    url: https://fushi.taila659a.ts.net:8642
+  kushira:
+    url: https://kushira.taila659a.ts.net:8642
+  manash:
+    url: https://manash.taila659a.ts.net:8642
+  minish:
+    url: https://minish.taila659a.ts.net:8642
+  nalsha:
+    url: https://nalsha.taila659a.ts.net:8642
+  nemishi:
+    url: https://nemishi.taila659a.ts.net:8642
+  nixtar:
+    url: https://nixtar.taila659a.ts.net:8642
+  sashina:
+    url: https://sashina.taila659a.ts.net:8642
+  telsha:
+    url: https://telsha.taila659a.ts.net:8642
 auxiliary:
   approval:
     base_url: https://ai.taila659a.ts.net/v1
@@ -208,8 +319,11 @@ model:
   default: tencent/hy3:free
   provider: custom:aperture-openai
 platform_toolsets:
+  a2a:
+    - a2a
   cli:
     - hermes-cli
+    - a2a
   discord:
     - hermes-discord
   homeassistant:
@@ -223,6 +337,8 @@ platform_toolsets:
   whatsapp:
     - hermes-whatsapp
 platforms:
+  a2a:
+    enabled: true
   webhook:
     enabled: true
     extra:

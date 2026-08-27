@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hermes-agent
+spec:
+  template:
+    spec:
+      containers:
+        - name: hermes-agent
+          env:
+            - name: A2A_ENABLED
+              value: "true"
+          ports:
+            - name: a2a
+              containerPort: 9900
+            - name: api-server
+              containerPort: 8642
