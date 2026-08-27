@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: copyparty
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 3923

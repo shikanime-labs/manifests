@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: whisparr
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 6969

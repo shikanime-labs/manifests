@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: dex
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 5556

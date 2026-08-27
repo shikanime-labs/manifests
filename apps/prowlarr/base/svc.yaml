@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: prowlarr
 spec:
+  sessionAffinity: ClientIP
   ports:
     - name: http
       port: 9696
