@@ -1060,7 +1060,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-envoy-ai-gateway
+  name: apps-inference
   namespace: flux-system
 spec:
   decryption:
@@ -1068,17 +1068,17 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-envoy-ai-gateway
+    - name: infrastructure-envoy
     - name: infrastructure-cert-manager
     - name: infrastructure-monitoring
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: gateway.networking.k8s.io/v1
       kind: Gateway
-      name: envoy-ai-gateway
+      name: inference
       namespace: shikanime
   interval: 10m
-  path: ./apps/envoy-ai-gateway/overlays/nishir-tailnet
+  path: ./apps/inference/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system

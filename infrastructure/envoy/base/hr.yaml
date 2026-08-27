@@ -1,0 +1,78 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      # The cluster's Gateway API CRDs are bundle v1.5.0, and the
+      # safe-upgrades ValidatingAdmissionPolicy denies any chart shipping an
+      # older bundle (v1.6.x/v1.7.x ship v1.4.1). v1.8.3 is the floor
+      # (bundles v1.5.1).
+      version: v1.8.3
+      chart: gateway-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: envoy-gateway
+  targetNamespace: envoy-system
+  values:
+    deployment:
+      nodeSelector:
+        # The 3 GiB rpi4 nodes are memory/CPU-saturated; the control plane
+        # failed sandbox creation there (multus timeouts to the API server).
+        node.kubernetes.io/instance-type: rpi5
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ai-gateway-crds
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.1.0
+      chart: ai-gateway-crds-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: ai-gateway-crds
+  targetNamespace: envoy-system
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ai-gateway
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.1.0
+      chart: ai-gateway-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: ai-gateway
+  targetNamespace: envoy-system
+  dependsOn:
+    - name: envoy
+      namespace: flux-system
+    - name: ai-gateway-crds
+      namespace: flux-system
+  values:
+    controller:
+      replicaCount: 1
+    envoyGateway:
+      # EG installs into envoy-system (this overlay's targetNamespace); the
+      # ai-gateway controller must look for envoy data planes there.
+      namespace: envoy-system

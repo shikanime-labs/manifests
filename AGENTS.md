@@ -50,6 +50,10 @@ managed via FluxCD and structured around Kustomize.
 - `infrastructure/` — infrastructure providers/manifests
   - examples: `cert-manager`, `cluster-api`, `longhorn`, `tailscale`,
     `monitoring`, `trust-manager`
+  - operators spanning multiple charts merge them into one multi-doc
+    `hr.yaml` (e.g. `infrastructure/envoy/`: envoy, ai-gateway-crds,
+    ai-gateway) and deploy into a matching `<operator>-system` namespace
+    via `targetNamespace`
 - `modules/` — reusable Kustomize modules
 - `skaffold.yaml` — render profiles
 - `flake.lock` / AGENTS.md / `README.md` at repo root
@@ -61,6 +65,11 @@ managed via FluxCD and structured around Kustomize.
   `ingressClassName: tailscale` + Tailscale annotations
 - Storage: `PVC` in `apps/<app>/overlays/<cluster>/` bound to Longhorn `PV`
 - Secrets/config: `*.enc.*` files fed into `secretGenerator`
+- TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the
+  cluster CA issuer, policy wiring, and listener/service patches; the
+  cluster overlay composes the component
+- Resources in a base are one kind per file, named
+  `<short-kube-resource-name>.yaml`, listed sorted
 
 ## Secrets
 
