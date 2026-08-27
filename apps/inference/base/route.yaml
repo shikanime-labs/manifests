@@ -1,0 +1,48 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: default
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    # The extProc extracts the model name from the request body and matches
+    # it against these x-ai-eg-model Exact headers. The x-model-pool header
+    # gates each rule to the free-tier pool.
+    - matches:
+        - headers:
+            - name: x-model-pool
+              type: Exact
+              value: free
+            - name: x-ai-eg-model
+              type: Exact
+              value: qwen/qwen3-8b
+      backendRefs:
+        - name: nous
+          priority: 0
+        - name: openrouter
+          priority: 1
+        - name: qwen-27b
+          priority: 2
+        - name: deepseek-flash
+          priority: 3
+    - matches:
+        - headers:
+            - name: x-model-pool
+              type: Exact
+              value: free
+            - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-chat
+      backendRefs:
+        - name: nous
+          priority: 0
+        - name: openrouter
+          priority: 1
+        - name: deepseek-flash
+          priority: 2
+        - name: qwen-27b
+          priority: 3

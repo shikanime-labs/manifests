@@ -1056,3 +1056,26 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
+  name: apps-inference
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-envoy
+    - name: infrastructure-cert-manager
+    - name: infrastructure-monitoring
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: gateway.networking.k8s.io/v1
+      kind: Gateway
+      name: inference
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/inference/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
