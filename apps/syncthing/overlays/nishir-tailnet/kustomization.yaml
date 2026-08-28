@@ -5,7 +5,4 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
-      name: syncthing-tls
-      kind: Certificate
-    path: patch-cert.yaml
+  - path: patch-cert.yaml
