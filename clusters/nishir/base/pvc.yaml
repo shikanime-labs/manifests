@@ -128,8 +128,9 @@ spec:
   resources:
     requests:
       storage: 64Gi
-  storageClassName: nishir-ephemeral
+  storageClassName: nishir-transient
   volumeMode: Filesystem
+  volumeName: music-data
   accessModes:
     - ReadWriteMany
 ---
@@ -157,7 +158,7 @@ spec:
   resources:
     requests:
       storage: 128Gi
-  storageClassName: nishir-nearline
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: staging-data
   accessModes:
@@ -172,7 +173,7 @@ spec:
   resources:
     requests:
       storage: 1Ti
-  storageClassName: nishir-nearline
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: sukebe-doujins-data
   accessModes:
@@ -187,7 +188,7 @@ spec:
   resources:
     requests:
       storage: 128Gi
-  storageClassName: nishir-nearline
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: sukebe-games-data
   accessModes:
@@ -202,7 +203,7 @@ spec:
   resources:
     requests:
       storage: 2Ti
-  storageClassName: nishir-nearline
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: sukebe-scenes-data
   accessModes:
@@ -217,7 +218,7 @@ spec:
   resources:
     requests:
       storage: 512Gi
-  storageClassName: nishir-nearline
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: sukebe-shows-data
   accessModes:
@@ -232,7 +233,7 @@ spec:
   resources:
     requests:
       storage: 1Ti
-  storageClassName: nishir-ephemeral
+  storageClassName: nishir-transient
   volumeMode: Filesystem
   volumeName: sukebe-videos-data
   accessModes:
