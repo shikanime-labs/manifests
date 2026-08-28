@@ -13,6 +13,6 @@ the 32Gi `jellyfin-config` PVC, and the NetworkPolicy admits the servarr family
 - `components/tls/` — PKCS12 keystore from the nishir CA, HTTPS :8920, probes
   switch to https.
 - `overlays/nishir/` — TLS/ldap/gpu components, media PVCs (movies, music,
-  shows, sukebe-*, timeline), qsv + 2.5g node affinity, SOPS secrets.
+  shows, sukebe-*, timeline), Intel iGPU (pci-0300_8086) + 2.5g node affinity, SOPS secrets.
 - `overlays/nishir-tailnet/` — Tailscale Ingress (defaultBackend https), netpol
   for tailscale-system/vmagent, published URL jellyfin.taila659a.ts.net.
