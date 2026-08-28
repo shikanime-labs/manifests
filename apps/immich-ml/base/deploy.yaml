@@ -45,8 +45,12 @@ spec:
               mountPath: /root/.cache/huggingface
             - name: cache-matplotlib
               mountPath: /root/.cache/matplotlib
+            - name: config-matplotlib
+              mountPath: /root/.config/matplotlib
       volumes:
         - name: cache-huggingface
           emptyDir: {}
         - name: cache-matplotlib
+          emptyDir: {}
+        - name: config-matplotlib
           emptyDir: {}
