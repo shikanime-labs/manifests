@@ -189,6 +189,7 @@
                 pkgs.gatekeeper
                 pkgs.k0sctl
                 pkgs.kubectl
+                pkgs.kubevirt
                 pkgs.kubernetes-helm
                 pkgs.kustomize
                 pkgs.ssh-to-age
