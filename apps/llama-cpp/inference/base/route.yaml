@@ -1,0 +1,117 @@
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: default
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: qwen/qwen-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: qwen/qwen-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: qwen/qwen-27b
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: qwen/qwen-27b
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen-27b
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen-27b
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: deepseek/deepseek-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: deepseek/deepseek-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: deepseek/deepseek-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: z-ai/glm-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: embeddings/qwen-embed
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: embeddings/qwen-embed
+        - name: nous
+          priority: 1
+          modelNameOverride: embeddings/qwen-embed
+        - name: openrouter
+          priority: 2
+          modelNameOverride: embeddings/qwen-embed
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: z-ai/glm-flash
+        - name: zai
+          priority: 1
+          modelNameOverride: z-ai/glm-flash
+        - name: nous
+          priority: 2
+          modelNameOverride: z-ai/glm-flash
+        - name: openrouter
+          priority: 3
+          modelNameOverride: z-ai/glm-flash

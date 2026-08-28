@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: leaderworkerset
+  namespace: flux-system
+spec:
+  url: https://leaderworkerset.x-k8s.io
+  interval: 1h
