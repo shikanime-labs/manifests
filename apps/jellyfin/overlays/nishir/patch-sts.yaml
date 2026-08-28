@@ -18,7 +18,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: feature.node.kubernetes.io/qsv.enabled
+                  - key: feature.node.kubernetes.io/pci-0300_8086.present
                     operator: In
                     values:
                       - "true"
