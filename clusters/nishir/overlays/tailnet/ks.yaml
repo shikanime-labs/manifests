@@ -894,7 +894,7 @@ spec:
       name: syncthing
       namespace: shikanime
   interval: 10m
-  path: ./apps/syncthing/overlays/nishir
+  path: ./apps/syncthing/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
