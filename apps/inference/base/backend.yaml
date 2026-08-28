@@ -43,25 +43,23 @@ spec:
     wellKnownCACertificates: System
     sni: api.z.ai
 ---
-# Local floor: in-cluster llama-cpp serving (no API key, never 429s).
+# Local floor: in-cluster router-mode llama-cpp serving.
+# The single router pod exposes a dynamic /models API. Deployers run
+# curl /models/load POST against the pod once it's up, then load the desired
+# model via the models-preset.ini preset file.
+# The env-override block preserves presets while allowing per-node config:
+#   env:
+#     - name: LLAMA_CPP_MODELS_PRESET
+#       value: /etc/llama-cpp/models-preset.ini
+#     - name: LLAMA_CPP_MODELS_DIR
+#       value: /models
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
-  name: qwen-27b
+  name: inference
   namespace: shikanime
 spec:
   endpoints:
     - fqdn:
-        hostname: qwen-27b.shikanime.svc.cluster.local
-        port: 8080
----
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
-metadata:
-  name: deepseek-flash
-  namespace: shikanime
-spec:
-  endpoints:
-    - fqdn:
-        hostname: deepseek-flash.shikanime.svc.cluster.local
+        hostname: inference.shikanime.svc.cluster.local
         port: 8080
