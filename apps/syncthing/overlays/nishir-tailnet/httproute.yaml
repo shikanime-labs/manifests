@@ -8,3 +8,7 @@ spec:
   parentRefs:
     - name: syncthing
       sectionName: https
+  rules:
+    - backendRefs:
+        - name: syncthing
+          port: 8384

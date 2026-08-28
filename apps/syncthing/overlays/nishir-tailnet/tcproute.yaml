@@ -6,3 +6,7 @@ spec:
   parentRefs:
     - name: syncthing
       sectionName: syncthing
+  rules:
+    - backendRefs:
+        - name: syncthing
+          port: 22000
