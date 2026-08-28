@@ -44,6 +44,27 @@ parameters:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
+  name: nishir-transient
+allowVolumeExpansion: true
+provisioner: driver.longhorn.io
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+mountOptions:
+  - wsync
+parameters:
+  diskSelector: nearline
+  fsType: xfs
+  nfsOptions: vers=4.0,noresvport
+  numberOfReplicas: "2"
+  recurringJobSelector: |
+    [
+      {"name": "default", "isGroup": true},
+      {"name": "transient", "isGroup": true}
+    ]
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
   name: nishir-standard
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
