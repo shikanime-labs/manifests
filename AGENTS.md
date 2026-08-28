@@ -23,21 +23,20 @@ provides** from **how operators are installed**. Conventions:
   single app: storage classes, recurring jobs, issuers, trust bundles,
   gatekeeper mutations, cluster-api machine templates. Consumed by
   `infrastructure/` and `clusters/`.
-- `modules/` — Reusable Kustomize/Terraform modules shared across trees
-  (e.g. `modules/longhorn/`).
+- `modules/` — Reusable Kustomize/Terraform modules shared across trees (e.g.
+  `modules/longhorn/`).
 - `clusters/` — Cluster entrypoints that compose cluster base + components +
   selected app overlays.
-- `bootstraps/` — Out-of-band controller/operator installation (Flux
-  `HelmChart` resources). The Kustomize overlays assume these already exist.
-- `skaffold.yaml` — Renderable profiles pointing at cluster overlay
-  entrypoints.
+- `bootstraps/` — Out-of-band controller/operator installation (Flux `HelmChart`
+  resources). The Kustomize overlays assume these already exist.
+- `skaffold.yaml` — Renderable profiles pointing at cluster overlay entrypoints.
 
 ### `apps/` (application workloads)
 
 - `apps/<app>/base/` — Common resources (`Deployment`/`StatefulSet`, `Service`,
   `Ingress`, `vpa.yaml`, `pvc.yaml` as needed)
-- `apps/<app>/components/` — Optional Kustomize components (e.g. `tls/`,
-  `ftp/`, `v4l/`)
+- `apps/<app>/components/` — Optional Kustomize components (e.g. `tls/`, `ftp/`,
+  `v4l/`)
 - `apps/<app>/overlays/<cluster>/` — Cluster-specific patches/config
 - `apps/<app>/overlays/<cluster>-tailnet/` — Tailnet flavor overlays
 
@@ -67,14 +66,14 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - `clusters/<cluster>/base/` — Namespaces, shared PVCs, default policies
 - `clusters/<cluster>/components/` — Cluster-wide components (`tls/`,
   `tailscale/`, `longhorn/`, `monitoring/`, `gatekeeper/`, ...)
-- `clusters/<cluster>/overlays/<overlay>/` — Build entrypoints composing
-  base + components + app overlays
+- `clusters/<cluster>/overlays/<overlay>/` — Build entrypoints composing base +
+  components + app overlays
 
 ## Clusters
 
 - `nishir` — overlay: `tailnet`; components: autoscaler, cert-manager,
-  cluster-api, descheduler, envoy-ai-gateway, gatekeeper, longhorn,
-  monitoring, kubevirt, node-feature-discovery, tailscale, trust-manager
+  cluster-api, descheduler, envoy-ai-gateway, gatekeeper, longhorn, monitoring,
+  kubevirt, node-feature-discovery, tailscale, trust-manager
 - `telsha` — overlay: `tailnet`; components: autoscaler, cert-manager,
   cluster-api, gatekeeper, monitoring, tailscale, trust-manager
 
@@ -84,24 +83,24 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - **Tailnet ingress:** Tailscale Operator credentials
 - **Storage:** Longhorn settings, storage class, recurring jobs
 - **Observability:** VictoriaMetrics stack + Grafana (exposed over Tailscale)
-- **VPA:** Every app and operator base includes `vpa.yaml` — the VPA
-  controller must be present
+- **VPA:** Every app and operator base includes `vpa.yaml` — the VPA controller
+  must be present
 
 ## Repository Layout
 
 - `apps/` — application workloads. Nested examples:
-  `hermes-agent/{dashboard,gateway}`,
-  `servarr/{lidarr,radarr,sonarr,whisparr}`, `mautrix/{discord,whatsapp,...}`
+  `hermes-agent/{dashboard,gateway}`, `servarr/{lidarr,radarr,sonarr,whisparr}`,
+  `mautrix/{discord,whatsapp,...}`
 - `clusters/` — cluster entrypoints
 - `bootstraps/` — controller/operator installation
 - `configs/` — reusable configuration blocks (`cert-manager`, `cluster-api`,
   `gatekeeper`, `longhorn`, `tailscale`, ...)
-- `infrastructure/` — infrastructure providers/manifests.
-  Examples: `cert-manager`, `cluster-api`, `longhorn`, `tailscale`,
-  `monitoring`, `trust-manager`. Operators spanning multiple charts merge
-  them into one multi-doc `hr.yaml` (e.g. `infrastructure/envoy/`:
-  envoy, ai-gateway-crds, ai-gateway) and deploy into a matching
-  `<operator>-system` namespace via `targetNamespace`
+- `infrastructure/` — infrastructure providers/manifests. Examples:
+  `cert-manager`, `cluster-api`, `longhorn`, `tailscale`, `monitoring`,
+  `trust-manager`. Operators spanning multiple charts merge them into one
+  multi-doc `hr.yaml` (e.g. `infrastructure/envoy/`: envoy, ai-gateway-crds,
+  ai-gateway) and deploy into a matching `<operator>-system` namespace via
+  `targetNamespace`
 - `modules/` — reusable Kustomize modules
 - `skaffold.yaml` — render profiles
 - `flake.lock` / AGENTS.md / `README.md` at repo root
@@ -113,20 +112,20 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   `ingressClassName: tailscale` + Tailscale annotations
 - Storage: `PVC` in `apps/<app>/overlays/<cluster>/` bound to a Longhorn `PV`
 - Secrets/config: `*.enc.*` files fed into `secretGenerator`
-- TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the
-  cluster CA issuer, policy wiring, and listener/service patches; the
-  cluster overlay composes the component
+- TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the cluster CA
+  issuer, policy wiring, and listener/service patches; the cluster overlay
+  composes the component
 - Resources in a base are one kind per file, named
   `<short-kube-resource-name>.yaml`, listed sorted
 
 ## Inference apps
 
-- `apps/inference/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads.
-  One logical model per route rule, each mapped to provider-native model ids
-  via `modelNameOverride`. Local llama-cpp floors at `priority: 0` (drain
-  unlimited local capacity first), remote providers at higher priorities.
-  Exposed over Tailscale BYOD L4 (`loadBalancerClass: tailscale` on the
-  EnvoyProxy) to preserve mTLS client certs end-to-end. Control plane under
+- `apps/inference/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads. One
+  logical model per route rule, each mapped to provider-native model ids via
+  `modelNameOverride`. Local llama-cpp floors at `priority: 0` (drain unlimited
+  local capacity first), remote providers at higher priorities. Exposed over
+  Tailscale BYOD L4 (`loadBalancerClass: tailscale` on the EnvoyProxy) to
+  preserve mTLS client certs end-to-end. Control plane under
   `infrastructure/envoy/` installing into `envoy-gateway-system`.
 
 ## Secrets
