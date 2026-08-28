@@ -13,7 +13,8 @@ The NetworkPolicy admits only tailscale-system on http and vmagent on metrics.
 - `base/` — StatefulSet, Service, NetworkPolicy, VPA.
 - `components/monitoring/` — VMServiceScrape on /metrics (60s).
 - `overlays/nishir/` — `immich` Secret (.enc.env), PVC swap to `immich-data` +
-  `timeline-data`, monitoring component.
+  `timeline-data`, monitoring component, QSV node affinity + `/dev/dri` mount for
+  hardware transcoding (ffmpeg `accel: qsv` in the server config).
 - `overlays/nishir-tailnet/` — Tailscale Ingress, SOPS `config.yaml`
   (externalDomain immich.taila659a.ts.net, ffmpeg QSV, SMTP, Dex OAuth) as
   `immich-config` Secret.
