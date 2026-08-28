@@ -11,21 +11,36 @@ spec:
         app.kubernetes.io/instance: catbox
         app.kubernetes.io/name: catbox
     spec:
+      networks:
+        - name: default
+          pod: {}
       # KubeVirt boots an x86_64 qcow2, so the guest is infeasible on arm64
       # nodes. Select amd64 generically rather than pinning one node.
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+        # KubeVirt containerDisk: the NixOS qcow2 (nixos.qcow2) lives at /disk.
+        # CDI is absent in this cluster, so the VM boots directly from the image.
+        - name: rootdisk
+          containerDisk:
+            image: ghcr.io/shikanime-labs/machines/catbox:latest
+        - name: workspaces
+          persistentVolumeClaim:
+            claimName: catbox-workspaces
+        - name: sops-key
+          secret:
+            secretName: catbox-sops-key
       domain:
+        resources:
+          requests:
+            memory: 4Gi
+            cpu: "1"
         machine:
           type: q35
         firmware:
           bootloader:
             efi:
               secureBoot: false
-        resources:
-          requests:
-            memory: 4Gi
-            cpu: "1"
         devices:
           disks:
             - name: rootdisk
@@ -45,18 +60,3 @@ spec:
                 - name: mdns
                   port: 5353
                   protocol: UDP
-      networks:
-        - name: default
-          pod: {}
-      volumes:
-        # KubeVirt containerDisk: the NixOS qcow2 (nixos.qcow2) lives at /disk.
-        # CDI is absent in this cluster, so the VM boots directly from the image.
-        - name: rootdisk
-          containerDisk:
-            image: ghcr.io/shikanime-labs/machines/catbox:latest
-        - name: workspaces
-          persistentVolumeClaim:
-            claimName: catbox-workspaces
-        - name: sops-key
-          secret:
-            secretName: catbox-sops-key

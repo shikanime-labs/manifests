@@ -9,6 +9,5 @@ basic-auth Secret (POSTGRES_DB/USER/PASSWORD); data sits on the 4Gi
 ## Layout
 
 - `base/` — StatefulSet, Service, PVC, NetworkPolicy, VPA.
-- `overlays/nishir/` — SOPS basic-auth Secret, PVC pinned to
-  `nishir-standard`.
+- `overlays/nishir/` — SOPS basic-auth Secret, PVC pinned to `nishir-standard`.
 - `overlays/nishir-tailnet/` — `nishir-media` labels.

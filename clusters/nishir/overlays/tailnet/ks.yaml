@@ -1041,29 +1041,6 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
-    - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: qwen-embedding
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/llama-cpp/qwen-embedding/overlays/nishir-tailnet
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
-  name: apps-inference
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
     - name: infrastructure-envoy
     - name: infrastructure-cert-manager
     - name: infrastructure-monitoring

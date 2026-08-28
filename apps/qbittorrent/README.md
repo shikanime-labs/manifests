@@ -17,5 +17,5 @@ LoadBalancer, republished over Tailscale by the tailnet overlay.
 - `overlays/nishir/` — Certificate, PVC patch, mounts `downloads-data` plus
   per-arr subPath PVCs (radarr/sonarr/lidarr/whisparr + incomplete/).
 - `overlays/nishir-tailnet/` — tailscale Ingress, netpol opened to
-  `tailscale-system` and the tracker ports, `qbittorrent-tracker` published
-  with `loadBalancerClass: tailscale` (tag:bittorrent).
+  `tailscale-system` and the tracker ports, `qbittorrent-tracker` published with
+  `loadBalancerClass: tailscale` (tag:bittorrent).

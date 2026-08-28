@@ -1,12 +1,11 @@
 # mautrix
 
-Matrix bridge suite (dock.mau.dev/mautrix/*) for the shikanime office
-Matrix deployment. Each bridge is its own base/overlays app: a
-single-replica StatefulSet serving the appservice API on a per-bridge
-port, with SOPS-encrypted config/doublepuppet/registration secrets and a
-tailnet Ingress per bridge. The same registration and doublepuppet
-secrets are projected into synapse's startup-config, so every bridge
-registers as an appservice on boot. Members:
+Matrix bridge suite (dock.mau.dev/mautrix/*) for the shikanime office Matrix
+deployment. Each bridge is its own base/overlays app: a single-replica
+StatefulSet serving the appservice API on a per-bridge port, with SOPS-encrypted
+config/doublepuppet/registration secrets and a tailnet Ingress per bridge. The
+same registration and doublepuppet secrets are projected into synapse's
+startup-config, so every bridge registers as an appservice on boot. Members:
 
 - `discord` — Discord (port 29334, media Ingress via synapse-proxy)
 - `googlechat` — Google Chat (port 29320, metrics + VMServiceScrape)
