@@ -1,0 +1,3 @@
+resources:
+  - helmrepo.yaml
+  - hr.yaml

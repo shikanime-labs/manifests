@@ -120,7 +120,7 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 
 ## Inference apps
 
-- `apps/inference/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads. One
+- `apps/llama-cpp/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads. One
   logical model per route rule, each mapped to provider-native model ids via
   `modelNameOverride`. Local llama-cpp floors at `priority: 0` (drain unlimited
   local capacity first), remote providers at higher priorities. Exposed over

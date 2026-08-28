@@ -1,0 +1,56 @@
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: nous
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: nous
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: openrouter
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+    # OpenRouter needs the /api/v1 base path; the default /v1 hits its web root.
+    prefix: api/v1
+  backendRef:
+    name: openrouter
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+    # z.ai coding-plan key: base is api.z.ai/api/coding/paas/v4, not /v1.
+    prefix: api/coding/paas/v4
+  backendRef:
+    name: zai
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: mistral
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: mistral
+    kind: Backend
+    group: gateway.envoyproxy.io

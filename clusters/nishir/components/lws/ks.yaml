@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure-node-feature-discovery
+  name: infrastructure-lws
   namespace: flux-system
 spec:
   decryption:
@@ -12,10 +12,10 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
-      name: node-feature-discovery
+      name: leaderworkerset
       namespace: flux-system
   interval: 10m
-  path: ./infrastructure/node-feature-discovery/overlays/nishir
+  path: ./infrastructure/lws/overlays/nishir
   prune: true
   sourceRef:
     name: flux-system

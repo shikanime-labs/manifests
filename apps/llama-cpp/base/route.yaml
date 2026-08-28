@@ -1,0 +1,114 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: default
+  namespace: shikanime
+spec:
+  rules:
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: qwen/qwen3.8-27b
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: qwen/qwen3.8-27b
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen3.8-27b
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen3.8-27b
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: qwen/qwen-flash
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: qwen/qwen-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-v4-flash-0731
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: deepseek/deepseek-v4-flash-0731
+        - name: nous
+          priority: 1
+          modelNameOverride: deepseek/deepseek-v4-flash-0731
+        - name: openrouter
+          priority: 2
+          modelNameOverride: deepseek/deepseek-v4-flash-0731
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-5.3-flash
+      backendRefs:
+        # zai (coding-plan key) first, then the local floor so GLM stays on-cluster at zai quota.
+        - name: zai
+          priority: 0
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: llama-cpp
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: nous
+          priority: 2
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: openrouter
+          priority: 3
+          modelNameOverride: z-ai/glm-5.3-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: embeddings/qwen-embed
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: embeddings/qwen-embed
+        - name: nous
+          priority: 1
+          modelNameOverride: embeddings/qwen-embed
+        - name: openrouter
+          priority: 2
+          modelNameOverride: embeddings/qwen-embed
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: mistral/mistral-large-latest
+      backendRefs:
+        - name: mistral
+          priority: 0
+          modelNameOverride: mistral-large-latest
+        - name: nous
+          priority: 1
+          modelNameOverride: mistral/mistral-large-latest
+        - name: openrouter
+          priority: 2
+          modelNameOverride: mistral/mistral-large-latest
+    # No local floor: route unknown models (e.g. tencent/hy3:free) straight to the remote pool.
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: RegularExpression
+              value: ".*"
+      backendRefs:
+        - name: nous
+          priority: 0
+          modelNameOverride: ${header.x-ai-eg-model}
+        - name: openrouter
+          priority: 1
+          modelNameOverride: ${header.x-ai-eg-model}

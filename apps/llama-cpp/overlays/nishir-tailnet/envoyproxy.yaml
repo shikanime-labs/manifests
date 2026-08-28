@@ -1,0 +1,20 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: inference
+  namespace: shikanime
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        # Stable name (default is envoy-<ns>-<name>-<hash>) so the tailnet
+        # hostname below is independent of EG's generated names.
+        name: inference
+        # BYOD: expose the data plane straight through the Tailscale operator
+        # (L4). Tailscale leads outside the cluster; the mTLS listener does
+        # client-cert validation inside, which an L7 Ingress cannot carry.
+        type: LoadBalancer
+        loadBalancerClass: tailscale
+        annotations:
+          tailscale.com/hostname: inference

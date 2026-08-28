@@ -1,0 +1,20 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: llama-cpp
+  labels:
+    app.kubernetes.io/name: llama-cpp
+    app.kubernetes.io/part-of: nishir-inference
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - shikanime
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp

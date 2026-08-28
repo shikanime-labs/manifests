@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: inference-tls
+spec:
+  commonName: inference
+  dnsNames:
+    - inference
+    - inference.shikanime
+    - inference.shikanime.svc.cluster.local
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: inference-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

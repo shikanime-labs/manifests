@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp
+  policyTypes:
+    - Ingress
+  ingress:
+    # Envoy AI Gateway data plane (runs in this namespace, see
+    # apps/llama-cpp/overlays/nishir-tailnet/envoyproxy.yaml) proxies to the router.
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: shikanime
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: envoy
+      ports:
+        - port: http

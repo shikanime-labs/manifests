@@ -1,0 +1,3 @@
+- op: add
+  path: /spec/dnsNames/-
+  value: inference.taila659a.ts.net

@@ -1,0 +1,71 @@
+---
+# One Backend per provider: failover is per-Backend and shared keys 401, so hosts can't be aggregated.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: nous
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: inference-api.nousresearch.com
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: inference-api.nousresearch.com
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: openrouter
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: openrouter.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: openrouter.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: mistral
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.mistral.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.mistral.ai
+---
+# OpenRouter needs the /api/v1 base path; the default /v1 hits its web root.
+# Local floor: in-cluster unified llama.cpp router (LLM + embedding).
+# One LeaderWorkerSet `llama-cpp` per Halo node serves all models from one pool.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: llama-cpp.shikanime.svc.cluster.local
+        port: 8080

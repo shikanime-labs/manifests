@@ -1,0 +1,115 @@
+apiVersion: leaderworkerset.x-k8s.io/v1
+kind: LeaderWorkerSet
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  # 2 leader pods (LWS size defaults to 1), one per Strix Halo MS-S1 node
+  # (kushira/sashina), spread by anti-affinity. Each is a single llama.cpp
+  # router serving LLM + embedding models from one memory pool, so its LRU
+  # eviction manages the resident set against one 120Gi ceiling instead of
+  # two fixed-budget pods (was 120Gi LLM + 24Gi embed that couldn't co-schedule
+  # on a 128Gi node).
+  replicas: 2
+  leaderWorkerTemplate:
+    leaderTemplate:
+      metadata:
+        labels:
+          app.kubernetes.io/instance: llama-cpp
+          app.kubernetes.io/name: llama-cpp
+      spec:
+        nodeSelector:
+          node.kubernetes.io/instance-type: minisforum-ms-s1
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  labelSelector:
+                    matchLabels:
+                      app.kubernetes.io/instance: llama-cpp
+                      app.kubernetes.io/name: llama-cpp
+                  topologyKey: kubernetes.io/hostname
+        containers:
+          # Router mode loads GGUFs from --models-dir on first request; it does
+          # not fetch from HuggingFace at runtime, so the download runs before
+          # the server starts. Inlined instead of a separate init container
+          # (same emptyDir, fewer objects).
+          - name: llama-cpp
+            image: llama-cpp
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                set -eu
+                export HF_HOME="${HF_HOME:-/models/.hf-cache}"
+                download() {
+                  # $1 = repo:quant   $2 = cached-file glob   $3 = flat output name
+                  llama-cli -hf "$1" >/dev/null 2>&1 || true
+                  cp "$(find "$HF_HOME" -name "$2" -print -quit)" "/models/$3"
+                }
+                download unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M 'DeepSeek*Q3_K_M*.gguf'       DeepSeek-V4-Flash-0731-UD-Q3_K_M.gguf
+                download unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS        'GLM*IQ3_XXS*.gguf'           GLM-5.3-Flash-UD-IQ3_XXS.gguf
+                download unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL    'Qwen3.8-Flash*Q4_K_XL*.gguf' Qwen3.8-Flash-Next-UD-Q4_K_XL.gguf
+                download unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL           'Qwen3.8-27B*Q4_K_XL*.gguf'   Qwen3.8-27B-UD-Q4_K_XL.gguf
+                download unsloth/Qwen3-Embedding-8B-GGUF:UD-Q5_K_XL    'Qwen3-Embedding*Q5_K_XL*.gguf' Qwen3-Embedding-8B-UD-Q5_K_XL.gguf
+                exec llama-server \
+                  --host 0.0.0.0 --port 8080 \
+                  --models-preset /etc/llama-cpp/preset/models-preset.ini \
+                  --models-dir /models --models-max 5 --no-models-autoload --embeddings \
+                  -c 32768 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 --gpu-layers 99 --no-mmap
+            ports:
+              - name: http
+                containerPort: 8080
+            livenessProbe:
+              failureThreshold: 10
+              httpGet:
+                path: /health
+                port: http
+              initialDelaySeconds: 30
+              periodSeconds: 30
+              timeoutSeconds: 5
+            readinessProbe:
+              failureThreshold: 5
+              httpGet:
+                path: /health
+                port: http
+              initialDelaySeconds: 10
+              periodSeconds: 15
+              timeoutSeconds: 5
+            startupProbe:
+              failureThreshold: 120
+              httpGet:
+                path: /health
+                port: http
+              periodSeconds: 10
+              timeoutSeconds: 5
+            resources:
+              limits:
+                memory: 120Gi
+              requests:
+                cpu: "8"
+                memory: 24Gi
+            volumeMounts:
+              - name: models
+                mountPath: /models
+              - name: models-preset
+                mountPath: /etc/llama-cpp/preset
+                readOnly: true
+              - name: dev-kfd
+                mountPath: /dev/kfd
+              - name: dev-dri
+                mountPath: /dev/dri
+        volumes:
+          - name: models
+            emptyDir: {}
+          - name: models-preset
+            configMap:
+              name: llama-cpp-models-preset
+          - name: dev-kfd
+            hostPath:
+              type: CharDevice
+              path: /dev/kfd
+          - name: dev-dri
+            hostPath:
+              type: Directory
+              path: /dev/dri
