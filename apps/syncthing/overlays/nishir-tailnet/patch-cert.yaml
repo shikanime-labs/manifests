@@ -1,0 +1,10 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: syncthing-tls
+spec:
+  dnsNames:
+    - syncthing
+    - syncthing.shikanime
+    - syncthing.shikanime.svc.cluster.local
+    - syncthing.taila659a.ts.net

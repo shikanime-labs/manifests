@@ -8,7 +8,6 @@ spec:
     - syncthing
     - syncthing.shikanime
     - syncthing.shikanime.svc.cluster.local
-    - syncthing.taila659a.ts.net
   issuerRef:
     name: nishir
     kind: ClusterIssuer
