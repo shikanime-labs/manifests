@@ -1,3 +1,6 @@
+---
+# AIServiceBackend backendRefs must be Envoy Gateway Backend resources
+# (k8s Service refs are disabled — ai-gateway #902, CEL in #1328).
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
@@ -19,8 +22,25 @@ metadata:
 spec:
   schema:
     name: OpenAI
+    # OpenRouter's OpenAI-compatible base is openrouter.ai/api/v1, not /v1.
+    prefix: api/v1
   backendRef:
     name: openrouter
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+    # z.ai coding-plan key: base is api.z.ai/api/coding/paas/v4, not /v1.
+    prefix: api/coding/paas/v4
+  backendRef:
+    name: zai
     kind: Backend
     group: gateway.envoyproxy.io
 ---

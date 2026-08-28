@@ -1,7 +1,9 @@
-# Free-tier remote backends, one per provider: failover is per-Backend and
-# each provider needs its own key, so aggregating hosts under one Backend
-# 401s instead of failing over. Local floors point at real llama-cpp
-# Services in this namespace.
+---
+# Remote backends, one per provider: failover is per-Backend and each
+# provider needs its own key, so aggregating hosts under one Backend 401s
+# instead of failing over. Each sits behind a CDN, which rejects
+# SNI-less ClientHellos — EG does not populate SNI from the fqdn here, so
+# each Backend sets it explicitly.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
@@ -10,10 +12,11 @@ metadata:
 spec:
   endpoints:
     - fqdn:
-        hostname: api.nousresearch.com
+        hostname: inference-api.nousresearch.com
         port: 443
   tls:
     wellKnownCACertificates: System
+    sni: inference-api.nousresearch.com
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
@@ -27,6 +30,21 @@ spec:
         port: 443
   tls:
     wellKnownCACertificates: System
+    sni: openrouter.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
 ---
 # Local floor: in-cluster llama-cpp serving (no API key, never 429s).
 apiVersion: gateway.envoyproxy.io/v1alpha1

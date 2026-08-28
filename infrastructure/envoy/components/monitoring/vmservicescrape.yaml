@@ -2,7 +2,7 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
   name: ai-gateway
-  namespace: envoy-system
+  namespace: envoy-gateway-system
   labels:
     app.kubernetes.io/name: ai-gateway
     app.kubernetes.io/part-of: inference
@@ -14,7 +14,7 @@ spec:
       scrapeTimeout: 15s
   namespaceSelector:
     matchNames:
-      - envoy-system
+      - envoy-gateway-system
   selector:
     matchLabels:
       app.kubernetes.io/name: ai-gateway-helm

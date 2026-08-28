@@ -1,7 +1,7 @@
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIGatewayRoute
 metadata:
-  name: free
+  name: default
   namespace: shikanime
 spec:
   parentRefs:
@@ -9,40 +9,52 @@ spec:
       kind: Gateway
       group: gateway.networking.k8s.io
   rules:
-    # The extProc extracts the model name from the request body and matches
-    # it against these x-ai-eg-model Exact headers. The x-model-pool header
-    # gates each rule to the free-tier pool.
+    # Harmonized model naming: one logical model per rule, mapped to each
+    # provider's native model id via modelNameOverride. The extProc extracts
+    # the request body model and matches it against these x-ai-eg-model
+    # Exact headers.
     - matches:
         - headers:
-            - name: x-model-pool
-              type: Exact
-              value: free
             - name: x-ai-eg-model
               type: Exact
-              value: qwen/qwen3-8b
+              value: qwen/qwen3.8-27b
       backendRefs:
-        - name: nous
-          priority: 0
-        - name: openrouter
-          priority: 1
         - name: qwen-27b
+          priority: 0
+          modelNameOverride: unsloth/Qwen3.8-27B-GGUF:Q8_0
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen3.8-27b
+        - name: openrouter
           priority: 2
-        - name: deepseek-flash
-          priority: 3
+          modelNameOverride: qwen/qwen3.8-27b
     - matches:
         - headers:
-            - name: x-model-pool
-              type: Exact
-              value: free
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek/deepseek-chat
+              value: deepseek/deepseek-v4-flash
       backendRefs:
-        - name: nous
-          priority: 0
-        - name: openrouter
-          priority: 1
         - name: deepseek-flash
+          priority: 0
+          modelNameOverride: unsloth/DeepSeek-V4-Flash-0731-GGUF:Q4_K_M
+        - name: nous
+          priority: 1
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
+        - name: openrouter
           priority: 2
-        - name: qwen-27b
-          priority: 3
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-4.7
+      backendRefs:
+        - name: zai
+          priority: 0
+          modelNameOverride: glm-4.7
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-4.7
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-4.7

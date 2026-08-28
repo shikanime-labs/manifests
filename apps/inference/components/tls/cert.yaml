@@ -8,9 +8,6 @@ spec:
     - inference
     - inference.shikanime
     - inference.shikanime.svc.cluster.local
-    # Tailscale operator hostname (envoyService annotation); the operator is
-    # an L4 passthrough, so this cert also serves the tailnet name.
-    - inference.taila659a.ts.net
   issuerRef:
     name: nishir
     kind: ClusterIssuer

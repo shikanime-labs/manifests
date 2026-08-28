@@ -29,4 +29,3 @@ spec:
           # fails mmap there (exit 133 SIGTRAP) under node memory pressure.
           nodeSelector:
             node.kubernetes.io/instance-type: rpi5
-

@@ -3,7 +3,7 @@ apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: envoy
-  namespace: envoy-system
+  namespace: envoy-gateway-system
 spec:
   targetRef:
     apiVersion: apps/v1
@@ -16,7 +16,7 @@ apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: ai-gateway-controller
-  namespace: envoy-system
+  namespace: envoy-gateway-system
 spec:
   targetRef:
     apiVersion: apps/v1

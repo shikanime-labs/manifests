@@ -1,3 +1,4 @@
+---
 # One Secret per provider key: the BSP apiKey.secretRef has no key selector;
 # the Secret's data key must be literally "apiKey".
 apiVersion: aigateway.envoyproxy.io/v1beta1
@@ -8,7 +9,7 @@ metadata:
 spec:
   type: APIKey
   targetRefs:
-    - name: inference-nous
+    - name: nous
       group: aigateway.envoyproxy.io
       kind: AIServiceBackend
   apiKey:
@@ -24,10 +25,26 @@ metadata:
 spec:
   type: APIKey
   targetRefs:
-    - name: inference-openrouter
+    - name: openrouter
       group: aigateway.envoyproxy.io
       kind: AIServiceBackend
   apiKey:
     secretRef:
       name: inference-openrouter
+      namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
+  name: zai-key
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: zai
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: inference-zai
       namespace: shikanime
