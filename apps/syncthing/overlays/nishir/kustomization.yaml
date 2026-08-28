@@ -1,5 +1,8 @@
 resources:
   - ../../base
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
   - backendtlspolicy.yaml
   - cert.yaml
 namespace: shikanime

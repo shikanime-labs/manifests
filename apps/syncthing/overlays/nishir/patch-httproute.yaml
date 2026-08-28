@@ -6,7 +6,5 @@ spec:
   hostnames:
     - syncthing.taila659a.ts.net
   parentRefs:
-    - name: nishir
-      sectionName: http
-    - name: nishir
+    - name: syncthing
       sectionName: https

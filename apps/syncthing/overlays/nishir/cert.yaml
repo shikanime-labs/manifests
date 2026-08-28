@@ -8,6 +8,11 @@ spec:
     - syncthing
     - syncthing.shikanime
     - syncthing.shikanime.svc.cluster.local
+    # Tailscale operator hostname (envoyService annotation); the operator is
+    # an L4 passthrough, so this cert also serves the tailnet name.
+    # 'syncthing' is now free (machines dropped its tailscale.serve syncthing
+    # service), so the data plane takes the canonical name.
+    - syncthing.taila659a.ts.net
   issuerRef:
     name: nishir
     kind: ClusterIssuer

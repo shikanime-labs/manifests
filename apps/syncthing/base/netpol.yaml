@@ -8,6 +8,14 @@ spec:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: kube-system
+        # Envoy Gateway data plane (envoy-system) and Tailscale proxy
+        # (tailscale-system) must reach the pod for the BYOD L4 gateway.
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: envoy-system
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: http
           protocol: TCP
