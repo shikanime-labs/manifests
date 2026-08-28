@@ -1,5 +1,8 @@
 resources:
   - ../nishir
+namespace: shikanime
+configurations:
+  - namereference.yaml
 patches:
   - path: patch-svc.yaml
 labels:
@@ -14,5 +17,3 @@ secretGenerator:
   - name: catbox-sops-key
     envs:
       - sops-key/.enc.env
-    options:
-      disableNameSuffixHash: true
