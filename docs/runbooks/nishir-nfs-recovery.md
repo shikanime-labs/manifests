@@ -54,7 +54,8 @@ ssh <consumer-node> \
 
 # 4. Confirm no NPO wedge
 ssh <consumer-node> \
-  'grep -i "downloads-whisparr-data" /var/lib/rancher/rke2/agent/logs/kubelet.log | tail -30'
+  'grep -i "downloads-whisparr-data" \
+  /var/lib/rancher/rke2/agent/logs/kubelet.log | tail -30'
 # → look for: repeated pod_workers "context deadline exceeded" + a
 #   nestedpendingoperations "device is busy" line referencing a deleted pod UID
 ```
@@ -69,7 +70,8 @@ ssh <consumer-node>
 umount -l <mountpoint>
 # e.g.:
 umount -l 10.104.70.211:/downloads-whisparr-data
-# leave the subpath dirs under /var/lib/kubelet/pods/<dead-pod> — kubelet cleans them
+# leave the subpath dirs under /var/lib/kubelet/pods/<dead-pod>
+#   — kubelet cleans them when the dead pod is fully garbage-collected
 ```
 
 ### Step 2: Restart kubelet
