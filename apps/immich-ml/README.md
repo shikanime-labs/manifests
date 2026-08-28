@@ -8,6 +8,7 @@ ephemeral emptyDirs (cache-huggingface, cache-matplotlib, config-matplotlib).
 ## Layout
 
 - `base/` — Deployment, Service, NetworkPolicy, VPA.
-- `overlays/nishir/` — /dev/dri hostPath + privileged container, QSV node
-  affinity, GPU acceleration enabled.
+- `overlays/nishir/` — OpenVINO (`*-openvino` image) ML hardware acceleration:
+  /dev/dri hostPath + privileged container, QSV node affinity,
+  `IMMICH_MACHINE_LEARNING_GPU_ACCELERATION=true`.
 - `overlays/nishir-tailnet/` — `nishir-media` labels.
