@@ -87,15 +87,47 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - **VPA:** Every app and operator base includes `vpa.yaml` — the VPA
   controller must be present
 
+## Repository Layout
+
+- `apps/` — application workloads. Nested examples:
+  `hermes-agent/{dashboard,gateway}`,
+  `servarr/{lidarr,radarr,sonarr,whisparr}`, `mautrix/{discord,whatsapp,...}`
+- `clusters/` — cluster entrypoints
+- `bootstraps/` — controller/operator installation
+- `configs/` — reusable configuration blocks (`cert-manager`, `cluster-api`,
+  `gatekeeper`, `longhorn`, `tailscale`, ...)
+- `infrastructure/` — infrastructure providers/manifests.
+  Examples: `cert-manager`, `cluster-api`, `longhorn`, `tailscale`,
+  `monitoring`, `trust-manager`. Operators spanning multiple charts merge
+  them into one multi-doc `hr.yaml` (e.g. `infrastructure/envoy/`:
+  envoy, ai-gateway-crds, ai-gateway) and deploy into a matching
+  `<operator>-system` namespace via `targetNamespace`
+- `modules/` — reusable Kustomize modules
+- `skaffold.yaml` — render profiles
+- `flake.lock` / AGENTS.md / `README.md` at repo root
+
 ## App Pattern
 
 - Workload: `Deployment` or `StatefulSet` in `apps/<app>/base/`
 - Network: `Service` + `Ingress` in base; tailnet overlays set
   `ingressClassName: tailscale` + Tailscale annotations
 - Storage: `PVC` in `apps/<app>/overlays/<cluster>/` bound to a Longhorn `PV`
-- Images: `newTag: <version>@sha256:...` pinned in `kustomization.yaml`, plus
-  an `automata.shikanime.studio/images` tag-regex annotation for automated
-  bumps
+- Secrets/config: `*.enc.*` files fed into `secretGenerator`
+- TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the
+  cluster CA issuer, policy wiring, and listener/service patches; the
+  cluster overlay composes the component
+- Resources in a base are one kind per file, named
+  `<short-kube-resource-name>.yaml`, listed sorted
+
+## Inference apps
+
+- `apps/inference/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads.
+  One logical model per route rule, each mapped to provider-native model ids
+  via `modelNameOverride`. Local llama-cpp floors at `priority: 0` (drain
+  unlimited local capacity first), remote providers at higher priorities.
+  Exposed over Tailscale BYOD L4 (`loadBalancerClass: tailscale` on the
+  EnvoyProxy) to preserve mTLS client certs end-to-end. Control plane under
+  `infrastructure/envoy/` installing into `envoy-gateway-system`.
 
 ## Secrets
 
@@ -141,4 +173,3 @@ files.
   `gh stack merge <PR_NUMBER> --yes --squash` to merge up to a PR.
 - Never `gh pr merge` on a stacked PR — only `gh stack merge` lands stacks.
 - Never force-push stack branches; `gh stack` owns the branch pointers.
-

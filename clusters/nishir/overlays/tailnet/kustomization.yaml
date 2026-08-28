@@ -6,6 +6,7 @@ components:
   - ../../components/cert-manager
   - ../../components/cluster-api
   - ../../components/descheduler
+  - ../../components/envoy
   - ../../components/gatekeeper
   - ../../components/longhorn
   - ../../components/monitoring

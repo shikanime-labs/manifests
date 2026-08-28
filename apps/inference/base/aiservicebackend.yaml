@@ -1,0 +1,51 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: nous
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: nous
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: openrouter
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: openrouter
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: qwen-27b
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: qwen-27b
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: deepseek-flash
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: deepseek-flash
+    kind: Backend
+    group: gateway.envoyproxy.io
