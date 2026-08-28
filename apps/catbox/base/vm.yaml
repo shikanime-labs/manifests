@@ -57,3 +57,6 @@ spec:
         - name: workspaces
           persistentVolumeClaim:
             claimName: catbox-workspaces
+        - name: sops-key
+          secret:
+            secretName: catbox-sops-key

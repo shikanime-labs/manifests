@@ -10,3 +10,9 @@ labels:
       app.kubernetes.io/name: catbox
       app.kubernetes.io/part-of: telsha-workstation
       app.kubernetes.io/version: latest
+secretGenerator:
+  - name: catbox-sops-key
+    envs:
+      - sops-key/.enc.env
+    options:
+      disableNameSuffixHash: true
