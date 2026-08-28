@@ -23,28 +23,3 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: inference
-      envoyDeployment:
-        pod:
-          # Constrain to ARM edge nodes. rpi4 has 3 GiB; envoy's tcmalloc
-          # SIGTRAPs (exit 133) when mmap fails under node memory pressure,
-          # so the container limit below caps envoy's address space and
-          # keeps the node's PSI under the OOM-killer threshold.
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: node.kubernetes.io/instance-type
-                        operator: In
-                        values:
-                          - rpi4-model-b
-                          - rpi5
-        container:
-          resources:
-            requests:
-              memory: "512Mi"
-              cpu: "250m"
-            limits:
-              memory: "1Gi"
-              cpu: "1"
-
