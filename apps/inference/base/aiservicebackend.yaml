@@ -43,25 +43,25 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
-  name: qwen-27b
+  name: inference-embeddings
   namespace: shikanime
 spec:
   schema:
     name: OpenAI
   backendRef:
-    name: qwen-27b
+    name: inference
     kind: Backend
     group: gateway.envoyproxy.io
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
-  name: deepseek-flash
+  name: inference
   namespace: shikanime
 spec:
   schema:
     name: OpenAI
   backendRef:
-    name: deepseek-flash
+    name: inference
     kind: Backend
     group: gateway.envoyproxy.io

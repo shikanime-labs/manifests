@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inference-models-preset
+  namespace: shikanime
+data:
+  models-preset.ini: |
+    version = 1
+
+    ; Global defaults inherited by all models.
+    [*]
+    n-gpu-layers = 99
+    flash-attn = on
+    no-mmap = on
+    ctx-size = 32000
+    cache-type-k = q8_0
+    cache-type-v = q8_0
+    batch-size = 2048
+    ubatch-size = 512
+    mtp-n = 1
+    jinja = true
+    stop-timeout = 2
+    sleep-idle-seconds = 0
+
+    ; DeepSeek-V4-Flash-0731-GGUF (UD-Q4_K_XL) — local floor.
+    ; ~87 GB on disk; one per node.
+    [deepseek/v4-flash]
+    model = /models/deepseek-v4-flash-Q4_K_XL.gguf
+
+    ; Qwen3-Embedding-8B-GGUF (Q5_K_M) — multimodal embedding.
+    ; ~6 GB on disk; one per node.
+    [embeddings/qwen-embed]
+    model = /models/qwen3-embed-8b-Q5_K_M.gguf

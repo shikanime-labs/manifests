@@ -1,3 +1,4 @@
+---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIGatewayRoute
 metadata:
@@ -13,11 +14,26 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
+              value: qwen/qwen-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: qwen/qwen-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
               value: qwen/qwen3.8-27b
       backendRefs:
-        - name: qwen-27b
+        - name: inference
           priority: 0
-          modelNameOverride: unsloth/Qwen3.8-27B-GGUF:Q8_0
+          modelNameOverride: qwen/qwen3.8-27b
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.8-27b
@@ -28,29 +44,74 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek/deepseek-v4-flash
+              value: deepseek/v4-flash
       backendRefs:
-        - name: deepseek-flash
+        - name: inference
           priority: 0
-          modelNameOverride: unsloth/DeepSeek-V4-Flash-0731-GGUF:Q4_K_M
+          modelNameOverride: deepseek/v4-flash
         - name: nous
           priority: 1
-          modelNameOverride: deepseek/deepseek-v4-flash-latest
+          modelNameOverride: deepseek/v4-flash
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek/deepseek-v4-flash-latest
+          modelNameOverride: deepseek/v4-flash
     - matches:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: z-ai/glm-4.7
+              value: glm/glm-5.3-flash
       backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: glm/glm-5.3-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: glm/glm-5.3-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: glm/glm-5.3-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: embeddings/qwen-embed
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: embeddings/qwen-embed
+        - name: nous
+          priority: 1
+          modelNameOverride: embeddings/qwen-embed
+        - name: openrouter
+          priority: 2
+          modelNameOverride: embeddings/qwen-embed
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIGatewayRoute
+metadata:
+  name: zai
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: glm/glm-5.3-flash
+      backendRefs:
+        - name: inference
+          priority: 0
+          modelNameOverride: glm/glm-5.3-flash
         - name: zai
-          priority: 0
-          modelNameOverride: glm-4.7
-        - name: nous
           priority: 1
-          modelNameOverride: z-ai/glm-4.7
-        - name: openrouter
+          modelNameOverride: glm/glm-5.3-flash
+        - name: nous
           priority: 2
-          modelNameOverride: z-ai/glm-4.7
+          modelNameOverride: glm/glm-5.3-flash
+        - name: openrouter
+          priority: 3
+          modelNameOverride: glm/glm-5.3-flash

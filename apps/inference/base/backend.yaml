@@ -1,67 +1,56 @@
 ---
-# Free-tier remote backends, one per provider: failover is per-Backend and
-# each provider needs its own key, so aggregating hosts under one Backend
-# 401s instead of failing over. Local floors point at real llama-cpp
-# Services in this namespace.
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
 metadata:
-  name: nous
+  name: inference-glm-5.3-flash
   namespace: shikanime
 spec:
-  endpoints:
-    - fqdn:
-        hostname: api.nousresearch.com
-        port: 443
-  tls:
-    wellKnownCACertificates: System
+  schema:
+    name: OpenAI
+  backendRef:
+    name: inference
+    kind: Backend
+    group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: zai-key
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: zai
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: inference-zai
+      namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: openrouter-key
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: inference-openrouter
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: inference-openrouter
+      namespace: shikanime
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
-  name: openrouter
+  name: inference
   namespace: shikanime
 spec:
   endpoints:
     - fqdn:
-        hostname: openrouter.ai
-        port: 443
-  tls:
-    wellKnownCACertificates: System
----
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
-metadata:
-  name: zai
-  namespace: shikanime
-spec:
-  endpoints:
-    - fqdn:
-        hostname: api.z.ai
-        port: 443
-  tls:
-    wellKnownCACertificates: System
-    sni: api.z.ai
----
-# Local floor: in-cluster llama-cpp serving (no API key, never 429s).
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
-metadata:
-  name: qwen-27b
-  namespace: shikanime
-spec:
-  endpoints:
-    - fqdn:
-        hostname: qwen-27b.shikanime.svc.cluster.local
-        port: 8080
----
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
-metadata:
-  name: deepseek-flash
-  namespace: shikanime
-spec:
-  endpoints:
-    - fqdn:
-        hostname: deepseek-flash.shikanime.svc.cluster.local
+        hostname: inference.shikanime.svc.cluster.local
         port: 8080
