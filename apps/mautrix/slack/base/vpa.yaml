@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-slack
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

@@ -8,4 +8,4 @@ spec:
     kind: Deployment
     name: immich-ml
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

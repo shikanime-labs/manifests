@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-meta
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial
