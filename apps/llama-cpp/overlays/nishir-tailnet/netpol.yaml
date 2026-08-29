@@ -11,19 +11,10 @@ spec:
   policyTypes:
     - Ingress
   ingress:
-    # Envoy AI Gateway data plane proxies to the router. The inference
-    # GatewayClass data plane runs in envoy-gateway-system (and forks into
-    # envoy-system); it never runs in shikanime.
     - from:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: envoy-gateway-system
-          podSelector:
-            matchLabels:
-              app.kubernetes.io/name: envoy
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: envoy-system
           podSelector:
             matchLabels:
               app.kubernetes.io/name: envoy
