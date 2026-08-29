@@ -23,7 +23,7 @@ metadata:
 spec:
   type: APIKey
   targetRefs:
-    - name: inference-openrouter
+    - name: openrouter
       group: aigateway.envoyproxy.io
       kind: AIServiceBackend
   apiKey:
