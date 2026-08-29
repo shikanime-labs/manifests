@@ -83,7 +83,7 @@ spec:
                 metricsUtilization:
                   source: KubernetesMetrics
                 targetThresholds:
-                  cpu: 15
+                  cpu: 40
                 thresholds:
                   cpu: 30
                 useDeviationThresholds: true
@@ -99,9 +99,9 @@ spec:
                 metricsUtilization:
                   source: KubernetesMetrics
                 targetThresholds:
-                  memory: 10
+                  memory: 30
                 thresholds:
-                  memory: 10
+                  memory: 25
                 useDeviationThresholds: true
         - name: spread
           pluginConfig:
