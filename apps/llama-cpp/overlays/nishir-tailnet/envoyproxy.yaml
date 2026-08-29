@@ -7,6 +7,13 @@ spec:
   provider:
     type: Kubernetes
     kubernetes:
+      # Envoy's tcmalloc needs a 1GiB-aligned VA arena that fails to reserve on
+      # the arm64 nodes (fushi/minish/nemishi), so the data plane
+      # CrashLoopBackOffs there. Pin to amd64 where the distroless image runs.
+      envoyDeployment:
+        pod:
+          nodeSelector:
+            kubernetes.io/arch: amd64
       envoyService:
         # Stable name (default is envoy-<ns>-<name>-<hash>) so the tailnet
         # hostname below is independent of EG's generated names.

@@ -6,14 +6,17 @@ resources:
   - ingress.yaml
   - netpol.yaml
 namespace: shikanime
-components:
-  - ../../components/tls
 patches:
   - target:
       name: inference-tls
       kind: Certificate
       namespace: shikanime
     path: patch-cert.yaml
+  - target:
+      name: inference
+      kind: ClientTrafficPolicy
+      namespace: shikanime
+    path: patch-clienttrafficpolicy.yaml
   - target:
       name: default
       kind: AIGatewayRoute

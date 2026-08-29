@@ -1,6 +1,8 @@
 resources:
   - ../../base
   - ../../components/monitoring
+  - cert.yaml
+  - clienttrafficpolicy.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
