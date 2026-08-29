@@ -21,7 +21,34 @@ spec:
   interval: 10m
   releaseName: envoy-gateway
   targetNamespace: envoy-system
-  values:      
+  values:
+    # Wire the ai-gateway extension into Envoy Gateway's xDS translation so the
+    # inference Gateway actually emits its ext-proc filter bundle. Without this,
+    # the ai-gateway controller never gets called back and the data plane mounts
+    # a non-existent filter-config-bundle ConfigMap -> empty route table ->
+    # universal direct_response 500 on every request (incl. the local floor).
+    config:
+      envoyGateway:
+        extensionManager:
+          hooks:
+            xdsTranslator:
+              translation:
+                listener:
+                  includeAll: true
+                route:
+                  includeAll: true
+                cluster:
+                  includeAll: true
+                secret:
+                  includeAll: true
+              post:
+                - Translation
+                - Cluster
+                - Route
+          service:
+            fqdn:
+              hostname: ai-gateway-controller.envoy-system.svc.cluster.local
+              port: 1063
     envoyDeployment:
       pod:
         affinity:

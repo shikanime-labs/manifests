@@ -1,0 +1,10 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: GatewayConfig
+metadata:
+  name: inference
+  namespace: shikanime
+spec:
+  # Minimal ext-proc config: enables the ai-gateway extension for the inference
+  # Gateway (referenced via the aigateway.envoyproxy.io/gateway-config
+  # annotation). Defaults are sufficient for the current single-route setup.
+  extProc: {}

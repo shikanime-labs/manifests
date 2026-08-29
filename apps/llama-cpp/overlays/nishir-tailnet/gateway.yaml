@@ -3,6 +3,12 @@ kind: Gateway
 metadata:
   name: inference
   namespace: shikanime
+  # Tells the ai-gateway controller to generate the ext-proc filter bundle for
+  # this Gateway. Without it the controller reconciles the Gateway/route as
+  # Accepted but never writes the filter-config-bundle ConfigMap, so the data
+  # plane serves an empty route table and 500s on every request.
+  annotations:
+    aigateway.envoyproxy.io/gateway-config: inference
 spec:
   gatewayClassName: inference
   listeners:

@@ -11,16 +11,3 @@ spec:
     name: envoy
   updatePolicy:
     updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: ai-gateway-controller
-  namespace: envoy-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: ai-gateway-controller
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
