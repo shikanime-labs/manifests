@@ -103,3 +103,6 @@ replace the drive / evacuate the node. Do not loop reboots.
   <https://longhorn.io/docs/>
 - Sister runbook: `longhorn-xfs-recovery.md` (per-volume dirty-log mount
   failure, not a node-wide fence)
+- A `Scheduled=False` / `tags not fulfilled` volume (e.g. missing `nearline`
+  disk tag) is a related but distinct topology gap — see the "Replica count and
+  the `diskSelector` trap" section of `longhorn-xfs-recovery.md`.
