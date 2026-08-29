@@ -4,6 +4,8 @@ resources:
   - cert.yaml
   - clienttrafficpolicy.yaml
 namespace: shikanime
+configurations:
+  - namereference.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -17,5 +19,3 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-z-ai/.enc.env
-configurations:
-  - namereference.yaml

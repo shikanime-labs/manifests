@@ -61,10 +61,10 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
                 - matchExpressions:
-                   - key: feature.node.kubernetes.io/cpu-model.vendor_id
-                     operator: In
-                     values:
-                       - Intel
+                    - key: feature.node.kubernetes.io/cpu-model.vendor_id
+                      operator: In
+                      values:
+                        - Intel
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -114,8 +114,8 @@ spec:
       leaderElection:
         enabled: true
   valuesFrom:
-    - kind: Secret
-      name: ai-gateway-session-seed
+    - name: ai-gateway-session-seed
+      kind: Secret
       valuesKey: seed
       targetPath: controller.mcp.sessionEncryption.seed
       optional: false

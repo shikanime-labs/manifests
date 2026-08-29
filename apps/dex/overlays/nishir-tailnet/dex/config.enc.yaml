@@ -25,39 +25,6 @@ connectors:
 issuer: https://accounts.taila659a.ts.net
 oauth2:
   skipApprovalScreen: true
-sops:
-  version: 3.13.3
-  encrypted_regex: ^(secret|bindPW)$
-  lastmodified: "2026-08-10T20:47:40Z"
-  mac: ENC[AES256_GCM,data:VoxuP7jW1M0g9cP7/1EOzG+c5RIjRFD4qHUbfTG2Bn3ZuFYq/a3MG+WZv4YSsj7Ahl3qGa1a/qAHv8UFFR9pMzaD16L53u95xavjAY9EvQnLdYJI8IbHDd5/aI3DvpcWABU4xZso61fgz0SUFpppgPCI4P3RW44eC7sw74zXYWQ=,iv:7QYwUv9nMmHqJLgaWPYAt3qc6JaQSmcg4mlQX/AbpgQ=,tag:2HUm5cbCJIVZuL28Wx9nkA==,type:str]
-  age:
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6T09jci8xbnpTaEd2eGY5
-        WkRLTk16L0FFSWZlRDkzY1ZSY2xlLzNiZVRZCkNpYnZnbE5YeW16dldOMkF4dEE4
-        aUFla1BFbXQ3T2xhN3NtZGRpRUJEaW8KLS0tIEV5OHZieEJwK3QwTVErR01wWjRU
-        cHBoK1lQemJXbTVkaWxWb2RZVVh6YWsKzdpkiQIqrgNVBjTNrntAL3RLaKBb11md
-        r5CbTAQqRVdKFfwPCDG8DiaG96zd4msA8S8ysJosKY1E+osh+/QSOg==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrcUFucFdRNUNiZXJxTHdM
-        SDFDdTJxK3JoOGszanBGYVhUNStvcEVRaVZBCkdKS0F0YkVEUVYwNzYycXVqUHJt
-        NHlMTmR3ZUFsTFJJMkFIMG5NcFl6RWsKLS0tIHlaTXRpa3hzK1c3WEJ5OVFiYmFQ
-        TEdqaUc5K085bFZlc1lxYi9EUHNnYXMK63XznayYHQPzDfV2pX+vVj5rC5moepzD
-        /sj+VcS8oFG+T7nr/Kb6smkEk+sC+sG8sfm0vCR6uyCMTlfhGD6ncA==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpYXk0YmVJL29keWlUTk9i
-        aUh4OG90NmY2a1hVRmR1NFcyWGhlM3l5S0VFCkRKMHF1aE4xc3p3c2orWkdHOUk0
-        R0ZCZ2pwc2dLcjlhQUxVbnRDaXpIZFkKLS0tIHY1ZFR5Z1FQQ0FBMHRRSEdoSEtR
-        eTZvbThCMjBXcEJCaDJaT0pYSEdIOGMKeQD2nmMCepm5AQ7aDuLVmmKWJzOdEhVi
-        id8f1DqYGYGzwa1yCytCnxT4+rhBanZpyLyylmGjb8PjlSLN5qdHSw==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
 staticClients:
   - name: Forgejo
     id: forgejo
@@ -112,3 +79,27 @@ web:
   https: 0.0.0.0:5556
   tlsCert: /etc/ssl/private/tls.crt
   tlsKey: /etc/ssl/private/tls.key
+sops:
+  version: 3.13.3
+  encrypted_regex: ^(secret|bindPW)$
+  lastmodified: "2026-08-10T20:47:40Z"
+  mac: ENC[AES256_GCM,data:VoxuP7jW1M0g9cP7/1EOzG+c5RIjRFD4qHUbfTG2Bn3ZuFYq/a3MG+WZv4YSsj7Ahl3qGa1a/qAHv8UFFR9pMzaD16L53u95xavjAY9EvQnLdYJI8IbHDd5/aI3DvpcWABU4xZso61fgz0SUFpppgPCI4P3RW44eC7sw74zXYWQ=,iv:7QYwUv9nMmHqJLgaWPYAt3qc6JaQSmcg4mlQX/AbpgQ=,tag:2HUm5cbCJIVZuL28Wx9nkA==,type:str]
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwVE1xZnJ4Ync1am02YWRz
+        QmNqVDlOTUN6NDNXU2x1eUM5S2M4Y0FoWEZzCkFzczFNc25SN20weXYrc0ZhQUsw
+        ZmNHWHI1Z0hzQklMTlNKckFDWUVzU1UKLS0tIC9lNmltWWhSOGg3Tm1SVVFySzAr
+        WTdzbHpiVzZ4WVNsMzRBTUM1cUl0MEUKlN1xZPR5oUAzKmzdDuNzNLtg7+7Aafl/
+        s90Ibh6GNlcamXYHWd8X01x707IShErvIbeg8ThAxZyGbrb0xsphVg==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1um232l0h8wn9mtha2qf4f4mnf7ucjayvf5qxjvynatmasg8qg5mshekvjl
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBORDlWcTV4V2NiUWcrNC9G
+        MG5rd053Wkl3RG50UGFSbEUySnFrTlhaekJZClg0SXhiUFFpS3hBZ1hZZUxRNUw1
+        NS9vRSsxUmhrWE5VeWgyLzRnaWs2NUUKLS0tIGlKNjFQRlNnU2pYSHRSOGNOSlNG
+        OHUrQ3c0aURJVS9ON1ZSbWgxaTRGSDgKyyfjvF21DbUKKcTIuJ31BLXkKcFD4TSC
+        vpFVjbib8puJYW1Pmtnh+rkqalkOtay0TxEWb0sPkX/hWbh4ddjm3Q==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1pwl9yz4k4255a4h8qz7lafce8wxhsul0cnqwmr8528fqgujlfshshv3z3g

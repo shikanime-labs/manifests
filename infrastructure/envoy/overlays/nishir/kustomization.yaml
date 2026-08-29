@@ -2,10 +2,10 @@ resources:
   - ../../base
 components:
   - ../../components/monitoring
+configurations:
+  - namereference.yaml
 secretGenerator:
   - name: ai-gateway-session-seed
     namespace: flux-system
     envs:
       - ai-gateway-session-seed/.enc.env
-configurations:
-  - namereference.yaml

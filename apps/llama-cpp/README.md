@@ -24,5 +24,5 @@ references) into an `emptyDir` at `/models`. Router mode serves the local floors
 
 The Envoy AI Gateway (`apps/llama-cpp/base`) routes each model to this workload
 as the `inference` backend at priority 0, then fails over to `nous` /
-`openrouter`. `z-ai/glm-5.3-flash` also has a z-ai-only path when the local floor
-is busy.
+`openrouter`. `z-ai/glm-5.3-flash` also has a z-ai-only path when the local
+floor is busy.

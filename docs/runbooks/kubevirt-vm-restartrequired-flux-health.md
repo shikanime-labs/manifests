@@ -8,18 +8,18 @@ in the `nishir` cluster.
 
 ## Background
 
-Flux's `kustomize-controller` runs the `healthChecks` listed on a
-Kustomization after server-side apply. For a `VirtualMachine`, the check passes
-only when the VM reports a healthy `printableStatus` (e.g. `Running`) and
-`observedGeneration` equals `desiredGeneration`.
+Flux's `kustomize-controller` runs the `healthChecks` listed on a Kustomization
+after server-side apply. For a `VirtualMachine`, the check passes only when the
+VM reports a healthy `printableStatus` (e.g. `Running`) and `observedGeneration`
+equals `desiredGeneration`.
 
 A `vm.yaml` edit that touches a non-live-updatable field — a secret volume, a
 disk, firmware, machine type — makes KubeVirt set the VM condition
 `RestartRequired=True`. KubeVirt wants to recreate the `VirtualMachineInstance`
-to apply the change, but it does not do so on its own for a `runStrategy: Always`
-VM that is already running; the existing VMI stays at the old generation. The VM
-then sits at `desiredGeneration` > `observedGeneration` with `RestartRequired`
-still `True`.
+to apply the change, but it does not do so on its own for a
+`runStrategy: Always` VM that is already running; the existing VMI stays at the
+old generation. The VM then sits at `desiredGeneration` > `observedGeneration`
+with `RestartRequired` still `True`.
 
 Flux samples the VM during its health-check window and reads that
 generation-mismatch state as `InProgress`, so the check times out (default
@@ -120,9 +120,9 @@ catbox's usage.
 
 ## Prevention
 
-- A restart is required after any non-live-updatable `vm.yaml` change. If the
-  VM will not be used immediately, plan the `virtctl restart` as part of the
-  same change window so Flux does not sit at `Unknown` for the whole interval.
+- A restart is required after any non-live-updatable `vm.yaml` change. If the VM
+  will not be used immediately, plan the `virtctl restart` as part of the same
+  change window so Flux does not sit at `Unknown` for the whole interval.
 - `LiveMigratable=False` is expected and unrelated: the workspaces PVC is
   `ReadWriteOncePod`, so live migration is impossible by design. It does not
   cause this stall.
@@ -130,11 +130,10 @@ catbox's usage.
 ## Alternative: drop the health gate
 
 If the `InProgress` stall is undesirable and the VM's readiness is not needed as
-a deploy gate, remove the `VirtualMachine/catbox` entry from
-`healthChecks` in `clusters/nishir/overlays/tailnet/ks.yaml`. Flux then checks
-only that objects applied, not that the VM recreated. Do this deliberately —
-the gate exists to surface exactly this drift — and document the trade-off in
-the PR.
+a deploy gate, remove the `VirtualMachine/catbox` entry from `healthChecks` in
+`clusters/nishir/overlays/tailnet/ks.yaml`. Flux then checks only that objects
+applied, not that the VM recreated. Do this deliberately — the gate exists to
+surface exactly this drift — and document the trade-off in the PR.
 
 ## References
 

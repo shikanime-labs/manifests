@@ -34,28 +34,19 @@ sops:
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwUjFuSll3bUJESS90WDlV
-        Y2lINDBiMkJzR1ZIdncvb2lidEpyNlRjeWtBCktZQWxUTmRwY21qMlJyVzdaWDBB
-        T3djOS9Rb3dQbGdNc2x6RTJ0c0xWUU0KLS0tIERFQzNJVHJ0VWlmQ3RZR0haTGhr
-        RXRsdHdIV0dwdlhQZGcrY2ZQUEhhZ3cKKew/vMi+lbPegaaqDswTkP3gUz84kI53
-        FEUWhWQS95o/9a1Y0t+FU57WUMAM0WhGdFn8871cMzx1U0FRmK7w+w==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBURDVwdTQ4eU5JbDY0aUxw
+        Rk1tNGJuM25CVlRiY081clFvd2lTaDduQVc0Cml6SnZCNHFlbVFHYURiUE1ENnNB
+        Wnk0cHRrTFdseGFsRytobVY1NnlGSTAKLS0tIEQzWWJYUTU3ak9FSWlqdTdXcVBU
+        U1NPWk55cE5jczB1eVZ0WGxGOC9lS28KYT3ft3WW7Rx7rV0HBXkgC9CQ4xWXfsaa
+        9PdLbxLy/bZAPymCaZHFrZof3kQqvtNlV62TXsB/QavNRVlNKNrxiQ==
         -----END AGE ENCRYPTED FILE-----
-      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+      recipient: age1um232l0h8wn9mtha2qf4f4mnf7ucjayvf5qxjvynatmasg8qg5mshekvjl
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNTmJqYXhzQm1oUGtZVFhr
-        aTNuK01ZQzJrM3hXdDNwVUpkdXEyMXhXRlFNCnVqZTl4Rm9iaHhoWlVnYzJZRDcr
-        bzY0NVdsQjM3Y0MreklUc0lLSkVINzAKLS0tIHoya1BHOE1OSW9tSXFkZFNzMTNX
-        NTZYWTBycWN5VGZtZm5hT1ZsbFNYcXMKUjcM9W7qfJI8kjl7ckWnwMosFt+q9jm4
-        KTQX7uAeieieXDRf4TVqPmtTHyK0VFSsD27a/hPkaBYga3rCUhnusg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVcHR5WExvVGtOaStiNGZ5
+        ZmRUdUU4QW9IazlGWTJVZmJLVGt0ZnVsU3pvCnNuTXcwckphSStBUTRnOXNHSkN0
+        Y21aNmxOV0dNV0NtbVpWZWZJc2VhZ1EKLS0tIGJmdjlDU2hqcWNuZUFFMVA4ZGFZ
+        Q2tRYm9vRUdrV0R1UGFNUzcrYkR1dlUKbGR6yi5dUcad+eY77SoUaCcq0zScHley
+        7NSCSnMdOHJvlwecdiO5e4vUAxbEhelTLps/mrSVJX+PAtATdRxtiA==
         -----END AGE ENCRYPTED FILE-----
-      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBwOE9lRW5wNkhxNGUzMmVU
-        UGVDbWlhczJYRFRsN0FnbUozVnFFOTVwMEFBCmJwSzg0aDE0VENpQXhPVnlLaElO
-        czZDWWdIeUZzb0taU1FobE82NHp6Q28KLS0tIERuNlQzK3pBWkJTbHNjd3liY1da
-        azZlSTl6STNBSEtyZnVsWlEzWWtldGcKdLF4ndB/LDT06l6nxh11k1dj5ek0eEeB
-        BPxRjdOXwivcVz3CQnpuLkJmNBDOF9AooYFaMiZXBu3US5Sv1wxIVQ==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+      recipient: age1pwl9yz4k4255a4h8qz7lafce8wxhsul0cnqwmr8528fqgujlfshshv3z3g

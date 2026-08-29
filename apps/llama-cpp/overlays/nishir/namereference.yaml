@@ -1,10 +1,10 @@
 nameReference:
-  - kind: Secret
-    version: v1
+  - version: v1
+    kind: Secret
     fieldSpecs:
-      - path: spec/apiKey/secretRef/name
-        kind: BackendSecurityPolicy
+      - kind: BackendSecurityPolicy
+        path: spec/apiKey/secretRef/name
         group: aigateway.envoyproxy.io
-      - path: spec/backendRefs/securityPolicy/apiKey/secretRef/name
-        kind: MCPRoute
+      - kind: MCPRoute
+        path: spec/backendRefs/securityPolicy/apiKey/secretRef/name
         group: aigateway.envoyproxy.io
