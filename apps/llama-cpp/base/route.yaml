@@ -88,17 +88,11 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: mistral/mistral-large-latest
+              value: mistral/labs-leanstral-1-5
       backendRefs:
         - name: mistral
           priority: 0
-          modelNameOverride: mistral-large-latest
-        - name: nous
-          priority: 1
-          modelNameOverride: mistral/mistral-large-latest
-        - name: openrouter
-          priority: 2
-          modelNameOverride: mistral/mistral-large-latest
+          modelNameOverride: labs-leanstral-1-5
     # No local floor: route unknown models (e.g. tencent/hy3:free) straight to the remote pool.
     - matches:
         - headers:
