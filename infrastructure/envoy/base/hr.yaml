@@ -113,6 +113,9 @@ spec:
       replicaCount: 2
       leaderElection:
         enabled: true
-      mcp:
-        sessionEncryption:
-          seed: "uMa3JXD4q4MdFholfmhDneeYgTDXwnA6VzZvsTk98dFJeawv"
+  valuesFrom:
+    - kind: Secret
+      name: ai-gateway-session-seed
+      valuesKey: seed
+      targetPath: controller.mcp.sessionEncryption.seed
+      optional: false
