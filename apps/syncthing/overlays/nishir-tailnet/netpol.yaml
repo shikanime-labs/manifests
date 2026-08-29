@@ -31,3 +31,14 @@ spec:
               kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: http
+    # Monitoring (vmagent) scrapes syncthing's Prometheus endpoint on the http
+    # (GUI) port. A matching VMServiceScrape is still required for scrape config.
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: http
