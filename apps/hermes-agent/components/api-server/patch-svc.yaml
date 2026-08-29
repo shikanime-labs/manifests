@@ -4,6 +4,6 @@ metadata:
   name: hermes-agent
 spec:
   ports:
-    - name: http
+    - name: api-server
       port: 8642
-      targetPort: http
+      targetPort: api-server
