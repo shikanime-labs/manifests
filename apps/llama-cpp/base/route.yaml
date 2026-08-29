@@ -56,8 +56,8 @@ spec:
               type: Exact
               value: z-ai/glm-5.3-flash
       backendRefs:
-        # zai (coding-plan key) first, then the local floor so GLM stays on-cluster at zai quota.
-        - name: zai
+        # z-ai (coding-plan key) first, then the local floor so GLM stays on-cluster at z-ai quota.
+        - name: z-ai
           priority: 0
           modelNameOverride: z-ai/glm-5.3-flash
         - name: llama-cpp

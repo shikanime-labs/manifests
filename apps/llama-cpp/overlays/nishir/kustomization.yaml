@@ -12,3 +12,10 @@ labels:
       app.kubernetes.io/name: llama-cpp
       app.kubernetes.io/part-of: nishir-inference
       app.kubernetes.io/version: "3.8"
+secretGenerator:
+  - name: inference-z-ai
+    namespace: shikanime
+    envs:
+      - inference-z-ai/.enc.env
+configurations:
+  - namereference.yaml

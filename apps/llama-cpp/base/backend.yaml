@@ -31,7 +31,7 @@ spec:
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
-  name: zai
+  name: z-ai
   namespace: shikanime
 spec:
   endpoints:

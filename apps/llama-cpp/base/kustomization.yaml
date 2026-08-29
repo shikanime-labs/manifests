@@ -5,6 +5,7 @@ resources:
   - backend.yaml
   - backendsecuritypolicy.yaml
   - route.yaml
+  - mcproute.yaml
 images:
   - name: llama-cpp
     newName: ghcr.io/ggml-org/llama.cpp
