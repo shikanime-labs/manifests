@@ -2,6 +2,7 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - gateway.yaml
+  - gatewayconfig.yaml
   - envoyproxy.yaml
   - ingress.yaml
   - netpol.yaml
