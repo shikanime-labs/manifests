@@ -24,14 +24,14 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: qwen/qwen-flash
+              value: qwen/qwen3.8-flash
       backendRefs:
         - name: llama-cpp
           priority: 0
           modelNameOverride: qwen/qwen-flash
         - name: nous
           priority: 1
-          modelNameOverride: qwen/qwen-flash
+          modelNameOverride: qwen/qwen3.8-flash
         - name: openrouter
           priority: 2
           modelNameOverride: qwen/qwen3.8-flash
