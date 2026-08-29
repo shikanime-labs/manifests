@@ -56,6 +56,51 @@ spec:
     wellKnownCACertificates: System
     sni: api.mistral.ai
 ---
+# Z.ai remote MCP servers. Envoy AI Gateway requires unique backendRef names,
+# so each MCP server gets its own Backend even though they share api.z.ai.
+# The single `zai` Backend above stays for the LLM AIServiceBackend.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: z-ai-web-reader
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: z-ai-web-search-prime
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: z-ai-zread
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
+---
 # OpenRouter needs the /api/v1 base path; the default /v1 hits its web root.
 # Local floor: in-cluster unified llama.cpp router (LLM + embedding).
 # One LeaderWorkerSet `llama-cpp` per Halo node serves all models from one pool.
