@@ -3,7 +3,6 @@ kind: TCPRoute
 metadata:
   name: syncthing
 spec:
-  rules:
-    - backendRefs:
-        - name: syncthing
-          port: 22000
+  parentRefs:
+    - name: syncthing
+      sectionName: syncthing
