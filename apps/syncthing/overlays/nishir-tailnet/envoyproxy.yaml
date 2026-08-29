@@ -13,3 +13,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: syncthing
+          tailscale.com/tailscale-tags: "tag:syncthing"
