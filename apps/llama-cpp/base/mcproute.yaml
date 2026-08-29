@@ -10,7 +10,7 @@ spec:
       group: gateway.networking.k8s.io
   path: /mcp/z-ai
   backendRefs:
-    - name: z-ai
+    - name: z-ai-web-reader
       kind: Backend
       group: gateway.envoyproxy.io
       path: /api/mcp/web_reader/mcp
@@ -19,7 +19,7 @@ spec:
           secretRef:
             name: inference-z-ai
             namespace: shikanime
-    - name: z-ai
+    - name: z-ai-web-search-prime
       kind: Backend
       group: gateway.envoyproxy.io
       path: /api/mcp/web_search_prime/mcp
@@ -28,7 +28,7 @@ spec:
           secretRef:
             name: inference-z-ai
             namespace: shikanime
-    - name: z-ai
+    - name: z-ai-zread
       kind: Backend
       group: gateway.envoyproxy.io
       path: /api/mcp/zread/mcp
