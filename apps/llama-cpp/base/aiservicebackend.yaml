@@ -30,7 +30,7 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
-  name: zai
+  name: z-ai
   namespace: shikanime
 spec:
   schema:
@@ -38,7 +38,7 @@ spec:
     # z.ai coding-plan key: base is api.z.ai/api/coding/paas/v4, not /v1.
     prefix: api/coding/paas/v4
   backendRef:
-    name: zai
+    name: z-ai
     kind: Backend
     group: gateway.envoyproxy.io
 ---

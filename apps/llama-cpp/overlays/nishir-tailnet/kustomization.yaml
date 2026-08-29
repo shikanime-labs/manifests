@@ -32,12 +32,6 @@ secretGenerator:
       disableNameSuffixHash: true
     envs:
       - inference-openrouter/.enc.env
-  - name: inference-zai
-    namespace: shikanime
-    options:
-      disableNameSuffixHash: true
-    envs:
-      - inference-zai/.enc.env
   - name: inference-mistral
     namespace: shikanime
     options:

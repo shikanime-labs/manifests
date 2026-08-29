@@ -1,0 +1,21 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: MCPRoute
+metadata:
+  name: z-ai
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  path: /mcp/z-ai
+  backendRefs:
+    - name: z-ai
+      kind: Backend
+      group: gateway.envoyproxy.io
+      path: /api/mcp/z-ai
+      securityPolicy:
+        apiKey:
+          secretRef:
+            name: inference-z-ai
+            namespace: shikanime
