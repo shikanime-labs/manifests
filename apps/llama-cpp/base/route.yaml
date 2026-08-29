@@ -39,7 +39,7 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek/deepseek-v4-flash-0731
+              value: deepseek/deepseek-v4-flash
       backendRefs:
         - name: llama-cpp
           priority: 0
