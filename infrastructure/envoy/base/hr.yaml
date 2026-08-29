@@ -79,3 +79,5 @@ spec:
   values:
     controller:
       replicaCount: 2
+      leaderElection:
+        enabled: true
