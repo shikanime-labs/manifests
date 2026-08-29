@@ -113,3 +113,6 @@ spec:
       replicaCount: 2
       leaderElection:
         enabled: true
+      mcp:
+        sessionEncryption:
+          seed: "uMa3JXD4q4MdFholfmhDneeYgTDXwnA6VzZvsTk98dFJeawv"
