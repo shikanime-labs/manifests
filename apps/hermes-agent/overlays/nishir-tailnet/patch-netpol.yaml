@@ -6,7 +6,6 @@
           matchLabels:
             kubernetes.io/metadata.name: tailscale-system
     ports:
-      - port: http
+      - port: api-server
       - port: dashboard
       - port: a2a
-      - port: api-server

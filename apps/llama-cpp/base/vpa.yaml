@@ -9,5 +9,8 @@ spec:
     apiVersion: leaderworkerset.x-k8s.io/v1
     kind: LeaderWorkerSet
     name: llama-cpp
+  # Recommendations only: the RPC pair loads a 100 GiB+ GGUF, so InPlaceOrRecreate
+  # churn would evict the model pod. Keep the VPA object (scale recs via status),
+  # but never auto-apply.
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Off

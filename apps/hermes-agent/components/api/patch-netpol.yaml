@@ -7,4 +7,4 @@
             app.kubernetes.io/instance: honcho
             app.kubernetes.io/name: honcho
     ports:
-      - port: http
+      - port: api-server
