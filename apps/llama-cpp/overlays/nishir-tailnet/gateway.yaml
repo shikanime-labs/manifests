@@ -9,6 +9,15 @@ spec:
     - name: http
       protocol: HTTP
       port: 80
+    - name: https
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        options:
+          gateway.envoyproxy.io/mtls: "true"
+        certificateRefs:
+          - name: inference-tls
   infrastructure:
     parametersRef:
       name: inference
