@@ -6,7 +6,8 @@ components:
   - ../../components/cert-manager
   - ../../components/cluster-api
   - ../../components/descheduler
-  - ../../components/envoy
+  - ../../components/envoy-gateway
+  - ../../components/envoy-ai-gateway
   - ../../components/gatekeeper
   - ../../components/longhorn
   - ../../components/lws
