@@ -11,12 +11,10 @@ spec:
   policyTypes:
     - Ingress
   ingress:
-    # Envoy data plane (runs in this namespace; see envoyproxy.yaml) proxies the
-    # gateway listeners (https 443, sync 22000 tcp/udp) to these pods.
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: shikanime
+              kubernetes.io/metadata.name: envoy-system
           podSelector:
             matchLabels:
               app.kubernetes.io/name: envoy
@@ -24,15 +22,6 @@ spec:
         - port: http
         - port: sync
         - port: sync-udp
-    # Tailscale operator manages the BYOD LoadBalancer fronting the gateway.
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: tailscale-system
-      ports:
-        - port: http
-    # Monitoring (vmagent) scrapes syncthing's Prometheus endpoint on the http
-    # (GUI) port. A matching VMServiceScrape is still required for scrape config.
     - from:
         - namespaceSelector:
             matchLabels:
