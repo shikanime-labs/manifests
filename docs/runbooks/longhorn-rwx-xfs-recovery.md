@@ -221,7 +221,10 @@ share-manager. It hit a dirty-XFS-log failure after a node instability event
 and stuck in `degraded`.
 
 ```sh
-KB=/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl
+# kubectl is the absolute path on the operator host (use it directly, no alias):
+#   /nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl
+# e.g. /nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+#        -n longhorn-system get volume sukebe-doujins-data
 VOL=sukebe-doujins-data
 NS=longhorn-system
 NODE=ashira
