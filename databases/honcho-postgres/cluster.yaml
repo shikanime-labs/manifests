@@ -1,0 +1,43 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: honcho-postgres
+  namespace: shikanime-postgres
+  labels:
+    app.kubernetes.io/instance: honcho-postgres
+    app.kubernetes.io/name: postgres
+spec:
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+  imageName: pgvector/pgvector:pg15
+  instances: 1
+  storage:
+    size: 4Gi
+    storageClass: nishir-standard
+  externalClusters:
+    - name: honcho-postgres-old
+      connectionParameters:
+        dbname: honcho
+        host: honcho-postgres.shikanime.svc.cluster.local
+        user: honcho
+      password:
+        name: honcho-postgres-cnpg
+        key: password
+  bootstrap:
+    initdb:
+      database: honcho
+      import:
+        type: monolith
+        source:
+          externalCluster: honcho-postgres-old
+        databases:
+          - honcho
+      owner: honcho
+      postInitApplicationSQLRefs:
+        configMapRefs:
+          - name: honcho-init-sql
+            key: init.sql
+      secret:
+        name: honcho-postgres-cnpg
