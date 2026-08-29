@@ -6,6 +6,7 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-cert.yaml
+  - path: patch-netpol.yaml
   - path: patch-httproute.yaml
   - path: patch-tcproute.yaml
   - path: patch-udproute.yaml

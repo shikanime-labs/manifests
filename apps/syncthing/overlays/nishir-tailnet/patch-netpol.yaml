@@ -8,6 +8,12 @@ spec:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: kube-system
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: envoy-system
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: http
           protocol: TCP
@@ -15,9 +21,3 @@ spec:
           protocol: TCP
         - port: sync-udp
           protocol: UDP
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: syncthing
-      app.kubernetes.io/name: syncthing
-  policyTypes:
-    - Ingress
