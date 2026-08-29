@@ -29,6 +29,11 @@ spec:
     # universal direct_response 500 on every request (incl. the local floor).
     config:
       envoyGateway:
+        # Enable the Backend API so EG accepts Backend refs (incl. the Z.ai
+        # MCP backends). Without this, generated routes fail ResolvedRefs with
+        # "Backend is disabled in Envoy Gateway configuration" -> 500.
+        extensionApis:
+          enableBackendApi: true
         extensionManager:
           hooks:
             xdsTranslator:
