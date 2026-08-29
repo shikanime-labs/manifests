@@ -28,17 +28,31 @@ unmount failed: exit status 16 — device is busy
 Key tell: multiple pods are stuck simultaneously, and the CSI plugin log
 (consume node) shows nothing about this volume.
 
+## Access
+
+- SSH as **root**: `ssh root@<consumer-node>.taila659a.ts.net`. Bare hostname
+  is denied by tailnet policy — use the FQDN. The `nishir` user has no
+  passwordless sudo, so privileged ops (`umount`, `systemctl restart
+  rke2-server`) must run as root.
+- Every `ssh <consumer-node>` below means `ssh root@<node>.taila659a.ts.net`.
+
 ## Verification (before acting)
 
 ```bash
 export K="kubectl --context nishir-k8s-operator.taila659a.ts.net"
 
-# 1. Current share-manager Service ClusterIP
+# 1. Current share-manager endpoint — the CSI driver's actual NFS target.
+#    Prefer the ShareManager CR: it stays authoritative even when
+#    volume.status.endpoint is empty (observed on nishir).
+$K -n longhorn-system get sharemanager downloads-whisparr-data \
+  -o jsonpath='{.status.endpoint}'
+# → nfs://<current-ip>/downloads-whisparr-data
+#    (fallback: the Service ClusterIP, but the CR is what CSI actually uses)
 $K -n longhorn-system get svc downloads-whisparr-data \
   -o jsonpath='{.spec.clusterIP}'
-# compare against what mounts are still active:
+# compare against what mounts are still active on the consumer node:
 ssh <consumer-node> 'mount | grep downloads-whisparr'
-# → stale mounts show an old IP different from the current Service ClusterIP
+# → stale mounts show an OLD IP different from the current endpoint
 
 # 2. share-manager pod health
 $K -n longhorn-system get pod share-manager-downloads-whisparr-data
@@ -90,6 +104,11 @@ $K get node <node>  # must show Ready (not NotReady)
 The queue-clearing is the key side effect — kubelet replays its operation log
 with a clean NPO queue, so subsequent mount attempts reach the plugin.
 
+The restart clears every wedged volume on the node at once — not just the one
+you were called about. After restart, sweep ALL pods on the node; sibling
+volumes (same or different PVC) that showed "not ready for workloads" /
+"exit status 32" typically recover in the same pass.
+
 Do NOT kill the kubelet process directly on RKE2 (the supervisor watchdog will
 restart it, but the supervisor may not be a direct cgroup parent — restarting
 `rke2-server` is the safe path).
@@ -101,8 +120,8 @@ $K -n <ns> delete pod <pod>
 # StatefulSet recreates it immediately — verify: kubectl get pod <pod>
 ```
 
-Creating the pod in place does NOT clear the wedge — only a healthy kubelet on a
-healthy node does.
+Creating the pod in place does NOT clear the wedge — only a healthy kubelet on
+a healthy node does.
 
 ### Step 4: Verify
 
@@ -139,6 +158,12 @@ repaired via
 — fix the log on the engine-node replica first, then the share-manager
 re-creates. This procedure applies when the share-manager pod itself is Running
 fine and the blocker is entirely at the kubelet mount/volume layer.
+
+Do not jump to that runbook on a bare `exit status 32` in `FailedMount`: on
+nishir a transient `exit status 32` came from the NPO wedge and cleared after
+the kubelet restart, while the share-manager pod stayed `Ready`. Only escalate
+to XFS recovery when the share-manager pod is itself in `starting`/`Failed`
+with `Failed to recover intents`.
 
 ## Why kubelet doesn't retry
 
