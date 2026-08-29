@@ -1,0 +1,4 @@
+- op: replace
+  path: /spec/dnsNames
+  value:
+    - syncthing.taila659a.ts.net
