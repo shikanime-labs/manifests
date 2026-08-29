@@ -34,7 +34,7 @@ spec:
           modelNameOverride: qwen/qwen-flash
         - name: openrouter
           priority: 2
-          modelNameOverride: qwen/qwen-flash
+          modelNameOverride: qwen/qwen3.8-flash
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -75,14 +75,10 @@ spec:
               type: Exact
               value: embeddings/qwen-embed
       backendRefs:
+        # No remote serves embeddings (OpenRouter exposes zero embedding models;
+        # Nous has no embeddings endpoint). Route to the local llama-cpp floor only.
         - name: llama-cpp
           priority: 0
-          modelNameOverride: embeddings/qwen-embed
-        - name: nous
-          priority: 1
-          modelNameOverride: embeddings/qwen-embed
-        - name: openrouter
-          priority: 2
           modelNameOverride: embeddings/qwen-embed
     - matches:
         - headers:

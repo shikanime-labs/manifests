@@ -35,8 +35,8 @@ metadata:
 spec:
   schema:
     name: OpenAI
-    # z.ai coding-plan key: base is api.z.ai/api/coding/paas/v4, not /v1.
-    prefix: api/coding/paas/v4
+    # z.ai coding-plan API base is api.z.ai/api/v1.
+    prefix: api/v1
   backendRef:
     name: z-ai
     kind: Backend
