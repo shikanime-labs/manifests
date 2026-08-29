@@ -10,6 +10,4 @@ images:
     newTag: 1.4.0@sha256:04d58879b76624e180cfdb24cde042b657189eabd3bd4cba851f1d56f7a5be82
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "metatube", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "metatube", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

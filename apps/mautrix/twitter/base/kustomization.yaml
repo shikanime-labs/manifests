@@ -10,6 +10,4 @@ images:
     newTag: v0.2604.0
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "mautrix", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "mautrix", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

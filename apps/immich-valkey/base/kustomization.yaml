@@ -9,5 +9,4 @@ images:
     newTag: 7-alpine@sha256:211d9cb02395987d3740b11fdbb7be0cb66c5f36a065640ce5753c933700d6cc
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "immich-valkey", "tag-regex": "^(?P<version>.+)$" } ]'
+    automata.shikanime.studio/images: '[ { "name": "immich-valkey", "tag-regex": "^(?P<version>.+)$" } ]'

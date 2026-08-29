@@ -13,11 +13,7 @@ images:
     newTag: v3-3.1.0.2040@sha256:fa5a7a8b2dd750591bfb6a49a3896b8db32317e2554ac302d15b6c68ed3bb356
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "whisparr", "tag-regex":
-      "^v(?P<channel>\\d+)-(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?$"
-      }, { "name": "rclone", "tag-regex":
-      "^(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)$" } ]'
+    automata.shikanime.studio/images: '[ { "name": "whisparr", "tag-regex": "^v(?P<channel>\\d+)-(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:\\.(?P<build>\\d+))?$" }, { "name": "rclone", "tag-regex": "^(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)$" } ]'
 configMapGenerator:
   - name: whisparr-rclone
     namespace: shikanime

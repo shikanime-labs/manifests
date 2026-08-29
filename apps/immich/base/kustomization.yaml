@@ -9,6 +9,4 @@ images:
     newTag: v1.144.1@sha256:f34203f6c2db130c26480ff21c412c6f0c37c24ee5261f6a6e4fe1eecaa921c0
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "immich-server", "tag-regex":
-      "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
+    automata.shikanime.studio/images: '[ { "name": "immich-server", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

@@ -10,6 +10,4 @@ images:
     newTag: 10.11.11@sha256:aefb67e6a7ff1debdd154a78a7bbb780fd0c873d8639210a7f6a2016ad2b35db
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "jellyfin", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "jellyfin", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

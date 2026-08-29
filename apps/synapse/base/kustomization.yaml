@@ -10,6 +10,4 @@ images:
     newTag: v1.158.0@sha256:5f868df1f5772907c6dbe973a9b69ab530a5d6bb317c011a3788f7ad78eb1292
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "synapse", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "synapse", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

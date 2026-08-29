@@ -67,24 +67,14 @@ bridge:
     displayname_format: "{{ .DisambiguatedName }}"
     enabled: false
     message_formats:
-      m.audio:
-        "<b>{{ .Sender.DisambiguatedName }}</b> sent an audio file{{ if .Caption
-        }}: {{ .Caption }}{{ end }}"
+      m.audio: "<b>{{ .Sender.DisambiguatedName }}</b> sent an audio file{{ if .Caption }}: {{ .Caption }}{{ end }}"
       m.emote: "* <b>{{ .Sender.DisambiguatedName }}</b> {{ .Message }}"
-      m.file:
-        "<b>{{ .Sender.DisambiguatedName }}</b> sent a file{{ if .Caption }}: {{
-        .Caption }}{{ end }}"
-      m.image:
-        "<b>{{ .Sender.DisambiguatedName }}</b> sent an image{{ if .Caption }}:
-        {{ .Caption }}{{ end }}"
-      m.location:
-        "<b>{{ .Sender.DisambiguatedName }}</b> sent a location{{ if .Caption
-        }}: {{ .Caption }}{{ end }}"
+      m.file: "<b>{{ .Sender.DisambiguatedName }}</b> sent a file{{ if .Caption }}: {{ .Caption }}{{ end }}"
+      m.image: "<b>{{ .Sender.DisambiguatedName }}</b> sent an image{{ if .Caption }}: {{ .Caption }}{{ end }}"
+      m.location: "<b>{{ .Sender.DisambiguatedName }}</b> sent a location{{ if .Caption }}: {{ .Caption }}{{ end }}"
       m.notice: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
       m.text: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
-      m.video:
-        "<b>{{ .Sender.DisambiguatedName }}</b> sent a video{{ if .Caption }}:
-        {{ .Caption }}{{ end }}"
+      m.video: "<b>{{ .Sender.DisambiguatedName }}</b> sent a video{{ if .Caption }}: {{ .Caption }}{{ end }}"
   resend_bridge_info: false
   split_portals: false
   tag_only_on_create: true
@@ -166,13 +156,9 @@ matrix:
 network:
   backfill:
     conversation_count: -1
-  channel_name_template:
-    "{{if and .IsChannel (not .IsPrivate)}}#{{end}}{{.Name}}{{if .IsNoteToSelf}}
-    (you){{end}}"
+  channel_name_template: "{{if and .IsChannel (not .IsPrivate)}}#{{end}}{{.Name}}{{if .IsNoteToSelf}} (you){{end}}"
   custom_emoji_reactions: true
-  displayname_template:
-    "{{or .Profile.DisplayName .Profile.RealName .Name}}{{if .IsBot}}
-    (bot){{end}}"
+  displayname_template: "{{or .Profile.DisplayName .Profile.RealName .Name}}{{if .IsBot}} (bot){{end}}"
   mute_channels_by_default: false
   participant_sync_count: 5
   participant_sync_only_on_create: true

@@ -12,8 +12,7 @@ images:
     newTag: server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "llama-cpp", "tag-regex": "^(?P<version>.+)$" } ]'
+    automata.shikanime.studio/images: '[ { "name": "llama-cpp", "tag-regex": "^(?P<version>.+)$" } ]'
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:

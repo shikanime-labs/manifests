@@ -12,6 +12,4 @@ images:
     newTag: 2.1.3@sha256:8c8ff37ab6aa8be23b700648a90fa9412e214852e9fd6ea8477c8334792daec0
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "syncthing", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "syncthing", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

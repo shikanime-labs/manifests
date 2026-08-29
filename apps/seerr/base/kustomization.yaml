@@ -10,6 +10,4 @@ images:
     newTag: v3.4.1@sha256:f4768de5f616248d723e05891f3345a1402123775d03bf0890dbfedc0831bda1
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "seerr", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" }
-      ]'
+    automata.shikanime.studio/images: '[ { "name": "seerr", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

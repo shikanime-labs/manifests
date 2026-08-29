@@ -29,9 +29,7 @@ jobs:
           private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
       - uses: shikanime-studio/actions/checkout@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f
         with:
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -39,9 +37,7 @@ jobs:
           username: ${{ github.actor }}
       - uses: shikanime-studio/actions/nix/setup@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
       - id: skaffold
@@ -85,9 +81,7 @@ jobs:
           private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
       - uses: shikanime-studio/actions/checkout@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f
         with:
           password: ${{ secrets.GITHUB_TOKEN }}
@@ -95,9 +89,7 @@ jobs:
           username: ${{ github.actor }}
       - uses: shikanime-studio/actions/nix/setup@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
       - env: ${{ fromJSON(steps.direnv.outputs.env) }}
@@ -121,13 +113,9 @@ jobs:
           private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
       - uses: shikanime-studio/actions/checkout@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - uses: shikanime-studio/actions/nix/setup@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
-            }}
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - id: setup-profiles-jobs
         uses: shikanime-studio/actions/skaffold/setup-profiles-jobs@68a5b49e707bb499fe73cd1b7dddb95fd4a66716

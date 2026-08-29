@@ -39,8 +39,7 @@ bridge:
         thread: 500
     max_guild_members: -1
   cache_media: unencrypted
-  channel_name_template:
-    "{{if or (eq .Type 3) (eq .Type 4)}}{{.Name}}{{else}}#{{.Name}}{{end}}"
+  channel_name_template: "{{if or (eq .Type 3) (eq .Type 4)}}{{.Name}}{{else}}#{{.Name}}{{end}}"
   command_prefix: "!discord"
   custom_emoji_reactions: true
   delete_guild_on_leave: true
@@ -52,9 +51,7 @@ bridge:
     server_key: ENC[AES256_GCM,data:/e1yoljkzCs+U1gbSZGpnw49jqav3p6pWMOKpg+NXlqIQFCwfCVhsa6TFlxis1U8wy5qe5iNor7VZw==,iv:mTrYlZYei/hkC/CxLdHWVQsuJBRTYyGhavUI/mwGzzg=,tag:cj3Z01sG0PCEUM9eOOTZjQ==,type:str]
     server_name: matrix-discord-media.taila659a.ts.net
     well_known_response: null
-  displayname_template:
-    "{{if .Webhook}}Webhook{{else}}{{or .GlobalName .Username}}{{if .Bot}}
-    (bot){{end}}{{end}}"
+  displayname_template: "{{if .Webhook}}Webhook{{else}}{{or .GlobalName .Username}}{{if .Bot}} (bot){{end}}{{end}}"
   double_puppet_allow_discovery: false
   double_puppet_server_map:
     matrix.taila659a.ts.net: https://matrix.taila659a.ts.net

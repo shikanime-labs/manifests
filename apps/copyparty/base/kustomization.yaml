@@ -10,5 +10,4 @@ images:
     newTag: 1.20.20@sha256:fe8f998e346d40d89c7c353ccd366e3dee81d274dd7df96a5e2a2b290522ea53
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "copyparty", "tag-regex": "^(?P<version>.+)$" } ]'
+    automata.shikanime.studio/images: '[ { "name": "copyparty", "tag-regex": "^(?P<version>.+)$" } ]'

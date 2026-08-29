@@ -10,6 +10,4 @@ images:
     newTag: 2.5.2@sha256:1295cff29d10b486c0d8324d1559a552140a5932bf8b3d87e398654414f63f92
 metadata:
   annotations:
-    automata.shikanime.studio/images:
-      '[ { "name": "prowlarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$"
-      } ]'
+    automata.shikanime.studio/images: '[ { "name": "prowlarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
