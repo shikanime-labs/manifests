@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ai-gateway-crds
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.1.0
+      chart: ai-gateway-crds-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: ai-gateway-crds
+  targetNamespace: envoy-ai-gateway-system
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ai-gateway
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.1.0
+      chart: ai-gateway-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: ai-gateway
+  targetNamespace: envoy-ai-gateway-system
+  dependsOn:
+    - name: envoy
+      namespace: flux-system
+    - name: ai-gateway-crds
+      namespace: flux-system
+  values:
+    controller:
+      replicaCount: 2
+      leaderElection:
+        enabled: true
+  valuesFrom:
+    - name: ai-gateway-session-seed
+      kind: Secret
+      valuesKey: seed
+      targetPath: controller.mcp.sessionEncryption.seed
+      optional: false

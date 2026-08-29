@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -20,13 +19,8 @@ spec:
         namespace: flux-system
   interval: 10m
   releaseName: envoy-gateway
-  targetNamespace: envoy-system
+  targetNamespace: envoy-gateway-system
   values:
-    # Wire the ai-gateway extension into Envoy Gateway's xDS translation so the
-    # inference Gateway actually emits its ext-proc filter bundle. Without this,
-    # the ai-gateway controller never gets called back and the data plane mounts
-    # a non-existent filter-config-bundle ConfigMap -> empty route table ->
-    # universal direct_response 500 on every request (incl. the local floor).
     config:
       envoyGateway:
         # Enable the Backend API so EG accepts Backend refs (incl. the Z.ai
@@ -34,6 +28,11 @@ spec:
         # "Backend is disabled in Envoy Gateway configuration" -> 500.
         extensionApis:
           enableBackend: true
+        # Wire the ai-gateway extension into Envoy Gateway's xDS translation so
+        # the inference Gateway emits its ext-proc filter bundle. Without this,
+        # the ai-gateway controller never gets called back and the data plane
+        # mounts a non-existent filter-config-bundle ConfigMap -> empty route
+        # table -> universal direct_response 500 on every request.
         extensionManager:
           hooks:
             xdsTranslator:
@@ -52,7 +51,7 @@ spec:
                 - Route
           service:
             fqdn:
-              hostname: ai-gateway-controller.envoy-system.svc.cluster.local
+              hostname: ai-gateway-controller.envoy-ai-gateway-system.svc.cluster.local
               port: 1063
     envoyDeployment:
       pod:
@@ -65,57 +64,3 @@ spec:
                       operator: In
                       values:
                         - Intel
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: ai-gateway-crds
-  namespace: flux-system
-spec:
-  chart:
-    spec:
-      version: 1.1.0
-      chart: ai-gateway-crds-helm
-      interval: 1h
-      sourceRef:
-        name: envoyproxy
-        kind: HelmRepository
-        namespace: flux-system
-  interval: 10m
-  releaseName: ai-gateway-crds
-  targetNamespace: envoy-system
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: ai-gateway
-  namespace: flux-system
-spec:
-  chart:
-    spec:
-      version: 1.1.0
-      chart: ai-gateway-helm
-      interval: 1h
-      sourceRef:
-        name: envoyproxy
-        kind: HelmRepository
-        namespace: flux-system
-  interval: 10m
-  releaseName: ai-gateway
-  targetNamespace: envoy-system
-  dependsOn:
-    - name: envoy
-      namespace: flux-system
-    - name: ai-gateway-crds
-      namespace: flux-system
-  values:
-    controller:
-      replicaCount: 2
-      leaderElection:
-        enabled: true
-  valuesFrom:
-    - name: ai-gateway-session-seed
-      kind: Secret
-      valuesKey: seed
-      targetPath: controller.mcp.sessionEncryption.seed
-      optional: false
