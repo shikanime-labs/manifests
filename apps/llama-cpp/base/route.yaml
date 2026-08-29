@@ -28,7 +28,7 @@ spec:
       backendRefs:
         - name: llama-cpp
           priority: 0
-          modelNameOverride: qwen/qwen-flash
+          modelNameOverride: qwen/qwen3.8-flash
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.8-flash
