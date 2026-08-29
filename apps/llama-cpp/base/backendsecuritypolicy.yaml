@@ -46,3 +46,19 @@ spec:
     secretRef:
       name: inference-mistral
       namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
+  name: nous-key
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: nous
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: inference-nous
+      namespace: shikanime
