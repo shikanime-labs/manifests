@@ -73,11 +73,11 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: embeddings/qwen-embed
+              value: qwen/qwen3-embedding-8b
       backendRefs:
         - name: llama-cpp
           priority: 0
-          modelNameOverride: embeddings/qwen-embed
+          modelNameOverride: qwen/qwen3-embedding-8b
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3-embedding-8b
