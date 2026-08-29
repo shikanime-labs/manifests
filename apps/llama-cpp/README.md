@@ -1,17 +1,19 @@
 # llama-cpp
 
-Single llama.cpp router (LeaderWorkerSet `llama-cpp`) per Strix Halo MS-S1 node
-(`kushira`/`sashina`, label
-`node.kubernetes.io/instance-type: minisforum-ms-s1`), two replicas spread by
-`podAntiAffinity` on `kubernetes.io/hostname`. One process serves both LLM and
-embedding models from a shared 120Gi memory pool, so llama.cpp LRU-evicts across
-all floors instead of holding two fixed-budget pods (the old 120Gi LLM + 24Gi
-embed split couldn't even co-schedule on a 128Gi node).
+llama.cpp router as a LeaderWorkerSet `llama-cpp` spanning the two Strix Halo
+MS-S1 nodes (`kushira`/`sashina`, label
+`node.kubernetes.io/instance-type: minisforum-ms-s1`). `replicas: 1, size: 2`:
+the leader runs `llama-server` and the worker runs `ggml-rpc-server` on the
+other node (required `podAntiAffinity` on `kubernetes.io/hostname` keeps them on
+separate nodes). The leader offloads layers to the rpc peer via `--rpc`,
+aggregating both nodes' ~96 GiB GTT carve-outs (~192 GiB) so the 284B DeepSeek
+V4 Flash floor fits; `--gpu-layers 999` offloads all layers to the iGPU. One
+process serves both LLM and embedding models.
 
-Models are pulled once at startup by an init container (`llama-cli -hf` of the
-best-fit unsloth quants, flattened into the flat names the preset references)
-into an `emptyDir` at `/models`. Router mode serves the local floors (shared
-context window `-c 32768`, `--models-max 5`):
+Models are pulled once at startup by the leader container (`llama-cli -hf` of
+the best-fit unsloth quants, flattened into the flat names the preset
+references) into an `emptyDir` at `/models`. Router mode serves the local floors
+(shared context window `-c 32768`, `--models-max 5`):
 
 - `deepseek/deepseek-v4-flash-0731` —
   `unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M`

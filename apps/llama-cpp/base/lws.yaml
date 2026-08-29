@@ -17,14 +17,12 @@ spec:
           node.kubernetes.io/instance-type: minisforum-ms-s1
         affinity:
           podAntiAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-              - weight: 100
-                podAffinityTerm:
-                  labelSelector:
-                    matchLabels:
-                      app.kubernetes.io/instance: llama-cpp
-                      app.kubernetes.io/name: llama-cpp
-                  topologyKey: kubernetes.io/hostname
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/instance: llama-cpp
+                    app.kubernetes.io/name: llama-cpp
+                topologyKey: kubernetes.io/hostname
         containers:
           # Router mode loads GGUFs from --models-dir on first request; it does
           # not fetch from HuggingFace at runtime, so the download runs before
@@ -51,7 +49,8 @@ spec:
                   --host 0.0.0.0 --port 8080 \
                   --models-preset /etc/llama-cpp/preset/models-preset.ini \
                   --models-dir /models --models-max 5 --no-models-autoload --embeddings \
-                  -c 32768 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 --gpu-layers 99 --no-mmap
+                  -c 32768 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 \
+                  --gpu-layers 999 --rpc llama-cpp-0-1.llama-cpp.shikanime.svc.cluster.local:50052 --no-mmap
             ports:
               - name: http
                 containerPort: 8080
@@ -119,6 +118,14 @@ spec:
       spec:
         nodeSelector:
           node.kubernetes.io/instance-type: minisforum-ms-s1
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/instance: llama-cpp
+                    app.kubernetes.io/name: llama-cpp
+                topologyKey: kubernetes.io/hostname
         containers:
           - name: llama-cpp-rpc
             image: ghcr.io/ggml-org/llama.cpp:server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949

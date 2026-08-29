@@ -29,3 +29,14 @@ spec:
               app.kubernetes.io/name: vmagent
       ports:
         - port: metrics
+    # llama.cpp RPC: the leader (server) offloads layers to the worker
+    # (ggml-rpc-server) on :50052 across the two MS-S1 nodes.
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: shikanime
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: llama-cpp
+      ports:
+        - port: rpc
