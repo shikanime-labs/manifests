@@ -1,0 +1,17 @@
+# Explicit HTTP/2 flow-control windows for upstream (gateway→backend)
+# connections. Envoy already defaults to 64KiB stream / 1MiB connection, but
+# setting them explicitly keeps the bursty large-LLM response streams from
+# stalling on a starved HTTP/2 window.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: inference
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: inference
+      group: gateway.networking.k8s.io
+      kind: Gateway
+  http2:
+    initialStreamWindowSize: 64Ki
+    initialConnectionWindowSize: 1Mi

@@ -4,6 +4,7 @@ resources:
   - aiservicebackend.yaml
   - backend.yaml
   - backendsecuritypolicy.yaml
+  - backendtrafficpolicy.yaml
   - route.yaml
   - mcproute.yaml
 images:
