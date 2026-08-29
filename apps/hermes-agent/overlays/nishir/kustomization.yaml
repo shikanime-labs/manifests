@@ -2,7 +2,7 @@ resources:
   - ../../base
 namespace: shikanime
 components:
-  - ../../components/api
+  - ../../components/api-server
   - ../../components/a2a
   - ../../components/browser
   - ../../components/dashboard
