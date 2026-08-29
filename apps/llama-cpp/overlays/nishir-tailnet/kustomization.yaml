@@ -4,37 +4,11 @@ resources:
   - gateway.yaml
   - envoyproxy.yaml
   - ingress.yaml
-  - patch-netpol.yaml
+  - netpol.yaml
 namespace: shikanime
 components:
   - ../../components/tls
 patches:
-  - target:
-      name: llama-cpp
-      kind: NetworkPolicy
-      namespace: shikanime
-    patch: |-
-      - op: add
-        path: /spec/ingress/-
-        value:
-          from:
-            - namespaceSelector:
-                matchLabels:
-                  kubernetes.io/metadata.name: tailscale-system
-          ports:
-            - port: http
-      - op: add
-        path: /spec/ingress/-
-        value:
-          from:
-            - namespaceSelector:
-                matchLabels:
-                  kubernetes.io/metadata.name: monitoring-system
-              podSelector:
-                matchLabels:
-                  app.kubernetes.io/name: vmagent
-          ports:
-            - port: metrics
   - target:
       name: inference-tls
       kind: Certificate
