@@ -5,6 +5,7 @@ resources:
   - gatewayconfig.yaml
   - envoyproxy.yaml
   - netpol.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 patches:
   - target:
@@ -25,3 +26,8 @@ labels:
       app.kubernetes.io/name: llama-cpp
       app.kubernetes.io/part-of: nishir-inference
       app.kubernetes.io/version: "3.8"
+secretGenerator:
+  - name: inference-gateway-apikey
+    namespace: shikanime
+    envs:
+      - inference-gateway-apikey/.enc.env
