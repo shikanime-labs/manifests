@@ -33,7 +33,7 @@ spec:
         # MCP backends). Without this, generated routes fail ResolvedRefs with
         # "Backend is disabled in Envoy Gateway configuration" -> 500.
         extensionApis:
-          enableBackendApi: true
+          enableBackend: true
         extensionManager:
           hooks:
             xdsTranslator:
