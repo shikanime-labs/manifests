@@ -113,3 +113,40 @@ spec:
             hostPath:
               type: Directory
               path: /dev/dri
+    # RPC llama.cpp: the leader loads the model and distributes layers to worker
+    # compute nodes (ggml-rpc-server). LWS requires workerTemplate even though the
+    # node stays Pending until GPU hardware lands. Workers own the GPU mounts.
+    workerTemplate:
+      metadata:
+        labels:
+          app.kubernetes.io/instance: llama-cpp
+          app.kubernetes.io/name: llama-cpp
+      spec:
+        nodeSelector:
+          node.kubernetes.io/instance-type: minisforum-ms-s1
+        containers:
+          - name: llama-cpp-rpc
+            image: ghcr.io/ggml-org/llama.cpp:server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
+            command: ["ggml-rpc-server"]
+            args:
+              - --host
+              - 0.0.0.0
+              - --port
+              - "50052"
+            volumeMounts:
+              - name: dev-kfd
+                mountPath: /dev/kfd
+              - name: dev-dri
+                mountPath: /dev/dri
+            ports:
+              - name: rpc
+                containerPort: 50052
+        volumes:
+          - name: dev-kfd
+            hostPath:
+              type: CharDevice
+              path: /dev/kfd
+          - name: dev-dri
+            hostPath:
+              type: Directory
+              path: /dev/dri
