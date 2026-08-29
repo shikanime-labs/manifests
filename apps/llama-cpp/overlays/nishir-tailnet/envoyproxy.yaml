@@ -7,13 +7,19 @@ spec:
   provider:
     type: Kubernetes
     kubernetes:
-      # Envoy's tcmalloc needs a 1GiB-aligned VA arena that fails to reserve on
-      # the arm64 nodes (fushi/minish/nemishi), so the data plane
-      # CrashLoopBackOffs there. Pin to amd64 where the distroless image runs.
+      # The rpi4 nodes fushi/minish run a kernel/build that kills the envoy
+      # data plane (CrashLoop). Pin OFF only those two; nemishi (arm64) and the
+      # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
         pod:
-          nodeSelector:
-            kubernetes.io/arch: amd64
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: kubernetes.io/hostname
+                        operator: NotIn
+                        values: [fushi, minish]
       envoyService:
         # Stable name (default is envoy-<ns>-<name>-<hash>) so the tailnet
         # hostname below is independent of EG's generated names.
