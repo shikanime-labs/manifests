@@ -23,25 +23,6 @@ patches:
       kind: AIGatewayRoute
       namespace: shikanime
     path: patch-aigatewayroute.yaml
-secretGenerator:
-  - name: inference-nous
-    namespace: shikanime
-    options:
-      disableNameSuffixHash: true
-    envs:
-      - inference-nous/.enc.env
-  - name: inference-openrouter
-    namespace: shikanime
-    options:
-      disableNameSuffixHash: true
-    envs:
-      - inference-openrouter/.enc.env
-  - name: inference-mistral
-    namespace: shikanime
-    options:
-      disableNameSuffixHash: true
-    envs:
-      - inference-mistral/.enc.env
 labels:
   - includeTemplates: true
     pairs:
