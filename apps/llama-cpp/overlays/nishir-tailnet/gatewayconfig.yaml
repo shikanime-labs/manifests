@@ -6,5 +6,7 @@ metadata:
 spec:
   # Minimal ext-proc config: enables the ai-gateway extension for the inference
   # Gateway (referenced via the aigateway.envoyproxy.io/gateway-config
-  # annotation). Defaults are sufficient for the current single-route setup.
-  extProc: {}
+  # annotation). The ai-gateway CRD requires extProc to be a non-null object, so
+  # an empty kubernetes sub-object is the minimal valid form.
+  extProc:
+    kubernetes: {}
