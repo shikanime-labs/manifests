@@ -221,17 +221,27 @@ share-manager. It hit a dirty-XFS-log failure after a node instability event
 and stuck in `degraded`.
 
 ```sh
-# kubectl is the absolute path on the operator host (use it directly, no alias):
-#   /nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl
-# e.g. /nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
-#        -n longhorn-system get volume sukebe-doujins-data
-VOL=sukebe-doujins-data
-NS=longhorn-system
-NODE=ashira
-MGR_POD=longhorn-manager-8cvrp   # resolved after pinning NODE=ashira (§3)
-CONSUMER_NS=shikanime
-CONSUMERS="copyparty jellyfin syncthing"
-DESIRED_REPLICAS=2
+# kubectl is the absolute path on the operator host — use it directly:
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n longhorn-system get volume sukebe-doujins-data
+# consumers quiesced before repair:
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n shikanime scale sts copyparty jellyfin syncthing --replicas=0
+# engine pinned to ashira (sukebe-doujins-data is a 1Ti RWX volume):
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n longhorn-system patch volume sukebe-doujins-data --type=merge \
+  -p '{"spec":{"nodeID":"ashira"}}'
+# manager pod on the pinned node (resolved per §3): longhorn-manager-8cvrp
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n longhorn-system exec longhorn-manager-8cvrp -c longhorn-manager -- \
+  sh -c "xfs_repair -n /host/dev/longhorn/sukebe-doujins-data"
+# after clean repair, re-enable RWX and restore 2 replicas:
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n longhorn-system patch volume sukebe-doujins-data --type=merge \
+  -p '{"spec":{"accessMode":"rwx","numberOfReplicas":2}}'
+# bring consumers back:
+/nix/store/f2dn3sm4xhh3f44gni94dwqascvd7y1s-kubectl-1.36.3/bin/kubectl \
+  -n shikanime scale sts copyparty jellyfin syncthing --replicas=1
 ```
 
 Note on replicas: `sukebe-doujins-data` uses storageClass `nishir-transient`
