@@ -19,3 +19,15 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-z-ai/.enc.env
+  - name: inference-nous
+    namespace: shikanime
+    envs:
+      - inference-nous/.enc.env
+  - name: inference-openrouter
+    namespace: shikanime
+    envs:
+      - inference-openrouter/.enc.env
+  - name: inference-mistral
+    namespace: shikanime
+    envs:
+      - inference-mistral/.enc.env
