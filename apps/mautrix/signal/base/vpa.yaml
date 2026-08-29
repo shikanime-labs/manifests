@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-signal
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

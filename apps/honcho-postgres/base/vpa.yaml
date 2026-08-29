@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: honcho-postgres
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

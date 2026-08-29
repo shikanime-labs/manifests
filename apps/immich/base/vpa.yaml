@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: immich
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

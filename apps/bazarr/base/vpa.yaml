@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: bazarr
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial

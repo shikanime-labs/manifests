@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: whisparr
   updatePolicy:
-    updateMode: InPlaceOrRecreate
+    updateMode: Initial
