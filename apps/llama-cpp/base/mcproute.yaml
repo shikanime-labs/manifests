@@ -13,7 +13,25 @@ spec:
     - name: z-ai
       kind: Backend
       group: gateway.envoyproxy.io
-      path: /api/mcp/z-ai
+      path: /api/mcp/web_reader/mcp
+      securityPolicy:
+        apiKey:
+          secretRef:
+            name: inference-z-ai
+            namespace: shikanime
+    - name: z-ai
+      kind: Backend
+      group: gateway.envoyproxy.io
+      path: /api/mcp/web_search_prime/mcp
+      securityPolicy:
+        apiKey:
+          secretRef:
+            name: inference-z-ai
+            namespace: shikanime
+    - name: z-ai
+      kind: Backend
+      group: gateway.envoyproxy.io
+      path: /api/mcp/zread/mcp
       securityPolicy:
         apiKey:
           secretRef:
