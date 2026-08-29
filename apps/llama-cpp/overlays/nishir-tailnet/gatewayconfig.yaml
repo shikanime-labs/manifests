@@ -4,9 +4,13 @@ metadata:
   name: inference
   namespace: shikanime
 spec:
-  # Minimal ext-proc config: enables the ai-gateway extension for the inference
-  # Gateway (referenced via the aigateway.envoyproxy.io/gateway-config
-  # annotation). The ai-gateway CRD requires extProc to be a non-null object, so
-  # an empty kubernetes sub-object is the minimal valid form.
+  # Enables the ai-gateway ext-proc extension for the inference Gateway
+  # (referenced via the aigateway.envoyproxy.io/gateway-config annotation).
+  # The ai-gateway admission webhook requires extProc.kubernetes to be a
+  # non-null, non-empty object; an empty map serializes as null and is
+  # rejected, so a concrete env entry is the minimal valid form.
   extProc:
-    kubernetes: {}
+    kubernetes:
+      env:
+        - name: LOG_LEVEL
+          value: info
