@@ -4,14 +4,9 @@ metadata:
   name: llama-cpp
   namespace: shikanime
 spec:
-  # 2 leader pods (LWS size defaults to 1), one per Strix Halo MS-S1 node
-  # (kushira/sashina), spread by anti-affinity. Each is a single llama.cpp
-  # router serving LLM + embedding models from one memory pool, so its LRU
-  # eviction manages the resident set against one 120Gi ceiling instead of
-  # two fixed-budget pods (was 120Gi LLM + 24Gi embed that couldn't co-schedule
-  # on a 128Gi node).
-  replicas: 2
+  replicas: 1
   leaderWorkerTemplate:
+    size: 2
     leaderTemplate:
       metadata:
         labels:
