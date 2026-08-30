@@ -1,0 +1,7 @@
+resources:
+  - ../../base
+secretGenerator:
+  - name: cloudflare-api-token
+    namespace: external-dns
+    files:
+      - cloudflare_api_token=cloudflare-api-token/.enc.env

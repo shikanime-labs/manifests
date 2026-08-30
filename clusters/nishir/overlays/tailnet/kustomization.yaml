@@ -16,6 +16,7 @@ components:
   - ../../components/node-feature-discovery
   - ../../components/tailscale
   - ../../components/trust-manager
+  - ../../components/external-dns
 patches:
   - path: patch-ingress.yaml
 labels:
