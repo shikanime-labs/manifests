@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      version: 1.7.1
+      version: 1.21.1
       chart: external-dns
       interval: 1h
       sourceRef:
@@ -17,7 +17,8 @@ spec:
   releaseName: external-dns
   targetNamespace: external-dns-system
   values:
-    provider: cloudflare
+    provider:
+      name: cloudflare
     domainFilters:
       - shikanime.studio
       - i.shikanime.studio
@@ -27,8 +28,23 @@ spec:
     proxied: false
     sources:
       - gateway-httproute
-      - gateway
       - ingress
       - service
-    cloudflare:
-      secretName: cloudflare-api-token
+    deploymentStrategy:
+      type: RollingUpdate
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-api-token
+            key: cloudflare_api_token
+    podSecurityContext:
+      seccompProfile:
+        type: RuntimeDefault
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      capabilities:
+        drop:
+          - ALL
