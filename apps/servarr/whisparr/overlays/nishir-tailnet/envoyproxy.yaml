@@ -13,4 +13,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: whisparr
-          tailscale.com/tags: "tag:syncthing"
+          tailscale.com/tags: "tag:web"
