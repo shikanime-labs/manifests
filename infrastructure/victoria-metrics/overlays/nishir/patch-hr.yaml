@@ -19,6 +19,9 @@ spec:
               kind: Ingress
   values:
     grafana:
+      replicas: 1
+      deploymentStrategy:
+        type: Recreate
       persistence:
         storageClassName: nishir-standard
     kubeControllerManager:
