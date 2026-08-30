@@ -5,6 +5,9 @@ nameReference:
       - kind: BackendSecurityPolicy
         path: spec/apiKey/secretRef/name
         group: aigateway.envoyproxy.io
+      - kind: BackendSecurityPolicy
+        path: spec/anthropicAPIKey/secretRef/name
+        group: aigateway.envoyproxy.io
       - kind: MCPRoute
         path: spec/backendRefs/securityPolicy/apiKey/secretRef/name
         group: aigateway.envoyproxy.io
