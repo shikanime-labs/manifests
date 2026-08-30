@@ -5,7 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: forgejo
-      sectionName: tcp-22
+      sectionName: ssh
   backendRefs:
     - name: git
       port: 22
