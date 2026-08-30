@@ -1,6 +1,10 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - routes-6881.yaml
+  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -16,4 +20,3 @@ patches:
       name: qbittorrent
       version: v1
       kind: NetworkPolicy
-  - path: patch-svc.yaml

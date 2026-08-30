@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: qbittorrent-tracker
-  annotations:
-    tailscale.com/hostname: qbittorrent-tracker
-    tailscale.com/tags: tag:bittorrent
-spec:
-  loadBalancerClass: tailscale
