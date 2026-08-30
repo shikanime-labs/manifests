@@ -4,6 +4,9 @@
     from:
       - namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: tailscale-system
+            kubernetes.io/metadata.name: envoy-gateway-system
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: envoy
     ports:
-      - port: https
+      - port: http
