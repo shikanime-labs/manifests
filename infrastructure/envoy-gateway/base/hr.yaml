@@ -38,12 +38,17 @@ spec:
         # the ai-gateway controller never gets called back and the data plane
         # mounts a non-existent filter-config-bundle ConfigMap -> empty route
         # table -> universal direct_response 500 on every request.
+        # listener.includeAll is FALSE: the hook must not receive listener IR,
+        # or it injects its HTTP filter into the non-HTTP filter chains of
+        # Gateways that carry TCP/UDP listeners (syncthing:22000). That breaks
+        # xDS translation (NoResources -> Programmed=False). ai-gateway only
+        # needs route/cluster/secret IR, so inference ext-proc is preserved.
         extensionManager:
           hooks:
             xdsTranslator:
               translation:
                 listener:
-                  includeAll: true
+                  includeAll: false
                 route:
                   includeAll: true
                 cluster:
