@@ -46,7 +46,13 @@ spec:
         # ai-gateway only patches listeners carrying AIGateway-generated routes,
         # and its header_to_metadata listener injection is disabled via
         # controller.logRequestHeaderAttributes="" in the ai-gateway HelmRelease.
+        # InferencePool support (Envoy AI Gateway addon): watch InferencePool
+        # CRs from the inference-extension.
         extensionManager:
+          backendResources:
+            - version: v1
+              group: inference.networking.k8s.io
+              kind: InferencePool
           hooks:
             xdsTranslator:
               translation:
