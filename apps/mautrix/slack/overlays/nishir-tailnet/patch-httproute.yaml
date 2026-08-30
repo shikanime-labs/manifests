@@ -1,0 +1,10 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: slack
+spec:
+  hostnames:
+  - slack.i.shikanime.studio
+  parentRefs:
+  - name: slack
+    sectionName: https
