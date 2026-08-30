@@ -964,7 +964,8 @@ spec:
       name: sops-age
   dependsOn:
     - name: infrastructure-lws
-    - name: infrastructure-envoy
+    - name: infrastructure-envoy-gateway
+    - name: infrastructure-envoy-ai-gateway
     - name: infrastructure-cert-manager
     - name: infrastructure-monitoring
     - name: infrastructure-tailscale
