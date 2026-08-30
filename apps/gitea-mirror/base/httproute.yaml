@@ -1,0 +1,9 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: gitea-mirror
+spec:
+  rules:
+  - backendRefs:
+    - name: gitea-mirror
+      port: http

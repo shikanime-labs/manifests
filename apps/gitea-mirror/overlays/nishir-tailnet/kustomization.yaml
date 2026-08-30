@@ -3,7 +3,6 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -24,3 +23,10 @@ secretGenerator:
   - name: gitea-mirror
     envs:
       - gitea-mirror/.enc.env
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: gitea-mirror
+      version: v1
+      kind: HTTPRoute
+
