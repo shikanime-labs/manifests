@@ -16,4 +16,4 @@ metadata:
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
-      - models-preset.ini=preset/models-preset.ini
+      - models-preset.ini=llama-cpp-models-preset/models-preset.ini
