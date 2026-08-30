@@ -5,4 +5,10 @@ metadata:
   namespace: shikanime
 spec:
   connection:
-    bufferLimit: 8Mi
+    # ai-gateway ext_proc buffers responses (response_body_mode: BUFFERED);
+    # embedding vectors exceed Envoy's default 32KiB and 500 with
+    # response_payload_too_large. http2 windows must scale with the buffer.
+    bufferLimit: 50Mi
+  http2:
+    initialStreamWindowSize: 16Mi
+    initialConnectionWindowSize: 24Mi
