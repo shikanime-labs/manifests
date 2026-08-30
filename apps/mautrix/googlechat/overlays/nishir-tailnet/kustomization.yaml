@@ -3,7 +3,6 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute.yaml
   - vmservicescrape.yaml
 namespace: shikanime
 labels:
@@ -28,3 +27,10 @@ secretGenerator:
       - registration.yaml=matrix-googlechat/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: googlechat
+      version: v1
+      kind: HTTPRoute
+
