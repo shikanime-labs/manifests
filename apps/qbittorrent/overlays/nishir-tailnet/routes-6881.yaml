@@ -5,7 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: qbittorrent
-      sectionName: tcp-6881
+      sectionName: bittorrent
   backendRefs:
     - name: qbittorrent-tracker
       port: 6881
@@ -17,7 +17,7 @@ metadata:
 spec:
   parentRefs:
     - name: qbittorrent
-      sectionName: udp-6881
+      sectionName: bittorrent-udp
   backendRefs:
     - name: qbittorrent-tracker
       port: 6881
