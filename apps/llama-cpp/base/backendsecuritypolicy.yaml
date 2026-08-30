@@ -5,12 +5,12 @@ metadata:
   name: z-ai-key
   namespace: shikanime
 spec:
-  type: APIKey
+  type: AnthropicAPIKey
   targetRefs:
     - name: z-ai
       group: aigateway.envoyproxy.io
       kind: AIServiceBackend
-  apiKey:
+  anthropicAPIKey:
     secretRef:
       name: inference-z-ai
       namespace: shikanime

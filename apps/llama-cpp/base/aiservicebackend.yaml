@@ -34,9 +34,9 @@ metadata:
   namespace: shikanime
 spec:
   schema:
-    name: OpenAI
-    # z.ai coding-plan API base is api.z.ai/api/v1.
-    prefix: api/v1
+    name: Anthropic
+    # GLM-5.3 / glm-5.3-flash are served only on Z.ai's Anthropic /messages endpoint.
+    prefix: api/anthropic/v1
   backendRef:
     name: z-ai
     kind: Backend

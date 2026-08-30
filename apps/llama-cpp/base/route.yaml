@@ -56,7 +56,6 @@ spec:
               type: Exact
               value: z-ai/glm-5.3-flash
       backendRefs:
-        # z-ai (coding-plan key) first, then the local floor so GLM stays on-cluster at z-ai quota.
         - name: z-ai
           priority: 0
           modelNameOverride: glm-5.3-flash
@@ -93,6 +92,21 @@ spec:
         - name: mistral
           priority: 0
           modelNameOverride: labs-leanstral-1-5
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-5.3
+      backendRefs:
+        - name: z-ai
+          priority: 0
+          modelNameOverride: glm-5.3
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-5.3
     # No local floor: route unknown models (e.g. tencent/hy3:free) straight to the remote pool.
     - matches:
         - headers:
