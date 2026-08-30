@@ -1,7 +1,9 @@
 resources:
   - ../nishir
-  - netpol.yaml
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - httproute.yaml
   - vmservicescrape.yaml
 namespace: shikanime
 labels:
@@ -12,6 +14,12 @@ labels:
       app.kubernetes.io/name: mautrix-googlechat
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.5.2
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: mautrix-googlechat
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: mautrix-googlechat
     files:
