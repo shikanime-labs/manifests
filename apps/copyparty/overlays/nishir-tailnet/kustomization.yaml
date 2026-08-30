@@ -1,6 +1,10 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - tcproutes.yaml
+  - httproute.yaml
 namespace: shikanime
 configMapGenerator:
   - name: copyparty
@@ -20,4 +24,3 @@ patches:
       name: copyparty
       version: v1
       kind: NetworkPolicy
-  - path: patch-svc.yaml
