@@ -1,6 +1,9 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -16,3 +19,9 @@ secretGenerator:
       - config.yaml=immich/config.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: immich
+      version: v1
+      kind: NetworkPolicy
