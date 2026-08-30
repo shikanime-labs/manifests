@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -17,3 +19,10 @@ patches:
       version: v1
       kind: NetworkPolicy
   - path: patch-sts.yaml
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: jellyfin
+      version: v1
+      kind: HTTPRoute
+
