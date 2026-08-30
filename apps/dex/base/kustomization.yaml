@@ -5,6 +5,7 @@ metadata:
     automata.shikanime.studio/images: '[ { "name": "dex", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
 resources:
   - netpol.yaml
+  - httproute.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
