@@ -4,7 +4,6 @@ resources:
   - gateway.yaml
   - gatewayconfig.yaml
   - envoyproxy.yaml
-  - ingress.yaml
   - netpol.yaml
 namespace: shikanime
 patches:
