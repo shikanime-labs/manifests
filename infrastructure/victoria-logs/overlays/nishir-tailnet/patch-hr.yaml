@@ -6,8 +6,9 @@ metadata:
 spec:
   values:
     vlstorage:
-      storageClassName: nishir-standard
-      size: 8Gi
+      persistentVolume:
+        storageClassName: nishir-standard
+        size: 8Gi
     vlinsert:
       ingress:
         enabled: true
