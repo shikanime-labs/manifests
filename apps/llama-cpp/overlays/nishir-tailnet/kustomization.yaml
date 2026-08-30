@@ -14,6 +14,11 @@ patches:
       namespace: shikanime
     path: patch-cert.yaml
   - target:
+      name: inference
+      kind: ClientTrafficPolicy
+      namespace: shikanime
+    path: patch-clienttrafficpolicy.yaml
+  - target:
       name: default
       kind: AIGatewayRoute
       namespace: shikanime
