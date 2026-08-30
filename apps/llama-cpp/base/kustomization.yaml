@@ -4,7 +4,7 @@ resources:
   - aiservicebackend.yaml
   - backend.yaml
   - backendsecuritypolicy.yaml
-  - route.yaml
+  - aigatewayroute.yaml
   - mcproute.yaml
 images:
   - name: llama-cpp
