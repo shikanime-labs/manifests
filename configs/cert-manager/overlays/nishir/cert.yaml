@@ -18,13 +18,31 @@ metadata:
   name: inference-studio-shikanime-tls
   namespace: shikanime
 spec:
-  commonName: inference.shikanime.studio
+  commonName: inference.i.shikanime.studio
   dnsNames:
-    - inference.shikanime.studio
+    - inference.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
   secretName: inference-studio-shikanime-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: syncthing-i-shikanime-tls
+  namespace: shikanime
+spec:
+  commonName: syncthing.i.shikanime.studio
+  dnsNames:
+    - syncthing.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: syncthing-i-shikanime-tls
   usages:
     - digital signature
     - key encipherment
