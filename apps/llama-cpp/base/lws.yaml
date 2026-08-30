@@ -24,33 +24,45 @@ spec:
                     app.kubernetes.io/name: llama-cpp
                 topologyKey: kubernetes.io/hostname
         containers:
-          # Router mode loads GGUFs from --models-dir on first request; it does
-          # not fetch from HuggingFace at runtime, so the download runs before
-          # the server starts. Inlined instead of a separate init container
-          # (same emptyDir, fewer objects).
+          # Router mode maps each model name to a HuggingFace repo:quant; the
+          # server downloads it into --models-dir on the first request that
+          # targets it and caches it there (autoload is the default, so a chat
+          # request loads the model without a separate /models/load). The server
+          # comes up instantly and only pulls the models actually used. Every
+          # llama-server flag is passed via its LLAMA_ARG_* env equivalent.
           - name: llama-cpp
             image: llama-cpp
-            command: ["/bin/sh", "-c"]
-            args:
-              - |
-                set -eu
-                export HF_HOME="${HF_HOME:-/models/.hf-cache}"
-                download() {
-                  # $1 = repo:quant   $2 = cached-file glob   $3 = flat output name
-                  llama-cli -hf "$1" >/dev/null 2>&1 || true
-                  cp "$(find "$HF_HOME" -name "$2" -print -quit)" "/models/$3"
-                }
-                download unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M 'DeepSeek*Q3_K_M*.gguf'       DeepSeek-V4-Flash-0731-UD-Q3_K_M.gguf
-                download unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS        'GLM*IQ3_XXS*.gguf'           GLM-5.3-Flash-UD-IQ3_XXS.gguf
-                download unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL    'Qwen3.8-Flash*Q4_K_XL*.gguf' Qwen3.8-Flash-Next-UD-Q4_K_XL.gguf
-                download unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL           'Qwen3.8-27B*Q4_K_XL*.gguf'   Qwen3.8-27B-UD-Q4_K_XL.gguf
-                download unsloth/Qwen3-Embedding-8B-GGUF:UD-Q5_K_XL    'Qwen3-Embedding*Q5_K_XL*.gguf' Qwen3-Embedding-8B-UD-Q5_K_XL.gguf
-                exec llama-server \
-                  --host 0.0.0.0 --port 8080 \
-                  --models-preset /etc/llama-cpp/preset/models-preset.ini \
-                  --models-dir /models --models-max 5 --no-models-autoload --embeddings \
-                  -c 32768 --flash-attn on --cache-type-k q8_0 --cache-type-v q8_0 \
-                  --gpu-layers 999 --rpc llama-cpp-0-1.llama-cpp.shikanime.svc.cluster.local:50052 --no-mmap
+            command:
+              - llama-server
+            env:
+              - name: LLAMA_ARG_HOST
+                value: 0.0.0.0
+              - name: LLAMA_ARG_PORT
+                value: "8080"
+              - name: LLAMA_ARG_MODELS_PRESET
+                value: /etc/llama-cpp/preset/models-preset.ini
+              - name: LLAMA_ARG_MODELS_DIR
+                value: /models
+              - name: LLAMA_ARG_MODELS_MAX
+                value: "5"
+              - name: LLAMA_ARG_MODELS_AUTOLOAD
+                value: "true"
+              - name: LLAMA_ARG_EMBEDDINGS
+                value: ""
+              - name: LLAMA_ARG_CTX_SIZE
+                value: "32768"
+              - name: LLAMA_ARG_FLASH_ATTN
+                value: "on"
+              - name: LLAMA_ARG_CACHE_TYPE_K
+                value: q8_0
+              - name: LLAMA_ARG_CACHE_TYPE_V
+                value: q8_0
+              - name: LLAMA_ARG_N_GPU_LAYERS
+                value: "999"
+              - name: LLAMA_ARG_RPC
+                value: llama-cpp-0-1.llama-cpp.shikanime.svc.cluster.local:50052
+              - name: LLAMA_ARG_MMAP
+                value: "0"
             ports:
               - name: http
                 containerPort: 8080
@@ -86,6 +98,8 @@ spec:
             volumeMounts:
               - name: models
                 mountPath: /models
+              - name: cache-huggingface
+                mountPath: /root/.cache/huggingface
               - name: models-preset
                 mountPath: /etc/llama-cpp/preset
                 readOnly: true
@@ -95,6 +109,8 @@ spec:
                 mountPath: /dev/dri
         volumes:
           - name: models
+            emptyDir: {}
+          - name: cache-huggingface
             emptyDir: {}
           - name: models-preset
             configMap:
