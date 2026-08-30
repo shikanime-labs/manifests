@@ -38,7 +38,7 @@ Anthropic endpoint (`/anthropic/v1/messages`) instead of the OpenAI
 The Anthropic endpoint selects the backend from the **body `model` field**, not
 the `x-ai-eg-model` header (that header is only used on the OpenAI path).
 
-```
+```text
 POST https://inference.taila659a.ts.net/anthropic/v1/messages
 Headers:
   Content-Type: application/json
@@ -57,7 +57,7 @@ Auth is injected by `BackendSecurityPolicy z-ai-key` (`AnthropicAPIKey` →
 
 ## OpenAI-compatible models
 
-```
+```text
 POST https://inference.taila659a.ts.net/v1/chat/completions
 Headers: x-ai-eg-model: <provider/model>
 Body: { "model": "<provider/model>", "messages": [...] }
