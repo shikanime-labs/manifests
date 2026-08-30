@@ -3,7 +3,6 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -27,3 +26,10 @@ secretGenerator:
       - registration.yaml=matrix-twitter/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: twitter
+      version: v1
+      kind: HTTPRoute
+
