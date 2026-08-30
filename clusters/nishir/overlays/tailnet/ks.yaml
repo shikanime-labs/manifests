@@ -93,7 +93,7 @@ spec:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
     - name: apps-lldap
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -120,7 +120,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -147,7 +147,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -174,7 +174,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -226,7 +226,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -253,7 +253,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -280,7 +280,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -307,7 +307,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
     - name: apps-immich-postgres
     - name: apps-immich-valkey
@@ -364,7 +364,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -443,7 +443,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -470,7 +470,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -497,7 +497,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -524,7 +524,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -551,7 +551,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -578,7 +578,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -605,7 +605,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -632,7 +632,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: v1
@@ -659,7 +659,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
   healthChecks:
     - apiVersion: apps/v1
       kind: StatefulSet
@@ -839,7 +839,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
@@ -967,7 +967,7 @@ spec:
     - name: infrastructure-envoy-gateway
     - name: infrastructure-envoy-ai-gateway
     - name: infrastructure-cert-manager
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: leaderworkerset.x-k8s.io/v1

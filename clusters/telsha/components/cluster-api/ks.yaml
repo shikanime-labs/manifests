@@ -10,7 +10,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-monitoring
+    - name: infrastructure-victoria-metrics
   interval: 10m
   path: ./infrastructure/cluster-api/overlays/telsha
   prune: true

@@ -28,6 +28,6 @@ spec:
       - dns01:
           cloudflare:
             apiTokenSecretRef:
-              key: cloudflare_api_token
               name: cloudflare-api-token
+              key: cloudflare_api_token
             email: contact@shikanime.studio
