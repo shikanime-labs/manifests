@@ -4,11 +4,9 @@ metadata:
   name: inference
   namespace: shikanime
 spec:
-  tls:
-    clientValidation:
-      caCertificateRefs:
-        - name: nishir-ca-certificates.crt
-          group: ""
-          kind: ConfigMap
+  targetRefs:
+    - name: inference
+      group: gateway.networking.k8s.io
+      kind: Gateway
   connection:
     bufferLimit: 8Mi
