@@ -10,3 +10,21 @@ spec:
     name: nishir-selfsigned
     kind: ClusterIssuer
   secretName: nishir-ca
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: inference-studio-shikanime-tls
+  namespace: shikanime
+spec:
+  commonName: inference.shikanime.studio
+  dnsNames:
+    - inference.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: inference-studio-shikanime-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

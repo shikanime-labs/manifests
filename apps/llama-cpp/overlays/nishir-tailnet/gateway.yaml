@@ -20,10 +20,8 @@ spec:
       port: 443
       tls:
         mode: Terminate
-        options:
-          gateway.envoyproxy.io/mtls: "true"
         certificateRefs:
-          - name: inference-tls
+          - name: inference-studio-shikanime-tls
   infrastructure:
     parametersRef:
       name: inference

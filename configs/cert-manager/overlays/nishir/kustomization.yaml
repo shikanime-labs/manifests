@@ -3,3 +3,8 @@ resources:
   - bundle.yaml
   - cert.yaml
   - clusterissuer.yaml
+secretGenerator:
+  - name: cloudflare-api-token
+    namespace: cert-manager-trust
+    files:
+      - cloudflare_api_token=cloudflare-api-token/.enc.env
