@@ -5,6 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    vlstorage:
+      storageClassName: nishir-standard
+      size: 8Gi
     vlinsert:
       ingress:
         enabled: true
