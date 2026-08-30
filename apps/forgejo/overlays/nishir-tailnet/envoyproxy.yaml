@@ -13,4 +13,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: forgejo
-          tailscale.com/tags: "tag:syncthing"
+          tailscale.com/tags: "tag:web,tag:git"
