@@ -4,7 +4,6 @@ resources:
   - envoyproxy.yaml
   - gateway.yaml
   - tcproute.yaml
-  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -24,3 +23,10 @@ secretGenerator:
   - name: forgejo-config
     files:
       - app.ini=forgejo/app.enc.ini
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: forgejo
+      version: v1
+      kind: HTTPRoute
+
