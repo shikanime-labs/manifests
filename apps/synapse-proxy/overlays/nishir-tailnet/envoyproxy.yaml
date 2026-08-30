@@ -1,0 +1,16 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: synapse-proxy
+  namespace: shikanime
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        name: synapse-proxy
+        type: LoadBalancer
+        loadBalancerClass: tailscale
+        annotations:
+          tailscale.com/hostname: synapse-proxy
+          tailscale.com/tags: "tag:syncthing"
