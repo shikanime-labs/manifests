@@ -46,6 +46,11 @@ spec:
       replicaCount: 2
       leaderElection:
         enabled: true
+      # Empty string disables the default agent-session-id header_to_metadata
+      # listener filter. That injection hard-fails on non-HTTP filter chains
+      # (syncthing TCP/UDP listeners) whenever the extension hook receives
+      # listener IR (envoy-gateway listener.includeAll: true).
+      logRequestHeaderAttributes: ""
   valuesFrom:
     - name: ai-gateway-session-seed
       kind: Secret
