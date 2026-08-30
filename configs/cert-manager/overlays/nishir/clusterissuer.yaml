@@ -13,3 +13,21 @@ metadata:
 spec:
   ca:
     secretName: nishir-ca
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: studio-shikanime
+spec:
+  acme:
+    email: contact@shikanime.studio
+    privateKeySecretRef:
+      name: studio-shikanime-private-key
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              key: cloudflare_api_token
+              name: cloudflare-api-token
+            email: contact@shikanime.studio
