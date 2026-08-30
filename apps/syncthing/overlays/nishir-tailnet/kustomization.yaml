@@ -6,10 +6,6 @@ resources:
   - netpol.yaml
 namespace: shikanime
 patches:
-  - path: patch-cert.yaml
-    target:
-      name: syncthing-tls
-      kind: Certificate
   - path: patch-httproute.yaml
   - path: patch-tcproute.yaml
   - path: patch-udproute.yaml

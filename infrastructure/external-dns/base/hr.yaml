@@ -20,6 +20,7 @@ spec:
     provider: cloudflare
     domainFilters:
       - shikanime.studio
+      - i.shikanime.studio
     policy: sync
     registry: txt
     txtOwnerId: nishir-external-dns

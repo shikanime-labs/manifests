@@ -11,7 +11,7 @@ for gateway-to-backend TLS.
 
 - `base/` — StatefulSet, Service (sessionAffinity ClientIP), config PVC, VPA,
   netpol (kube-system only), HTTPRoute/TCPRoute/UDPRoute.
-- `components/tls/` — patches mounting the `syncthing-tls` secret and switching
-  probes to HTTPS.
+- `components/tls/` — patches mounting the `studio-shikanime-i-syncthing-tls`
+  secret and switching probes to HTTPS.
 - `overlays/nishir/` — namespace, TLS component, cert.yaml (ClusterIssuer
   nishir), BackendTLSPolicy, route/PVC patches, 19 data PVC mounts.

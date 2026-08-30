@@ -21,7 +21,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: inference-studio-shikanime-tls
+          - name: inference-i-shikanime-studio-tls
   infrastructure:
     parametersRef:
       name: inference
