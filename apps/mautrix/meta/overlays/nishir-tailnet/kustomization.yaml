@@ -1,7 +1,9 @@
 resources:
   - ../nishir
-  - netpol.yaml
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -11,6 +13,12 @@ labels:
       app.kubernetes.io/name: mautrix-meta
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2607.0
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: mautrix-meta
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: mautrix-meta
     files:
