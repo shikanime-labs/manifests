@@ -14,9 +14,9 @@ spec:
           - name: qbittorrent-i-shikanime-studio-tls
             group: ""
             kind: Secret
-    - name: tcp-6881
+    - name: bittorrent
       port: 6881
       protocol: TCP
-    - name: udp-6881
+    - name: bittorrent-udp
       port: 6881
       protocol: UDP
