@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoria-logs
+  namespace: flux-system
+spec:
+  interval: 10m
+  chart:
+    spec:
+      version: 0.2.8
+      chart: victoria-logs-cluster
+      interval: 10m
+      sourceRef:
+        name: victoriametrics
+        kind: HelmRepository
+        namespace: flux-system
+  releaseName: vlogs
+  targetNamespace: monitoring-system
+  values:
+    fullnameOverride: vlogs
+    vlstorage:
+      persistentVolume:
+        enabled: true
+        size: 32Gi

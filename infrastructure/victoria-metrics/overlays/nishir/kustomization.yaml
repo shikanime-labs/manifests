@@ -1,4 +1,4 @@
 resources:
-  - ../nishir
+  - ../../base
 patches:
   - path: patch-hr.yaml

@@ -11,7 +11,8 @@ components:
   - ../../components/gatekeeper
   - ../../components/longhorn
   - ../../components/lws
-  - ../../components/monitoring
+  - ../../components/victoria-metrics
+  - ../../components/victoria-logs
   - ../../components/kubevirt
   - ../../components/node-feature-discovery
   - ../../components/tailscale

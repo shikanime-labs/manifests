@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoriametrics
+  namespace: flux-system
+spec:
+  values:
+    grafana:
+      persistence:
+        storageClassName: local-path
+    vmsingle:
+      spec:
+        extraArgs:
+          enableTCP6: "true"
+        storage:
+          resources:
+            requests:
+              storage: 8Gi
+          storageClassName: local-path
+      enabled: true
