@@ -14,3 +14,7 @@ spec:
       env:
         - name: LOG_LEVEL
           value: info
+  # Expose the Anthropic Messages endpoint so Anthropic-schema backends
+  # (Z.ai GLM) can be reached without OpenAI->Anthropic translation.
+  endpointConfig:
+    anthropic: /anthropic
