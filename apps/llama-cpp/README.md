@@ -1,17 +1,42 @@
-# llama-cpp (nishir inference)
+# llama-cpp
 
-The `inference` Gateway exposes LLM backends via Envoy AI Gateway. Clients
-authenticate with mTLS client certs and select a backend with the
-`x-ai-eg-model` header on the OpenAI endpoint.
+llama.cpp router as a LeaderWorkerSet `llama-cpp` spanning the two Strix Halo
+MS-S1 nodes (`kushira`/`sashina`, label
+`node.kubernetes.io/instance-type: minisforum-ms-s1`). `replicas: 1, size: 2`:
+the leader runs `llama-server` and the worker runs `ggml-rpc-server` on the
+other node (required `podAntiAffinity` on `kubernetes.io/hostname` keeps them on
+separate nodes). The leader offloads layers to the rpc peer via `--rpc`,
+aggregating both nodes' ~96 GiB GTT carve-outs (~192 GiB) so the 284B DeepSeek
+V4 Flash floor fits; `--gpu-layers 999` offloads all layers to the iGPU. One
+process serves both LLM and embedding models.
+
+Models are pulled once at startup by the leader container (`llama-cli -hf` of
+the best-fit unsloth quants, flattened into the flat names the preset
+references) into an `emptyDir` at `/models`. Router mode serves the local floors
+(shared context window `-c 32768`, `--models-max 5`):
+
+- `deepseek/deepseek-v4-flash-0731` —
+  `unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M`
+- `z-ai/glm-5.3-flash` — `unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS`
+- `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL`
+- `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL`
+- `qwen/qwen3-embedding-8b` — `unsloth/Qwen3-Embedding-8B-GGUF:UD-Q5_K_XL`
+
+The Envoy AI Gateway (`apps/llama-cpp/base`) routes each model to this workload
+as the `inference` backend at priority 0, then fails over to `nous` /
+`openrouter`. `z-ai/glm-5.3-flash` also has a z-ai-only path when the local
+floor is busy.
 
 ## GLM (Z.ai) via the Anthropic endpoint
 
-Z.ai GLM-5.3 is served only on the Anthropic Messages protocol, so it is
-routed through the gateway's Anthropic endpoint (`/anthropic/v1/messages`)
-rather than the OpenAI `/v1/chat/completions` path.
+The `inference` Gateway exposes LLM backends over mTLS. OpenAI-compatible
+models are selected with the `x-ai-eg-model` header, but Z.ai GLM-5.3 is served
+only on the Anthropic Messages protocol and is routed through the gateway's
+Anthropic endpoint (`/anthropic/v1/messages`) instead of the OpenAI
+`/v1/chat/completions` path.
 
-The Anthropic endpoint selects the backend from the **body `model` field**,
-not the `x-ai-eg-model` header (that header is only used on the OpenAI path).
+The Anthropic endpoint selects the backend from the **body `model` field**, not
+the `x-ai-eg-model` header (that header is only used on the OpenAI path).
 
 ```
 POST https://inference.taila659a.ts.net/anthropic/v1/messages
