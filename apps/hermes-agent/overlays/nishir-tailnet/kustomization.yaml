@@ -3,7 +3,6 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -19,3 +18,10 @@ patches:
       name: hermes-agent
       version: v1
       kind: NetworkPolicy
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: hermes-agent
+      version: v1
+      kind: HTTPRoute
+
