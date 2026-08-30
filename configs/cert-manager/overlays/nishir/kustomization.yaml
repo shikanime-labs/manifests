@@ -6,5 +6,5 @@ resources:
 secretGenerator:
   - name: cloudflare-api-token
     namespace: cert-manager-trust
-    files:
-      - cloudflare_api_token=cloudflare-api-token/.enc.env
+    envs:
+      - cloudflare-api-token/.enc.env

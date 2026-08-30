@@ -4,5 +4,5 @@ metadata:
   name: external-dns
   namespace: flux-system
 spec:
-  url: https://registry-1.docker.io/bitnamicharts/external-dns
+  url: https://kubernetes-sigs.github.io/external-dns
   interval: 1h
