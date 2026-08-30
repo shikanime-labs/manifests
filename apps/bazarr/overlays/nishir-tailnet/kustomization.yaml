@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -15,4 +17,10 @@ patches:
     target:
       name: bazarr
       version: v1
-      kind: NetworkPolicy
+      kind: NetworkPolicypatches:
+  - path: patch-httproute.yaml
+    target:
+      name: bazarr
+      version: v1
+      kind: HTTPRoute
+
