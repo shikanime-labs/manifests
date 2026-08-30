@@ -20,8 +20,3 @@ spec:
     - name: syncthing-udp
       port: 22000
       protocol: UDP
-  infrastructure:
-    parametersRef:
-      name: syncthing
-      group: gateway.envoyproxy.io
-      kind: EnvoyProxy

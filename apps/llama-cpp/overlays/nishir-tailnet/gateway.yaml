@@ -22,8 +22,3 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: inference-i-shikanime-studio-tls
-  infrastructure:
-    parametersRef:
-      name: inference
-      group: gateway.envoyproxy.io
-      kind: EnvoyProxy

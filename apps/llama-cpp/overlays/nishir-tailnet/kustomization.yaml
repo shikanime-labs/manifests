@@ -8,11 +8,6 @@ resources:
 namespace: shikanime
 patches:
   - target:
-      name: studio-shikanime-i-inference-tls
-      kind: Certificate
-      namespace: shikanime
-    path: patch-cert.yaml
-  - target:
       name: inference
       kind: ClientTrafficPolicy
       namespace: shikanime
