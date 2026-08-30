@@ -116,7 +116,5 @@ spec:
       backendRefs:
         - name: nous
           priority: 0
-          modelNameOverride: ${header.x-ai-eg-model}
         - name: openrouter
           priority: 1
-          modelNameOverride: ${header.x-ai-eg-model}
