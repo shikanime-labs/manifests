@@ -14,312 +14,312 @@ spec:
           - name: copyparty-i-shikanime-studio-tls
             group: ""
             kind: Secret
-    - name: tcp-21
+    - name: ftp-control
       port: 21
       protocol: TCP
-    - name: tcp-990
+    - name: ftps
       port: 990
       protocol: TCP
-    - name: tcp-22
+    - name: sftp
       port: 22
       protocol: TCP
-    - name: tcp-12000
+    - name: ftp-data-12000
       port: 12000
       protocol: TCP
-    - name: tcp-12001
+    - name: ftp-data-12001
       port: 12001
       protocol: TCP
-    - name: tcp-12002
+    - name: ftp-data-12002
       port: 12002
       protocol: TCP
-    - name: tcp-12003
+    - name: ftp-data-12003
       port: 12003
       protocol: TCP
-    - name: tcp-12004
+    - name: ftp-data-12004
       port: 12004
       protocol: TCP
-    - name: tcp-12005
+    - name: ftp-data-12005
       port: 12005
       protocol: TCP
-    - name: tcp-12006
+    - name: ftp-data-12006
       port: 12006
       protocol: TCP
-    - name: tcp-12007
+    - name: ftp-data-12007
       port: 12007
       protocol: TCP
-    - name: tcp-12008
+    - name: ftp-data-12008
       port: 12008
       protocol: TCP
-    - name: tcp-12009
+    - name: ftp-data-12009
       port: 12009
       protocol: TCP
-    - name: tcp-12010
+    - name: ftp-data-12010
       port: 12010
       protocol: TCP
-    - name: tcp-12011
+    - name: ftp-data-12011
       port: 12011
       protocol: TCP
-    - name: tcp-12012
+    - name: ftp-data-12012
       port: 12012
       protocol: TCP
-    - name: tcp-12013
+    - name: ftp-data-12013
       port: 12013
       protocol: TCP
-    - name: tcp-12014
+    - name: ftp-data-12014
       port: 12014
       protocol: TCP
-    - name: tcp-12015
+    - name: ftp-data-12015
       port: 12015
       protocol: TCP
-    - name: tcp-12016
+    - name: ftp-data-12016
       port: 12016
       protocol: TCP
-    - name: tcp-12017
+    - name: ftp-data-12017
       port: 12017
       protocol: TCP
-    - name: tcp-12018
+    - name: ftp-data-12018
       port: 12018
       protocol: TCP
-    - name: tcp-12019
+    - name: ftp-data-12019
       port: 12019
       protocol: TCP
-    - name: tcp-12020
+    - name: ftp-data-12020
       port: 12020
       protocol: TCP
-    - name: tcp-12021
+    - name: ftp-data-12021
       port: 12021
       protocol: TCP
-    - name: tcp-12022
+    - name: ftp-data-12022
       port: 12022
       protocol: TCP
-    - name: tcp-12023
+    - name: ftp-data-12023
       port: 12023
       protocol: TCP
-    - name: tcp-12024
+    - name: ftp-data-12024
       port: 12024
       protocol: TCP
-    - name: tcp-12025
+    - name: ftp-data-12025
       port: 12025
       protocol: TCP
-    - name: tcp-12026
+    - name: ftp-data-12026
       port: 12026
       protocol: TCP
-    - name: tcp-12027
+    - name: ftp-data-12027
       port: 12027
       protocol: TCP
-    - name: tcp-12028
+    - name: ftp-data-12028
       port: 12028
       protocol: TCP
-    - name: tcp-12029
+    - name: ftp-data-12029
       port: 12029
       protocol: TCP
-    - name: tcp-12030
+    - name: ftp-data-12030
       port: 12030
       protocol: TCP
-    - name: tcp-12031
+    - name: ftp-data-12031
       port: 12031
       protocol: TCP
-    - name: tcp-12032
+    - name: ftp-data-12032
       port: 12032
       protocol: TCP
-    - name: tcp-12033
+    - name: ftp-data-12033
       port: 12033
       protocol: TCP
-    - name: tcp-12034
+    - name: ftp-data-12034
       port: 12034
       protocol: TCP
-    - name: tcp-12035
+    - name: ftp-data-12035
       port: 12035
       protocol: TCP
-    - name: tcp-12036
+    - name: ftp-data-12036
       port: 12036
       protocol: TCP
-    - name: tcp-12037
+    - name: ftp-data-12037
       port: 12037
       protocol: TCP
-    - name: tcp-12038
+    - name: ftp-data-12038
       port: 12038
       protocol: TCP
-    - name: tcp-12039
+    - name: ftp-data-12039
       port: 12039
       protocol: TCP
-    - name: tcp-12040
+    - name: ftp-data-12040
       port: 12040
       protocol: TCP
-    - name: tcp-12041
+    - name: ftp-data-12041
       port: 12041
       protocol: TCP
-    - name: tcp-12042
+    - name: ftp-data-12042
       port: 12042
       protocol: TCP
-    - name: tcp-12043
+    - name: ftp-data-12043
       port: 12043
       protocol: TCP
-    - name: tcp-12044
+    - name: ftp-data-12044
       port: 12044
       protocol: TCP
-    - name: tcp-12045
+    - name: ftp-data-12045
       port: 12045
       protocol: TCP
-    - name: tcp-12046
+    - name: ftp-data-12046
       port: 12046
       protocol: TCP
-    - name: tcp-12047
+    - name: ftp-data-12047
       port: 12047
       protocol: TCP
-    - name: tcp-12048
+    - name: ftp-data-12048
       port: 12048
       protocol: TCP
-    - name: tcp-12049
+    - name: ftp-data-12049
       port: 12049
       protocol: TCP
-    - name: tcp-12050
+    - name: ftp-data-12050
       port: 12050
       protocol: TCP
-    - name: tcp-12051
+    - name: ftp-data-12051
       port: 12051
       protocol: TCP
-    - name: tcp-12052
+    - name: ftp-data-12052
       port: 12052
       protocol: TCP
-    - name: tcp-12053
+    - name: ftp-data-12053
       port: 12053
       protocol: TCP
-    - name: tcp-12054
+    - name: ftp-data-12054
       port: 12054
       protocol: TCP
-    - name: tcp-12055
+    - name: ftp-data-12055
       port: 12055
       protocol: TCP
-    - name: tcp-12056
+    - name: ftp-data-12056
       port: 12056
       protocol: TCP
-    - name: tcp-12057
+    - name: ftp-data-12057
       port: 12057
       protocol: TCP
-    - name: tcp-12058
+    - name: ftp-data-12058
       port: 12058
       protocol: TCP
-    - name: tcp-12059
+    - name: ftp-data-12059
       port: 12059
       protocol: TCP
-    - name: tcp-12060
+    - name: ftp-data-12060
       port: 12060
       protocol: TCP
-    - name: tcp-12061
+    - name: ftp-data-12061
       port: 12061
       protocol: TCP
-    - name: tcp-12062
+    - name: ftp-data-12062
       port: 12062
       protocol: TCP
-    - name: tcp-12063
+    - name: ftp-data-12063
       port: 12063
       protocol: TCP
-    - name: tcp-12064
+    - name: ftp-data-12064
       port: 12064
       protocol: TCP
-    - name: tcp-12065
+    - name: ftp-data-12065
       port: 12065
       protocol: TCP
-    - name: tcp-12066
+    - name: ftp-data-12066
       port: 12066
       protocol: TCP
-    - name: tcp-12067
+    - name: ftp-data-12067
       port: 12067
       protocol: TCP
-    - name: tcp-12068
+    - name: ftp-data-12068
       port: 12068
       protocol: TCP
-    - name: tcp-12069
+    - name: ftp-data-12069
       port: 12069
       protocol: TCP
-    - name: tcp-12070
+    - name: ftp-data-12070
       port: 12070
       protocol: TCP
-    - name: tcp-12071
+    - name: ftp-data-12071
       port: 12071
       protocol: TCP
-    - name: tcp-12072
+    - name: ftp-data-12072
       port: 12072
       protocol: TCP
-    - name: tcp-12073
+    - name: ftp-data-12073
       port: 12073
       protocol: TCP
-    - name: tcp-12074
+    - name: ftp-data-12074
       port: 12074
       protocol: TCP
-    - name: tcp-12075
+    - name: ftp-data-12075
       port: 12075
       protocol: TCP
-    - name: tcp-12076
+    - name: ftp-data-12076
       port: 12076
       protocol: TCP
-    - name: tcp-12077
+    - name: ftp-data-12077
       port: 12077
       protocol: TCP
-    - name: tcp-12078
+    - name: ftp-data-12078
       port: 12078
       protocol: TCP
-    - name: tcp-12079
+    - name: ftp-data-12079
       port: 12079
       protocol: TCP
-    - name: tcp-12080
+    - name: ftp-data-12080
       port: 12080
       protocol: TCP
-    - name: tcp-12081
+    - name: ftp-data-12081
       port: 12081
       protocol: TCP
-    - name: tcp-12082
+    - name: ftp-data-12082
       port: 12082
       protocol: TCP
-    - name: tcp-12083
+    - name: ftp-data-12083
       port: 12083
       protocol: TCP
-    - name: tcp-12084
+    - name: ftp-data-12084
       port: 12084
       protocol: TCP
-    - name: tcp-12085
+    - name: ftp-data-12085
       port: 12085
       protocol: TCP
-    - name: tcp-12086
+    - name: ftp-data-12086
       port: 12086
       protocol: TCP
-    - name: tcp-12087
+    - name: ftp-data-12087
       port: 12087
       protocol: TCP
-    - name: tcp-12088
+    - name: ftp-data-12088
       port: 12088
       protocol: TCP
-    - name: tcp-12089
+    - name: ftp-data-12089
       port: 12089
       protocol: TCP
-    - name: tcp-12090
+    - name: ftp-data-12090
       port: 12090
       protocol: TCP
-    - name: tcp-12091
+    - name: ftp-data-12091
       port: 12091
       protocol: TCP
-    - name: tcp-12092
+    - name: ftp-data-12092
       port: 12092
       protocol: TCP
-    - name: tcp-12093
+    - name: ftp-data-12093
       port: 12093
       protocol: TCP
-    - name: tcp-12094
+    - name: ftp-data-12094
       port: 12094
       protocol: TCP
-    - name: tcp-12095
+    - name: ftp-data-12095
       port: 12095
       protocol: TCP
-    - name: tcp-12096
+    - name: ftp-data-12096
       port: 12096
       protocol: TCP
-    - name: tcp-12097
+    - name: ftp-data-12097
       port: 12097
       protocol: TCP
-    - name: tcp-12098
+    - name: ftp-data-12098
       port: 12098
       protocol: TCP
-    - name: tcp-12099
+    - name: ftp-data-12099
       port: 12099
       protocol: TCP

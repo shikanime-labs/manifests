@@ -6,7 +6,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-21
+      sectionName: ftp-control
   backendRefs:
     - name: ftp
       port: 21
@@ -18,7 +18,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-990
+      sectionName: ftps
   backendRefs:
     - name: ftp
       port: 990
@@ -30,7 +30,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-22
+      sectionName: sftp
   backendRefs:
     - name: ftp
       port: 22
@@ -42,7 +42,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12000
+      sectionName: ftp-data-12000
   backendRefs:
     - name: ftp
       port: 12000
@@ -54,7 +54,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12001
+      sectionName: ftp-data-12001
   backendRefs:
     - name: ftp
       port: 12001
@@ -66,7 +66,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12002
+      sectionName: ftp-data-12002
   backendRefs:
     - name: ftp
       port: 12002
@@ -78,7 +78,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12003
+      sectionName: ftp-data-12003
   backendRefs:
     - name: ftp
       port: 12003
@@ -90,7 +90,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12004
+      sectionName: ftp-data-12004
   backendRefs:
     - name: ftp
       port: 12004
@@ -102,7 +102,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12005
+      sectionName: ftp-data-12005
   backendRefs:
     - name: ftp
       port: 12005
@@ -114,7 +114,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12006
+      sectionName: ftp-data-12006
   backendRefs:
     - name: ftp
       port: 12006
@@ -126,7 +126,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12007
+      sectionName: ftp-data-12007
   backendRefs:
     - name: ftp
       port: 12007
@@ -138,7 +138,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12008
+      sectionName: ftp-data-12008
   backendRefs:
     - name: ftp
       port: 12008
@@ -150,7 +150,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12009
+      sectionName: ftp-data-12009
   backendRefs:
     - name: ftp
       port: 12009
@@ -162,7 +162,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12010
+      sectionName: ftp-data-12010
   backendRefs:
     - name: ftp
       port: 12010
@@ -174,7 +174,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12011
+      sectionName: ftp-data-12011
   backendRefs:
     - name: ftp
       port: 12011
@@ -186,7 +186,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12012
+      sectionName: ftp-data-12012
   backendRefs:
     - name: ftp
       port: 12012
@@ -198,7 +198,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12013
+      sectionName: ftp-data-12013
   backendRefs:
     - name: ftp
       port: 12013
@@ -210,7 +210,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12014
+      sectionName: ftp-data-12014
   backendRefs:
     - name: ftp
       port: 12014
@@ -222,7 +222,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12015
+      sectionName: ftp-data-12015
   backendRefs:
     - name: ftp
       port: 12015
@@ -234,7 +234,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12016
+      sectionName: ftp-data-12016
   backendRefs:
     - name: ftp
       port: 12016
@@ -246,7 +246,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12017
+      sectionName: ftp-data-12017
   backendRefs:
     - name: ftp
       port: 12017
@@ -258,7 +258,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12018
+      sectionName: ftp-data-12018
   backendRefs:
     - name: ftp
       port: 12018
@@ -270,7 +270,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12019
+      sectionName: ftp-data-12019
   backendRefs:
     - name: ftp
       port: 12019
@@ -282,7 +282,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12020
+      sectionName: ftp-data-12020
   backendRefs:
     - name: ftp
       port: 12020
@@ -294,7 +294,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12021
+      sectionName: ftp-data-12021
   backendRefs:
     - name: ftp
       port: 12021
@@ -306,7 +306,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12022
+      sectionName: ftp-data-12022
   backendRefs:
     - name: ftp
       port: 12022
@@ -318,7 +318,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12023
+      sectionName: ftp-data-12023
   backendRefs:
     - name: ftp
       port: 12023
@@ -330,7 +330,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12024
+      sectionName: ftp-data-12024
   backendRefs:
     - name: ftp
       port: 12024
@@ -342,7 +342,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12025
+      sectionName: ftp-data-12025
   backendRefs:
     - name: ftp
       port: 12025
@@ -354,7 +354,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12026
+      sectionName: ftp-data-12026
   backendRefs:
     - name: ftp
       port: 12026
@@ -366,7 +366,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12027
+      sectionName: ftp-data-12027
   backendRefs:
     - name: ftp
       port: 12027
@@ -378,7 +378,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12028
+      sectionName: ftp-data-12028
   backendRefs:
     - name: ftp
       port: 12028
@@ -390,7 +390,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12029
+      sectionName: ftp-data-12029
   backendRefs:
     - name: ftp
       port: 12029
@@ -402,7 +402,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12030
+      sectionName: ftp-data-12030
   backendRefs:
     - name: ftp
       port: 12030
@@ -414,7 +414,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12031
+      sectionName: ftp-data-12031
   backendRefs:
     - name: ftp
       port: 12031
@@ -426,7 +426,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12032
+      sectionName: ftp-data-12032
   backendRefs:
     - name: ftp
       port: 12032
@@ -438,7 +438,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12033
+      sectionName: ftp-data-12033
   backendRefs:
     - name: ftp
       port: 12033
@@ -450,7 +450,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12034
+      sectionName: ftp-data-12034
   backendRefs:
     - name: ftp
       port: 12034
@@ -462,7 +462,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12035
+      sectionName: ftp-data-12035
   backendRefs:
     - name: ftp
       port: 12035
@@ -474,7 +474,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12036
+      sectionName: ftp-data-12036
   backendRefs:
     - name: ftp
       port: 12036
@@ -486,7 +486,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12037
+      sectionName: ftp-data-12037
   backendRefs:
     - name: ftp
       port: 12037
@@ -498,7 +498,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12038
+      sectionName: ftp-data-12038
   backendRefs:
     - name: ftp
       port: 12038
@@ -510,7 +510,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12039
+      sectionName: ftp-data-12039
   backendRefs:
     - name: ftp
       port: 12039
@@ -522,7 +522,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12040
+      sectionName: ftp-data-12040
   backendRefs:
     - name: ftp
       port: 12040
@@ -534,7 +534,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12041
+      sectionName: ftp-data-12041
   backendRefs:
     - name: ftp
       port: 12041
@@ -546,7 +546,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12042
+      sectionName: ftp-data-12042
   backendRefs:
     - name: ftp
       port: 12042
@@ -558,7 +558,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12043
+      sectionName: ftp-data-12043
   backendRefs:
     - name: ftp
       port: 12043
@@ -570,7 +570,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12044
+      sectionName: ftp-data-12044
   backendRefs:
     - name: ftp
       port: 12044
@@ -582,7 +582,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12045
+      sectionName: ftp-data-12045
   backendRefs:
     - name: ftp
       port: 12045
@@ -594,7 +594,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12046
+      sectionName: ftp-data-12046
   backendRefs:
     - name: ftp
       port: 12046
@@ -606,7 +606,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12047
+      sectionName: ftp-data-12047
   backendRefs:
     - name: ftp
       port: 12047
@@ -618,7 +618,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12048
+      sectionName: ftp-data-12048
   backendRefs:
     - name: ftp
       port: 12048
@@ -630,7 +630,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12049
+      sectionName: ftp-data-12049
   backendRefs:
     - name: ftp
       port: 12049
@@ -642,7 +642,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12050
+      sectionName: ftp-data-12050
   backendRefs:
     - name: ftp
       port: 12050
@@ -654,7 +654,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12051
+      sectionName: ftp-data-12051
   backendRefs:
     - name: ftp
       port: 12051
@@ -666,7 +666,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12052
+      sectionName: ftp-data-12052
   backendRefs:
     - name: ftp
       port: 12052
@@ -678,7 +678,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12053
+      sectionName: ftp-data-12053
   backendRefs:
     - name: ftp
       port: 12053
@@ -690,7 +690,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12054
+      sectionName: ftp-data-12054
   backendRefs:
     - name: ftp
       port: 12054
@@ -702,7 +702,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12055
+      sectionName: ftp-data-12055
   backendRefs:
     - name: ftp
       port: 12055
@@ -714,7 +714,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12056
+      sectionName: ftp-data-12056
   backendRefs:
     - name: ftp
       port: 12056
@@ -726,7 +726,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12057
+      sectionName: ftp-data-12057
   backendRefs:
     - name: ftp
       port: 12057
@@ -738,7 +738,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12058
+      sectionName: ftp-data-12058
   backendRefs:
     - name: ftp
       port: 12058
@@ -750,7 +750,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12059
+      sectionName: ftp-data-12059
   backendRefs:
     - name: ftp
       port: 12059
@@ -762,7 +762,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12060
+      sectionName: ftp-data-12060
   backendRefs:
     - name: ftp
       port: 12060
@@ -774,7 +774,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12061
+      sectionName: ftp-data-12061
   backendRefs:
     - name: ftp
       port: 12061
@@ -786,7 +786,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12062
+      sectionName: ftp-data-12062
   backendRefs:
     - name: ftp
       port: 12062
@@ -798,7 +798,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12063
+      sectionName: ftp-data-12063
   backendRefs:
     - name: ftp
       port: 12063
@@ -810,7 +810,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12064
+      sectionName: ftp-data-12064
   backendRefs:
     - name: ftp
       port: 12064
@@ -822,7 +822,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12065
+      sectionName: ftp-data-12065
   backendRefs:
     - name: ftp
       port: 12065
@@ -834,7 +834,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12066
+      sectionName: ftp-data-12066
   backendRefs:
     - name: ftp
       port: 12066
@@ -846,7 +846,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12067
+      sectionName: ftp-data-12067
   backendRefs:
     - name: ftp
       port: 12067
@@ -858,7 +858,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12068
+      sectionName: ftp-data-12068
   backendRefs:
     - name: ftp
       port: 12068
@@ -870,7 +870,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12069
+      sectionName: ftp-data-12069
   backendRefs:
     - name: ftp
       port: 12069
@@ -882,7 +882,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12070
+      sectionName: ftp-data-12070
   backendRefs:
     - name: ftp
       port: 12070
@@ -894,7 +894,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12071
+      sectionName: ftp-data-12071
   backendRefs:
     - name: ftp
       port: 12071
@@ -906,7 +906,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12072
+      sectionName: ftp-data-12072
   backendRefs:
     - name: ftp
       port: 12072
@@ -918,7 +918,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12073
+      sectionName: ftp-data-12073
   backendRefs:
     - name: ftp
       port: 12073
@@ -930,7 +930,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12074
+      sectionName: ftp-data-12074
   backendRefs:
     - name: ftp
       port: 12074
@@ -942,7 +942,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12075
+      sectionName: ftp-data-12075
   backendRefs:
     - name: ftp
       port: 12075
@@ -954,7 +954,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12076
+      sectionName: ftp-data-12076
   backendRefs:
     - name: ftp
       port: 12076
@@ -966,7 +966,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12077
+      sectionName: ftp-data-12077
   backendRefs:
     - name: ftp
       port: 12077
@@ -978,7 +978,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12078
+      sectionName: ftp-data-12078
   backendRefs:
     - name: ftp
       port: 12078
@@ -990,7 +990,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12079
+      sectionName: ftp-data-12079
   backendRefs:
     - name: ftp
       port: 12079
@@ -1002,7 +1002,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12080
+      sectionName: ftp-data-12080
   backendRefs:
     - name: ftp
       port: 12080
@@ -1014,7 +1014,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12081
+      sectionName: ftp-data-12081
   backendRefs:
     - name: ftp
       port: 12081
@@ -1026,7 +1026,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12082
+      sectionName: ftp-data-12082
   backendRefs:
     - name: ftp
       port: 12082
@@ -1038,7 +1038,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12083
+      sectionName: ftp-data-12083
   backendRefs:
     - name: ftp
       port: 12083
@@ -1050,7 +1050,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12084
+      sectionName: ftp-data-12084
   backendRefs:
     - name: ftp
       port: 12084
@@ -1062,7 +1062,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12085
+      sectionName: ftp-data-12085
   backendRefs:
     - name: ftp
       port: 12085
@@ -1074,7 +1074,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12086
+      sectionName: ftp-data-12086
   backendRefs:
     - name: ftp
       port: 12086
@@ -1086,7 +1086,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12087
+      sectionName: ftp-data-12087
   backendRefs:
     - name: ftp
       port: 12087
@@ -1098,7 +1098,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12088
+      sectionName: ftp-data-12088
   backendRefs:
     - name: ftp
       port: 12088
@@ -1110,7 +1110,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12089
+      sectionName: ftp-data-12089
   backendRefs:
     - name: ftp
       port: 12089
@@ -1122,7 +1122,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12090
+      sectionName: ftp-data-12090
   backendRefs:
     - name: ftp
       port: 12090
@@ -1134,7 +1134,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12091
+      sectionName: ftp-data-12091
   backendRefs:
     - name: ftp
       port: 12091
@@ -1146,7 +1146,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12092
+      sectionName: ftp-data-12092
   backendRefs:
     - name: ftp
       port: 12092
@@ -1158,7 +1158,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12093
+      sectionName: ftp-data-12093
   backendRefs:
     - name: ftp
       port: 12093
@@ -1170,7 +1170,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12094
+      sectionName: ftp-data-12094
   backendRefs:
     - name: ftp
       port: 12094
@@ -1182,7 +1182,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12095
+      sectionName: ftp-data-12095
   backendRefs:
     - name: ftp
       port: 12095
@@ -1194,7 +1194,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12096
+      sectionName: ftp-data-12096
   backendRefs:
     - name: ftp
       port: 12096
@@ -1206,7 +1206,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12097
+      sectionName: ftp-data-12097
   backendRefs:
     - name: ftp
       port: 12097
@@ -1218,7 +1218,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12098
+      sectionName: ftp-data-12098
   backendRefs:
     - name: ftp
       port: 12098
@@ -1230,7 +1230,7 @@ metadata:
 spec:
   parentRefs:
     - name: copyparty
-      sectionName: tcp-12099
+      sectionName: ftp-data-12099
   backendRefs:
     - name: ftp
       port: 12099

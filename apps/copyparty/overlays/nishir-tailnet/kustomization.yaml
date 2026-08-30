@@ -4,7 +4,6 @@ resources:
   - envoyproxy.yaml
   - gateway.yaml
   - tcproutes.yaml
-  - httproute.yaml
 namespace: shikanime
 configMapGenerator:
   - name: copyparty
@@ -23,4 +22,10 @@ patches:
     target:
       name: copyparty
       version: v1
-      kind: NetworkPolicy
+      kind: NetworkPolicypatches:
+  - path: patch-httproute.yaml
+    target:
+      name: copyparty
+      version: v1
+      kind: HTTPRoute
+
