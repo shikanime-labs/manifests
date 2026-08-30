@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -10,3 +12,15 @@ labels:
       app.kubernetes.io/name: metatube
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 1.4.0
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: metatube
+      version: v1
+      kind: HTTPRoute
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: metatube
+      version: v1
+      kind: HTTPRoute
