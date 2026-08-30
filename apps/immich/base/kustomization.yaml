@@ -1,5 +1,6 @@
 resources:
   - netpol.yaml
+  - httproute.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
