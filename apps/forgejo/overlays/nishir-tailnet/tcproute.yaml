@@ -1,0 +1,11 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: forgejo
+spec:
+  parentRefs:
+    - name: forgejo
+      sectionName: tcp-22
+  backendRefs:
+    - name: git
+      port: 22
