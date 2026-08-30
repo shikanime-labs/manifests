@@ -13,16 +13,14 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 10.11.11
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
       name: jellyfin
       version: v1
-      kind: NetworkPolicy
-  - path: patch-sts.yaml
+      kind: HTTPRoute
 patches:
   - path: patch-httproute.yaml
     target:
       name: jellyfin
       version: v1
       kind: HTTPRoute
-

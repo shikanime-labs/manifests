@@ -125,11 +125,10 @@ controllers installed during bootstrap.
 Most apps follow the same pattern:
 
 - Workload: `Deployment` or `StatefulSet` in `apps/<app>/base/`
-- Network: `Service` + `Ingress` in `apps/<app>/base/`
-  - generic ingress shape lives in base
-  - tailnet overlays own the rendered `ingress.yaml` and set
-    `ingressClassName: tailscale` plus Tailscale annotations (example:
-    [ingress.yaml](apps/jellyfin/overlays/nishir-tailnet/ingress.yaml))
+- Network: per-app Envoy Gateway (`GatewayClass` + `EnvoyProxy` + `Gateway`)
+  in the tailnet overlay, with an `HTTPRoute` in `apps/<app>/base/` whose
+  `parentRefs` the overlay patches (example:
+  [jellyfin](apps/jellyfin/overlays/nishir-tailnet))
   - cluster-local internal hosts are prefixed where needed, such as `grafana`
 - Storage: a `PVC` in `apps/<app>/overlays/<cluster>/` (or `*-tailnet/`) bound
   to a Longhorn `PV`
