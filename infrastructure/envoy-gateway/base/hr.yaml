@@ -6,11 +6,16 @@ metadata:
 spec:
   chart:
     spec:
-      # The cluster's Gateway API CRDs are bundle v1.5.0, and the
+      # The cluster's Gateway API CRDs are bundle v1.5.1, and the
       # safe-upgrades ValidatingAdmissionPolicy denies any chart shipping an
-      # older bundle (v1.6.x/v1.7.x ship v1.4.1). v1.8.3 is the floor
-      # (bundles v1.5.1).
-      version: v1.8.3
+      # older bundle (v1.6.x/v1.7.x ship v1.4.1). v1.8.3 was the floor
+      # (bundles v1.5.1); v1.9.0 (bundles v1.6.1) is allowed because it ships
+      # a NEWER bundle and fixes the xDS translator bug where a Gateway with
+      # TCP/UDP listeners (syncthing:22000) failed to program after the
+      # ai-gateway extension hook injected an HTTP filter into the non-HTTP
+      # filter chain. ai-gateway stays at 1.1.0; v1.9.0 keeps the same
+      # extensionManager hook schema.
+      version: v1.9.0
       chart: gateway-helm
       interval: 1h
       sourceRef:
