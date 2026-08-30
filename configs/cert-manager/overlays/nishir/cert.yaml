@@ -15,7 +15,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: inference-studio-shikanime-tls
+  name: inference-i-shikanime-studio-tls
   namespace: shikanime
 spec:
   commonName: inference.i.shikanime.studio
@@ -24,7 +24,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: inference-studio-shikanime-tls
+  secretName: inference-i-shikanime-studio-tls
   usages:
     - digital signature
     - key encipherment
@@ -33,7 +33,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: syncthing-i-shikanime-tls
+  name: syncthing-i-shikanime-studio-tls
   namespace: shikanime
 spec:
   commonName: syncthing.i.shikanime.studio
@@ -42,7 +42,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: syncthing-i-shikanime-tls
+  secretName: syncthing-i-shikanime-studio-tls
   usages:
     - digital signature
     - key encipherment
