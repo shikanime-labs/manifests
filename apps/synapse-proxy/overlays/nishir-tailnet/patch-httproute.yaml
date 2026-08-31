@@ -5,6 +5,7 @@ metadata:
 spec:
   hostnames:
   - synapse-proxy.i.shikanime.studio
+  - matrix.i.shikanime.studio
   parentRefs:
   - name: synapse-proxy
     sectionName: https
