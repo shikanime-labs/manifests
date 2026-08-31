@@ -11,3 +11,6 @@ nameReference:
       - kind: MCPRoute
         path: spec/backendRefs/securityPolicy/apiKey/secretRef/name
         group: aigateway.envoyproxy.io
+      - kind: SecurityPolicy
+        path: spec/apiKeyAuth/credentialRefs/name
+        group: gateway.envoyproxy.io
