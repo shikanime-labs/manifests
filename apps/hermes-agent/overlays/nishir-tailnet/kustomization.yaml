@@ -19,7 +19,6 @@ patches:
       name: hermes-agent
       version: v1
       kind: NetworkPolicy
-patches:
   - path: patch-httproute.yaml
     target:
       name: hermes-agent

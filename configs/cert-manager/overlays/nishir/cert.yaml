@@ -533,3 +533,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dashboard-automata-i-shikanime-studio-tls
+  namespace: shikanime
+spec:
+  commonName: dashboard.automata.i.shikanime.studio
+  dnsNames:
+    - dashboard.automata.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: dashboard-automata-i-shikanime-studio-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

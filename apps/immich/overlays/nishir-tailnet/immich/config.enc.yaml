@@ -1,4 +1,4 @@
-externalDomain: immich.taila659a.ts.net
+externalDomain: immich.i.shikanime.studio
 ffmpeg:
   accel: qsv
   accelDecode: true
@@ -20,7 +20,7 @@ oauth:
   clientId: immich
   clientSecret: ENC[AES256_GCM,data:ZCP04Fb900+ygNI5gbwcw7/SqjAX3DPfWAyXPH9hYRU=,iv:lZRtk/2DPjPq7kcl11o+mvQfJjzGktkgDMTxBGCvfTQ=,tag:xHkoNi50ZLP5usKhikafzg==,type:str]
   enabled: true
-  issuerUrl: https://accounts.taila659a.ts.net
+  issuerUrl: https://accounts.i.shikanime.studio
   profileSigningAlgorithm: none
   scope: openid email profile
   signingAlgorithm: RS256

@@ -3,7 +3,7 @@
 Caddy reverse proxy in front of synapse, published as `matrix` over Tailscale
 (funnel). Serves /.well-known/matrix/* and /_matrix/* by proxying to synapse's
 https :8448 (`tls_server_name synapse`), plus the mautrix bridge-discovery
-well-known listing the eight matrix-*.taila659a.ts.net bridge endpoints. The
+well-known listing the eight matrix-*.i.shikanime.studio bridge endpoints. The
 `matrix-discord-media` hostname is routed straight to the discord bridge for
 direct media downloads. TLS terminates on :8448 from the `synapse-proxy-tls`
 Certificate (tls component); :8008 stays plain.

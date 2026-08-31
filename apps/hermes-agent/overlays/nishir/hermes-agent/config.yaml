@@ -235,9 +235,9 @@ dashboard:
     provider: self-hosted
     self_hosted:
       client_id: hermes-agent
-      issuer: https://accounts.taila659a.ts.net
+      issuer: https://accounts.i.shikanime.studio
       scopes: openid profile email
-  public_url: https://automata-dashboard.taila659a.ts.net
+  public_url: https://dashboard.automata.i.shikanime.studio
 delegation:
   child_timeout_seconds: 600
   default_toolsets:
