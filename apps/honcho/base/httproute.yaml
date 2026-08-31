@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: honcho
-      port: http
+      port: 8000

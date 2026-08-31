@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: synapse-proxy
-      port: http
+      port: 8008

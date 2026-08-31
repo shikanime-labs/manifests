@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: lidarr
-      port: http
+      port: 8686

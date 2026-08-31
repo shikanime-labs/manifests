@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: vaultwarden
-      port: http
+      port: 80

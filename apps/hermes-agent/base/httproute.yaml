@@ -10,7 +10,7 @@ spec:
         value: /
     backendRefs:
     - name: hermes-agent
-      port: api-server
+      port: 8642
   - hostname: automata-a2a.i.shikanime.studio
     matches:
     - path:
@@ -18,7 +18,7 @@ spec:
         value: /
     backendRefs:
     - name: hermes-agent
-      port: a2a
+      port: 9900
   - hostname: automata-dashboard.i.shikanime.studio
     matches:
     - path:
@@ -26,4 +26,4 @@ spec:
         value: /
     backendRefs:
     - name: hermes-agent
-      port: dashboard
+      port: 9119
