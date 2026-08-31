@@ -4,7 +4,7 @@ metadata:
   name: syncthing-redirect
 spec:
   hostnames:
-      - syncthing.i.shikanime.studio
+    - syncthing.i.shikanime.studio
   parentRefs:
     - name: syncthing
       sectionName: http

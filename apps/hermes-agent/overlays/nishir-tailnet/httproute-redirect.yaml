@@ -4,10 +4,10 @@ metadata:
   name: hermes-agent-redirect
 spec:
   hostnames:
-      - automata.i.shikanime.studio
-      - nishir.i.shikanime.studio
-      - automata-a2a.i.shikanime.studio
-      - dashboard.automata.i.shikanime.studio
+    - automata.i.shikanime.studio
+    - nishir.i.shikanime.studio
+    - automata-a2a.i.shikanime.studio
+    - dashboard.automata.i.shikanime.studio
   parentRefs:
     - name: hermes-agent
       sectionName: http

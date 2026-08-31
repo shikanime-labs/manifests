@@ -4,7 +4,7 @@ metadata:
   name: lidarr-redirect
 spec:
   hostnames:
-      - lidarr.i.shikanime.studio
+    - lidarr.i.shikanime.studio
   parentRefs:
     - name: lidarr
       sectionName: http

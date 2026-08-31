@@ -4,7 +4,7 @@ metadata:
   name: twitter-redirect
 spec:
   hostnames:
-      - twitter.i.shikanime.studio
+    - twitter.i.shikanime.studio
   parentRefs:
     - name: twitter
       sectionName: http

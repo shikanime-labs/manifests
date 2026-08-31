@@ -1,7 +1,7 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
-  name: slack
+  name: lldap
   namespace: shikanime
 spec:
   provider:
@@ -26,9 +26,9 @@ spec:
             limits:
               memory: 512Mi
       envoyService:
-        name: slack
+        name: lldap
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: slack
+          tailscale.com/hostname: lldap
           tailscale.com/tags: "tag:web"

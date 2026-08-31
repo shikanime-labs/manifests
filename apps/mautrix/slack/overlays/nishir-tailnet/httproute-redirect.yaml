@@ -4,7 +4,7 @@ metadata:
   name: slack-redirect
 spec:
   hostnames:
-      - slack.i.shikanime.studio
+    - slack.i.shikanime.studio
   parentRefs:
     - name: slack
       sectionName: http

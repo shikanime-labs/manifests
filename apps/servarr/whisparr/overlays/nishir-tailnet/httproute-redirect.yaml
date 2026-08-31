@@ -4,7 +4,7 @@ metadata:
   name: whisparr-redirect
 spec:
   hostnames:
-      - whisparr.i.shikanime.studio
+    - whisparr.i.shikanime.studio
   parentRefs:
     - name: whisparr
       sectionName: http

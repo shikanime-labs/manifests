@@ -4,7 +4,7 @@ metadata:
   name: qbittorrent-redirect
 spec:
   hostnames:
-      - qbittorrent.i.shikanime.studio
+    - qbittorrent.i.shikanime.studio
   parentRefs:
     - name: qbittorrent
       sectionName: http

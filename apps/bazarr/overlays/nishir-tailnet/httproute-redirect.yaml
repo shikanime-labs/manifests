@@ -4,7 +4,7 @@ metadata:
   name: bazarr-redirect
 spec:
   hostnames:
-      - bazarr.i.shikanime.studio
+    - bazarr.i.shikanime.studio
   parentRefs:
     - name: bazarr
       sectionName: http

@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden-redirect
 spec:
   hostnames:
-      - vaultwarden.i.shikanime.studio
+    - vaultwarden.i.shikanime.studio
   parentRefs:
     - name: vaultwarden
       sectionName: http

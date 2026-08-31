@@ -4,7 +4,7 @@ metadata:
   name: dex-redirect
 spec:
   hostnames:
-      - dex.i.shikanime.studio
+    - dex.i.shikanime.studio
   parentRefs:
     - name: dex
       sectionName: http

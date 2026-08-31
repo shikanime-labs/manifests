@@ -4,7 +4,7 @@ metadata:
   name: discord-redirect
 spec:
   hostnames:
-      - discord.i.shikanime.studio
+    - discord.i.shikanime.studio
   parentRefs:
     - name: discord
       sectionName: http

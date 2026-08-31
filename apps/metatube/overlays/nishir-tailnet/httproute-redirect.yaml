@@ -4,7 +4,7 @@ metadata:
   name: metatube-redirect
 spec:
   hostnames:
-      - metatube.i.shikanime.studio
+    - metatube.i.shikanime.studio
   parentRefs:
     - name: metatube
       sectionName: http
