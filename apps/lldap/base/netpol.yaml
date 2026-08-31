@@ -6,6 +6,7 @@ spec:
   ingress:
     - ports:
         - port: ldap
+        - port: ui
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: lldap

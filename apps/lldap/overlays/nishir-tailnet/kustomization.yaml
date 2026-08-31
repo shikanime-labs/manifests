@@ -1,6 +1,16 @@
 resources:
   - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - httproute-redirect.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: lldap
+      version: v1
+      kind: HTTPRoute
 labels:
   - includeTemplates: true
     pairs:

@@ -6,6 +6,10 @@ resources:
   - envoyproxy.yaml
   - netpol.yaml
   - securitypolicy.yaml
+  - ui-gatewayclass.yaml
+  - ui-gateway.yaml
+  - ui-envoyproxy.yaml
+  - ui-httproute-redirect.yaml
 namespace: shikanime
 patches:
   - target:
@@ -18,6 +22,11 @@ patches:
       kind: AIGatewayRoute
       namespace: shikanime
     path: patch-aigatewayroute.yaml
+  - target:
+      name: llama-cpp
+      version: v1
+      kind: HTTPRoute
+    path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

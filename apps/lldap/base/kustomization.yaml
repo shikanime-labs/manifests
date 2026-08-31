@@ -4,6 +4,7 @@ metadata:
   annotations:
     automata.shikanime.studio/images: '[ { "name": "lldap", "tag-regex": "^(?P<version>.+)$" } ]'
 resources:
+  - httproute.yaml
   - netpol.yaml
   - sts.yaml
   - svc.yaml

@@ -65,3 +65,11 @@ Body: { "model": "<provider/model>", "messages": [...] }
 
 Supported: `qwen/*`, `deepseek/deepseek-v4-flash`, `mistral/labs-leanstral-1-5`,
 `z-ai/glm-5.3-flash`, `qwen/qwen3-embedding-8b`.
+
+## Web UI
+
+The llama.cpp built-in chat UI (served on the same :8080 HTTP port) is exposed
+over the tailnet at `https://llama-cpp.i.shikanime.studio` via a dedicated BYOD
+Envoy Gateway (`ui-gatewayclass`/`ui-gateway`/`ui-envoyproxy` in the tailnet
+overlay), distinct from the API-key-locked `inference` Gateway. TLS from the
+`studio-shikanime-i-llama-cpp` cert-manager Certificate.

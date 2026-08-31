@@ -26,6 +26,8 @@ spec:
           ports:
             - name: ldap
               containerPort: 3890
+            - name: ui
+              containerPort: 17170
           readinessProbe:
             initialDelaySeconds: 5
             tcpSocket:
