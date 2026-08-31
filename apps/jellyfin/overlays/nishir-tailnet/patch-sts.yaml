@@ -14,6 +14,8 @@ spec:
               value: "true"
             - name: JELLYFIN_RequireHttps
               value: "true"
+            - name: JELLYFIN_CertificatePath
+              value: /etc/ssl/private/keystore.p12
             - name: JELLYFIN_PublicHttpPort
               value: "80"
             - name: JELLYFIN_PublicHttpsPort

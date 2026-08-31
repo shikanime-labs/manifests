@@ -5,8 +5,11 @@ metadata:
 spec:
   gatewayClassName: jellyfin
   listeners:
+    - name: http
+      port: 8096
+      protocol: HTTP
     - name: https
-      port: 443
+      port: 8920
       protocol: HTTPS
       tls:
         mode: Terminate

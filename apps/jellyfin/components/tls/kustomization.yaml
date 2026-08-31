@@ -8,3 +8,5 @@ patches:
       kind: NetworkPolicy
   - path: patch-sts.yaml
   - path: patch-svc.yaml
+resources:
+  - httproute-tls.yaml
