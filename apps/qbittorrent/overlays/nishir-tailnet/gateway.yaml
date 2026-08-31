@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: qbittorrent
+spec:
+  gatewayClassName: qbittorrent
+  listeners:
+    - name: https
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: qbittorrent-i-shikanime-studio-tls
+            group: ""
+            kind: Secret
+    - name: bittorrent
+      port: 6881
+      protocol: TCP
+    - name: bittorrent-udp
+      port: 6881
+      protocol: UDP
