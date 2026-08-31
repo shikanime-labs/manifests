@@ -17,7 +17,6 @@ spec:
   releaseName: descheduler
   targetNamespace: descheduler-system
   values:
-    schedule: "0 * * * *"
     deschedulerPolicy:
       metricsProviders:
         - source: KubernetesMetrics
