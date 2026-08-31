@@ -10,4 +10,3 @@
             app.kubernetes.io/name: envoy
     ports:
       - port: http
-      - port: ssh

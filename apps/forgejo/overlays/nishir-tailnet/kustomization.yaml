@@ -1,6 +1,9 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+  - tcproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -16,8 +19,14 @@ patches:
       name: forgejo
       version: v1
       kind: NetworkPolicy
-  - path: patch-svc.yaml
 secretGenerator:
   - name: forgejo-config
     files:
       - app.ini=forgejo/app.enc.ini
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: forgejo
+      version: v1
+      kind: HTTPRoute
+
