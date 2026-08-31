@@ -1,9 +1,9 @@
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
 metadata:
   name: qbittorrent
 spec:
   rules:
     - backendRefs:
         - name: qbittorrent
-          port: 8080
+          port: 6881

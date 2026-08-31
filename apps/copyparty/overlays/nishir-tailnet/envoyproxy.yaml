@@ -33,3 +33,4 @@ spec:
         annotations:
           tailscale.com/hostname: copyparty
           tailscale.com/tags: "tag:web,tag:ftp"
+          tailscale.com/tailnet-ip: 100.68.52.27

@@ -6,7 +6,3 @@ spec:
   parentRefs:
     - name: qbittorrent
       sectionName: bittorrent-udp
-  rules:
-  - backendRefs:
-    - name: qbittorrent-tracker
-      port: 6881

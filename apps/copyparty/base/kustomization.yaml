@@ -4,6 +4,7 @@ resources:
   - svc.yaml
   - vpa.yaml
   - netpol.yaml
+  - tcproutes.yaml
 images:
   - name: copyparty
     newName: copyparty/dj
