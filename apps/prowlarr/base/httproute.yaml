@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: prowlarr
-      port: http
+      port: 9696

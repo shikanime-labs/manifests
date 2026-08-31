@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: radarr
-      port: http
+      port: 7878

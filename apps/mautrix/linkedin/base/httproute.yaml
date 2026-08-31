@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: mautrix-linkedin
-      port: http
+      port: 29341

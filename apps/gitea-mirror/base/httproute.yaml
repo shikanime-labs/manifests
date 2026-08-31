@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: gitea-mirror
-      port: http
+      port: 80

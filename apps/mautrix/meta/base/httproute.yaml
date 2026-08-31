@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: mautrix-meta
-      port: http
+      port: 29319

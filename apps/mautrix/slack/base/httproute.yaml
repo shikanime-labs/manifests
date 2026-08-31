@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: mautrix-slack
-      port: http
+      port: 29335

@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: mautrix-discord
-      port: http
+      port: 29334

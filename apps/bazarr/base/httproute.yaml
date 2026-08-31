@@ -6,4 +6,4 @@ spec:
   rules:
     - backendRefs:
         - name: bazarr
-          port: http
+          port: 6767

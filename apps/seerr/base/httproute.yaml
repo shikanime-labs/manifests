@@ -6,4 +6,4 @@ spec:
   rules:
   - backendRefs:
     - name: seerr
-      port: http
+      port: 5055
