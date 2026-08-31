@@ -1,10 +1,10 @@
 # Inbound API-key gate layered on top of the existing mTLS client-cert
 # requirement (ClientTrafficPolicy inference). A request must present both a
-# CA-signed client certificate AND a valid key in the x-api-key header.
-# The key lives in the generated Opaque Secret inference-gateway-apikey
-# (one client id per Secret key; rotate by adding a key, not editing the live
-# one). sanitize strips the key before it reaches the ai-gateway ext-proc and
-# the upstream providers.
+# CA-signed client certificate AND a valid key in the Authorization header
+# (Bearer scheme). The key lives in the generated Opaque Secret
+# inference-gateway-apikey (one client id per Secret key; rotate by adding a
+# key, not editing the live one). sanitize strips the key before it reaches
+# the ai-gateway ext-proc and the upstream providers.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
