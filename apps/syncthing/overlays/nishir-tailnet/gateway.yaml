@@ -14,7 +14,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: syncthing-i-shikanime-studio-tls
+          - name: studio-shikanime-i-syncthing
             group: ""
             kind: Secret
     - name: syncthing

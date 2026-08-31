@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: gitea-mirror-i-shikanime-studio-tls
+          - name: studio-shikanime-i-gitea-mirror
             group: ""
             kind: Secret

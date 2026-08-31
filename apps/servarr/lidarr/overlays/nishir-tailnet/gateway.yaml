@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: lidarr-i-shikanime-studio-tls
+          - name: studio-shikanime-i-lidarr
             group: ""
             kind: Secret

@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: twitter-i-shikanime-studio-tls
+          - name: studio-shikanime-i-twitter
             group: ""
             kind: Secret

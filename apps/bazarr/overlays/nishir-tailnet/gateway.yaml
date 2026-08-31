@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: bazarr-i-shikanime-studio-tls
+          - name: studio-shikanime-i-bazarr
             group: ""
             kind: Secret
