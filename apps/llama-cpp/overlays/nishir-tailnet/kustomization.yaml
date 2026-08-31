@@ -4,6 +4,7 @@ resources:
   - gateway.yaml
   - gatewayconfig.yaml
   - envoyproxy.yaml
+  - httproute.yaml
   - netpol.yaml
   - securitypolicy.yaml
 namespace: shikanime
