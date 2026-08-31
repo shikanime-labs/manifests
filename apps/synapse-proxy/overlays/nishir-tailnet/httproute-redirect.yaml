@@ -4,7 +4,7 @@ metadata:
   name: synapse-proxy-redirect
 spec:
   hostnames:
-      - synapse-proxy.i.shikanime.studio
+    - matrix.i.shikanime.studio
   parentRefs:
     - name: synapse-proxy
       sectionName: http
