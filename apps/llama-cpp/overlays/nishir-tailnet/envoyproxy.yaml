@@ -1,15 +1,12 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
-  name: inference
+  name: llama-cpp
   namespace: shikanime
 spec:
   provider:
     type: Kubernetes
     kubernetes:
-      # The rpi4 nodes fushi/minish run a kernel/build that kills the envoy
-      # data plane (CrashLoop). Pin OFF only those two; nemishi (arm64) and the
-      # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
         replicas: 1
         pod:
@@ -30,13 +27,9 @@ spec:
             limits:
               memory: 512Mi
       envoyService:
-        # Stable name (default is envoy-<ns>-<name>-<hash>) so the tailnet
-        # hostname below is independent of EG's generated names.
-        name: inference
-        # BYOD: expose the data plane straight through the Tailscale operator
-        # (L4). Tailscale leads outside the cluster; the mTLS listener does
-        # client-cert validation inside, which an L7 Ingress cannot carry.
+        name: llama-cpp
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: inference
+          tailscale.com/hostname: llama-cpp
+          tailscale.com/tags: "tag:web"
