@@ -23,7 +23,7 @@ spec:
         certificateRefs:
           - name: studio-shikanime-i-inference
 ---
----
+
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
