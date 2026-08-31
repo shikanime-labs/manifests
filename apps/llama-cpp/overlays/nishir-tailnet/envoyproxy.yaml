@@ -11,15 +11,23 @@ spec:
       # data plane (CrashLoop). Pin OFF only those two; nemishi (arm64) and the
       # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
-        pod:
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: kubernetes.io/hostname
-                        operator: NotIn
-                        values: [fushi, minish]
+        replicas: 1
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: shikanime.dev/kernel-va
+                      operator: NotIn
+                      values:
+                        - "39"
+        container:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
       envoyService:
         # Stable name (default is envoy-<ns>-<name>-<hash>) so the tailnet
         # hostname below is independent of EG's generated names.
