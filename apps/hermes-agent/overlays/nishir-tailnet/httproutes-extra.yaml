@@ -19,7 +19,7 @@ metadata:
   name: hermes-agent-dashboard
 spec:
   hostnames:
-    - automata-dashboard.i.shikanime.studio
+    - dashboard.automata.i.shikanime.studio
   parentRefs:
     - name: hermes-agent
       sectionName: https

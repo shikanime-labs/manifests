@@ -24,7 +24,6 @@ patches:
       name: immich
       version: v1
       kind: NetworkPolicy
-patches:
   - path: patch-httproute.yaml
     target:
       name: immich

@@ -52,7 +52,7 @@ staticClients:
     public: true
     secret: ""
     redirectURIs:
-      - https://automata-dashboard.taila659a.ts.net/auth/callback
+      - https://dashboard.automata.i.shikanime.studio/auth/callback
     trustedPeers:
       - "*"
   - name: Vaultwarden

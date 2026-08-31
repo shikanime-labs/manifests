@@ -14,3 +14,6 @@ spec:
           - name: hermes-agent-i-shikanime-studio-tls
             group: ""
             kind: Secret
+          - name: dashboard-automata-i-shikanime-studio-tls
+            group: ""
+            kind: Secret

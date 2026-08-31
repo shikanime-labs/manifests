@@ -22,7 +22,6 @@ patches:
       name: synapse-proxy
       version: v1
       kind: NetworkPolicy
-patches:
   - path: patch-httproute.yaml
     target:
       name: synapse-proxy

@@ -16,5 +16,5 @@ The NetworkPolicy admits only tailscale-system on http and vmagent on metrics.
   `timeline-data`, monitoring component, QSV node affinity + `/dev/dri` mount
   for hardware transcoding (ffmpeg `accel: qsv` in the server config).
 - `overlays/nishir-tailnet/` — Tailscale Ingress, SOPS `config.yaml`
-  (externalDomain immich.taila659a.ts.net, ffmpeg QSV, SMTP, Dex OAuth) as
+  (externalDomain immich.i.shikanime.studio, ffmpeg QSV, SMTP, Dex OAuth) as
   `immich-config` Secret.

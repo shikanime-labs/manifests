@@ -22,7 +22,6 @@ patches:
       name: dex
       version: v1
       kind: NetworkPolicy
-patches:
   - path: patch-httproute.yaml
     target:
       name: dex

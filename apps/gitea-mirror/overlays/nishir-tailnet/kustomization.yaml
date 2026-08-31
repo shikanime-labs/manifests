@@ -19,14 +19,13 @@ patches:
       version: v1
       kind: NetworkPolicy
   - path: patch-sts.yaml
-secretGenerator:
-  - name: gitea-mirror
-    envs:
-      - gitea-mirror/.enc.env
-patches:
   - path: patch-httproute.yaml
     target:
       name: gitea-mirror
       version: v1
       kind: HTTPRoute
+secretGenerator:
+  - name: gitea-mirror
+    envs:
+      - gitea-mirror/.enc.env
 
