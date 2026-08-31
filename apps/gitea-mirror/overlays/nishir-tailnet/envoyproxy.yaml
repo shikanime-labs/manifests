@@ -1,0 +1,16 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: gitea-mirror
+  namespace: shikanime
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        name: gitea-mirror
+        type: LoadBalancer
+        loadBalancerClass: tailscale
+        annotations:
+          tailscale.com/hostname: gitea-mirror
+          tailscale.com/tags: "tag:web"
