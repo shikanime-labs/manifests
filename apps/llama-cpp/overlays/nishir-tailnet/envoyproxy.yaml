@@ -12,15 +12,16 @@ spec:
       # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
         replicas: 1
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchExpressions:
-                    - key: shikanime.dev/kernel-va
-                      operator: NotIn
-                      values:
-                        - "39"
+        pod:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: shikanime.dev/kernel-va
+                        operator: NotIn
+                        values:
+                          - "39"
         container:
           resources:
             requests:
