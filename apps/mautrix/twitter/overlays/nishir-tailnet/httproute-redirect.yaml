@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: twitter-redirect
+spec:
+  hostnames:
+      - twitter.i.shikanime.studio
+  parentRefs:
+    - name: twitter
+      sectionName: http
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301

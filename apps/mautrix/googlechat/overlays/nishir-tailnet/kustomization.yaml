@@ -3,6 +3,7 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
+  - httproute-redirect.yaml
   - vmservicescrape.yaml
 namespace: shikanime
 labels:
