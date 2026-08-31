@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -16,3 +18,10 @@ patches:
       name: vaultwarden
       version: v1
       kind: NetworkPolicy
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: vaultwarden
+      version: v1
+      kind: HTTPRoute
+

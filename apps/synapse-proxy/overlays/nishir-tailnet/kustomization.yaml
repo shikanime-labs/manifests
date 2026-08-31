@@ -1,7 +1,8 @@
 resources:
   - ../nishir
-  - netpol.yaml
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 configMapGenerator:
   - name: synapse-proxy
@@ -15,3 +16,16 @@ labels:
       app.kubernetes.io/name: synapse-proxy
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 2.11.2
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: synapse-proxy
+      version: v1
+      kind: NetworkPolicy
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: synapse-proxy
+      version: v1
+      kind: HTTPRoute
+

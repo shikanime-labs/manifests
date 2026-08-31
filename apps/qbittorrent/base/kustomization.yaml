@@ -5,6 +5,7 @@ metadata:
     automata.shikanime.studio/images: '[ { "name": "alpine", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }, { "name": "qbittorrent", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$", "exclude-tags": ["20.04.1", "14.3.9"] } ]'
 resources:
   - netpol.yaml
+  - httproute.yaml
   - pvc.yaml
   - sts.yaml
   - svc.yaml

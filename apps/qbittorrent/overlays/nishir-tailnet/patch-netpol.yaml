@@ -4,9 +4,20 @@
     from:
       - namespaceSelector:
           matchLabels:
+            kubernetes.io/metadata.name: envoy-gateway-system
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: envoy
+    ports:
+      - port: http
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - namespaceSelector:
+          matchLabels:
             kubernetes.io/metadata.name: tailscale-system
     ports:
-      - port: https
       - port: bittorrent
       - port: bittorrent-udp
         protocol: UDP
