@@ -1,16 +1,4 @@
 apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: TCPRoute
-metadata:
-  name: qbittorrent
-spec:
-  parentRefs:
-    - name: qbittorrent
-      sectionName: bittorrent
-  backendRefs:
-    - name: qbittorrent-tracker
-      port: 6881
----
-apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: UDPRoute
 metadata:
   name: qbittorrent
@@ -18,6 +6,7 @@ spec:
   parentRefs:
     - name: qbittorrent
       sectionName: bittorrent-udp
-  backendRefs:
+  rules:
+  - backendRefs:
     - name: qbittorrent-tracker
       port: 6881

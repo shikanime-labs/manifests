@@ -6,6 +6,7 @@ spec:
   parentRefs:
     - name: forgejo
       sectionName: ssh
-  backendRefs:
+  rules:
+  - backendRefs:
     - name: git
       port: 22
