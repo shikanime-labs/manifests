@@ -9,16 +9,6 @@ spec:
     kubernetes:
       envoyDeployment:
         replicas: 1
-        pod:
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: shikanime.dev/kernel-va
-                        operator: NotIn
-                        values:
-                          - "39"
         container:
           resources:
             requests:
