@@ -1,7 +1,8 @@
 resources:
   - ../nishir
-  - netpol.yaml
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -11,6 +12,12 @@ labels:
       app.kubernetes.io/name: mautrix-discord
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.7.6
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: mautrix-discord
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: mautrix-discord
     files:
@@ -19,3 +26,10 @@ secretGenerator:
       - registration.yaml=matrix-discord/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: discord
+      version: v1
+      kind: HTTPRoute
+
