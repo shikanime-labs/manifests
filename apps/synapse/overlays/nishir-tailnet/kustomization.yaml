@@ -19,4 +19,4 @@ secretGenerator:
   - name: synapse
     files:
       - homeserver.yaml=synapse/homeserver.enc.yaml
-      - synapse/matrix.i.shikanime.studio.log.config
+      - synapse/matrix.taila659a.ts.net.log.config
