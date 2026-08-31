@@ -5,11 +5,11 @@ analytics:
 appservice:
   id: slack
   address: http://mautrix-slack.shikanime.svc.cluster.local:29335
-  as_token: ENC[AES256_GCM,data:1gNxwhN3G71C7N2Q3N3Xl79iq5ADHpFCIqqt7SJSZ97YwPIg9F2ZK942JvauTOaxzM+BiRn0kk95yxImiKjz1g==,iv:vFCWLjzURNf0/JvtHVWeYWC4qKixKLNLlezA+DQsy2Y=,tag:uWfd7lNVvWtQd+2fB/SftQ==,type:str]
+  as_token: ENC[AES256_GCM,data:v+gzesPtzQVHJdZVbdQrjSrkjPeYGGvjK2CeWC20TOOjKjlxqmmg2d2QS6t5/o1/pgCRZtqIa/9a/Qq3631CYA==,iv:5nbccy70XNxRkLVFHjDHdoBAk0bgzUl4B6WH3iebVgM=,tag:CmHkry5X9dcagDJ3qJ/Umw==,type:str]
   async_transactions: false
   ephemeral_events: true
   hostname: 0.0.0.0
-  hs_token: ENC[AES256_GCM,data:y0mRGMpspKzrwJVPVmJX1S5UtycsGGFmROASKG8qNRiaXPTU8n2yCnaKatiw15luKvedVeWmlSEK+fDgq5eRYw==,iv:VJZEIL4LrH6/upAvavyUHM9fvEaWskiPzmdedmFHZhQ=,tag:J9wU7lq2MHFrotI6ViGPTQ==,type:str]
+  hs_token: ENC[AES256_GCM,data:qgpVQSq0p/VuNoXoViRXrHBGiQ6Rhr/4pj6gUdhrHMwegwTp3Y9pa/tIKrZ6iphu9loJ4QHtuazNTi7pmgr4xw==,iv:g0baAc6N8EprZRlMteSqTDMfUK0TyK9fyW+BTfdcy+Q=,tag:Tdeh7xyiZwoXTU0Bn2PUmQ==,type:str]
   port: 29335
   public_address: https://matrix-slack-bridge.taila659a.ts.net
   username_template: slack_{{.}}
@@ -57,8 +57,8 @@ bridge:
     - m.lowpriority
   permissions:
     "*": relay
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   personal_filtering_spaces: true
   private_chat_portal_meta: true
   relay:
@@ -90,13 +90,13 @@ direct_media:
   allow_proxy: true
   enabled: false
   media_id_prefix: null
-  server_key: ENC[AES256_GCM,data:HOTeG2zMUnr2wadLJZmNk9zeiHw27HYvu6FniV+6xgFIRYcW9QvFw3Ai1gs9WyNu/V9wSJuXyw8V3g==,iv:Crip9A/NEjdMR+Q+XQrgJe+8dtD/sE7X14operrmNPw=,tag:phogD262WkvMEQLgoJ7RLw==,type:str]
+  server_key: ENC[AES256_GCM,data:vjEYYdcJkVORosvlPH9nSYRIX4JSr0J8N5par9K8JqQxuoa/ZeGI4/8Hk2eGjOBrkONvZSQr7a1H2w==,iv:MwqHHrKzlPlCmZJ1HZtYatRMPwxmTWbR4RwAJSNR3ck=,tag:9iM1h2eeyKSnG+vZR1gaLQ==,type:str]
   server_name: matrix-discord-media.taila659a.ts.net
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:cEKpZUf3nWUzzSROduRofVXIV7XcAGhl+7rASRBNb+n1BNaXS0vKjSF6ew0+xHYDgGyn3PFYAGtbQOrIk2GKb2LnoPFyHsM3pg==,iv:8j+IyvfyTuyU12LlN8DWHii9tJ7Khb71SA3WcwedXKA=,tag:djO3k11kZWR7r4n9pP5gLg==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:r1Tw6K/uEVsWBPw8PXJXtoJVfjI5ZoKA6UDSy68iRA+M9CLmlwdtAM5Gs0BnwK0kdzVs6pUNymTaUy65WdceeW7tRoFknASK4Q==,iv:4p0Spi3uuJxecLFC7NRIug2br2/F6JKwuqzs6bFMuAs=,tag:Pviz7UdVt3Ac1ieiHqlQHA==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -114,7 +114,7 @@ encryption:
     periodically_delete_expired: true
     ratchet_on_decrypt: true
   msc4190: false
-  pickle_key: ENC[AES256_GCM,data:xkuHFTQ2Z/JWaigSKzF/10YjGTcfp+QsosczPQ2lMTd8EvxiklrPhK23XU5P5KNasAVkaQNyhg7HyxT0BEd8ew==,iv:AbuUpFVYBwX1dXu+4rNCUAYfRwqk+Li87avIHYLr6Bo=,tag:H6Pv+va1BOutqknj7ItqHQ==,type:str]
+  pickle_key: ENC[AES256_GCM,data:6My3DKXviZE5zoq7hRc/16T7kOxayXADBU3UFHKurHddPb0XQLtkWnsJsKg6a2RQx7u4ZZaU0IanoN1TS88QLg==,iv:t7VqMH8lqZblNFqi8q/GHvK2v0n+gMZqJPh4dJt6MlI=,tag:C0qEGRWF0umgsHffQIwT4A==,type:str]
   require: false
   rotation:
     disable_device_change_key_rotation: false
@@ -129,7 +129,7 @@ encryption:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard
@@ -168,42 +168,42 @@ provisioning:
   allow_matrix_auth: true
   debug_endpoints: false
   enable_session_transfers: false
-  shared_secret: ENC[AES256_GCM,data:SmaLxKOqNHuXqUaOj7x7AobZYGVSbwQqLJjqCQxyWlVF8XwvJU87x7mzQaLMl5jrbuhEcryBjJthc0Adzk54sg==,iv:cl+DXClapqeHBpm07yZc6plQP9zepboPhJR9pi1tgCs=,tag:jNr8CdIrvBhhxFUgZAO6HA==,type:str]
+  shared_secret: ENC[AES256_GCM,data:Wgg8vZm4k/lv+XFF0E5YX3HbkKT3pUAQKd5++pypAaEzlh2SoXKjMWbdeakPFISbS/YuHXc0D/bGRmQgDEZaYA==,iv:zfqIEzugo6vKINy0a4i1wuetoG6J70pca22Enuv689g=,tag:LXbnUAwgCNU3POyjyG8hiQ==,type:str]
 public_media:
   enabled: false
   expiry: 0
   hash_length: 32
-  signing_key: ENC[AES256_GCM,data:eN0TuYP4Dl/8SVLQiREB6m+CnYOMwmIWZxzwvXjWuhDJt9DIRo91N3O7TwlrkvqyTZWPQZ5gIHDwwo8XBYn77w==,iv:11SKCdMCysDoT2cX7436RiHdsr84ODCC0bg90LJ6QC4=,tag:7h1t7wXdOTCIeytf6OLa9A==,type:str]
+  signing_key: ENC[AES256_GCM,data:1qE9SbJIkRR/RIm8lEo3GdJDvQxGw33l4aJVcYu9t5UDNmqohbOLdcKuGxgQO5ZwY3Fn9ks/xEgrnjbeBL2oFQ==,iv:1b91Dd+Tn2BHu6aiZgjrU6GEmRUn2wryaAqmBpEe5z8=,tag:Pxzlue+xuITlfsiqGiq2Ew==,type:str]
 sops:
-  version: 3.13.1
+  version: 3.13.3
   encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-07-17T14:02:21Z"
-  mac: ENC[AES256_GCM,data:VnukCOoRgLarJOY72Wp55zgEX5GZNENBo6yQyaEnN3h2hmpb0j+SjdDiVVWnVova+u4LrfHDEst1tAab6gtQ91jVdA7+EFerEoKAzhCt3XsbFY/dmX5bMhNlHIjHVT0mZGQH3bComGDHfKXIxmC81HQOd/FNCnTrrD1gxkNfRmc=,iv:eexfzuP4UAnu4dF535UcK95JZMWAelUAf6rBxCbXAmk=,tag:yfcRFd5cXr09EBL7PgYe/A==,type:str]
+  lastmodified: "2026-08-31T12:15:06Z"
+  mac: ENC[AES256_GCM,data:ccKXLcLe20+/EuXhKmo9CQGaSBAUOW7TJLe4jbgFlXU8/asA21JAy+Y8FJOqdJL3Yhy8oGmwllDhb0PyMZ5Qks3hAezxekziuuPk4T/xjdCKXWbxrixYPB6KldMRdMvXxsRosJaGe/pTeBexSzCzYBqETv2TvKNMWGkNwWmTBik=,iv:IBzw/+p/b0suZEHcN/GiCdgDJreig96PJXpUpvWTnis=,tag:uNTOSQOvhMsYw26NdfV8Rw==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrcXlJSlZCU0VleEtqWHVh
-        MGxuWis2OGRjekJSRFQ1N0lJcGFXVlg0V0NBCk5mS2Y0cjZ3YWpCSkFpNmJOYVc1
-        WURsVDNNMEwzT3NoUGxDaWpaV2J5VHcKLS0tIGVJTWtLbVBZOExZK2oxY0laU2xp
-        aXU4TU1pNzFEcS9LVnZ5eWphb2NaTm8KMbZEZ00Mhp891/z+1uAiu9zZ2rNThB4f
-        enFLrAL0BtgD05zfqRwNgg0Mzd19cjVTY4n5XJn3o0WdEPln/ZpDNA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvbFgxR2N4aUYyVG1jUm0z
+        SUtOMENQUy83MStaVkdpd1VZY2ZNdmVTV0JnCmVSOTZETnJTRXpwdjFNNmd2Smlv
+        TUp1c3Buc0E2eFU4VEs2aitBRlcvZzAKLS0tIGJIZ3Q1SnhraHF3NUhMVG5CTmpH
+        alZWTnQvUzNkQU9wYlB2YzZCUEZ4dzgKtf7g7OqvNed4qAfg7/Shv5BV6tTMBKTT
+        qUtdOoInvyy1+tV7WtdhnNtiDukfUuhr0Ve61+dIFwEykgY5bwM6LA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtMzFIbnEzSERhNjNCdU1x
-        VmFJUVJEcHR1cnBLdkNNcUxvMm5qRk9VUHl3CndQVWVyaEU4aHVDNTkxRmZWeEdk
-        TTBYTU9TcUZINGxGaVptVVpJZDlscTAKLS0tIFJ1c0p3dmRRbXF4NS9mU2VJaWJG
-        YXM0WEswTFNnanRyYXV1VGhzTHlsWlkKhpxCwVIXEu6bzb8xBiPpbLrlz2kds0VB
-        ToCh18rLt+3rKnqPRgoKFBzw6hQQMez4gery/HwzBkGfGOyrVXTsoQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjeTZLTVV4d0J3L3hSM2d2
+        WEYxQjBIQlBVYXRHcEtNS3I2RGdscTlmenlZCkFkUDJCeTJ0U0wrcVZTYlQwUHpM
+        VFY4OUo2c1RHWWQvOVczQjBQaU1LWGsKLS0tIHd4czA5cHdjUzc4WUtkQUFrbEF3
+        VDdvSW04TzNCdVVHNVBOUWVXNDhFdVEKuWQKgQzx/GonPtPr7HxM+8AVSPtLeleN
+        DiV0p0cE2nP12gX0+7D8D2KBDfAgJG9581G703u2kByy1vIApKW3HQ==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIa1Q3QmFjRC9PeFl6Qjdt
-        UDVHMEJVRGtvQXhWSm5KRVZzeDRFMHR6T1Q0CkU0dU9yQWJZZ2VnK0UvQ3VlOHNU
-        cXQybWFYQ0ZsT0FIMHlpMnZnZFBieXMKLS0tIDh0NjhjUFgvODVyMHNlaW5DMGkz
-        b3dNRU05ZVJZaDNQVE0wTDFtVGw0QlUKtHbqg3VXpdhZ/BseT+zpPc+ZtreSQLYs
-        QqN24JVZroL+5Dn78/NzHYCc8jUCPKvIySvSK6hOQ3/4QoiZ5qsIYw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4MlNNeW9GL09vMXhEdXhn
+        ZHJuTzBNMUgxUHZVcmtXb1pINW44aXRMY1hrCkVTdEovWGJaTEhrM0FFUkpPR3BI
+        TDVHRUZhdlFBTHA0TWsvV09URzc0NzQKLS0tIDJSaHlhNllETktlN2paYjhsdDJr
+        dTVlWm51cFhMYVMySDc0a1Q1MEZDU2MKBnpQ/PdJNo3wuPzaSa8Qqe9BNpW6J/PW
+        8x7XTdHwby2DxXIF/7lTZmNT3b2AhOwFWEIScFVtfm6eU+3CjVO0Yw==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64

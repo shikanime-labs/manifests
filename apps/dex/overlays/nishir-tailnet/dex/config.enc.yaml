@@ -4,7 +4,7 @@ connectors:
     id: ldap
     config:
       bindDN: uid=admin,ou=people,dc=shikanime,dc=studio
-      bindPW: ENC[AES256_GCM,data:8Y0j9qI3jRhxo6yfiJpKPZF3hDEG03/+kL2c1A==,iv:N0Qut8tU9GzQK8mWX4WbMHo1/BiYqpfuRd1fI+njdHA=,tag:kt4/Ji8WXo+c0SGS0rr9Zw==,type:str]
+      bindPW: ENC[AES256_GCM,data:uqF5BrrUldAeF1qHVQ0JrrZnUKTct7DiTFI/rg==,iv:ypMpMrV13FxgAPY9mpfy/3nmiLYqGZgmFIwyc+1sHNA=,tag:d3zvp/3W1S7h7t85C6y0jw==,type:str]
       groupSearch:
         baseDN: ou=groups,dc=shikanime,dc=studio
         filter: (objectClass=groupOfUniqueNames)
@@ -28,23 +28,23 @@ oauth2:
 staticClients:
   - name: Forgejo
     id: forgejo
-    secret: ENC[AES256_GCM,data:hkRzehjNjiJEGzxd6E5O5nRnJoUNnDJO78Yq7xRqhhP+5DKHFdy9NBNv6XrBBqhePl0ejCc+26P1qlC/UQ5Cow==,iv:A3ErAHiZP+fmSV+yqWAjCPCbqHqzOkHEfwUQ+YazTvU=,tag:tKfzPayoweVi0pLcMnPDLw==,type:str]
+    secret: ENC[AES256_GCM,data:VSLJm0fLB0izLErbv/ed+eBAzjq+qJolBr943pHyganG7jT3nVPJ199SCO/nqOP1AqB7Vp2GRtU5yNwQ8iHPDQ==,iv:GItY3X16C8+HWwnfG5ZWjKlnC/1ffeEGy4aiJ4vBrAA=,tag:+nEDU4PoCjo1WBmCpEpT+A==,type:str]
     redirectURIs:
       - https://forgejo.taila659a.ts.net/user/oauth2/Dex/callback
     trustedPeers:
       - "*"
   - name: Gitea Mirror
     id: gitea-mirror
-    secret: ENC[AES256_GCM,data:MsOuyUBEa2+hSbAVXO2oSQthJibriBSLQ2OarlDrdN0a4lzw8lPd+ta6eDhu0vKb4zglBRv3xV7HBg3IfL1Gng==,iv:k4fBXnGzR6oSwGYcYeFPDw5XtlomEIzxjte29HeLUoo=,tag:k/MPCP9twYASZtsdOiBesQ==,type:str]
+    secret: ENC[AES256_GCM,data:rMPXm5Y9OYozD56zHL3vxYVFuruT0ndgwFZE0nv+z2siiKA3WnubMFNuErUSESB5BLMeLF4+U/gHHrjteSiONg==,iv:shvIKq/eUHC0iKR/Dt+4URotpk/sfvur7AglYE7ldmM=,tag:QkFIP+zWE2hpmOpVDX06Ng==,type:str]
     redirectURIs:
       - https://gitea-mirror.taila659a.ts.net/api/auth/sso/callback/dex
     trustedPeers:
       - "*"
   - name: Synapse
     id: synapse
-    secret: ENC[AES256_GCM,data:ZPzLtMH3a7tppafZ2JiqAweDYUCmvjgWFBd0lxDTjAxQ06VkHM6btQq0jnUzMSwFIuAi9p9YNcviv9bPXvw6Dg==,iv:KHKgt828saa1DZifKyOxtaIEnLI3Naq/3ox1L9mi/9g=,tag:RfX6ZCVYt5IfDaAzx3OfjQ==,type:str]
+    secret: ENC[AES256_GCM,data:CHcwrnoVP75720OV+08xJB9xJkOeNeCBYgNW0li/vieKMY6Mjg4Nux1MTAfIjecN/570RY610q4gd4nL16I+yg==,iv:q3PTJLsCAqKLVsnYUMDMis0xLNig/xLvPZBafwi6HkI=,tag:ex24FPTYiW+HjWm7bYVD6w==,type:str]
     redirectURIs:
-      - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
+      - https://matrix.i.shikanime.studio/_matrix/oidc/callback/synapse
     trustedPeers:
       - "*"
   - name: Hermes Agent Dashboard
@@ -57,14 +57,14 @@ staticClients:
       - "*"
   - name: Vaultwarden
     id: vaultwarden
-    secret: ENC[AES256_GCM,data:wqukuoC9SsBL3P2OVD+7b38PsKvigJv0OpcK6M7R0urP5CFfNhx6dUsJNA9ynxuiK7PozWKBStjWngq38wbAAw==,iv:/qseLcYI9pESuDNxo/Hx7/y5+gZ4wYRrkN7C7vYJtQw=,tag:WmplMFBpg6e0ajRU1Cm4Qw==,type:str]
+    secret: ENC[AES256_GCM,data:ZWx3yHHaZJtVSFvouWARk4QYxDydFOCVhmcOcethtvP30h7gimUeRtXW+uWMR2qaTR4n/SsEwkK2ccFwzHrcyw==,iv:RO4P330dfT1Rclllw26OOTKD0QoMigZrQc3Mviy4a40=,tag:vwakO0oVY5tOJ404aEB/ng==,type:str]
     redirectURIs:
       - https://vaultwarden.taila659a.ts.net/sso/oidc/callback
     trustedPeers:
       - "*"
   - name: Immich
     id: immich
-    secret: ENC[AES256_GCM,data:WfS2mfWdVN8q1QxBxzQUmdlk4UwzuGwtYJ4dRzFoR6o=,iv:cSQWwtRcffkia2EMXEtcQNZhQJjMUiKP8lOYOdrpEUI=,tag:JN+of1qIEdk2wITtcPWWbQ==,type:str]
+    secret: ENC[AES256_GCM,data:HgpA2+43Y9WrKcb9heLDy2fxsFrMb3XO9uHw0OaFIVs=,iv:8Z+bblnmCcBkzUDhyvzpAMB9O1K3SSZHGVGR7GmkKgU=,tag:Uhkh2Ax4zulwDH/3S+GNPA==,type:str]
     redirectURIs:
       - https://immich.taila659a.ts.net/auth/login
     trustedPeers:
@@ -82,33 +82,33 @@ web:
 sops:
   version: 3.13.3
   encrypted_regex: ^(secret|bindPW)$
-  lastmodified: "2026-08-10T20:47:40Z"
-  mac: ENC[AES256_GCM,data:VoxuP7jW1M0g9cP7/1EOzG+c5RIjRFD4qHUbfTG2Bn3ZuFYq/a3MG+WZv4YSsj7Ahl3qGa1a/qAHv8UFFR9pMzaD16L53u95xavjAY9EvQnLdYJI8IbHDd5/aI3DvpcWABU4xZso61fgz0SUFpppgPCI4P3RW44eC7sw74zXYWQ=,iv:7QYwUv9nMmHqJLgaWPYAt3qc6JaQSmcg4mlQX/AbpgQ=,tag:2HUm5cbCJIVZuL28Wx9nkA==,type:str]
+  lastmodified: "2026-08-31T12:16:24Z"
+  mac: ENC[AES256_GCM,data:2CusgB4nYuxxvu8dXJT/HURQIgsh3YEHNzA8PRseYqDhrOdtvhHGYc1sVRUECvIH/MmUdhOYA82XbJGXz1vITuROqOIfgtoIxjeTkP1w2CUwR5KQvRJT5X3qNCBISPHwKlUI9NJxQmDB6th9uJRnMwAfDVZkRvkdPh7R9DloMlA=,iv:MpLBmBQrAZPyNiF8u53ma/1xe32w9kuNDD7aun97zxM=,tag:715vZuWoDeanHUt0wakK2w==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzY29Ub3hTNERlMEhERG1C
-        ai9yUEpYdDdEblYwV1M0N09NcHRCUTVwZ0Q0CmU4SU1QbmJWVkRacThYaVlZV291
-        U2hZbGx0WSt1S25uU0FGUVVRN2dHMlkKLS0tIGdKQjNNVXY3cjRzRXczbTBVb2Z1
-        d2NodnJ2RDBUTFJUQno0blhTeFNqQ1UKwZZLVSCNIxSD3wc346bgew9czbvRifQk
-        F6C2Qr44oJcjrwKQ78loitlJzZmf2MkO9BGEx+OWi/Z8jlTpRIwG5w==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzbG9nYmVHbTFhNnh3WWEz
+        QVlHd0tZS3FFZTREcVFEM2drV2Y4S0g2Z0FjCkh6SXlieCsrWmFMZTU1a0llSVZL
+        SUZTTWdqOXBqQVIxanBEUW5EVGV0Mm8KLS0tIGJVbGRrYzg3anY0NTdmVWFGdzRH
+        bkk5TUxhcEJlcDZXYnhlT3BoSU5qck0K3MxmcfJAAsYSb8bn6pCtVGfSDlcMr0gA
+        SCQPqGVWVk1qXjGMsZIBwgC84ja7ikZVxBGcxKZN7hFlUjKdgS2tBg==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2OXI0NEFaSG4wL01Kc3p6
-        NVcxOE00d2NoQ05HcndXYXNBQVJGUHR2Q0YwCmpZTnlPV3JFKzV2L3NBR2Y4T2Qr
-        MFFPZFhnWW5QaVpBUkJ2SkpTOWxhQk0KLS0tIHoyRVJlSWN6MVRUMlFSV3pqMGh6
-        dzAxUnAwekJUQUgwZU1Lb2FlYkgyTFUK+pT1DhBI05qzX86/3ps6UH9v34mREJP0
-        +gFk65Y/avRzmfcEbtJ4EjdDhP+gHT9jGmmyTpF/at9YgyxLHUrOSg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEN3gzV1hFM0VRd3ZFTnEw
+        SXNaSmpWUHZkbThKdmpyS2FPRDljR1g1M0VZCnZNRStCcHR3K3BMOGM5cmxwdmlv
+        ZGwxeldGbTNHWW1aNUhVRE9wMTBQN1EKLS0tIGtHR29LNk5YVW8rZytFeUNTNUEy
+        ZytiWURlZUVtdEhBc2xacVRmcWNWSzAKOxrmJKJjXK3z3s2s2XH+iDpssB8fDXQn
+        XrQ4k3rvh7+vpPQmMoWqNNZ/2BsZMP1vBDVhH6u4YixmaBehn9fUaw==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIUWM0Q0k2QWh1Ylh0QS9Y
-        UFV6eVFjY0FobHJISmQwcGlmWGFlK3FWdkRZClljVWlLS1M4Ukd3ZDEyY0kyTFhF
-        enUxMFpiT1lWdVd0YVlmcWlMejNxdk0KLS0tIGd6ZFZGSmdJcWR6cTYvYjNiT1I0
-        eW8rZFp5TmI2bUJEbDgzSGdjak9ZZWcKcMWjCY4lGoqLOtA5yw8lnjIJnScazUkZ
-        l2hyP0Rf3vIfGfSQqHM2ytdVG1inhlF0RFvp3HL3wkVFdDBQUdJvQg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6TFhrQkNZSEN5V1pCejRt
+        RzFCQ3NodDJmZ1dUUmVzWlBDQmF4cWdZdlVrCmlaaVREQ1pSb1U1V09XTW9ybGVa
+        Y1RBYlNrUk4wQWxZRm1MbjBNYmhSeDQKLS0tIGl1V0RNM09vUjNBMUtwRDVwamJV
+        T285ZkRyb3IwNFUvamdwZGpvV1EzUWcKMcxHYozC5vaF6xilzyB6D6ZwBnVJ3RIS
+        db8TERsVj9hfYV9lkjYyF1pc5Bl28SnQfHGnMxRgRVSw+TZzaDBlzA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64

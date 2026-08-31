@@ -1,11 +1,11 @@
 appservice:
   id: discord
   address: http://mautrix-discord.shikanime.svc.cluster.local:29334
-  as_token: ENC[AES256_GCM,data:s5yc1b7IRmnX/++9HxkJI2ST5MYKTvykP3M42FYIUjm/2x3YGKxuJowczNtOIktNL5w/ral0UdQjZGxTsRjy2g==,iv:obVV9BSbQ6nRyVCP5J36w5En+xdqJt8HJDHxKpyyLAo=,tag:+sIM5wEimN+740ZFA9x2ug==,type:str]
+  as_token: ENC[AES256_GCM,data:glmC53Wnc5gIJIb/DarVNn/xfWR3o2nI67NHwBkOdoHmGYwGIzbga/3vpniUmIMT1C09MDy1UxKHH3S42ujBZQ==,iv:GO4oi13CVWhUQnORKRTs1lCc04UCcX7tI3F5w/fha+8=,tag:mtNn/1OY4UQhckXoienihQ==,type:str]
   async_transactions: false
   ephemeral_events: true
   hostname: 0.0.0.0
-  hs_token: ENC[AES256_GCM,data:RJHbx06lZWuenLcBvhwrkU9okwuWkKUd89zr1Q4E3HrMhKSlGOPQ7B5kCFm73CgDP3WIh5t2h154ozF9cfQjng==,iv:0F1jTI+1ALRhQx2BllZBsAFjq2LWtJWI1tG24ke61V0=,tag:77l3SSBf1Y2IDcXheMmZlg==,type:str]
+  hs_token: ENC[AES256_GCM,data:TUDgsSpvyXnh2ufYKR8caObcpnq9GDumTPXEqlyQlPEmBEvd7X6D6uvpMaFB+caNvzY3Pat5VLWaZKy/WkGoJw==,iv:x+8MFxlUV0pjXsxMkmtaa8/WqVpOgO4A/nLEGrcXitc=,tag:8K406Na/Z7X6skpfS6WunA==,type:str]
   port: 29334
   bot:
     avatar: mxc://maunium.net/nIdEykemnwdisvHbpxflpDlC
@@ -26,7 +26,7 @@ bridge:
       width: 320
     target: webp
   autojoin_thread_on_open: true
-  avatar_proxy_key: ENC[AES256_GCM,data:tRuoXHo9rBczAsJdPLRnLNqHDUVkE3tP8MyK1h/5mVw=,iv:/Rw8w3l93M6qa6cIKlQ6wc1atseaAdX8G4eXbmfjcvo=,tag:y51OoCSsIoMOKVdvOhhmrA==,type:str]
+  avatar_proxy_key: ENC[AES256_GCM,data:hFxubuBC8W8mAeba7C/dDr9GjIluuJsY7dA+yclpqd8=,iv:7VKr5A4hEK3Bea88Hg9UhI7PRE+QtRIMb3wqe2yRdhI=,tag:4pPLbuPQ5ScLX5raXbSn7A==,type:str]
   backfill:
     forward_limits:
       initial:
@@ -48,13 +48,13 @@ bridge:
   direct_media:
     allow_proxy: true
     enabled: false
-    server_key: ENC[AES256_GCM,data:/e1yoljkzCs+U1gbSZGpnw49jqav3p6pWMOKpg+NXlqIQFCwfCVhsa6TFlxis1U8wy5qe5iNor7VZw==,iv:mTrYlZYei/hkC/CxLdHWVQsuJBRTYyGhavUI/mwGzzg=,tag:cj3Z01sG0PCEUM9eOOTZjQ==,type:str]
+    server_key: ENC[AES256_GCM,data:xlOwE4R96yCYXVnPqm6FxPK83QXvbyz154bNGj56SwLx6ZKi1jmYnJPLJxfIRQbm+OF8OD7X4aY6xg==,iv:UF0/i8osKjNm1w5H5p6w2jz2qy/YZA525vT/COGsV3g=,tag:DQ6DAB5343ZiHnhUaLzn6g==,type:str]
     server_name: matrix-discord-media.taila659a.ts.net
     well_known_response: null
   displayname_template: "{{if .Webhook}}Webhook{{else}}{{or .GlobalName .Username}}{{if .Bot}} (bot){{end}}{{end}}"
   double_puppet_allow_discovery: false
   double_puppet_server_map:
-    matrix.taila659a.ts.net: https://matrix.taila659a.ts.net
+    matrix.i.shikanime.studio: https://matrix.i.shikanime.studio
   embed_fields_as_tables: true
   enable_webhook_avatars: false
   encryption:
@@ -87,7 +87,7 @@ bridge:
   federate_rooms: true
   guild_name_template: "{{.Name}}"
   login_shared_secret_map:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:MwFr27PU5O/HBbJskwo5yiILkVbfJW188pNQcvwk3tFQjz52Mt8Jp1saEOB6wmjaGV+EG/6EiG0I+VyxtOHlMA==,iv:6QlWSewsEd/pReVeu7SWUAODaRbVefo9hTw/0shtpH8=,tag:nYR5+oEbb2PpxmZcsYlxhw==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:nlaSzsBzX4PPlz4GLKE6Ltw3Y7FeP/pPP8IJTx7g2zJREQcdjLYlaUDoHiVde1RLS7+yKNgVB9+osX5kRCxHKw==,iv:ozTWa2/1ZRix5jJ7133QdIOYpSRP9ZZARiC8+lrQ0BM=,tag:ZPO0XYfkQByVxnrox27w2w==,type:str]
   management_room_text:
     additional_help: ""
     welcome: Hello, I'm a Discord bridge bot.
@@ -98,15 +98,15 @@ bridge:
   mute_channels_on_create: false
   permissions:
     "*": relay
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   portal_message_buffer: 128
   prefix_webhook_messages: true
   private_chat_portal_meta: default
   provisioning:
     debug_endpoints: false
     prefix: /_matrix/provision
-    shared_secret: ENC[AES256_GCM,data:vdpi8NZczcQqIjJd8N6Whqg7O8QUpXrQqYAB13B4ZGnrSZcoAnEke5poP8guyq/VBGHC9UMOB5SM3wxbOxQeow==,iv:4ig5mJQH2vNz7UeUeVUGLL5IoYTtoChP4ulixRJWYSQ=,tag:JT4FzwT8wrKm3ER51EQXhg==,type:str]
+    shared_secret: ENC[AES256_GCM,data:p3/NJcVuNre27IDKtP/HtXkPVDr9qVlcwu0al2VZaLu4p/NK99mWB0jf47NwJzAfh4cigPXCF9vCS0oHG5x5NA==,iv:T6Br8UAjDHVnyd9uiyN5tsKwzBO+dK2DYwe91edX2U8=,tag:ynaTx8Q0vynwUAtjAODadQ==,type:str]
   proxy: null
   public_address: https://matrix-discord.taila659a.ts.net
   resend_bridge_info: false
@@ -118,7 +118,7 @@ bridge:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard
@@ -136,35 +136,35 @@ logging:
       max_backups: 10
       max_size: 100
 sops:
-  version: 3.13.1
+  version: 3.13.3
   encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-07-17T14:02:13Z"
-  mac: ENC[AES256_GCM,data:B59fFcLRXesDgGTApOMip07wGP3Er7ULhhcu1XmuRbCuUxdX7YM50r5Cihcn7PTq/1udZkHJXp4FIp+lVStIEV0s5EUOGCGuGgVNd94sD9yp5vL+GaB/e7pYWV5gVLFtEydbaLTAoxa2osQTOEc0Czd9wMFx2mTK3GquNYK76vg=,iv:DzDWiXfmD7UJiegTci1vVGF+gB57PG8otANxqAtIKaU=,tag:d9l50LoH3PDO4qWuIIObGw==,type:str]
+  lastmodified: "2026-08-31T12:15:06Z"
+  mac: ENC[AES256_GCM,data:gCl/Cl72OXBuU0P8+9TgFUtx0cTc9e52eAxP34I5gW435gxKa+qnsVGErO9nqVv/BarWyA3WsfaF6xHBTHtpb0Xiu1A3bqf5sAWnUHInWy6HBmxK6m9V0gj0UP2O/iaEKBgOO+1OfEJqbfUn41CyWjLy7e+aiGwGfdjqt9Tc0m8=,iv:+gJNwYrIXBoUxjpJJW3Ow6+BgpQIveloJtmd7wuQyug=,tag:70wb2sylzAooAGToQEkLAw==,type:str]
   age:
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4N3Byczl5OGRtMldyM2pi
-        a3JOYllPL29hRjVvblhhTnFJTDh1NEdLZ3hrCkViSm1MOXNlRjI0YVhZL1B6S3Nr
-        aG9COUZSa1dZY25WYlpDdDJYVzZQN0kKLS0tIE9naERQTVIyR3ZpSllDQlZtd3dO
-        Q3hmNzRadkdEN1hJQ1ZkVHkyME9oclEKFuXMNoLdnNmFBYtZRvgzDyo1tnF9dYrD
-        qkb3FREtU64R3STRxwYwwYTk+j/8DFKpm9B6P+ix7l/Jm1JDe7ngsQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNUkQrRmtYaWJsMERDR1pn
+        V0J2WjV3WkxreEova1Y5ZFZmb3RuTzdYN1N3ClJGalAxUTBZOUNtdlJmTGpmZFpk
+        UGNqRHVmM3A3ZDFRSCtpWEFJRjNpd1UKLS0tIHZyRmFkU3dRajBsTm4zaE1OYnU2
+        bTN1SXZLTGxFc3J4OFNZSmxpUDJXMFUK520mrO//JAB8yWMzmZwVKA5C+Co2Aqd1
+        +b4vxkC8jU0xkGt7MqYGkPnxAqCdKigOM7mG/jtizQvaPwMB2lRE+A==
         -----END AGE ENCRYPTED FILE-----
       recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPYk04OXVhdTJ5U3BnL0FL
-        QlVmUmhMaDJpNXZvUUR3WEY2NjIwWGkxelVrCjY4ZTNVVzdMT1ZlaHFHdzdzUXR5
-        MnVqS0g4WVdzVStUVDQ2Nkdob3JlWE0KLS0tIFVaNlJOT2xlT3ZhTEtSU0c2b0Jt
-        dDNqbnBtc09ZaUJ6cUJQNVNCVEFVblEKB0PonLyvPbfNLWp+bpLTfqT9AFXYzbed
-        PhZefsSZdAQZz0QQF7lAhZS4aA1Q7p1KvcdnbBaL40HBkmpJasf3Fg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBZNUNaeFZiZ1dvVUVrZ1VF
+        NUlnU3ZtVHFSSXM0Vll3QzV2ZlRSRGhTN1c4CkR2ZEJsVUpMbmlZY1FEcUtIcHVJ
+        d0ljdGVHc0s5Vm1TNk5WT3BkV0RNWDgKLS0tIGhNMTExOU95QlVoTEMyT2ZwdG5D
+        UDRCT3pTZVhnNEd4Q3ZjNGlNWmIyeUUKIMqI17QJHuatECyh6NwGBxdrjkXei09B
+        dqEANfVC+QBwOHCfyCayQ+VJBu+kvgBGxNl7f2eK5BDo816bf+fUHg==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     - enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5RXNSMWs3ZGtIQWx6dnFS
-        bi84S0ZKTEZkOHMwdHpLZ0Q3SXBlSnNBT2pVClQxNWZ1czd4d2NKSWd5VENMbDNM
-        ai8reFgrTHFkL0xPTm9KeGZsd21HQkEKLS0tIENpRm9zdWhxOWJRbVJSSXB4dEZC
-        azJ6QmVTNlJmWGVzRk5ZTHlCVVlXOW8KPqz7xAPlp+iJoBu+A6I+xdH88khix4+J
-        bBSSzuIAUdCb1Lg2JfpJk1qfpEyyuK4HN2VPb6fPr6p/2+0o2TusKw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaQVlzRHBaQzlsYlJjcjdr
+        Tkx5UmRMVjJaUi8yWmhnWi9odUNJUXpFTlZzCnNOYzNsZFdiKzlaNTFhVjFZRUd0
+        cVJISHR0Qmo0VXRHL2FYbkgrc2MyLzQKLS0tICtSV01NeXN4OEdLZE1hOGpVV00v
+        YUdNalB4WnJJRlZBSmJLeU9ERkNmekEKkRsZu/Xjdh4B3Ssg1Xwq4GoG/TIe1xVP
+        RtmW2AA2NSTTZZafT9pMOraetZP0yYX6f0GdrgehYrBJyKpkSbBBCA==
         -----END AGE ENCRYPTED FILE-----
       recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
