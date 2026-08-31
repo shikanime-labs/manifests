@@ -1,240 +1,240 @@
 analytics:
-  url: https://api.segment.io/v1/track
-  token: null
-  user_id: null
+    url: https://api.segment.io/v1/track
+    token: null
+    user_id: null
 appservice:
-  id: whatsapp
-  address: http://mautrix-whatsapp.shikanime.svc.cluster.local:29318
-  as_token: ENC[AES256_GCM,data:d9RFyM4b5NPg7eHkqonkJKJdMi3OVC1fRpkUYpaHbhg4eX5T+2IFTcPLYYd0I2Ir6IXQZicf55YaXJjRyNGERg==,iv:jfYwB25+vvwn4ovXbrnb+StBvLMUaSuvx8OfFd0V4ZI=,tag:GY6MUEJWibgOQ46a42t23A==,type:str]
-  async_transactions: false
-  ephemeral_events: true
-  hostname: 0.0.0.0
-  hs_token: ENC[AES256_GCM,data:kaanp6LRPOJRuil/gVmi2hvXy9lvEfyiROA7NE+WPYiUS9JbXfhdM+ORcaWfdk+U6XcZcThV/EIE7r9yRwWEvA==,iv:EC8f6VhAU/yVQvHJDy3UoWqQIUQwgmQBrL5eUEI8X10=,tag:mDNGMLlLxIllzff8OUWtFw==,type:str]
-  port: 29318
-  public_address: https://matrix-whatsapp.taila659a.ts.net
-  username_template: whatsapp_{{.}}
-  bot:
-    avatar: mxc://maunium.net/NeXNQarUbrlYBiPCpprYsRqr
-    displayname: WhatsApp bridge bot
-    username: whatsappbot
+    id: whatsapp
+    address: http://mautrix-whatsapp.shikanime.svc.cluster.local:29318
+    as_token: ENC[AES256_GCM,data:qlpvKJWsHOPgT2IS+/C1kSgzbAV8SQePA4Ov626SskzdT9XIwlbXnvlNiQIzPLknLqrmUeBGUo3vkrEkjXUdTg==,iv:7wP9c3UDNPc6oeXRt8jtRaScs2Zzro9aYkwH+cml0eU=,tag:4KK8Olpus0FUSw+UR9MaSg==,type:str]
+    async_transactions: false
+    ephemeral_events: true
+    hostname: 0.0.0.0
+    hs_token: ENC[AES256_GCM,data:7KU1sMh/NKyPt8N5mmdoO0k7RrzA7XJbM1YFP1kS1azka6VdrR7bh0XQlmxaKIAUlr1H1IbxOgNbMcZneXF2Xg==,iv:2dG02afqP+Gh5QCkA++by7g5bn4Sy5iu4agGkngZPBk=,tag:2tqJVBxwmA4+tipei4L5RA==,type:str]
+    port: 29318
+    public_address: https://matrix-whatsapp.taila659a.ts.net
+    username_template: whatsapp_{{.}}
+    bot:
+        avatar: mxc://maunium.net/NeXNQarUbrlYBiPCpprYsRqr
+        displayname: WhatsApp bridge bot
+        username: whatsappbot
 backfill:
-  enabled: true
-  max_catchup_messages: -1
-  max_initial_messages: -1
-  queue:
-    batch_delay: 20
-    batch_size: 100
-    enabled: false
-    max_batches: -1
-    max_batches_override: {}
-  threads:
+    enabled: true
+    max_catchup_messages: -1
     max_initial_messages: -1
-  unread_hours_threshold: 720
+    queue:
+        batch_delay: 20
+        batch_size: 100
+        enabled: false
+        max_batches: -1
+        max_batches_override: {}
+    threads:
+        max_initial_messages: -1
+    unread_hours_threshold: 720
 bridge:
-  async_events: false
-  bridge_matrix_leave: false
-  bridge_notices: false
-  bridge_status_notices: errors
-  cleanup_on_logout:
-    bad_credentials:
-      private: nothing
-      relayed: nothing
-      shared_has_users: nothing
-      shared_no_users: nothing
-    enabled: false
-    manual:
-      private: nothing
-      relayed: nothing
-      shared_has_users: nothing
-      shared_no_users: nothing
-  command_prefix: "!wa"
-  cross_room_replies: false
-  deduplicate_matrix_messages: false
-  mute_only_on_create: true
-  no_bridge_info_state_key: false
-  only_bridge_tags:
-    - m.favourite
-    - m.lowpriority
-  permissions:
-    "*": relay
-    "@root:matrix.i.shikanime.studio": admin
-    matrix.i.shikanime.studio: user
-  personal_filtering_spaces: true
-  private_chat_portal_meta: true
-  relay:
-    admin_only: true
-    default_relays: []
-    displayname_format: "{{ .DisambiguatedName }}"
-    enabled: false
-    message_formats:
-      m.audio: "<b>{{ .Sender.DisambiguatedName }}</b> sent an audio file{{ if .Caption }}: {{ .Caption }}{{ end }}"
-      m.emote: "* <b>{{ .Sender.DisambiguatedName }}</b> {{ .Message }}"
-      m.file: "<b>{{ .Sender.DisambiguatedName }}</b> sent a file{{ if .Caption }}: {{ .Caption }}{{ end }}"
-      m.image: "<b>{{ .Sender.DisambiguatedName }}</b> sent an image{{ if .Caption }}: {{ .Caption }}{{ end }}"
-      m.location: "<b>{{ .Sender.DisambiguatedName }}</b> sent a location{{ if .Caption }}: {{ .Caption }}{{ end }}"
-      m.notice: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
-      m.text: "<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}"
-      m.video: "<b>{{ .Sender.DisambiguatedName }}</b> sent a video{{ if .Caption }}: {{ .Caption }}{{ end }}"
-  resend_bridge_info: false
-  split_portals: false
-  tag_only_on_create: true
-  unknown_error_auto_reconnect: null
+    async_events: false
+    bridge_matrix_leave: false
+    bridge_notices: false
+    bridge_status_notices: errors
+    cleanup_on_logout:
+        bad_credentials:
+            private: nothing
+            relayed: nothing
+            shared_has_users: nothing
+            shared_no_users: nothing
+        enabled: false
+        manual:
+            private: nothing
+            relayed: nothing
+            shared_has_users: nothing
+            shared_no_users: nothing
+    command_prefix: '!wa'
+    cross_room_replies: false
+    deduplicate_matrix_messages: false
+    mute_only_on_create: true
+    no_bridge_info_state_key: false
+    only_bridge_tags:
+        - m.favourite
+        - m.lowpriority
+    permissions:
+        '*': relay
+        '@root:matrix.taila659a.ts.net': admin
+        matrix.taila659a.ts.net: user
+    personal_filtering_spaces: true
+    private_chat_portal_meta: true
+    relay:
+        admin_only: true
+        default_relays: []
+        displayname_format: '{{ .DisambiguatedName }}'
+        enabled: false
+        message_formats:
+            m.audio: '<b>{{ .Sender.DisambiguatedName }}</b> sent an audio file{{ if .Caption }}: {{ .Caption }}{{ end }}'
+            m.emote: '* <b>{{ .Sender.DisambiguatedName }}</b> {{ .Message }}'
+            m.file: '<b>{{ .Sender.DisambiguatedName }}</b> sent a file{{ if .Caption }}: {{ .Caption }}{{ end }}'
+            m.image: '<b>{{ .Sender.DisambiguatedName }}</b> sent an image{{ if .Caption }}: {{ .Caption }}{{ end }}'
+            m.location: '<b>{{ .Sender.DisambiguatedName }}</b> sent a location{{ if .Caption }}: {{ .Caption }}{{ end }}'
+            m.notice: '<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}'
+            m.text: '<b>{{ .Sender.DisambiguatedName }}</b>: {{ .Message }}'
+            m.video: '<b>{{ .Sender.DisambiguatedName }}</b> sent a video{{ if .Caption }}: {{ .Caption }}{{ end }}'
+    resend_bridge_info: false
+    split_portals: false
+    tag_only_on_create: true
+    unknown_error_auto_reconnect: null
 database:
-  type: sqlite3-fk-wal
-  max_conn_idle_time: null
-  max_conn_lifetime: null
-  max_idle_conns: 1
-  max_open_conns: 5
-  uri: file:/data/whatsapp.db?_txlock=immediate
+    type: sqlite3-fk-wal
+    max_conn_idle_time: null
+    max_conn_lifetime: null
+    max_idle_conns: 1
+    max_open_conns: 5
+    uri: file:/data/whatsapp.db?_txlock=immediate
 direct_media:
-  allow_proxy: true
-  enabled: false
-  media_id_prefix: null
-  server_key: ENC[AES256_GCM,data:tnzFI0FKmz44aS3ZwVh+rJZ0wKVahkuseAqCHu+i/xFQJUcAED59JV6QY5dPtQvTjF05dZqQF5ip7A==,iv:YP+G1gpWVTbrSOMrgEqwkge1o61KLDy7bbilYw+8qIo=,tag:EBIfdgLKVqLB8vbOsQRi8g==,type:str]
-  server_name: matrix-discord-media.taila659a.ts.net
-  well_known_response: null
+    allow_proxy: true
+    enabled: false
+    media_id_prefix: null
+    server_key: ENC[AES256_GCM,data:3hxGeXnhw1iHGmiHC3+zrdDeXtLK/wJ1UrpgCudIzKP2XtmPsVrAkmaSf4JiuElfXsKwR3JApu6UZg==,iv:KckOTqZ3H224nCMnIyeSL/i5ZjEefGDfFWuT5/SU33c=,tag:Qmi0YTAxDwHsajKE1SRoBQ==,type:str]
+    server_name: matrix-discord-media.taila659a.ts.net
+    well_known_response: null
 double_puppet:
-  allow_discovery: false
-  secrets:
-    matrix.i.shikanime.studio: ENC[AES256_GCM,data:eW8YYVSbzARC5Ft8qR+EtFxGxCDvn8CAC7NjjM3d/ud16lU5NqL1OqDfmsPWMAmnSE7dxKjiJC7EwVFQjy8+dhWU/ixGOwq7AQ==,iv:Sd7nWBToL20jiCqOJ8ms4T5RcGt4RIFuzprG6Zzamqg=,tag:dijYrrtk6GGWgs4m3b4X7A==,type:str]
-  servers:
-    anotherserver.example.org: https://matrix.anotherserver.example.org
+    allow_discovery: false
+    secrets:
+        matrix.taila659a.ts.net: ENC[AES256_GCM,data:jP3k050BZFmouvKdDnDhafQrciMD6J67G8SRP7utRXblmgliktzj6jwCKh0TwWf5AIYNJ53/tVuD1SSV5zguSzwZgxzQVz16eQ==,iv:Y7vIhqQtO4dmOOGv3VRFjysAW0e27ukIx3KO1ycXNg4=,tag:ln06MnpxA26pXVLtPn34cQ==,type:str]
+    servers:
+        anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
-  allow: true
-  allow_key_sharing: true
-  appservice: false
-  default: true
-  delete_keys:
-    delete_fully_used_on_decrypt: true
-    delete_on_device_delete: true
-    delete_outbound_on_ack: false
-    delete_outdated_inbound: true
-    delete_prev_on_new_session: true
-    dont_store_outbound: true
-    periodically_delete_expired: true
-    ratchet_on_decrypt: true
-  msc4190: false
-  pickle_key: ENC[AES256_GCM,data:LCqjbRVtEzD2IUjuWKMYAUjFPctlrITf1Ly/L8XEayE2barjNtFFqiWwcqyTagGSecfH1133c8vXQ46G0fWe4g==,iv:eT8PasSAE1rwmA/O08XTvDZHeA3gr2yW7purxgO4P4I=,tag:2HheX6qq1uzFxLIqemk+xg==,type:str]
-  require: false
-  rotation:
-    disable_device_change_key_rotation: false
-    enable_custom: false
-    messages: 100
-    milliseconds: 6.048e+08
-  self_sign: true
-  verification_levels:
-    receive: cross-signed-tofu
-    send: cross-signed-tofu
-    share: cross-signed-tofu
+    allow: true
+    allow_key_sharing: true
+    appservice: false
+    default: true
+    delete_keys:
+        delete_fully_used_on_decrypt: true
+        delete_on_device_delete: true
+        delete_outbound_on_ack: false
+        delete_outdated_inbound: true
+        delete_prev_on_new_session: true
+        dont_store_outbound: true
+        periodically_delete_expired: true
+        ratchet_on_decrypt: true
+    msc4190: false
+    pickle_key: ENC[AES256_GCM,data:N9QOdUSJqnZZG06p8tJ7ygJhQiJwlSWNm5aGFcT8j1Bp2rjz32iVbOuDxfAzzKg7yxcvIEP+EMOeZE516iAw7A==,iv:i7j0mHSaBwnuXPt4u3SKfeFEdZsqoGaYTwZ6XI+7OjE=,tag:ImNNPonSyZdnFT1StMeMWA==,type:str]
+    require: false
+    rotation:
+        disable_device_change_key_rotation: false
+        enable_custom: false
+        messages: 100
+        milliseconds: 6.048e+08
+    self_sign: true
+    verification_levels:
+        receive: cross-signed-tofu
+        send: cross-signed-tofu
+        share: cross-signed-tofu
 homeserver:
-  address: https://synapse.shikanime.svc.cluster.local:8448
-  async_media: false
-  domain: matrix.i.shikanime.studio
-  message_send_checkpoint_endpoint: null
-  ping_interval_seconds: 0
-  software: standard
-  status_endpoint: null
-  websocket: false
+    address: https://synapse.shikanime.svc.cluster.local:8448
+    async_media: false
+    domain: matrix.taila659a.ts.net
+    message_send_checkpoint_endpoint: null
+    ping_interval_seconds: 0
+    software: standard
+    status_endpoint: null
+    websocket: false
 logging:
-  min_level: debug
-  writers:
-    - type: stdout
-      format: pretty-colored
-    - type: file
-      compress: false
-      filename: ./logs/bridge.log
-      format: json
-      max_backups: 10
-      max_size: 100
+    min_level: debug
+    writers:
+        - type: stdout
+          format: pretty-colored
+        - type: file
+          compress: false
+          filename: ./logs/bridge.log
+          format: json
+          max_backups: 10
+          max_size: 100
 matrix:
-  delivery_receipts: false
-  federate_rooms: true
-  message_error_notices: true
-  message_status_events: false
-  sync_direct_chat_list: true
-  upload_file_threshold: 5.24288e+06
+    delivery_receipts: false
+    federate_rooms: true
+    message_error_notices: true
+    message_status_events: false
+    sync_direct_chat_list: true
+    upload_file_threshold: 5.24288e+06
 network:
-  animated_sticker:
-    args:
-      fps: 25
-      height: 320
-      width: 320
-    target: webp
-  archive_tag: null
-  browser_name: unknown
-  call_start_notices: true
-  direct_media_auto_request: true
-  disable_status_broadcast_send: true
-  disable_view_once: false
-  displayname_template: '{{or .BusinessName .PushName .Phone .RedactedPhone "Unknown user"}} (WA)'
-  enable_status_broadcast: true
-  extev_polls: false
-  force_active_delivery_receipts: false
-  get_proxy_url: null
-  history_sync:
-    dispatch_wait: 1m
-    full_sync_config:
-      days_limit: null
-      size_mb_limit: null
-      storage_quota_mb: null
-    max_initial_conversations: -1
-    media_requests:
-      auto_request_media: true
-      max_async_handle: 2
-      request_local_time: 120
-      request_method: immediate
-    request_full_sync: true
-  identity_change_notices: false
-  initial_auto_reconnect: true
-  mute_status_broadcast: true
-  os_name: Mautrix-WhatsApp bridge
-  pinned_tag: m.favourite
-  proxy: null
-  proxy_only_login: false
-  send_presence_on_typing: false
-  status_broadcast_tag: m.lowpriority
-  url_previews: false
-  whatsapp_thumbnail: false
+    animated_sticker:
+        args:
+            fps: 25
+            height: 320
+            width: 320
+        target: webp
+    archive_tag: null
+    browser_name: unknown
+    call_start_notices: true
+    direct_media_auto_request: true
+    disable_status_broadcast_send: true
+    disable_view_once: false
+    displayname_template: '{{or .BusinessName .PushName .Phone .RedactedPhone "Unknown user"}} (WA)'
+    enable_status_broadcast: true
+    extev_polls: false
+    force_active_delivery_receipts: false
+    get_proxy_url: null
+    history_sync:
+        dispatch_wait: 1m
+        full_sync_config:
+            days_limit: null
+            size_mb_limit: null
+            storage_quota_mb: null
+        max_initial_conversations: -1
+        media_requests:
+            auto_request_media: true
+            max_async_handle: 2
+            request_local_time: 120
+            request_method: immediate
+        request_full_sync: true
+    identity_change_notices: false
+    initial_auto_reconnect: true
+    mute_status_broadcast: true
+    os_name: Mautrix-WhatsApp bridge
+    pinned_tag: m.favourite
+    proxy: null
+    proxy_only_login: false
+    send_presence_on_typing: false
+    status_broadcast_tag: m.lowpriority
+    url_previews: false
+    whatsapp_thumbnail: false
 provisioning:
-  allow_matrix_auth: true
-  debug_endpoints: false
-  enable_session_transfers: false
-  shared_secret: ENC[AES256_GCM,data:z9PMyNN0U9x7Cnsh4p0zt3RH+h7JcA5BOfNgcf7khkYCWiDE6OVjaq1AxqdEbBPOwrib2L+IRjQ5HyAb4YStvQ==,iv:kYgphMDFQQ0sAA/QZKcVaF05BGRAo8BWazFWR94SdhQ=,tag:lXPAnFs1sJehP58K7uSAdg==,type:str]
+    allow_matrix_auth: true
+    debug_endpoints: false
+    enable_session_transfers: false
+    shared_secret: ENC[AES256_GCM,data:q2BuDKJc9vjYPMiVuQ8m4O3FEUfybvD0q2Xa+jELG3FW5xGBZBQ4zprXL8WsttJZrwZmi78BbZVLkwTdJuL6gw==,iv:IcP8ZQbbI+5gLEvZmJD1jXNse6qtBvg9XMdFBgVnPSM=,tag:7kD8iAZWe4Ko6mj0Ap5tjw==,type:str]
 public_media:
-  enabled: false
-  expiry: 0
-  hash_length: 32
-  signing_key: ENC[AES256_GCM,data:f4vvrpkGMM5CiagXi73n8BvHkZItuJWeL5n/DEVgkEIAdU5SVInIAv9shspvHfeL/hzZP/7SK3f3Kdy2hFTtIw==,iv:F+4ZKWpCXYvLUbcXQeBzodE2rX0vu3Rv+v0WmzgwOdQ=,tag:memRJ39sBVB+Im2w/Db/Fw==,type:str]
+    enabled: false
+    expiry: 0
+    hash_length: 32
+    signing_key: ENC[AES256_GCM,data:NLOyiQJbQbe3S7VmMAQYWYMbaYwE1a6eX+QLRZSPl1bG0prAhC25TgQAx2vXhmzB8b3FjRYW05TvTAwAnfo50A==,iv:06x7yqa1EFwSZBnMtgL1llhfqbRyaoyC0POxy4M/9YM=,tag:ZSCshURPArH8VLyC8gyBCw==,type:str]
 sops:
-  version: 3.13.3
-  encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
-  lastmodified: "2026-08-31T12:15:07Z"
-  mac: ENC[AES256_GCM,data:6jrlV8UDtVKf5TDO9pg7WUd6+kd2Bo5q+/z50E4kmh01vdR/OXqLQB3Ca8yepDt+Gkjb6xYuTW+/PFR0OI/J9U3RVkwVMZ6qLc5N9jgX9ZLXtAoE/2DS9QYh59uawTi99oVEJpSDucW6qRpo12WcXELdjSFHJN1x31plaSkD5PI=,iv:OerKR8J9C5DMImFhmGMfmbOKOqftw0lKzsIOK8UVORs=,tag:Hns+uamUouvSqV8h2ACPjw==,type:str]
-  age:
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVYjhCbjl1a1NYOG1UTHVr
-        eEw3dDN4ZFhEM3dmVHUwbFR0cTlZWlVaRDEwCllyMDhPVjhZaDhyTE5iczN0ZHVx
-        UVFCQU1JMi9lSStqTDhSY1RjK0NWcmsKLS0tIGUvb0g1UDhWeG1XUFk3dDZJUXBr
-        MGFNcFRITktYYytQY0hQTlE2cWtNNzAKoz7L+f3mw4N0bfE9vNbZuOgt25Th9iLV
-        mgb+SakWC59J6toLx9fgdH1AMT4Mtas1NhJ4HSqxIR155XqsByzvKg==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzVEhwaEZaWmJZWVhjbTYx
-        UHlwNTdGZVZjZEEvcFE0WUowSW5PWTk3QmpJCjFDTzMwbW4zUGRhN1JESWxUNXo5
-        K0FrSHZ3TUt6RHVxRzRIWU51bGJ4TDgKLS0tIDVPU3pKb1oxOWt2MnFsOWJwVXhI
-        dGdSTEJhQnkzZnNVbVZBdU03Vml5LzAKmYdgCDjaIFIw9t0eTZgJTBpD4EWeUI6J
-        AOMX4ad3/p6tDblxjJywRkqCUfxtTaN3C5Eyio7cZao3/IZEC57WMg==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFbjEyQ0FPT1ZlYTYxd2pq
-        YlFBY0JkTjdpSG1NNGtvbE5UUU1EU3c0c0Z3CklJRWgwY3ZKZjZrQ0RsdHJiZU1o
-        RkFzY2ZJVXFoQ2IrUlRZcWdZZlg4SFEKLS0tIEUvaUlmbGFlYnRwa3dMNWZNQzhL
-        cGtmTjJRTW1jaGEzTEh4NzJ2MUtUck0KIrzEhxfH56BBayOFDG3uSeqxMVmbQWON
-        YXtm41oEn67SrLnbPbm9GUUG0UkBo3XAiJvF+KBTmfiyAMjbW2B+lw==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoR1FsYS85QVllVnpXQkla
+            OHBXZ01sdnJpTEZhL1AralNzMFNnby9Hc2xnCm5nRXQrNWZoYXNmM1k3WnIzeUhZ
+            VXgwQlN5UHVDL2U5Z3Y4ZVFFS0JYb28KLS0tIGFvWUJPbFdkVGNaL3AwYnQ1N1A2
+            ZzBxczdVbWdDMTgyKzNmN05URmhnRjQK8VhiT+5Z7k5uukdbFZtzu8+tQjFZ2bJJ
+            C8iXtiIZ0HgruO0rMyKb1C5zv5UnLYvEgBEbZ632l/rnNOh6BBI9NA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0ME1GVUJTTHk2RVRkdzZJ
+            M1RMWVVXRkRyVC9Eb1lpVTRob1NoRGI4NG5NClArOWdQUFNVZWJIWGRaL1RodGxX
+            Wmg0Z2xrdGJ4NTVVZU0zeFlhMnpVZUUKLS0tIC9YYXhtZkk4bzZrY1k1UVhUMlpS
+            bnhkMjVNSXNrc1hlWmlEa3FETEFzRlkKHRwonMChQpAc5d7+Vtwxy2vt/ns27qD8
+            bjz14zcljshAWtJ5wXciRWCdME92OGOnNLv/+fx9VD/8zIHwQPIfkg==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBia0ZrN2pCMWQ0T0JjUnZ3
+            eE4wb29acVo2L3UvbGFrcm5uM0Y3ejFHTzFFCllIeFVMWmpUZGhHdTlObUFKK0Fw
+            Q2NNaFVWL3FERU5rOVhXb1JNV0MwZ3cKLS0tIFNkTDRSNTd3RldwM1N1SHFYMkU0
+            K1BuYzRqK3RLKy95a3AxelRsYWtMZzgKqsPTlo67P8DVmgZ0eRA64fmw9eePCkjW
+            8od82wBPKIFuvFtYGU4750qUZD6mkKoaCYDOD37DzoZiCbBGl+GTUQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: ^(avatar_proxy_key|as_token|hs_token|pickle_key|server_key|shared_secret|signing_key|login_shared_secret_map|secrets)$
+    lastmodified: "2026-08-31T14:04:23Z"
+    mac: ENC[AES256_GCM,data:tFmjkzGqPnVcVZrS5/6I3WJ/B1GIrYq8ufW6wZSronvMG/JC2duv/uJr+88sWYK4ke4opm3nABXJQf2Xm0xaD22bamzcvg4s4YT/WnhMei7Mk8co1NxcwD18VveZOxHmlW1bqxoA2vJ2MdA+W9QA/uMOW5iJrlz3b1iUKIe5XZQ=,iv:tFYUsUK+GLNiv4S+ntXk3LlCnhcLl7Hnoa+cKR2Q2c0=,tag:Xjy7Yzc8UULE1ZqHJqVoXw==,type:str]
+    version: 3.13.3
