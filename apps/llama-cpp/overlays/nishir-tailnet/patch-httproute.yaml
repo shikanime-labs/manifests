@@ -4,7 +4,7 @@ metadata:
   name: llama-cpp
 spec:
   hostnames:
-    - llama-cpp.i.shikanime.studio
+    - chat.i.shikanime.studio
   parentRefs:
     - name: llama-cpp
       sectionName: https

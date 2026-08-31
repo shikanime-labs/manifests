@@ -1,9 +1,6 @@
 resources:
   - ../nishir
-  - gatewayclass.yaml
-  - envoyproxy.yaml
   - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 patches:
   - path: patch-httproute.yaml
