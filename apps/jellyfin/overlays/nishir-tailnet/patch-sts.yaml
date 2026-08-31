@@ -11,6 +11,10 @@ spec:
             - name: JELLYFIN_PublishedServerUrl
               value: 100.64.0.0/10=jellyfin.i.shikanime.studio,10.0.0.0/8=jellyfin.i.shikanime.studio,192.168.0.0/16=jellyfin.i.shikanime.studio
             - name: JELLYFIN_EnableHttps
-              value: "false"
+              value: "true"
             - name: JELLYFIN_RequireHttps
-              value: "false"
+              value: "true"
+            - name: JELLYFIN_PublicHttpPort
+              value: "80"
+            - name: JELLYFIN_PublicHttpsPort
+              value: "443"
