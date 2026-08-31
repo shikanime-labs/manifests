@@ -4,6 +4,7 @@ resources:
   - gateway.yaml
   - gatewayconfig.yaml
   - envoyproxy.yaml
+  - httproute.yaml
   - netpol.yaml
   - securitypolicy.yaml
 namespace: shikanime
@@ -18,6 +19,11 @@ patches:
       kind: AIGatewayRoute
       namespace: shikanime
     path: patch-aigatewayroute.yaml
+  - target:
+      name: llama-cpp
+      version: v1
+      kind: HTTPRoute
+    path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

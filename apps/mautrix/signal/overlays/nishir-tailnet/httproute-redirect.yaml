@@ -4,7 +4,7 @@ metadata:
   name: signal-redirect
 spec:
   hostnames:
-      - signal.i.shikanime.studio
+    - signal.i.shikanime.studio
   parentRefs:
     - name: signal
       sectionName: http

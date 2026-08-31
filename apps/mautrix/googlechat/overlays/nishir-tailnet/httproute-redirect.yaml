@@ -4,7 +4,7 @@ metadata:
   name: googlechat-redirect
 spec:
   hostnames:
-      - googlechat.i.shikanime.studio
+    - googlechat.i.shikanime.studio
   parentRefs:
     - name: googlechat
       sectionName: http

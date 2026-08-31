@@ -4,7 +4,7 @@ metadata:
   name: immich-redirect
 spec:
   hostnames:
-      - immich.i.shikanime.studio
+    - immich.i.shikanime.studio
   parentRefs:
     - name: immich
       sectionName: http

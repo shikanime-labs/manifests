@@ -4,7 +4,7 @@ metadata:
   name: seerr-redirect
 spec:
   hostnames:
-      - seerr.i.shikanime.studio
+    - seerr.i.shikanime.studio
   parentRefs:
     - name: seerr
       sectionName: http

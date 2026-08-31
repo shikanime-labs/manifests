@@ -8,6 +8,9 @@ spec:
     - name: ldap
       port: 3890
       targetPort: ldap
+    - name: http
+      port: 17170
+      targetPort: http
   selector:
     app.kubernetes.io/instance: lldap
     app.kubernetes.io/name: lldap

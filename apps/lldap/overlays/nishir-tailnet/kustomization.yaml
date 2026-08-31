@@ -1,6 +1,20 @@
 resources:
   - ../nishir
+  - gateway.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - httproute.yaml
 namespace: shikanime
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: lldap
+      kind: NetworkPolicy
+  - path: patch-httproute.yaml
+    target:
+      name: lldap
+      version: v1
+      kind: HTTPRoute
 labels:
   - includeTemplates: true
     pairs:

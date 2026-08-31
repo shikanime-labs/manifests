@@ -4,7 +4,7 @@ metadata:
   name: copyparty-redirect
 spec:
   hostnames:
-      - copyparty.i.shikanime.studio
+    - copyparty.i.shikanime.studio
   parentRefs:
     - name: copyparty
       sectionName: http

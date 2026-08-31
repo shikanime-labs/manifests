@@ -552,3 +552,39 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-lldap
+  namespace: shikanime
+spec:
+  commonName: lldap.i.shikanime.studio
+  dnsNames:
+    - lldap.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-lldap
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-chat
+  namespace: shikanime
+spec:
+  commonName: chat.i.shikanime.studio
+  dnsNames:
+    - chat.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-chat
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

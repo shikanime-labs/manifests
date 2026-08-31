@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
@@ -11,7 +12,6 @@ spec:
       # data plane (CrashLoop). Pin OFF only those two; nemishi (arm64) and the
       # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
-        replicas: 1
         pod:
           affinity:
             nodeAffinity:
@@ -40,3 +40,38 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: inference
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyDeployment:
+        pod:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: shikanime.dev/kernel-va
+                        operator: NotIn
+                        values:
+                          - "39"
+        container:
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+      envoyService:
+        name: llama-cpp
+        type: LoadBalancer
+        loadBalancerClass: tailscale
+        annotations:
+          tailscale.com/hostname: llama-cpp
+          tailscale.com/tags: "tag:web"
