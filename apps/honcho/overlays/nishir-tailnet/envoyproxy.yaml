@@ -8,16 +8,16 @@ spec:
     type: Kubernetes
     kubernetes:
       envoyDeployment:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: shikanime.dev/kernel-va
-                    operator: NotIn
-                    values:
-                      - "39"
         replicas: 1
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: shikanime.dev/kernel-va
+                      operator: NotIn
+                      values:
+                        - "39"
         container:
           resources:
             requests:
