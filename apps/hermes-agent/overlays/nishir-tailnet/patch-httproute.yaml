@@ -4,10 +4,8 @@ metadata:
   name: hermes-agent
 spec:
   hostnames:
-  - automata.i.shikanime.studio
-  - automata-a2a.i.shikanime.studio
-  - automata-dashboard.i.shikanime.studio
-  - nishir.i.shikanime.studio
+    - automata.i.shikanime.studio
+    - nishir.i.shikanime.studio
   parentRefs:
-  - name: hermes-agent
-    sectionName: https
+    - name: hermes-agent
+      sectionName: https

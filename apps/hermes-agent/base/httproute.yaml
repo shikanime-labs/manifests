@@ -4,26 +4,6 @@ metadata:
   name: hermes-agent
 spec:
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: hermes-agent
-      port: 8642
-  - hostname: automata-a2a.i.shikanime.studio
-    matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: hermes-agent
-      port: 9900
-  - hostname: automata-dashboard.i.shikanime.studio
-    matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: hermes-agent
-      port: 9119
+    - backendRefs:
+        - name: hermes-agent
+          port: 8642
