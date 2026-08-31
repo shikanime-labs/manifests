@@ -5,12 +5,12 @@ metadata:
   namespace: shikanime
 spec:
   targetRefs:
-    - group: ""
+    - name: qbittorrent
+      group: ""
       kind: Service
-      name: qbittorrent
   validation:
     hostname: qbittorrent
     caCertificateRefs:
-      - group: ""
+      - name: nishir-ca-certificates.crt
+        group: ""
         kind: ConfigMap
-        name: nishir-ca-certificates.crt

@@ -1,0 +1,117 @@
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-control
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-control
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftps
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftps
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-sftp
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: sftp
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12000
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12000
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12001
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12001
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12002
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12002
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12003
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12003
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12004
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12004
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12005
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12005
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12006
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12006
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12007
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12007
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12008
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12008
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12009
+spec:
+  parentRefs:
+    - name: copyparty
+      sectionName: ftp-data-12009

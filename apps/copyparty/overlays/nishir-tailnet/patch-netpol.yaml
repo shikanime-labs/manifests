@@ -11,5 +11,15 @@
     ports:
       - port: http
       - port: ftp-control
+      - port: ftp-data-12000
+      - port: ftp-data-12001
+      - port: ftp-data-12002
+      - port: ftp-data-12003
+      - port: ftp-data-12004
+      - port: ftp-data-12005
+      - port: ftp-data-12006
+      - port: ftp-data-12007
+      - port: ftp-data-12008
+      - port: ftp-data-12009
       - port: ftps
       - port: sftp

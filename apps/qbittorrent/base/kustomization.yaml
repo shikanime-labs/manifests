@@ -6,6 +6,8 @@ metadata:
 resources:
   - netpol.yaml
   - httproute.yaml
+  - udproute.yaml
+  - tcproute.yaml
   - pvc.yaml
   - sts.yaml
   - svc.yaml

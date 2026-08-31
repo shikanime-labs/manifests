@@ -4,6 +4,6 @@ metadata:
   name: copyparty
 spec:
   rules:
-  - backendRefs:
-    - name: copyparty
-      port: 3923
+    - backendRefs:
+        - name: copyparty
+          port: 3923

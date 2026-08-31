@@ -23,3 +23,33 @@ spec:
     - name: sftp
       port: 22
       protocol: TCP
+    - name: ftp-data-12000
+      port: 12000
+      protocol: TCP
+    - name: ftp-data-12001
+      port: 12001
+      protocol: TCP
+    - name: ftp-data-12002
+      port: 12002
+      protocol: TCP
+    - name: ftp-data-12003
+      port: 12003
+      protocol: TCP
+    - name: ftp-data-12004
+      port: 12004
+      protocol: TCP
+    - name: ftp-data-12005
+      port: 12005
+      protocol: TCP
+    - name: ftp-data-12006
+      port: 12006
+      protocol: TCP
+    - name: ftp-data-12007
+      port: 12007
+      protocol: TCP
+    - name: ftp-data-12008
+      port: 12008
+      protocol: TCP
+    - name: ftp-data-12009
+      port: 12009
+      protocol: TCP

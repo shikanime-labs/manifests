@@ -4,7 +4,6 @@ resources:
   - envoyproxy.yaml
   - gateway.yaml
   - backendtlspolicy.yaml
-  - routes-6881.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -20,10 +19,10 @@ patches:
       name: qbittorrent
       version: v1
       kind: NetworkPolicy
-patches:
   - path: patch-httproute.yaml
     target:
       name: qbittorrent
       version: v1
       kind: HTTPRoute
-
+  - path: patch-udproute.yaml
+  - path: patch-tcproute.yaml

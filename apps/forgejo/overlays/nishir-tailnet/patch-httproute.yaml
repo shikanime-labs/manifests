@@ -4,7 +4,7 @@ metadata:
   name: forgejo
 spec:
   hostnames:
-  - forgejo.i.shikanime.studio
+    - forgejo.i.shikanime.studio
   parentRefs:
-  - name: forgejo
-    sectionName: https
+    - name: forgejo
+      sectionName: https
