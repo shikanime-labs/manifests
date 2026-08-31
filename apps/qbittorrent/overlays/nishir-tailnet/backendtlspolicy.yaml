@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: qbittorrent
+  namespace: shikanime
+spec:
+  targetRefs:
+    - group: ""
+      kind: Service
+      name: qbittorrent
+  validation:
+    hostname: qbittorrent
+    caCertificateRefs:
+      - group: ""
+        kind: ConfigMap
+        name: nishir-ca-certificates.crt
