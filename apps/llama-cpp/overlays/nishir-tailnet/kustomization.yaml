@@ -6,7 +6,6 @@ resources:
   - envoyproxy.yaml
   - netpol.yaml
   - securitypolicy.yaml
-  - ui-gateway.yaml
 namespace: shikanime
 patches:
   - target:
