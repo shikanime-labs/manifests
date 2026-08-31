@@ -6,18 +6,3 @@ spec:
   ingress:
     - ports:
         - port: ldap
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: envoy-gateway-system
-          podSelector:
-            matchLabels:
-              app.kubernetes.io/name: envoy
-      ports:
-        - port: http
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: lldap
-      app.kubernetes.io/name: lldap
-  policyTypes:
-    - Ingress

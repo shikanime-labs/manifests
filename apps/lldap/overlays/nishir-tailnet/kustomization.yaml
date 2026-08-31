@@ -6,6 +6,10 @@ resources:
   - httproute.yaml
 namespace: shikanime
 patches:
+  - path: patch-netpol.yaml
+    target:
+      name: lldap
+      kind: NetworkPolicy
   - path: patch-httproute.yaml
     target:
       name: lldap
