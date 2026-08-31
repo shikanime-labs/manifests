@@ -1,7 +1,8 @@
 resources:
   - ../nishir
-  - netpol.yaml
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -11,6 +12,12 @@ labels:
       app.kubernetes.io/name: mautrix-signal
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2607.0
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: mautrix-signal
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: mautrix-signal
     files:
@@ -19,3 +26,10 @@ secretGenerator:
       - registration.yaml=matrix-signal/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: signal
+      version: v1
+      kind: HTTPRoute
+

@@ -1,0 +1,10 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: signal
+spec:
+  hostnames:
+  - signal.i.shikanime.studio
+  parentRefs:
+  - name: signal
+    sectionName: https
