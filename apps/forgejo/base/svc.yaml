@@ -11,3 +11,16 @@ spec:
   selector:
     app.kubernetes.io/instance: forgejo
     app.kubernetes.io/name: forgejo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: git
+spec:
+  selector:
+    app.kubernetes.io/instance: forgejo
+    app.kubernetes.io/name: forgejo
+  ports:
+    - name: ssh
+      port: 22
+      targetPort: ssh
