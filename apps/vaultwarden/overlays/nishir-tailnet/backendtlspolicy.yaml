@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: vaultwarden
+  namespace: shikanime
+spec:
+  targetRefs:
+    - group: ""
+      kind: Service
+      name: vaultwarden
+      sectionName: https
+  validation:
+    hostname: vaultwarden.shikanime.svc.cluster.local
+    caCertificateRefs:
+      - group: ""
+        kind: ConfigMap
+        name: nishir-ca-certificates.crt
