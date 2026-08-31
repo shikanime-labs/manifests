@@ -19,6 +19,11 @@ components:
   - ../../components/trust-manager
   - ../../components/external-dns
 patches:
+  - path: patch-netpol.yaml
+    target:
+      name: default
+      namespace: shikanime
+      kind: NetworkPolicy
   - path: patch-ingress.yaml
 labels:
   - includeTemplates: true

@@ -2,7 +2,6 @@ resources:
   - alert.yaml
   - ingress.yaml
   - netpol.yaml
-  - netpol-envoy-gateway.yaml
   - ns.yaml
   - provider.yaml
   - pvc.yaml
