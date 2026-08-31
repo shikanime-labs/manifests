@@ -1,0 +1,16 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: whatsapp
+  namespace: shikanime
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        name: whatsapp
+        type: LoadBalancer
+        loadBalancerClass: tailscale
+        annotations:
+          tailscale.com/hostname: whatsapp
+          tailscale.com/tags: "tag:web"
