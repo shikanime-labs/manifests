@@ -1,20 +1,13 @@
 resources:
   - ../../base
-  - cert.yaml
 namespace: shikanime
 components:
-  - ../../components/tls
   - ../../components/ldap
   - ../../components/gpu
-configurations:
-  - namereference.yaml
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
 secretGenerator:
-  - name: jellyfin-pkcs12-password
-    envs:
-      - jellyfin/.enc.env
   - name: jellyfin-ldap
     files:
       - LDAP-Auth.xml=jellyfin/LDAP-Auth.enc.xml
