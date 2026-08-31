@@ -1,0 +1,11 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: telsha-webhook
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  parametersRef:
+    name: telsha-webhook
+    group: gateway.envoyproxy.io
+    kind: EnvoyProxy
+    namespace: flux-system

@@ -1,7 +1,8 @@
 resources:
   - alert.yaml
   - cert.yaml
-  - ingress.yaml
+  - gateway.yaml
+  - httproute.yaml
   - netpol.yaml
   - ns.yaml
   - provider.yaml

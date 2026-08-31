@@ -1,16 +1,16 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-webhooks-flux
-  namespace: flux-system
+  name: studio-shikanime-i-longhorn
+  namespace: longhorn-system
 spec:
-  commonName: webhooks.flux.i.shikanime.studio
+  commonName: longhorn.i.shikanime.studio
   dnsNames:
-    - webhooks.flux.i.shikanime.studio
+    - longhorn.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-webhooks-flux
+  secretName: studio-shikanime-i-longhorn
   usages:
     - digital signature
     - key encipherment

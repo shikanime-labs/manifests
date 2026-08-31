@@ -1,6 +1,7 @@
 resources:
   - alert.yaml
-  - ingress.yaml
+  - gateway.yaml
+  - httproute.yaml
   - ns.yaml
   - provider.yaml
   - receiver.yaml
