@@ -1,5 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
+resources:
+  - httproute.yaml
 patches:
   - path: patch-netpol.yaml
     target:
@@ -8,5 +10,3 @@ patches:
       kind: NetworkPolicy
   - path: patch-sts.yaml
   - path: patch-svc.yaml
-resources:
-  - httproute-tls.yaml

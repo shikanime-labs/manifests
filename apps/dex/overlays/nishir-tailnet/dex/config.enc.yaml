@@ -1,114 +1,114 @@
 connectors:
-    - name: LDAP
-      type: ldap
-      id: ldap
-      config:
-        bindDN: uid=admin,ou=people,dc=shikanime,dc=studio
-        bindPW: ENC[AES256_GCM,data:DhoZ0HrR4YTLFxaG2PNgbXAQrpLuoWUahPtMtQ==,iv:mUdtUoVG3M+95bk4ezTNNyctOz5fVyIjTL8kAozCEnU=,tag:DAQ+frwjsIKJSzOZH6h2ug==,type:str]
-        groupSearch:
-            baseDN: ou=groups,dc=shikanime,dc=studio
-            filter: (objectClass=groupOfUniqueNames)
-            nameAttr: cn
-            userMatchers:
-                - groupAttr: member
-                  userAttr: DN
-        host: lldap.shikanime.svc.cluster.local:6360
-        insecureNoSSL: false
-        insecureSkipVerify: true
-        userSearch:
-            baseDN: ou=people,dc=shikanime,dc=studio
-            emailAttr: mail
-            idAttr: uid
-            nameAttr: displayName
-            preferredUsernameAttr: uid
-            username: uid
+  - name: LDAP
+    type: ldap
+    id: ldap
+    config:
+      bindDN: uid=admin,ou=people,dc=shikanime,dc=studio
+      bindPW: ENC[AES256_GCM,data:DhoZ0HrR4YTLFxaG2PNgbXAQrpLuoWUahPtMtQ==,iv:mUdtUoVG3M+95bk4ezTNNyctOz5fVyIjTL8kAozCEnU=,tag:DAQ+frwjsIKJSzOZH6h2ug==,type:str]
+      groupSearch:
+        baseDN: ou=groups,dc=shikanime,dc=studio
+        filter: (objectClass=groupOfUniqueNames)
+        nameAttr: cn
+        userMatchers:
+          - groupAttr: member
+            userAttr: DN
+      host: lldap.shikanime.svc.cluster.local:6360
+      insecureNoSSL: false
+      insecureSkipVerify: true
+      userSearch:
+        baseDN: ou=people,dc=shikanime,dc=studio
+        emailAttr: mail
+        idAttr: uid
+        nameAttr: displayName
+        preferredUsernameAttr: uid
+        username: uid
 issuer: https://accounts.i.shikanime.studio
 oauth2:
-    skipApprovalScreen: true
+  skipApprovalScreen: true
 staticClients:
-    - name: Forgejo
-      id: forgejo
-      secret: ENC[AES256_GCM,data:Y0VIYuPu1hH9kMiD31iBeJWjg/m3lANwiuZ41kAGY2V+9N2YJXbqId0b8Lt8A7/oTKeQXsIrjZ4cjJQZgmyU/g==,iv:8YP1IMsJz84PLfQHdF31kS1mO88M3iN2y8AiDq2SYbc=,tag:vFee0a7GobZlf4KmZmOA2w==,type:str]
-      redirectURIs:
-        - https://forgejo.i.shikanime.studio/user/oauth2/Dex/callback
-      trustedPeers:
-        - '*'
-    - name: Gitea Mirror
-      id: gitea-mirror
-      secret: ENC[AES256_GCM,data:+0Jz9Qgc03hOWNkUUbpiqHsxNKZ+odi1+V7vmtdm/suzs//nOkBw0OEOW9RhLwNbH1Y/NXT7dM1rzLCvwSuugg==,iv:oWOYsWEVoaWAm97TvxqjDlwlGBX0DKfVMYqyeojhnIA=,tag:fJj7kl2cS4WR/pff4FTq4g==,type:str]
-      redirectURIs:
-        - https://gitea-mirror.i.shikanime.studio/api/auth/sso/callback/dex
-      trustedPeers:
-        - '*'
-    - name: Synapse
-      id: synapse
-      secret: ENC[AES256_GCM,data:nMDVJPmxDJ7UN7PMOgGuKDDQxkrc6/3eZKiZpbBpqDkXxsz/aj+jkmx+hROsnDF81/58Hob00wGc33n2B2dB1A==,iv:XpWfncq8MuMC5/xDsKQj4DBlbRhIJQSSVOriGgEk2ic=,tag:r+ytjKs5dWMyFilNVesQNA==,type:str]
-      redirectURIs:
-        - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
-      trustedPeers:
-        - '*'
-    - name: Hermes Agent Dashboard
-      id: hermes-agent
-      public: true
-      secret: ""
-      redirectURIs:
-        - https://dashboard.automata.i.shikanime.studio/auth/callback
-      trustedPeers:
-        - '*'
-    - name: Vaultwarden
-      id: vaultwarden
-      secret: ENC[AES256_GCM,data:hGWJeu9snRzGtWMy5rvM/LjA1wLQbSHn8FPtwBXV7ANa7BkbaxjEk1M0HJDvAY9q2MzRRq3UlA86WhNTGuxHmQ==,iv:329BrlXwEezJX04r5qmcDFcI+qPEOrgzgUXuC7shNYs=,tag:+w0HuroDmKfNIQgoHyEvhQ==,type:str]
-      redirectURIs:
-        - https://vaultwarden.i.shikanime.studio/sso/oidc/callback
-      trustedPeers:
-        - '*'
-    - name: Immich
-      id: immich
-      secret: ENC[AES256_GCM,data:8J07XyXVAdbo1vYDbcW4K9Mnu39on5njMHWbvLjm7M0=,iv:RJoP5ejbhM3v7wBkrsfY9rAv/tZQ8NbAOAFK2TFFEIo=,tag:UUW2RfUPSW4Lyw71Gtaadg==,type:str]
-      redirectURIs:
-        - https://immich.i.shikanime.studio/auth/login
-      trustedPeers:
-        - '*'
+  - name: Forgejo
+    id: forgejo
+    secret: ENC[AES256_GCM,data:Y0VIYuPu1hH9kMiD31iBeJWjg/m3lANwiuZ41kAGY2V+9N2YJXbqId0b8Lt8A7/oTKeQXsIrjZ4cjJQZgmyU/g==,iv:8YP1IMsJz84PLfQHdF31kS1mO88M3iN2y8AiDq2SYbc=,tag:vFee0a7GobZlf4KmZmOA2w==,type:str]
+    redirectURIs:
+      - https://forgejo.i.shikanime.studio/user/oauth2/Dex/callback
+    trustedPeers:
+      - "*"
+  - name: Gitea Mirror
+    id: gitea-mirror
+    secret: ENC[AES256_GCM,data:+0Jz9Qgc03hOWNkUUbpiqHsxNKZ+odi1+V7vmtdm/suzs//nOkBw0OEOW9RhLwNbH1Y/NXT7dM1rzLCvwSuugg==,iv:oWOYsWEVoaWAm97TvxqjDlwlGBX0DKfVMYqyeojhnIA=,tag:fJj7kl2cS4WR/pff4FTq4g==,type:str]
+    redirectURIs:
+      - https://gitea-mirror.i.shikanime.studio/api/auth/sso/callback/dex
+    trustedPeers:
+      - "*"
+  - name: Synapse
+    id: synapse
+    secret: ENC[AES256_GCM,data:nMDVJPmxDJ7UN7PMOgGuKDDQxkrc6/3eZKiZpbBpqDkXxsz/aj+jkmx+hROsnDF81/58Hob00wGc33n2B2dB1A==,iv:XpWfncq8MuMC5/xDsKQj4DBlbRhIJQSSVOriGgEk2ic=,tag:r+ytjKs5dWMyFilNVesQNA==,type:str]
+    redirectURIs:
+      - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
+    trustedPeers:
+      - "*"
+  - name: Hermes Agent Dashboard
+    id: hermes-agent
+    public: true
+    secret: ""
+    redirectURIs:
+      - https://dashboard.automata.i.shikanime.studio/auth/callback
+    trustedPeers:
+      - "*"
+  - name: Vaultwarden
+    id: vaultwarden
+    secret: ENC[AES256_GCM,data:hGWJeu9snRzGtWMy5rvM/LjA1wLQbSHn8FPtwBXV7ANa7BkbaxjEk1M0HJDvAY9q2MzRRq3UlA86WhNTGuxHmQ==,iv:329BrlXwEezJX04r5qmcDFcI+qPEOrgzgUXuC7shNYs=,tag:+w0HuroDmKfNIQgoHyEvhQ==,type:str]
+    redirectURIs:
+      - https://vaultwarden.i.shikanime.studio/sso/oidc/callback
+    trustedPeers:
+      - "*"
+  - name: Immich
+    id: immich
+    secret: ENC[AES256_GCM,data:8J07XyXVAdbo1vYDbcW4K9Mnu39on5njMHWbvLjm7M0=,iv:RJoP5ejbhM3v7wBkrsfY9rAv/tZQ8NbAOAFK2TFFEIo=,tag:UUW2RfUPSW4Lyw71Gtaadg==,type:str]
+    redirectURIs:
+      - https://immich.i.shikanime.studio/auth/login
+    trustedPeers:
+      - "*"
 storage:
-    type: memory
+  type: memory
 telemetry:
-    http: 0.0.0.0:5558
+  http: 0.0.0.0:5558
 web:
-    gracefulShutdownTimeout: 5s
-    healthz: 0.0.0.0:5556
-    https: 0.0.0.0:5556
-    tlsCert: /etc/ssl/private/tls.crt
-    tlsKey: /etc/ssl/private/tls.key
+  gracefulShutdownTimeout: 5s
+  healthz: 0.0.0.0:5556
+  https: 0.0.0.0:5556
+  tlsCert: /etc/ssl/private/tls.crt
+  tlsKey: /etc/ssl/private/tls.key
 sops:
-    age:
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVeTRWUUszRU1VREpaQXBX
-            WTNiWnRWOCszUlRJbzRCMlEzbmZ3bmpxSmpRCmJWZ2FQeUxkN201eStGeGtIUzN6
-            dWVGbFFaQUhkUzIzbVFNbFZjNFI4UDgKLS0tIHNvWnhMSXFBTmpIaU1VVkd1RHBQ
-            NEJvdmp2UjNrL2tzajVBUHF3M05CSzgKtCbMPAjEZ3u/f4sAvlN8Q8NlkYFGzFLW
-            xqVvVZeEUmnZAh0zmuRbywcdP/9SwwXqjquuiDGGdtdKqXXynHsbnQ==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDT3pCeEswYk5SQnlEYjZj
-            THBJaC9WNVJvcW1nbHNmbkdxV01UY3VzQ0hnCjMxbzhvdVM2ZE12M2lqR1puUjZN
-            Q1c0dWtpaFRNWjAyaGtGaGI0RUJqQjAKLS0tIDVhSm5OZ1FSMEtqdHlMMVo2WFhu
-            VDBpN2ZsN2RacTVTMkpBUVJkSkxDcE0KbVTKfu/Qviu4KKW6Dynwy9hSQFr5jV2D
-            VC4XewqVZoVduiwziMCY+V99TJ/PDtLgUUt+GQPz2XNeu6PUvcuCuQ==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIcC95WEdGdmRLWDluNG9o
-            QjJ3L29abUsvbTRHRDhJeDlPR1pldW5WOFg0CjBWdTc4N3lka20yOGF0WlA1SjBh
-            cXJidjRPL2J6RlozZ2orc3Rjdk9ia2MKLS0tIHpiOGFHRHdtZGFEaU9FMmp6STUz
-            RDNqRy9qT1UySmlEUGxsSForWlVrVXMKsEs1TSrNVZVqooZFsxPkiwjPKBnIUlGf
-            9TdrMNbQvXoIQm01HUQZOrQc17QZi+sM4RFRlBVrlh7/i6BDXruL0g==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
-    encrypted_regex: ^(secret|bindPW)$
-    lastmodified: "2026-08-31T15:37:47Z"
-    mac: ENC[AES256_GCM,data:dJFTRRlLTu250itbJhXLWxzRJyRvJ3uzf73uIb6xBAcsSK0nlJ+redES6GSiy1JSkh7YFejgjAer/uPIgxK5zfbxLWwkZY6P3x4cPTjFz69p4ik1me0/FHNHU/AJiuRfk3OXT1p4PscKyx/SYjXcIZXjVrEolFPgquoPFexwRGM=,iv:dI1u7yJEXnx2ALLfKiX++4UtjMtXi1BlfiJ+5itbSzs=,tag:J9t0s+n2FXBIP60yQhnAcA==,type:str]
-    version: 3.13.3
+  version: 3.13.3
+  encrypted_regex: ^(secret|bindPW)$
+  lastmodified: "2026-08-31T15:37:47Z"
+  mac: ENC[AES256_GCM,data:dJFTRRlLTu250itbJhXLWxzRJyRvJ3uzf73uIb6xBAcsSK0nlJ+redES6GSiy1JSkh7YFejgjAer/uPIgxK5zfbxLWwkZY6P3x4cPTjFz69p4ik1me0/FHNHU/AJiuRfk3OXT1p4PscKyx/SYjXcIZXjVrEolFPgquoPFexwRGM=,iv:dI1u7yJEXnx2ALLfKiX++4UtjMtXi1BlfiJ+5itbSzs=,tag:J9t0s+n2FXBIP60yQhnAcA==,type:str]
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVeTRWUUszRU1VREpaQXBX
+        WTNiWnRWOCszUlRJbzRCMlEzbmZ3bmpxSmpRCmJWZ2FQeUxkN201eStGeGtIUzN6
+        dWVGbFFaQUhkUzIzbVFNbFZjNFI4UDgKLS0tIHNvWnhMSXFBTmpIaU1VVkd1RHBQ
+        NEJvdmp2UjNrL2tzajVBUHF3M05CSzgKtCbMPAjEZ3u/f4sAvlN8Q8NlkYFGzFLW
+        xqVvVZeEUmnZAh0zmuRbywcdP/9SwwXqjquuiDGGdtdKqXXynHsbnQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDT3pCeEswYk5SQnlEYjZj
+        THBJaC9WNVJvcW1nbHNmbkdxV01UY3VzQ0hnCjMxbzhvdVM2ZE12M2lqR1puUjZN
+        Q1c0dWtpaFRNWjAyaGtGaGI0RUJqQjAKLS0tIDVhSm5OZ1FSMEtqdHlMMVo2WFhu
+        VDBpN2ZsN2RacTVTMkpBUVJkSkxDcE0KbVTKfu/Qviu4KKW6Dynwy9hSQFr5jV2D
+        VC4XewqVZoVduiwziMCY+V99TJ/PDtLgUUt+GQPz2XNeu6PUvcuCuQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIcC95WEdGdmRLWDluNG9o
+        QjJ3L29abUsvbTRHRDhJeDlPR1pldW5WOFg0CjBWdTc4N3lka20yOGF0WlA1SjBh
+        cXJidjRPL2J6RlozZ2orc3Rjdk9ia2MKLS0tIHpiOGFHRHdtZGFEaU9FMmp6STUz
+        RDNqRy9qT1UySmlEUGxsSForWlVrVXMKsEs1TSrNVZVqooZFsxPkiwjPKBnIUlGf
+        9TdrMNbQvXoIQm01HUQZOrQc17QZi+sM4RFRlBVrlh7/i6BDXruL0g==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
