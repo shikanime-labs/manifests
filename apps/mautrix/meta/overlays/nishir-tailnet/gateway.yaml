@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: meta-i-shikanime-studio-tls
+          - name: studio-shikanime-i-meta
             group: ""
             kind: Secret

@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: prowlarr-i-shikanime-studio-tls
+          - name: studio-shikanime-i-prowlarr
             group: ""
             kind: Secret

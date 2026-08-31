@@ -14,7 +14,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: qbittorrent-i-shikanime-studio-tls
+          - name: studio-shikanime-i-qbittorrent
             group: ""
             kind: Secret
     - name: bittorrent

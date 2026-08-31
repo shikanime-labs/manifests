@@ -15,7 +15,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: inference-i-shikanime-studio-tls
+  name: studio-shikanime-i-inference
   namespace: shikanime
 spec:
   commonName: inference.i.shikanime.studio
@@ -24,7 +24,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: inference-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-inference
   usages:
     - digital signature
     - key encipherment
@@ -33,7 +33,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: syncthing-i-shikanime-studio-tls
+  name: studio-shikanime-i-syncthing
   namespace: shikanime
 spec:
   commonName: syncthing.i.shikanime.studio
@@ -42,7 +42,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: syncthing-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-syncthing
   usages:
     - digital signature
     - key encipherment
@@ -51,7 +51,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: jellyfin-i-shikanime-studio-tls
+  name: studio-shikanime-i-jellyfin
   namespace: shikanime
 spec:
   commonName: jellyfin.i.shikanime.studio
@@ -60,7 +60,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: jellyfin-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-jellyfin
   usages:
     - digital signature
     - key encipherment
@@ -69,7 +69,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: qbittorrent-i-shikanime-studio-tls
+  name: studio-shikanime-i-qbittorrent
   namespace: shikanime
 spec:
   commonName: qbittorrent.i.shikanime.studio
@@ -78,7 +78,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: qbittorrent-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-qbittorrent
   usages:
     - digital signature
     - key encipherment
@@ -87,7 +87,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: seerr-i-shikanime-studio-tls
+  name: studio-shikanime-i-seerr
   namespace: shikanime
 spec:
   commonName: seerr.i.shikanime.studio
@@ -96,7 +96,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: seerr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-seerr
   usages:
     - digital signature
     - key encipherment
@@ -105,7 +105,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: lidarr-i-shikanime-studio-tls
+  name: studio-shikanime-i-lidarr
   namespace: shikanime
 spec:
   commonName: lidarr.i.shikanime.studio
@@ -114,7 +114,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: lidarr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-lidarr
   usages:
     - digital signature
     - key encipherment
@@ -123,7 +123,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: radarr-i-shikanime-studio-tls
+  name: studio-shikanime-i-radarr
   namespace: shikanime
 spec:
   commonName: radarr.i.shikanime.studio
@@ -132,7 +132,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: radarr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-radarr
   usages:
     - digital signature
     - key encipherment
@@ -141,7 +141,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: sonarr-i-shikanime-studio-tls
+  name: studio-shikanime-i-sonarr
   namespace: shikanime
 spec:
   commonName: sonarr.i.shikanime.studio
@@ -150,7 +150,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: sonarr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-sonarr
   usages:
     - digital signature
     - key encipherment
@@ -159,7 +159,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: whisparr-i-shikanime-studio-tls
+  name: studio-shikanime-i-whisparr
   namespace: shikanime
 spec:
   commonName: whisparr.i.shikanime.studio
@@ -168,7 +168,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: whisparr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-whisparr
   usages:
     - digital signature
     - key encipherment
@@ -177,17 +177,16 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: synapse-proxy-i-shikanime-studio-tls
+  name: studio-shikanime-i-matrix
   namespace: shikanime
 spec:
-  commonName: synapse-proxy.i.shikanime.studio
+  commonName: matrix.i.shikanime.studio
   dnsNames:
-    - synapse-proxy.i.shikanime.studio
     - matrix.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: synapse-proxy-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-matrix
   usages:
     - digital signature
     - key encipherment
@@ -196,7 +195,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: vaultwarden-i-shikanime-studio-tls
+  name: studio-shikanime-i-vaultwarden
   namespace: shikanime
 spec:
   commonName: vaultwarden.i.shikanime.studio
@@ -205,7 +204,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: vaultwarden-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-vaultwarden
   usages:
     - digital signature
     - key encipherment
@@ -214,7 +213,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: discord-i-shikanime-studio-tls
+  name: studio-shikanime-i-discord
   namespace: shikanime
 spec:
   commonName: discord.i.shikanime.studio
@@ -223,7 +222,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: discord-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-discord
   usages:
     - digital signature
     - key encipherment
@@ -232,7 +231,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: googlechat-i-shikanime-studio-tls
+  name: studio-shikanime-i-googlechat
   namespace: shikanime
 spec:
   commonName: googlechat.i.shikanime.studio
@@ -241,7 +240,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: googlechat-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-googlechat
   usages:
     - digital signature
     - key encipherment
@@ -250,7 +249,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: linkedin-i-shikanime-studio-tls
+  name: studio-shikanime-i-linkedin
   namespace: shikanime
 spec:
   commonName: linkedin.i.shikanime.studio
@@ -259,7 +258,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: linkedin-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-linkedin
   usages:
     - digital signature
     - key encipherment
@@ -268,7 +267,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: meta-i-shikanime-studio-tls
+  name: studio-shikanime-i-meta
   namespace: shikanime
 spec:
   commonName: meta.i.shikanime.studio
@@ -277,7 +276,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: meta-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-meta
   usages:
     - digital signature
     - key encipherment
@@ -286,7 +285,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: signal-i-shikanime-studio-tls
+  name: studio-shikanime-i-signal
   namespace: shikanime
 spec:
   commonName: signal.i.shikanime.studio
@@ -295,7 +294,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: signal-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-signal
   usages:
     - digital signature
     - key encipherment
@@ -304,7 +303,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: slack-i-shikanime-studio-tls
+  name: studio-shikanime-i-slack
   namespace: shikanime
 spec:
   commonName: slack.i.shikanime.studio
@@ -313,7 +312,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: slack-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-slack
   usages:
     - digital signature
     - key encipherment
@@ -322,7 +321,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: twitter-i-shikanime-studio-tls
+  name: studio-shikanime-i-twitter
   namespace: shikanime
 spec:
   commonName: twitter.i.shikanime.studio
@@ -331,7 +330,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: twitter-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-twitter
   usages:
     - digital signature
     - key encipherment
@@ -340,7 +339,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: whatsapp-i-shikanime-studio-tls
+  name: studio-shikanime-i-whatsapp
   namespace: shikanime
 spec:
   commonName: whatsapp.i.shikanime.studio
@@ -349,7 +348,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: whatsapp-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-whatsapp
   usages:
     - digital signature
     - key encipherment
@@ -358,7 +357,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: prowlarr-i-shikanime-studio-tls
+  name: studio-shikanime-i-prowlarr
   namespace: shikanime
 spec:
   commonName: prowlarr.i.shikanime.studio
@@ -367,7 +366,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: prowlarr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-prowlarr
   usages:
     - digital signature
     - key encipherment
@@ -376,7 +375,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: bazarr-i-shikanime-studio-tls
+  name: studio-shikanime-i-bazarr
   namespace: shikanime
 spec:
   commonName: bazarr.i.shikanime.studio
@@ -385,7 +384,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: bazarr-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-bazarr
   usages:
     - digital signature
     - key encipherment
@@ -394,7 +393,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: copyparty-i-shikanime-studio-tls
+  name: studio-shikanime-i-copyparty
   namespace: shikanime
 spec:
   commonName: copyparty.i.shikanime.studio
@@ -403,7 +402,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: copyparty-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-copyparty
   usages:
     - digital signature
     - key encipherment
@@ -412,7 +411,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: dex-i-shikanime-studio-tls
+  name: studio-shikanime-i-dex
   namespace: shikanime
 spec:
   commonName: dex.i.shikanime.studio
@@ -422,7 +421,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: dex-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-dex
   usages:
     - digital signature
     - key encipherment
@@ -431,7 +430,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: forgejo-i-shikanime-studio-tls
+  name: studio-shikanime-i-forgejo
   namespace: shikanime
 spec:
   commonName: forgejo.i.shikanime.studio
@@ -440,7 +439,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: forgejo-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-forgejo
   usages:
     - digital signature
     - key encipherment
@@ -449,7 +448,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gitea-mirror-i-shikanime-studio-tls
+  name: studio-shikanime-i-gitea-mirror
   namespace: shikanime
 spec:
   commonName: gitea-mirror.i.shikanime.studio
@@ -458,7 +457,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: gitea-mirror-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-gitea-mirror
   usages:
     - digital signature
     - key encipherment
@@ -467,7 +466,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: hermes-agent-i-shikanime-studio-tls
+  name: studio-shikanime-i-hermes-agent
   namespace: shikanime
 spec:
   commonName: hermes-agent.i.shikanime.studio
@@ -476,7 +475,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: hermes-agent-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-hermes-agent
   usages:
     - digital signature
     - key encipherment
@@ -485,7 +484,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: honcho-i-shikanime-studio-tls
+  name: studio-shikanime-i-honcho
   namespace: shikanime
 spec:
   commonName: honcho.i.shikanime.studio
@@ -494,7 +493,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: honcho-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-honcho
   usages:
     - digital signature
     - key encipherment
@@ -503,7 +502,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: immich-i-shikanime-studio-tls
+  name: studio-shikanime-i-immich
   namespace: shikanime
 spec:
   commonName: immich.i.shikanime.studio
@@ -512,7 +511,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: immich-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-immich
   usages:
     - digital signature
     - key encipherment
@@ -521,7 +520,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: metatube-i-shikanime-studio-tls
+  name: studio-shikanime-i-metatube
   namespace: shikanime
 spec:
   commonName: metatube.i.shikanime.studio
@@ -530,7 +529,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: metatube-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-metatube
   usages:
     - digital signature
     - key encipherment
@@ -539,7 +538,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: dashboard-automata-i-shikanime-studio-tls
+  name: studio-shikanime-i-automata-dashboard
   namespace: shikanime
 spec:
   commonName: dashboard.automata.i.shikanime.studio
@@ -548,7 +547,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: dashboard-automata-i-shikanime-studio-tls
+  secretName: studio-shikanime-i-automata-dashboard
   usages:
     - digital signature
     - key encipherment

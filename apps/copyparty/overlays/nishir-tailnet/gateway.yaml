@@ -14,7 +14,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: copyparty-i-shikanime-studio-tls
+          - name: studio-shikanime-i-copyparty
             group: ""
             kind: Secret
     - name: ftp-control

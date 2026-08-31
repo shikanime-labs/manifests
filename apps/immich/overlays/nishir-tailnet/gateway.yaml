@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: immich-i-shikanime-studio-tls
+          - name: studio-shikanime-i-immich
             group: ""
             kind: Secret

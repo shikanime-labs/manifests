@@ -14,6 +14,6 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: linkedin-i-shikanime-studio-tls
+          - name: studio-shikanime-i-linkedin
             group: ""
             kind: Secret

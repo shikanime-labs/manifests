@@ -14,7 +14,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: forgejo-i-shikanime-studio-tls
+          - name: studio-shikanime-i-forgejo
             group: ""
             kind: Secret
     - name: ssh
