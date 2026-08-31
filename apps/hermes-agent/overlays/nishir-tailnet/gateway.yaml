@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: hermes-agent
+spec:
+  gatewayClassName: hermes-agent
+  listeners:
+    - name: https
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: hermes-agent-i-shikanime-studio-tls
+            group: ""
+            kind: Secret
