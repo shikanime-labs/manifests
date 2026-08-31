@@ -4,6 +4,21 @@
     from:
       - namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: tailscale-system
+            kubernetes.io/metadata.name: envoy-gateway-system
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: envoy
     ports:
-      - port: https
+      - port: http
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-system
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: vmagent
+    ports:
+      - port: metrics
