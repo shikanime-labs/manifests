@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -14,3 +16,16 @@ secretGenerator:
   - name: dex-config
     files:
       - config.yaml=dex/config.enc.yaml
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: dex
+      version: v1
+      kind: NetworkPolicy
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: dex
+      version: v1
+      kind: HTTPRoute
+
