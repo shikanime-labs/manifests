@@ -1,6 +1,18 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
+  name: inference
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  parametersRef:
+    name: inference
+    group: gateway.envoyproxy.io
+    kind: EnvoyProxy
+    namespace: shikanime
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
   name: llama-cpp
 spec:
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
