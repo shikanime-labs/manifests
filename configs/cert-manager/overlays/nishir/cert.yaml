@@ -418,6 +418,7 @@ spec:
   commonName: dex.i.shikanime.studio
   dnsNames:
     - dex.i.shikanime.studio
+    - accounts.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
