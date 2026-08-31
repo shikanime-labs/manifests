@@ -1,6 +1,8 @@
 resources:
   - ../nishir
-  - ingress.yaml
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -10,6 +12,12 @@ labels:
       app.kubernetes.io/name: mautrix-twitter
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2604.0
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: mautrix-twitter
+      version: v1
+      kind: NetworkPolicy
 secretGenerator:
   - name: mautrix-twitter
     files:
@@ -18,3 +26,10 @@ secretGenerator:
       - registration.yaml=matrix-twitter/registration.enc.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - path: patch-httproute.yaml
+    target:
+      name: twitter
+      version: v1
+      kind: HTTPRoute
+
