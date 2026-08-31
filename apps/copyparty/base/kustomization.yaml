@@ -2,6 +2,7 @@ resources:
   - pvc.yaml
   - sts.yaml
   - svc.yaml
+  - httproute.yaml
   - vpa.yaml
   - netpol.yaml
   - tcproutes.yaml
