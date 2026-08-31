@@ -28,4 +28,3 @@ secretGenerator:
   - name: gitea-mirror
     envs:
       - gitea-mirror/.enc.env
-

@@ -4,7 +4,7 @@ metadata:
   name: discord
 spec:
   hostnames:
-  - discord.i.shikanime.studio
+    - discord.i.shikanime.studio
   parentRefs:
-  - name: discord
-    sectionName: https
+    - name: discord
+      sectionName: https

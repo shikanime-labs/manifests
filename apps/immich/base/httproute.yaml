@@ -4,6 +4,6 @@ metadata:
   name: immich
 spec:
   rules:
-  - backendRefs:
-    - name: immich
-      port: 2283
+    - backendRefs:
+        - name: immich
+          port: 2283

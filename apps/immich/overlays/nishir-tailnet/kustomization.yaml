@@ -29,4 +29,3 @@ patches:
       name: immich
       version: v1
       kind: HTTPRoute
-

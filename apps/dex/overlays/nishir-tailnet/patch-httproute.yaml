@@ -4,7 +4,7 @@ metadata:
   name: dex
 spec:
   hostnames:
-  - dex.i.shikanime.studio
+    - dex.i.shikanime.studio
   parentRefs:
-  - name: dex
-    sectionName: https
+    - name: dex
+      sectionName: https

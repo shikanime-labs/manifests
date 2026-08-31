@@ -13,15 +13,14 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 1.5.6
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
       name: bazarr
       version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
 patches:
   - path: patch-httproute.yaml
     target:
       name: bazarr
       version: v1
       kind: HTTPRoute
-

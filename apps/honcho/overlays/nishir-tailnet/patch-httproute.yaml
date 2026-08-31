@@ -4,7 +4,7 @@ metadata:
   name: honcho
 spec:
   hostnames:
-  - honcho.i.shikanime.studio
+    - honcho.i.shikanime.studio
   parentRefs:
-  - name: honcho
-    sectionName: https
+    - name: honcho
+      sectionName: https

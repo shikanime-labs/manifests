@@ -4,6 +4,6 @@ metadata:
   name: seerr
 spec:
   rules:
-  - backendRefs:
-    - name: seerr
-      port: 5055
+    - backendRefs:
+        - name: seerr
+          port: 5055

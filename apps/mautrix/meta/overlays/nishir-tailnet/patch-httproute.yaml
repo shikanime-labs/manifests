@@ -4,7 +4,7 @@ metadata:
   name: meta
 spec:
   hostnames:
-  - meta.i.shikanime.studio
+    - meta.i.shikanime.studio
   parentRefs:
-  - name: meta
-    sectionName: https
+    - name: meta
+      sectionName: https

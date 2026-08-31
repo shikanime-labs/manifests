@@ -4,6 +4,6 @@ metadata:
   name: whisparr
 spec:
   rules:
-  - backendRefs:
-    - name: whisparr
-      port: 6969
+    - backendRefs:
+        - name: whisparr
+          port: 6969

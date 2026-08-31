@@ -4,7 +4,7 @@ metadata:
   name: sonarr
 spec:
   hostnames:
-  - sonarr.i.shikanime.studio
+    - sonarr.i.shikanime.studio
   parentRefs:
-  - name: sonarr
-    sectionName: https
+    - name: sonarr
+      sectionName: https

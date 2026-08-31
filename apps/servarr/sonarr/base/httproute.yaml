@@ -4,6 +4,6 @@ metadata:
   name: sonarr
 spec:
   rules:
-  - backendRefs:
-    - name: sonarr
-      port: 8989
+    - backendRefs:
+        - name: sonarr
+          port: 8989

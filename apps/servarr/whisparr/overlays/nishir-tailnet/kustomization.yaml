@@ -13,15 +13,14 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 3-3.1.0.2040
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
       name: whisparr
       version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
 patches:
   - path: patch-httproute.yaml
     target:
       name: whisparr
       version: v1
       kind: HTTPRoute
-

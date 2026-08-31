@@ -13,11 +13,11 @@ labels:
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2607.0
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
-      name: mautrix-signal
+      name: signal
       version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
 secretGenerator:
   - name: mautrix-signal
     files:
@@ -32,4 +32,3 @@ patches:
       name: signal
       version: v1
       kind: HTTPRoute
-

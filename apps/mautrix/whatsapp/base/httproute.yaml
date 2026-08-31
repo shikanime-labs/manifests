@@ -4,6 +4,6 @@ metadata:
   name: whatsapp
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-whatsapp
-      port: 29318
+    - backendRefs:
+        - name: mautrix-whatsapp
+          port: 29318

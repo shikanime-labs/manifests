@@ -4,6 +4,6 @@ metadata:
   name: meta
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-meta
-      port: 29319
+    - backendRefs:
+        - name: mautrix-meta
+          port: 29319

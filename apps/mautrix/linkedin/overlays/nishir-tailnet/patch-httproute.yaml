@@ -4,7 +4,7 @@ metadata:
   name: linkedin
 spec:
   hostnames:
-  - linkedin.i.shikanime.studio
+    - linkedin.i.shikanime.studio
   parentRefs:
-  - name: linkedin
-    sectionName: https
+    - name: linkedin
+      sectionName: https

@@ -4,6 +4,6 @@ metadata:
   name: twitter
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-twitter
-      port: 29327
+    - backendRefs:
+        - name: mautrix-twitter
+          port: 29327

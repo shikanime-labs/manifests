@@ -4,6 +4,6 @@ metadata:
   name: linkedin
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-linkedin
-      port: 29341
+    - backendRefs:
+        - name: mautrix-linkedin
+          port: 29341

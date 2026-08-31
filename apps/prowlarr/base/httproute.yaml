@@ -4,6 +4,6 @@ metadata:
   name: prowlarr
 spec:
   rules:
-  - backendRefs:
-    - name: prowlarr
-      port: 9696
+    - backendRefs:
+        - name: prowlarr
+          port: 9696

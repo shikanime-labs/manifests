@@ -4,6 +4,6 @@ metadata:
   name: honcho
 spec:
   rules:
-  - backendRefs:
-    - name: honcho
-      port: 8000
+    - backendRefs:
+        - name: honcho
+          port: 8000

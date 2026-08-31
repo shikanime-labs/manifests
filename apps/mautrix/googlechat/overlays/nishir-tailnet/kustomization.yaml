@@ -14,11 +14,11 @@ labels:
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.5.2
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
-      name: mautrix-googlechat
+      name: googlechat
       version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
 secretGenerator:
   - name: mautrix-googlechat
     files:
@@ -33,4 +33,3 @@ patches:
       name: googlechat
       version: v1
       kind: HTTPRoute
-

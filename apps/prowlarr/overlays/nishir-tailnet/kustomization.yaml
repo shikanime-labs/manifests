@@ -13,15 +13,14 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 2.4.0
 patches:
-  - path: patch-netpol.yaml
+  - path: patch-httproute.yaml
     target:
       name: prowlarr
       version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
 patches:
   - path: patch-httproute.yaml
     target:
       name: prowlarr
       version: v1
       kind: HTTPRoute
-

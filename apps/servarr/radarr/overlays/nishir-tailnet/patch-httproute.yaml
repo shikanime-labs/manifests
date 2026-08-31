@@ -4,7 +4,7 @@ metadata:
   name: radarr
 spec:
   hostnames:
-  - radarr.i.shikanime.studio
+    - radarr.i.shikanime.studio
   parentRefs:
-  - name: radarr
-    sectionName: https
+    - name: radarr
+      sectionName: https

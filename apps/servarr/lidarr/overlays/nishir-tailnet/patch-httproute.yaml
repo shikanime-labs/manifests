@@ -4,7 +4,7 @@ metadata:
   name: lidarr
 spec:
   hostnames:
-  - lidarr.i.shikanime.studio
+    - lidarr.i.shikanime.studio
   parentRefs:
-  - name: lidarr
-    sectionName: https
+    - name: lidarr
+      sectionName: https

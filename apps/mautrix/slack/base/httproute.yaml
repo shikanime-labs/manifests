@@ -4,6 +4,6 @@ metadata:
   name: slack
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-slack
-      port: 29335
+    - backendRefs:
+        - name: mautrix-slack
+          port: 29335

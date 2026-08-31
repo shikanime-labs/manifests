@@ -5,13 +5,13 @@ metadata:
   namespace: shikanime
 spec:
   targetRefs:
-    - group: ""
+    - name: vaultwarden
+      group: ""
       kind: Service
-      name: vaultwarden
       sectionName: https
   validation:
     hostname: vaultwarden.shikanime.svc.cluster.local
     caCertificateRefs:
-      - group: ""
+      - name: nishir-ca-certificates.crt
+        group: ""
         kind: ConfigMap
-        name: nishir-ca-certificates.crt

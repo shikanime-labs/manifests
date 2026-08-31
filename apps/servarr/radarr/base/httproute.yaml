@@ -4,6 +4,6 @@ metadata:
   name: radarr
 spec:
   rules:
-  - backendRefs:
-    - name: radarr
-      port: 7878
+    - backendRefs:
+        - name: radarr
+          port: 7878

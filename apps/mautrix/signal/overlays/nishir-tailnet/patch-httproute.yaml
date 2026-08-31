@@ -4,7 +4,7 @@ metadata:
   name: signal
 spec:
   hostnames:
-  - signal.i.shikanime.studio
+    - signal.i.shikanime.studio
   parentRefs:
-  - name: signal
-    sectionName: https
+    - name: signal
+      sectionName: https

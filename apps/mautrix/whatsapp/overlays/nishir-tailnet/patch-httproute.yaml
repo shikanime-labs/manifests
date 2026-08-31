@@ -4,7 +4,7 @@ metadata:
   name: whatsapp
 spec:
   hostnames:
-  - whatsapp.i.shikanime.studio
+    - whatsapp.i.shikanime.studio
   parentRefs:
-  - name: whatsapp
-    sectionName: https
+    - name: whatsapp
+      sectionName: https

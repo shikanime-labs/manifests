@@ -4,6 +4,6 @@ metadata:
   name: lidarr
 spec:
   rules:
-  - backendRefs:
-    - name: lidarr
-      port: 8686
+    - backendRefs:
+        - name: lidarr
+          port: 8686

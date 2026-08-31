@@ -24,4 +24,3 @@ patches:
       name: hermes-agent
       version: v1
       kind: HTTPRoute
-

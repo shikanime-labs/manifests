@@ -4,6 +4,6 @@ metadata:
   name: dex
 spec:
   rules:
-  - backendRefs:
-    - name: dex
-      port: 5556
+    - backendRefs:
+        - name: dex
+          port: 5556

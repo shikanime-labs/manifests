@@ -4,6 +4,6 @@ metadata:
   name: vaultwarden
 spec:
   rules:
-  - backendRefs:
-    - name: vaultwarden
-      port: 443
+    - backendRefs:
+        - name: vaultwarden
+          port: 443

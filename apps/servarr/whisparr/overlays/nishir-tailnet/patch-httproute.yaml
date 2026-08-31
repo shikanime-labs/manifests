@@ -4,7 +4,7 @@ metadata:
   name: whisparr
 spec:
   hostnames:
-  - whisparr.i.shikanime.studio
+    - whisparr.i.shikanime.studio
   parentRefs:
-  - name: whisparr
-    sectionName: https
+    - name: whisparr
+      sectionName: https

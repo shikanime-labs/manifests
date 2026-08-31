@@ -4,7 +4,7 @@ metadata:
   name: immich
 spec:
   hostnames:
-  - immich.i.shikanime.studio
+    - immich.i.shikanime.studio
   parentRefs:
-  - name: immich
-    sectionName: https
+    - name: immich
+      sectionName: https

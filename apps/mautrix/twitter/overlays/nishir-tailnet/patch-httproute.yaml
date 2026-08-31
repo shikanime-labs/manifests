@@ -4,7 +4,7 @@ metadata:
   name: twitter
 spec:
   hostnames:
-  - twitter.i.shikanime.studio
+    - twitter.i.shikanime.studio
   parentRefs:
-  - name: twitter
-    sectionName: https
+    - name: twitter
+      sectionName: https

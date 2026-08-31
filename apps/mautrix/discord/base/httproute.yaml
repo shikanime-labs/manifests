@@ -4,6 +4,6 @@ metadata:
   name: discord
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-discord
-      port: 29334
+    - backendRefs:
+        - name: mautrix-discord
+          port: 29334

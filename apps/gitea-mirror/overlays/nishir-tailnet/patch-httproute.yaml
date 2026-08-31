@@ -4,7 +4,7 @@ metadata:
   name: gitea-mirror
 spec:
   hostnames:
-  - gitea-mirror.i.shikanime.studio
+    - gitea-mirror.i.shikanime.studio
   parentRefs:
-  - name: gitea-mirror
-    sectionName: https
+    - name: gitea-mirror
+      sectionName: https

@@ -27,4 +27,3 @@ patches:
       name: synapse-proxy
       version: v1
       kind: HTTPRoute
-

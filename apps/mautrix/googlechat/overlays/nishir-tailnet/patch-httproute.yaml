@@ -4,7 +4,7 @@ metadata:
   name: googlechat
 spec:
   hostnames:
-  - googlechat.i.shikanime.studio
+    - googlechat.i.shikanime.studio
   parentRefs:
-  - name: googlechat
-    sectionName: https
+    - name: googlechat
+      sectionName: https

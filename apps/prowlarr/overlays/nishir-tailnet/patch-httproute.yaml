@@ -4,7 +4,7 @@ metadata:
   name: prowlarr
 spec:
   hostnames:
-  - prowlarr.i.shikanime.studio
+    - prowlarr.i.shikanime.studio
   parentRefs:
-  - name: prowlarr
-    sectionName: https
+    - name: prowlarr
+      sectionName: https

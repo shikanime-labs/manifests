@@ -4,6 +4,6 @@ metadata:
   name: synapse-proxy
 spec:
   rules:
-  - backendRefs:
-    - name: synapse-proxy
-      port: 8008
+    - backendRefs:
+        - name: synapse-proxy
+          port: 8008

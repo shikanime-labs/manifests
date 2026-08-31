@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden
 spec:
   hostnames:
-  - vaultwarden.i.shikanime.studio
+    - vaultwarden.i.shikanime.studio
   parentRefs:
-  - name: vaultwarden
-    sectionName: https
+    - name: vaultwarden
+      sectionName: https

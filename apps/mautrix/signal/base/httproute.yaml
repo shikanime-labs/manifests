@@ -4,6 +4,6 @@ metadata:
   name: signal
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-signal
-      port: 29328
+    - backendRefs:
+        - name: mautrix-signal
+          port: 29328

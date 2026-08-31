@@ -27,4 +27,3 @@ patches:
       name: dex
       version: v1
       kind: HTTPRoute
-

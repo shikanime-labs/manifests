@@ -4,6 +4,6 @@ metadata:
   name: gitea-mirror
 spec:
   rules:
-  - backendRefs:
-    - name: gitea-mirror
-      port: 80
+    - backendRefs:
+        - name: gitea-mirror
+          port: 80

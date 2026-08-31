@@ -4,6 +4,6 @@ metadata:
   name: googlechat
 spec:
   rules:
-  - backendRefs:
-    - name: mautrix-googlechat
-      port: 29320
+    - backendRefs:
+        - name: mautrix-googlechat
+          port: 29320
