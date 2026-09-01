@@ -7,7 +7,7 @@ config/doublepuppet/registration secrets and a tailnet Ingress per bridge. The
 same registration and doublepuppet secrets are projected into synapse's
 startup-config, so every bridge registers as an appservice on boot. Members:
 
-- `discord` — Discord (port 29334, media Ingress via synapse-proxy)
+- `discord` — Discord (port 29334, media via the synapse gateway)
 - `googlechat` — Google Chat (port 29320, metrics + VMServiceScrape)
 - `linkedin` — LinkedIn (port 29341)
 - `meta` — Meta Messenger, WhatsApp and Instagram (port 29319)

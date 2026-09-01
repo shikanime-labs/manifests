@@ -80,10 +80,10 @@ Census of `apps/` (authoritative; counted by resource files, not annotations):
 
 | State | Count | Apps |
 | ----- | ----- | ---- |
-| **Gateway API + Tailscale L4** (target end-state) | 4 | `bazarr`, `copyparty`, `llama-cpp`, `syncthing` |
-| **Legacy Tailscale Ingress** (`ingressClassName: tailscale`) | 25 | `dex`, `forgejo`, `gitea-mirror`, `hermes-agent`, `honcho`, `immich`, `jellyfin`, `metatube`, `prowlarr`, `qbittorrent`, `seerr`, `vaultwarden`, `servarr/*` (lidarr, radarr, sonarr, whisparr), `mautrix/*` (discord, googlechat, linkedin, meta, signal, slack, twitter, whatsapp), `synapse-proxy` |
+| **Gateway API + Tailscale L4** (target end-state) | 5 | `bazarr`, `copyparty`, `llama-cpp`, `synapse`, `syncthing` |
+| **Legacy Tailscale Ingress** (`ingressClassName: tailscale`) | 24 | `dex`, `forgejo`, `gitea-mirror`, `hermes-agent`, `honcho`, `immich`, `jellyfin`, `metatube`, `prowlarr`, `qbittorrent`, `seerr`, `vaultwarden`, `servarr/*` (lidarr, radarr, sonarr, whisparr), `mautrix/*` (discord, googlechat, linkedin, meta, signal, slack, twitter, whatsapp) |
 | **Tailscale L4 Service only** (`loadBalancerClass: tailscale`) | 1 | `catbox` (plus `qbittorrent` exposes a tracker LB) |
-| **No public serving** (internal / DB / cache) | 7 | `lldap`, `synapse`, `honcho-postgres`, `immich-postgres`, `immich-ml`, `immich-valkey` |
+| **No public serving** (internal / DB / cache) | 6 | `lldap`, `honcho-postgres`, `immich-postgres`, `immich-ml`, `immich-valkey` |
 
 > Migration is **nishir-only**. `telsha` has no `envoy-gateway`, `external-dns`,
 > or Cloudflare issuer — it stays on legacy Tailscale ingress. Each migrated

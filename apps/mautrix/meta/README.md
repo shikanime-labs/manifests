@@ -9,8 +9,8 @@ startup-config so the bridge registers as an appservice.
 
 ## Layout
 
-- `base/` — sts.yaml, svc.yaml (http :29319), netpol.yaml (synapse and
-  synapse-proxy only), pvc.yaml, vpa.yaml.
+- `base/` — sts.yaml, svc.yaml (http :29319), netpol.yaml (synapse only),
+  pvc.yaml, vpa.yaml.
 - `overlays/nishir/` — PVC patch.
 - `overlays/nishir-tailnet/` — config/doublepuppet/registration secretGenerator,
   tailscale Ingress `matrix-meta`, netpol for tailscale-system.

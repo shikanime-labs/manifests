@@ -1,0 +1,12 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: HTTPRouteFilter
+metadata:
+  name: matrix-mautrix-wellknown
+  namespace: shikanime
+spec:
+  directResponse:
+    contentType: application/json
+    statusCode: 200
+    body:
+      type: Inline
+      inline: '{"fi.mau.bridges":["https://matrix-discord.i.shikanime.studio","https://matrix-googlechat.i.shikanime.studio","https://matrix-linkedin.i.shikanime.studio","https://matrix-meta.i.shikanime.studio","https://matrix-signal.i.shikanime.studio","https://matrix-slack.i.shikanime.studio","https://matrix-twitter.i.shikanime.studio","https://matrix-whatsapp.i.shikanime.studio"]}'

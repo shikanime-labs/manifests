@@ -8,9 +8,6 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: synapse
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: synapse-proxy
       ports:
         - port: http
   podSelector:

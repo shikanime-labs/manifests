@@ -839,6 +839,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
+    - name: infrastructure-envoy-gateway
     - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
@@ -848,28 +849,6 @@ spec:
       namespace: shikanime
   interval: 10m
   path: ./apps/synapse/overlays/nishir-tailnet
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: apps-synapse-proxy
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-    - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: synapse-proxy
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/synapse-proxy/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
