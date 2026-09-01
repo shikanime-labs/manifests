@@ -12,7 +12,7 @@ spec:
   deletionPolicy: Orphan
   healthChecks:
     - apiVersion: gateway.networking.k8s.io/v1
-      kind: Gateway
+      kind: HTTPRoute
       name: flux-operator
       namespace: flux-system
   interval: 10m
