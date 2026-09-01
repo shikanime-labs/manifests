@@ -8,7 +8,7 @@ spec:
   resources:
     requests:
       storage: 64Gi
-  storageClassName: nishir-nearline
+  storageClassName: nishir-capacity
   volumeMode: Filesystem
   volumeName: archives-data
   accessModes:
@@ -98,7 +98,7 @@ spec:
   resources:
     requests:
       storage: 32Gi
-  storageClassName: nishir-nearline
+  storageClassName: nishir-capacity
   volumeMode: Filesystem
   volumeName: games-data
   accessModes:
@@ -248,7 +248,7 @@ spec:
   resources:
     requests:
       storage: 2Ti
-  storageClassName: nishir-nearline
+  storageClassName: nishir-capacity
   volumeMode: Filesystem
   volumeName: sync-data
   accessModes:
@@ -263,7 +263,7 @@ spec:
   resources:
     requests:
       storage: 2Ti
-  storageClassName: nishir-nearline
+  storageClassName: nishir-capacity
   volumeMode: Filesystem
   volumeName: timeline-data
   accessModes:

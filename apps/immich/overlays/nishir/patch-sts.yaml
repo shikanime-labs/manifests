@@ -43,6 +43,6 @@ spec:
         resources:
           requests:
             storage: 64Gi
-        storageClassName: nishir-nearline
+        storageClassName: nishir-capacity
         accessModes:
           - ReadWriteOnce
