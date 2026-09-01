@@ -9,6 +9,7 @@ spec:
     - name: flux-operator-receivers
       sectionName: https
   hostnames:
+    - flux-receivers.taila659a.ts.net
     - receivers.flux.i.shikanime.studio
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -21,4 +22,5 @@ spec:
     - name: flux-operator-receivers
       sectionName: http
   hostnames:
+    - flux-receivers.taila659a.ts.net
     - receivers.flux.i.shikanime.studio
