@@ -33,7 +33,6 @@ spec:
         # "Backend is disabled in Envoy Gateway configuration" -> 500.
         extensionApis:
           enableBackend: true
-          enableEnvoyPatchPolicy: true
         # Wire the ai-gateway extension into Envoy Gateway's xDS translation so
         # the inference Gateway emits its ext-proc filter bundle. Without this,
         # the ai-gateway controller never gets called back and the data plane

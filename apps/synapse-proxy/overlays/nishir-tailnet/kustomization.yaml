@@ -2,7 +2,7 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - envoypatchpolicy.yaml
+  - httproutefilter.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true

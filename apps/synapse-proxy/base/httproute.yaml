@@ -7,6 +7,27 @@ spec:
   rules:
     - matches:
         - path:
+            type: Exact
+            value: /.well-known/matrix/mautrix
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            name: matrix-mautrix-wellknown
+            group: gateway.envoyproxy.io
+            kind: HTTPRouteFilter
+        - type: ResponseHeaderModifier
+          responseHeaderModifier:
+            add:
+              - name: Access-Control-Allow-Origin
+                value: '*'
+              - name: Access-Control-Allow-Methods
+                value: GET, OPTIONS
+              - name: Access-Control-Allow-Headers
+                value: Origin, Content-Type, Accept
+              - name: Access-Control-Max-Age
+                value: '86400'
+    - matches:
+        - path:
             type: PathPrefix
             value: /.well-known/matrix/
         - path:
@@ -33,7 +54,7 @@ spec:
   rules:
     - matches:
         - path:
-            type: PathPrefix
+            type: Exact
             value: /.well-known/matrix/server
         - path:
             type: PathPrefix

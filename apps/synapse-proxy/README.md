@@ -14,5 +14,4 @@ direct media downloads. TLS terminates on :443 from the
 - `overlays/nishir/` — BackendTLSPolicy for synapse's TLS backend, Gateway
   (synapse-proxy), patch-httproute (hostnames + parentRefs).
 - `overlays/nishir-tailnet/` — GatewayClass, EnvoyProxy (tailscale LB),
-  EnvoyPatchPolicy for the static mautrix well-known response. The Envoy
-  Gateway installation must enable `extensionApis.enableEnvoyPatchPolicy`.
+  HTTPRouteFilter for the static mautrix well-known response.
