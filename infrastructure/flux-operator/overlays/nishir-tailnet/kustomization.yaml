@@ -1,0 +1,4 @@
+resources:
+  - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml

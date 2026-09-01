@@ -3,8 +3,9 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -13,15 +14,3 @@ labels:
       app.kubernetes.io/name: sonarr
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 4.0.17
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: sonarr
-      version: v1
-      kind: HTTPRoute
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: sonarr
-      version: v1
-      kind: HTTPRoute

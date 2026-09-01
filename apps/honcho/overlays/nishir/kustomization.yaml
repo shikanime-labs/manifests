@@ -1,8 +1,11 @@
 resources:
   - ../../base
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/monitoring
+patches:
+  - path: patch-httproute.yaml
 secretGenerator:
   - name: honcho
     envs:

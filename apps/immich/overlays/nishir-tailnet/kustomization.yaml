@@ -2,8 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -25,8 +23,3 @@ patches:
       name: immich
       version: v1
       kind: NetworkPolicy
-  - path: patch-httproute.yaml
-    target:
-      name: immich
-      version: v1
-      kind: HTTPRoute

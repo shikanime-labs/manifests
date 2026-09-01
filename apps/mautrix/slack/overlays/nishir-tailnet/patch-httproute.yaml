@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -8,3 +9,14 @@ spec:
   parentRefs:
     - name: slack
       sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: slack-redirect
+spec:
+  hostnames:
+    - slack.i.shikanime.studio
+  parentRefs:
+    - name: slack
+      sectionName: http

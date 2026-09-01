@@ -2,8 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -14,12 +12,6 @@ labels:
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 15.0.6-rootless
 patches:
-  - path: patch-tcproute.yaml
-  - path: patch-httproute.yaml
-    target:
-      name: forgejo
-      version: v1
-      kind: HTTPRoute
   - path: patch-netpol.yaml
     target:
       name: forgejo

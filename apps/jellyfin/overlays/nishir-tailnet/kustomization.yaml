@@ -2,7 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
   - backendtlspolicy.yaml
 namespace: shikanime
 labels:
@@ -19,8 +18,3 @@ patches:
       name: jellyfin
       version: v1
       kind: StatefulSet
-  - path: patch-httproute.yaml
-    target:
-      name: jellyfin
-      version: v1
-      kind: HTTPRoute

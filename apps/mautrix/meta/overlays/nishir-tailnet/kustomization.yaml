@@ -3,8 +3,9 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -13,12 +14,6 @@ labels:
       app.kubernetes.io/name: mautrix-meta
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.2607.0
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: meta
-      version: v1
-      kind: HTTPRoute
 secretGenerator:
   - name: mautrix-meta
     files:
@@ -27,9 +22,3 @@ secretGenerator:
       - registration.yaml=matrix-meta/registration.enc.yaml
     options:
       disableNameSuffixHash: true
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: meta
-      version: v1
-      kind: HTTPRoute

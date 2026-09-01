@@ -3,8 +3,9 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -13,15 +14,3 @@ labels:
       app.kubernetes.io/name: lidarr
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 3.1.0
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: lidarr
-      version: v1
-      kind: HTTPRoute
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: lidarr
-      version: v1
-      kind: HTTPRoute

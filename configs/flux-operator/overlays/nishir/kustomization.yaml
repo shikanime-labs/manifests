@@ -1,0 +1,12 @@
+resources:
+  - ../../base
+  - cert.yaml
+secretGenerator:
+  - name: discord-webhook
+    namespace: flux-system
+    envs:
+      - discord-webhook/.enc.env
+  - name: receiver-token
+    namespace: flux-system
+    envs:
+      - receiver-token/.enc.env

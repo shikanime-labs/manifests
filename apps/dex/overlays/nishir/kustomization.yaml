@@ -1,7 +1,10 @@
 resources:
   - ../../base
   - cert.yaml
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/monitoring
   - ../../components/tls
+patches:
+  - path: patch-httproute.yaml
