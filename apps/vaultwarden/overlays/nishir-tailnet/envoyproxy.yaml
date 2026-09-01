@@ -30,5 +30,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: vaultwarden
+          tailscale.com/hostname: vaultwarden.i.shikanime.studio
           tailscale.com/tags: "tag:web"

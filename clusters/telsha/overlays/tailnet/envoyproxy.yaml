@@ -13,4 +13,5 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: telsha-webhook
+          tailscale.com/hostname: telsha-webhook.i.shikanime.studio
           tailscale.com/tags: "tag:web"

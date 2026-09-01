@@ -3,14 +3,19 @@ kind: EnvoyProxy
 metadata:
   name: flux
   namespace: flux-system
+metadata:
+  name: nishir-flux-webhook
+  namespace: flux-system
 spec:
   provider:
     type: Kubernetes
     kubernetes:
       envoyService:
         name: flux
+        name: nishir-flux-webhook
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: flux
+          tailscale.com/hostname: nishir-flux-webhook.i.shikanime.studio
           tailscale.com/tags: "tag:web"

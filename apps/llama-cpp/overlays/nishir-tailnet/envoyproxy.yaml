@@ -39,7 +39,7 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: inference
+          tailscale.com/hostname: inference.i.shikanime.studio
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
@@ -73,5 +73,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: llama-cpp
+          tailscale.com/hostname: llama-cpp.i.shikanime.studio
           tailscale.com/tags: "tag:web"

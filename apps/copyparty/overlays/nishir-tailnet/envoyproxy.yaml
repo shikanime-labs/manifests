@@ -30,6 +30,6 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: copyparty
+          tailscale.com/hostname: copyparty.i.shikanime.studio
           tailscale.com/tags: "tag:web,tag:ftp"
           tailscale.com/tailnet-ip: 100.68.52.27
