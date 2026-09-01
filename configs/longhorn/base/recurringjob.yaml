@@ -36,7 +36,7 @@ spec:
   cron: 0 2 * * *
   retain: 7
   groups:
-    - large
+    - capacity
     - standard
 ---
 apiVersion: longhorn.io/v1beta2
@@ -50,7 +50,7 @@ spec:
   cron: 0 3 * * 0
   retain: 4
   groups:
-    - large
+    - capacity
     - standard
 ---
 apiVersion: longhorn.io/v1beta2
