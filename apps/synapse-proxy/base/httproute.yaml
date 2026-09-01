@@ -5,7 +5,17 @@ metadata:
   name: matrix
 spec:
   rules:
-    - backendRefs:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /.well-known/matrix/
+        - path:
+            type: PathPrefix
+            value: /_matrix/
+        - path:
+            type: PathPrefix
+            value: /_synapse/client/
+      backendRefs:
         - name: synapse
           port: 8448
       filters:
@@ -27,23 +37,33 @@ spec:
             value: /.well-known/matrix/server
         - path:
             type: PathPrefix
-            value: /_matrix/federation/v1/media/download
+            value: /_matrix/federation/v1/media/download/
         - path:
             type: PathPrefix
-            value: /_matrix/client/v1/media
+            value: /_matrix/client/v1/media/
         - path:
             type: PathPrefix
-            value: /_matrix/media
+            value: /_matrix/media/
         - path:
             type: PathPrefix
-            value: /_matrix/key
+            value: /_matrix/key/
         - path:
-            type: PathPrefix
+            type: Exact
             value: /_matrix/federation/v1/version
       backendRefs:
         - name: mautrix-discord
           port: 29334
-    - backendRefs:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /.well-known/matrix/
+        - path:
+            type: PathPrefix
+            value: /_matrix/
+        - path:
+            type: PathPrefix
+            value: /_synapse/client/
+      backendRefs:
         - name: synapse
           port: 8448
       filters:

@@ -862,6 +862,7 @@ spec:
   dependsOn:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
+    - name: infrastructure-envoy-gateway
     - name: infrastructure-tailscale
   interval: 10m
   path: ./apps/synapse-proxy/overlays/nishir-tailnet
