@@ -3,5 +3,5 @@ kind: PersistentVolumeClaim
 metadata:
   name: forgejo-data
 spec:
-  storageClassName: nishir-nearline
+  storageClassName: nishir-capacity
   volumeName: forgejo-data
