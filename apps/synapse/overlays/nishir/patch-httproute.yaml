@@ -7,7 +7,7 @@ spec:
   hostnames:
     - matrix.i.shikanime.studio
   parentRefs:
-    - name: synapse-proxy
+    - name: synapse
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -18,7 +18,7 @@ spec:
   hostnames:
     - matrix-discord-media.i.shikanime.studio
   parentRefs:
-    - name: synapse-proxy
+    - name: synapse
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -30,5 +30,5 @@ spec:
     - matrix.i.shikanime.studio
     - matrix-discord-media.i.shikanime.studio
   parentRefs:
-    - name: synapse-proxy
+    - name: synapse
       sectionName: http

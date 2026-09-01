@@ -1,7 +1,0 @@
-resources:
-  - ../../base
-  - backendtlspolicy.yaml
-  - gateway.yaml
-namespace: shikanime
-patches:
-  - path: patch-httproute.yaml

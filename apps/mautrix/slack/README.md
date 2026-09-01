@@ -9,8 +9,8 @@ appservice.
 
 ## Layout
 
-- `base/` — sts.yaml, svc.yaml (http :29335), netpol.yaml (synapse and
-  synapse-proxy only), pvc.yaml, vpa.yaml.
+- `base/` — sts.yaml, svc.yaml (http :29335), netpol.yaml (synapse only),
+  pvc.yaml, vpa.yaml.
 - `overlays/nishir/` — PVC patch.
 - `overlays/nishir-tailnet/` — config/doublepuppet/registration secretGenerator,
   tailscale Ingress `matrix-slack`, netpol for tailscale-system.

@@ -32,9 +32,6 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: mautrix-whatsapp
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: synapse-proxy
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: synapse

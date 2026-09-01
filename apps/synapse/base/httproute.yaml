@@ -19,13 +19,13 @@ spec:
           responseHeaderModifier:
             add:
               - name: Access-Control-Allow-Origin
-                value: '*'
+                value: "*"
               - name: Access-Control-Allow-Methods
                 value: GET, OPTIONS
               - name: Access-Control-Allow-Headers
                 value: Origin, Content-Type, Accept
               - name: Access-Control-Max-Age
-                value: '86400'
+                value: "86400"
     - matches:
         - path:
             type: PathPrefix

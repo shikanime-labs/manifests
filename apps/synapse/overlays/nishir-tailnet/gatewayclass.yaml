@@ -1,11 +1,11 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
-  name: synapse-proxy
+  name: synapse
 spec:
   controllerName: gateway.envoyproxy.io/gatewayclass-controller
   parametersRef:
-    name: synapse-proxy
+    name: synapse
     group: gateway.envoyproxy.io
     kind: EnvoyProxy
     namespace: shikanime
