@@ -12,5 +12,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: longhorn
+          tailscale.com/hostname: longhorn-proxy
           tailscale.com/tags: "tag:web"

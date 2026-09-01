@@ -30,5 +30,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: jellyfin
+          tailscale.com/hostname: jellyfin-proxy
           tailscale.com/tags: "tag:web"
