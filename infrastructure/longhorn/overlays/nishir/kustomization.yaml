@@ -1,8 +1,10 @@
 resources:
   - ../../base
+  - gateway.yaml
 components:
   - ../../components/monitoring
 patches:
+  - path: patch-httproute.yaml
   - path: patch-hr.yaml
 secretGenerator:
   - name: longhorn-hetzner-backups

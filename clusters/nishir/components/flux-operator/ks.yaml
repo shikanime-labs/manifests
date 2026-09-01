@@ -16,7 +16,7 @@ spec:
       name: flux-operator
       namespace: flux-system
   interval: 10m
-  path: ./infrastructure/flux-operator/overlays/nishir
+  path: ./infrastructure/flux-operator/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
