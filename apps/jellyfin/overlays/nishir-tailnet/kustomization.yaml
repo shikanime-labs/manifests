@@ -20,7 +20,3 @@ patches:
       version: v1
       kind: StatefulSet
   - path: patch-httproute.yaml
-    target:
-      name: jellyfin
-      version: v1
-      kind: HTTPRoute
