@@ -2,11 +2,8 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
+  - envoypatchpolicy.yaml
 namespace: shikanime
-configMapGenerator:
-  - name: synapse-proxy
-    files:
-      - synapse-proxy/Caddyfile
 labels:
   - includeTemplates: true
     pairs:
@@ -15,9 +12,3 @@ labels:
       app.kubernetes.io/name: synapse-proxy
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 2.11.2
-patches:
-  - path: patch-netpol.yaml
-    target:
-      name: synapse-proxy
-      version: v1
-      kind: NetworkPolicy

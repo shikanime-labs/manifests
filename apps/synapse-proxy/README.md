@@ -1,18 +1,17 @@
 # synapse-proxy
 
-Caddy reverse proxy in front of synapse, published as `matrix` over Tailscale
-(funnel). Serves /.well-known/matrix/* and /_matrix/* by proxying to synapse's
-https :8448 (`tls_server_name synapse`), plus the mautrix bridge-discovery
+Envoy Gateway in front of synapse, published as `matrix` over Tailscale
+(funnel). Routes `matrix.i.shikanime.studio` to synapse's https :8448
+(`Host matrix.taila659a.ts.net`), plus the mautrix bridge-discovery
 well-known listing the eight matrix-*.i.shikanime.studio bridge endpoints. The
 `matrix-discord-media` hostname is routed straight to the discord bridge for
-direct media downloads. TLS terminates on :8448 from the `synapse-proxy-tls`
-Certificate (tls component); :8008 stays plain.
+direct media downloads. TLS terminates on :443 from the
+`studio-shikanime-i-matrix` Certificate.
 
 ## Layout
 
-- `base/` — sts.yaml (caddy, TCP probes, /var/caddy PVC), svc.yaml (http :8008),
-  netpol.yaml (ingress from synapse on :8448), pvc, vpa.
-- `components/tls/` — https :8448 port and cert mount for Caddy.
-- `overlays/nishir/` — Certificate `synapse-proxy-tls`, PVC patch.
-- `overlays/nishir-tailnet/` — Caddyfile ConfigMap, `matrix` Ingress (tailscale,
-  funnel) on the https port, netpol for tailscale-system.
+- `base/` — httproute.yaml (matrix, matrix-discord-media, matrix-redirect).
+- `overlays/nishir/` — BackendTLSPolicy for synapse's TLS backend, Gateway
+  (synapse-proxy), patch-httproute (hostnames + parentRefs).
+- `overlays/nishir-tailnet/` — GatewayClass, EnvoyProxy (tailscale LB),
+  EnvoyPatchPolicy for the static mautrix well-known response.

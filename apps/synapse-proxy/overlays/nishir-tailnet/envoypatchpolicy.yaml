@@ -1,0 +1,49 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyPatchPolicy
+metadata:
+  name: matrix-mautrix-wellknown
+  namespace: shikanime
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: synapse-proxy
+  type: JSONPatch
+  jsonPatches:
+    - type: type.googleapis.com/envoy.config.listener.v3.Listener
+      name: shikanime/synapse-proxy/https
+      operation:
+        op: add
+        path: /default_filter_chain/filters/0/typed_config/local_reply_config
+        value:
+          mappers:
+            - filter:
+                header_filter:
+                  header:
+                    name: ":path"
+                    exact_match: /.well-known/matrix/mautrix
+              status_code:
+                value: 200
+              body:
+                inline_string: '{"fi.mau.bridges":["https://matrix-discord.i.shikanime.studio","https://matrix-googlechat.i.shikanime.studio","https://matrix-linkedin.i.shikanime.studio","https://matrix-meta.i.shikanime.studio","https://matrix-signal.i.shikanime.studio","https://matrix-slack.i.shikanime.studio","https://matrix-twitter.i.shikanime.studio","https://matrix-whatsapp.i.shikanime.studio"]}'
+              headers_to_add:
+                - header:
+                    key: Content-Type
+                    value: application/json
+                  append: false
+                - header:
+                    key: Access-Control-Allow-Origin
+                    value: "*"
+                  append: false
+                - header:
+                    key: Access-Control-Allow-Methods
+                    value: "GET, OPTIONS"
+                  append: false
+                - header:
+                    key: Access-Control-Allow-Headers
+                    value: "Origin, Content-Type, Accept"
+                  append: false
+                - header:
+                    key: Access-Control-Max-Age
+                    value: "86400"
+                  append: false

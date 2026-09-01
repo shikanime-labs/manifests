@@ -863,11 +863,6 @@ spec:
     - name: infrastructure-autoscaler
     - name: infrastructure-cert-manager
     - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: synapse-proxy
-      namespace: shikanime
   interval: 10m
   path: ./apps/synapse-proxy/overlays/nishir-tailnet
   prune: true

@@ -1,13 +1,2 @@
 resources:
-  - netpol.yaml
   - httproute.yaml
-  - pvc.yaml
-  - sts.yaml
-  - svc.yaml
-  - vpa.yaml
-images:
-  - name: caddy
-    newTag: 2.11.4@sha256:844f60b64e4724a5aa8245e019dace0d3f199f7433ce6c57676cb30a920dbad9
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "caddy", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
