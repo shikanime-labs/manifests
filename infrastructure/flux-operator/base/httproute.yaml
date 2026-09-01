@@ -4,11 +4,6 @@ metadata:
   name: flux-operator
   namespace: flux-system
 spec:
-  parentRefs:
-    - name: flux-operator
-      sectionName: https
-  hostnames:
-    - flux.i.shikanime.studio
   rules:
     - backendRefs:
         - name: flux-operator

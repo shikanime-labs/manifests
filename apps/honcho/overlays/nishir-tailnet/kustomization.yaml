@@ -2,8 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 images:
   - name: honcho
@@ -27,8 +25,3 @@ patches:
       name: honcho
       version: v1
       kind: NetworkPolicy
-  - path: patch-httproute.yaml
-    target:
-      name: honcho
-      version: v1
-      kind: HTTPRoute

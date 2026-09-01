@@ -2,8 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
@@ -20,11 +18,6 @@ patches:
       version: v1
       kind: NetworkPolicy
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
-    target:
-      name: gitea-mirror
-      version: v1
-      kind: HTTPRoute
 secretGenerator:
   - name: gitea-mirror
     envs:

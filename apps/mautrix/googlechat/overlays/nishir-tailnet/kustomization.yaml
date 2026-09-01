@@ -3,9 +3,10 @@ resources:
   - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
-  - httproute-redirect.yaml
   - vmservicescrape.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:
@@ -14,12 +15,6 @@ labels:
       app.kubernetes.io/name: mautrix-googlechat
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 0.5.2
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: googlechat
-      version: v1
-      kind: HTTPRoute
 secretGenerator:
   - name: mautrix-googlechat
     files:
@@ -28,9 +23,3 @@ secretGenerator:
       - registration.yaml=matrix-googlechat/registration.enc.yaml
     options:
       disableNameSuffixHash: true
-patches:
-  - path: patch-httproute.yaml
-    target:
-      name: googlechat
-      version: v1
-      kind: HTTPRoute

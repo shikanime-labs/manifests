@@ -1,0 +1,22 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: vaultwarden
+spec:
+  hostnames:
+    - vaultwarden.i.shikanime.studio
+  parentRefs:
+    - name: vaultwarden
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: vaultwarden-redirect
+spec:
+  hostnames:
+    - vaultwarden.i.shikanime.studio
+  parentRefs:
+    - name: vaultwarden
+      sectionName: http

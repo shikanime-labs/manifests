@@ -2,8 +2,6 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - envoyproxy.yaml
-  - gateway.yaml
-  - httproute-redirect.yaml
 namespace: shikanime
 configMapGenerator:
   - name: synapse-proxy
@@ -23,8 +21,3 @@ patches:
       name: synapse-proxy
       version: v1
       kind: NetworkPolicy
-  - path: patch-httproute.yaml
-    target:
-      name: synapse-proxy
-      version: v1
-      kind: HTTPRoute

@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/ftp
@@ -11,3 +12,5 @@ components:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
+  - path: patch-httproute.yaml
+  - path: patch-tcproutes.yaml

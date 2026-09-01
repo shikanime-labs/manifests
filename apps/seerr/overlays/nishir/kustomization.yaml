@@ -1,5 +1,7 @@
 resources:
   - ../../base
+  - gateway.yaml
 namespace: shikanime
 patches:
   - path: patch-pvc.yaml
+  - path: patch-httproute.yaml

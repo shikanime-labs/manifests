@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -8,3 +9,14 @@ spec:
   parentRefs:
     - name: sonarr
       sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sonarr-redirect
+spec:
+  hostnames:
+    - sonarr.i.shikanime.studio
+  parentRefs:
+    - name: sonarr
+      sectionName: http

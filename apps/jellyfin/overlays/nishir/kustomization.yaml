@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/tls
@@ -11,6 +12,7 @@ configurations:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
+  - path: patch-httproute.yaml
 secretGenerator:
   - name: jellyfin-pkcs12-password
     envs:

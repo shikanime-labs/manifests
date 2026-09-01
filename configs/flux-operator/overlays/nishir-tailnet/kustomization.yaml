@@ -1,0 +1,7 @@
+resources:
+  - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - gateway.yaml
+patches:
+  - path: patch-httproute.yaml

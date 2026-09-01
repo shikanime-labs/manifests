@@ -1,7 +1,6 @@
 resources:
   - ../nishir
   - gatewayclass.yaml
-  - gateway.yaml
   - gatewayconfig.yaml
   - envoyproxy.yaml
   - httproute.yaml
@@ -14,16 +13,6 @@ patches:
       kind: ClientTrafficPolicy
       namespace: shikanime
     path: patch-clienttrafficpolicy.yaml
-  - target:
-      name: default
-      kind: AIGatewayRoute
-      namespace: shikanime
-    path: patch-aigatewayroute.yaml
-  - target:
-      name: llama-cpp
-      version: v1
-      kind: HTTPRoute
-    path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

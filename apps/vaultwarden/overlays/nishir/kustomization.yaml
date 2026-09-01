@@ -1,11 +1,13 @@
 resources:
   - ../../base
   - cert.yaml
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/tls
 patches:
   - path: patch-pvc.yaml
+  - path: patch-httproute.yaml
 secretGenerator:
   - name: vaultwarden
     envs:

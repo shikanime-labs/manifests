@@ -2,6 +2,7 @@ resources:
   - ../../base
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
+  - gateway.yaml
 namespace: shikanime
 configurations:
   - namereference.yaml
@@ -30,3 +31,11 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-mistral/.enc.env
+patches:
+  - path: patch-httproute.yaml
+  - target:
+      name: inference
+      version: v1alpha2
+      group: gateway.networking.k8s.io
+      kind: AIGatewayRoute
+    path: patch-aigatewayroute.yaml

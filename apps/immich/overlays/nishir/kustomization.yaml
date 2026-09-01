@@ -1,10 +1,12 @@
 resources:
   - ../../base
+  - gateway.yaml
 namespace: shikanime
 components:
   - ../../components/monitoring
 patches:
   - path: patch-sts.yaml
+  - path: patch-httproute.yaml
 secretGenerator:
   - name: immich
     envs:

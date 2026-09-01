@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - gateway.yaml
   - gatewayclass.yaml
   - envoyproxy.yaml
   - httproute.yaml
@@ -10,11 +9,6 @@ patches:
     target:
       name: lldap
       kind: NetworkPolicy
-  - path: patch-httproute.yaml
-    target:
-      name: lldap
-      version: v1
-      kind: HTTPRoute
 labels:
   - includeTemplates: true
     pairs:
