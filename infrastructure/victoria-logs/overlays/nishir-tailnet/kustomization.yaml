@@ -1,4 +1,5 @@
 resources:
-  - ../../base
-patches:
-  - path: patch-hr.yaml
+  - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - cert.yaml

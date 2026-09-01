@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-logs
+  namespace: monitoring-system
+spec:
+  commonName: logs.i.shikanime.studio
+  dnsNames:
+    - logs.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-logs
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

@@ -1,0 +1,6 @@
+resources:
+  - ../../base
+  - gateway.yaml
+patches:
+  - path: patch-httproute.yaml
+  - path: patch-hr.yaml

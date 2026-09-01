@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoria-logs
+  namespace: flux-system
+spec:
+  values:
+    vlstorage:
+      persistentVolume:
+        storageClassName: nishir-standard
+        size: 8Gi
+    vlinsert:
+      ingress:
+        enabled: false
