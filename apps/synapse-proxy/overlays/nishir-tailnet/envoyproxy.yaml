@@ -32,3 +32,4 @@ spec:
         annotations:
           tailscale.com/hostname: synapse-proxy
           tailscale.com/tags: "tag:web"
+          tailscale.com/funnel: "true"
