@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -10,7 +11,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - flux-receivers
+        - flux-receivers.taila659a.ts.net
   defaultBackend:
     service:
       name: flux-operator-receivers
@@ -29,7 +30,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - matrix
+        - matrix.taila659a.ts.net
   defaultBackend:
     service:
       name: synapse
