@@ -26,7 +26,7 @@
 	@isMatrixClient path /.well-known/matrix/* /_matrix/* /_synapse/client/*
 	handle @isMatrixClient {
 		reverse_proxy https://synapse.shikanime.svc.cluster.local:8448 {
-			header_up Host matrix.taila659a.ts.net
+			header_up Host matrix.i.shikanime.studio
 			transport http {
 				tls_server_name synapse
 			}

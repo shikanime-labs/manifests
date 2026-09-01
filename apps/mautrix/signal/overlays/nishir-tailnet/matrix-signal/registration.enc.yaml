@@ -9,9 +9,9 @@ sender_localpart: CLDFON4eEXABKN5jmyoChh4DkPSIyWX3
 namespaces:
   users:
     - exclusive: true
-      regex: ^@signalbot:matrix\.taila659a\.ts\.net$
+      regex: ^@signalbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@signal_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@signal_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

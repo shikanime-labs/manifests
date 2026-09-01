@@ -69,7 +69,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [deriver.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 # Peer card settings
@@ -93,7 +93,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dialectic.levels.minimal.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.low]
@@ -105,7 +105,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dialectic.levels.low.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.medium]
@@ -116,7 +116,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dialectic.levels.medium.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.high]
@@ -127,7 +127,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dialectic.levels.high.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 [dialectic.levels.max]
@@ -138,7 +138,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dialectic.levels.max.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 # Summary settings
@@ -154,7 +154,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [summary.model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 # Dream settings
@@ -172,7 +172,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dream.deduction_model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 [dream.induction_model_config]
@@ -180,7 +180,7 @@ transport = "openai"
 model = "tencent/hy3:free"
 
 [dream.induction_model_config.overrides]
-base_url = "https://ai.taila659a.ts.net/v1"
+base_url = "https://ai.i.shikanime.studio/v1"
 api_key_env = "LLM_APERTURE_API_KEY"
 
 # Surprisal-based sampling subsystem

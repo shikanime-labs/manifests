@@ -44,7 +44,7 @@ staticClients:
     id: synapse
     secret: ENC[AES256_GCM,data:nMDVJPmxDJ7UN7PMOgGuKDDQxkrc6/3eZKiZpbBpqDkXxsz/aj+jkmx+hROsnDF81/58Hob00wGc33n2B2dB1A==,iv:XpWfncq8MuMC5/xDsKQj4DBlbRhIJQSSVOriGgEk2ic=,tag:r+ytjKs5dWMyFilNVesQNA==,type:str]
     redirectURIs:
-      - https://matrix.taila659a.ts.net/_matrix/oidc/callback/synapse
+      - https://matrix.i.shikanime.studio/_matrix/oidc/callback/synapse
     trustedPeers:
       - "*"
   - name: Hermes Agent Dashboard

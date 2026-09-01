@@ -11,7 +11,7 @@ appservice:
   hostname: 0.0.0.0
   hs_token: ENC[AES256_GCM,data:5g68zJpOIqWSZP+wSoFuTSmX05Xl0RmrSsj5kQuanQy/2gY/VhoIzjsb/lWBZECdNL/Jpo03jvrrS0XdbabwyA==,iv:DRLbvK34VUxr3gSLmh49TDN2MPbKRd9Y0IEMdeUIgrQ=,tag:7yd/g/SE64DG5YoNvYwQzQ==,type:str]
   port: 29319
-  public_address: https://matrix-meta.taila659a.ts.net
+  public_address: https://matrix-meta.i.shikanime.studio
   username_template: meta_{{.}}
   bot:
     avatar: mxc://maunium.net/DxpVrwwzPUwaUSazpsjXgcKB
@@ -57,8 +57,8 @@ bridge:
     - m.lowpriority
   permissions:
     "*": relay
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   personal_filtering_spaces: true
   private_chat_portal_meta: true
   relay:
@@ -91,12 +91,12 @@ direct_media:
   enabled: false
   media_id_prefix: null
   server_key: ENC[AES256_GCM,data:nmW0JkGBclocG8gnNlfL9CoqpcBd/m74SyPrhdBQdQBDiIMqCrki/Jb9YCNGsKoqVkJ1/h3Kh2Y1sA==,iv:6cr6BOAzjRRJr2/FZ1MKaLhKyiIycAVADE9y7QubyG8=,tag:mjDBpY5fuPe5HmaoyXP6cw==,type:str]
-  server_name: matrix-discord-media.taila659a.ts.net
+  server_name: matrix-discord-media.i.shikanime.studio
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:dgmRSxGhXFw72jgy6rWdTN2/3NX9xfPq9+1Wvvwz1Sq9t2VohsGT1Nmw6XRFpqYt86eISW0e1Hw/usw7bw5tizPo0Eu5SJgwyA==,iv:TZqvAc7IfIFd/sDN6doxSlE3t8f9B5E6g/x7fvMdY+4=,tag:YtRXdFaHSMDfyZnFETvlqw==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:dgmRSxGhXFw72jgy6rWdTN2/3NX9xfPq9+1Wvvwz1Sq9t2VohsGT1Nmw6XRFpqYt86eISW0e1Hw/usw7bw5tizPo0Eu5SJgwyA==,iv:TZqvAc7IfIFd/sDN6doxSlE3t8f9B5E6g/x7fvMdY+4=,tag:YtRXdFaHSMDfyZnFETvlqw==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -129,7 +129,7 @@ encryption:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard

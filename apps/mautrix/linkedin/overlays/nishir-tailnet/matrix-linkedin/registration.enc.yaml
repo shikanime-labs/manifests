@@ -9,9 +9,9 @@ sender_localpart: yhOAOXPg6urLYarvXlIQBkDk6gT1zYE4
 namespaces:
   users:
     - exclusive: true
-      regex: ^@linkedinbot:matrix\.taila659a\.ts\.net$
+      regex: ^@linkedinbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@linkedin_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@linkedin_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

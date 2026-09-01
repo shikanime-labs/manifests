@@ -14,7 +14,7 @@ spec:
         enabled: true
         ingressClassName: tailscale
         hosts:
-          - name: logs.taila659a.ts.net
+          - name: logs.i.shikanime.studio
             port: http
             path:
               - /insert
@@ -26,7 +26,7 @@ spec:
                 path: /spec/tls
                 value:
                   - hosts:
-                      - logs.taila659a.ts.net
+                      - logs.i.shikanime.studio
             target:
               name: vlogs-vlinsert
               version: v1

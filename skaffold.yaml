@@ -5,7 +5,7 @@ metadata:
 profiles:
   - name: nishir-tailnet
     activation:
-      - kubeContext: nishir-k8s-operator.taila659a.ts.net
+      - kubeContext: nishir-k8s-operator.i.shikanime.studio
     manifests:
       kustomize:
         paths:

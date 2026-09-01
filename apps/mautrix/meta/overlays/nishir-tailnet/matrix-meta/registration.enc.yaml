@@ -9,9 +9,9 @@ sender_localpart: VwV7pnSh9eP4flEBzESHiks634IdmzeH
 namespaces:
   users:
     - exclusive: true
-      regex: ^@metabot:matrix\.taila659a\.ts\.net$
+      regex: ^@metabot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@meta_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@meta_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

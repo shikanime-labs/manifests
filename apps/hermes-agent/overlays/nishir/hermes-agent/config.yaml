@@ -24,7 +24,7 @@ agent:
   verify_on_stop: false
 a2a_agents:
   ashira:
-    url: https://ashira.taila659a.ts.net:9900
+    url: https://ashira.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -33,7 +33,7 @@ a2a_agents:
       - build-x86
       - k8s-follower
   fushi:
-    url: https://fushi.taila659a.ts.net:9900
+    url: https://fushi.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -42,7 +42,7 @@ a2a_agents:
       - build-arm
       - k8s-node
   manash:
-    url: https://manash.taila659a.ts.net:9900
+    url: https://manash.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -51,7 +51,7 @@ a2a_agents:
       - build-x86
       - k8s-leader
   minish:
-    url: https://minish.taila659a.ts.net:9900
+    url: https://minish.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -60,7 +60,7 @@ a2a_agents:
       - build-arm
       - k8s-node
   nalsha:
-    url: https://nalsha.taila659a.ts.net:9900
+    url: https://nalsha.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -69,7 +69,7 @@ a2a_agents:
       - build-x86
       - k8s-follower
   nemishi:
-    url: https://nemishi.taila659a.ts.net:9900
+    url: https://nemishi.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -78,7 +78,7 @@ a2a_agents:
       - build-arm
       - k8s-node
   nixtar:
-    url: https://nixtar.taila659a.ts.net:9900
+    url: https://nixtar.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -88,7 +88,7 @@ a2a_agents:
       - nvidia
       - k8s-leader
   sashina:
-    url: https://sashina.taila659a.ts.net:9900
+    url: https://sashina.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -96,7 +96,7 @@ a2a_agents:
       - build-x86
       - k8s-node
   kushira:
-    url: https://kushira.taila659a.ts.net:9900
+    url: https://kushira.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -104,7 +104,7 @@ a2a_agents:
       - build-x86
       - k8s-node
   telsha:
-    url: https://telsha.taila659a.ts.net:9900
+    url: https://telsha.i.shikanime.studio:9900
     auth:
       type: bearer
       token: ${env:A2A_OWN_TOKEN}
@@ -114,78 +114,78 @@ a2a_agents:
       - darwin
 bot_peers:
   ashira:
-    url: https://ashira.taila659a.ts.net:8642
+    url: https://ashira.i.shikanime.studio:8642
   fushi:
-    url: https://fushi.taila659a.ts.net:8642
+    url: https://fushi.i.shikanime.studio:8642
   kushira:
-    url: https://kushira.taila659a.ts.net:8642
+    url: https://kushira.i.shikanime.studio:8642
   manash:
-    url: https://manash.taila659a.ts.net:8642
+    url: https://manash.i.shikanime.studio:8642
   minish:
-    url: https://minish.taila659a.ts.net:8642
+    url: https://minish.i.shikanime.studio:8642
   nalsha:
-    url: https://nalsha.taila659a.ts.net:8642
+    url: https://nalsha.i.shikanime.studio:8642
   nemishi:
-    url: https://nemishi.taila659a.ts.net:8642
+    url: https://nemishi.i.shikanime.studio:8642
   nixtar:
-    url: https://nixtar.taila659a.ts.net:8642
+    url: https://nixtar.i.shikanime.studio:8642
   sashina:
-    url: https://sashina.taila659a.ts.net:8642
+    url: https://sashina.i.shikanime.studio:8642
   telsha:
-    url: https://telsha.taila659a.ts.net:8642
+    url: https://telsha.i.shikanime.studio:8642
 auxiliary:
   approval:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   compression:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   curator:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   flush_memories:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   kanban_decomposer:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   mcp:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   profile_describer:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   session_search:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
     timeout: 30
   skills_hub:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   title_generation:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   triage_specifier:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   vision:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
   web_extract:
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     provider: custom:aperture-openai
 checkpoints:
@@ -202,7 +202,7 @@ custom_providers:
   - name: aperture-anthropic
     api_key: ""
     api_mode: anthropic_messages
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: glm-5.2
     models:
       - glm-4.7
@@ -210,7 +210,7 @@ custom_providers:
   - name: aperture-openai
     api_key: ""
     api_mode: chat_completions
-    base_url: https://ai.taila659a.ts.net/v1
+    base_url: https://ai.i.shikanime.studio/v1
     model: tencent/hy3:free
     models:
       - deepseek/deepseek-v4-flash
@@ -271,14 +271,14 @@ fallback_providers:
 group_sessions_per_user: true
 mcp_servers:
   aperture:
-    url: https://ai.taila659a.ts.net/v1/mcp
+    url: https://ai.i.shikanime.studio/v1/mcp
     enabled: true
 memory:
   flush_min_turns: 6
   nudge_interval: 10
   provider: honcho
 model:
-  base_url: https://ai.taila659a.ts.net/v1
+  base_url: https://ai.i.shikanime.studio/v1
   default: tencent/hy3:free
   provider: custom:aperture-openai
 platform_toolsets:

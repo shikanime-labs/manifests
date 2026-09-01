@@ -7,7 +7,7 @@ sender_localpart: jfbrE35LJcjiIbMuevmp5dDvXjk37rfI
 namespaces:
   users:
     - exclusive: false
-      regex: ^@.*:matrix\.taila659a\.ts\.net$
+      regex: ^@.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.3
   encrypted_regex: ^(as_token|hs_token)$

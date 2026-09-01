@@ -46,7 +46,7 @@ listeners:
     tls: true
     type: http
     x_forwarded: true
-log_config: /data/matrix.taila659a.ts.net.log.config
+log_config: /data/matrix.i.shikanime.studio.log.config
 macaroon_secret_key: ENC[AES256_GCM,data:mVZOs4ZbDS/6WC4nrAlEfjd5bkC0zIpoEjaJmLJiXtZz5dGSLush9uJTclQ9/CVG5rY=,iv:7uT2y0yLbM019D6u3rFB3lXfVmk1p97mmAxrH9s/kFA=,tag:fmbee9p31v2BL0IGGz9lUw==,type:str]
 media_store_path: /data/media_store
 oidc_providers:
@@ -55,7 +55,7 @@ oidc_providers:
     discover: true
     idp_id: synapse
     idp_name: Dex
-    issuer: https://accounts.taila659a.ts.net
+    issuer: https://accounts.i.shikanime.studio
     scopes:
       - openid
       - profile
@@ -66,12 +66,12 @@ oidc_providers:
       localpart_template: "{{ user.name }}"
       subject_claim: sub
 pid_file: /data/homeserver.pid
-public_baseurl: https://matrix.taila659a.ts.net/
+public_baseurl: https://matrix.i.shikanime.studio/
 registration_shared_secret: ENC[AES256_GCM,data:YgIJdWa1BctShQ2h0/nccWroRoITQlf5X6Lt/xxBguJ3MGyy28oXdoDlkcNb1v+YqIQ=,iv:VEFbAd+tSEPQtK+bGJJnTFYZIicU5XzwrTt7zhD6Zc8=,tag:u+JKAgII1ukHJHi/ltKYnw==,type:str]
 report_stats: false
 serve_server_wellknown: true
-server_name: matrix.taila659a.ts.net
-signing_key_path: /data/matrix.taila659a.ts.net.signing.key
+server_name: matrix.i.shikanime.studio
+signing_key_path: /data/matrix.i.shikanime.studio.signing.key
 suppress_key_server_warning: true
 tls_certificate_path: /etc/ssl/private/tls.crt
 tls_private_key_path: /etc/ssl/private/tls.key

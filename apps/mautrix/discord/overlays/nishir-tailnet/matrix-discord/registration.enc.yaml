@@ -9,9 +9,9 @@ sender_localpart: Rd1diJXgdeSsDIBz3LtlcQcrjY2WDAVX
 namespaces:
   users:
     - exclusive: true
-      regex: ^@discordbot:matrix\.taila659a\.ts\.net$
+      regex: ^@discordbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@discord_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@discord_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

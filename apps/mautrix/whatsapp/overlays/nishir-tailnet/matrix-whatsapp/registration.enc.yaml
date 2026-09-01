@@ -9,9 +9,9 @@ sender_localpart: t8iaBytUUysNeiWALGzdXlDUxIpAn2Vg
 namespaces:
   users:
     - exclusive: true
-      regex: ^@whatsappbot:matrix\.taila659a\.ts\.net$
+      regex: ^@whatsappbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@whatsapp_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@whatsapp_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

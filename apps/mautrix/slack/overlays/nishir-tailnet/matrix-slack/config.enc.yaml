@@ -11,7 +11,7 @@ appservice:
   hostname: 0.0.0.0
   hs_token: ENC[AES256_GCM,data:QzL0jlYriU/6qYQA+wJj8+5njeuAkHPluppt9Z77Kro0DmrsRdEXgs6Ft7zImSqKCIYAgY4+flolxEhD10i9bA==,iv:SjH3ah1d20Fga9uBNFz2v2jd8869uizAqNgHM2lRm+I=,tag:fCC4qqZORJ5518Yds2eBsg==,type:str]
   port: 29335
-  public_address: https://matrix-slack-bridge.taila659a.ts.net
+  public_address: https://matrix-slack-bridge.i.shikanime.studio
   username_template: slack_{{.}}
   bot:
     avatar: mxc://maunium.net/pVtzLmChZejGxLqmXtQjFxem
@@ -57,8 +57,8 @@ bridge:
     - m.lowpriority
   permissions:
     "*": relay
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   personal_filtering_spaces: true
   private_chat_portal_meta: true
   relay:
@@ -91,12 +91,12 @@ direct_media:
   enabled: false
   media_id_prefix: null
   server_key: ENC[AES256_GCM,data:5vLxPA/4eJkpsIozZq712BKFnWuYb72Tsd58fjR9Zt/pLO8Cz1Or/0Ae9foM42uYULsWtgUu6fYdNQ==,iv:OE1dOT+Ans6PuOsXqSYUE28LmKDCB7KaLmvz8u380yU=,tag:wfwlwbj1xUkzWCs7g+ZGEA==,type:str]
-  server_name: matrix-discord-media.taila659a.ts.net
+  server_name: matrix-discord-media.i.shikanime.studio
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:2NggEu8zJ2DOicVjPR/icNcJeqUMG9m1CWW++bJlX6tcRUCHZN0uXSSYoFGIaD/f3ADokVft9ot4ltsvDAY5AN7rHFk3y7SU9g==,iv:/ycEwxYDICZigDYeur8aBwXTt4CSlIANo5SXb0IngtY=,tag:pw0VPSC8mwm5YuUmf4H6Pg==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:2NggEu8zJ2DOicVjPR/icNcJeqUMG9m1CWW++bJlX6tcRUCHZN0uXSSYoFGIaD/f3ADokVft9ot4ltsvDAY5AN7rHFk3y7SU9g==,iv:/ycEwxYDICZigDYeur8aBwXTt4CSlIANo5SXb0IngtY=,tag:pw0VPSC8mwm5YuUmf4H6Pg==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -129,7 +129,7 @@ encryption:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard

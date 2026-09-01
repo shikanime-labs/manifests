@@ -23,7 +23,7 @@ spec:
     auditPolicy:
       enabled: false
     certSANs:
-      - shana.taila659a.ts.net
+      - shana.i.shikanime.studio
     serviceLB:
       enabled: false
     csi:

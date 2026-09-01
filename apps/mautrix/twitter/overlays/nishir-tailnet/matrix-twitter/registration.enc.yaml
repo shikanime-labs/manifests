@@ -9,9 +9,9 @@ sender_localpart: D2x81bUOmzcd7JdHVEesHVgAuLJM32dc
 namespaces:
   users:
     - exclusive: true
-      regex: ^@twitterbot:matrix\.taila659a\.ts\.net$
+      regex: ^@twitterbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@twitter_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@twitter_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

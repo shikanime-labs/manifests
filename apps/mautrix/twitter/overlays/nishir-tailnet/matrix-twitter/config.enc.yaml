@@ -11,7 +11,7 @@ appservice:
   hostname: 0.0.0.0
   hs_token: ENC[AES256_GCM,data:InSrEbeZG3vx30zYgTiUwmMyetcJjKdu2CJvY5r/e6v8babTU5SQwkZn8l26BoFkbf+JNij/VwzaUpkwRh9KyQ==,iv:R3YvVkTYiAYfmlkP6f1ovYn7zs7lxxlqv6Jfop5fSK4=,tag:a6E/yg2CD9CL8hF3Z6LEtA==,type:str]
   port: 29327
-  public_address: https://matrix-twitter.taila659a.ts.net
+  public_address: https://matrix-twitter.i.shikanime.studio
   username_template: twitter_{{.}}
   bot:
     avatar: mxc://maunium.net/HVHcnusJkQcpVcsVGZRELLCn
@@ -58,8 +58,8 @@ bridge:
     - m.lowpriority
   permissions:
     "*": relay
-    "@shikanime:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@shikanime:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   personal_filtering_spaces: true
   private_chat_portal_meta: true
   relay:
@@ -94,12 +94,12 @@ direct_media:
   enabled: false
   media_id_prefix: null
   server_key: ENC[AES256_GCM,data:E03xpaeACor+0Jp3aI0QJlLR2kWuLXeeabTHcWPUExUuI7aZikD9GsdPGhg3o4XDJr/1R/9FvDt2CA==,iv:p4c1q0vy4vMjGdORURZ+hWyUbEzFDmzRmwV55DaUvWk=,tag:JImNCxMTivvIZLNopr5cUA==,type:str]
-  server_name: matrix-discord-media.taila659a.ts.net
+  server_name: matrix-discord-media.i.shikanime.studio
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:rU4oztY+Kdi9PXP+0dw+bnXswevrUhh7gfeXb87qXewq8BrLNMJhaGz63IzvJ/6JqBQPE+VCvOo05DY5IPwdq2sR0/gEQlezbw==,iv:qLeqOgMVqslsNtERHoo/T3ziroMPmbivxMdguNfcxLE=,tag:+Fxmnk8lenYSyJxkapf+zw==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:rU4oztY+Kdi9PXP+0dw+bnXswevrUhh7gfeXb87qXewq8BrLNMJhaGz63IzvJ/6JqBQPE+VCvOo05DY5IPwdq2sR0/gEQlezbw==,iv:qLeqOgMVqslsNtERHoo/T3ziroMPmbivxMdguNfcxLE=,tag:+Fxmnk8lenYSyJxkapf+zw==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -134,7 +134,7 @@ env_config_prefix: null
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard

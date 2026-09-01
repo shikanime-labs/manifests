@@ -9,9 +9,9 @@ sender_localpart: ua2Wn9phl9nWq3uigKjNEBciq4YExtPh
 namespaces:
   users:
     - exclusive: true
-      regex: ^@slackbot:matrix\.taila659a\.ts\.net$
+      regex: ^@slackbot:matrix\.i.shikanime.studio$
     - exclusive: true
-      regex: ^@slack_.*:matrix\.taila659a\.ts\.net$
+      regex: ^@slack_.*:matrix\.i.shikanime.studio$
 sops:
   version: 3.13.1
   encrypted_regex: ^(as_token|hs_token)$

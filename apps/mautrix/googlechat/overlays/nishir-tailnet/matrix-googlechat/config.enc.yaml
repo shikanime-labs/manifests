@@ -60,11 +60,11 @@ bridge:
   initial_chat_sync: 10
   invite_own_puppet_to_pm: false
   login_shared_secret_map:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:qNo3iVxLpXNpNPfdExMWIRiV9poMrvexmbLsFhJe4/8ZKFka/TpWl88KWjIKQiItB9taKS6WslDrFraIkyw0cQ==,iv:teLIVEkMIrsKl1mWLPRw4IIS/v9dThlAYUOHB97VFGQ=,tag:Z9cvU8wx1JVswW++R58YCQ==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:qNo3iVxLpXNpNPfdExMWIRiV9poMrvexmbLsFhJe4/8ZKFka/TpWl88KWjIKQiItB9taKS6WslDrFraIkyw0cQ==,iv:teLIVEkMIrsKl1mWLPRw4IIS/v9dThlAYUOHB97VFGQ=,tag:Z9cvU8wx1JVswW++R58YCQ==,type:str]
   message_status_events: false
   permissions:
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   private_chat_portal_meta: default
   provisioning:
     prefix: /_matrix/provision
@@ -78,7 +78,7 @@ bridge:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   http_retry_count: 4
   message_send_checkpoint_endpoint: null
   software: standard

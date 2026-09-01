@@ -11,7 +11,7 @@ appservice:
   hostname: 0.0.0.0
   hs_token: ENC[AES256_GCM,data:OmVczECRGTNEalIpeB3PgGefwIsRPUPwmwDBtOXL78BnvdUmPGRNpTyh5ToCxAzR+TauBzKYrUryuw6KwesTIQ==,iv:4O+T9HZiuvZK6H99PJQjYMuaa6S1+at1Dz7R3TOzXc4=,tag:7y9rb5K35khkifosSQNADQ==,type:str]
   port: 29328
-  public_address: https://matrix-signal.taila659a.ts.net
+  public_address: https://matrix-signal.i.shikanime.studio
   username_template: signal_{{.}}
   bot:
     avatar: mxc://maunium.net/wPJgTQbZOtpBFmDNkiNEMDUp
@@ -57,8 +57,8 @@ bridge:
     - m.lowpriority
   permissions:
     "*": relay
-    "@root:matrix.taila659a.ts.net": admin
-    matrix.taila659a.ts.net: user
+    "@root:matrix.i.shikanime.studio": admin
+    matrix.i.shikanime.studio: user
   personal_filtering_spaces: true
   private_chat_portal_meta: true
   relay:
@@ -91,12 +91,12 @@ direct_media:
   enabled: false
   media_id_prefix: null
   server_key: ENC[AES256_GCM,data:0Ecz/OfieaTmYMtitlqMXQK/VpX/A46T6E+rzjbxKvWuy4H6hdr6Cq19NJZwymySD+53BNeGUjbPfg==,iv:DVeYRul/5WhQ+3qZzwG1xhO+syX/YgWZ+o/8KXnl+Sc=,tag:lUVMTesfefOuPn2hlwKV6g==,type:str]
-  server_name: matrix-discord-media.taila659a.ts.net
+  server_name: matrix-discord-media.i.shikanime.studio
   well_known_response: null
 double_puppet:
   allow_discovery: false
   secrets:
-    matrix.taila659a.ts.net: ENC[AES256_GCM,data:ZE+QWKujXpYE0rZjUpaF84pQolLD4VBVP2mV2yFeaJt4VPcBGAfDfb+YsDoyPMl13fheu3DNiRcfl3sxa4eSHRP5bOik932m+A==,iv:gjlC7UidTjaq8DvCBRX6Ao4erbNZTvReZrjqMo5gc6k=,tag:0o8pfMCm2w4jXLksPvxwug==,type:str]
+    matrix.i.shikanime.studio: ENC[AES256_GCM,data:ZE+QWKujXpYE0rZjUpaF84pQolLD4VBVP2mV2yFeaJt4VPcBGAfDfb+YsDoyPMl13fheu3DNiRcfl3sxa4eSHRP5bOik932m+A==,iv:gjlC7UidTjaq8DvCBRX6Ao4erbNZTvReZrjqMo5gc6k=,tag:0o8pfMCm2w4jXLksPvxwug==,type:str]
   servers:
     anotherserver.example.org: https://matrix.anotherserver.example.org
 encryption:
@@ -129,7 +129,7 @@ encryption:
 homeserver:
   address: https://synapse.shikanime.svc.cluster.local:8448
   async_media: false
-  domain: matrix.taila659a.ts.net
+  domain: matrix.i.shikanime.studio
   message_send_checkpoint_endpoint: null
   ping_interval_seconds: 0
   software: standard
