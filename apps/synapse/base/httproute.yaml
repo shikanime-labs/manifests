@@ -40,11 +40,9 @@ spec:
         - name: synapse
           port: 8448
       filters:
-        - type: RequestHeaderModifier
-          requestHeaderModifier:
-            set:
-              - name: Host
-                value: matrix.taila659a.ts.net
+        - type: URLRewrite
+          urlRewrite:
+            hostname: matrix.taila659a.ts.net
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -88,11 +86,9 @@ spec:
         - name: synapse
           port: 8448
       filters:
-        - type: RequestHeaderModifier
-          requestHeaderModifier:
-            set:
-              - name: Host
-                value: matrix.taila659a.ts.net
+        - type: URLRewrite
+          urlRewrite:
+            hostname: matrix.taila659a.ts.net
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
