@@ -30,5 +30,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: lidarr
+          tailscale.com/hostname: lidarr-proxy
           tailscale.com/tags: "tag:web"

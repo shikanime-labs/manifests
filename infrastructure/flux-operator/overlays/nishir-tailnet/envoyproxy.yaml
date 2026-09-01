@@ -12,5 +12,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: flux
+          tailscale.com/hostname: flux-proxy
           tailscale.com/tags: "tag:web"

@@ -30,5 +30,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: syncthing
+          tailscale.com/hostname: syncthing-proxy
           tailscale.com/tags: "tag:syncthing"

@@ -30,5 +30,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: whatsapp
+          tailscale.com/hostname: whatsapp-proxy
           tailscale.com/tags: "tag:web"

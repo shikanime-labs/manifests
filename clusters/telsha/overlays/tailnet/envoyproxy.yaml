@@ -12,5 +12,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: telsha-webhook
+          tailscale.com/hostname: telsha-webhook-proxy
           tailscale.com/tags: "tag:web"
