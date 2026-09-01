@@ -1,16 +1,19 @@
 resources:
   - ../../base
+  - envoyproxy.yaml
+  - gatewayclass.yaml
 components:
   - ../../components/autoscaler
   - ../../components/cert-manager
   - ../../components/cluster-api
+  - ../../components/envoy-gateway
   - ../../components/gatekeeper
   - ../../components/victoria-metrics
   - ../../components/victoria-logs
   - ../../components/tailscale
   - ../../components/trust-manager
 patches:
-  - path: patch-ingress.yaml
+  - path: patch-gateway.yaml
 labels:
   - includeTemplates: true
     pairs:
