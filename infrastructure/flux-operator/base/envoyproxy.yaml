@@ -1,16 +1,16 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
-  name: flux
+  name: flux-operator
   namespace: flux-system
 spec:
   provider:
     type: Kubernetes
     kubernetes:
       envoyService:
-        name: flux
+        name: flux-operator
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: flux
+          tailscale.com/hostname: flux-operator
           tailscale.com/tags: "tag:web"

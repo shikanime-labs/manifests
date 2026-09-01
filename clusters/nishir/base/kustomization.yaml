@@ -1,13 +1,5 @@
 resources:
-  - alert.yaml
-  - cert.yaml
-  - gateway.yaml
-  - httproute.yaml
   - netpol.yaml
   - ns.yaml
-  - provider.yaml
   - pvc.yaml
-  - receiver.yaml
   - vpa.yaml
-configurations:
-  - config.yaml

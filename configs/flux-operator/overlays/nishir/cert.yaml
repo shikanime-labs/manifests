@@ -1,16 +1,16 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-webhooks-flux
+  name: studio-shikanime-i-receivers-flux
   namespace: flux-system
 spec:
-  commonName: webhooks.flux.i.shikanime.studio
+  commonName: receivers.flux.i.shikanime.studio
   dnsNames:
-    - webhooks.flux.i.shikanime.studio
+    - receivers.flux.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-webhooks-flux
+  secretName: studio-shikanime-i-receivers-flux
   usages:
     - digital signature
     - key encipherment

@@ -1,0 +1,6 @@
+resources:
+  - alert.yaml
+  - provider.yaml
+  - receiver.yaml
+configurations:
+  - config.yaml
