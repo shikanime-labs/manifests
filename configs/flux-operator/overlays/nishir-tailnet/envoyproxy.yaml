@@ -12,6 +12,6 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: flux-operator-receivers
+          tailscale.com/hostname: flux-receivers
           tailscale.com/tags: "tag:web"
           tailscale.com/funnel: "true"
