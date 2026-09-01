@@ -2,6 +2,8 @@ resources:
   - ../../base
   - gateway.yaml
   - cert.yaml
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

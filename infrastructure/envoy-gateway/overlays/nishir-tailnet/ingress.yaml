@@ -11,7 +11,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - flux-receivers.taila659a.ts.net
+        - flux-receivers
   defaultBackend:
     service:
       name: flux-operator-receivers
@@ -30,7 +30,7 @@ spec:
   ingressClassName: tailscale
   tls:
     - hosts:
-        - matrix.taila659a.ts.net
+        - matrix
   defaultBackend:
     service:
       name: synapse
