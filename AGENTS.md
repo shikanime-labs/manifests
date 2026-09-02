@@ -118,6 +118,35 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - Resources in a base are one kind per file, named
   `<short-kube-resource-name>.yaml`, listed sorted
 
+## Overlay Conventions
+
+- **Hostname split:** `overlays/nishir/` carries `*.i.shikanime.studio` ONLY;
+  `overlays/nishir-tailnet/` carries `*.taila659a.ts.net` ONLY. Never duplicate
+  a hostname across both.
+- **Tailnet hostnames append:** JSON6902 `op: add` on `path: /spec/hostnames/-`
+  with a scalar `value:`. Never a list value (appends a nested list) and never
+  `op: replace` on `/spec/hostnames` in tailnet overlays.
+- **Patch placement:** JSON6902 patches go INLINE in `kustomization.yaml`
+  `patches:` entries (`patch: |-` + `target:`). Separate patch files are for
+  strategic-merge only, named `patch-<resource>.yaml`.
+- **Kustomize v5 gotchas:** a JSON6902 patch FILE must be a single ops-list doc
+  (multidoc `{patch,target}` files fail to parse; multidoc ops-lists are
+  order-dependent). `add` on an existing object member acts as replace (RFC
+  6902). A component referencing a named probe port must declare that
+  `containerPort` in the same patch tree.
+- **Labels:** tailnet overlays carry the five-key `app.kubernetes.io` label set
+  (`component`, `instance`, `name`, `part-of`, `version`) with
+  `includeTemplates: true`. Keep `version` synced to the base image tag — bump
+  it in the same PR as any `newTag` change. Plain `nishir` overlays are
+  label-free by pattern.
+- **Resources lists sorted** in `kustomization.yaml`.
+- **Netpol:** tailnet overlays needing extra ingress ship a full `netpol.yaml`
+  in `resources:`; only lldap wires a `patch-netpol.yaml`. Netpol is enforced
+  cross-app, but envoy data-plane pods reach app pods even without a netpol
+  ingress entry.
+- **No dangling files:** every file must be referenced by its kustomization
+  (`path:` / `files:` / `envs:` / inline).
+
 ## Inference apps
 
 - `apps/llama-cpp/<name>/` — Envoy AI Gateway `AIGatewayRoute` workloads. One
@@ -151,8 +180,20 @@ files.
 
 - Plain-text capitalized title, no conventional-commit prefix
 - Body with labels: `Design:`, `Related:`, `Closes #`
+- Every commit carries trailers:
+  `Signed-off-by: Shikanime Deva <william.phetsinorath@shikanime.studio>` and
+  `Co-authored-by: Automata <automata@shikanime.studio>` (gitlint CC1 rejects
+  commits without Signed-off-by)
 - Keep Markdown lines wrapped at 80 columns and run `nix fmt` (treefmt) before
   shipping. The `gitlint` commit-msg hook enforces the title style locally.
+
+## PR Workflow
+
+- Branch fresh off latest `origin/main`; rebase before submitting.
+- Verify with `kustomize build` before shipping (fleet sweep: build every
+  directory containing a `kustomization.yaml`).
+- Squash-merge after checks pass: `gh pr merge N --squash --admin`; capture the
+  mergeCommit oid and reset local main to `origin/main` afterwards.
 
 ## Stack Workflow
 
