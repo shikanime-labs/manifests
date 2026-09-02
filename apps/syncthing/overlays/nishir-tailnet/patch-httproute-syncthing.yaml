@@ -1,6 +1,6 @@
 - op: add
   path: /spec/hostnames/-
-  value: [syncthing.taila659a.ts.net]
+  value: syncthing.taila659a.ts.net
 - op: replace
   path: /spec/parentRefs
   value:
