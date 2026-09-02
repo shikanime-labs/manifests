@@ -12,4 +12,4 @@ resources:
 images:
   - name: authelia
     newName: authelia/authelia
-    newTag: 4.39.20@sha256:b5f415d5f14b154c2aa2b186d9f329d879e223da36e115cd871db4c261d5af54
+    newTag: 4.39.20@sha256:1b363e9279e742397966333f364e0876ae02bf5c876de73e83af6d48c57ff51b
