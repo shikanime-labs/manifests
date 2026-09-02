@@ -7,12 +7,6 @@ configMapGenerator:
   - name: copyparty
     files:
       - ./copyparty/config.conf
-secretGenerator:
-  - name: copyparty-oidc
-    envs:
-      - ./copyparty-oidc/.enc.env
-    options:
-      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:
