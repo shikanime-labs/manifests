@@ -1,0 +1,22 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: vaultwarden
+spec:
+  hostnames:
+    - vaultwarden.taila659a.ts.net
+  parentRefs:
+    - name: vaultwarden
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: vaultwarden-redirect
+spec:
+  hostnames:
+    - vaultwarden.taila659a.ts.net
+  parentRefs:
+    - name: vaultwarden
+      sectionName: http

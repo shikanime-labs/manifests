@@ -18,6 +18,7 @@ secretGenerator:
     options:
       disableNameSuffixHash: true
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: immich

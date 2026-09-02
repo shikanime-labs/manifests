@@ -5,7 +5,7 @@ metadata:
   name: radarr
 spec:
   hostnames:
-    - radarr.i.shikanime.studio
+    - radarr.taila659a.ts.net
   parentRefs:
     - name: radarr
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: radarr-redirect
 spec:
   hostnames:
-    - radarr.i.shikanime.studio
+    - radarr.taila659a.ts.net
   parentRefs:
     - name: radarr
       sectionName: http

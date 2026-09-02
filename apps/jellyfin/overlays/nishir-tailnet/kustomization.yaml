@@ -13,6 +13,7 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 10.11.11
 patches:
+  - path: patch-httproute.yaml
   - path: patch-sts.yaml
     target:
       name: jellyfin

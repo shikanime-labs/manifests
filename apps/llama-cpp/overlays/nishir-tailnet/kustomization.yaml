@@ -13,6 +13,7 @@ patches:
       kind: ClientTrafficPolicy
       namespace: shikanime
     path: patch-clienttrafficpolicy.yaml
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

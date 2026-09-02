@@ -9,6 +9,7 @@ configurations:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
+  - path: patch-httproute.yaml
 secretGenerator:
   - name: lidarr
     files:

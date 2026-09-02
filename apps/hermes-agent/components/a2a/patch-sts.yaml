@@ -13,5 +13,3 @@ spec:
           ports:
             - name: a2a
               containerPort: 9900
-            - name: api-server
-              containerPort: 8642

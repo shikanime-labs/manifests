@@ -14,9 +14,12 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: studio-shikanime-i-hermes-agent
+          - name: studio-shikanime-i-automata
             group: ""
             kind: Secret
-          - name: studio-shikanime-i-automata-dashboard
+          - name: studio-shikanime-i-automata-api
+            group: ""
+            kind: Secret
+          - name: studio-shikanime-i-automata-a2a
             group: ""
             kind: Secret
