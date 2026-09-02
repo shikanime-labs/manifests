@@ -5,7 +5,30 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: whisparr
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [whisparr.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: whisparr
+            sectionName: https
+  - target:
+      name: whisparr-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [whisparr.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: whisparr
+            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

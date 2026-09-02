@@ -18,7 +18,30 @@ secretGenerator:
     options:
       disableNameSuffixHash: true
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: immich
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [immich.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: immich
+            sectionName: https
+  - target:
+      name: immich-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [immich.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: immich
+            sectionName: http
   - path: patch-netpol.yaml
     target:
       name: immich

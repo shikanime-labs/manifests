@@ -13,7 +13,42 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 10.11.11
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: jellyfin
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [jellyfin.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: jellyfin
+            sectionName: http
+  - target:
+      name: jellyfin-https
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [jellyfin.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: jellyfin
+            sectionName: https
+  - target:
+      name: jellyfin-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [jellyfin.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: jellyfin
+            sectionName: http
   - path: patch-sts.yaml
     target:
       name: jellyfin

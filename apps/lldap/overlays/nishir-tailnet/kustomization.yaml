@@ -9,7 +9,30 @@ patches:
     target:
       name: lldap
       kind: NetworkPolicy
-  - path: patch-httproute.yaml
+  - target:
+      name: lldap
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [lldap.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: lldap
+            sectionName: https
+  - target:
+      name: lldap-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [lldap.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: lldap
+            sectionName: http
 labels:
   - includeTemplates: true
     pairs:
