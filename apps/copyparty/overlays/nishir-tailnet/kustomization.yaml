@@ -11,7 +11,7 @@ configMapGenerator:
 secretGenerator:
   - name: copyparty-oidc
     envs:
-      - ./copyparty-oidc-client/.enc.env
+      - ./copyparty-oidc/.enc.env
     options:
       disableNameSuffixHash: true
 labels:
