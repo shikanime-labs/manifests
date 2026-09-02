@@ -16,6 +16,7 @@ labels:
       app.kubernetes.io/part-of: nishir-operation
       app.kubernetes.io/version: 1.20.18
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: copyparty
