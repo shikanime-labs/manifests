@@ -4,7 +4,30 @@ resources:
   - envoyproxy.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: metatube
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [metatube.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: metatube
+            sectionName: https
+  - target:
+      name: metatube-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [metatube.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: metatube
+            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

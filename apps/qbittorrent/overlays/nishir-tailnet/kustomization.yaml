@@ -13,7 +13,30 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 5.2.3-1
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: qbittorrent
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [qbittorrent.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: qbittorrent
+            sectionName: https
+  - target:
+      name: qbittorrent-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [qbittorrent.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: qbittorrent
+            sectionName: http
   - path: patch-netpol.yaml
     target:
       name: qbittorrent

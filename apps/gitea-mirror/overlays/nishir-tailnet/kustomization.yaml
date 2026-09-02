@@ -12,7 +12,30 @@ labels:
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 3.17.1
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: gitea-mirror
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [gitea-mirror.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: gitea-mirror
+            sectionName: https
+  - target:
+      name: gitea-mirror-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [gitea-mirror.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: gitea-mirror
+            sectionName: http
   - path: patch-netpol.yaml
     target:
       name: gitea-mirror

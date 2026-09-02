@@ -12,7 +12,30 @@ labels:
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 15.0.6-rootless
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: forgejo
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [forgejo.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: forgejo
+            sectionName: https
+  - target:
+      name: forgejo-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [forgejo.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: forgejo
+            sectionName: http
   - path: patch-netpol.yaml
     target:
       name: forgejo

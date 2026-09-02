@@ -5,7 +5,30 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute.yaml
+  - target:
+      name: twitter
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [mautrix-twitter.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: twitter
+            sectionName: https
+  - target:
+      name: twitter-redirect
+      kind: HTTPRoute
+    patch: |
+      - op: replace
+        path: /spec/hostnames
+        value: [mautrix-twitter.taila659a.ts.net]
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: twitter
+            sectionName: http
 labels:
   - includeTemplates: true
     pairs:
