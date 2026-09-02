@@ -9,6 +9,3 @@ images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/discord
     newTag: v0.7.6
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "mautrix", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

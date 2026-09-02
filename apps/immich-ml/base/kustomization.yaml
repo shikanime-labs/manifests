@@ -7,6 +7,3 @@ images:
   - name: immich-machine-learning
     newName: ghcr.io/immich-app/immich-machine-learning
     newTag: v1.144.1-openvino@sha256:6fb31e35add68ecabc45cf118859f1cfb3058f1098cd7ae007b2226a82bc2608
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "immich-machine-learning", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'

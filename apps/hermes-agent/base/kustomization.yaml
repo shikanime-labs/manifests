@@ -11,9 +11,6 @@ images:
   - name: hermes-agent
     newName: nousresearch/hermes-agent
     newTag: v2026.8.27@sha256:e3f4f0679f15556d5e09369cc36bf1074351b2d37bdd672dae593dfd07495180
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "hermes-agent", "tag-regex": "^(?P<version>.+)$" } ]'
 configMapGenerator:
   - name: hermes-agent-rclone
     files:

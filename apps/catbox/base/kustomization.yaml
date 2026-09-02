@@ -3,6 +3,3 @@ resources:
   - pvc.yaml
   - vm.yaml
   - svc.yaml
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "ghcr.io/shikanime-labs/machines/catbox", "tag-regex": "^v(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)-(?P<build>\\d+)-g(?P<commit>[0-9a-f]+)$" } ]'

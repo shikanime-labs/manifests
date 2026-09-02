@@ -12,9 +12,6 @@ images:
   - name: rclone
     newName: rclone/rclone
     newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "rclone", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$" }, { "name": "lidarr", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$", "exclude-tags": ["8.1.2135"] } ]'
 configMapGenerator:
   - name: lidarr-rclone
     namespace: shikanime

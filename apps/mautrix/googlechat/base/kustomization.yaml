@@ -9,6 +9,3 @@ images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/googlechat
     newTag: v0.5.2
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "mautrix", "tag-regex": "^v(?P<version>\\d+\\.\\d+\\.\\d+)$" } ]'
