@@ -1,8 +1,6 @@
 resources:
   - ../nishir
   - gatewayclass.yaml
-  - envoyproxy.yaml
-  - securitypolicy.yaml
 namespace: shikanime
 configMapGenerator:
   - name: copyparty
