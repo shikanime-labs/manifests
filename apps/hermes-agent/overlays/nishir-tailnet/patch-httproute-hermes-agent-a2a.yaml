@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/hostnames
+  value: [a2a.automata.taila659a.ts.net]
+- op: replace
+  path: /spec/parentRefs
+  value:
+    - name: hermes-agent
+      sectionName: https

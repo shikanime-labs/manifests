@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-signal.yaml
+    target:
       name: signal
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-signal.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: signal
-            sectionName: https
-  - target:
+  - path: patch-httproute-signal-redirect.yaml
+    target:
       name: signal-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-signal.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: signal
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

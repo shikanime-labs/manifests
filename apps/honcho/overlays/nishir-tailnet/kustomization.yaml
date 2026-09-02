@@ -20,32 +20,11 @@ labels:
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 3.0.9
 patches:
-  - target:
-      name: honcho
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [honcho.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: honcho
-            sectionName: https
-  - target:
-      name: honcho-redirect
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [honcho.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: honcho
-            sectionName: http
-  - path: patch-netpol.yaml
+  - path: patch-httproute-honcho.yaml
     target:
       name: honcho
-      version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
+  - path: patch-httproute-honcho-redirect.yaml
+    target:
+      name: honcho-redirect
+      kind: HTTPRoute

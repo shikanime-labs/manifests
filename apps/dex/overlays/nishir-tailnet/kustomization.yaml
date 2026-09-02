@@ -17,32 +17,11 @@ secretGenerator:
     files:
       - config.yaml=dex/config.enc.yaml
 patches:
-  - target:
-      name: dex
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [accounts.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: dex
-            sectionName: https
-  - target:
-      name: dex-redirect
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [accounts.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: dex
-            sectionName: http
-  - path: patch-netpol.yaml
+  - path: patch-httproute-dex.yaml
     target:
       name: dex
-      version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
+  - path: patch-httproute-dex-redirect.yaml
+    target:
+      name: dex-redirect
+      kind: HTTPRoute

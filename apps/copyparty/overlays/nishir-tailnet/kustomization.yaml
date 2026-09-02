@@ -16,32 +16,11 @@ labels:
       app.kubernetes.io/part-of: nishir-operation
       app.kubernetes.io/version: 1.20.18
 patches:
-  - target:
-      name: copyparty
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [copyparty.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: copyparty
-            sectionName: https
-  - target:
-      name: copyparty-redirect
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [copyparty.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: copyparty
-            sectionName: http
-  - path: patch-netpol.yaml
+  - path: patch-httproute-copyparty.yaml
     target:
       name: copyparty
-      version: v1
-      kind: NetworkPolicy
+      kind: HTTPRoute
+  - path: patch-httproute-copyparty-redirect.yaml
+    target:
+      name: copyparty-redirect
+      kind: HTTPRoute

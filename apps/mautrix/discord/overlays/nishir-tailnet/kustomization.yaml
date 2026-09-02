@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-discord.yaml
+    target:
       name: discord
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-discord.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: discord
-            sectionName: https
-  - target:
+  - path: patch-httproute-discord-redirect.yaml
+    target:
       name: discord-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-discord.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: discord
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

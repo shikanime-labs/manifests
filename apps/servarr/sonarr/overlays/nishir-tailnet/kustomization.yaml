@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-sonarr.yaml
+    target:
       name: sonarr
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [sonarr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: sonarr
-            sectionName: https
-  - target:
+  - path: patch-httproute-sonarr-redirect.yaml
+    target:
       name: sonarr-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [sonarr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: sonarr
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

@@ -4,30 +4,14 @@ resources:
   - envoyproxy.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-seerr.yaml
+    target:
       name: seerr
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [seerr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: seerr
-            sectionName: https
-  - target:
+  - path: patch-httproute-seerr-redirect.yaml
+    target:
       name: seerr-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [seerr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: seerr
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:
