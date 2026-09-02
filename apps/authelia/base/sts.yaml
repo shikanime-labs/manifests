@@ -47,11 +47,12 @@ spec:
               readOnly: true
             - name: data
               mountPath: /config
+          args:
+            - --config
+            - /config-secret/configuration.enc.yaml
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
-            - name: X_AUTHELIA_CONFIG_FILE
-              value: /config-secret/configuration.enc.yaml
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
