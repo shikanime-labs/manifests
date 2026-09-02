@@ -5,27 +5,11 @@ resources:
   - netpol.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-syncthing.yaml
+    target:
       name: syncthing
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [syncthing.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: syncthing
-            sectionName: https
-  - target:
+  - path: patch-httproute-syncthing-redirect.yaml
+    target:
       name: syncthing-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [syncthing.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: syncthing
-            sectionName: http

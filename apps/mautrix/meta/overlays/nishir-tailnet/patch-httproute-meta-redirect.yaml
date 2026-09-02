@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/hostnames
+  value: [mautrix-meta.taila659a.ts.net]
+- op: replace
+  path: /spec/parentRefs
+  value:
+    - name: meta
+      sectionName: http

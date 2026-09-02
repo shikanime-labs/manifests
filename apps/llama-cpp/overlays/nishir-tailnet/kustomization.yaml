@@ -8,23 +8,15 @@ resources:
   - securitypolicy.yaml
 namespace: shikanime
 patches:
+  - path: patch-httproute-llama-cpp.yaml
+    target:
+      name: llama-cpp
+      kind: HTTPRoute
   - target:
       name: inference
       kind: ClientTrafficPolicy
       namespace: shikanime
     path: patch-clienttrafficpolicy.yaml
-  - target:
-      name: llama-cpp
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [chat.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: llama-cpp
-            sectionName: https
 labels:
   - includeTemplates: true
     pairs:

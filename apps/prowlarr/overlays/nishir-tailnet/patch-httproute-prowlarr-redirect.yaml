@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/hostnames
+  value: [prowlarr.taila659a.ts.net]
+- op: replace
+  path: /spec/parentRefs
+  value:
+    - name: prowlarr
+      sectionName: http

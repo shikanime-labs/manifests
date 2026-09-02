@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-radarr.yaml
+    target:
       name: radarr
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [radarr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: radarr
-            sectionName: https
-  - target:
+  - path: patch-httproute-radarr-redirect.yaml
+    target:
       name: radarr-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [radarr.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: radarr
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:
