@@ -48,7 +48,13 @@ spec:
               mountPath: /opt/data
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: maintainerr-config
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
