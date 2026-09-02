@@ -5,7 +5,7 @@ metadata:
   name: whatsapp
 spec:
   hostnames:
-    - whatsapp.i.shikanime.studio
+    - mautrix-whatsapp.i.shikanime.studio
   parentRefs:
     - name: whatsapp
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: whatsapp-redirect
 spec:
   hostnames:
-    - whatsapp.i.shikanime.studio
+    - mautrix-whatsapp.i.shikanime.studio
   parentRefs:
     - name: whatsapp
       sectionName: http

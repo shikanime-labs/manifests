@@ -216,9 +216,9 @@ metadata:
   name: studio-shikanime-i-discord
   namespace: shikanime
 spec:
-  commonName: discord.i.shikanime.studio
+  commonName: mautrix-discord.i.shikanime.studio
   dnsNames:
-    - discord.i.shikanime.studio
+    - mautrix-discord.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -234,9 +234,9 @@ metadata:
   name: studio-shikanime-i-googlechat
   namespace: shikanime
 spec:
-  commonName: googlechat.i.shikanime.studio
+  commonName: mautrix-googlechat.i.shikanime.studio
   dnsNames:
-    - googlechat.i.shikanime.studio
+    - mautrix-googlechat.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -252,9 +252,9 @@ metadata:
   name: studio-shikanime-i-linkedin
   namespace: shikanime
 spec:
-  commonName: linkedin.i.shikanime.studio
+  commonName: mautrix-linkedin.i.shikanime.studio
   dnsNames:
-    - linkedin.i.shikanime.studio
+    - mautrix-linkedin.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -270,9 +270,9 @@ metadata:
   name: studio-shikanime-i-meta
   namespace: shikanime
 spec:
-  commonName: meta.i.shikanime.studio
+  commonName: mautrix-meta.i.shikanime.studio
   dnsNames:
-    - meta.i.shikanime.studio
+    - mautrix-meta.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -288,9 +288,9 @@ metadata:
   name: studio-shikanime-i-signal
   namespace: shikanime
 spec:
-  commonName: signal.i.shikanime.studio
+  commonName: mautrix-signal.i.shikanime.studio
   dnsNames:
-    - signal.i.shikanime.studio
+    - mautrix-signal.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -306,9 +306,9 @@ metadata:
   name: studio-shikanime-i-slack
   namespace: shikanime
 spec:
-  commonName: slack.i.shikanime.studio
+  commonName: mautrix-slack.i.shikanime.studio
   dnsNames:
-    - slack.i.shikanime.studio
+    - mautrix-slack.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -324,9 +324,9 @@ metadata:
   name: studio-shikanime-i-twitter
   namespace: shikanime
 spec:
-  commonName: twitter.i.shikanime.studio
+  commonName: mautrix-twitter.i.shikanime.studio
   dnsNames:
-    - twitter.i.shikanime.studio
+    - mautrix-twitter.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
@@ -342,9 +342,9 @@ metadata:
   name: studio-shikanime-i-whatsapp
   namespace: shikanime
 spec:
-  commonName: whatsapp.i.shikanime.studio
+  commonName: mautrix-whatsapp.i.shikanime.studio
   dnsNames:
-    - whatsapp.i.shikanime.studio
+    - mautrix-whatsapp.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer

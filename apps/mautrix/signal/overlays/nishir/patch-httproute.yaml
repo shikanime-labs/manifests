@@ -5,7 +5,7 @@ metadata:
   name: signal
 spec:
   hostnames:
-    - signal.i.shikanime.studio
+    - mautrix-signal.i.shikanime.studio
   parentRefs:
     - name: signal
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: signal-redirect
 spec:
   hostnames:
-    - signal.i.shikanime.studio
+    - mautrix-signal.i.shikanime.studio
   parentRefs:
     - name: signal
       sectionName: http

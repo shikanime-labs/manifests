@@ -5,7 +5,7 @@ metadata:
   name: signal
 spec:
   hostnames:
-    - signal.taila659a.ts.net
+    - mautrix-signal.taila659a.ts.net
   parentRefs:
     - name: signal
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: signal-redirect
 spec:
   hostnames:
-    - signal.taila659a.ts.net
+    - mautrix-signal.taila659a.ts.net
   parentRefs:
     - name: signal
       sectionName: http

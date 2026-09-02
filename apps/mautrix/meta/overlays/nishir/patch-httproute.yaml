@@ -5,7 +5,7 @@ metadata:
   name: meta
 spec:
   hostnames:
-    - meta.i.shikanime.studio
+    - mautrix-meta.i.shikanime.studio
   parentRefs:
     - name: meta
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: meta-redirect
 spec:
   hostnames:
-    - meta.i.shikanime.studio
+    - mautrix-meta.i.shikanime.studio
   parentRefs:
     - name: meta
       sectionName: http

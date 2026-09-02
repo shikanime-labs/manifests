@@ -5,7 +5,7 @@ metadata:
   name: twitter
 spec:
   hostnames:
-    - twitter.i.shikanime.studio
+    - mautrix-twitter.i.shikanime.studio
   parentRefs:
     - name: twitter
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: twitter-redirect
 spec:
   hostnames:
-    - twitter.i.shikanime.studio
+    - mautrix-twitter.i.shikanime.studio
   parentRefs:
     - name: twitter
       sectionName: http

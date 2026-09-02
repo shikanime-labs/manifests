@@ -5,7 +5,7 @@ metadata:
   name: meta
 spec:
   hostnames:
-    - meta.taila659a.ts.net
+    - mautrix-meta.taila659a.ts.net
   parentRefs:
     - name: meta
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: meta-redirect
 spec:
   hostnames:
-    - meta.taila659a.ts.net
+    - mautrix-meta.taila659a.ts.net
   parentRefs:
     - name: meta
       sectionName: http

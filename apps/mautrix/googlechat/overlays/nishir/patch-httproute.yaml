@@ -5,7 +5,7 @@ metadata:
   name: googlechat
 spec:
   hostnames:
-    - googlechat.i.shikanime.studio
+    - mautrix-googlechat.i.shikanime.studio
   parentRefs:
     - name: googlechat
       sectionName: https
@@ -16,7 +16,7 @@ metadata:
   name: googlechat-redirect
 spec:
   hostnames:
-    - googlechat.i.shikanime.studio
+    - mautrix-googlechat.i.shikanime.studio
   parentRefs:
     - name: googlechat
       sectionName: http
