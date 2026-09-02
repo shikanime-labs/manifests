@@ -3,7 +3,11 @@ kind: Component
 resources:
   - httproute.yaml
 patches:
-  - path: patch-netpol.yaml
+  - patch: |-
+      - op: add
+        path: /spec/ingress/0/ports/-
+        value:
+          port: https
     target:
       name: jellyfin
       version: v1

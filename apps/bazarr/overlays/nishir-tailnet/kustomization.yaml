@@ -4,13 +4,29 @@ resources:
   - envoyproxy.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute-bazarr.yaml
-    target:
-      name: bazarr
-      kind: HTTPRoute
-  - path: patch-httproute-bazarr-redirect.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: bazarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: bazarr
+            sectionName: http
     target:
       name: bazarr-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: bazarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: bazarr
+            sectionName: https
+    target:
+      name: bazarr
       kind: HTTPRoute
 labels:
   - includeTemplates: true

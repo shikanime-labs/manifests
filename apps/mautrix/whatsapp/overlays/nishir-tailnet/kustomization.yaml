@@ -5,13 +5,29 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute-whatsapp.yaml
-    target:
-      name: whatsapp
-      kind: HTTPRoute
-  - path: patch-httproute-whatsapp-redirect.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: mautrix-whatsapp.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: whatsapp
+            sectionName: http
     target:
       name: whatsapp-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: mautrix-whatsapp.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: whatsapp
+            sectionName: https
+    target:
+      name: whatsapp
       kind: HTTPRoute
 labels:
   - includeTemplates: true

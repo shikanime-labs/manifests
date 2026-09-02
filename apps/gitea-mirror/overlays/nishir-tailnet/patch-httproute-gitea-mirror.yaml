@@ -1,8 +1,0 @@
-- op: add
-  path: /spec/hostnames/-
-  value: gitea-mirror.taila659a.ts.net
-- op: replace
-  path: /spec/parentRefs
-  value:
-    - name: gitea-mirror
-      sectionName: https

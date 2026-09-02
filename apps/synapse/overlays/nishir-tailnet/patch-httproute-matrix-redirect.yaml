@@ -1,8 +1,0 @@
-- op: add
-  path: /spec/hostnames/-
-  value: [matrix.taila659a.ts.net, matrix-discord-media.taila659a.ts.net]
-- op: replace
-  path: /spec/parentRefs
-  value:
-    - name: synapse
-      sectionName: http

@@ -1,8 +1,0 @@
-- op: add
-  path: /spec/hostnames/-
-  value: metatube.taila659a.ts.net
-- op: replace
-  path: /spec/parentRefs
-  value:
-    - name: metatube
-      sectionName: https

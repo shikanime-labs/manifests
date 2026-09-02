@@ -5,13 +5,29 @@ resources:
   - backendtlspolicy.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute-vaultwarden.yaml
-    target:
-      name: vaultwarden
-      kind: HTTPRoute
-  - path: patch-httproute-vaultwarden-redirect.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: vaultwarden.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: vaultwarden
+            sectionName: http
     target:
       name: vaultwarden-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: vaultwarden.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: vaultwarden
+            sectionName: https
+    target:
+      name: vaultwarden
       kind: HTTPRoute
 labels:
   - includeTemplates: true
