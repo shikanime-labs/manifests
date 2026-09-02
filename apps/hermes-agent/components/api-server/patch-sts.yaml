@@ -12,6 +12,9 @@ spec:
               value: "true"
             - name: API_SERVER_HOST
               value: 0.0.0.0
+          ports:
+            - name: api-server
+              containerPort: 8642
           livenessProbe:
             failureThreshold: 3
             httpGet:
