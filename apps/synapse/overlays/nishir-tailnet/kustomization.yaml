@@ -13,47 +13,18 @@ labels:
       app.kubernetes.io/part-of: nishir-office
       app.kubernetes.io/version: 1.157.1
 patches:
-  - target:
+  - path: patch-httproute-matrix.yaml
+    target:
       name: matrix
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [matrix.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: synapse
-            sectionName: https
-  - target:
+  - path: patch-httproute-matrix-discord-media.yaml
+    target:
       name: matrix-discord-media
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [matrix-discord-media.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: synapse
-            sectionName: https
-  - target:
+  - path: patch-httproute-matrix-redirect.yaml
+    target:
       name: matrix-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [matrix.taila659a.ts.net, matrix-discord-media.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: synapse
-            sectionName: http
-  - path: patch-netpol.yaml
-    target:
-      name: synapse
-      version: v1
-      kind: NetworkPolicy
 secretGenerator:
   - name: synapse
     files:

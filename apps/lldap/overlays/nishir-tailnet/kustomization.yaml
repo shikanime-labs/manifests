@@ -5,34 +5,18 @@ resources:
   - httproute.yaml
 namespace: shikanime
 patches:
+  - path: patch-httproute-lldap.yaml
+    target:
+      name: lldap
+      kind: HTTPRoute
+  - path: patch-httproute-lldap-redirect.yaml
+    target:
+      name: lldap-redirect
+      kind: HTTPRoute
   - path: patch-netpol.yaml
     target:
       name: lldap
       kind: NetworkPolicy
-  - target:
-      name: lldap
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [lldap.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: lldap
-            sectionName: https
-  - target:
-      name: lldap-redirect
-      kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [lldap.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: lldap
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-linkedin.yaml
+    target:
       name: linkedin
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-linkedin.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: linkedin
-            sectionName: https
-  - target:
+  - path: patch-httproute-linkedin-redirect.yaml
+    target:
       name: linkedin-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-linkedin.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: linkedin
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

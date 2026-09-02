@@ -5,30 +5,14 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - target:
+  - path: patch-httproute-meta.yaml
+    target:
       name: meta
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-meta.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: meta
-            sectionName: https
-  - target:
+  - path: patch-httproute-meta-redirect.yaml
+    target:
       name: meta-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [mautrix-meta.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: meta
-            sectionName: http
 labels:
   - includeTemplates: true
     pairs:

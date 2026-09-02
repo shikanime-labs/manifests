@@ -12,80 +12,27 @@ labels:
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 2026.6.5
 patches:
-  - target:
+  - path: patch-httproute-hermes-agent-dashboard.yaml
+    target:
       name: hermes-agent-dashboard
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: https
-  - target:
+  - path: patch-httproute-hermes-agent-api-server.yaml
+    target:
       name: hermes-agent-api-server
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [api.automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: https
-  - target:
+  - path: patch-httproute-hermes-agent-a2a.yaml
+    target:
       name: hermes-agent-a2a
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [a2a.automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: https
-  - target:
+  - path: patch-httproute-hermes-agent-dashboard-redirect.yaml
+    target:
       name: hermes-agent-dashboard-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: http
-  - target:
+  - path: patch-httproute-hermes-agent-api-server-redirect.yaml
+    target:
       name: hermes-agent-api-server-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [api.automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: http
-  - target:
+  - path: patch-httproute-hermes-agent-a2a-redirect.yaml
+    target:
       name: hermes-agent-a2a-redirect
       kind: HTTPRoute
-    patch: |
-      - op: replace
-        path: /spec/hostnames
-        value: [a2a.automata.taila659a.ts.net]
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: hermes-agent
-            sectionName: http
-  - path: patch-netpol.yaml
-    target:
-      name: hermes-agent
-      version: v1
-      kind: NetworkPolicy
