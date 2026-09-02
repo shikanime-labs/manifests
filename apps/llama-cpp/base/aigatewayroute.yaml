@@ -108,7 +108,7 @@ spec:
           priority: 2
           modelNameOverride: z-ai/glm-5.3
     - matches:
-        - hearders:
+        - headers:
             - name: x-ai-eg-model
               type: Exact
               value: poolside/laguna-s-2.1
