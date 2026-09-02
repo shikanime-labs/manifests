@@ -411,17 +411,17 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-dex
+  name: studio-shikanime-i-authelia
   namespace: shikanime
 spec:
-  commonName: dex.i.shikanime.studio
+  commonName: authelia.i.shikanime.studio
   dnsNames:
-    - dex.i.shikanime.studio
+    - authelia.i.shikanime.studio
     - accounts.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-dex
+  secretName: studio-shikanime-i-authelia
   usages:
     - digital signature
     - key encipherment

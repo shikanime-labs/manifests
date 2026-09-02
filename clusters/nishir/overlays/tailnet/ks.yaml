@@ -82,7 +82,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-dex
+  name: apps-authelia
   namespace: flux-system
 spec:
   decryption:
@@ -98,10 +98,10 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: StatefulSet
-      name: dex
+      name: authelia
       namespace: shikanime
   interval: 10m
-  path: ./apps/dex/overlays/nishir-tailnet
+  path: ./apps/authelia/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system

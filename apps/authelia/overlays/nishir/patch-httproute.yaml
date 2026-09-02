@@ -2,22 +2,22 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: dex
+  name: authelia
 spec:
   hostnames:
-    - dex.i.shikanime.studio
+    - authelia.i.shikanime.studio
     - accounts.i.shikanime.studio
   parentRefs:
-    - name: dex
+    - name: authelia
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: dex-redirect
+  name: authelia-redirect
 spec:
   hostnames:
-    - dex.i.shikanime.studio
+    - authelia.i.shikanime.studio
   parentRefs:
-    - name: dex
+    - name: authelia
       sectionName: http
