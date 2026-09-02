@@ -36,4 +36,4 @@ labels:
       app.kubernetes.io/instance: vaultwarden
       app.kubernetes.io/name: vaultwarden
       app.kubernetes.io/part-of: nishir-security
-      app.kubernetes.io/version: 1.37.0
+      app.kubernetes.io/version: 1.37.1

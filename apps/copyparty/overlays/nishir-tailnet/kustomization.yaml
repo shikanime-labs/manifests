@@ -14,7 +14,7 @@ labels:
       app.kubernetes.io/instance: copyparty
       app.kubernetes.io/name: copyparty
       app.kubernetes.io/part-of: nishir-operation
-      app.kubernetes.io/version: 1.20.18
+      app.kubernetes.io/version: 1.20.20
 patches:
   - patch: |-
       - op: add

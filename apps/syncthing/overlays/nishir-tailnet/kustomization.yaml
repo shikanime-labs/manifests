@@ -4,6 +4,14 @@ resources:
   - envoyproxy.yaml
   - netpol.yaml
 namespace: shikanime
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: backup
+      app.kubernetes.io/instance: syncthing
+      app.kubernetes.io/name: syncthing
+      app.kubernetes.io/part-of: nishir-operation
+      app.kubernetes.io/version: 2.1.3
 patches:
   - patch: |-
       - op: add

@@ -18,7 +18,7 @@ labels:
       app.kubernetes.io/instance: honcho
       app.kubernetes.io/name: honcho
       app.kubernetes.io/part-of: nishir-automata
-      app.kubernetes.io/version: 3.0.9
+      app.kubernetes.io/version: 3.0.12
 patches:
   - patch: |-
       - op: add
