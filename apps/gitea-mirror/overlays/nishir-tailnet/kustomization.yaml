@@ -12,6 +12,7 @@ labels:
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 3.17.1
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: gitea-mirror

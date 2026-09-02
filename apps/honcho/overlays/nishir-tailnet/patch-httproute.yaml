@@ -2,23 +2,23 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty
+  name: honcho
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - honcho.i.shikanime.studio
+    - honcho.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: honcho
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty-redirect
+  name: honcho-redirect
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - honcho.i.shikanime.studio
+    - honcho.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: honcho
       sectionName: http

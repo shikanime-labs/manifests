@@ -13,6 +13,7 @@ labels:
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 2026.6.5
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: hermes-agent

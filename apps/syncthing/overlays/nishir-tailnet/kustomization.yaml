@@ -4,3 +4,5 @@ resources:
   - envoyproxy.yaml
   - netpol.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml

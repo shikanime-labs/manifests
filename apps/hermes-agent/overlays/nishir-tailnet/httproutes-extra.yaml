@@ -6,6 +6,7 @@ metadata:
 spec:
   hostnames:
     - automata-a2a.i.shikanime.studio
+    - automata-a2a.taila659a.ts.net
   parentRefs:
     - name: hermes-agent
       sectionName: https
@@ -21,6 +22,7 @@ metadata:
 spec:
   hostnames:
     - dashboard.automata.i.shikanime.studio
+    - dashboard.automata.taila659a.ts.net
   parentRefs:
     - name: hermes-agent
       sectionName: https

@@ -2,23 +2,23 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty
+  name: syncthing
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - syncthing.i.shikanime.studio
+    - syncthing.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: syncthing
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty-redirect
+  name: syncthing-redirect
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - syncthing.i.shikanime.studio
+    - syncthing.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: syncthing
       sectionName: http

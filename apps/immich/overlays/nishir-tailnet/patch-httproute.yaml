@@ -2,23 +2,23 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty
+  name: immich
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - immich.i.shikanime.studio
+    - immich.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: immich
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty-redirect
+  name: immich-redirect
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - immich.i.shikanime.studio
+    - immich.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: immich
       sectionName: http

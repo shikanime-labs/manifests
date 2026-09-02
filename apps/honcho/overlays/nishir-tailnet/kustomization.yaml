@@ -20,6 +20,7 @@ labels:
       app.kubernetes.io/part-of: nishir-automata
       app.kubernetes.io/version: 3.0.9
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: honcho

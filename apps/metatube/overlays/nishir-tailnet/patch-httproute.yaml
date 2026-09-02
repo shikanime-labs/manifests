@@ -2,23 +2,23 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty
+  name: metatube
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - metatube.i.shikanime.studio
+    - metatube.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: metatube
       sectionName: https
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: copyparty-redirect
+  name: metatube-redirect
 spec:
   hostnames:
-    - copyparty.i.shikanime.studio
-    - copyparty.taila659a.ts.net
+    - metatube.i.shikanime.studio
+    - metatube.taila659a.ts.net
   parentRefs:
-    - name: copyparty
+    - name: metatube
       sectionName: http

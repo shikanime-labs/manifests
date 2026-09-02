@@ -13,6 +13,7 @@ labels:
       app.kubernetes.io/part-of: nishir-media
       app.kubernetes.io/version: 5.2.3-1
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: qbittorrent

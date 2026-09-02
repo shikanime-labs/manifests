@@ -9,6 +9,7 @@ patches:
     target:
       name: lldap
       kind: NetworkPolicy
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

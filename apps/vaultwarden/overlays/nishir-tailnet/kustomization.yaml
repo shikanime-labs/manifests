@@ -4,6 +4,8 @@ resources:
   - envoyproxy.yaml
   - backendtlspolicy.yaml
 namespace: shikanime
+patches:
+  - path: patch-httproute.yaml
 labels:
   - includeTemplates: true
     pairs:

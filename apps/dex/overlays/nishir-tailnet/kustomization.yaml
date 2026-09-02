@@ -17,6 +17,7 @@ secretGenerator:
     files:
       - config.yaml=dex/config.enc.yaml
 patches:
+  - path: patch-httproute.yaml
   - path: patch-netpol.yaml
     target:
       name: dex
