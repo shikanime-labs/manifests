@@ -6,7 +6,6 @@ metadata:
 spec:
   hostnames:
     - lidarr.taila659a.ts.net
-    - lidarr.taila659a.ts.net
   parentRefs:
     - name: lidarr
       sectionName: https
@@ -17,7 +16,6 @@ metadata:
   name: lidarr-redirect
 spec:
   hostnames:
-    - lidarr.taila659a.ts.net
     - lidarr.taila659a.ts.net
   parentRefs:
     - name: lidarr
