@@ -6,13 +6,7 @@ metadata:
 spec:
   hostnames:
     - automata-a2a.i.shikanime.studio
-  parentRefs:
-    - name: hermes-agent
-      sectionName: https
-  rules:
-    - backendRefs:
-        - name: hermes-agent
-          port: 9900
+    - automata-a2a.taila659a.ts.net
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -21,10 +15,4 @@ metadata:
 spec:
   hostnames:
     - dashboard.automata.i.shikanime.studio
-  parentRefs:
-    - name: hermes-agent
-      sectionName: https
-  rules:
-    - backendRefs:
-        - name: hermes-agent
-          port: 9119
+    - dashboard.automata.taila659a.ts.net
