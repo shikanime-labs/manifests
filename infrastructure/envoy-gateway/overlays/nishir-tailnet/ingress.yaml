@@ -16,7 +16,7 @@ spec:
     service:
       name: flux-operator-receivers
       port:
-        number: 80
+        number: 443
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -35,7 +35,7 @@ spec:
     service:
       name: synapse
       port:
-        number: 80
+        number: 443
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
