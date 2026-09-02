@@ -6,6 +6,7 @@ metadata:
 spec:
   hostnames:
     - whatsapp.taila659a.ts.net
+    - whatsapp.taila659a.ts.net
   parentRefs:
     - name: whatsapp
       sectionName: https
@@ -16,6 +17,7 @@ metadata:
   name: whatsapp-redirect
 spec:
   hostnames:
+    - whatsapp.taila659a.ts.net
     - whatsapp.taila659a.ts.net
   parentRefs:
     - name: whatsapp

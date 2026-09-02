@@ -6,6 +6,7 @@ metadata:
 spec:
   hostnames:
     - twitter.taila659a.ts.net
+    - twitter.taila659a.ts.net
   parentRefs:
     - name: twitter
       sectionName: https
@@ -16,6 +17,7 @@ metadata:
   name: twitter-redirect
 spec:
   hostnames:
+    - twitter.taila659a.ts.net
     - twitter.taila659a.ts.net
   parentRefs:
     - name: twitter

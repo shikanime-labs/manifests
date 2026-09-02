@@ -6,6 +6,7 @@ metadata:
 spec:
   hostnames:
     - whisparr.taila659a.ts.net
+    - whisparr.taila659a.ts.net
   parentRefs:
     - name: whisparr
       sectionName: https
@@ -16,6 +17,7 @@ metadata:
   name: whisparr-redirect
 spec:
   hostnames:
+    - whisparr.taila659a.ts.net
     - whisparr.taila659a.ts.net
   parentRefs:
     - name: whisparr
