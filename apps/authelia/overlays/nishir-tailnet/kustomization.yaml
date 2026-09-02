@@ -10,10 +10,9 @@ components:
   - ../../components/monitoring
 patches:
   - patch: |-
-      - op: replace
-        path: /spec/hostnames
-        value:
-          - accounts.taila659a.ts.net
+      - op: add
+        path: /spec/hostnames/-
+        value: accounts.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
@@ -23,10 +22,9 @@ patches:
       name: authelia
       kind: HTTPRoute
   - patch: |-
-      - op: replace
-        path: /spec/hostnames
-        value:
-          - accounts.taila659a.ts.net
+      - op: add
+        path: /spec/hostnames/-
+        value: accounts.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
