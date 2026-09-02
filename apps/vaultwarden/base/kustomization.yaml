@@ -9,6 +9,3 @@ images:
   - name: vaultwarden
     newName: vaultwarden/server
     newTag: 1.37.1@sha256:ebdfe70701c60ac0c28c697e787cea767d7972940b786037b29fe0d507f821e8
-metadata:
-  annotations:
-    automata.shikanime.studio/images: '[ { "name": "vaultwarden", "tag-regex": "^(?P<version>\\d+\\.\\d+\\.\\d+)$", "exclude-tags": ["1.34.3"] } ]'
