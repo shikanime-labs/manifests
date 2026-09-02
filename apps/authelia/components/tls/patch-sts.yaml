@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: dex
+  name: authelia
 spec:
   template:
     spec:
       containers:
-        - name: dex
+        - name: authelia
           livenessProbe:
             httpGet:
               scheme: HTTPS
@@ -16,6 +16,11 @@ spec:
           startupProbe:
             httpGet:
               scheme: HTTPS
+          env:
+            - name: X_AUTHELIA_SERVER_TLS_KEY
+              value: /etc/ssl/private/tls.key
+            - name: X_AUTHELIA_SERVER_TLS_CERTIFICATE
+              value: /etc/ssl/private/tls.crt
           volumeMounts:
             - name: tls
               mountPath: /etc/ssl/private
@@ -29,4 +34,4 @@ spec:
               - key: tls.key
                 mode: 416
                 path: tls.key
-            secretName: dex-tls
+            secretName: authelia-tls

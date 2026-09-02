@@ -1,16 +1,16 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: BackendTLSPolicy
 metadata:
-  name: dex
+  name: authelia
   namespace: shikanime
 spec:
   targetRefs:
-    - name: dex
+    - name: authelia
       group: ""
       kind: Service
       sectionName: https
   validation:
-    hostname: dex.shikanime.svc.cluster.local
+    hostname: authelia.shikanime.svc.cluster.local
     caCertificateRefs:
       - name: nishir-ca-certificates.crt
         group: ""

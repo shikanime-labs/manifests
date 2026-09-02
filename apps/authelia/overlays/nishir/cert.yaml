@@ -1,17 +1,17 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: dex-tls
+  name: authelia-tls
 spec:
-  commonName: dex
+  commonName: authelia
   dnsNames:
-    - dex
-    - dex.shikanime
-    - dex.shikanime.svc.cluster.local
+    - authelia
+    - authelia.shikanime
+    - authelia.shikanime.svc.cluster.local
   issuerRef:
     name: nishir
     kind: ClusterIssuer
-  secretName: dex-tls
+  secretName: authelia-tls
   usages:
     - digital signature
     - key encipherment

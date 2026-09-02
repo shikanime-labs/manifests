@@ -1,7 +1,7 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:
-  name: dex
+  name: authelia
   namespace: shikanime
 spec:
   provider:
@@ -26,9 +26,9 @@ spec:
             limits:
               memory: 512Mi
       envoyService:
-        name: dex
+        name: authelia
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: dex-proxy
+          tailscale.com/hostname: authelia-proxy
           tailscale.com/tags: "tag:web"

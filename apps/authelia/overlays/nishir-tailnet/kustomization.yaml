@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: shikanime
+resources:
+  - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+  - backendtlspolicy.yaml
+components:
+  - ../../components/monitoring
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/hostnames
+        value:
+          - accounts.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: authelia
+            sectionName: https
+    target:
+      name: authelia
+      kind: HTTPRoute
+  - patch: |-
+      - op: replace
+        path: /spec/hostnames
+        value:
+          - accounts.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: authelia
+            sectionName: http
+    target:
+      name: authelia-redirect
+      kind: HTTPRoute
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: authentication-provider
+      app.kubernetes.io/instance: authelia
+      app.kubernetes.io/name: authelia
+      app.kubernetes.io/part-of: nishir-platform
+      app.kubernetes.io/version: 4.39.20
