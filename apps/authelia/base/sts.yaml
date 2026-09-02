@@ -53,6 +53,9 @@ spec:
             - name: X_AUTHELIA_CONFIG_FILE
               value: /config-secret/configuration.enc.yaml
       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroup: 1000
       volumes:
         - name: config
