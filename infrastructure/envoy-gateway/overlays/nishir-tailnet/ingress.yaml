@@ -54,4 +54,4 @@ spec:
     service:
       name: copyparty
       port:
-        number: 80
+        number: 443
