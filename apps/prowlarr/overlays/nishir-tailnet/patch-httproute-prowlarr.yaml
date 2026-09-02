@@ -1,5 +1,5 @@
-- op: replace
-  path: /spec/hostnames
+- op: add
+  path: /spec/hostnames/-
   value: [prowlarr.taila659a.ts.net]
 - op: replace
   path: /spec/parentRefs
