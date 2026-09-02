@@ -1,0 +1,38 @@
+resources:
+  - ../nishir
+  - gatewayclass.yaml
+  - envoyproxy.yaml
+namespace: shikanime
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: maintainerr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: maintainerr
+            sectionName: http
+    target:
+      name: maintainerr-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: maintainerr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: maintainerr
+            sectionName: https
+    target:
+      name: maintainerr
+      kind: HTTPRoute
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: library-manager
+      app.kubernetes.io/instance: maintainerr
+      app.kubernetes.io/name: maintainerr
+      app.kubernetes.io/part-of: nishir-media
+      app.kubernetes.io/version: 3.26.0

@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: maintainerr-tls
+spec:
+  commonName: maintainerr
+  dnsNames:
+    - maintainerr
+    - maintainerr.shikanime
+    - maintainerr.shikanime.svc.cluster.local
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: maintainerr-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

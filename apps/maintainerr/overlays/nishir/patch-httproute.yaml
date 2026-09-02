@@ -1,0 +1,22 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: maintainerr
+spec:
+  hostnames:
+    - maintainerr.i.shikanime.studio
+  parentRefs:
+    - name: maintainerr
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: maintainerr-redirect
+spec:
+  hostnames:
+    - maintainerr.i.shikanime.studio
+  parentRefs:
+    - name: maintainerr
+      sectionName: http

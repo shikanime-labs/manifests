@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: maintainerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: maintainerr
+      app.kubernetes.io/name: maintainerr
+  serviceName: maintainerr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: maintainerr
+        app.kubernetes.io/name: maintainerr
+    spec:
+      containers:
+        - name: maintainerr
+          image: maintainerr
+          env:
+            - name: TZ
+              value: Europe/Paris
+          livenessProbe:
+            httpGet:
+              path: /api/health/live
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 6246
+          readinessProbe:
+            httpGet:
+              path: /api/health/ready
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 360
+            httpGet:
+              path: /api/health/ready
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /opt/data
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: maintainerr-config

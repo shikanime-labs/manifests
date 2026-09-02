@@ -105,6 +105,24 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: studio-shikanime-i-maintainerr
+  namespace: shikanime
+spec:
+  commonName: maintainerr.i.shikanime.studio
+  dnsNames:
+    - maintainerr.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-maintainerr
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: studio-shikanime-i-lidarr
   namespace: shikanime
 spec:
