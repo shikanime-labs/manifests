@@ -5,7 +5,6 @@ metadata:
   name: honcho
 spec:
   hostnames:
-    - honcho.i.shikanime.studio
     - honcho.taila659a.ts.net
   parentRefs:
     - name: honcho
@@ -17,7 +16,6 @@ metadata:
   name: honcho-redirect
 spec:
   hostnames:
-    - honcho.i.shikanime.studio
     - honcho.taila659a.ts.net
   parentRefs:
     - name: honcho

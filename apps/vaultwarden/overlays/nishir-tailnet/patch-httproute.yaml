@@ -5,7 +5,6 @@ metadata:
   name: vaultwarden
 spec:
   hostnames:
-    - vaultwarden.i.shikanime.studio
     - vaultwarden.taila659a.ts.net
   parentRefs:
     - name: vaultwarden
@@ -17,7 +16,6 @@ metadata:
   name: vaultwarden-redirect
 spec:
   hostnames:
-    - vaultwarden.i.shikanime.studio
     - vaultwarden.taila659a.ts.net
   parentRefs:
     - name: vaultwarden

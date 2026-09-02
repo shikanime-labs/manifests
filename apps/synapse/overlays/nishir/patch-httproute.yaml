@@ -5,7 +5,6 @@ metadata:
   name: matrix
 spec:
   hostnames:
-    - matrix.taila659a.ts.net
     - matrix.i.shikanime.studio
   parentRefs:
     - name: synapse
@@ -18,7 +17,6 @@ metadata:
 spec:
   hostnames:
     - matrix-discord-media.i.shikanime.studio
-    - matrix-discord-media.taila659a.ts.net
   parentRefs:
     - name: synapse
       sectionName: https
@@ -29,10 +27,8 @@ metadata:
   name: matrix-redirect
 spec:
   hostnames:
-    - matrix.taila659a.ts.net
     - matrix.i.shikanime.studio
     - matrix-discord-media.i.shikanime.studio
-    - matrix-discord-media.taila659a.ts.net
   parentRefs:
     - name: synapse
       sectionName: http

@@ -5,7 +5,6 @@ metadata:
   name: lidarr
 spec:
   hostnames:
-    - lidarr.i.shikanime.studio
     - lidarr.taila659a.ts.net
   parentRefs:
     - name: lidarr
@@ -17,7 +16,6 @@ metadata:
   name: lidarr-redirect
 spec:
   hostnames:
-    - lidarr.i.shikanime.studio
     - lidarr.taila659a.ts.net
   parentRefs:
     - name: lidarr

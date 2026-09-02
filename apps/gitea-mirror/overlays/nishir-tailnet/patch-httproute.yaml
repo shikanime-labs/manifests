@@ -5,7 +5,6 @@ metadata:
   name: gitea-mirror
 spec:
   hostnames:
-    - gitea-mirror.i.shikanime.studio
     - gitea-mirror.taila659a.ts.net
   parentRefs:
     - name: gitea-mirror
@@ -17,7 +16,6 @@ metadata:
   name: gitea-mirror-redirect
 spec:
   hostnames:
-    - gitea-mirror.i.shikanime.studio
     - gitea-mirror.taila659a.ts.net
   parentRefs:
     - name: gitea-mirror

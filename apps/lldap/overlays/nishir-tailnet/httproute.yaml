@@ -4,7 +4,6 @@ metadata:
   name: lldap-redirect
 spec:
   hostnames:
-    - lldap.i.shikanime.studio
     - lldap.taila659a.ts.net
   parentRefs:
     - name: lldap

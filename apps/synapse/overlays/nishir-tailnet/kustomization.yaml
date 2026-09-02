@@ -3,6 +3,7 @@ resources:
   - envoyproxy.yaml
   - gatewayclass.yaml
   - httproutefilter.yaml
+  - patch-httproute.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true
