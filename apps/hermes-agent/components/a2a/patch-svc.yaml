@@ -7,6 +7,3 @@ spec:
     - name: a2a
       port: 9900
       targetPort: a2a
-    - name: api-server
-      port: 8642
-      targetPort: api-server

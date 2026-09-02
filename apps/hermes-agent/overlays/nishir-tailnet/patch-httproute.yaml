@@ -2,11 +2,10 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent
+  name: hermes-agent-dashboard
 spec:
   hostnames:
     - automata.taila659a.ts.net
-    - nishir.taila659a.ts.net
   parentRefs:
     - name: hermes-agent
       sectionName: https
@@ -14,13 +13,54 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-redirect
+  name: hermes-agent-api-server
+spec:
+  hostnames:
+    - api.automata.taila659a.ts.net
+  parentRefs:
+    - name: hermes-agent
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-a2a
+spec:
+  hostnames:
+    - a2a.automata.taila659a.ts.net
+  parentRefs:
+    - name: hermes-agent
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-dashboard-redirect
 spec:
   hostnames:
     - automata.taila659a.ts.net
-    - nishir.taila659a.ts.net
-    - automata-a2a.taila659a.ts.net
-    - dashboard.automata.taila659a.ts.net
+  parentRefs:
+    - name: hermes-agent
+      sectionName: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-api-server-redirect
+spec:
+  hostnames:
+    - api.automata.taila659a.ts.net
+  parentRefs:
+    - name: hermes-agent
+      sectionName: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-a2a-redirect
+spec:
+  hostnames:
+    - a2a.automata.taila659a.ts.net
   parentRefs:
     - name: hermes-agent
       sectionName: http

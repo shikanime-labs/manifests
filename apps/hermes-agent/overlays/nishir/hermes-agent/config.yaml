@@ -237,7 +237,7 @@ dashboard:
       client_id: hermes-agent
       issuer: https://accounts.i.shikanime.studio
       scopes: openid profile email
-  public_url: https://dashboard.automata.i.shikanime.studio
+  public_url: https://automata.i.shikanime.studio
 delegation:
   child_timeout_seconds: 600
   default_toolsets:

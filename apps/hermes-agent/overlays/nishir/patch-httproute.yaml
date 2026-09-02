@@ -2,11 +2,10 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent
+  name: hermes-agent-dashboard
 spec:
   hostnames:
     - automata.i.shikanime.studio
-    - nishir.i.shikanime.studio
   parentRefs:
     - name: hermes-agent
       sectionName: https
@@ -14,13 +13,54 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-redirect
+  name: hermes-agent-api-server
+spec:
+  hostnames:
+    - api.automata.i.shikanime.studio
+  parentRefs:
+    - name: hermes-agent
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-a2a
+spec:
+  hostnames:
+    - a2a.automata.i.shikanime.studio
+  parentRefs:
+    - name: hermes-agent
+      sectionName: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-dashboard-redirect
 spec:
   hostnames:
     - automata.i.shikanime.studio
-    - nishir.i.shikanime.studio
-    - automata-a2a.i.shikanime.studio
-    - dashboard.automata.i.shikanime.studio
+  parentRefs:
+    - name: hermes-agent
+      sectionName: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-api-server-redirect
+spec:
+  hostnames:
+    - api.automata.i.shikanime.studio
+  parentRefs:
+    - name: hermes-agent
+      sectionName: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hermes-agent-a2a-redirect
+spec:
+  hostnames:
+    - a2a.automata.i.shikanime.studio
   parentRefs:
     - name: hermes-agent
       sectionName: http

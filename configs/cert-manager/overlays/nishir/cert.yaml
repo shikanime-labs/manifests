@@ -466,16 +466,52 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-hermes-agent
+  name: studio-shikanime-i-automata
   namespace: shikanime
 spec:
-  commonName: hermes-agent.i.shikanime.studio
+  commonName: automata.i.shikanime.studio
   dnsNames:
-    - hermes-agent.i.shikanime.studio
+    - automata.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-hermes-agent
+  secretName: studio-shikanime-i-automata
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-automata-api
+  namespace: shikanime
+spec:
+  commonName: api.automata.i.shikanime.studio
+  dnsNames:
+    - api.automata.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-automata-api
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-automata-a2a
+  namespace: shikanime
+spec:
+  commonName: a2a.automata.i.shikanime.studio
+  dnsNames:
+    - a2a.automata.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-automata-a2a
   usages:
     - digital signature
     - key encipherment
@@ -530,24 +566,6 @@ spec:
     name: studio-shikanime
     kind: ClusterIssuer
   secretName: studio-shikanime-i-metatube
-  usages:
-    - digital signature
-    - key encipherment
-    - server auth
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: studio-shikanime-i-automata-dashboard
-  namespace: shikanime
-spec:
-  commonName: dashboard.automata.i.shikanime.studio
-  dnsNames:
-    - dashboard.automata.i.shikanime.studio
-  issuerRef:
-    name: studio-shikanime
-    kind: ClusterIssuer
-  secretName: studio-shikanime-i-automata-dashboard
   usages:
     - digital signature
     - key encipherment
