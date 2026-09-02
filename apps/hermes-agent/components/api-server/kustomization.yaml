@@ -3,7 +3,17 @@ kind: Component
 resources:
   - httproute.yaml
 patches:
-  - path: patch-netpol.yaml
+  - patch: |-
+      - op: add
+        path: /spec/ingress/-
+        value:
+          from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: honcho
+                  app.kubernetes.io/name: honcho
+          ports:
+            - port: api-server
     target:
       name: hermes-agent
       version: v1

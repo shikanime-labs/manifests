@@ -5,13 +5,29 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute-lidarr.yaml
-    target:
-      name: lidarr
-      kind: HTTPRoute
-  - path: patch-httproute-lidarr-redirect.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: lidarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: lidarr
+            sectionName: http
     target:
       name: lidarr-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: lidarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: lidarr
+            sectionName: https
+    target:
+      name: lidarr
       kind: HTTPRoute
 labels:
   - includeTemplates: true

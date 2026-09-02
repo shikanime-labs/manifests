@@ -1,6 +1,0 @@
-- op: add
-  path: /spec/parentRefs
-  value:
-    - name: inference
-      kind: Gateway
-      group: gateway.networking.k8s.io

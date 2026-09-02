@@ -33,9 +33,15 @@ secretGenerator:
       - inference-mistral/.enc.env
 patches:
   - path: patch-httproute.yaml
-  - target:
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: inference
+            kind: Gateway
+            group: gateway.networking.k8s.io
+    target:
       name: inference
       version: v1alpha2
       group: gateway.networking.k8s.io
       kind: AIGatewayRoute
-    path: patch-aigatewayroute.yaml

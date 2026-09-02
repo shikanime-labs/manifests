@@ -4,13 +4,29 @@ resources:
   - envoyproxy.yaml
 namespace: shikanime
 patches:
-  - path: patch-httproute-prowlarr.yaml
-    target:
-      name: prowlarr
-      kind: HTTPRoute
-  - path: patch-httproute-prowlarr-redirect.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: prowlarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: prowlarr
+            sectionName: http
     target:
       name: prowlarr-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: prowlarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: prowlarr
+            sectionName: https
+    target:
+      name: prowlarr
       kind: HTTPRoute
 labels:
   - includeTemplates: true

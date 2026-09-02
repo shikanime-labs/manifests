@@ -1,8 +1,0 @@
-- op: add
-  path: /spec/hostnames/-
-  value: mautrix-linkedin.taila659a.ts.net
-- op: replace
-  path: /spec/parentRefs
-  value:
-    - name: linkedin
-      sectionName: http

@@ -3,7 +3,18 @@ kind: Component
 resources:
   - httproute.yaml
 patches:
-  - path: patch-netpol.yaml
+  - patch: |-
+      - op: add
+        path: /spec/ingress/-
+        value:
+          from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/part-of: nishir-automata
+                  app.kubernetes.io/name: a2a
+          ports:
+            - port: a2a
+            - port: api-server
     target:
       name: hermes-agent
       version: v1
