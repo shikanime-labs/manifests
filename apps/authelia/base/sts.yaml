@@ -43,13 +43,19 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - name: config
-              mountPath: /config
+              mountPath: /config-secret
+              readOnly: true
             - name: data
               mountPath: /config/authelia
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
+            - name: X_AUTHELIA_CONFIG_FILE
+              value: /config-secret/configuration.enc.yaml
       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroup: 1000
       volumes:
         - name: config
