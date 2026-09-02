@@ -9,7 +9,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 1Gi
+            storage: 512Mi
         storageClassName: nishir-standard
         volumeMode: Filesystem
         accessModes:
