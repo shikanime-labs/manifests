@@ -107,7 +107,18 @@ spec:
         - name: openrouter
           priority: 2
           modelNameOverride: z-ai/glm-5.3
-    # No local floor: route unknown models (e.g. tencent/hy3:free) straight to the remote pool.
+    - matches:
+        - hearders:
+            - name: x-ai-eg-model
+              type: Exact
+              value: poolside/laguna-s-2.1
+      backendRefs:
+        - name: nous
+          priority: 0
+          modelNameOverride: poolside/laguna-s-2.1:free
+        - name: openrouter
+          priority: 1
+          modelNameOverride: poolside/laguna-s-2.1:free
     - matches:
         - headers:
             - name: x-ai-eg-model
