@@ -8,4 +8,4 @@ labels:
       app.kubernetes.io/instance: immich-postgres
       app.kubernetes.io/name: postgres
       app.kubernetes.io/part-of: nishir-media
-      app.kubernetes.io/version: pg15
+      app.kubernetes.io/version: 14-vectorchord0.4.3-pgvectors0.2.0

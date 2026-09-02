@@ -8,4 +8,4 @@ labels:
       app.kubernetes.io/instance: immich-ml
       app.kubernetes.io/name: immich-ml
       app.kubernetes.io/part-of: nishir-media
-      app.kubernetes.io/version: v1.118.0
+      app.kubernetes.io/version: 1.144.1

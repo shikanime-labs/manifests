@@ -36,4 +36,4 @@ labels:
       app.kubernetes.io/instance: radarr
       app.kubernetes.io/name: radarr
       app.kubernetes.io/part-of: nishir-media
-      app.kubernetes.io/version: 6.2.1
+      app.kubernetes.io/version: 6.3.0

@@ -10,7 +10,7 @@ labels:
       app.kubernetes.io/instance: gitea-mirror
       app.kubernetes.io/name: gitea-mirror
       app.kubernetes.io/part-of: nishir-platform
-      app.kubernetes.io/version: 3.17.1
+      app.kubernetes.io/version: 3.26.2
 patches:
   - patch: |-
       - op: add

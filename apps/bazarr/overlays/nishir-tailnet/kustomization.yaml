@@ -35,4 +35,4 @@ labels:
       app.kubernetes.io/instance: bazarr
       app.kubernetes.io/name: bazarr
       app.kubernetes.io/part-of: nishir-media
-      app.kubernetes.io/version: 1.5.6
+      app.kubernetes.io/version: 1.6.0
