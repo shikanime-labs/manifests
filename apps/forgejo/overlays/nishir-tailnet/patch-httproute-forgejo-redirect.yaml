@@ -1,6 +1,6 @@
 - op: add
   path: /spec/hostnames/-
-  value: [forgejo.taila659a.ts.net]
+  value: forgejo.taila659a.ts.net
 - op: replace
   path: /spec/parentRefs
   value:

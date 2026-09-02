@@ -1,6 +1,6 @@
 - op: add
   path: /spec/hostnames/-
-  value: [copyparty.taila659a.ts.net]
+  value: copyparty.taila659a.ts.net
 - op: replace
   path: /spec/parentRefs
   value:
