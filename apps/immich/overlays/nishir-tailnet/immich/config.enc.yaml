@@ -1,61 +1,61 @@
 externalDomain: immich.i.shikanime.studio
 ffmpeg:
-  accel: qsv
-  accelDecode: true
+    accel: qsv
+    accelDecode: true
 notifications:
-  smtp:
-    enabled: true
-    from: nishir.deva@gmail.com
-    replyTo: nishir.deva@gmail.com
-    transport:
-      host: smtp.gmail.com
-      ignoreCert: false
-      password: ENC[AES256_GCM,data:xgxdopmU3fcMifbcgm6mlw==,iv:5ExecemcEobbxOw9oxb01RdnB7REHy5FR0ziy12sQmY=,tag:OMk6GRkirgwo51+QTx8UkQ==,type:str]
-      port: 587
-      secure: false
-      username: nishir.deva@gmail.com
+    smtp:
+        enabled: true
+        from: nishir.deva@gmail.com
+        replyTo: nishir.deva@gmail.com
+        transport:
+            host: smtp.gmail.com
+            ignoreCert: false
+            password: ENC[AES256_GCM,data:d59R0xZAIhD6glYUFKnXZw==,iv:KZQBHjuivEF4E6RBfqMQte6wE/n/VfvH93PWPdTh4Kc=,tag:lWCG1gLUW2G4IS62WrhpRQ==,type:str]
+            port: 587
+            secure: false
+            username: nishir.deva@gmail.com
 oauth:
-  autoRegister: true
-  buttonText: Dex
-  clientId: immich
-  clientSecret: ENC[AES256_GCM,data:ZCP04Fb900+ygNI5gbwcw7/SqjAX3DPfWAyXPH9hYRU=,iv:lZRtk/2DPjPq7kcl11o+mvQfJjzGktkgDMTxBGCvfTQ=,tag:xHkoNi50ZLP5usKhikafzg==,type:str]
-  enabled: true
-  issuerUrl: https://accounts.i.shikanime.studio
-  profileSigningAlgorithm: none
-  scope: openid email profile
-  signingAlgorithm: RS256
-  storageLabelClaim: preferred_username
-  storageQuotaClaim: immich_quota
+    autoRegister: true
+    buttonText: Shikanime Studio
+    clientId: immich
+    clientSecret: ENC[AES256_GCM,data:rjGWTlFADJDN5E7LjKnZmXH2CL1jODoG4YIwchlhzrY=,iv:0r22G9oWvxYUXGOBMCD2r1Ij2W567xA3SsHgAzXUlFY=,tag:q9mxcsp9rsC2ER+y2aRHHw==,type:str]
+    enabled: true
+    issuerUrl: https://accounts.i.shikanime.studio
+    profileSigningAlgorithm: none
+    scope: openid email profile
+    signingAlgorithm: RS256
+    storageLabelClaim: preferred_username
+    storageQuotaClaim: immich_quota
 sops:
-  version: 3.13.3
-  encrypted_regex: ^(clientSecret|password)$
-  lastmodified: "2026-08-11T11:38:26Z"
-  mac: ENC[AES256_GCM,data:mKrcGJigPnKAyYfgdNuVbzBQphaqr4CZGbn9+ZY1Ogob5fQoELeNKtSZSbuWMhpk6toEf7ZfKjrtkni/GS4OgB6v2XJHXD5zfBPVS9TeHa7tuZIPC/d4siNzHXzhl337bOvvSNAugnhdtfbigpsOK9XzQWbE19hT/McFJxzYO9M=,iv:qE+GwjAA0lksOwWsDwtcmZJFO7UiN38SDhlMuogPXR0=,tag:O4fCzMlya88RSulkarvryA==,type:str]
-  age:
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBTklCR3ZFRXlyTFRRS05V
-        Qk9EbzIrbHhhNlRza0JPRTM3dFlYVC8rc25rClIwVVBvVE8rTTZ6MUJlNUJVY0cw
-        WU1EclgzUnRyQmpwN1NWT2NBdGF0STQKLS0tIDA3dWpaK3ArOFdTVG1aMHREeEJ4
-        UC9aTlgwZ214SmhBa1Bpc0dWMUVoNFUKEafiU2aERHMx1EmM8+qzELsAxTw5c5oH
-        sUAc/rFcSskVgeVjAC2pGr/pOxf+oW7gYX5p2sY4BM7eveqslcrKxA==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjbXFhcW5mRmkzNlZ5OGw1
-        cStpWTcwMExNZmhIdDNvU254cndnSEh6aTNFCmsrWHYxRWwwUXhQTkNTUlZZRzcw
-        R0txWVdBK1lJTTd5YmNsZThGd29NUDQKLS0tIE1DbG56d2Z6dXdtbVFELzJNc0Fr
-        RUdDWmxwOE9iNTdrZW1Na21ZZlAzamsKbWzbVkBWfaSlFOeyZaBzmvuYYeaDUGNj
-        jgqJSYttaZem8YwKnuzDmcMPiMLEVHclaGeszZEsegS7fZ/nf90nog==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    - enc: |
-        -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQb0hhbGswN3dRV0lGdjFT
-        SVdJNW9Wanp6dDAwbkhVWUNpQ1VHVDZ4RkhFCkk1TWkzTFhFanJ4U20rVlNtNXpk
-        ZTN2QlNRTG9CMzBBOW5HWU9Kc2ZOd2cKLS0tIHJmc2ZDL3loQmdhMlh6K3BnWjJk
-        NHlqd2trVGtqcVlVQlFJYjBVYUJ0UUUKMB5zGZ7Ex1BxmmP3bBGRsN5o+I0YM6gx
-        hC7yT3fv2Z1UBI0PrxRmY/x5RKrORUZD8SEkKTAtqmN6gNIFz1Do4g==
-        -----END AGE ENCRYPTED FILE-----
-      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCV3FvQzdwUDN1aktYS1Yx
+            a1BicDA1WFpsY05HT2x6U2lZNFlyUXpnR0NZClQ0R0JDNUZVWlVCNUxCQnNTUXF3
+            QmtMUDAwdnNXYUdYUWRnVTUvbHc3WGsKLS0tIHFLMmdYUll0cStMYlljV0srWVFn
+            ZTNBTFErUUluL2U4cU1udFdWaFBNcmcKzlj1XnMWu0wIsTsVg7wGcdROBk1SouaM
+            dEegrh1YCJvni+0RtGBpBbiKwxuguO06nkTuIw4dktgh8MBujf1/gQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQUkIxNGUvSHF6TUN2VGtU
+            SkE0Mzhkc3lKdVV3R08yRzZtaVdBZmdCZEZRClErcUlJak1aNHRTelIyVjRQckx3
+            R2hsWVAydzQrcnFrVVdIcEhDYVk2RFkKLS0tIExGUk5LWDNUYUNsV1F1K2pzNXhQ
+            SFRqV29hdmtpTUxXMDAwdEIyOVBXL2MKsX3V35K3ZV4EQ+2m4nWG/saUE2ymMvNe
+            EUK681qSyU/dqJp/DhbPtv9Hfpsd6ILKgkz+z+kM4QCbMiMyadiUsw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlQ3hRZzZoV1ZabWxidnBx
+            S3FmbEpxamZ4WCs0RmlEeUxCeVo3TzVXQ0Z3Clo2OFQvdHVUR0R6Zi96ZTdqNElO
+            eERMQ2xmaGlyRkRoeG9xQWF4d1crTmcKLS0tIE1mNzJxQU5kUUVHR2tJM05JZ3Zq
+            azJuUWY4RHd1bWNFTzNKWTdWQmx2aWMKYYwl/hmou1hJZ3q26QcH3Oe9WtAav5ON
+            R7I7DNxyd0g9RFFPVKtoCe1f6wrjFXB4s4tkWz7WgHNxcm8O8iDu9w==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: ^(clientSecret|password)$
+    lastmodified: "2026-09-03T13:22:25Z"
+    mac: ENC[AES256_GCM,data:fqlFVubWhpxvGJ3dlDDZyFbL6Tc3XoKk89Cqh3zGmqjj6hIZ4SlWF07W8RnbR0XfLp4TkbLo4MiB/V5McXRNan9aacHaaHGqpRFzU1mKwyqEDJoi/esFnIYNksjvIPFcbr19VO9kHLiggVCgMyFQJr0GHlgLT67IprXmBC3TbS4=,iv:FY/d53+9jB5WZ66n8eLsdf1HzAoXhvBGJVKsRu71Uqg=,tag:/VXt98BbYIsPMXRg20qZGA==,type:str]
+    version: 3.13.3
