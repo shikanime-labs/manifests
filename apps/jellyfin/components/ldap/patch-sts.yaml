@@ -5,14 +5,41 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/LDAP-Auth.xml
+            - /mnt/config/plugins/configurations/LDAP-Auth.xml
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       containers:
         - name: jellyfin
           volumeMounts:
-            - name: ldap-config
-              mountPath: /config/plugins/configurations/LDAP-Auth.xml
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
               readOnly: true
-              subPath: LDAP-Auth.xml
+              subPath: rclone.conf
       volumes:
-        - name: ldap-config
+        - name: rclone-config
+          configMap:
+            name: jellyfin-rclone
+        - name: startup-config
           secret:
             secretName: jellyfin-ldap
