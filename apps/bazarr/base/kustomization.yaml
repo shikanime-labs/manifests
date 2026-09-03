@@ -16,4 +16,4 @@ configMapGenerator:
   - name: bazarr-rclone
     namespace: shikanime
     files:
-      - rclone/rclone.conf
+      - bazarr-rclone/rclone.conf

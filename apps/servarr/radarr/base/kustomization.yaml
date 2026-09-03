@@ -16,4 +16,4 @@ configMapGenerator:
   - name: radarr-rclone
     namespace: shikanime
     files:
-      - rclone/rclone.conf
+      - radarr-rclone/rclone.conf

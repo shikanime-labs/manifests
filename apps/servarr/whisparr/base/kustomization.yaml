@@ -16,4 +16,4 @@ configMapGenerator:
   - name: whisparr-rclone
     namespace: shikanime
     files:
-      - rclone/rclone.conf
+      - whisparr-rclone/rclone.conf

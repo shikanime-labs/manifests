@@ -16,4 +16,4 @@ configMapGenerator:
   - name: lidarr-rclone
     namespace: shikanime
     files:
-      - rclone/rclone.conf
+      - lidarr-rclone/rclone.conf
