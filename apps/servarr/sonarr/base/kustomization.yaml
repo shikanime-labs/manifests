@@ -16,4 +16,4 @@ configMapGenerator:
   - name: sonarr-rclone
     namespace: shikanime
     files:
-      - rclone/rclone.conf
+      - sonarr-rclone/rclone.conf

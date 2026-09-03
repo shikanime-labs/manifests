@@ -14,4 +14,4 @@ images:
 configMapGenerator:
   - name: hermes-agent-rclone
     files:
-      - rclone/rclone.conf
+      - hermes-agent-rclone/rclone.conf
