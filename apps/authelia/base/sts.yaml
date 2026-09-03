@@ -43,13 +43,14 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - name: config
-              mountPath: /config-secret
+              mountPath: /config/configuration.enc.yaml
+              subPath: configuration.enc.yaml
               readOnly: true
             - name: data
               mountPath: /config
           args:
             - --config
-            - /config-secret/configuration.enc.yaml
+            - /config/configuration.enc.yaml
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
