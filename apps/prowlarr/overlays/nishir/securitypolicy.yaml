@@ -1,0 +1,26 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: prowlarr-oidc
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: prowlarr
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    # Authelia exposes no end_session endpoint, so /logout only clears the
+    # Envoy session cookies; the provider session stays (documented EG
+    # behavior when discovery yields no end session endpoint).
+    logoutPath: /logout
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: prowlarr
+    clientSecret:
+      name: prowlarr-oidc-client
+      key: client-secret
+    redirectURL: https://prowlarr.i.shikanime.studio/oauth2/callback
+    scopes:
+      - openid
+      - profile
+      - email
