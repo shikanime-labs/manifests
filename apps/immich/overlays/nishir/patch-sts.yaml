@@ -45,4 +45,4 @@ spec:
             storage: 64Gi
         storageClassName: nishir-capacity
         accessModes:
-          - ReadWriteOncePod
+          - ReadWriteOnce
