@@ -135,7 +135,7 @@
                           }
                           {
                             path_regex = "apps/qbittorrent/overlays/${env.name}(.*)?/qbittorrent/qBittorrent\\.enc\\.conf";
-                            encrypted_regex = "^(WebUI\\\\Password_PBKDF2|MailNotification\\\\password)$";
+                            encrypted_regex = "^(WebUI\\\\Password_PBKDF2|MailNotification\\\\password|WebUI\\\\ServerDomains)$";
                             key_groups = keyGroup;
                           }
                           {
