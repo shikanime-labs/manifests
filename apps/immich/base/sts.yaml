@@ -99,4 +99,4 @@ spec:
           requests:
             storage: 64Gi
         accessModes:
-          - ReadWriteOncePod
+          - ReadWriteOnce
