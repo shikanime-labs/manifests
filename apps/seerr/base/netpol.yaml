@@ -8,6 +8,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: jellyfin
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: maintainerr
       ports:
         - port: http
   podSelector:

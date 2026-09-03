@@ -8,6 +8,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: prowlarr
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: maintainerr
       ports:
         - port: https
   podSelector:

@@ -16,6 +16,9 @@ spec:
               app.kubernetes.io/name: seerr
         - podSelector:
             matchLabels:
+              app.kubernetes.io/name: maintainerr
+        - podSelector:
+            matchLabels:
               app.kubernetes.io/name: prowlarr
       ports:
         - port: https
