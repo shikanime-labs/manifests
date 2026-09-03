@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       initContainers:
-        - name: config-sync
+        - name: ldap-config-sync
           image: rclone
           args:
             - copyto

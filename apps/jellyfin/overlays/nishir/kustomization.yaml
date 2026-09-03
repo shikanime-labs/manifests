@@ -23,4 +23,4 @@ secretGenerator:
       - jellyfin/.enc.env
   - name: jellyfin-ldap
     files:
-      - LDAP-Auth.xml=jellyfin/LDAP-Auth.enc.xml
+      - LDAP-Auth.xml=jellyfin-ldap/LDAP-Auth.enc.xml
