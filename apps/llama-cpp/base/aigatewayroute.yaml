@@ -10,6 +10,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: qwen/qwen3.8-27b
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: llama-cpp
           priority: 0
@@ -25,6 +26,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: qwen/qwen3.8-flash
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: llama-cpp
           priority: 0
@@ -40,6 +42,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: deepseek/deepseek-v4-flash
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: llama-cpp
           priority: 0
@@ -55,6 +58,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: z-ai/glm-5.3-flash
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: z-ai
           priority: 0
@@ -73,6 +77,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: qwen/qwen3-embedding-8b
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: llama-cpp
           priority: 0
@@ -88,6 +93,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: mistral/labs-leanstral-1-5
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: mistral
           priority: 0
@@ -97,6 +103,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: z-ai/glm-5.3
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: z-ai
           priority: 0
@@ -112,6 +119,7 @@ spec:
             - name: x-ai-eg-model
               type: Exact
               value: poolside/laguna-s-2.1
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: nous
           priority: 0
@@ -124,6 +132,7 @@ spec:
             - name: x-ai-eg-model
               type: RegularExpression
               value: ".*"
+      modelsOwnedBy: Shikanime Studio
       backendRefs:
         - name: nous
           priority: 0
