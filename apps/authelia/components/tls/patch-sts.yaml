@@ -17,9 +17,9 @@ spec:
             httpGet:
               scheme: HTTPS
           env:
-            - name: X_AUTHELIA_SERVER_TLS_KEY
+            - name: AUTHELIA_SERVER_TLS_KEY
               value: /etc/ssl/private/tls.key
-            - name: X_AUTHELIA_SERVER_TLS_CERTIFICATE
+            - name: AUTHELIA_SERVER_TLS_CERTIFICATE
               value: /etc/ssl/private/tls.crt
           volumeMounts:
             - name: tls
