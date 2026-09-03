@@ -1,7 +1,7 @@
 apiVersion: leaderworkerset.x-k8s.io/v1
 kind: LeaderWorkerSet
 metadata:
-  name: llama-cpp
+  name: llama-cpp-cluster
   namespace: shikanime
 spec:
   replicas: 1
@@ -60,7 +60,7 @@ spec:
               - name: LLAMA_ARG_N_GPU_LAYERS
                 value: "999"
               - name: LLAMA_ARG_RPC
-                value: llama-cpp-0-1.llama-cpp.shikanime.svc.cluster.local:50052
+                value: llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local:50052
               - name: LLAMA_ARG_MMAP
                 value: "0"
             ports:
