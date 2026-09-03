@@ -46,7 +46,7 @@ spec:
               mountPath: /config-secret
               readOnly: true
             - name: data
-              mountPath: /config/authelia
+              mountPath: /config
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
