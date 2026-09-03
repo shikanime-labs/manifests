@@ -25,6 +25,8 @@ spec:
               value: "1000"
             - name: TZ
               value: Europe/Paris
+            - name: WHISPARR__AUTH__METHOD
+              value: External
           livenessProbe:
             httpGet:
               path: /ping
