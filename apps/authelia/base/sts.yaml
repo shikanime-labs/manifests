@@ -18,6 +18,9 @@ spec:
       containers:
         - name: authelia
           image: authelia
+          args:
+            - --config
+            - /config/configuration.enc.yaml
           livenessProbe:
             httpGet:
               path: /healthz
@@ -48,9 +51,6 @@ spec:
               readOnly: true
             - name: data
               mountPath: /config
-          args:
-            - --config
-            - /config/configuration.enc.yaml
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
