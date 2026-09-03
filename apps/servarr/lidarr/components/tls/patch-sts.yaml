@@ -37,7 +37,7 @@ spec:
                   name: lidarr-env
                   key: ssl-cert-password
             - name: LIDARR__SERVER__SSLPORT
-              value: "9898"
+              value: "6868"
       volumes:
         - name: tls
           secret:
