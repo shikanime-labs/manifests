@@ -16,4 +16,4 @@ secretGenerator:
       - config.xml=lidarr/config.enc.xml
   - name: lidarr-pkcs12-password
     envs:
-      - lidarr/.enc.env
+      - lidarr-pkcs12-password/.enc.env

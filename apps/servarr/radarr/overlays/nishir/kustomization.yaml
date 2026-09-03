@@ -16,4 +16,4 @@ secretGenerator:
       - config.xml=radarr/config.enc.xml
   - name: radarr-pkcs12-password
     envs:
-      - radarr/.enc.env
+      - radarr-pkcs12-password/.enc.env

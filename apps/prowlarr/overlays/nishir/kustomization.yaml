@@ -14,7 +14,7 @@ patches:
 secretGenerator:
   - name: prowlarr-pkcs12-password
     envs:
-      - prowlarr/.enc.env
+      - prowlarr-pkcs12-password/.enc.env
   - name: prowlarr-oidc-client
     envs:
       - prowlarr-oidc-client/.enc.env
