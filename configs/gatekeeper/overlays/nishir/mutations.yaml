@@ -118,6 +118,7 @@ spec:
           values:
             - gitea-mirror
             - seerr
+            - maintainerr
     namespaces:
       - shikanime
     scope: Namespaced
@@ -154,6 +155,7 @@ spec:
           values:
             - gitea-mirror
             - seerr
+            - maintainerr
     namespaces:
       - shikanime
     scope: Namespaced
