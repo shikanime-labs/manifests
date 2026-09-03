@@ -27,8 +27,6 @@ spec:
               value: "1"
             - name: TZ
               value: Europe/Paris
-            # Bypass Prowlarr's own login form: requests are authenticated
-            # upstream by the Envoy Gateway OIDC SecurityPolicy.
             - name: PROWLARR__AUTH__METHOD
               value: External
           livenessProbe:

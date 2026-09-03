@@ -21,7 +21,3 @@ spec:
     clientSecret:
       name: prowlarr-oidc-client
     redirectURL: https://prowlarr.i.shikanime.studio/oauth2/callback
-    scopes:
-      - openid
-      - profile
-      - email
