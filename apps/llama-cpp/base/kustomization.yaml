@@ -1,6 +1,7 @@
 resources:
   - lws.yaml
   - vpa.yaml
+  - svc.yaml
   - aiservicebackend.yaml
   - backend.yaml
   - backendsecuritypolicy.yaml

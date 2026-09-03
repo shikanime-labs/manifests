@@ -41,7 +41,7 @@ patches:
             kind: Gateway
             group: gateway.networking.k8s.io
     target:
-      name: inference
-      version: v1alpha2
-      group: gateway.networking.k8s.io
+      name: default
+      version: v1beta1
+      group: aigateway.envoyproxy.io
       kind: AIGatewayRoute
