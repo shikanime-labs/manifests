@@ -6,14 +6,6 @@ resources:
   - svc.yaml
   - vpa.yaml
 images:
-  - name: rclone
-    newName: rclone/rclone
-    newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
   - name: whisparr
     newName: ghcr.io/hotio/whisparr
     newTag: v3-3.1.0.2040@sha256:fa5a7a8b2dd750591bfb6a49a3896b8db32317e2554ac302d15b6c68ed3bb356
-configMapGenerator:
-  - name: whisparr-rclone
-    namespace: shikanime
-    files:
-      - whisparr-rclone/rclone.conf

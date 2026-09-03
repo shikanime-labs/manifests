@@ -9,11 +9,3 @@ images:
   - name: lidarr
     newName: lscr.io/linuxserver/lidarr
     newTag: 3.1.0@sha256:2e4cdc7c8d5fa36915f446a29976ee01d3f9cc9722b8530a09121c76fbabef55
-  - name: rclone
-    newName: rclone/rclone
-    newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
-configMapGenerator:
-  - name: lidarr-rclone
-    namespace: shikanime
-    files:
-      - lidarr-rclone/rclone.conf
