@@ -27,6 +27,8 @@ spec:
               value: "1"
             - name: TZ
               value: Europe/Paris
+            - name: RADARR__AUTH__METHOD
+              value: External
           livenessProbe:
             httpGet:
               path: /ping

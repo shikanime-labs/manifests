@@ -16,8 +16,6 @@ spec:
     provider:
       issuer: https://accounts.i.shikanime.studio
     clientID: prowlarr
-    # EG reads the client secret from the Secret's "client-secret" key
-    # (OIDCClientSecretKey); SecretObjectRef has no key field.
     clientSecret:
       name: prowlarr-oidc-client
     redirectURL: https://prowlarr.i.shikanime.studio/oauth2/callback

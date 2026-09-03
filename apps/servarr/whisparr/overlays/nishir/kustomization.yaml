@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/tls
@@ -17,3 +18,6 @@ secretGenerator:
   - name: whisparr-pkcs12-password
     envs:
       - whisparr-pkcs12-password/.enc.env
+  - name: whisparr-oidc-client
+    envs:
+      - whisparr-oidc-client/.enc.env

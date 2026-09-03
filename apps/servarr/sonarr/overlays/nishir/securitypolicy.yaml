@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: sonarr-oidc
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: sonarr
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: sonarr
+    clientSecret:
+      name: sonarr-oidc-client
+    redirectURL: https://sonarr.i.shikanime.studio/oauth2/callback
