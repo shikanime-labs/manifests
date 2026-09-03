@@ -12,7 +12,6 @@ spec:
       # data plane (CrashLoop). Pin OFF only those two; nemishi (arm64) and the
       # amd64 control-planes stay eligible so the pod can actually schedule.
       envoyDeployment:
-        pod:
         container:
           resources:
             requests:
@@ -42,7 +41,6 @@ spec:
     type: Kubernetes
     kubernetes:
       envoyDeployment:
-        pod:
         container:
           resources:
             requests:
