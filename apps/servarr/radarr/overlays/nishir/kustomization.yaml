@@ -12,9 +12,9 @@ patches:
   - path: patch-sts.yaml
   - path: patch-httproute.yaml
 secretGenerator:
-  - name: radarr
-    files:
-      - config.xml=radarr/config.enc.xml
+  - name: radarr-env
+    envs:
+      - radarr-env/.enc.env
   - name: radarr-pkcs12-password
     envs:
       - radarr-pkcs12-password/.enc.env

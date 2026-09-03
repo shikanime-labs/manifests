@@ -12,9 +12,9 @@ patches:
   - path: patch-sts.yaml
   - path: patch-httproute.yaml
 secretGenerator:
-  - name: sonarr
-    files:
-      - config.xml=sonarr/config.enc.xml
+  - name: sonarr-env
+    envs:
+      - sonarr-env/.enc.env
   - name: sonarr-pkcs12-password
     envs:
       - sonarr-pkcs12-password/.enc.env

@@ -26,6 +26,18 @@ spec:
             - name: tls
               mountPath: /etc/ssl/private
               readOnly: true
+          env:
+            - name: SONARR__SERVER__ENABLESSL
+              value: "True"
+            - name: SONARR__SERVER__SSLCERTPATH
+              value: /etc/ssl/private/keystore.p12
+            - name: SONARR__SERVER__SSLCERTPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sonarr-env
+                  key: ssl-cert-password
+            - name: SONARR__SERVER__SSLPORT
+              value: "9898"
       volumes:
         - name: tls
           secret:

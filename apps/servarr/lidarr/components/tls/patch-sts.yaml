@@ -26,6 +26,18 @@ spec:
             - name: tls
               mountPath: /etc/ssl/private
               readOnly: true
+          env:
+            - name: LIDARR__SERVER__ENABLESSL
+              value: "True"
+            - name: LIDARR__SERVER__SSLCERTPATH
+              value: /etc/ssl/private/keystore.p12
+            - name: LIDARR__SERVER__SSLCERTPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: lidarr-env
+                  key: ssl-cert-password
+            - name: LIDARR__SERVER__SSLPORT
+              value: "9898"
       volumes:
         - name: tls
           secret:

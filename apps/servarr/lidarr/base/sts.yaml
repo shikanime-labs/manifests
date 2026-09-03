@@ -3,7 +3,6 @@ kind: StatefulSet
 metadata:
   name: lidarr
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/instance: lidarr
@@ -18,15 +17,6 @@ spec:
       containers:
         - name: lidarr
           image: lidarr
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: S6_READ_ONLY_ROOT
-              value: "1"
-            - name: TZ
-              value: Europe/Paris
           livenessProbe:
             httpGet:
               path: /ping
@@ -61,42 +51,44 @@ spec:
                 - SETGID
                 - SETUID
             readOnlyRootFilesystem: false
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/config.xml
-            - /mnt/config/config.xml
-          command:
-            - rclone
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/config
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
+            - name: TZ
+              value: Europe/Paris
+            - name: LIDARR__APP__INSTANCENAME
+              value: Lidarr
+            - name: LIDARR__APP__LAUNCHBROWSER
+              value: "False"
+            - name: LIDARR__AUTH__APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: lidarr-env
+                  key: apikey
+            - name: LIDARR__AUTH__METHOD
+              value: Forms
+            - name: LIDARR__LOG__LEVEL
+              value: info
+            - name: LIDARR__LOG__ANALYTICSENABLED
+              value: "False"
+            - name: LIDARR__SERVER__BINDADDRESS
+              value: "*"
+            - name: LIDARR__SERVER__PORT
+              value: "8686"
+            - name: LIDARR__UPDATE__BRANCH
+              value: master
+            - name: LIDARR__UPDATE__MECHANISM
+              value: Docker
       securityContext:
         fsGroup: 1000
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: lidarr-config
-        - name: rclone-config
-          configMap:
-            name: lidarr-rclone
         - name: run
           emptyDir:
             medium: Memory
-        - name: startup-config
-          secret:
-            secretName: lidarr

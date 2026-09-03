@@ -11,9 +11,9 @@ patches:
   - path: patch-sts.yaml
   - path: patch-httproute.yaml
 secretGenerator:
-  - name: lidarr
-    files:
-      - config.xml=lidarr/config.enc.xml
+  - name: lidarr-env
+    envs:
+      - lidarr-env/.enc.env
   - name: lidarr-pkcs12-password
     envs:
       - lidarr-pkcs12-password/.enc.env
