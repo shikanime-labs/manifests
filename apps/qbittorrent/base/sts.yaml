@@ -62,9 +62,39 @@ spec:
                 - FOWNER
                 - SETUID
                 - SETGID
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/qBittorrent.conf
+            - /mnt/config/qBittorrent/config/qBittorrent.conf
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: rclone-config
+              mountPath: /config/rclone/rclone.conf
+              readOnly: true
+              subPath: rclone.conf
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       securityContext:
         fsGroup: 1000
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: qbittorrent-config
+        - name: rclone-config
+          configMap:
+            name: qbittorrent-rclone
+        - name: startup-config
+          secret:
+            secretName: qbittorrent

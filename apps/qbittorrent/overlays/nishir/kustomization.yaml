@@ -11,3 +11,7 @@ patches:
   - path: patch-httproute.yaml
   - path: patch-tcproute.yaml
   - path: patch-udproute.yaml
+secretGenerator:
+  - name: qbittorrent
+    files:
+      - qBittorrent.conf=qbittorrent/qBittorrent.enc.conf
