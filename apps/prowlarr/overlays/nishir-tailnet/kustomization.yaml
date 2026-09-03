@@ -28,13 +28,6 @@ patches:
     target:
       name: prowlarr
       kind: HTTPRoute
-  - patch: |
-      - op: replace
-        path: /spec/oidc/redirectURL
-        value: https://prowlarr.taila659a.ts.net/oauth2/callback
-    target:
-      name: prowlarr-oidc
-      kind: SecurityPolicy
 labels:
   - includeTemplates: true
     pairs:
