@@ -7,7 +7,7 @@ prowlarr, bazarr, seerr and jellyfin by the NetworkPolicy.
 
 ## Layout
 
-- `base/` — StatefulSet (http :7878, `/ping` probes, rclone init container
+- `base/` — StatefulSet (http :7878, `/ping` probes
   seeding config.xml from the `radarr` Secret), Service, PVC `radarr-config`
   (2Gi), NetworkPolicy (ingress from prowlarr, bazarr, seerr, jellyfin), VPA.
 - `components/tls/` — HTTPS :9898 with a pkcs12 keystore from Secret

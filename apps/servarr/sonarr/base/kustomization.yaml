@@ -6,14 +6,6 @@ resources:
   - svc.yaml
   - vpa.yaml
 images:
-  - name: rclone
-    newName: rclone/rclone
-    newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
   - name: sonarr
     newName: lscr.io/linuxserver/sonarr
     newTag: 4.0.19@sha256:373159ba768e23a3a1c497d9f2b936addf8fd5b1fdce7dd6a14080ac928bfda0
-configMapGenerator:
-  - name: sonarr-rclone
-    namespace: shikanime
-    files:
-      - sonarr-rclone/rclone.conf

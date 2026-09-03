@@ -12,9 +12,6 @@ patches:
   - path: patch-sts.yaml
   - path: patch-httproute.yaml
 secretGenerator:
-  - name: whisparr
-    files:
-      - config.xml=whisparr/config.enc.xml
   - name: whisparr-env
     envs:
       - whisparr-env/.enc.env

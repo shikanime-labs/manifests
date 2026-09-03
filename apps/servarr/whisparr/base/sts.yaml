@@ -86,42 +86,12 @@ spec:
               value: eros
             - name: WHISPARR__UPDATE__MECHANISM
               value: Docker
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/config.xml
-            - /mnt/config/config.xml
-          command:
-            - rclone
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/config
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
       securityContext:
         fsGroup: 1000
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: whisparr-config
-        - name: rclone-config
-          configMap:
-            name: whisparr-rclone
-        - name: startup-config
-          secret:
-            secretName: whisparr
         - name: run
           emptyDir:
             medium: Memory
