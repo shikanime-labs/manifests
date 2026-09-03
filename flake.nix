@@ -134,6 +134,11 @@
                             key_groups = keyGroup;
                           }
                           {
+                            path_regex = "apps/qbittorrent/overlays/${env.name}(.*)?/qbittorrent/qBittorrent\\.enc\\.conf";
+                            encrypted_regex = "^(WebUI\\\\Password_PBKDF2|MailNotification\\\\password)$";
+                            key_groups = keyGroup;
+                          }
+                          {
                             path_regex = "apps/hermes-agent/gateway/overlays/${env.name}(.*)?/hermes-agent-ssh/id_ed25519\\.enc\\.yaml";
                             key_groups = keyGroup;
                           }
