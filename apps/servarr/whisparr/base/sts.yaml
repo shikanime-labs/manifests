@@ -3,7 +3,6 @@ kind: StatefulSet
 metadata:
   name: whisparr
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/instance: whisparr
@@ -18,15 +17,6 @@ spec:
       containers:
         - name: whisparr
           image: whisparr
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: Europe/Paris
-            - name: WHISPARR__AUTH__METHOD
-              value: External
           livenessProbe:
             httpGet:
               path: /ping
@@ -43,16 +33,17 @@ spec:
             initialDelaySeconds: 30
             timeoutSeconds: 5
           startupProbe:
-            failureThreshold: 180
+            failureThreshold: 360
             httpGet:
               path: /ping
               port: http
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            periodSeconds: 10
             timeoutSeconds: 5
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: run
+              mountPath: /run
           securityContext:
             capabilities:
               add:
@@ -61,6 +52,40 @@ spec:
                 - SETGID
                 - SETUID
             readOnlyRootFilesystem: false
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
+            - name: TZ
+              value: Europe/Paris
+            - name: WHISPARR__APP__INSTANCENAME
+              value: Whisparr
+            - name: WHISPARR__APP__LAUNCHBROWSER
+              value: "False"
+            - name: WHISPARR__AUTH__APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: whisparr-env
+                  key: apikey
+            - name: WHISPARR__AUTH__METHOD
+              value: External
+            - name: WHISPARR__AUTH__REQUIRED
+              value: Enabled
+            - name: WHISPARR__LOG__LEVEL
+              value: info
+            - name: WHISPARR__LOG__ANALYTICSENABLED
+              value: "False"
+            - name: WHISPARR__SERVER__BINDADDRESS
+              value: "*"
+            - name: WHISPARR__SERVER__PORT
+              value: "6969"
+            - name: WHISPARR__UPDATE__BRANCH
+              value: eros
+            - name: WHISPARR__UPDATE__MECHANISM
+              value: Docker
       initContainers:
         - name: config-sync
           image: rclone
@@ -97,3 +122,6 @@ spec:
         - name: startup-config
           secret:
             secretName: whisparr
+        - name: run
+          emptyDir:
+            medium: Memory

@@ -3,7 +3,6 @@ kind: StatefulSet
 metadata:
   name: radarr
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/instance: radarr
@@ -18,17 +17,6 @@ spec:
       containers:
         - name: radarr
           image: radarr
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: S6_READ_ONLY_ROOT
-              value: "1"
-            - name: TZ
-              value: Europe/Paris
-            - name: RADARR__AUTH__METHOD
-              value: External
           livenessProbe:
             httpGet:
               path: /ping
@@ -64,42 +52,46 @@ spec:
                 - SETGID
                 - SETUID
             readOnlyRootFilesystem: false
-      initContainers:
-        - name: config-sync
-          image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/config.xml
-            - /mnt/config/config.xml
-          command:
-            - rclone
-          volumeMounts:
-            - name: config
-              mountPath: /mnt/config
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
-          securityContext:
-            capabilities:
-              add:
-                - FOWNER
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
+            - name: TZ
+              value: Europe/Paris
+            - name: RADARR__APP__INSTANCENAME
+              value: Radarr
+            - name: RADARR__APP__LAUNCHBROWSER
+              value: "False"
+            - name: RADARR__AUTH__APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: radarr-env
+                  key: apikey
+            - name: RADARR__AUTH__METHOD
+              value: External
+            - name: RADARR__AUTH__REQUIRED
+              value: Enabled
+            - name: RADARR__LOG__LEVEL
+              value: info
+            - name: RADARR__LOG__ANALYTICSENABLED
+              value: "False"
+            - name: RADARR__SERVER__BINDADDRESS
+              value: "*"
+            - name: RADARR__SERVER__PORT
+              value: "7878"
+            - name: RADARR__UPDATE__BRANCH
+              value: master
+            - name: RADARR__UPDATE__MECHANISM
+              value: Docker
       securityContext:
         fsGroup: 1000
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: radarr-config
-        - name: rclone-config
-          configMap:
-            name: radarr-rclone
-        - name: startup-config
-          secret:
-            secretName: radarr
         - name: run
           emptyDir:
             medium: Memory

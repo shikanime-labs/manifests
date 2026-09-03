@@ -26,6 +26,18 @@ spec:
             - name: tls
               mountPath: /etc/ssl/private
               readOnly: true
+          env:
+            - name: RADARR__SERVER__ENABLESSL
+              value: "True"
+            - name: RADARR__SERVER__SSLCERTPATH
+              value: /etc/ssl/private/keystore.p12
+            - name: RADARR__SERVER__SSLCERTPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: radarr-env
+                  key: ssl-cert-password
+            - name: RADARR__SERVER__SSLPORT
+              value: "9898"
       volumes:
         - name: tls
           secret:
