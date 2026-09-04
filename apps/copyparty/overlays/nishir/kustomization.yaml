@@ -2,6 +2,7 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/ftp
@@ -9,8 +10,14 @@ components:
   - ../../components/sftp
   - ../../components/tls
   - ../../components/zeroconf
+configurations:
+  - namereference.yaml
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
   - path: patch-httproute.yaml
   - path: patch-tcproutes.yaml
+secretGenerator:
+  - name: copyparty-oidc-client
+    envs:
+      - copyparty-oidc-client/.enc.env
