@@ -18,6 +18,10 @@ spec:
     scopes:
       - openid
       - profile
+    # Scope the OIDC session cookie to the parent domain: host-scoped cookies were
+    # not persisted by the browser across the redirect round-trip, so every
+    # post-login request came back with oauth.missing_credentials.
+    cookieDomain: i.shikanime.studio
     # Re-emit the validated ID token on a dedicated header: this is the only
     # token the jwt provider below can see on browser requests (they carry the
     # Envoy session cookie, not an Authorization header).
