@@ -21,17 +21,24 @@ spec:
     # Envoy's oauth2 filter deletes the inbound Authorization header by default;
     # forward it so non-browser WebDAV clients carrying credentials still work.
     passThroughAuthHeader: true
-    # The jwt provider below (filter order 10, after oauth2's 9) validates
-    # this token against authelia's JWKS and lifts preferred_username into
-    # X-WEBAUTH-USER for copyparty's IdP header auth.
+    # Re-emit the validated ID token on a dedicated header: this is the only
+    # token the jwt provider below can see on browser requests (they carry the
+    # Envoy session cookie, not an Authorization header).
     forwardIDToken:
       header: X-Id-Token
   jwt:
     providers:
       - name: authelia
         issuer: https://accounts.i.shikanime.studio
+        # Extract from the forwarded ID token — default extraction (Bearer in
+        # Authorization) is empty on browser requests, which made jwt_authn
+        # reject every browser session with "Jwt is missing".
+        extractFrom:
+          - name: X-Id-Token
         remoteJWKS:
           uri: https://accounts.i.shikanime.studio/jwks.json
+        audiences:
+          - copyparty
         claimToHeaders:
           - claim: preferred_username
             header: X-WEBAUTH-USER
