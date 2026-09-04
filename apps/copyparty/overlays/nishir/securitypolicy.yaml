@@ -34,7 +34,8 @@ spec:
         # Authorization) is empty on browser requests, which made jwt_authn
         # reject every browser session with "Jwt is missing".
         extractFrom:
-          - name: X-Id-Token
+          headers:
+            - name: X-Id-Token
         remoteJWKS:
           uri: https://accounts.i.shikanime.studio/jwks.json
         audiences:
