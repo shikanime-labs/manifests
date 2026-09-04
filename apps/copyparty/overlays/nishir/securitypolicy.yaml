@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: copyparty-oidc
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: copyparty
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: copyparty
+    clientSecret:
+      name: copyparty-oidc-client
+    redirectURL: https://copyparty.i.shikanime.studio/oauth2/callback
