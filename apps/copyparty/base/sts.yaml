@@ -46,9 +46,6 @@ spec:
               mountPath: /cfg/config.conf
               readOnly: true
               subPath: config.conf
-          envFrom:
-            - secretRef:
-                name: copyparty-env
       volumes:
         - name: config
           persistentVolumeClaim:
