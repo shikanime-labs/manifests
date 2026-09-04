@@ -1,3 +1,4 @@
+---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIGatewayRoute
 metadata:
@@ -127,6 +128,54 @@ spec:
         - name: openrouter
           priority: 1
           modelNameOverride: poolside/laguna-s-2.1:free
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: shikanime/atlas
+      modelsOwnedBy: Shikanime Studio
+      backendRefs:
+        - name: nous
+          priority: 0
+          modelNameOverride: text-embedding-3-small
+        - name: openrouter
+          priority: 1
+          modelNameOverride: text-embedding-3-small
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: shikanime/forge
+      modelsOwnedBy: Shikanime Studio
+      backendRefs:
+        - name: z-ai
+          priority: 0
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: llama-cpp
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: nous
+          priority: 2
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
+        - name: openrouter
+          priority: 3
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: shikanime/scribe
+      modelsOwnedBy: Shikanime Studio
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: poolside/laguna-s:free
+        - name: llama-cpp
+          priority: 1
+          modelNameOverride: poolside/laguna-xs:free
+        - name: openrouter
+          priority: 2
+          modelNameOverride: stepfun/step-3.7-flash:free
     - matches:
         - headers:
             - name: x-ai-eg-model
