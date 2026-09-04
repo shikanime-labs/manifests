@@ -15,3 +15,23 @@ spec:
     clientSecret:
       name: copyparty-oidc-client
     redirectURL: https://copyparty.i.shikanime.studio/oauth2/callback
+    scopes:
+      - openid
+      - profile
+    # Envoy's oauth2 filter deletes the inbound Authorization header by default;
+    # forward it so non-browser WebDAV clients carrying credentials still work.
+    passThroughAuthHeader: true
+    # The jwt provider below (filter order 10, after oauth2's 9) validates
+    # this token against authelia's JWKS and lifts preferred_username into
+    # X-WEBAUTH-USER for copyparty's IdP header auth.
+    forwardIDToken:
+      header: X-Id-Token
+  jwt:
+    providers:
+      - name: authelia
+        issuer: https://accounts.i.shikanime.studio
+        remoteJWKS:
+          uri: https://accounts.i.shikanime.studio/jwks.json
+        claimToHeaders:
+          - claim: preferred_username
+            header: X-WEBAUTH-USER
