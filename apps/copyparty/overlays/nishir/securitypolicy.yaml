@@ -18,9 +18,6 @@ spec:
     scopes:
       - openid
       - profile
-    # Envoy's oauth2 filter deletes the inbound Authorization header by default;
-    # forward it so non-browser WebDAV clients carrying credentials still work.
-    passThroughAuthHeader: true
     # Re-emit the validated ID token on a dedicated header: this is the only
     # token the jwt provider below can see on browser requests (they carry the
     # Envoy session cookie, not an Authorization header).
