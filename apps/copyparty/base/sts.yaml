@@ -3,7 +3,6 @@ kind: StatefulSet
 metadata:
   name: copyparty
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/instance: copyparty
@@ -47,6 +46,9 @@ spec:
               mountPath: /cfg/config.conf
               readOnly: true
               subPath: config.conf
+          envFrom:
+            - secretRef:
+                name: copyparty-env
       volumes:
         - name: config
           persistentVolumeClaim:

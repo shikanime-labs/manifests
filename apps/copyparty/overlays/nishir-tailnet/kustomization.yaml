@@ -7,6 +7,10 @@ configMapGenerator:
   - name: copyparty
     files:
       - ./copyparty/config.conf
+secretGenerator:
+  - name: copyparty-env
+    envs:
+      - copyparty-env/.enc.env
 labels:
   - includeTemplates: true
     pairs:
