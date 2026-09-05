@@ -1,0 +1,83 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ca-rotation-heal
+  namespace: cert-manager-trust
+spec:
+  # 04:37 daily — well off the busy cron minutes
+  schedule: "37 4 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/instance: ca-rotation-heal
+            app.kubernetes.io/name: ca-rotation-heal
+        spec:
+          serviceAccountName: ca-rotation-heal
+          restartPolicy: Never
+          containers:
+            - name: heal
+              # quay.io/jetstack/cert-managerctl is cmctl; plain kubectl image keeps it tiny
+              image: bitnami/kubectl:1.31
+              command:
+                - /bin/sh
+                - -ec
+                - |
+                  NS=cert-manager-trust
+                  ISSUER=nishir
+                  # 1. serial of the CA currently in the issuer secret
+                  CA_SERIAL=$(kubectl -n $NS get secret nishir-ca -o jsonpath='{.data.ca\.crt}' \
+                    | base64 -d | openssl x509 -noout -serial | cut -d= -f2)
+                  # 2. delete leaf secrets whose cert was NOT signed by that serial
+                  #    (cert-manager re-issues them from the current CA on delete)
+                  for res in $(kubectl get certificates -A -o json \
+                      | jq -r --arg iss "$ISSUER" '
+                          .items[]
+                          | select(.spec.issuerRef.name==$iss and .spec.issuerRef.kind!="ClusterIssuer"
+                                   or .spec.issuerRef.name==$iss)
+                          | "\(.metadata.namespace) \(.spec.secretName)"'); do
+                    ns=${res% *}; sec=${res#* }
+                    [ "$ns" = "$NS" ] && continue   # skip the CA itself
+                    crt=$(kubectl -n $ns get secret "$sec" -o jsonpath='{.data.tls\.crt}' 2>/dev/null) || continue
+                    serial=$(echo "$crt" | base64 -d | openssl x509 -noout -serial 2>/dev/null | cut -d= -f2)
+                    if [ "$serial" != "$CA_SERIAL" ]; then
+                      echo "stale leaf: $ns/$sec (serial $serial != CA $CA_SERIAL) — deleting for re-issue"
+                      kubectl -n $ns delete secret "$sec" --wait=false
+                    fi
+                  done
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ca-rotation-heal
+  namespace: cert-manager-trust
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ca-rotation-heal
+rules:
+  - apiGroups: ["cert-manager.io"]
+    resources: ["certificates"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ca-rotation-heal
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ca-rotation-heal
+subjects:
+  - kind: ServiceAccount
+    name: ca-rotation-heal
+    namespace: cert-manager-trust
