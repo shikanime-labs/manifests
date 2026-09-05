@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - bundle.yaml
+  - ca-rotation-heal.yaml
   - cert.yaml
   - clusterissuer.yaml
 secretGenerator:
