@@ -14,4 +14,4 @@ patches:
 secretGenerator:
   - name: qbittorrent
     files:
-      - qBittorrent.conf=qbittorrent/qBittorrent.enc.conf
+      - qBittorrent.ini=qbittorrent/qBittorrent.enc.conf

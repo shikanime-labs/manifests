@@ -98,3 +98,6 @@ spec:
         - name: startup-config
           secret:
             secretName: qbittorrent
+            items:
+              - key: qBittorrent.ini
+                path: qBittorrent.conf
