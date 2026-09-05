@@ -135,59 +135,59 @@ bot_peers:
     url: https://telsha.taila659a.ts.net:8642
 auxiliary:
   approval:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   compression:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   curator:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   flush_memories:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
     timeout: 30
   kanban_decomposer:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   mcp:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   profile_describer:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   session_search:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
     timeout: 30
   skills_hub:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   title_generation:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   triage_specifier:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   vision:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
   web_extract:
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    base_url: https://inference.i.shikanime.studio/v1
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-openai
 checkpoints:
   enabled: true
   max_snapshots: 50
@@ -199,34 +199,25 @@ compression:
 curator:
   enabled: true
 custom_providers:
-  - name: aperture-anthropic
-    api_key: ""
+  - name: shikanime-anthropic
     api_mode: anthropic_messages
-    base_url: https://ai.taila659a.ts.net/v1
-    model: glm-5.2
-    models:
-      - glm-4.7
-      - glm-5.2
-  - name: aperture-openai
-    api_key: ""
-    api_mode: chat_completions
-    base_url: https://ai.taila659a.ts.net/v1
-    model: tencent/hy3:free
+    base_url: https://inference.i.shikanime.studio/anthropic
+    key_env: SKS_API_KEY
+    model: z-ai/glm-5.3-flash
     models:
       - deepseek/deepseek-v4-flash
-      - gemini-2.5-flash
-      - gemini-2.5-flash-lite
-      - gemini-2.5-pro
-      - gemini-3-flash-preview
-      - google/gemma-4-e2b
-      - inclusionai/ling-3.0-flash:free
-      - labs-leanstral-1-5
-      - nvidia/nemotron-3-ultra-550b-a55b:free
-      - openrouter/openrouter/free
+      - poolside/laguna-s-2.1:free
+      - z-ai/glm-5.3
+      - z-ai/glm-5.3-flash
+  - name: shikanime-openai
+    api_mode: chat_completions
+    base_url: https://inference.i.shikanime.studio/v1
+    key_env: SKS_API_KEY
+    model: poolside/laguna-s-2.1:free
+    models:
+      - deepseek/deepseek-v4-flash-0731
+      - poolside/laguna-s-2.1:free
       - poolside/laguna-xs-2.1:free
-      - qwen/qwen3-8b
-      - stepfun/step-3.7-flash:free
-      - tencent/hy3:free
 dashboard:
   basic_auth:
     password_hash: $2y$05$vfQMVf.qFiTB62aGVmmL6OV3TXzcOORB5s3DHoXdQOIrTOS7IzMlm
@@ -254,20 +245,14 @@ display:
   tool_progress: all
 fallback_providers:
   - api_mode: chat_completions
-    model: inclusionai/ling-3.0-flash:free
-    provider: custom:aperture-openai
-  - api_mode: chat_completions
     model: poolside/laguna-s-2.1:free
-    provider: custom:aperture-openai
-  - api_mode: chat_completions
-    model: labs-leanstral-1-5
-    provider: custom:aperture-openai
-  - api_mode: chat_completions
-    model: stepfun/step-3.7-flash:free
-    provider: custom:aperture-openai
-  - api_mode: chat_completions
-    model: tencent/hy3:free
-    provider: custom:aperture-openai
+    provider: custom:shikanime-openai
+  - api_mode: anthropic_messages
+    model: poolside/laguna-s-2.1:free
+    provider: custom:shikanime-anthropic
+  - api_mode: anthropic_messages
+    model: z-ai/glm-5.3
+    provider: custom:shikanime-anthropic
 group_sessions_per_user: true
 mcp_servers:
   aperture:
@@ -278,9 +263,9 @@ memory:
   nudge_interval: 10
   provider: honcho
 model:
-  base_url: https://ai.taila659a.ts.net/v1
-  default: tencent/hy3:free
-  provider: custom:aperture-openai
+  base_url: https://inference.i.shikanime.studio/anthropic
+  default: z-ai/glm-5.3-flash
+  provider: custom:shikanime-anthropic
 platform_toolsets:
   a2a:
     - a2a
