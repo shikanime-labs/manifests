@@ -22,8 +22,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: heal
-              # quay.io/jetstack/cert-managerctl is cmctl; plain kubectl image keeps it tiny
-              image: bitnami/kubectl:1.31
+              image: bitnami/kubectl:latest
               command:
                 - /bin/sh
                 - -ec
@@ -36,11 +35,11 @@ spec:
                   # 2. delete leaf secrets whose cert was NOT signed by that serial
                   #    (cert-manager re-issues them from the current CA on delete)
                   for res in $(kubectl get certificates -A -o json \
-                      | jq -r --arg iss "$ISSUER" '\
-                          .items[]\
-                          | select(.spec.issuerRef.name==$iss and .spec.issuerRef.kind!="ClusterIssuer"\
-                                   or .spec.issuerRef.name==$iss)\
-                          | "\(.metadata.namespace) \(.spec.secretName)"'); do
+                      | jq -r --arg iss "$ISSUER" ' \
+                          .items[] \
+                          | select(.spec.issuerRef.name==$iss and .spec.issuerRef.kind!="ClusterIssuer" \
+                                   or .spec.issuerRef.name==$iss) \
+                          | "\(..metadata.namespace) \(..spec.secretName)"'); do
                     ns=${res% *}; sec=${res#* }
                     [ "$ns" = "$NS" ] && continue   # skip the CA itself
                     crt=$(kubectl -n $ns get secret "$sec" -o jsonpath='{.data.tls\.crt}' 2>/dev/null) || continue
