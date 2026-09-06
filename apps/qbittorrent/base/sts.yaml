@@ -65,13 +65,15 @@ spec:
       initContainers:
         - name: config-sync
           image: rclone
-          args:
-            - copyto
-            - --copy-links
-            - /mnt/startup-config/qBittorrent.conf
-            - /mnt/config/qBittorrent/config/qBittorrent.conf
           command:
-            - rclone
+            - /bin/sh
+            - -c
+            - |
+              # sops' ini store cannot round-trip a ';' in WebUI\ServerDomains; the decrypted
+              # seed carries go-ini backtick quoting that Qt QSettings reads literally, which
+              # breaks host header validation. Strip the quoting before handing the seed over.
+              sed 's/`//g' /mnt/startup-config/qBittorrent.conf > /tmp/qBittorrent.conf
+              rclone copyto /tmp/qBittorrent.conf /mnt/config/qBittorrent/config/qBittorrent.conf
           volumeMounts:
             - name: config
               mountPath: /mnt/config
