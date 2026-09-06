@@ -14,3 +14,8 @@ nameReference:
       - kind: SecurityPolicy
         path: spec/apiKeyAuth/credentialRefs/name
         group: gateway.envoyproxy.io
+  - kind: ConfigMap
+    fieldSpecs:
+      - kind: LeaderWorkerSet
+        path: spec/leaderWorkerTemplate/leaderTemplate/spec/volumes/configMap/name
+        group: leaderworkerset.x-k8s.io
