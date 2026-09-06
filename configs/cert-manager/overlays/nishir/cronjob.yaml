@@ -36,10 +36,10 @@ spec:
                   # 2. delete leaf secrets whose cert was NOT signed by that serial
                   #    (cert-manager re-issues them from the current CA on delete)
                   for res in $(kubectl get certificates -A -o json \
-                      | jq -r --arg iss "$ISSUER" '
-                          .items[]
-                          | select(.spec.issuerRef.name==$iss and .spec.issuerRef.kind!="ClusterIssuer"
-                                   or .spec.issuerRef.name==$iss)
+                      | jq -r --arg iss "$ISSUER" '\
+                          .items[]\
+                          | select(.spec.issuerRef.name==$iss and .spec.issuerRef.kind!="ClusterIssuer"\
+                                   or .spec.issuerRef.name==$iss)\
                           | "\(.metadata.namespace) \(.spec.secretName)"'); do
                     ns=${res% *}; sec=${res#* }
                     [ "$ns" = "$NS" ] && continue   # skip the CA itself
@@ -50,34 +50,3 @@ spec:
                       kubectl -n $ns delete secret "$sec" --wait=false
                     fi
                   done
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: ca-rotation-heal
-  namespace: cert-manager-trust
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: ca-rotation-heal
-rules:
-  - apiGroups: ["cert-manager.io"]
-    resources: ["certificates"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["get", "list", "delete"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: ca-rotation-heal
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: ca-rotation-heal
-subjects:
-  - kind: ServiceAccount
-    name: ca-rotation-heal
-    namespace: cert-manager-trust
