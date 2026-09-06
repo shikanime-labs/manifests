@@ -36,11 +36,12 @@ kubectl -n shikanime get certificates -o json | jq -r '
 kubectl -n shikanime delete secret authelia-tls lldap-tls copyparty-tls ... --wait=false
 
 # verify a leaf now chains to the bundle
-kubectl -n shikanime get secret lldap-tls -o jsonpath='{.data.tls\.crt}' \
-  | base64 -d > /tmp/leaf.crt
-kubectl -n shikanime get cm nishir-ca-certificates.crt -o jsonpath='{.data.ca\.crt}' \
-  > /tmp/bundle.pem
-openssl verify -CAfile /tmp/bundle.pem /tmp/leaf.crt   # -> OK
+kubectl -n shikanime get secret lldap-tls \
+  -o jsonpath='{.data.tls\.crt}' | base64 -d > /tmp/leaf.crt
+kubectl -n shikanime get cm nishir-ca-certificates.crt \
+  -o jsonpath='{.data.ca\.crt}' > /tmp/bundle.pem
+# -> OK
+openssl verify -CAfile /tmp/bundle.pem /tmp/leaf.crt
 
 # restart stateful pods that cache certs at boot and are not crash-looping
 kubectl -n shikanime delete pod lldap-0 authelia-0
