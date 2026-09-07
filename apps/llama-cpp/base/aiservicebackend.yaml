@@ -27,6 +27,20 @@ spec:
     kind: Backend
     group: gateway.envoyproxy.io
 ---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: z-ai-openai
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai
+---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
@@ -41,6 +55,24 @@ spec:
     name: z-ai
     kind: Backend
     group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: z-ai-openai
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+    # Z.ai's OpenAI-compatible endpoint (/api/paas/v4) serves glm-5.3-flash
+    # for /v1/chat/completions; the Anthropic-schema backend above cannot
+    # translate OpenAI chat requests.
+    prefix: api/paas/v4
+  backendRef:
+    name: z-ai-openai
+    kind: Backend
+    group: gateway.envoyproxy.io
+
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
