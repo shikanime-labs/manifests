@@ -63,7 +63,7 @@ spec:
               value: z-ai/glm-5.3-flash
       modelsOwnedBy: Shikanime Studio
       backendRefs:
-        - name: z-ai
+        - name: z-ai-openai
           priority: 0
           modelNameOverride: glm-5.3-flash
         - name: llama-cpp
