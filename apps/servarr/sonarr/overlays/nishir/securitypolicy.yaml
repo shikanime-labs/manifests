@@ -1,7 +1,7 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
-  name: sonarr-oidc
+  name: sonarr-oidc-client
   namespace: shikanime
 spec:
   targetRefs:

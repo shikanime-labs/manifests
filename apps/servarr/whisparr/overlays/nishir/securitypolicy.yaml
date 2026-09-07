@@ -1,7 +1,7 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
-  name: whisparr-oidc
+  name: whisparr-oidc-client
   namespace: shikanime
 spec:
   targetRefs:
