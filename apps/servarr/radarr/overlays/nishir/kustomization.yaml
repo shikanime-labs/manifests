@@ -10,7 +10,32 @@ configurations:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - radarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: radarr
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: radarr
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - radarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: radarr
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: radarr-redirect
 secretGenerator:
   - name: radarr-env
     envs:

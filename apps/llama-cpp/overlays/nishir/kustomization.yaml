@@ -32,7 +32,19 @@ secretGenerator:
     envs:
       - inference-mistral/.enc.env
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - chat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: llama-cpp
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: llama-cpp
   - patch: |-
       - op: add
         path: /spec/parentRefs

@@ -15,8 +15,149 @@ configurations:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
-  - path: patch-tcproutes.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - copyparty.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: copyparty
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - copyparty.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: copyparty-redirect
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-control
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-control
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftps
+    target:
+      kind: TCPRoute
+      name: copyparty-ftps
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: sftp
+    target:
+      kind: TCPRoute
+      name: copyparty-sftp
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12000
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12000
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12001
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12001
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12002
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12002
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12003
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12003
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12004
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12004
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12005
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12005
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12006
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12006
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12007
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12007
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12008
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12008
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12009
+    target:
+      kind: TCPRoute
+      name: copyparty-ftp-data-12009
 secretGenerator:
   - name: copyparty-oidc-client
     envs:

@@ -9,5 +9,38 @@ components:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
-  - path: patch-tcproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - forgejo.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: forgejo
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - forgejo.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: forgejo-redirect
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: ssh
+    target:
+      kind: TCPRoute
+      name: forgejo

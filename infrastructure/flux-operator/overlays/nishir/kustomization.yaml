@@ -3,7 +3,20 @@ resources:
   - gateway.yaml
   - cert.yaml
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: flux-operator
+          sectionName: https
+      - op: add
+        path: /spec/hostnames
+        value:
+        - flux.i.shikanime.studio
+    target:
+      kind: HTTPRoute
+      name: flux-operator
+      namespace: flux-system
 labels:
   - includeTemplates: true
     pairs:

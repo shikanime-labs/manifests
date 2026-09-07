@@ -2,4 +2,29 @@ resources:
   - ../../base
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-meta.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: meta
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: meta
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-meta.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: meta
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: meta-redirect

@@ -10,7 +10,32 @@ configurations:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - sonarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: sonarr
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: sonarr
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - sonarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: sonarr
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: sonarr-redirect
 secretGenerator:
   - name: sonarr-env
     envs:

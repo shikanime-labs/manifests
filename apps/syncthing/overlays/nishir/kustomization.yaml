@@ -9,6 +9,47 @@ components:
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
-  - path: patch-tcproute.yaml
-  - path: patch-udproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - syncthing.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: syncthing
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - syncthing.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: syncthing-redirect
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: syncthing
+    target:
+      kind: TCPRoute
+      name: syncthing
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: syncthing-udp
+    target:
+      kind: UDPRoute
+      name: syncthing

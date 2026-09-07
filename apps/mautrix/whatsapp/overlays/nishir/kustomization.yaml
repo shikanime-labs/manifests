@@ -2,4 +2,29 @@ resources:
   - ../../base
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-whatsapp.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: whatsapp
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: whatsapp
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-whatsapp.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: whatsapp
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: whatsapp-redirect

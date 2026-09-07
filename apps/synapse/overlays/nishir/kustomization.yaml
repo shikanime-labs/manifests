@@ -8,6 +8,45 @@ components:
   - ../../components/tls
   - ../../components/monitoring
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: matrix
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix-discord-media.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: matrix-discord-media
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix.i.shikanime.studio
+        - matrix-discord-media.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: matrix-redirect
   - path: patch-pvc.yaml
   - path: patch-sts.yaml

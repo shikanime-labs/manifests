@@ -2,4 +2,29 @@ resources:
   - ../../base
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-signal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: signal
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: signal
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-signal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: signal
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: signal-redirect

@@ -4,7 +4,34 @@ resources:
 components:
   - ../../components/monitoring
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: longhorn
+          sectionName: https
+      - op: add
+        path: /spec/hostnames
+        value:
+        - longhorn.i.shikanime.studio
+    target:
+      kind: HTTPRoute
+      name: longhorn
+      namespace: longhorn-system
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: longhorn
+          sectionName: http
+      - op: add
+        path: /spec/hostnames
+        value:
+        - longhorn.i.shikanime.studio
+    target:
+      kind: HTTPRoute
+      name: longhorn-redirect
+      namespace: longhorn-system
   - path: patch-hr.yaml
 secretGenerator:
   - name: longhorn-hetzner-backups

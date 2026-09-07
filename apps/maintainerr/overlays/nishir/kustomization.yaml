@@ -5,4 +5,29 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - maintainerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: maintainerr
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: maintainerr
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - maintainerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: maintainerr
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: maintainerr-redirect

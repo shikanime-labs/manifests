@@ -11,7 +11,84 @@ components:
   - ../../components/webhook
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-dashboard
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - api.automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-api-server
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - a2a.automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-a2a
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-dashboard-redirect
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - api.automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-api-server-redirect
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - a2a.automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: hermes-agent-a2a-redirect
 secretGenerator:
   - name: hermes-agent
     envs:

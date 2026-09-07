@@ -5,7 +5,32 @@ namespace: shikanime
 components:
   - ../../components/monitoring
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - honcho.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: honcho
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: honcho
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - honcho.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: honcho
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: honcho-redirect
 secretGenerator:
   - name: honcho
     envs:

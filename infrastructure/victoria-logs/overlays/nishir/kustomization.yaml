@@ -2,5 +2,32 @@ resources:
   - ../../base
   - gateway.yaml
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - logs.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: victoria-logs
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: victoria-logs
+      namespace: monitoring-system
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - logs.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: victoria-logs
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: victoria-logs-redirect
+      namespace: monitoring-system
   - path: patch-hr.yaml
