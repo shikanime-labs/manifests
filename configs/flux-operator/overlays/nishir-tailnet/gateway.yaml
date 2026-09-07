@@ -2,11 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: flux-operator-receivers
-  annotations:
-    # Pin external-dns to a CNAME at the Tailscale hostname. Without this the
-    # Gateway status exposes both an IPAddress and a Hostname, producing
-    # conflicting A/CNAME record candidates.
-    external-dns.alpha.kubernetes.io/target: flux-receivers-proxy.taila659a.ts.net
+  namespace: flux-system
 spec:
   gatewayClassName: flux-operator-receivers
   listeners:

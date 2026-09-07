@@ -2,11 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: synapse
-  annotations:
-    # Pin external-dns to a CNAME at the Tailscale hostname. Without this the
-    # Gateway status exposes both an IPAddress and a Hostname, producing
-    # conflicting A/CNAME record candidates.
-    external-dns.alpha.kubernetes.io/target: synapse.taila659a.ts.net
 spec:
   gatewayClassName: synapse
   listeners:
