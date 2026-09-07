@@ -1,0 +1,70 @@
+---
+# Z.ai MCP bypass: routes remote MCP server traffic straight to api.z.ai,
+# skipping the ai-gateway MCP proxy. The proxy hard-requires HTTP 202 on the
+# `notifications/initialized` handshake (internal/mcpproxy/mcpproxy.go), but
+# Z.ai's Spring WebFlux servers answer 200 with an empty body, so MCPRoute
+# session creation always fails (shikanime-labs/manifests#1894). Clients talk
+# plain MCP Streamable HTTP per server behind the gateway API-key policy.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: z-ai-mcp
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /mcp/z-ai/
+      backendRefs:
+        - name: z-ai
+          kind: Backend
+          group: gateway.envoyproxy.io
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.envoyproxy.io
+            kind: HTTPRouteFilter
+            name: z-ai-mcp-credential
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.envoyproxy.io
+            kind: HTTPRouteFilter
+            name: z-ai-mcp-rewrite
+---
+# Injects the Z.ai API key into requests forwarded to api.z.ai, replacing the
+# MCPRoute per-backend securityPolicy that the bypassed MCP proxy used to
+# provide. HTTPRouteFilter credentialInjection reads key `credential`; the
+# secretGenerator suffix from kustomize is resolved via overlays/nishir/
+# namereference.yaml. Value must be `Bearer <zai api key>` (see overlay env).
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: HTTPRouteFilter
+metadata:
+  name: z-ai-mcp-credential
+  namespace: shikanime
+spec:
+  credentialInjection:
+    overwrite: true
+    credential:
+      valueRef:
+        name: inference-z-ai
+---
+# Rewrites /mcp/z-ai/<server>/... to /api/mcp/<server>/... on api.z.ai.
+# Regex capture keeps the rest of the path (JSON-RPC POSTs land on
+# /api/mcp/<server>/mcp).
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: HTTPRouteFilter
+metadata:
+  name: z-ai-mcp-rewrite
+  namespace: shikanime
+spec:
+  urlRewrite:
+    path:
+      type: ReplaceRegexMatch
+      replaceRegexMatch:
+        pattern: ^/mcp/z-ai/([^/]+)(/mcp.*)?$
+        substitution: /api/mcp/\1/mcp
