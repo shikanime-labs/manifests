@@ -5,6 +5,6 @@ metadata:
   namespace: shikanime
 spec:
   endpoints:
-    - service:
-        name: vllm-deepseek
+    - ip:
+        address: 192.168.1.79
         port: 8000
