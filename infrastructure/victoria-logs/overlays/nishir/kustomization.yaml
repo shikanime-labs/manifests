@@ -13,8 +13,8 @@ patches:
         - name: victoria-logs
           sectionName: https
     target:
-      kind: HTTPRoute
       name: victoria-logs
+      kind: HTTPRoute
       namespace: monitoring-system
   - patch: |-
       - op: add
@@ -27,7 +27,7 @@ patches:
         - name: victoria-logs
           sectionName: http
     target:
-      kind: HTTPRoute
       name: victoria-logs-redirect
+      kind: HTTPRoute
       namespace: monitoring-system
   - path: patch-hr.yaml

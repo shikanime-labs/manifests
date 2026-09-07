@@ -13,8 +13,8 @@ patches:
         - name: signal
           sectionName: https
     target:
-      kind: HTTPRoute
       name: signal
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: signal
           sectionName: http
     target:
-      kind: HTTPRoute
       name: signal-redirect
+      kind: HTTPRoute

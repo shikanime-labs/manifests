@@ -43,8 +43,8 @@ patches:
         - name: llama-cpp
           sectionName: https
     target:
-      kind: HTTPRoute
       name: llama-cpp
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs

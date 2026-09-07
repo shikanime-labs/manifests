@@ -21,8 +21,8 @@ patches:
         - name: prowlarr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: prowlarr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -34,8 +34,8 @@ patches:
         - name: prowlarr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: prowlarr-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: prowlarr-pkcs12-password
     envs:

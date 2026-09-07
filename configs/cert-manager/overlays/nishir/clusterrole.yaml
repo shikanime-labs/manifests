@@ -1,12 +1,11 @@
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: ca-rotation-heal
 rules:
-  - apiGroups: ["cert-manager.io"]
-    resources: ["certificates"]
+  - resources: ["certificates"]
+    apiGroups: ["cert-manager.io"]
     verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["secrets"]
+  - resources: ["secrets"]
+    apiGroups: [""]
     verbs: ["get", "list", "delete"]

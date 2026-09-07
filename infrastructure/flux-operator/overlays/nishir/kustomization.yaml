@@ -14,8 +14,8 @@ patches:
         value:
         - flux.i.shikanime.studio
     target:
-      kind: HTTPRoute
       name: flux-operator
+      kind: HTTPRoute
       namespace: flux-system
 labels:
   - includeTemplates: true

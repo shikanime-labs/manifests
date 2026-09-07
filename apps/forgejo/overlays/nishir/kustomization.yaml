@@ -20,8 +20,8 @@ patches:
         - name: forgejo
           sectionName: https
     target:
-      kind: HTTPRoute
       name: forgejo
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -33,8 +33,8 @@ patches:
         - name: forgejo
           sectionName: http
     target:
-      kind: HTTPRoute
       name: forgejo-redirect
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -42,5 +42,5 @@ patches:
         - name: forgejo
           sectionName: ssh
     target:
-      kind: TCPRoute
       name: forgejo
+      kind: TCPRoute

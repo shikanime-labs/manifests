@@ -13,5 +13,5 @@ patches:
           - name: forgejo
             port: 443
     target:
-      kind: HTTPRoute
       name: forgejo
+      kind: HTTPRoute

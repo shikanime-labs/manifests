@@ -13,8 +13,8 @@ patches:
         - name: discord
           sectionName: https
     target:
-      kind: HTTPRoute
       name: discord
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: discord
           sectionName: http
     target:
-      kind: HTTPRoute
       name: discord-redirect
+      kind: HTTPRoute

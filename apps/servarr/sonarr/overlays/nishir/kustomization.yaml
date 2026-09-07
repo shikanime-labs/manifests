@@ -21,8 +21,8 @@ patches:
         - name: sonarr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: sonarr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -34,8 +34,8 @@ patches:
         - name: sonarr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: sonarr-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: sonarr-env
     envs:

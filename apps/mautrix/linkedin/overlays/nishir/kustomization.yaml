@@ -13,8 +13,8 @@ patches:
         - name: linkedin
           sectionName: https
     target:
-      kind: HTTPRoute
       name: linkedin
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: linkedin
           sectionName: http
     target:
-      kind: HTTPRoute
       name: linkedin-redirect
+      kind: HTTPRoute

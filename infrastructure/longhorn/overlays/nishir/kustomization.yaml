@@ -15,8 +15,8 @@ patches:
         value:
         - longhorn.i.shikanime.studio
     target:
-      kind: HTTPRoute
       name: longhorn
+      kind: HTTPRoute
       namespace: longhorn-system
   - patch: |-
       - op: add
@@ -29,8 +29,8 @@ patches:
         value:
         - longhorn.i.shikanime.studio
     target:
-      kind: HTTPRoute
       name: longhorn-redirect
+      kind: HTTPRoute
       namespace: longhorn-system
   - path: patch-hr.yaml
 secretGenerator:

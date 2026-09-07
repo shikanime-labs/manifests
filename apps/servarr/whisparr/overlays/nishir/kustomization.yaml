@@ -21,8 +21,8 @@ patches:
         - name: whisparr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: whisparr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -34,8 +34,8 @@ patches:
         - name: whisparr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: whisparr-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: whisparr-env
     envs:

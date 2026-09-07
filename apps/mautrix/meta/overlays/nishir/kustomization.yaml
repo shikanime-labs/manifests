@@ -13,8 +13,8 @@ patches:
         - name: meta
           sectionName: https
     target:
-      kind: HTTPRoute
       name: meta
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: meta
           sectionName: http
     target:
-      kind: HTTPRoute
       name: meta-redirect
+      kind: HTTPRoute
