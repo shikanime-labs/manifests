@@ -10,17 +10,31 @@ aggregating both nodes' ~96 GiB GTT carve-outs (~192 GiB) so the 284B DeepSeek
 V4 Flash floor fits; `--gpu-layers 999` offloads all layers to the iGPU. One
 process serves both LLM and embedding models.
 
-Models are pulled once at startup by the leader container (`llama-cli -hf` of
-the best-fit unsloth quants, flattened into the flat names the preset
-references) into an `emptyDir` at `/models`. Router mode serves the local floors
-(shared context window `-c 32768`, `--models-max 5`):
+## Model loading (verified 2026-09-07)
+
+Router mode lazy-loads models on demand: the preset sections map a route key to
+an HF repo via the `hf` key (resolved against `--models-dir` as the download
+cache), and the router spawns the per-model sub-server with `--hf-repo` only
+when a request arrives — the sub-server then downloads the GGUF into the cache
+and loads it. A `model = <local path>` key would point at a pre-provisioned
+file instead, which is only useful with an init container that pre-pulls the
+files. First request per model downloads its GGUF (~24 GB for the 27B); the
+HF cache is an `emptyDir`, so pods re-download after restarts unless the
+`models` volume is moved to a persistent hostPath. Preset sections:
 
 - `deepseek/deepseek-v4-flash-0731` —
   `unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M`
 - `z-ai/glm-5.3-flash` — `unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS`
-- `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL`
+- `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL` (17.6 GB)
 - `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL`
-- `qwen/qwen3-embedding-8b` — `unsloth/Qwen3-Embedding-8B-GGUF:UD-Q5_K_XL`
+- `qwen/qwen3-embedding-8b` — `Qwen/Qwen3-Embedding-8B-GGUF:Q6_K` (6.2 GB)
+
+Embedding note: the preset section name MUST match the gateway route key
+exactly (`qwen/qwen3-embedding-8b`, as in `aigatewayroute.yaml`), because the
+router looks the requested model up by section name; and
+`LLAMA_ARG_EMBEDDINGS=true` is required — an empty value is not truthy in the
+env parser, so the embedding sub-servers would start without the embedding
+endpoint.
 
 The Envoy AI Gateway (`apps/llama-cpp/base`) routes each model to this workload
 as the `inference` backend at priority 0, then fails over to `nous` /
