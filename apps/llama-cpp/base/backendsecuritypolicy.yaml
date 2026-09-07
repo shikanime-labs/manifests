@@ -18,6 +18,22 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
+  name: z-ai-openai-key
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: z-ai-openai
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: inference-z-ai
+      namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
   name: openrouter-key
   namespace: shikanime
 spec:

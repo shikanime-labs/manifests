@@ -28,7 +28,7 @@ spec:
         - -c
         - |
           set -euo pipefail
-          ray start --head --port=6379 --node-ip-address=192.168.1.79 --block=false
+          ray start --head --port=6379 --node-ip-address=192.168.1.79
           exec vllm serve deepseek-ai/DeepSeek-V4-Flash-0731 \
             --tensor-parallel-size 2 \
             --enforce-eager \
@@ -67,7 +67,7 @@ spec:
         - -c
         - |
           set -euo pipefail
-          ray start --address=192.168.1.90:6379 --node-ip-address=192.168.1.91 --block
+          ray start --address=192.168.1.79:6379 --node-ip-address=192.168.1.91 --block
       env:
         - name: NCCL_SOCKET_IFNAME
           value: br0
