@@ -1,7 +1,7 @@
 resources:
   - alert.yaml
+  - httproute.yaml
   - provider.yaml
   - receiver.yaml
-  - httproute.yaml
 configurations:
   - config.yaml

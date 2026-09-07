@@ -1,10 +1,10 @@
 resources:
-  - pvc.yaml
   - httproute.yaml
+  - netpol.yaml
+  - pvc.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
-  - netpol.yaml
 images:
   - name: gitea-mirror
     newName: ghcr.io/raylabshq/gitea-mirror

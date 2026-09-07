@@ -1,13 +1,13 @@
 resources:
-  - lws.yaml
-  - vpa.yaml
-  - svc.yaml
+  - aigatewayroute.yaml
   - aiservicebackend.yaml
   - backend.yaml
   - backendsecuritypolicy.yaml
-  - aigatewayroute.yaml
-  - httproutefilter.yaml
   - httproute.yaml
+  - httproutefilter.yaml
+  - lws.yaml
+  - svc.yaml
+  - vpa.yaml
 images:
   - name: llama-cpp
     newName: ghcr.io/ggml-org/llama.cpp

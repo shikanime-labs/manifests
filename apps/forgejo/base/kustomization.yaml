@@ -1,10 +1,10 @@
 resources:
-  - netpol.yaml
   - httproute.yaml
-  - tcproute.yaml
+  - netpol.yaml
   - pvc.yaml
   - sts.yaml
   - svc.yaml
+  - tcproute.yaml
   - vpa.yaml
 images:
   - name: forgejo

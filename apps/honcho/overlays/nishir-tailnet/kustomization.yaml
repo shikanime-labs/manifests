@@ -1,7 +1,7 @@
 resources:
   - ../nishir
-  - gatewayclass.yaml
   - envoyproxy.yaml
+  - gatewayclass.yaml
 namespace: shikanime
 images:
   - name: honcho

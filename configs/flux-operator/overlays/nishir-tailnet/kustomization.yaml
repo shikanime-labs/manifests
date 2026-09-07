@@ -1,8 +1,8 @@
 resources:
   - ../nishir
-  - gatewayclass.yaml
   - envoyproxy.yaml
   - gateway.yaml
+  - gatewayclass.yaml
 patches:
   - patch: |-
       - op: add

@@ -1,11 +1,11 @@
 resources:
+  - httproute.yaml
+  - netpol.yaml
   - pvc.yaml
   - sts.yaml
   - svc.yaml
-  - httproute.yaml
+  - tcproute.yaml
   - vpa.yaml
-  - netpol.yaml
-  - tcproutes.yaml
 images:
   - name: copyparty
     newName: copyparty/dj
