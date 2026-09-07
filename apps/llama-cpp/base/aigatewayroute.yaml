@@ -44,14 +44,17 @@ spec:
               value: deepseek/deepseek-v4-flash
       modelsOwnedBy: Shikanime Studio
       backendRefs:
-        - name: llama-cpp
+        - name: vllm-deepseek
           priority: 0
-          modelNameOverride: deepseek/deepseek-v4-flash-0731
-        - name: nous
+          modelNameOverride: deepseek-ai/DeepSeek-V4-Flash-0731
+        - name: llama-cpp
           priority: 1
           modelNameOverride: deepseek/deepseek-v4-flash-0731
-        - name: openrouter
+        - name: nous
           priority: 2
+          modelNameOverride: deepseek/deepseek-v4-flash-0731
+        - name: openrouter
+          priority: 3
           modelNameOverride: deepseek/deepseek-v4-flash-0731
     - matches:
         - headers:
