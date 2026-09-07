@@ -1,0 +1,33 @@
+---
+# Injects the Z.ai API key into requests forwarded to api.z.ai, replacing the
+# MCPRoute per-backend securityPolicy that the bypassed MCP proxy used to
+# provide. HTTPRouteFilter credentialInjection reads key `credential`; the
+# secretGenerator suffix from kustomize is resolved via overlays/nishir/
+# namereference.yaml. Value must be `Bearer <zai api key>` (see overlay env).
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: HTTPRouteFilter
+metadata:
+  name: z-ai-mcp-credential
+  namespace: shikanime
+spec:
+  credentialInjection:
+    overwrite: true
+    credential:
+      valueRef:
+        name: inference-z-ai
+---
+# Rewrites /mcp/z-ai/<server>/... to /api/mcp/<server>/... on api.z.ai.
+# Regex capture keeps the rest of the path (JSON-RPC POSTs land on
+# /api/mcp/<server>/mcp).
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: HTTPRouteFilter
+metadata:
+  name: z-ai-mcp-rewrite
+  namespace: shikanime
+spec:
+  urlRewrite:
+    path:
+      type: ReplaceRegexMatch
+      replaceRegexMatch:
+        pattern: ^/mcp/z-ai/([^/]+)(/mcp.*)?$
+        substitution: /api/mcp/\1/mcp
