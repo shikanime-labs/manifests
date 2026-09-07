@@ -6,7 +6,9 @@ resources:
   - backend.yaml
   - backendsecuritypolicy.yaml
   - aigatewayroute.yaml
-  - mcproute.yaml
+  - zaimcphttproute.yaml
+  - zaimcpcredentialfilter.yaml
+  - zaimcprewritefilter.yaml
   - httproute.yaml
 images:
   - name: llama-cpp
