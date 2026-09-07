@@ -4,7 +4,32 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - metatube.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: metatube
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: metatube
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - metatube.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: metatube
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: metatube-redirect
 secretGenerator:
   - name: metatube
     envs:

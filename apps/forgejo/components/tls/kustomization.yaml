@@ -5,4 +5,13 @@ resources:
 patches:
   - path: patch-sts.yaml
   - path: patch-svc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/rules
+        value:
+        - backendRefs:
+          - name: forgejo
+            port: 443
+    target:
+      kind: HTTPRoute
+      name: forgejo

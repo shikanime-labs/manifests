@@ -6,7 +6,32 @@ components:
   - ../../components/monitoring
 patches:
   - path: patch-sts.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - immich.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: immich
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: immich
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - immich.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: immich
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: immich-redirect
 secretGenerator:
   - name: immich
     envs:

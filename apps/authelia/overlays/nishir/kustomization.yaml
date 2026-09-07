@@ -8,7 +8,33 @@ resources:
 components:
   - ../../components/tls
 patches:
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - authelia.i.shikanime.studio
+        - accounts.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: authelia
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: authelia
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - authelia.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: authelia
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: authelia-redirect
   - path: patch-pvc.yaml
 secretGenerator:
   - name: authelia

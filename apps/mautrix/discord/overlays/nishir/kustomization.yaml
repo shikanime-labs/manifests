@@ -2,4 +2,29 @@ resources:
   - ../../base
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-discord.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: discord
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: discord
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-discord.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: discord
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: discord-redirect

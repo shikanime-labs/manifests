@@ -7,7 +7,32 @@ components:
   - ../../components/tls
 patches:
   - path: patch-pvc.yaml
-  - path: patch-httproute.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - vaultwarden.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: vaultwarden
+          sectionName: https
+    target:
+      kind: HTTPRoute
+      name: vaultwarden
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - vaultwarden.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: vaultwarden
+          sectionName: http
+    target:
+      kind: HTTPRoute
+      name: vaultwarden-redirect
 secretGenerator:
   - name: vaultwarden
     envs:
