@@ -6,7 +6,6 @@ resources:
   - backend.yaml
   - backendsecuritypolicy.yaml
   - aigatewayroute.yaml
-  - envoyextensionpolicy.yaml
   - mcproute.yaml
   - httproute.yaml
 images:
