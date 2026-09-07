@@ -15,8 +15,8 @@ patches:
         - name: metatube
           sectionName: https
     target:
-      kind: HTTPRoute
       name: metatube
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -28,8 +28,8 @@ patches:
         - name: metatube
           sectionName: http
     target:
-      kind: HTTPRoute
       name: metatube-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: metatube
     envs:

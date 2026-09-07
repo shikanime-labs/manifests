@@ -26,8 +26,8 @@ patches:
         - name: copyparty
           sectionName: https
     target:
-      kind: HTTPRoute
       name: copyparty
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -39,8 +39,8 @@ patches:
         - name: copyparty
           sectionName: http
     target:
-      kind: HTTPRoute
       name: copyparty-redirect
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -48,8 +48,8 @@ patches:
         - name: copyparty
           sectionName: ftp-control
     target:
-      kind: TCPRoute
       name: copyparty-ftp-control
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -57,8 +57,8 @@ patches:
         - name: copyparty
           sectionName: ftps
     target:
-      kind: TCPRoute
       name: copyparty-ftps
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -66,8 +66,8 @@ patches:
         - name: copyparty
           sectionName: sftp
     target:
-      kind: TCPRoute
       name: copyparty-sftp
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -75,8 +75,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12000
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12000
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -84,8 +84,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12001
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12001
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -93,8 +93,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12002
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12002
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -102,8 +102,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12003
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12003
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -111,8 +111,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12004
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12004
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -120,8 +120,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12005
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12005
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -129,8 +129,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12006
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12006
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -138,8 +138,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12007
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12007
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -147,8 +147,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12008
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12008
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/parentRefs
@@ -156,8 +156,8 @@ patches:
         - name: copyparty
           sectionName: ftp-data-12009
     target:
-      kind: TCPRoute
       name: copyparty-ftp-data-12009
+      kind: TCPRoute
 secretGenerator:
   - name: copyparty-oidc-client
     envs:

@@ -19,8 +19,8 @@ patches:
         - name: synapse
           sectionName: https
     target:
-      kind: HTTPRoute
       name: matrix
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -32,8 +32,8 @@ patches:
         - name: synapse
           sectionName: https
     target:
-      kind: HTTPRoute
       name: matrix-discord-media
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -46,7 +46,7 @@ patches:
         - name: synapse
           sectionName: http
     target:
-      kind: HTTPRoute
       name: matrix-redirect
+      kind: HTTPRoute
   - path: patch-pvc.yaml
   - path: patch-sts.yaml

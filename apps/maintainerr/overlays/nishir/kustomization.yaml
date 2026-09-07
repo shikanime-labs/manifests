@@ -16,8 +16,8 @@ patches:
         - name: maintainerr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: maintainerr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -29,5 +29,5 @@ patches:
         - name: maintainerr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: maintainerr-redirect
+      kind: HTTPRoute

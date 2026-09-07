@@ -27,8 +27,8 @@ patches:
         - name: jellyfin
           sectionName: http
     target:
-      kind: HTTPRoute
       name: jellyfin
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -40,8 +40,8 @@ patches:
         - name: jellyfin
           sectionName: http
     target:
-      kind: HTTPRoute
       name: jellyfin-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: jellyfin-pkcs12-password
     envs:

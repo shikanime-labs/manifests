@@ -13,8 +13,8 @@ patches:
         - name: twitter
           sectionName: https
     target:
-      kind: HTTPRoute
       name: twitter
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: twitter
           sectionName: http
     target:
-      kind: HTTPRoute
       name: twitter-redirect
+      kind: HTTPRoute

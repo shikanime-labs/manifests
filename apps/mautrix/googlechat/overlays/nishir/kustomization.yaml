@@ -13,8 +13,8 @@ patches:
         - name: googlechat
           sectionName: https
     target:
-      kind: HTTPRoute
       name: googlechat
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: googlechat
           sectionName: http
     target:
-      kind: HTTPRoute
       name: googlechat-redirect
+      kind: HTTPRoute

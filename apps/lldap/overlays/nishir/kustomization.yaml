@@ -18,8 +18,8 @@ patches:
         - name: lldap
           sectionName: https
     target:
-      kind: HTTPRoute
       name: lldap
+      kind: HTTPRoute
 secretGenerator:
   - name: lldap
     envs:

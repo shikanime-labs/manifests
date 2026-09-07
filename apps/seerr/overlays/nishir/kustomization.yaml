@@ -15,8 +15,8 @@ patches:
         - name: seerr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: seerr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -28,5 +28,5 @@ patches:
         - name: seerr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: seerr-redirect
+      kind: HTTPRoute

@@ -17,8 +17,8 @@ patches:
         - name: immich
           sectionName: https
     target:
-      kind: HTTPRoute
       name: immich
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -30,8 +30,8 @@ patches:
         - name: immich
           sectionName: http
     target:
-      kind: HTTPRoute
       name: immich-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: immich
     envs:

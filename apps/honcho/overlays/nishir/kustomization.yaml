@@ -16,8 +16,8 @@ patches:
         - name: honcho
           sectionName: https
     target:
-      kind: HTTPRoute
       name: honcho
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -29,8 +29,8 @@ patches:
         - name: honcho
           sectionName: http
     target:
-      kind: HTTPRoute
       name: honcho-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: honcho
     envs:

@@ -13,8 +13,8 @@ patches:
         - name: whatsapp
           sectionName: https
     target:
-      kind: HTTPRoute
       name: whatsapp
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -26,5 +26,5 @@ patches:
         - name: whatsapp
           sectionName: http
     target:
-      kind: HTTPRoute
       name: whatsapp-redirect
+      kind: HTTPRoute

@@ -34,6 +34,12 @@ spec:
             image: llama-cpp
             command:
               - /app/llama-server
+            securityContext:
+              # /dev/kfd requires unrestricted device access; the Gatekeeper
+              # set-pod-privileged-false mutator uses a MustNotExist pathTest,
+              # so an explicit securityContext is preserved unmutated.
+              privileged: true
+              allowPrivilegeEscalation: true
             env:
               - name: LLAMA_ARG_HOST
                 value: 0.0.0.0
@@ -146,6 +152,11 @@ spec:
           - name: llama-cpp-rpc
             image: ghcr.io/ggml-org/llama.cpp:server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
             command: ["ggml-rpc-server"]
+            securityContext:
+              # Same Gatekeeper mutator exemption as the leader: the RPC peer
+              # offloads layers to the iGPU and needs /dev/kfd rw.
+              privileged: true
+              allowPrivilegeEscalation: true
             args:
               - --host
               - 0.0.0.0

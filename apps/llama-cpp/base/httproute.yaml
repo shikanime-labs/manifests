@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -37,11 +38,11 @@ spec:
       filters:
         - type: ExtensionRef
           extensionRef:
+            name: z-ai-mcp-credential
             group: gateway.envoyproxy.io
             kind: HTTPRouteFilter
-            name: z-ai-mcp-credential
         - type: ExtensionRef
           extensionRef:
+            name: z-ai-mcp-rewrite
             group: gateway.envoyproxy.io
             kind: HTTPRouteFilter
-            name: z-ai-mcp-rewrite

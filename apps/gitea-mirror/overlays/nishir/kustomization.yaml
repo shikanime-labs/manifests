@@ -15,8 +15,8 @@ patches:
         - name: gitea-mirror
           sectionName: https
     target:
-      kind: HTTPRoute
       name: gitea-mirror
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -28,5 +28,5 @@ patches:
         - name: gitea-mirror
           sectionName: http
     target:
-      kind: HTTPRoute
       name: gitea-mirror-redirect
+      kind: HTTPRoute

@@ -18,8 +18,8 @@ patches:
         - name: vaultwarden
           sectionName: https
     target:
-      kind: HTTPRoute
       name: vaultwarden
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -31,8 +31,8 @@ patches:
         - name: vaultwarden
           sectionName: http
     target:
-      kind: HTTPRoute
       name: vaultwarden-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: vaultwarden
     envs:

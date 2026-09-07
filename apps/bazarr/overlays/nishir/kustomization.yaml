@@ -16,8 +16,8 @@ patches:
         - name: bazarr
           sectionName: https
     target:
-      kind: HTTPRoute
       name: bazarr
+      kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -29,8 +29,8 @@ patches:
         - name: bazarr
           sectionName: http
     target:
-      kind: HTTPRoute
       name: bazarr-redirect
+      kind: HTTPRoute
 secretGenerator:
   - name: bazarr
     files:
