@@ -33,7 +33,7 @@ spec:
           - name: llama-cpp
             image: llama-cpp
             command:
-              - llama-server
+              - /app/llama-server
             env:
               - name: LLAMA_ARG_HOST
                 value: 0.0.0.0
