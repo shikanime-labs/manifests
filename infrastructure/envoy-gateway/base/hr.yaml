@@ -33,12 +33,6 @@ spec:
         # "Backend is disabled in Envoy Gateway configuration" -> 500.
         extensionApis:
           enableBackend: true
-          # Lua extensions power the z-ai peak-hour traffic shift (see
-          # apps/llama-cpp/base/envoyextensionpolicy.yaml): during 09:00-12:00
-          # Paris time the Lua filter rewrites x-ai-eg-model z-ai/* to
-          # peak/z-ai/* so the gateway drains llama-cpp/nous/openrouter
-          # instead of hitting z-ai peak rates.
-          enableLua: true
         # Wire the ai-gateway extension into Envoy Gateway's xDS translation so
         # the inference Gateway emits its ext-proc filter bundle. Without this,
         # the ai-gateway controller never gets called back and the data plane
