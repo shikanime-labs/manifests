@@ -72,9 +72,6 @@ spec:
         - name: nous
           priority: 2
           modelNameOverride: z-ai/glm-5.3-flash
-        - name: openrouter
-          priority: 3
-          modelNameOverride: z-ai/glm-5.3-flash
     - matches:
         - headers:
             - name: x-ai-eg-model
