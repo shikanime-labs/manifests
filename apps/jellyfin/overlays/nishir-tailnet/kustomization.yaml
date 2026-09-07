@@ -1,8 +1,8 @@
 resources:
   - ../nishir
-  - gatewayclass.yaml
-  - envoyproxy.yaml
   - backendtlspolicy.yaml
+  - envoyproxy.yaml
+  - gatewayclass.yaml
 namespace: shikanime
 labels:
   - includeTemplates: true

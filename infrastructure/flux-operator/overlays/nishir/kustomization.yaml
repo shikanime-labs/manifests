@@ -1,7 +1,7 @@
 resources:
   - ../../base
-  - gateway.yaml
   - cert.yaml
+  - gateway.yaml
 patches:
   - patch: |-
       - op: add

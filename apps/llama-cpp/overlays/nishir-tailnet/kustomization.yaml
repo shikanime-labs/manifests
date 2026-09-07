@@ -1,8 +1,8 @@
 resources:
   - ../nishir
+  - envoyproxy.yaml
   - gatewayclass.yaml
   - gatewayconfig.yaml
-  - envoyproxy.yaml
   - httproute.yaml
   - netpol.yaml
   - securitypolicy.yaml
@@ -20,11 +20,17 @@ patches:
     target:
       name: llama-cpp
       kind: HTTPRoute
-  - target:
+  - patch: |-
+      - op: add
+        path: /spec/targetRefs
+        value:
+          - name: inference
+            group: gateway.networking.k8s.io
+            kind: Gateway
+    target:
       name: inference
       kind: ClientTrafficPolicy
       namespace: shikanime
-    path: patch-clienttrafficpolicy.yaml
 labels:
   - includeTemplates: true
     pairs:

@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: shikanime
 resources:
   - ../nishir
-  - gatewayclass.yaml
-  - envoyproxy.yaml
   - backendtlspolicy.yaml
+  - envoyproxy.yaml
+  - gatewayclass.yaml
 components:
   - ../../components/monitoring
 patches:
