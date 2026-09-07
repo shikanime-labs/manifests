@@ -56,7 +56,7 @@ patches:
 secretGenerator:
   - name: qbittorrent
     files:
-      - qBittorrent.ini=qbittorrent/qBittorrent.enc.conf
+      - qBittorrent.conf=qbittorrent/qBittorrent.enc.conf
   - name: qbittorrent-oidc-client
     envs:
       - qbittorrent-oidc-client/.enc.env
