@@ -30,6 +30,7 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: inference-proxy
+          tailscale.com/tags: "tag:web"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
