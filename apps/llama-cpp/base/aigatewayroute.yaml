@@ -5,6 +5,40 @@ metadata:
   namespace: shikanime
 spec:
   rules:
+    # Peak-hour mirror rules for the GLM models: identical to the z-ai rules
+    # below but WITHOUT the z-ai backend. The Lua extension in
+    # envoyextensionpolicy.yaml rewrites x-ai-eg-model to these values between
+    # 09:00-12:00 Paris time (z-ai peak-rate window), so traffic drains local
+    # llama-cpp -> nous -> openrouter instead of hitting z-ai.
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: peak/z-ai/glm-5.3-flash
+      modelsOwnedBy: Shikanime Studio
+      backendRefs:
+        - name: llama-cpp
+          priority: 0
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-5.3-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: peak/z-ai/glm-5.3
+      modelsOwnedBy: Shikanime Studio
+      backendRefs:
+        - name: nous
+          priority: 0
+          modelNameOverride: z-ai/glm-5.3
+        - name: openrouter
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3
     - matches:
         - headers:
             - name: x-ai-eg-model
