@@ -72,7 +72,6 @@ spec:
     name: z-ai-openai
     kind: Backend
     group: gateway.envoyproxy.io
-
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
