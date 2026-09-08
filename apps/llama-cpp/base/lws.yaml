@@ -150,8 +150,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
         containers:
           - name: llama-cpp-rpc
-            image: ghcr.io/ggml-org/llama.cpp:server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
-            command: ["ggml-rpc-server"]
+            image: llama-cpp-rpc
             securityContext:
               # Same Gatekeeper mutator exemption as the leader: the RPC peer
               # offloads layers to the iGPU and needs /dev/kfd rw.
