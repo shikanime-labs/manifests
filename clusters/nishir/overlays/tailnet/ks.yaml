@@ -1,3 +1,4 @@
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -343,6 +344,31 @@ spec:
       namespace: shikanime
   interval: 10m
   path: ./apps/honcho/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-honcho-deriver
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: apps-honcho-postgres
+    - name: infrastructure-autoscaler
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: honcho-deriver
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/honcho-deriver/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system

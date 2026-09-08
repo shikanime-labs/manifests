@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -74,56 +73,6 @@ spec:
             - alembic
             - upgrade
             - head
-          envFrom:
-            - secretRef:
-                name: honcho
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: honcho-postgres
-                  key: username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: honcho-postgres
-                  key: password
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: honcho-postgres
-                  key: database
-            - name: DB_CONNECTION_URI
-              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)
-      volumes:
-        - name: config
-          configMap:
-            name: honcho
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: honcho-deriver
-spec:
-  selector:
-    matchLabels:
-      honcho.shikanime.studio/role: deriver
-  template:
-    metadata:
-      labels:
-        honcho.shikanime.studio/role: deriver
-    spec:
-      containers:
-        - name: deriver
-          image: honcho
-          command:
-            - python
-            - -m
-            - src.deriver
-          volumeMounts:
-            - name: config
-              mountPath: /app/config.toml
-              subPath: config.toml
           envFrom:
             - secretRef:
                 name: honcho
