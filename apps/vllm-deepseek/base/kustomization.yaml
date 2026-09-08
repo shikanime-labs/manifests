@@ -1,8 +1,0 @@
-resources:
-  - pods.yaml
-  - svc.yaml
-  - backend.yaml
-images:
-  - name: vllm-gfx1151
-    newName: docker.io/kyuz0/vllm-therock-gfx1151
-    newTag: latest
