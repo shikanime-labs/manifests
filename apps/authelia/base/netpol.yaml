@@ -4,7 +4,17 @@ metadata:
   name: authelia
 spec:
   ingress:
-    - ports:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: forgejo
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
         - port: http
         - port: metrics
   podSelector:
