@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: honcho-deriver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: honcho-deriver
+      app.kubernetes.io/name: honcho-deriver
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: honcho-deriver
+        app.kubernetes.io/name: honcho-deriver
+    spec:
+      containers:
+        - name: deriver
+          image: honcho
+          command:
+            - python
+            - -m
+            - src.deriver
+          volumeMounts:
+            - name: config
+              mountPath: /app/config.toml
+              subPath: config.toml
+          envFrom:
+            - secretRef:
+                name: honcho-deriver
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres
+                  key: database
+            - name: DB_CONNECTION_URI
+              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)
+      volumes:
+        - name: config
+          configMap:
+            name: honcho-deriver

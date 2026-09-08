@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+namespace: shikanime
+secretGenerator:
+  - name: honcho-deriver
+    envs:
+      - honcho-deriver/.enc.env
+    options:
+      disableNameSuffixHash: true
