@@ -1,15 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: authelia
+  name: authelia-metrics
 spec:
   ingress:
     - from:
-        - podSelector:
+        - namespaceSelector:
             matchLabels:
-              app.kubernetes.io/name: forgejo
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
       ports:
-        - port: http
+        - port: metrics
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: authelia
