@@ -8,6 +8,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: honcho
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: honcho-deriver
       ports:
         - port: postgres
   podSelector:
