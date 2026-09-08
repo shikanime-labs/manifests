@@ -1,0 +1,36 @@
+resources:
+  - ../nishir
+  - netpol.yaml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: workflow-engine
+      app.kubernetes.io/instance: temporal
+      app.kubernetes.io/name: temporal
+      app.kubernetes.io/part-of: nishir-platform
+      app.kubernetes.io/version: 1.31.2
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: temporal.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: temporal
+            sectionName: http
+    target:
+      name: temporal-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: temporal.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: temporal
+            sectionName: https
+    target:
+      name: temporal
+      kind: HTTPRoute

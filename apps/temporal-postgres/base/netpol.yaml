@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: temporal-postgres
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: temporal
+              app.kubernetes.io/name: temporal
+      ports:
+        - port: postgres
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: temporal-postgres
+      app.kubernetes.io/name: postgres
+  policyTypes:
+    - Ingress

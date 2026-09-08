@@ -19,6 +19,8 @@ components:
   - ../../components/tailscale
   - ../../components/trust-manager
   - ../../components/external-dns
+  - ../../components/temporal-postgres
+  - ../../components/temporal
 patches:
   - path: patch-netpol.yaml
     target:

@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: temporal
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 1.6.0
+      chart: temporal
+      interval: 1h
+      sourceRef:
+        name: temporalio
+        kind: HelmRepository
+        namespace: flux-system
+  dependsOn:
+    - name: temporal-postgres
+      namespace: shikanime
+  install:
+    crds: Create
+  interval: 10m
+  releaseName: temporal
+  targetNamespace: shikanime
+  upgrade:
+    crds: CreateReplace
+  values:
+    admintools:
+      enabled: true
+    schema:
+      useHelmHooks: false
+    server:
+      config:
+        namespaces:
+          create: true
+          namespace:
+            - name: default
+              retention: 24h
+        persistence:
+          numHistoryShards: 4
+          datastores:
+            default:
+              sql:
+                connectAddr: temporal-postgres.shikanime.svc.cluster.local:5432
+                connectProtocol: tcp
+                databaseName: temporal
+                driverName: postgres12
+                existingSecret: temporal-postgres
+                pluginName: postgres12
+                secretKey: password
+                user: temporal
+            visibility:
+              sql:
+                connectAddr: temporal-postgres.shikanime.svc.cluster.local:5432
+                connectProtocol: tcp
+                databaseName: temporal_visibility
+                driverName: postgres12
+                existingSecret: temporal-postgres
+                pluginName: postgres12
+                secretKey: password
+                user: temporal
+          defaultStore: default
+          visibilityStore: visibility
+      replicaCount: 1
+    shims:
+      dockerize: false
+      elasticsearchTool: false
+    web:
+      enabled: true

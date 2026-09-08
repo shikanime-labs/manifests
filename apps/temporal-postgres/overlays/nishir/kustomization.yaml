@@ -1,0 +1,12 @@
+resources:
+  - ../../base
+namespace: shikanime
+patches:
+  - path: patch-pvc.yaml
+secretGenerator:
+  - name: temporal-postgres
+    type: kubernetes.io/basic-auth
+    envs:
+      - temporal-postgres/.enc.env
+    options:
+      disableNameSuffixHash: true

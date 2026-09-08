@@ -1,0 +1,33 @@
+resources:
+  - ../../base
+  - envoyproxy.yaml
+  - gateway.yaml
+  - gatewayclass.yaml
+namespace: shikanime
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - temporal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: temporal
+          sectionName: https
+    target:
+      name: temporal
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - temporal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: temporal
+          sectionName: http
+    target:
+      name: temporal-redirect
+      kind: HTTPRoute
