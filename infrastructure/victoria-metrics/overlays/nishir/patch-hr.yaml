@@ -4,19 +4,6 @@ metadata:
   name: victoriametrics
   namespace: flux-system
 spec:
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: add
-                path: /spec/tls
-                value:
-                  - hosts:
-                      - telemetry
-            target:
-              name: vminsert-vmks-victoria-metrics-k8s-stack
-              version: v1
-              kind: Ingress
   values:
     grafana:
       replicas: 1
@@ -68,11 +55,3 @@ spec:
                     storage: 8Gi
                 storageClassName: nishir-standard
       enabled: true
-      ingress:
-        insert:
-          annotations:
-            tailscale.com/tags: tag:web
-          enabled: true
-          hosts:
-            - telemetry
-          ingressClassName: tailscale
