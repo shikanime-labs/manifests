@@ -2,7 +2,6 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
-  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/tls
@@ -59,6 +58,3 @@ secretGenerator:
   - name: qbittorrent
     files:
       - qBittorrent.conf=qbittorrent/qBittorrent.enc.conf
-  - name: qbittorrent-oidc-client
-    envs:
-      - qbittorrent-oidc-client/.enc.env
