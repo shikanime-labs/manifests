@@ -1,15 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: immich
+  name: immich-metrics
 spec:
   ingress:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: tailscale-system
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
       ports:
-        - port: http
+        - port: metrics
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: immich

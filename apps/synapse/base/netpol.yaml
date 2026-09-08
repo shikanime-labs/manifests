@@ -32,6 +32,8 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: mautrix-whatsapp
+      ports:
+        - port: https
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: synapse

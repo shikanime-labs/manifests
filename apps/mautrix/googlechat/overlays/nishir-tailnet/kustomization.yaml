@@ -3,6 +3,7 @@ resources:
   - envoyproxy.yaml
   - gateway.yaml
   - gatewayclass.yaml
+  - netpol.yaml
   - vmservicescrape.yaml
 namespace: shikanime
 patches:
