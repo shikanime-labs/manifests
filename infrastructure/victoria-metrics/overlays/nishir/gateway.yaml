@@ -1,0 +1,31 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: grafana
+  namespace: monitoring-system
+spec:
+  gatewayClassName: grafana
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+    - name: https
+      port: 443
+      protocol: HTTPS
+      hostname: grafana.i.shikanime.studio
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: studio-shikanime-i-grafana
+            group: ""
+            kind: Secret
+    - name: https-telemetry
+      port: 443
+      protocol: HTTPS
+      hostname: telemetry.i.shikanime.studio
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: studio-shikanime-i-telemetry
+            group: ""
+            kind: Secret
