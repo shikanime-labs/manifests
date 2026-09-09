@@ -824,3 +824,45 @@ spec:
   parameters:
     assign:
       value: false
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: set-pod-avoid-gpu-nodes
+spec:
+  applyTo:
+    - groups:
+        - ""
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution
+  match:
+    kinds:
+      - apiGroups:
+          - ""
+        kinds:
+          - Pod
+    labelSelector:
+      matchExpressions:
+        - key: app.kubernetes.io/name
+          operator: NotIn
+          values:
+            - llama-cpp
+    namespaces:
+      - shikanime
+    scope: Namespaced
+  parameters:
+    assign:
+      value:
+        - preference:
+            matchExpressions:
+              - key: feature.node.kubernetes.io/pci-0380_1002.present
+                operator: In
+                values:
+                  - "true"
+          weight: 1
+    pathTests:
+      - condition: MustNotExist
+        subPath: spec.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution
