@@ -6,13 +6,16 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 8384
       targetPort: http
     - name: sync
+      appProtocol: shikanime.studio/syncthing
       port: 22000
       protocol: TCP
       targetPort: sync
     - name: sync-udp
+      appProtocol: shikanime.studio/syncthing
       port: 22000
       protocol: UDP
       targetPort: sync-udp

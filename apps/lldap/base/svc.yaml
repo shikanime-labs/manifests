@@ -6,9 +6,11 @@ spec:
   clusterIP: None
   ports:
     - name: ldap
+      appProtocol: ldap
       port: 3890
       targetPort: ldap
     - name: http
+      appProtocol: http
       port: 17170
       targetPort: http
   selector:

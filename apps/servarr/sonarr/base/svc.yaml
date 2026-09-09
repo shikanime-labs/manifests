@@ -6,6 +6,7 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 8989
       targetPort: http
   selector:

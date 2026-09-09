@@ -10,6 +10,7 @@ metadata:
 spec:
   ports:
     - name: metrics
+      appProtocol: http
       port: 8944
       targetPort: prometheus
   selector:
@@ -27,6 +28,7 @@ metadata:
 spec:
   ports:
     - name: metrics
+      appProtocol: http
       port: 8942
       targetPort: prometheus
   selector:
@@ -44,6 +46,7 @@ metadata:
 spec:
   ports:
     - name: metrics
+      appProtocol: http
       port: 8943
       targetPort: prometheus
   selector:

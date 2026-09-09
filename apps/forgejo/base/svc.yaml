@@ -6,9 +6,11 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 80
       targetPort: http
     - name: ssh
+      appProtocol: ssh
       port: 22
       targetPort: ssh
   selector:
