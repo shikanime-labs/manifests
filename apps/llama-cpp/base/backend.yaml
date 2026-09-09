@@ -101,10 +101,6 @@ spec:
     wellKnownCACertificates: System
     sni: api.z.ai
 ---
-# OpenRouter needs the /api/v1 base path; the default /v1 hits its web root.
-# Local floor: llama.cpp router running DIRECTLY on the sashina NixOS host
-# (services.llama-cpp, port 18080 — 8080 is taken by k3s node-local-dns).
-# The in-cluster LWS was retired; the host serves all models from one pool.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
@@ -112,6 +108,6 @@ metadata:
   namespace: shikanime
 spec:
   endpoints:
-    - ip:
-        address: 192.168.1.79
-        port: 18080
+    - fqdn:
+        hostname: llama-cpp.shikanime.svc.cluster.local
+        port: 8080
