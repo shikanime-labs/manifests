@@ -44,3 +44,7 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-gateway-apikey/.enc.env
+  - name: inference-llama-cpp
+    namespace: shikanime
+    envs:
+      - inference-llama-cpp/.enc.env

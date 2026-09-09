@@ -5,8 +5,9 @@ resources:
   - backendsecuritypolicy.yaml
   - httproute.yaml
   - httproutefilter.yaml
-  - lws.yaml
+  - sts.yaml
   - svc.yaml
+  - netpol.yaml
   - vpa.yaml
 images:
   - name: llama-cpp
