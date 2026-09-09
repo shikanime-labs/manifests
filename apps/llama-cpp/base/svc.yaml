@@ -22,7 +22,7 @@ spec:
   clusterIP: None
   selector:
     app.kubernetes.io/instance: llama-cpp
-    app.kubernetes.io/name: llama-cpp-rpc
+    app.kubernetes.io/process: llama-cpp-rpc
   ports:
     - name: http
       port: 50052
