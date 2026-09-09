@@ -6,4 +6,4 @@ resources:
 images:
   - name: llama-cpp-rpc
     newName: ghcr.io/shikanime-labs/machines/llama-cpp-rpc
-    digest: sha256:4a178088cdf3101231c49805ba9b9fc390e2ee645f321f865de0740f52d1db5e
+    digest: sha256:0c91a9419fb2b781dd5af559cba8f5a6f5eedf0b7ac456941438a47119d34f3a
