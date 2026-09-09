@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1alpha3
+kind: BackendTLSPolicy
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: llama-cpp
+      group: ""
+      kind: Service
+      sectionName: http
+  validation:
+    serverName: llama-cpp.shikanime.svc.cluster.local
+    hostname: llama-cpp.shikanime.svc.cluster.local
+    caCertificateRefs:
+      - name: nishir-ca-certificates.crt
+        group: ""
+        kind: ConfigMap
