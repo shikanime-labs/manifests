@@ -122,8 +122,6 @@ spec:
             emptyDir: {}
           - name: models
             emptyDir: {}
-          - name: cache-huggingface
-            emptyDir: {}
           - name: models-preset
             configMap:
               name: llama-cpp-models-preset
