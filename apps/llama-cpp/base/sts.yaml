@@ -20,12 +20,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
-      app.kubernetes.io/name: llama-cpp-rpc
+      app.kubernetes.io/process: llama-cpp-rpc
   template:
     metadata:
       labels:
         app.kubernetes.io/instance: llama-cpp
-        app.kubernetes.io/name: llama-cpp-rpc
+        app.kubernetes.io/process: llama-cpp-rpc
     spec:
       securityContext:
         fsGroup: 65532
