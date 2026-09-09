@@ -1001,10 +1001,6 @@ spec:
       kind: StatefulSet
       name: llama-cpp
       namespace: shikanime
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: llama-cpp-rpc
-      namespace: shikanime
   interval: 10m
   path: ./apps/llama-cpp/overlays/nishir-tailnet
   prune: true
