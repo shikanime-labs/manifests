@@ -991,6 +991,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
+    - name: apps-llama-cpp-rpc
     - name: infrastructure-envoy-gateway
     - name: infrastructure-envoy-ai-gateway
     - name: infrastructure-cert-manager
@@ -1014,16 +1015,14 @@ metadata:
   name: apps-llama-cpp-rpc
   namespace: flux-system
 spec:
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: llama-cpp-rpc
+      namespace: shikanime
   interval: 10m
   path: ./apps/llama-cpp-rpc/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system
     kind: GitRepository
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: llama-cpp-rpc
-      namespace: shikanime
-  dependsOn:
-    - name: apps-llama-cpp
