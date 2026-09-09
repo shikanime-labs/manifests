@@ -6,6 +6,7 @@ resources:
   - httproute.yaml
   - httproutefilter.yaml
   - lws.yaml
+  - persistence.yaml
   - svc.yaml
   - vpa.yaml
 images:

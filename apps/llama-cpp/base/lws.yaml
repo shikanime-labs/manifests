@@ -7,6 +7,19 @@ spec:
   replicas: 1
   leaderWorkerTemplate:
     size: 3
+    persistentVolumeClaimRetentionPolicy:
+      whenDeleted: Retain
+      whenScaled: Retain
+    volumeClaimTemplates:
+      - metadata:
+          name: cache-huggingface
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: nishir-ephemeral
+          resources:
+            requests:
+              storage: 64Gi
     leaderTemplate:
       metadata:
         labels:
@@ -82,16 +95,13 @@ spec:
             volumeMounts:
               - name: cache-huggingface
                 mountPath: /.cache/huggingface
-              - name: models
+              - name: cache-huggingface
                 mountPath: /models
+                subPath: models
               - name: models-preset
                 mountPath: /etc/llama-cpp/preset
                 readOnly: true
         volumes:
-          - name: cache-huggingface
-            emptyDir: {}
-          - name: models
-            emptyDir: {}
           - name: models-preset
             configMap:
               name: llama-cpp-models-preset

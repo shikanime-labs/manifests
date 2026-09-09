@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: llama-cpp-cache
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 256Gi
+  storageClassName: nishir-capacity
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: llama-cpp-timeout
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: llama-cpp
+      group: gateway.networking.k8s.io
+      kind: HTTPRoute
+  timeout:
+    http:
+      requestTimeout: 30m
