@@ -80,7 +80,7 @@ spec:
               mountPath: /etc/llama-cpp/preset
               readOnly: true
             - name: api-key
-              mountPath: /etc/llama-cpp/api-key
+              mountPath: /etc/llama-cpp/secret
               subPath: apiKey
               readOnly: true
           env:
@@ -89,7 +89,7 @@ spec:
             - name: LLAMA_ARG_PORT
               value: "8080"
             - name: LLAMA_ARG_API_KEY_FILE
-              value: /etc/llama-cpp/api-key
+              value: /etc/llama-cpp/secret/apiKey
             - name: LLAMA_ARG_N_BATCH
               value: "512"
             - name: LLAMA_ARG_MODELS_PRESET

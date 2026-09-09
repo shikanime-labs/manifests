@@ -11,5 +11,5 @@ spec:
     - name: http
       port: 8080
       protocol: TCP
-      appProtocol: kubernetes.io/http/1.1
+      appProtocol: http
       targetPort: http
