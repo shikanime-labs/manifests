@@ -81,6 +81,7 @@ spec:
               readOnly: true
             - name: api-key
               mountPath: /etc/llama-cpp/api-key
+              subPath: apiKey
               readOnly: true
           env:
             - name: LLAMA_ARG_HOST
@@ -118,3 +119,6 @@ spec:
         - name: api-key
           secret:
             secretName: inference-llama-cpp
+            items:
+              - key: apiKey
+                path: apiKey
