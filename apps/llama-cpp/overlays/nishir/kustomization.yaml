@@ -1,6 +1,6 @@
 resources:
   - ../../base
-  - bktlspolicy.yaml
+  - backendtlspolicy.yaml
   - ../../components/monitoring
   - cert.yaml
   - clienttrafficpolicy.yaml

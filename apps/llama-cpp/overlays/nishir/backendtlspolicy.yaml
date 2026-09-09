@@ -10,7 +10,6 @@ spec:
       kind: Service
       sectionName: http
   validation:
-    serverName: llama-cpp.shikanime.svc.cluster.local
     hostname: llama-cpp.shikanime.svc.cluster.local
     caCertificateRefs:
       - name: nishir-ca-certificates.crt
