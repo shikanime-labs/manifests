@@ -15,6 +15,24 @@ spec:
       spec:
         securityContext:
           fsGroup: 65532
+        initContainers:
+          # llama-server aborts at startup when an RPC peer is unreachable, and
+          # LWS recycles the whole group on leader exit - so gate the leader on
+          # both workers answering on the RPC port first.
+          - name: wait-for-rpc
+            image: busybox:1.36
+            command:
+              - sh
+              - -c
+              - |
+                for host in \
+                  llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local \
+                  llama-cpp-cluster-0-2.llama-cpp-cluster.shikanime.svc.cluster.local; do
+                  until nc -z "$host" 50052; do
+                    echo "waiting for $host:50052"
+                    sleep 2
+                  done
+                done
         containers:
           # The main host holds the RPC backend client only, so it schedules
           # on any node; worker devices carry the model (tools/rpc README).
