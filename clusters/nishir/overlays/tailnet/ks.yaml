@@ -998,7 +998,7 @@ spec:
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
-      kind: Deployment
+      kind: StatefulSet
       name: llama-cpp
       namespace: shikanime
   interval: 10m
@@ -1007,3 +1007,23 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-llama-cpp-rpc
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./apps/llama-cpp-rpc/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: llama-cpp-rpc
+      namespace: shikanime
+  dependsOn:
+    - name: apps-llama-cpp

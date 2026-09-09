@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: llama-cpp-rpc
+  namespace: shikanime
+spec:
+  serviceName: llama-cpp-rpc
+  replicas: 2
+  volumeClaimTemplates:
+    - metadata:
+        name: rpc-cache
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOnce
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp-rpc
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: llama-cpp
+        app.kubernetes.io/name: llama-cpp-rpc
+    spec:
+      securityContext:
+        fsGroup: 65532
+      nodeSelector:
+        feature.node.kubernetes.io/pci-0380_1002.present: "true"
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp-rpc
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: llama-cpp-rpc
+          image: llama-cpp-rpc
+          command:
+            - ggml-rpc-server
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          args:
+            - --host
+            - 0.0.0.0
+            - --port
+            - "50052"
+            - --cache
+          env:
+            - name: LLAMA_CACHE
+              value: /cache
+          ports:
+            - name: http
+              containerPort: 50052
+          volumeMounts:
+            - name: rpc-cache
+              mountPath: /cache
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
