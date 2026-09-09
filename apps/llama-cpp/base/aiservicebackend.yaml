@@ -64,10 +64,10 @@ metadata:
 spec:
   schema:
     name: OpenAI
-    # Z.ai's OpenAI-compatible endpoint (/api/paas/v4) serves glm-5.3-flash
-    # for /v1/chat/completions; the Anthropic-schema backend above cannot
-    # translate OpenAI chat requests.
-    prefix: api/paas/v4
+    # The fleet z-ai credential is a CODING-PLAN key: it is entitled on
+    # api/coding/paas/v4 (verified live). The pay-as-you-go api/paas/v4
+    # rejects it with 1113 "Insufficient balance or no resource package".
+    prefix: api/coding/paas/v4
   backendRef:
     name: z-ai-openai
     kind: Backend
