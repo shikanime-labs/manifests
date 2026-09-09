@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: llama-rpc
+  name: llama-cpp-rpc
   namespace: shikanime
 spec:
   clusterIP: None
