@@ -73,10 +73,6 @@ spec:
                 value: llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local:50052
               - name: LLAMA_ARG_MMAP
                 value: "0"
-              # The fork image user (65532) has no writable HOME (uid has no
-              # passwd entry), so pin the HF cache to the persistent volume.
-              - name: HF_HOME
-                value: /cache/huggingface
             ports:
               - name: http
                 containerPort: 8080
@@ -111,11 +107,9 @@ spec:
                 memory: 24Gi
             volumeMounts:
               - name: cache-huggingface
-                mountPath: /cache
+                mountPath: /.cache/huggingface
               - name: models
                 mountPath: /models
-              - name: cache-huggingface
-                mountPath: /root/.cache/huggingface
               - name: models-preset
                 mountPath: /etc/llama-cpp/preset
                 readOnly: true
