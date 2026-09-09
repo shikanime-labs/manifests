@@ -2,3 +2,29 @@ resources:
   - ../../base
 patches:
   - path: patch-pvc.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-slack.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: slack
+          sectionName: https
+    target:
+      name: slack
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-slack.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: slack
+          sectionName: http
+    target:
+      name: slack-redirect
+      kind: HTTPRoute
