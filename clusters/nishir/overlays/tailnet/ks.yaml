@@ -282,7 +282,7 @@ spec:
     - name: infrastructure-tailscale
   healthChecks:
     - apiVersion: apps/v1
-      kind: Deployment
+      kind: StatefulSet
       name: immich-ml
       namespace: shikanime
   interval: 10m

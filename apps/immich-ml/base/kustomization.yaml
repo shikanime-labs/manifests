@@ -1,5 +1,5 @@
 resources:
-  - deploy.yaml
+  - sts.yaml
   - netpol.yaml
   - svc.yaml
   - vpa.yaml

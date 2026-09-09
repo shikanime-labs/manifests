@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: immich-ml
 spec:
   replicas: 1
+  serviceName: immich-ml
   selector:
     matchLabels:
       app.kubernetes.io/instance: immich-ml
@@ -41,6 +42,8 @@ spec:
               port: http
             timeoutSeconds: 5
           volumeMounts:
+            - name: cache
+              mountPath: /cache
             - name: cache-huggingface
               mountPath: /root/.cache/huggingface
             - name: cache-matplotlib
@@ -48,9 +51,36 @@ spec:
             - name: config-matplotlib
               mountPath: /root/.config/matplotlib
       volumes:
-        - name: cache-huggingface
-          emptyDir: {}
-        - name: cache-matplotlib
-          emptyDir: {}
         - name: config-matplotlib
           emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: cache
+      spec:
+        resources:
+          requests:
+            storage: 16Gi
+        volumeMode: Filesystem
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOncePod
+    - metadata:
+        name: cache-huggingface
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOncePod
+    - metadata:
+        name: cache-matplotlib
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOncePod
