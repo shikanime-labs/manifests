@@ -2,4 +2,4 @@ resources:
   - ../../base
 namespace: shikanime
 patches:
-  - path: patch-deploy.yaml
+  - path: patch-sts.yaml
