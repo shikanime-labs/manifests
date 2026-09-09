@@ -34,7 +34,7 @@ parameters:
   diskSelector: nearline
   fsType: xfs
   nfsOptions: vers=4.0,noresvport
-  numberOfReplicas: "2"
+  numberOfReplicas: "1"
   recurringJobSelector: |
     [
       {"name": "default", "isGroup": true},
