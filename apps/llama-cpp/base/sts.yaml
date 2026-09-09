@@ -41,7 +41,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
         - name: llama-cpp-rpc
-          image: llama-cpp
+          image: llama-cpp-rpc
           command:
             - ggml-rpc-server
           securityContext:
