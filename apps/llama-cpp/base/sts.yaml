@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: llama-rpc
+  name: llama-cpp-rpc
   namespace: shikanime
 spec:
-  serviceName: llama-rpc
+  serviceName: llama-cpp-rpc
   replicas: 2
   volumeClaimTemplates:
     - metadata:
@@ -188,7 +188,7 @@ spec:
             - name: LLAMA_ARG_CACHE_TYPE_V
               value: q8_0
             - name: LLAMA_ARG_RPC
-              value: llama-rpc-0.llama-rpc.shikanime.svc.cluster.local:50052,llama-rpc-1.llama-rpc.shikanime.svc.cluster.local:50052
+              value: llama-cpp-rpc-0.llama-cpp-rpc.shikanime.svc.cluster.local:50052,llama-cpp-rpc-1.llama-cpp-rpc.shikanime.svc.cluster.local:50052
       volumes:
         - name: models-preset
           configMap:
