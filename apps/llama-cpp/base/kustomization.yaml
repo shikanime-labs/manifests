@@ -13,6 +13,9 @@ images:
   - name: llama-cpp
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
     digest: sha256:19eb284b2ad8484379c618da3ccc85ea8e6bffa19e42a5137d12e1013141171a
+  - name: llama-cpp-rpc
+    newName: ghcr.io/shikanime-labs/machines/llama-cpp-rpc
+    digest: sha256:4a178088cdf3101231c49805ba9b9fc390e2ee645f321f865de0740f52d1db5e
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
