@@ -40,3 +40,4 @@ spec:
               app.kubernetes.io/name: llama-cpp
       ports:
         - port: rpc
+        - port: http

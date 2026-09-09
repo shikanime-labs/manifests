@@ -1,0 +1,198 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: llama-rpc
+  namespace: shikanime
+spec:
+  serviceName: llama-rpc
+  replicas: 2
+  volumeClaimTemplates:
+    - metadata:
+        name: rpc-cache
+      spec:
+        resources:
+          requests:
+            storage: 64Gi
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOnce
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp-rpc
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: llama-cpp
+        app.kubernetes.io/name: llama-cpp-rpc
+    spec:
+      securityContext:
+        fsGroup: 65532
+      nodeSelector:
+        feature.node.kubernetes.io/pci-0380_1002.present: "true"
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp-rpc
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: llama-cpp-rpc
+          image: llama-cpp
+          command:
+            - ggml-rpc-server
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          args:
+            - --host
+            - 0.0.0.0
+            - --port
+            - "50052"
+            - --cache
+          env:
+            - name: LLAMA_CACHE
+              value: /cache
+          ports:
+            - name: rpc
+              containerPort: 50052
+          volumeMounts:
+            - name: rpc-cache
+              mountPath: /cache
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: llama-cpp
+  namespace: shikanime
+spec:
+  serviceName: llama-cpp-headless
+  replicas: 1
+  volumeClaimTemplates:
+    - metadata:
+        name: cache-huggingface
+      spec:
+        resources:
+          requests:
+            storage: 64Gi
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOnce
+    - metadata:
+        name: models
+      spec:
+        resources:
+          requests:
+            storage: 512Gi
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOnce
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: llama-cpp
+        app.kubernetes.io/name: llama-cpp
+    spec:
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: llama-cpp
+          image: llama-cpp
+          command:
+            - llama-server
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTPS
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 120
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTPS
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: cache-huggingface
+              mountPath: /.cache/huggingface
+            - name: models
+              mountPath: /models
+            - name: models-preset
+              mountPath: /etc/llama-cpp/preset
+              readOnly: true
+            - name: api-key
+              mountPath: /etc/llama-cpp/api-key
+              readOnly: true
+          env:
+            - name: LLAMA_ARG_HOST
+              value: 0.0.0.0
+            - name: LLAMA_ARG_PORT
+              value: "8080"
+            - name: LLAMA_ARG_API_KEY_FILE
+              value: /etc/llama-cpp/api-key
+            - name: LLAMA_ARG_N_BATCH
+              value: "512"
+            - name: LLAMA_ARG_MODELS_PRESET
+              value: /etc/llama-cpp/preset/models-preset.ini
+            - name: LLAMA_ARG_MODELS_DIR
+              value: /models
+            - name: LLAMA_ARG_MODELS_MAX
+              value: "5"
+            - name: LLAMA_ARG_MODELS_AUTOLOAD
+              value: "true"
+            - name: LLAMA_ARG_EMBEDDINGS
+              value: "true"
+            - name: LLAMA_ARG_CTX_SIZE
+              value: "262144"
+            - name: LLAMA_ARG_FLASH_ATTN
+              value: "on"
+            - name: LLAMA_ARG_CACHE_TYPE_K
+              value: q8_0
+            - name: LLAMA_ARG_CACHE_TYPE_V
+              value: q8_0
+            - name: LLAMA_ARG_RPC
+              value: llama-rpc-0.llama-rpc.shikanime.svc.cluster.local:50052,llama-rpc-1.llama-rpc.shikanime.svc.cluster.local:50052
+      volumes:
+        - name: models-preset
+          configMap:
+            name: llama-cpp-models-preset
+        - name: api-key
+          secret:
+            secretName: inference-llama-cpp

@@ -11,7 +11,6 @@ components:
   - ../../components/flux-operator
   - ../../components/gatekeeper
   - ../../components/longhorn
-  - ../../components/lws
   - ../../components/victoria-metrics
   - ../../components/victoria-logs
   - ../../components/kubevirt

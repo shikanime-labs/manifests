@@ -1,13 +1,11 @@
-# VPA targets the LeaderWorkerSet; LWS propagates resource requests to the
-# StatefulSet it generates, so VPA admission binds to the LWS-owned pods.
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: llama-cpp
 spec:
   targetRef:
-    apiVersion: leaderworkerset.x-k8s.io/v1
-    kind: LeaderWorkerSet
-    name: llama-cpp-cluster
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: llama-cpp
   updatePolicy:
     updateMode: Initial

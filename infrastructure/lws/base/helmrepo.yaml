@@ -1,9 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: leaderworkerset
-  namespace: flux-system
-spec:
-  url: oci://registry.k8s.io/lws/charts
-  type: oci
-  interval: 1h

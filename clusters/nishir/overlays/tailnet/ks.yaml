@@ -991,16 +991,15 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-lws
     - name: infrastructure-envoy-gateway
     - name: infrastructure-envoy-ai-gateway
     - name: infrastructure-cert-manager
     - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
-    - apiVersion: leaderworkerset.x-k8s.io/v1
-      kind: LeaderWorkerSet
-      name: llama-cpp-cluster
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: llama-cpp
       namespace: shikanime
   interval: 10m
   path: ./apps/llama-cpp/overlays/nishir-tailnet
