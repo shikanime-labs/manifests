@@ -9,6 +9,6 @@ spec:
     app.kubernetes.io/instance: llama-cpp
     app.kubernetes.io/name: llama-cpp-rpc
   ports:
-    - name: http
+    - name: rpc
       port: 50052
-      targetPort: http
+      targetPort: rpc

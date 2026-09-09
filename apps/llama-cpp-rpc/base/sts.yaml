@@ -56,7 +56,7 @@ spec:
             - name: LLAMA_CACHE
               value: /cache
           ports:
-            - name: http
+            - name: rpc
               containerPort: 50052
           volumeMounts:
             - name: rpc-cache
