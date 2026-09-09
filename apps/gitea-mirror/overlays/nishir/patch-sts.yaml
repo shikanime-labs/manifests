@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gitea-mirror
+spec:
+  template:
+    spec:
+      containers:
+        - name: gitea-mirror
+          env:
+            - name: NODE_EXTRA_CA_CERTS
+              value: /etc/ssl/certs/ca-certificates.crt
