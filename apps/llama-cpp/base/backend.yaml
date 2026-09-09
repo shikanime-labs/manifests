@@ -111,6 +111,3 @@ spec:
     - fqdn:
         hostname: llama-cpp.shikanime.svc.cluster.local
         port: 8080
-  tls:
-    wellKnownCACertificates: System
-    sni: llama-cpp.shikanime.svc.cluster.local

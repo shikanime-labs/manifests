@@ -60,3 +60,15 @@ patches:
       version: v1beta1
       group: aigateway.envoyproxy.io
       kind: AIGatewayRoute
+  - patch: |-
+      - op: add
+        path: /spec/tls
+        value:
+          sni: llama-cpp.shikanime.svc.cluster.local
+          caCertificateRefs:
+            - group: ""
+              kind: ConfigMap
+              name: nishir-ca-certificates.crt
+    target:
+      name: llama-cpp
+      kind: Backend
