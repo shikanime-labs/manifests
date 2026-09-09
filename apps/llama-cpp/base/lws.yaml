@@ -6,44 +6,22 @@ metadata:
 spec:
   replicas: 1
   leaderWorkerTemplate:
-    size: 2
+    size: 3
     leaderTemplate:
       metadata:
         labels:
           app.kubernetes.io/instance: llama-cpp
           app.kubernetes.io/name: llama-cpp
       spec:
-        nodeSelector:
-          node.kubernetes.io/instance-type: minisforum-ms-s1
-        affinity:
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchLabels:
-                    app.kubernetes.io/instance: llama-cpp
-                    app.kubernetes.io/name: llama-cpp
-                topologyKey: kubernetes.io/hostname
         securityContext:
-          # emptyDir ownership: the image runs as 65532; fsGroup makes the
-          # cache-huggingface volume group-writable so HF downloads succeed.
           fsGroup: 65532
         containers:
-          # Router mode maps each model name to a HuggingFace repo:quant; the
-          # server downloads it into --models-dir on the first request that
-          # targets it and caches it there (autoload is the default, so a chat
-          # request loads the model without a separate /models/load). The server
-          # comes up instantly and only pulls the models actually used. Every
-          # llama-server flag is passed via its LLAMA_ARG_* env equivalent.
+          # The main host holds the RPC backend client only, so it schedules
+          # on any node; worker devices carry the model (tools/rpc README).
           - name: llama-cpp
             image: llama-cpp
             command:
               - llama-server
-            securityContext:
-              # /dev/kfd requires unrestricted device access; the Gatekeeper
-              # set-pod-privileged-false mutator uses a MustNotExist pathTest,
-              # so an explicit securityContext is preserved unmutated.
-              privileged: true
-              allowPrivilegeEscalation: true
             env:
               - name: LLAMA_ARG_HOST
                 value: 0.0.0.0
@@ -60,19 +38,15 @@ spec:
               - name: LLAMA_ARG_EMBEDDINGS
                 value: "true"
               - name: LLAMA_ARG_CTX_SIZE
-                value: "32768"
+                value: "262144"
               - name: LLAMA_ARG_FLASH_ATTN
                 value: "on"
               - name: LLAMA_ARG_CACHE_TYPE_K
                 value: q8_0
               - name: LLAMA_ARG_CACHE_TYPE_V
                 value: q8_0
-              - name: LLAMA_ARG_N_GPU_LAYERS
-                value: "999"
               - name: LLAMA_ARG_RPC
-                value: llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local:50052
-              - name: LLAMA_ARG_MMAP
-                value: "0"
+                value: llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local:50052,llama-cpp-cluster-0-2.llama-cpp-cluster.shikanime.svc.cluster.local:50052
             ports:
               - name: http
                 containerPort: 8080
@@ -101,10 +75,10 @@ spec:
               timeoutSeconds: 5
             resources:
               limits:
-                memory: 120Gi
+                memory: 8Gi
               requests:
-                cpu: "8"
-                memory: 24Gi
+                cpu: "1"
+                memory: 2Gi
             volumeMounts:
               - name: cache-huggingface
                 mountPath: /.cache/huggingface
@@ -113,10 +87,6 @@ spec:
               - name: models-preset
                 mountPath: /etc/llama-cpp/preset
                 readOnly: true
-              - name: dev-kfd
-                mountPath: /dev/kfd
-              - name: dev-dri
-                mountPath: /dev/dri
         volumes:
           - name: cache-huggingface
             emptyDir: {}
@@ -125,22 +95,13 @@ spec:
           - name: models-preset
             configMap:
               name: llama-cpp-models-preset
-          - name: dev-kfd
-            hostPath:
-              type: CharDevice
-              path: /dev/kfd
-          - name: dev-dri
-            hostPath:
-              type: Directory
-              path: /dev/dri
-    # RPC llama.cpp: the leader loads the model and distributes layers to worker
-    # compute nodes (ggml-rpc-server). LWS requires workerTemplate even though the
-    # node stays Pending until GPU hardware lands. Workers own the GPU mounts.
+    # Workers run ggml-rpc-server on the UMA APU nodes; the leader
+    # distributes layers across their devices per the tools/rpc README.
     workerTemplate:
       metadata:
         labels:
           app.kubernetes.io/instance: llama-cpp
-          app.kubernetes.io/name: llama-cpp
+          app.kubernetes.io/name: llama-cpp-rpc
       spec:
         nodeSelector:
           node.kubernetes.io/instance-type: minisforum-ms-s1
@@ -150,17 +111,14 @@ spec:
               - labelSelector:
                   matchLabels:
                     app.kubernetes.io/instance: llama-cpp
-                    app.kubernetes.io/name: llama-cpp
+                    app.kubernetes.io/name: llama-cpp-rpc
                 topologyKey: kubernetes.io/hostname
-        securityContext:
-          fsGroup: 65532
         containers:
           - name: llama-cpp-rpc
             image: llama-cpp
-            command: ["ggml-rpc-server"]
+            command:
+              - ggml-rpc-server
             securityContext:
-              # Same Gatekeeper mutator exemption as the leader: the RPC peer
-              # offloads layers to the iGPU and needs /dev/kfd rw.
               privileged: true
               allowPrivilegeEscalation: true
             args:
