@@ -13,7 +13,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 64Gi
+            storage: 512Mi
         storageClassName: nishir-ephemeral
         accessModes:
           - ReadWriteOnce
@@ -57,7 +57,7 @@ spec:
             - name: LLAMA_CACHE
               value: /cache
           ports:
-            - name: rpc
+            - name: http
               containerPort: 50052
           volumeMounts:
             - name: rpc-cache
@@ -82,7 +82,7 @@ metadata:
   name: llama-cpp
   namespace: shikanime
 spec:
-  serviceName: llama-cpp-headless
+  serviceName: llama-cpp
   replicas: 1
   volumeClaimTemplates:
     - metadata:

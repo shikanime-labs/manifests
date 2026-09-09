@@ -24,21 +24,6 @@ spec:
     app.kubernetes.io/instance: llama-cpp
     app.kubernetes.io/name: llama-cpp-rpc
   ports:
-    - name: rpc
-      port: 50052
-      targetPort: rpc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: llama-cpp-headless
-  namespace: shikanime
-spec:
-  clusterIP: None
-  selector:
-    app.kubernetes.io/instance: llama-cpp
-    app.kubernetes.io/name: llama-cpp
-  ports:
     - name: http
-      port: 8080
+      port: 50052
       targetPort: http
