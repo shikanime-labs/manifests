@@ -6,9 +6,11 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 29320
       targetPort: http
     - name: metrics
+      appProtocol: http
       port: 9100
       targetPort: metrics
   publishNotReadyAddresses: true

@@ -9,7 +9,7 @@ spec:
     app.kubernetes.io/name: llama-cpp
   ports:
     - name: http
+      appProtocol: http
       port: 8080
       protocol: TCP
-      appProtocol: http
       targetPort: http

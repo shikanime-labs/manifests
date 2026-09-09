@@ -5,9 +5,11 @@ metadata:
 spec:
   ports:
     - name: http
+      appProtocol: http
       port: 9091
       targetPort: http
     - name: metrics
+      appProtocol: http
       port: 9959
       targetPort: metrics
   selector:

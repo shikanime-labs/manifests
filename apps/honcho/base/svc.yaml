@@ -5,6 +5,7 @@ metadata:
 spec:
   ports:
     - name: http
+      appProtocol: http
       port: 8000
       targetPort: http
   selector:

@@ -9,35 +9,46 @@ spec:
     app.kubernetes.io/name: copyparty
   ports:
     - name: ftp-control
+      appProtocol: ftp
       port: 21
       targetPort: ftp-control
     - name: ftp-data-12000
+      appProtocol: shikanime.studio/ftp-data
       port: 12000
       targetPort: ftp-data-12000
     - name: ftp-data-12001
+      appProtocol: shikanime.studio/ftp-data
       port: 12001
       targetPort: ftp-data-12001
     - name: ftp-data-12002
+      appProtocol: shikanime.studio/ftp-data
       port: 12002
       targetPort: ftp-data-12002
     - name: ftp-data-12003
+      appProtocol: shikanime.studio/ftp-data
       port: 12003
       targetPort: ftp-data-12003
     - name: ftp-data-12004
+      appProtocol: shikanime.studio/ftp-data
       port: 12004
       targetPort: ftp-data-12004
     - name: ftp-data-12005
+      appProtocol: shikanime.studio/ftp-data
       port: 12005
       targetPort: ftp-data-12005
     - name: ftp-data-12006
+      appProtocol: shikanime.studio/ftp-data
       port: 12006
       targetPort: ftp-data-12006
     - name: ftp-data-12007
+      appProtocol: shikanime.studio/ftp-data
       port: 12007
       targetPort: ftp-data-12007
     - name: ftp-data-12008
+      appProtocol: shikanime.studio/ftp-data
       port: 12008
       targetPort: ftp-data-12008
     - name: ftp-data-12009
+      appProtocol: shikanime.studio/ftp-data
       port: 12009
       targetPort: ftp-data-12009

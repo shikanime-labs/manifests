@@ -10,5 +10,6 @@ spec:
     app.kubernetes.io/name: llama-cpp-rpc
   ports:
     - name: rpc
+      appProtocol: shikanime.studio/ggml-rpc
       port: 50052
       targetPort: rpc

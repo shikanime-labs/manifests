@@ -11,5 +11,6 @@ spec:
   externalName: ai.taila659a.ts.net
   ports:
     - name: https
+      appProtocol: https
       port: 443
       protocol: TCP

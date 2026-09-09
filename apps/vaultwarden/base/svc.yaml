@@ -6,6 +6,7 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: https
+      appProtocol: https
       port: 443
       targetPort: https
   selector:

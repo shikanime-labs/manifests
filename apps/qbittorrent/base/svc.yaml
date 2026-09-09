@@ -6,12 +6,15 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 8080
       targetPort: http
     - name: bittorrent
+      appProtocol: shikanime.studio/bittorrent
       port: 6881
       targetPort: bittorrent
     - name: bittorrent-udp
+      appProtocol: shikanime.studio/bittorrent
       port: 6881
       protocol: UDP
       targetPort: bittorrent-udp

@@ -5,5 +5,6 @@ metadata:
 spec:
   ports:
     - name: dashboard
+      appProtocol: http
       port: 9119
       targetPort: dashboard

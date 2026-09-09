@@ -9,9 +9,11 @@ spec:
     app.kubernetes.io/name: catbox
   ports:
     - name: ssh
+      appProtocol: ssh
       port: 22
       targetPort: ssh
     - name: mdns
+      appProtocol: mdns
       port: 5353
       protocol: UDP
       targetPort: mdns

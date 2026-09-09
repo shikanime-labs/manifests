@@ -6,9 +6,11 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: http
+      appProtocol: http
       port: 2283
       targetPort: http
     - name: metrics
+      appProtocol: http
       port: 8081
       targetPort: metrics
   selector:
