@@ -23,6 +23,10 @@ spec:
                     app.kubernetes.io/instance: llama-cpp
                     app.kubernetes.io/name: llama-cpp
                 topologyKey: kubernetes.io/hostname
+        securityContext:
+          # emptyDir ownership: the image runs as 65532; fsGroup makes the
+          # cache-huggingface volume group-writable so HF downloads succeed.
+          fsGroup: 65532
         containers:
           # Router mode maps each model name to a HuggingFace repo:quant; the
           # server downloads it into --models-dir on the first request that
@@ -71,8 +75,10 @@ spec:
                 value: "0"
               # The fork image user (65532) has no writable HOME; HF download
               # resolution fails with "cannot create directories" otherwise.
+              # Point HOME at the cache volume so downloads persist in
+              # <HOME>/.cache/huggingface across restarts.
               - name: HOME
-                value: /tmp
+                value: /cache
             ports:
               - name: http
                 containerPort: 8080
@@ -106,8 +112,8 @@ spec:
                 cpu: "8"
                 memory: 24Gi
             volumeMounts:
-              - name: tmp
-                mountPath: /tmp
+              - name: cache-huggingface
+                mountPath: /cache
               - name: models
                 mountPath: /models
               - name: cache-huggingface
@@ -120,7 +126,7 @@ spec:
               - name: dev-dri
                 mountPath: /dev/dri
         volumes:
-          - name: tmp
+          - name: cache-huggingface
             emptyDir: {}
           - name: models
             emptyDir: {}
@@ -156,9 +162,11 @@ spec:
                     app.kubernetes.io/instance: llama-cpp
                     app.kubernetes.io/name: llama-cpp
                 topologyKey: kubernetes.io/hostname
+        securityContext:
+          fsGroup: 65532
         containers:
           - name: llama-cpp-rpc
-            image: llama-cpp-rpc
+            image: llama-cpp
             command: ["ggml-rpc-server"]
             securityContext:
               # Same Gatekeeper mutator exemption as the leader: the RPC peer
