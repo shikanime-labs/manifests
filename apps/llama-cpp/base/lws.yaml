@@ -33,7 +33,7 @@ spec:
           - name: llama-cpp
             image: llama-cpp
             command:
-              - /app/llama-server
+              - llama-server
             securityContext:
               # /dev/kfd requires unrestricted device access; the Gatekeeper
               # set-pod-privileged-false mutator uses a MustNotExist pathTest,
@@ -69,6 +69,10 @@ spec:
                 value: llama-cpp-cluster-0-1.llama-cpp-cluster.shikanime.svc.cluster.local:50052
               - name: LLAMA_ARG_MMAP
                 value: "0"
+              # The fork image user (65532) has no writable HOME; HF download
+              # resolution fails with "cannot create directories" otherwise.
+              - name: HOME
+                value: /tmp
             ports:
               - name: http
                 containerPort: 8080
@@ -102,6 +106,8 @@ spec:
                 cpu: "8"
                 memory: 24Gi
             volumeMounts:
+              - name: tmp
+                mountPath: /tmp
               - name: models
                 mountPath: /models
               - name: cache-huggingface
@@ -114,6 +120,8 @@ spec:
               - name: dev-dri
                 mountPath: /dev/dri
         volumes:
+          - name: tmp
+            emptyDir: {}
           - name: models
             emptyDir: {}
           - name: cache-huggingface
@@ -150,7 +158,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
         containers:
           - name: llama-cpp-rpc
-            image: ghcr.io/ggml-org/llama.cpp:server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
+            image: llama-cpp-rpc
             command: ["ggml-rpc-server"]
             securityContext:
               # Same Gatekeeper mutator exemption as the leader: the RPC peer

@@ -10,8 +10,11 @@ resources:
   - vpa.yaml
 images:
   - name: llama-cpp
-    newName: ghcr.io/ggml-org/llama.cpp
-    newTag: server-rocm@sha256:08f4f0497de99711614f40c849621df3d645fbc433cf61bca99a3251a6f1e949
+    newName: ghcr.io/shikanime-labs/machines/llama-cpp
+    digest: sha256:19eb284b2ad8484379c618da3ccc85ea8e6bffa19e42a5137d12e1013141171a
+  - name: llama-cpp-rpc
+    newName: ghcr.io/shikanime-labs/machines/llama-cpp
+    digest: sha256:19eb284b2ad8484379c618da3ccc85ea8e6bffa19e42a5137d12e1013141171a
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
