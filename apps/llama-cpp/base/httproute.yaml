@@ -26,3 +26,41 @@ spec:
       backendRefs:
         - name: llama-cpp
           port: 8080
+---
+# Bypasses the ai-gateway MCP proxy for Z.ai remote MCP servers. The proxy
+# hard-requires HTTP 202 on the `notifications/initialized` handshake
+# (internal/mcpproxy/mcpproxy.go), but Z.ai's Spring WebFlux servers answer
+# 200 with an empty body, so MCPRoute session creation always fails
+# (shikanime-labs/manifests#1894). Route each server directly to api.z.ai with
+# a path rewrite and credential injection instead; clients talk plain MCP
+# Streamable HTTP per server.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: z-ai-mcp
+  namespace: shikanime
+spec:
+  parentRefs:
+    - name: inference
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /mcp/z-ai/
+      backendRefs:
+        - name: z-ai
+          kind: Backend
+          group: gateway.envoyproxy.io
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            name: z-ai-mcp-credential
+            group: gateway.envoyproxy.io
+            kind: HTTPRouteFilter
+        - type: ExtensionRef
+          extensionRef:
+            name: z-ai-mcp-rewrite
+            group: gateway.envoyproxy.io
+            kind: HTTPRouteFilter
