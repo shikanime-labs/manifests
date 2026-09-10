@@ -15,19 +15,10 @@ spec:
       spec:
         resources:
           requests:
-            storage: 256Gi
+            storage: 512Gi
         storageClassName: nishir-ephemeral
         accessModes:
-          - ReadWriteOnce
-    - metadata:
-        name: models
-      spec:
-        resources:
-          requests:
-            storage: 32Gi
-        storageClassName: nishir-ephemeral
-        accessModes:
-          - ReadWriteOnce
+          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
@@ -106,8 +97,6 @@ spec:
               value: "512"
             - name: LLAMA_ARG_MODELS_PRESET
               value: /etc/llama-cpp/preset/models-preset.ini
-            - name: LLAMA_ARG_MODELS_DIR
-              value: /models
             - name: LLAMA_ARG_MODELS_MAX
               value: "3"
             - name: LLAMA_ARG_MODELS_AUTOLOAD

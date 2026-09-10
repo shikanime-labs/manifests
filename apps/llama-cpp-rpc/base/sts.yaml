@@ -15,10 +15,10 @@ spec:
       spec:
         resources:
           requests:
-            storage: 512Mi
+            storage: 256Gi
         storageClassName: nishir-ephemeral
         accessModes:
-          - ReadWriteOnce
+          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
