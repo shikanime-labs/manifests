@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: syncthing-config
+spec:
+  backoffLimit: 4
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: syncthing-config
+        app.kubernetes.io/name: syncthing-config
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: syncthing-config
+          image: curl
+          env:
+            - name: STHOMEDIR
+              value: /config
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              i=0
+              until curl -sf http://syncthing.shikanime.svc.cluster.local:8384/rest/noauth/health >/dev/null; do
+                i=$((i + 1))
+                [ "$i" -gt 150 ] && exit 1
+                sleep 2
+              done
+              KEY=$(cat /mnt/apikey/key)
+              curl -sf -X PATCH \
+                -H "X-API-Key: ${KEY}" \
+                -d '{"authMode":"ldap"}' \
+                http://syncthing.shikanime.svc.cluster.local:8384/rest/config/gui >/dev/null
+              curl -sf -X PATCH \
+                -H "X-API-Key: ${KEY}" \
+                -d '{"address":"lldap.shikanime.svc.cluster.local:6360","bindDN":"uid=%s,ou=people,dc=shikanime,dc=studio","transport":"tls","insecureSkipVerify":false,"searchBaseDN":"ou=people,dc=shikanime,dc=studio","searchFilter":"(memberOf=cn=syncthing,ou=groups,dc=shikanime,dc=studio)"}' \
+                http://syncthing.shikanime.svc.cluster.local:8384/rest/config/ldap >/dev/null
+              echo "syncthing ldap auth config applied"
+          volumeMounts:
+            - name: apikey
+              mountPath: /mnt/apikey
+              readOnly: true
+      volumes:
+        - name: apikey
+          secret:
+            secretName: syncthing-config-apikey

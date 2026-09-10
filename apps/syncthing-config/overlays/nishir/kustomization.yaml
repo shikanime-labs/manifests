@@ -1,0 +1,5 @@
+resources:
+  - ../../base
+namespace: shikanime
+configurations:
+  - namereference.yaml
