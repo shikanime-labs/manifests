@@ -9,6 +9,22 @@ patches:
   - path: patch-pvc.yaml
   - patch: |-
       - op: add
+        path: /spec/ingress/-
+        value:
+          from:
+            - namespaceSelector:
+                matchLabels:
+                  kubernetes.io/metadata.name: envoy-gateway-system
+              podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: envoy
+          ports:
+            - port: http
+    target:
+      name: lldap
+      kind: NetworkPolicy
+  - patch: |-
+      - op: add
         path: /spec/hostnames
         value:
         - lldap.i.shikanime.studio

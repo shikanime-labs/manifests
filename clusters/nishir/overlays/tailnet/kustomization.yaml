@@ -18,12 +18,6 @@ components:
   - ../../components/tailscale
   - ../../components/trust-manager
   - ../../components/external-dns
-patches:
-  - path: patch-netpol.yaml
-    target:
-      name: default
-      namespace: shikanime
-      kind: NetworkPolicy
 labels:
   - includeTemplates: true
     pairs:

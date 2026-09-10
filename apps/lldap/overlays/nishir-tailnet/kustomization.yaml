@@ -29,10 +29,6 @@ patches:
     target:
       name: lldap
       kind: HTTPRoute
-  - path: patch-netpol.yaml
-    target:
-      name: lldap
-      kind: NetworkPolicy
 labels:
   - includeTemplates: true
     pairs:
