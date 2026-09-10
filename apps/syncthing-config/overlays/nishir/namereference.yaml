@@ -1,6 +1,0 @@
-nameReference:
-  - kind: Secret
-    fieldSpecs:
-      - kind: Job
-        group: batch
-        path: spec/template/spec/volumes/secret/secretName
