@@ -140,10 +140,11 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   it in the same PR as any `newTag` change. Plain `nishir` overlays are
   label-free by pattern.
 - **Resources lists sorted** in `kustomization.yaml`.
-- **Netpol:** tailnet overlays needing extra ingress ship a full `netpol.yaml`
-  in `resources:`; only lldap wires a `patch-netpol.yaml`. Netpol is enforced
-  cross-app, but envoy data-plane pods reach app pods even without a netpol
-  ingress entry.
+- **Netpol:** base keeps only transport-agnostic rules (deny-all ingress unless
+  an intra-app flow exists); exposure rules (envoy ingress, vmagent scrapes)
+  are appended by inline JSON6902 `patches:` entries in the overlay that owns
+  the exposure path. Netpol is enforced cross-app, but envoy data-plane pods
+  reach app pods even without a netpol ingress entry.
 - **No dangling files:** every file must be referenced by its kustomization
   (`path:` / `files:` / `envs:` / inline).
 
