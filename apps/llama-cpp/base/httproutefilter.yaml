@@ -14,7 +14,7 @@ spec:
     overwrite: true
     credential:
       valueRef:
-        name: inference-z-ai
+        name: z-ai-key
 ---
 # Rewrites /mcp/z-ai/<server>/... to /api/mcp/<server>/... on api.z.ai.
 # Regex capture keeps the rest of the path (JSON-RPC POSTs land on

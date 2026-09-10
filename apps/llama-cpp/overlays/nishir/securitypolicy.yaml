@@ -64,3 +64,34 @@ spec:
       - Authorization
       - X-Api-Key
       - Content-Type
+---
+# Inbound API-key gate layered on top of the existing mTLS client-cert
+# requirement (ClientTrafficPolicy inference). A request must present both a
+# CA-signed client certificate AND a valid key in the Authorization header
+# (Bearer scheme) or the X-Api-Key header (Anthropic SDK style). The key lives
+# in the generated Opaque Secret inference-key (one client id per
+# Secret key; rotate by adding a key, not editing the live one). The value is
+# the RAW key: Envoy strips the auth scheme before comparing, so a stored
+# "Bearer <key>" value never matches. sanitize strips the header before it
+# reaches the ai-gateway ext-proc and the upstream providers.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: inference-apikey
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: inference
+      group: gateway.networking.k8s.io
+      kind: Gateway
+  apiKeyAuth:
+    credentialRefs:
+      - name: inference-key
+        group: ""
+        kind: Secret
+    extractFrom:
+      - headers:
+          - Authorization
+          - X-Api-Key
+    sanitize: true
+    forwardClientIDHeader: x-inference-client-id
