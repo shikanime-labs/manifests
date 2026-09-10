@@ -52,7 +52,6 @@ spec:
             failureThreshold: 10
             httpGet:
               path: /health
-              scheme: HTTPS
               port: http
             initialDelaySeconds: 30
             periodSeconds: 30
@@ -61,7 +60,6 @@ spec:
             failureThreshold: 5
             httpGet:
               path: /health
-              scheme: HTTPS
               port: http
             initialDelaySeconds: 10
             periodSeconds: 15
@@ -70,7 +68,6 @@ spec:
             failureThreshold: 120
             httpGet:
               path: /health
-              scheme: HTTPS
               port: http
             periodSeconds: 10
             timeoutSeconds: 5
