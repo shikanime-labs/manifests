@@ -3,7 +3,6 @@ resources:
   - envoyproxy.yaml
   - gatewayclass.yaml
   - gatewayconfig.yaml
-  - httproute.yaml
   - netpol.yaml
   - securitypolicy.yaml
 namespace: shikanime
@@ -19,6 +18,20 @@ patches:
             sectionName: https
     target:
       name: llama-cpp
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: chat.taila659a.ts.net
+    target:
+      name: llama-cpp-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: chat.taila659a.ts.net
+    target:
+      name: llama-cpp-redirect
       kind: HTTPRoute
   - patch: |-
       - op: add
