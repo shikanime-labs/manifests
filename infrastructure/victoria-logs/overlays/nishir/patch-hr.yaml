@@ -7,8 +7,4 @@ spec:
   values:
     vlstorage:
       persistentVolume:
-        storageClassName: nishir-standard
-        size: 8Gi
-    vlinsert:
-      ingress:
-        enabled: false
+        storageClassName: nishir-ephemeral
