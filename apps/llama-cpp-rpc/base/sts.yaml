@@ -37,6 +37,15 @@ spec:
       nodeSelector:
         feature.node.kubernetes.io/pci-0380_1002.present: "true"
       affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: feature.node.kubernetes.io/network.speed.10g
+                    operator: In
+                    values:
+                      - "true"
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:

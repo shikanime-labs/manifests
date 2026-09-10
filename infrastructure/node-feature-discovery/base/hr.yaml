@@ -34,32 +34,34 @@ spec:
             - local
             - pci
         custom:
-          - name: network.1g
-            labels:
-              network.speed.1g: "true"
-            matchFeatures:
-              - feature: kernel.loadedmodule
-                matchExpressions:
-                  e1000e:
-                    op: Exists
-                  igb:
-                    op: Exists
-                  r8169:
-                    op: Exists
-                  tg3:
-                    op: Exists
-                  virtio_net:
-                    op: Exists
           - name: network.2.5g
             labels:
               network.speed.2.5g: "true"
             matchFeatures:
-              - feature: kernel.loadedmodule
+              - feature: network.device
                 matchExpressions:
-                  igc:
-                    op: Exists
-                  r8125:
-                    op: Exists
+                  speed:
+                    op: In
+                    value:
+                      - "2500"
+                  operstate:
+                    op: In
+                    value:
+                      - up
+          - name: network.10g
+            labels:
+              network.speed.10g: "true"
+            matchFeatures:
+              - feature: network.device
+                matchExpressions:
+                  speed:
+                    op: In
+                    value:
+                      - "10000"
+                  operstate:
+                    op: In
+                    value:
+                      - up
         featureSources:
           - system
           - kernel
