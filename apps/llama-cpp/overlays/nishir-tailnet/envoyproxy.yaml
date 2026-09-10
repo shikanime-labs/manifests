@@ -41,6 +41,9 @@ metadata:
   name: llama-cpp
   namespace: shikanime
 spec:
+  backendTLS:
+    alpnProtocols:
+      - http/1.1
   provider:
     type: Kubernetes
     kubernetes:
