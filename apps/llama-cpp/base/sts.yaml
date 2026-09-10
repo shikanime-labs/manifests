@@ -37,6 +37,12 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
+      annotations:
+        # Secondary thunderbolt interface (NAD llama-cpp-tb): gives the
+        # leader the 10.66.0.3 source address so RPC packets to the workers
+        # (.4/.5) ride the USB4 cable symmetrically instead of hairpinning
+        # through br0.
+        k8s.v1.cni.cncf.io/networks: llama-cpp-tb
     spec:
       securityContext:
         fsGroup: 65532
@@ -113,7 +119,7 @@ spec:
             - name: LLAMA_ARG_CACHE_TYPE_V
               value: q8_0
             - name: LLAMA_ARG_RPC
-              value: llama-cpp-rpc-0.llama-cpp-rpc.shikanime.svc.cluster.local:50052,llama-cpp-rpc-1.llama-cpp-rpc.shikanime.svc.cluster.local:50052
+              value: 10.66.0.4:50052,10.66.0.5:50052
       volumes:
         - name: models-preset
           configMap:
