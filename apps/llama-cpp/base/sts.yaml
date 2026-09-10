@@ -6,6 +6,9 @@ metadata:
 spec:
   serviceName: llama-cpp
   replicas: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   volumeClaimTemplates:
     - metadata:
         name: cache-huggingface
@@ -21,7 +24,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 512Gi
+            storage: 32Gi
         storageClassName: nishir-ephemeral
         accessModes:
           - ReadWriteOnce
@@ -88,6 +91,8 @@ spec:
             - name: LLAMA_ARG_API_KEY_FILE
               value: /etc/llama-cpp/api-key
             - name: LLAMA_ARG_N_BATCH
+              value: "2048"
+            - name: LLAMA_ARG_UBATCH
               value: "512"
             - name: LLAMA_ARG_MODELS_PRESET
               value: /etc/llama-cpp/preset/models-preset.ini
@@ -100,7 +105,7 @@ spec:
             - name: LLAMA_ARG_EMBEDDINGS
               value: "true"
             - name: LLAMA_ARG_CTX_SIZE
-              value: "262144"
+              value: "131072"
             - name: LLAMA_ARG_FLASH_ATTN
               value: "on"
             - name: LLAMA_ARG_CACHE_TYPE_K
