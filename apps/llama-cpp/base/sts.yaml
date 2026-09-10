@@ -117,7 +117,7 @@ spec:
             name: llama-cpp-models-preset
         - name: api-key
           secret:
-            secretName: inference-llama-cpp
+            secretName: llama-cpp-key
             items:
               - key: apiKey
                 path: apiKey

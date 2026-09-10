@@ -23,22 +23,30 @@ secretGenerator:
   - name: llama-cpp-oidc-client
     envs:
       - llama-cpp-oidc-client/.enc.env
-  - name: inference-z-ai
+  - name: z-ai-key
     namespace: shikanime
     envs:
-      - inference-z-ai/.enc.env
-  - name: inference-nous
+      - z-ai-key/.enc.env
+  - name: nous-key
     namespace: shikanime
     envs:
-      - inference-nous/.enc.env
-  - name: inference-openrouter
+      - nous-key/.enc.env
+  - name: openrouter-key
     namespace: shikanime
     envs:
-      - inference-openrouter/.enc.env
-  - name: inference-mistral
+      - openrouter-key/.enc.env
+  - name: mistral-key
     namespace: shikanime
     envs:
-      - inference-mistral/.enc.env
+      - mistral-key/.enc.env
+  - name: inference-key
+    namespace: shikanime
+    envs:
+      - inference-key/.enc.env
+  - name: llama-cpp-key
+    namespace: shikanime
+    envs:
+      - llama-cpp-key/.enc.env
 patches:
   - patch: |-
       - op: add

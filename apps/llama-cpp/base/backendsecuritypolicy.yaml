@@ -2,7 +2,7 @@
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: z-ai-key
+  name: z-ai
   namespace: shikanime
 spec:
   type: AnthropicAPIKey
@@ -12,13 +12,13 @@ spec:
       kind: AIServiceBackend
   anthropicAPIKey:
     secretRef:
-      name: inference-z-ai
+      name: z-ai-key
       namespace: shikanime
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: z-ai-openai-key
+  name: z-ai-openai
   namespace: shikanime
 spec:
   type: APIKey
@@ -28,13 +28,13 @@ spec:
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: inference-z-ai
+      name: z-ai-key
       namespace: shikanime
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: openrouter-key
+  name: openrouter
   namespace: shikanime
 spec:
   type: APIKey
@@ -44,13 +44,13 @@ spec:
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: inference-openrouter
+      name: openrouter-key
       namespace: shikanime
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: mistral-key
+  name: mistral
   namespace: shikanime
 spec:
   type: APIKey
@@ -60,13 +60,13 @@ spec:
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: inference-mistral
+      name: mistral-key
       namespace: shikanime
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: nous-key
+  name: nous
   namespace: shikanime
 spec:
   type: APIKey
@@ -76,13 +76,13 @@ spec:
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: inference-nous
+      name: nous-key
       namespace: shikanime
 ---
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: llama-cpp-key
+  name: llama-cpp
   namespace: shikanime
 spec:
   type: APIKey
@@ -92,5 +92,5 @@ spec:
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: inference-llama-cpp
+      name: llama-cpp-key
       namespace: shikanime

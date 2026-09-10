@@ -65,8 +65,8 @@ Body:
 => 200 with an Anthropic message from glm-5.3
 ```
 
-Auth is injected by `BackendSecurityPolicy z-ai-key` (`AnthropicAPIKey` →
-`x-api-key`) against the hashed `inference-z-ai-*` secret. The backend is
+Auth is injected by `BackendSecurityPolicy z-ai` (`AnthropicAPIKey` →
+`x-api-key`) against the hashed `z-ai-key-*` secret. The backend is
 `AIServiceBackend z-ai` (schema `Anthropic`, prefix `api/anthropic/v1`).
 
 ## OpenAI-compatible models
