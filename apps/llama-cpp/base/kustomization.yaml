@@ -4,6 +4,7 @@ resources:
   - backend.yaml
   - backendsecuritypolicy.yaml
   - httproute.yaml
+  - httproute-redirect.yaml
   - httproutefilter.yaml
   - sts.yaml
   - svc.yaml

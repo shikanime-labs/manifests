@@ -3,11 +3,6 @@ kind: HTTPRoute
 metadata:
   name: llama-cpp-redirect
 spec:
-  hostnames:
-    - chat.i.shikanime.studio
-  parentRefs:
-    - name: llama-cpp
-      sectionName: http
   rules:
     - filters:
         - type: RequestRedirect

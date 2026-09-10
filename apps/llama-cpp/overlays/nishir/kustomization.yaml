@@ -4,7 +4,6 @@ resources:
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
   - gateway.yaml
-  - httproute.yaml
   - securitypolicy.yaml
 namespace: shikanime
 components:
