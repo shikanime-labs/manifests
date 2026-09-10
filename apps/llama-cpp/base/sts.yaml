@@ -75,8 +75,6 @@ spec:
           volumeMounts:
             - name: cache-huggingface
               mountPath: /.cache/huggingface
-            - name: models
-              mountPath: /models
             - name: models-preset
               mountPath: /etc/llama-cpp/preset
               readOnly: true
