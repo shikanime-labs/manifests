@@ -28,9 +28,6 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp-rpc
-      annotations:
-        # Direct peer-link attachment; requires br1 on the nodes (machines peer link).
-        k8s.v1.cni.cncf.io/networks: llama-cpp-rpc
     spec:
       securityContext:
         fsGroup: 65532
