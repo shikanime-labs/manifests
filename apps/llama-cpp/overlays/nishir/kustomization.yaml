@@ -5,9 +5,10 @@ resources:
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
   - gateway.yaml
+  - securitypolicy.yaml
+namespace: shikanime
 components:
   - ../../components/tls
-namespace: shikanime
 configurations:
   - namereference.yaml
 labels:
@@ -19,6 +20,9 @@ labels:
       app.kubernetes.io/part-of: nishir-inference
       app.kubernetes.io/version: "3.8"
 secretGenerator:
+  - name: llama-cpp-oidc-client
+    envs:
+      - llama-cpp-oidc-client/.enc.env
   - name: inference-z-ai
     namespace: shikanime
     envs:

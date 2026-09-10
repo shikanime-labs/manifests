@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: llama-cpp-oidc-client
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: llama-cpp
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: llama-cpp
+    clientSecret:
+      name: llama-cpp-oidc-client
+    redirectURL: https://chat.i.shikanime.studio/oauth2/callback
