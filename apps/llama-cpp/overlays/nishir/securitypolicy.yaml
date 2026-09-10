@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
@@ -11,6 +12,13 @@ spec:
   oidc:
     provider:
       issuer: https://accounts.i.shikanime.studio
+    # offline_access + refreshToken: Envoy silently refreshes the session at
+    # access-token expiry instead of 302-ing live SPA fetches to authelia
+    # (a cross-origin redirect Firefox reports as a fake CORS failure).
+    scopes:
+      - openid
+      - offline_access
+    refreshToken: true
     clientID: llama-cpp
     clientSecret:
       name: llama-cpp-oidc-client
