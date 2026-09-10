@@ -39,14 +39,19 @@ spec:
       group: gateway.networking.k8s.io
   apiKeyAuth:
     credentialRefs:
-      - name: inference-gateway-apikey
+      # Same secret llama-server mounts as LLAMA_ARG_API_KEY_FILE: one key
+      # authenticates both the gateway filter and the server itself.
+      - name: inference-llama-cpp
         group: ""
         kind: Secret
     extractFrom:
       - headers:
           - Authorization
           - X-Api-Key
-    sanitize: true
+    # The credential must reach llama-server: it enforces its own key
+    # (inference-llama-cpp secret), so one key authenticates both the gateway
+    # filter and the server instead of two mismatched keys.
+    sanitize: false
     forwardClientIDHeader: x-inference-client-id
   cors:
     allowOrigins:
