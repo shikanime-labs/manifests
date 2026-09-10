@@ -40,6 +40,16 @@ spec:
     spec:
       securityContext:
         fsGroup: 65532
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: feature.node.kubernetes.io/network.speed.10g
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: llama-cpp
           image: llama-cpp
