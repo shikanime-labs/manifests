@@ -28,6 +28,9 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp-rpc
+      annotations:
+        # Thunderbolt attachment; requires tb0 on the nodes (machines peer link).
+        k8s.v1.cni.cncf.io/networks: llama-cpp-tb
     spec:
       securityContext:
         fsGroup: 65532
