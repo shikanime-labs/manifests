@@ -11,7 +11,7 @@ spec:
   replicas: 2
   volumeClaimTemplates:
     - metadata:
-        name: rpc-cache
+        name: cache
       spec:
         resources:
           requests:
@@ -71,7 +71,7 @@ spec:
             - name: rpc
               containerPort: 50052
           volumeMounts:
-            - name: rpc-cache
+            - name: cache
               mountPath: /cache
             - name: dev-kfd
               mountPath: /dev/kfd
