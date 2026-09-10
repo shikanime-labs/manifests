@@ -18,6 +18,9 @@ spec:
           podSelector:
             matchLabels:
               app.kubernetes.io/name: envoy
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: syncthing-config
       ports:
         - port: http
         - port: sync
