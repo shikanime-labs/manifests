@@ -2,7 +2,10 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
 namespace: shikanime
+configurations:
+  - namereference.yaml
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
@@ -32,3 +35,7 @@ patches:
     target:
       name: maintainerr-redirect
       kind: HTTPRoute
+secretGenerator:
+  - name: maintainerr-oidc-client
+    envs:
+      - maintainerr-oidc-client/.enc.env
