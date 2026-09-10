@@ -1,8 +1,12 @@
 resources:
   - ../../base
+  - backendtlspolicy.yaml
+  - cert.yaml
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
   - gateway.yaml
+components:
+  - ../../components/tls
 namespace: shikanime
 configurations:
   - namereference.yaml

@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: llama-cpp-tls
+  namespace: shikanime
+spec:
+  commonName: llama-cpp
+  dnsNames:
+    - llama-cpp
+    - llama-cpp.shikanime
+    - llama-cpp.shikanime.svc.cluster.local
+    - llama-cpp-rpc-0.llama-cpp-rpc.shikanime.svc.cluster.local
+    - llama-cpp-rpc-1.llama-cpp-rpc.shikanime.svc.cluster.local
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: llama-cpp-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
