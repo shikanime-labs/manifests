@@ -1026,27 +1026,3 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: apps-syncthing-config
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: apps-syncthing
-  healthChecks:
-    - apiVersion: batch/v1
-      kind: Job
-      name: syncthing-config
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/syncthing-config/overlays/nishir
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
