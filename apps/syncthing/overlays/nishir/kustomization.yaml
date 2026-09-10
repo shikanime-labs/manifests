@@ -3,12 +3,9 @@ resources:
   - backendtlspolicy.yaml
   - cert.yaml
   - gateway.yaml
-  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/tls
-configurations:
-  - namereference.yaml
 patches:
   - path: patch-pvc.yaml
   - path: patch-sts.yaml
@@ -56,7 +53,3 @@ patches:
     target:
       name: syncthing
       kind: UDPRoute
-secretGenerator:
-  - name: syncthing-oidc-client
-    envs:
-      - syncthing-oidc-client/.enc.env
