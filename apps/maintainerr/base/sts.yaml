@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: maintainerr
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:

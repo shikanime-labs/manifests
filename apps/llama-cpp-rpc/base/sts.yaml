@@ -4,6 +4,9 @@ metadata:
   name: llama-cpp-rpc
   namespace: shikanime
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   serviceName: llama-cpp-rpc
   replicas: 2
   volumeClaimTemplates:
