@@ -29,11 +29,7 @@ spec:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp-rpc
       annotations:
-        # Secondary thunderbolt interface (NAD llama-cpp-tb): the RPC pod IPs
-        # are pinned by the OverlappingRangeIPReservation objects in
-        # ipreservation.yaml (rpc-0 -> .4, rpc-1 -> .5) and dialed literally
-        # by the leader's LLAMA_ARG_RPC. Only attachable while tb0 exists on
-        # the target nodes (machines USB4 peer link).
+        # Thunderbolt attachment; requires tb0 on the nodes (machines peer link).
         k8s.v1.cni.cncf.io/networks: llama-cpp-tb
     spec:
       securityContext:

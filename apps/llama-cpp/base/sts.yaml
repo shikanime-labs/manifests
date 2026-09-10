@@ -38,10 +38,7 @@ spec:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
       annotations:
-        # Secondary thunderbolt interface (NAD llama-cpp-tb): gives the
-        # leader the 10.66.0.3 source address so RPC packets to the workers
-        # (.4/.5) ride the USB4 cable symmetrically instead of hairpinning
-        # through br0.
+        # Thunderbolt attachment so RPC rides the USB4 cable instead of br0.
         k8s.v1.cni.cncf.io/networks: llama-cpp-tb
     spec:
       securityContext:

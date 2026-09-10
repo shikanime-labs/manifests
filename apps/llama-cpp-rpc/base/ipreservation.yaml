@@ -1,9 +1,4 @@
-# Deterministic addresses for the Multus thunderbolt attachments. Whereabouts
-# honors an OverlappingRangeIPReservation named after the IP by excluding it
-# from dynamic allocation and assigning it to the reserved pod. The llama-cpp
-# leader dials rpc servers by these literal addresses (LLAMA_ARG_RPC), so the
-# podref pins are the contract that keeps the dial string correct across any
-# pod recreation order.
+# Pod IPs pinned so the leader's literal LLAMA_ARG_RPC dial string stays correct.
 apiVersion: whereabouts.cni.cncf.io/v1alpha1
 kind: OverlappingRangeIPReservation
 metadata:
