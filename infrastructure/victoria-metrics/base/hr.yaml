@@ -38,5 +38,14 @@ spec:
     vmalert:
       extraArgs:
         enableTCP6: "true"
+    vmcluster:
+      spec:
+        vmstorage:
+          storage:
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage: 16Gi
     vmsingle:
       enabled: false

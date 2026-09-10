@@ -8,7 +8,7 @@ spec:
     grafana:
       replicas: 1
       persistence:
-        storageClassName: nishir-standard
+        storageClassName: nishir-ephemeral
     kubeControllerManager:
       vmScrape:
         spec:
@@ -43,15 +43,12 @@ spec:
                 resources:
                   requests:
                     storage: 2Gi
-                storageClassName: nishir-standard
+                storageClassName: nishir-ephemeral
         vmstorage:
           extraArgs:
             enableTCP6: "true"
           storage:
             volumeClaimTemplate:
               spec:
-                resources:
-                  requests:
-                    storage: 8Gi
-                storageClassName: nishir-standard
+                storageClassName: nishir-ephemeral
       enabled: true
