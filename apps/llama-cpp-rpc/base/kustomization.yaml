@@ -1,5 +1,4 @@
 resources:
-  - ipreservation.yaml
   - nad.yaml
   - sts.yaml
   - svc.yaml

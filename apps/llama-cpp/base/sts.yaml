@@ -37,15 +37,9 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
-      annotations:
-        # Direct peer-link attachment so RPC rides br1 instead of br0.
-        k8s.v1.cni.cncf.io/networks: llama-cpp-rpc
     spec:
       securityContext:
         fsGroup: 65532
-      nodeSelector:
-        # br1 (the RPC peer link) exists only on the MS-S1 hosts.
-        node.kubernetes.io/instance-type: minisforum-ms-s1
       containers:
         - name: llama-cpp
           image: llama-cpp
@@ -119,7 +113,7 @@ spec:
             - name: LLAMA_ARG_CACHE_TYPE_V
               value: q8_0
             - name: LLAMA_ARG_RPC
-              value: 10.66.0.4:50052,10.66.0.5:50052
+              value: llama-cpp-rpc-0.llama-cpp-rpc.shikanime.svc.cluster.local:50052,llama-cpp-rpc-1.llama-cpp-rpc.shikanime.svc.cluster.local:50052
       volumes:
         - name: models-preset
           configMap:
