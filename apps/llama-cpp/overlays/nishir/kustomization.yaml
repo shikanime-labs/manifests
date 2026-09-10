@@ -1,14 +1,10 @@
 resources:
   - ../../base
-  - cert.yaml
-  - backendtlspolicy.yaml
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
   - gateway.yaml
   - securitypolicy.yaml
 namespace: shikanime
-components:
-  - ../../components/tls
 configurations:
   - namereference.yaml
 labels:
@@ -80,6 +76,15 @@ patches:
     target:
       name: llama-cpp
       kind: NetworkPolicy
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: LLAMA_ARG_CORS_ORIGINS
+          value: https://inference.i.shikanime.studio
+    target:
+      name: llama-cpp
+      kind: StatefulSet
   - patch: |-
       - op: add
         path: /spec/hostnames

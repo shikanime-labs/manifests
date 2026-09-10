@@ -111,9 +111,3 @@ spec:
     - fqdn:
         hostname: llama-cpp.shikanime.svc.cluster.local
         port: 8080
-  tls:
-    caCertificateRefs:
-      - name: nishir-ca-certificates.crt
-        kind: ConfigMap
-        group: ""
-    sni: llama-cpp.shikanime.svc.cluster.local
