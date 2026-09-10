@@ -1021,7 +1021,7 @@ spec:
       name: llama-cpp-rpc
       namespace: shikanime
   interval: 10m
-  path: ./apps/llama-cpp-rpc/overlays/nishir-tailnet
+  path: ./apps/llama-cpp-rpc/overlays/nishir
   prune: true
   sourceRef:
     name: flux-system
