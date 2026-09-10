@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - backendtlspolicy.yaml
   - ../../components/monitoring
   - clienttrafficpolicy.yaml
   - gateway.yaml
