@@ -99,7 +99,7 @@ spec:
             - name: LLAMA_ARG_MODELS_DIR
               value: /models
             - name: LLAMA_ARG_MODELS_MAX
-              value: "1"
+              value: "3"
             - name: LLAMA_ARG_MODELS_AUTOLOAD
               value: "true"
             - name: LLAMA_ARG_EMBEDDINGS
