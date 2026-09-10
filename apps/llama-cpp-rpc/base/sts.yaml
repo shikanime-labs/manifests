@@ -29,12 +29,14 @@ spec:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp-rpc
       annotations:
-        # Thunderbolt attachment; requires tb0 on the nodes (machines peer link).
-        k8s.v1.cni.cncf.io/networks: llama-cpp-tb
+        # Direct peer-link attachment; requires br1 on the nodes (machines peer link).
+        k8s.v1.cni.cncf.io/networks: llama-cpp-rpc
     spec:
       securityContext:
         fsGroup: 65532
       nodeSelector:
+        # br1 (the RPC peer link) exists only on the MS-S1 hosts.
+        node.kubernetes.io/instance-type: minisforum-ms-s1
         feature.node.kubernetes.io/pci-0380_1002.present: "true"
       affinity:
         podAntiAffinity:
