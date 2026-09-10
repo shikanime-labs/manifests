@@ -15,3 +15,39 @@ spec:
     clientSecret:
       name: llama-cpp-oidc-client
     redirectURL: https://chat.i.shikanime.studio/oauth2/callback
+---
+# /v1 speaks API keys (the OIDC session cookie is not visible to cross-origin
+# browser calls), so it rides its own route with apiKeyAuth + CORS. Origins
+# stay exact — the wildcard form only ever matched a single segment.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: llama-cpp-apikey
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: llama-cpp-api
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  apiKeyAuth:
+    credentialRefs:
+      - name: inference-gateway-apikey
+        group: ""
+        kind: Secret
+    extractFrom:
+      - headers:
+          - Authorization
+          - X-Api-Key
+    sanitize: true
+    forwardClientIDHeader: x-inference-client-id
+  cors:
+    allowOrigins:
+      - "https://chat.i.shikanime.studio"
+    allowMethods:
+      - GET
+      - POST
+      - OPTIONS
+    allowHeaders:
+      - Authorization
+      - X-Api-Key
+      - Content-Type

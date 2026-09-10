@@ -22,6 +22,33 @@ patches:
       kind: HTTPRoute
   - patch: |-
       - op: add
+        path: /spec/hostnames
+        value:
+          - chat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: https
+    target:
+      name: llama-cpp-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - chat.i.shikanime.studio
+          - chat.taila659a.ts.net
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: http
+    target:
+      name: llama-cpp-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
         path: /spec/targetRefs
         value:
           - name: inference
