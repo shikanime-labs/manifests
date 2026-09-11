@@ -31,9 +31,9 @@ that mount (`share manager gRPC server is not running`), but the pod's existence
 `/host/dev/longhorn/<vol>` device underneath it.
 
 For RWX, **the block device is not exposed while the ShareManager exists.** You
-must flip the volume to RWO:
+must flip the volume to RWOP:
 
-- `kubectl patch volume <vol> --type=merge -p '{"spec":{"accessMode":"rwo","nodeID":""}}'`
+- `kubectl patch volume <vol> --type=merge -p '{"spec":{"accessMode":"rwop","nodeID":""}}'`
 
 That deletes the `ShareManager` CR and its pod and exposes
 `/host/dev/longhorn/<vol>` as a block device you can `xfs_repair`. After repair,
@@ -64,7 +64,7 @@ blockdev for an RWX volume; the `accessMode` flip is the required extra step.)
 4. Confirm before repairing — never run repairs against a volume still attached
    to a live workload.
 
-## Recover (RWO volume)
+## Recover (RWOP volume)
 
 Work inside any `longhorn-manager` pod; it carries a matching `xfs_repair`.
 
@@ -129,11 +129,11 @@ Work inside any `longhorn-manager` pod; it carries a matching `xfs_repair`.
      --type snap --label intent=pre-xfs-repair
    ```
 
-2. **Flip RWX → RWO** (deletes ShareManager CR + pod, exposes the block device):
+2. **Flip RWX → RWOP** (deletes ShareManager CR + pod, exposes the block device):
 
    ```sh
    kubectl -n longhorn-system patch volume <vol> --type=merge \
-     -p '{"spec":{"accessMode":"rwo","nodeID":""}}'
+     -p '{"spec":{"accessMode":"rwop","nodeID":""}}'
    ```
 
    Wait for `sharemanager/<vol>` and `pod/share-manager-<vol>` to disappear.
@@ -189,10 +189,10 @@ kubectl -n longhorn-system get volume <vol> -o jsonpath='{range .status.conditio
 - **Cordoning nodes to pin a volume.** In this cluster, cordoning 5/6 nodes
   broke the API server (`dial tcp 100.121.211.56:443: i/o timeout`). Never
   cordon to pin a volume — if the engine migrates, fix it via `.spec.nodeID`
-  (after the RWX→RWO flip), not node cordons.
+  (after the RWX→RWOP flip), not node cordons.
 - **`spec.nodeID` pin alone** (RWX). The field is cleared/overridden after
   attach; the engine migrates anyway. Pin only works once the ShareManager is
-  gone (post-RWO-flip).
+  gone (post-RWOP-flip).
 - **`allowScheduling=false` on Longhorn Node CRs.** Does not stop the
   share-manager pod — it is a regular k8s pod scheduled by the SM controller,
   not the Longhorn replica scheduler.
@@ -233,7 +233,7 @@ re-point the workload.
   stop RKE2, which detaches volumes and unmounts cleanly).
 - Expect dirty logs after any watchdog hard reset; go straight to this runbook
   instead of deleting PVCs.
-- For RWX volumes, document the RWX→RWO→repair→RWX dance up front so the
+- For RWX volumes, document the RWX→RWOP→repair→RWX dance up front so the
   ShareManager chicken-and-egg does not burn an operator's afternoon.
 
 ## References
