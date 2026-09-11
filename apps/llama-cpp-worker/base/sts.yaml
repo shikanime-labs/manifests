@@ -47,7 +47,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchLabels:
-                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/instance: llama-cpp-leader
               topologyKey: kubernetes.io/hostname
       containers:
         - name: llama-cpp-worker

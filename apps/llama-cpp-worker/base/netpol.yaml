@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/instance: llama-cpp-worker
       app.kubernetes.io/name: llama-cpp-worker
   policyTypes:
     - Ingress
@@ -14,7 +14,7 @@ spec:
     - from:
         - podSelector:
             matchLabels:
-              app.kubernetes.io/instance: llama-cpp
+              app.kubernetes.io/instance: llama-cpp-leader
               app.kubernetes.io/name: llama-cpp-leader
       ports:
         - port: rpc
