@@ -6,14 +6,11 @@ metadata:
 spec:
   ingress:
     - from:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: monitoring-system
-          podSelector:
-            matchLabels:
-              app.kubernetes.io/name: vmagent
+        - ipBlock:
+            cidr: 192.168.1.0/24
       ports:
-        - port: metrics
+        - port: 8000
+          protocol: TCP
   podSelector:
     matchLabels:
       app.kubernetes.io/name: vertical-pod-autoscaler
