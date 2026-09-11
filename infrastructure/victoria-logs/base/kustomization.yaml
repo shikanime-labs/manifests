@@ -1,3 +1,4 @@
 resources:
   - hr.yaml
   - httproute.yaml
+  - vpa.yaml
