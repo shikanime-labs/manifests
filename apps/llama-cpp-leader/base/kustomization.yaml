@@ -8,6 +8,6 @@ images:
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
     digest: sha256:0aa31db22558d7cbad3a9915e800131639655383aea14c8cef32d49f8e8f3451
 configMapGenerator:
-  - name: llama-cpp-models-preset
+  - name: llama-cpp-leader-models-preset
     files:
-      - models-preset.ini=llama-cpp-models-preset/models-preset.ini
+      - models-preset.ini=llama-cpp-leader-models-preset/models-preset.ini

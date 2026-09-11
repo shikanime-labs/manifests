@@ -6,6 +6,6 @@ labels:
     pairs:
       app.kubernetes.io/component: inference
       app.kubernetes.io/instance: llama-cpp
-      app.kubernetes.io/name: llama-cpp-rpc
+      app.kubernetes.io/name: llama-cpp-worker
       app.kubernetes.io/part-of: nishir-inference
       app.kubernetes.io/version: 0.0.0

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: llama-cpp-rpc
+  name: llama-cpp-worker
   namespace: shikanime
 spec:
   clusterIP: None
   selector:
     app.kubernetes.io/instance: llama-cpp
-    app.kubernetes.io/name: llama-cpp-rpc
+    app.kubernetes.io/name: llama-cpp-worker
   ports:
     - name: rpc
       appProtocol: shikanime.studio/ggml-rpc

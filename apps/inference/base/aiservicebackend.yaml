@@ -84,3 +84,16 @@ spec:
     name: llama-cpp
     kind: Backend
     group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: llama-cpp-leader
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: llama-cpp-leader
+    kind: Backend
+    group: gateway.envoyproxy.io

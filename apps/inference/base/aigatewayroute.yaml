@@ -15,11 +15,14 @@ spec:
         - name: llama-cpp
           priority: 0
           modelNameOverride: qwen/qwen3.8-27b
-        - name: nous
+        - name: llama-cpp-leader
           priority: 1
           modelNameOverride: qwen/qwen3.8-27b
-        - name: openrouter
+        - name: nous
           priority: 2
+          modelNameOverride: qwen/qwen3.8-27b
+        - name: openrouter
+          priority: 3
           modelNameOverride: qwen/qwen3.8-27b
     - matches:
         - headers:
@@ -31,11 +34,14 @@ spec:
         - name: llama-cpp
           priority: 0
           modelNameOverride: qwen/qwen3.8-flash
-        - name: nous
+        - name: llama-cpp-leader
           priority: 1
           modelNameOverride: qwen/qwen3.8-flash
-        - name: openrouter
+        - name: nous
           priority: 2
+          modelNameOverride: qwen/qwen3.8-flash
+        - name: openrouter
+          priority: 3
           modelNameOverride: qwen/qwen3.8-flash
     - matches:
         - headers:
@@ -44,7 +50,7 @@ spec:
               value: deepseek/deepseek-v4-flash
       modelsOwnedBy: Shikanime Studio
       backendRefs:
-        - name: llama-cpp
+        - name: llama-cpp-leader
           priority: 0
           modelNameOverride: deepseek/deepseek-v4-flash
         - name: nous
@@ -63,7 +69,7 @@ spec:
         - name: z-ai-openai
           priority: 0
           modelNameOverride: glm-5.3-flash
-        - name: llama-cpp
+        - name: llama-cpp-leader
           priority: 1
           modelNameOverride: z-ai/glm-5.3-flash
         - name: nous
@@ -79,11 +85,14 @@ spec:
         - name: llama-cpp
           priority: 0
           modelNameOverride: qwen/qwen3-embedding-8b
-        - name: nous
+        - name: llama-cpp-leader
           priority: 1
           modelNameOverride: qwen/qwen3-embedding-8b
-        - name: openrouter
+        - name: nous
           priority: 2
+          modelNameOverride: qwen/qwen3-embedding-8b
+        - name: openrouter
+          priority: 3
           modelNameOverride: qwen/qwen3-embedding-8b
     - matches:
         - headers:
