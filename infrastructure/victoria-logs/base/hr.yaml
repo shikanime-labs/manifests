@@ -23,4 +23,4 @@ spec:
         enabled: true
         accessModes:
           - ReadWriteOncePod
-        size: 32Gi
+        size: 64Gi
