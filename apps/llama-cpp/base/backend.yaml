@@ -1,5 +1,4 @@
 ---
-# One Backend per provider: failover is per-Backend and shared keys 401, so hosts can't be aggregated.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
@@ -56,9 +55,6 @@ spec:
     wellKnownCACertificates: System
     sni: api.mistral.ai
 ---
-# Z.ai remote MCP servers. Envoy AI Gateway requires unique backendRef names,
-# so each MCP server gets its own Backend even though they share api.z.ai.
-# The single `zai` Backend above stays for the LLM AIServiceBackend.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
@@ -111,3 +107,17 @@ spec:
     - fqdn:
         hostname: llama-cpp.shikanime.svc.cluster.local
         port: 8080
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: z-ai-openai
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: api.z.ai
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: api.z.ai

@@ -1,10 +1,10 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: longhorn
-  namespace: longhorn-system
+  name: victoria-logs-monitoring
+  namespace: monitoring-system
 spec:
-  gatewayClassName: longhorn
+  gatewayClassName: victoria-logs-monitoring
   listeners:
     - name: http
       port: 80
@@ -15,6 +15,9 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: studio-shikanime-i-longhorn
+          - name: studio-shikanime-i-grafana
+            group: ""
+            kind: Secret
+          - name: studio-shikanime-i-telemetry
             group: ""
             kind: Secret

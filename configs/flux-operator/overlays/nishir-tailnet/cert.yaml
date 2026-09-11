@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-flux
+  namespace: flux-system
+spec:
+  commonName: flux.taila659a.ts.net
+  dnsNames:
+    - flux.taila659a.ts.net
+  issuerRef:
+    name: tailscale
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-flux
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

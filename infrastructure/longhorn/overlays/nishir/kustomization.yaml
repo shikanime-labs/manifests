@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - gateway.yaml
+  - httproute.yaml
 components:
   - ../../components/monitoring
 patches:

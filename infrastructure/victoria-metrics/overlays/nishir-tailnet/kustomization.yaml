@@ -1,16 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
   - ../nishir
-  - cert-telemetry.yaml
-  - cert.yaml
   - envoyproxy.yaml
+  - gateway.yaml
   - gatewayclass.yaml
 patches:
   - patch: |-
       - op: add
-        path: /spec/hostnames
-        value:
-        - grafana.i.shikanime.studio
-      - op: add
+        path: /spec/hostnames/-
+        value: grafana.taila659a.ts.net
+      - op: replace
         path: /spec/parentRefs
         value:
         - name: grafana
@@ -21,10 +21,9 @@ patches:
       namespace: monitoring-system
   - patch: |-
       - op: add
-        path: /spec/hostnames
-        value:
-        - grafana.i.shikanime.studio
-      - op: add
+        path: /spec/hostnames/-
+        value: grafana.taila659a.ts.net
+      - op: replace
         path: /spec/parentRefs
         value:
         - name: grafana
@@ -35,10 +34,9 @@ patches:
       namespace: monitoring-system
   - patch: |-
       - op: add
-        path: /spec/hostnames
-        value:
-        - telemetry.i.shikanime.studio
-      - op: add
+        path: /spec/hostnames/-
+        value: telemetry.taila659a.ts.net
+      - op: replace
         path: /spec/parentRefs
         value:
         - name: grafana
@@ -49,10 +47,9 @@ patches:
       namespace: monitoring-system
   - patch: |-
       - op: add
-        path: /spec/hostnames
-        value:
-        - telemetry.i.shikanime.studio
-      - op: add
+        path: /spec/hostnames/-
+        value: telemetry.taila659a.ts.net
+      - op: replace
         path: /spec/parentRefs
         value:
         - name: grafana
@@ -61,3 +58,11 @@ patches:
       name: telemetry-redirect
       kind: HTTPRoute
       namespace: monitoring-system
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: victoria-metrics
+      app.kubernetes.io/instance: nishir
+      app.kubernetes.io/name: victoria-metrics
+      app.kubernetes.io/part-of: nishir-infrastructure
+      app.kubernetes.io/version: 0.82.0
