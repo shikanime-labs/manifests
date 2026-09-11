@@ -1,12 +1,12 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: envoy-gateway
-  namespace: envoy-gateway-system
+  name: cnpg-controller-manager
+  namespace: cnpg-system
 spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: envoy-gateway
+    name: cnpg-controller-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate

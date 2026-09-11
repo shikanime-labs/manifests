@@ -1,0 +1,39 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlinsert
+  namespace: monitoring-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vlogs-vlinsert
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlselect
+  namespace: monitoring-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vlogs-vlselect
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlstorage
+  namespace: monitoring-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: vlogs-vlstorage
+  updatePolicy:
+    updateMode: InPlaceOrRecreate

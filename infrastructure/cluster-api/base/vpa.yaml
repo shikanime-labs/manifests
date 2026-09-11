@@ -1,12 +1,12 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: envoy-gateway
-  namespace: envoy-gateway-system
+  name: capi-controller-manager
+  namespace: capi-system
 spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: envoy-gateway
+    name: capi-controller-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate

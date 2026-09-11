@@ -1,12 +1,12 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: envoy-gateway
-  namespace: envoy-gateway-system
+  name: external-dns
+  namespace: external-dns-system
 spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: envoy-gateway
+    name: external-dns
   updatePolicy:
     updateMode: InPlaceOrRecreate
