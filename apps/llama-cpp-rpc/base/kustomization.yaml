@@ -3,3 +3,7 @@ resources:
   - sts.yaml
   - svc.yaml
   - vpa.yaml
+images:
+  - name: llama-cpp-rpc
+    newName: ghcr.io/shikanime-labs/machines/llama-cpp-rpc
+    digest: sha256:0c91a9419fb2b781dd5af559cba8f5a6f5eedf0b7ac456941438a47119d34f3a
