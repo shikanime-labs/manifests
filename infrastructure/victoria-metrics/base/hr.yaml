@@ -47,5 +47,13 @@ spec:
                 resources:
                   requests:
                     storage: 16Gi
+                accessModes:
+                  - ReadWriteOncePod
+        vmselect:
+          storage:
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOncePod
     vmsingle:
       enabled: false
