@@ -4,13 +4,7 @@ metadata:
   name: vpa-metrics
   namespace: autoscaler-system
 spec:
-  ingress:
-    - from:
-        - ipBlock:
-            cidr: 192.168.1.0/24
-      ports:
-        - port: 8000
-          protocol: TCP
+  ingress: []
   podSelector:
     matchLabels:
       app.kubernetes.io/name: vertical-pod-autoscaler
