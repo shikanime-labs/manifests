@@ -25,9 +25,14 @@ Before tuning, establish from the model card / GGUF repo:
 
 ## Architecture under test
 
-- `sts/llama-cpp` (leader, CPU-only `llama-server` in router mode, port 8080)
-- `sts/llama-cpp-rpc` (2 × `ggml-rpc-server`, one per MS-S1, `/dev/kfd` + `/dev/dri`)
-- Leader dials both workers via `LLAMA_ARG_RPC` (router-global env — see
+- `sts/llama-cpp` (leader, `llama-server` in router mode, port 8080) — since
+  #2316 the leader schedules on a ROCm GPU node (NFD `pci-0380_1002`), runs
+  privileged with `/dev/kfd` + `/dev/dri`, and contributes its own GPU to the
+  tensor pool.
+- `sts/llama-cpp-rpc` (1 × `ggml-rpc-server`, `/dev/kfd` + `/dev/dri`); leader
+  and worker carry a mutual required anti-affinity on the `llama-cpp` instance
+  label, so the two GPUs never share a node (#2316, issue #2308).
+- Leader dials the worker via `LLAMA_ARG_RPC` (router-global env — see
   Traps).
 - Inter-node link: bonded 10 GbE (`eth0 speed=10000` inside the rpc pods), ~65 us
   RTT; NOT the 2.5 GbE onboard the strategy issue #1804 assumed.
@@ -109,28 +114,45 @@ leader (27B: 17.51 t/s landed vs 16.85 shadow).
 
 ## Traps
 
-- **Deepseek wedge**: a `deepseek/deepseek-v4-flash` request that reaches the
-  local floor starts an MXFP4 tensor stream that can wedge the router for 30+
-  min and starve the liveness probe (restart loop). Benchmark only when that
-  route fails over cleanly; see issue #2309 comment log.
+- **Deepseek wedge** (root-caused): the 30+ min router wedge + liveness
+  restart loop was the broken-shard stream (see the unsloth trap above), not
+  MXFP4 behavior. The MXFP4 tensor set itself streams cleanly (zero asserts,
+  warm tensor caches both workers). See issue #2309 comment log.
 - **Serialization is load-phase, not structural**: the router CAN serve another
   model while a slow load is download-bound (~36m cores); it starves only when
   the streaming phase saturates CPU.
+- `LLAMA_ARG_RPC` is router-global: a dead host in the list kills every child
+  at spawn — `ggml-rpc.cpp` aborts in `common_params_parse` with
+  "Remote RPC server crashed or returned malformed response" (looks like an
+  arg/preset bug; it is connectivity). After fleet reshapes (#2316 shrank to
+  one worker), verify the live env matches main before blaming presets — a
+  suspended `apps-llama-cpp` KS freezes the old value in place.
+- **Sharded unsloth GGUF repos are broken upstream**: shard
+  `*-00001-of-*.gguf` is metadata-only (valid header, `n_tensors=0`) across
+  quants. Loader streams the full ~120 GB, then dies
+  `GGML_ASSERT ... tensor read out of bounds`. Deterministic, cache-independent;
+  fix is the preset source, not re-download (deepseek + qwen3.8-flash moved to
+  `lmstudio-community` single-file builds, PR #2307).
+- **Cached presets shadow the ini**: `load_models()` merges presets cached in
+  the HF cache PVC with `models-preset.ini` by section name; a cached `hf=`
+  wins. After editing a section's source, delete the old `models--<org>--<repo>`
+  dir from the PVC or the change never takes.
 - `--embeddings` is router-global → every child clamps `n_batch` to
   `n_ubatch` (512). Per-model `ubatch-size`/`batch-size` keys bypass it.
-- `LLAMA_ARG_RPC` is router-global: a single-worker placement helps
-  node-fitting models but starves the big ones (glm-5.3-flash 98 GB,
-  qwen3.8-flash 79 GB need both pools). Do not land placement wins for one
-  model as router-global changes.
+- Since #2316 the tensor pool is the leader GPU + one worker GPU; models
+  larger than one node's pool (glm-5.3-flash 98 GB) span both over RPC and
+  pay the inter-node hop. Placement experiments now mean "local leader GPU
+  only" vs "+rpc worker", not the old 2-worker split.
 - `spec-draft-n-max` is per-model: the 27B optimum (4) regressed at 6;
   re-sweep per model, never copy blind.
 - The mmproj (~0.9 GiB) auto-loads with the LM and rides the RPC buffers.
 
 ## Reference results per model
 
-| model                | quant      | landed decode | notes                       |
-| -------------------- | ---------- | ------------- | --------------------------- |
-| qwen/qwen3.8-27b     | UD-Q4_K_XL | 17.51 t/s     | PR #2312, from 10.4 baseline |
+| model                    | quant              | landed decode | notes                          |
+| ------------------------ | ------------------ | ------------- | ------------------------------ |
+| qwen/qwen3.8-27b         | UD-Q4_K_XL         | 17.51 t/s     | PR #2312, from 10.4 baseline   |
+| deepseek/deepseek-v4-flash | lmstudio MXFP4   | pending e2e   | PR #2307; artifact verified (0 asserts), e2e blocked by rpc-1 env residue |
 
 Append a row per tuned model; keep raw runs in the linked issue.
 
