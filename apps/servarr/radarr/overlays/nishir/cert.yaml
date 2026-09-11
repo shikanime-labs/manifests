@@ -23,3 +23,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-radarr
+  namespace: shikanime
+spec:
+  commonName: radarr.i.shikanime.studio
+  dnsNames:
+    - radarr.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-radarr
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

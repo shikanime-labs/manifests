@@ -1,6 +1,5 @@
 resources:
   - ../nishir
-  - backendtlspolicy.yaml
   - envoyproxy.yaml
   - gatewayclass.yaml
 namespace: shikanime

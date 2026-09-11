@@ -16,3 +16,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-qbittorrent
+  namespace: shikanime
+spec:
+  commonName: qbittorrent.i.shikanime.studio
+  dnsNames:
+    - qbittorrent.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-qbittorrent
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

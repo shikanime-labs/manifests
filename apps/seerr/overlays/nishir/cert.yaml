@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-seerr
+  namespace: shikanime
+spec:
+  commonName: seerr.i.shikanime.studio
+  dnsNames:
+    - seerr.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-seerr
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

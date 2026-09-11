@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-slack
+  namespace: shikanime
+spec:
+  commonName: mautrix-slack.i.shikanime.studio
+  dnsNames:
+    - mautrix-slack.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-slack
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

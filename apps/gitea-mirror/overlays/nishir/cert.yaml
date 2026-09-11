@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-gitea-mirror
+  namespace: shikanime
+spec:
+  commonName: gitea-mirror.i.shikanime.studio
+  dnsNames:
+    - gitea-mirror.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-gitea-mirror
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

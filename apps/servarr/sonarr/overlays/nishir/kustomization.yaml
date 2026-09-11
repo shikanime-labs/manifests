@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - gateway.yaml
   - securitypolicy.yaml
 namespace: shikanime
 components:
