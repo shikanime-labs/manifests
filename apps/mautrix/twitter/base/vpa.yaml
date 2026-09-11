@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-twitter
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

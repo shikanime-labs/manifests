@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: llama-cpp
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-googlechat
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

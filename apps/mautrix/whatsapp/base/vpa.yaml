@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: mautrix-whatsapp
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

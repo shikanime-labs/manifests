@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: maintainerr
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

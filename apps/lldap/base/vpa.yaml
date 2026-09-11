@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: lldap
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

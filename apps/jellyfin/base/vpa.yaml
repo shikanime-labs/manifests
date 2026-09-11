@@ -8,4 +8,4 @@ spec:
     kind: StatefulSet
     name: jellyfin
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace

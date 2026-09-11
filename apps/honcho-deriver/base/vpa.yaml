@@ -8,4 +8,4 @@ spec:
     kind: Deployment
     name: honcho-deriver
   updatePolicy:
-    updateMode: Initial
+    updateMode: InPlace
