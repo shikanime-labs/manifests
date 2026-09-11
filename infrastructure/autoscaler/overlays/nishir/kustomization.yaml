@@ -4,3 +4,18 @@ components:
   - ../../components/monitoring
 patches:
   - path: patch-hr.yaml
+  - patch: |-
+      - op: add
+        path: /spec/ingress/-
+        value:
+          from:
+            - ipBlock:
+                cidr: 192.168.1.0/24
+          ports:
+            - port: 8000
+              protocol: TCP
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: NetworkPolicy
+      name: vpa-metrics
