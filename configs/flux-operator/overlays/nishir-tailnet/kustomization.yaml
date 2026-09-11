@@ -31,11 +31,3 @@ patches:
     target:
       name: flux-operator-receivers-redirect
       kind: HTTPRoute
-labels:
-  - includeTemplates: true
-    pairs:
-      app.kubernetes.io/component: flux-operator
-      app.kubernetes.io/instance: nishir
-      app.kubernetes.io/name: flux-operator
-      app.kubernetes.io/part-of: nishir-infrastructure
-      app.kubernetes.io/version: 0.0.0

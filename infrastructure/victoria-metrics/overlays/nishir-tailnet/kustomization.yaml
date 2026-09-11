@@ -56,11 +56,3 @@ patches:
       name: telemetry-redirect
       kind: HTTPRoute
       namespace: monitoring-system
-labels:
-  - includeTemplates: true
-    pairs:
-      app.kubernetes.io/component: victoria-metrics
-      app.kubernetes.io/instance: nishir
-      app.kubernetes.io/name: victoria-metrics
-      app.kubernetes.io/part-of: nishir-infrastructure
-      app.kubernetes.io/version: 0.82.0
