@@ -21,4 +21,6 @@ spec:
     vlstorage:
       persistentVolume:
         enabled: true
+        accessModes:
+          - ReadWriteOncePod
         size: 32Gi
