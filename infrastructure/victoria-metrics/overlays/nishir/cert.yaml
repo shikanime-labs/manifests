@@ -1,0 +1,35 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-grafana
+  namespace: monitoring-system
+spec:
+  commonName: grafana.i.shikanime.studio
+  dnsNames:
+    - grafana.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-grafana
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-telemetry
+  namespace: monitoring-system
+spec:
+  commonName: telemetry.i.shikanime.studio
+  dnsNames:
+    - telemetry.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-telemetry
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
