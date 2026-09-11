@@ -267,7 +267,8 @@ decrypted output; change the encrypted source instead.
 
 Failure-mode recovery and on-call procedures live under
 [`runbooks/`](./runbooks/): Longhorn volume recovery, NFS recovery, kubevirt
-VM restart-required Flux health, and related procedures.
+VM restart-required Flux health, llama.cpp local-floor throughput
+optimization, and related procedures.
 
 ## Change conventions
 
