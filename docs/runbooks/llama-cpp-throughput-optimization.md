@@ -28,7 +28,8 @@ polluted by cold model load:
 kubectl port-forward -n shikanime pod/llama-cpp-0 18080:8080 &
 KEY=$(kubectl get secret -n shikanime llama-cpp-key-<hash> \
   -o jsonpath='{.data.apiKey}' | base64 -d)
-curl -H "Authorization: Bearer $KEY" http://127.0.0.1:18080/v1/chat/completions \
+curl -H "Authorization: Bearer $KEY" \
+  http://127.0.0.1:18080/v1/chat/completions \
   -d '{"model":"qwen/qwen3.8-27b","messages":[...],"max_tokens":256}'
 kubectl logs -n shikanime llama-cpp-0 | grep 'print_timing.*eval time' | tail
 ```
