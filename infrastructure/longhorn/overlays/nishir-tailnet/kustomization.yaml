@@ -9,3 +9,11 @@ patches:
       name: longhorn
       version: v2
       kind: HelmRelease
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: longhorn
+      app.kubernetes.io/instance: nishir
+      app.kubernetes.io/name: longhorn
+      app.kubernetes.io/part-of: nishir-infrastructure
+      app.kubernetes.io/version: 1.12.0

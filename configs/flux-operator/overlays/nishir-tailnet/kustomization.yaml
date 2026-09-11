@@ -1,5 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
   - ../nishir
+  - cert.yaml
   - envoyproxy.yaml
   - gateway.yaml
   - gatewayclass.yaml
@@ -13,8 +16,7 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-          - flux-receivers.taila659a.ts.net
-          - receivers.flux.i.shikanime.studio
+        - flux-receivers.taila659a.ts.net
     target:
       name: flux-operator-receivers
       kind: HTTPRoute
@@ -27,8 +29,15 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-          - flux-receivers.taila659a.ts.net
-          - receivers.flux.i.shikanime.studio
+        - flux-receivers.taila659a.ts.net
     target:
       name: flux-operator-receivers-redirect
       kind: HTTPRoute
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: flux-operator
+      app.kubernetes.io/instance: nishir
+      app.kubernetes.io/name: flux-operator
+      app.kubernetes.io/part-of: nishir-infrastructure
+      app.kubernetes.io/version: 0.0.0

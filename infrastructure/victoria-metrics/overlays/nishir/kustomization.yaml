@@ -3,4 +3,60 @@ resources:
   - gateway.yaml
   - httproute.yaml
 patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - grafana.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: grafana
+          sectionName: https
+    target:
+      name: grafana
+      kind: HTTPRoute
+      namespace: monitoring-system
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - grafana.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: grafana
+          sectionName: http
+    target:
+      name: grafana-redirect
+      kind: HTTPRoute
+      namespace: monitoring-system
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - telemetry.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: grafana
+          sectionName: https-telemetry
+    target:
+      name: telemetry
+      kind: HTTPRoute
+      namespace: monitoring-system
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - telemetry.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: grafana
+          sectionName: http
+    target:
+      name: telemetry-redirect
+      kind: HTTPRoute
+      namespace: monitoring-system
   - path: patch-hr.yaml
