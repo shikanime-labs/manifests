@@ -49,10 +49,10 @@ spec:
           modelNameOverride: deepseek/deepseek-v4-flash
         - name: nous
           priority: 1
-          modelNameOverride: deepseek/deepseek-v4-flash
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek/deepseek-v4-flash
+          modelNameOverride: deepseek/deepseek-v4-flash-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
