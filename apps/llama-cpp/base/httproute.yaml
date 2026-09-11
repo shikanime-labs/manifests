@@ -8,6 +8,11 @@ spec:
     - backendRefs:
         - name: llama-cpp
           port: 8080
+      # LLM generations routinely exceed Envoy Gateway's 15s default route
+      # timeout (envoy logs `UT response_timeout` at 15001ms and resets the
+      # stream mid-generation). 0s disables the cap for streaming responses.
+      timeouts:
+        request: 0s
 ---
 # Browser clients (the llama.cpp web UI) call /v1 cross-origin with an API
 # key, not the OIDC session cookie the UI routes use. A separate route keeps
@@ -26,6 +31,10 @@ spec:
       backendRefs:
         - name: llama-cpp
           port: 8080
+      # Same 15s-default-timeout disable as the UI route: /v1 carries the
+      # streaming chat completions.
+      timeouts:
+        request: 0s
 ---
 # Bypasses the ai-gateway MCP proxy for Z.ai remote MCP servers. The proxy
 # hard-requires HTTP 202 on the `notifications/initialized` handshake
