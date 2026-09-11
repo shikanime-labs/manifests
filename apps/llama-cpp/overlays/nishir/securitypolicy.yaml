@@ -41,16 +41,13 @@ spec:
     credentialRefs:
       # Same secret llama-server mounts as LLAMA_ARG_API_KEY_FILE: one key
       # authenticates both the gateway filter and the server itself.
-      - name: inference-llama-cpp
+      - name: llama-cpp-key
         group: ""
         kind: Secret
     extractFrom:
       - headers:
           - Authorization
           - X-Api-Key
-    # The credential must reach llama-server: it enforces its own key
-    # (inference-llama-cpp secret), so one key authenticates both the gateway
-    # filter and the server instead of two mismatched keys.
     sanitize: false
     forwardClientIDHeader: x-inference-client-id
   cors:
