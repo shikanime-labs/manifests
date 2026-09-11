@@ -1,0 +1,13 @@
+resources:
+  - netpol.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: llama-cpp
+    newName: ghcr.io/shikanime-labs/machines/llama-cpp
+    digest: sha256:7adb7f4ddc6a1e4388f2288c3778a02194419adc7fc0984ba97ea8668225d6bc
+configMapGenerator:
+  - name: llama-cpp-leader-models-preset
+    files:
+      - models-preset.ini=llama-cpp-leader-models-preset/models-preset.ini

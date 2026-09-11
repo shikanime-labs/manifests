@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: llama-cpp-rpc
+  name: llama-cpp-worker
   namespace: shikanime
 spec:
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
-  serviceName: llama-cpp-rpc
+  serviceName: llama-cpp-worker
   replicas: 1
   volumeClaimTemplates:
     - metadata:
@@ -22,12 +22,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
-      app.kubernetes.io/name: llama-cpp-rpc
+      app.kubernetes.io/name: llama-cpp-worker
   template:
     metadata:
       labels:
         app.kubernetes.io/instance: llama-cpp
-        app.kubernetes.io/name: llama-cpp-rpc
+        app.kubernetes.io/name: llama-cpp-worker
     spec:
       securityContext:
         fsGroup: 65532
@@ -50,7 +50,7 @@ spec:
                   app.kubernetes.io/instance: llama-cpp
               topologyKey: kubernetes.io/hostname
       containers:
-        - name: llama-cpp-rpc
+        - name: llama-cpp-worker
           image: llama-cpp-rpc
           command:
             - ggml-rpc-server

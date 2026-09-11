@@ -94,3 +94,19 @@ spec:
     secretRef:
       name: llama-cpp-key
       namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
+  name: llama-cpp-leader
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: llama-cpp-leader
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: llama-cpp-leader-key
+      namespace: shikanime

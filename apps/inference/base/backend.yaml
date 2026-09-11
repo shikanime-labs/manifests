@@ -121,3 +121,14 @@ spec:
   tls:
     wellKnownCACertificates: System
     sni: api.z.ai
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: llama-cpp-leader
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: llama-cpp-leader.shikanime.svc.cluster.local
+        port: 8080

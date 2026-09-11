@@ -983,7 +983,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-llama-cpp
+  name: apps-llama-cpp-leader
   namespace: flux-system
 spec:
   decryption:
@@ -991,19 +991,69 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: apps-llama-cpp-rpc
+    - name: infrastructure-victoria-metrics
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: llama-cpp-leader
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/llama-cpp-leader/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-llama-cpp-worker
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-victoria-metrics
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: llama-cpp-worker
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/llama-cpp-worker/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-inference
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: apps-llama-cpp
+    - name: apps-llama-cpp-leader
+    - name: apps-llama-cpp-worker
     - name: infrastructure-envoy-gateway
     - name: infrastructure-envoy-ai-gateway
     - name: infrastructure-cert-manager
     - name: infrastructure-victoria-metrics
     - name: infrastructure-tailscale
   healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: llama-cpp
+    - apiVersion: gateway.networking.k8s.io/v1
+      kind: Gateway
+      name: inference
       namespace: shikanime
   interval: 10m
-  path: ./apps/llama-cpp/overlays/nishir-tailnet
+  path: ./apps/inference/overlays/nishir-tailnet
   prune: true
   sourceRef:
     name: flux-system

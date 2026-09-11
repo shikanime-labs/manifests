@@ -1,10 +1,4 @@
 resources:
-  - aigatewayroute.yaml
-  - aiservicebackend.yaml
-  - backend.yaml
-  - backendsecuritypolicy.yaml
-  - httproute.yaml
-  - httproutefilter.yaml
   - netpol.yaml
   - sts.yaml
   - svc.yaml
@@ -12,7 +6,13 @@ resources:
 images:
   - name: llama-cpp
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
+<<<<<<< HEAD
     digest: sha256:0aa31db22558d7cbad3a9915e800131639655383aea14c8cef32d49f8e8f3451
+||||||| parent of cedafe72f (Split llama-cpp into local, leader, and worker lanes)
+    digest: sha256:6fe39258f3a32dd0036c126f7e80c976f1bbfbd3ff27eb695aa40eba42f1a932
+=======
+    digest: sha256:7adb7f4ddc6a1e4388f2288c3778a02194419adc7fc0984ba97ea8668225d6bc
+>>>>>>> cedafe72f (Split llama-cpp into local, leader, and worker lanes)
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
