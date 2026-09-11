@@ -3,6 +3,7 @@ resources:
   - backendtlspolicy.yaml
   - cert.yaml
   - gateway.yaml
+  - httproutefilter.yaml
 namespace: shikanime
 components:
   - ../../components/tls
