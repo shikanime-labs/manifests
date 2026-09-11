@@ -22,7 +22,7 @@ files. First request per model downloads its GGUF (~24 GB for the 27B); the
 HF cache is an `emptyDir`, so pods re-download after restarts unless the
 `models` volume is moved to a persistent hostPath. Preset sections:
 
-- `deepseek/deepseek-v4-flash-0731` —
+- `deepseek/deepseek-v4-flash` —
   `unsloth/DeepSeek-V4-Flash-0731-GGUF:UD-Q3_K_M`
 - `z-ai/glm-5.3-flash` — `unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS`
 - `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL` (17.6 GB)
