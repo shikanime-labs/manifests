@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: shikanime
 resources:
   - ../../base
+  - backendtlspolicy.yaml
   - cert.yaml
   - gateway.yaml
 components:

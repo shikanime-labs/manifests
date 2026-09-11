@@ -1,5 +1,7 @@
 resources:
   - ../../base
+  - cert.yaml
+  - gateway.yaml
 patches:
   - path: patch-pvc.yaml
   - patch: |-

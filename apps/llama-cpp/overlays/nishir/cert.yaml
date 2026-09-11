@@ -1,17 +1,17 @@
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-syncthing-tls
+  name: studio-shikanime-i-chat
+  namespace: shikanime
 spec:
-  commonName: syncthing
+  commonName: chat.i.shikanime.studio
   dnsNames:
-    - syncthing
-    - syncthing.shikanime
-    - syncthing.shikanime.svc.cluster.local
+    - chat.i.shikanime.studio
   issuerRef:
-    name: nishir
+    name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-syncthing-tls
+  secretName: studio-shikanime-i-chat
   usages:
     - digital signature
     - key encipherment
@@ -20,16 +20,16 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-syncthing
+  name: studio-shikanime-i-inference
   namespace: shikanime
 spec:
-  commonName: syncthing.i.shikanime.studio
+  commonName: inference.i.shikanime.studio
   dnsNames:
-    - syncthing.i.shikanime.studio
+    - inference.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-syncthing
+  secretName: studio-shikanime-i-inference
   usages:
     - digital signature
     - key encipherment

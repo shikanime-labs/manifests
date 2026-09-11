@@ -18,3 +18,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-copyparty
+  namespace: shikanime
+spec:
+  commonName: copyparty.i.shikanime.studio
+  dnsNames:
+    - copyparty.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-copyparty
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

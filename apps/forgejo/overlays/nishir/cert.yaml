@@ -16,3 +16,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-forgejo
+  namespace: shikanime
+spec:
+  commonName: forgejo.i.shikanime.studio
+  dnsNames:
+    - forgejo.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-forgejo
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

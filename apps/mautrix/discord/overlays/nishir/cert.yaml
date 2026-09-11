@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-discord
+  namespace: shikanime
+spec:
+  commonName: mautrix-discord.i.shikanime.studio
+  dnsNames:
+    - mautrix-discord.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-discord
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

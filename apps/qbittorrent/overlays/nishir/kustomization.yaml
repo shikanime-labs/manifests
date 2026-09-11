@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - backendtlspolicy.yaml
   - cert.yaml
   - gateway.yaml
   - securitypolicy.yaml

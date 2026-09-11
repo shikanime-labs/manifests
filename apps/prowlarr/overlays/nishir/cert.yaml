@@ -23,3 +23,21 @@ spec:
     - digital signature
     - key encipherment
     - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-prowlarr
+  namespace: shikanime
+spec:
+  commonName: prowlarr.i.shikanime.studio
+  dnsNames:
+    - prowlarr.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-prowlarr
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
