@@ -1,4 +1,5 @@
 resources:
+  - netpol.yaml
   - helmrepo.yaml
   - hr.yaml
   - ns.yaml
