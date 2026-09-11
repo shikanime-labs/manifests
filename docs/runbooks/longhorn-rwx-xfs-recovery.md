@@ -2,10 +2,10 @@
 
 Generic runbook for recovering a Longhorn **RWX (ReadWriteMany)** volume whose
 XFS log was left dirty by an ungraceful node loss. RWX volumes add a
-chicken-and-egg the plain (RWO) case does not have: the `ShareManager` CR owns
+chicken-and-egg the plain (RWOP) case does not have: the `ShareManager` CR owns
 an NFS export pod that needs a clean mount, while the dirty log blocks that
 mount — and that pod's existence holds/migrates the engine so the raw device
-cannot be repaired. The fix is to flip the volume to **RWO** (which
+cannot be repaired. The fix is to flip the volume to **RWOP** (which
 deletes the ShareManager CR and exposes the block device), repair, then flip
 back to RWX.
 
@@ -58,11 +58,11 @@ $KB -n $NS create snapshot $VOL-prerepair-$(date +%Y%m%d-%H%M%S) \
   --type snap --label intent=pre-xfs-repair
 ```
 
-### 2. Flip RWX → RWO (kills ShareManager, exposes the block device)
+### 2. Flip RWX → RWOP (kills ShareManager, exposes the block device)
 
 ```sh
 $KB -n $NS patch volume $VOL --type=merge \
-  -p '{"spec":{"accessMode":"rwo","nodeID":""}}'
+  -p '{"spec":{"accessMode":"rwop","nodeID":""}}'
 ```
 
 Wait for the `ShareManager` CR and `share-manager-$VOL` pod to disappear:
@@ -195,7 +195,7 @@ Success: SM pod `Ready=True`, NFS-Ganesha logs `NFS SERVER INITIALIZED`, volume
 | 6       | Launch repair before the device re-attached                 | `fatal error -- couldn't initialize XFS library` (device wasn't present yet).                                                                                                             |
 | 7       | Cordon 5/6 nodes to "pin" the volume                        | Broke the API server (`dial tcp <api>:443: i/o timeout`). **Never cordon to pin a volume.** Uncordon immediately.                                                                          |
 
-The only reliable path was: **snapshot → RWX→RWO flip → pin node → confirm
+The only reliable path was: **snapshot → RWX→RWOP flip → pin node → confirm
 device present & unmounted → `xfs_repair` (no `-L`) → re-enable RWX → set
 replicas**. No cordons, no `disableFrontend`, no lone CR delete.
 
