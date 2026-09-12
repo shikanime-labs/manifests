@@ -4,7 +4,7 @@ metadata:
   name: llama-cpp-rpc
   namespace: shikanime
 spec:
-  clusterIP: None
+  internalTrafficPolicy: Local
   selector:
     app.kubernetes.io/instance: llama-cpp
     app.kubernetes.io/name: llama-cpp-rpc

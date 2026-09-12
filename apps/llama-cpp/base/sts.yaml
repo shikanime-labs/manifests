@@ -5,7 +5,7 @@ metadata:
   namespace: shikanime
 spec:
   serviceName: llama-cpp
-  replicas: 1
+  replicas: 2
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
@@ -52,7 +52,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchLabels:
-                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp
               topologyKey: kubernetes.io/hostname
       containers:
         - name: llama-cpp
@@ -130,7 +130,7 @@ spec:
             - name: LLAMA_ARG_CACHE_TYPE_V
               value: q8_0
             - name: LLAMA_ARG_RPC
-              value: llama-cpp-rpc-0.llama-cpp-rpc.shikanime.svc.cluster.local:50052
+              value: llama-cpp-rpc.shikanime.svc.cluster.local:50052
       volumes:
         - name: models-preset
           configMap:
