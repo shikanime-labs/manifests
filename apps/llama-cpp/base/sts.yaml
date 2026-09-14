@@ -92,7 +92,7 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - name: cache-huggingface
-              mountPath: /.cache/huggingface
+              mountPath: /home/llama/.cache/huggingface
             - name: models-preset
               mountPath: /etc/llama-cpp/preset
               readOnly: true
