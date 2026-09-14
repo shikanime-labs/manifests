@@ -19,6 +19,15 @@ spec:
         storageClassName: nishir-ephemeral
         accessModes:
           - ReadWriteOncePod
+    - metadata:
+        name: cache-mesa
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: nishir-ephemeral
+        accessModes:
+          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
@@ -74,6 +83,8 @@ spec:
           volumeMounts:
             - name: cache
               mountPath: /cache
+            - name: cache-mesa
+              mountPath: /home/llama/.cache
             - name: dev-kfd
               mountPath: /dev/kfd
             - name: dev-dri
