@@ -33,6 +33,14 @@ spec:
             - cpu
             - local
             - pci
+            - custom
+          featureSources:
+            - system
+            - kernel
+            - network
+            - cpu
+            - local
+            - pci
         custom:
           - name: network.2.5g
             labels:
@@ -62,10 +70,3 @@ spec:
                     op: In
                     value:
                       - up
-        featureSources:
-          - system
-          - kernel
-          - network
-          - cpu
-          - local
-          - pci
