@@ -24,44 +24,6 @@ spec:
       name: llama-cpp-oidc-client
     redirectURL: https://chat.i.shikanime.studio/oauth2/callback
 ---
-# /v1 speaks API keys (the OIDC session cookie is not visible to cross-origin
-# browser calls), so it rides its own route with apiKeyAuth + CORS. Origins
-# stay exact — the wildcard form only ever matched a single segment.
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: SecurityPolicy
-metadata:
-  name: llama-cpp-apikey
-  namespace: shikanime
-spec:
-  targetRefs:
-    - name: llama-cpp-api
-      kind: HTTPRoute
-      group: gateway.networking.k8s.io
-  apiKeyAuth:
-    credentialRefs:
-      # Same secret llama-server mounts as LLAMA_ARG_API_KEY_FILE: one key
-      # authenticates both the gateway filter and the server itself.
-      - name: llama-cpp-key
-        group: ""
-        kind: Secret
-    extractFrom:
-      - headers:
-          - Authorization
-          - X-Api-Key
-    sanitize: false
-    forwardClientIDHeader: x-inference-client-id
-  cors:
-    allowOrigins:
-      - "https://chat.i.shikanime.studio"
-    allowMethods:
-      - GET
-      - POST
-      - OPTIONS
-    allowHeaders:
-      - Authorization
-      - X-Api-Key
-      - Content-Type
----
 # Inbound API-key gate layered on top of the existing mTLS client-cert
 # requirement (ClientTrafficPolicy inference). A request must present both a
 # CA-signed client certificate AND a valid key in the Authorization header
