@@ -28,8 +28,6 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp-rpc
-      annotations:
-        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-rpc@10.66.0.4
     spec:
       securityContext:
         fsGroup: 65532
