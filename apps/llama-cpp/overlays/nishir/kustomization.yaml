@@ -41,10 +41,6 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-key/.enc.env
-  - name: llama-cpp-key
-    namespace: shikanime
-    envs:
-      - llama-cpp-key/.enc.env
 patches:
   - patch: |-
       - op: add
