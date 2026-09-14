@@ -18,7 +18,7 @@ spec:
           livenessProbe:
             initialDelaySeconds: 15
             tcpSocket:
-              port: 9222
+              port: cdp
             timeoutSeconds: 5
           ports:
             - name: cdp
@@ -26,13 +26,13 @@ spec:
           readinessProbe:
             initialDelaySeconds: 5
             tcpSocket:
-              port: 9222
+              port: cdp
             timeoutSeconds: 5
           startupProbe:
             failureThreshold: 30
             periodSeconds: 3
             tcpSocket:
-              port: 9222
+              port: cdp
           volumeMounts:
             - name: dshm
               mountPath: /dev/shm
