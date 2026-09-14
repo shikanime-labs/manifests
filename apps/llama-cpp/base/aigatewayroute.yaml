@@ -60,9 +60,6 @@ spec:
               value: qwen/qwen3.6-35b-a3b
       modelsOwnedBy: Shikanime Studio
       backendRefs:
-        - name: llama-cpp
-          priority: 0
-          modelNameOverride: qwen/qwen3.6-35b-a3b
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.6-35b-a3b
@@ -79,9 +76,6 @@ spec:
         - name: z-ai-openai
           priority: 0
           modelNameOverride: glm-5.3-flash
-        - name: llama-cpp
-          priority: 1
-          modelNameOverride: z-ai/glm-5.3-flash
         - name: nous
           priority: 2
           modelNameOverride: z-ai/glm-5.3-flash
