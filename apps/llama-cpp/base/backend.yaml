@@ -106,7 +106,7 @@ spec:
   endpoints:
     - fqdn:
         hostname: llama-cpp.shikanime.svc.cluster.local
-        port: 8080
+        port: 9931
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend

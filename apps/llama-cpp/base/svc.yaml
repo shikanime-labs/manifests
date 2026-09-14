@@ -10,6 +10,6 @@ spec:
   ports:
     - name: http
       appProtocol: http
-      port: 8080
+      port: 9931
       protocol: TCP
       targetPort: http

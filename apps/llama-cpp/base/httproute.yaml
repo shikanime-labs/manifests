@@ -7,7 +7,7 @@ spec:
   rules:
     - backendRefs:
         - name: llama-cpp
-          port: 8080
+          port: 9931
       # LLM generations routinely exceed Envoy Gateway's 15s default route
       # timeout (envoy logs `UT response_timeout` at 15001ms and resets the
       # stream mid-generation). 0s disables the cap for streaming responses.
@@ -30,7 +30,7 @@ spec:
             value: /v1
       backendRefs:
         - name: llama-cpp
-          port: 8080
+          port: 9931
       # Same 15s-default-timeout disable as the UI route: /v1 carries the
       # streaming chat completions.
       timeouts:
