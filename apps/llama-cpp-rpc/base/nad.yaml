@@ -1,12 +1,12 @@
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
-  name: llama-cpp-leader-peer
+  name: llama-cpp-leader
 spec:
   config: |-
     {
       "cniVersion": "0.4.0",
-      "name": "llama-cpp-leader-peer",
+      "name": "llama-cpp-leader",
       "type": "macvlan",
       "master": "br1",
       "mode": "bridge",
@@ -23,12 +23,12 @@ spec:
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
-  name: llama-cpp-rpc-peer
+  name: llama-cpp-peer
 spec:
   config: |-
     {
       "cniVersion": "0.4.0",
-      "name": "llama-cpp-rpc-peer",
+      "name": "llama-cpp-peer",
       "type": "macvlan",
       "master": "br1",
       "mode": "bridge",
