@@ -1,4 +1,5 @@
 resources:
+  - nad.yaml
   - netpol.yaml
   - sts.yaml
   - svc.yaml
