@@ -137,6 +137,8 @@ spec:
               value: "3"
             - name: LLAMA_ARG_MODELS_AUTOLOAD
               value: "true"
+            - name: LLAMA_ARG_ENDPOINT_METRICS
+              value: "true"
             - name: LLAMA_ARG_EMBEDDINGS
               value: "true"
             - name: LLAMA_ARG_CTX_SIZE
