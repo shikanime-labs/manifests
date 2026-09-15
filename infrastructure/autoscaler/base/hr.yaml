@@ -23,7 +23,7 @@ spec:
   values:
     admissionController:
       extraArgs:
-        - --feature-gates=InPlace=true,InPlaceOrRecreate=true
+        - --feature-gates=InPlace=true
       certGen:
         enabled: false
       certManager:
