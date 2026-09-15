@@ -16,6 +16,11 @@ spec:
           - "false"
       port: http
       scrapeTimeout: 30s
+      relabelConfigs:
+        - targetLabel: model
+          replacement: deepseek/deepseek-v4-flash
+        - targetLabel: instance
+          replacement: llama-cpp-deepseek-v4-flash
     - interval: 60s
       path: /metrics
       params:
@@ -25,6 +30,11 @@ spec:
           - "false"
       port: http
       scrapeTimeout: 30s
+      relabelConfigs:
+        - targetLabel: model
+          replacement: qwen/qwen3.8-27b
+        - targetLabel: instance
+          replacement: llama-cpp-qwen3.8-27b
     - interval: 60s
       path: /metrics
       params:
@@ -34,6 +44,11 @@ spec:
           - "false"
       port: http
       scrapeTimeout: 30s
+      relabelConfigs:
+        - targetLabel: model
+          replacement: qwen/qwen3.8-flash
+        - targetLabel: instance
+          replacement: llama-cpp-qwen3.8-flash
     - interval: 60s
       path: /metrics
       params:
@@ -43,6 +58,11 @@ spec:
           - "false"
       port: http
       scrapeTimeout: 30s
+      relabelConfigs:
+        - targetLabel: model
+          replacement: qwen/qwen3-embedding-8b
+        - targetLabel: instance
+          replacement: llama-cpp-qwen3-embedding-8b
   namespaceSelector:
     matchNames:
       - shikanime
