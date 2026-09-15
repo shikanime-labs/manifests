@@ -9,6 +9,38 @@ spec:
   endpoints:
     - interval: 60s
       path: /metrics
+      params:
+        model:
+          - deepseek/deepseek-v4-flash
+        autoload:
+          - "false"
+      port: http
+      scrapeTimeout: 30s
+    - interval: 60s
+      path: /metrics
+      params:
+        model:
+          - qwen/qwen3.8-27b
+        autoload:
+          - "false"
+      port: http
+      scrapeTimeout: 30s
+    - interval: 60s
+      path: /metrics
+      params:
+        model:
+          - qwen/qwen3.8-flash
+        autoload:
+          - "false"
+      port: http
+      scrapeTimeout: 30s
+    - interval: 60s
+      path: /metrics
+      params:
+        model:
+          - qwen/qwen3-embedding-8b
+        autoload:
+          - "false"
       port: http
       scrapeTimeout: 30s
   namespaceSelector:
