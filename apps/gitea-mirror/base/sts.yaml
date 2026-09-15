@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: gitea-mirror
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -12,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: gitea
+        app.kubernetes.io/instance: gitea-mirror
         app.kubernetes.io/name: gitea-mirror
     spec:
       containers:
@@ -87,7 +90,13 @@ spec:
               mountPath: /app/data
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: gitea-mirror-data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sonarr-config
-spec:
-  storageClassName: nishir-standard
-  volumeName: sonarr-config

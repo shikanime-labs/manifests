@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: lidarr
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   selector:
     matchLabels:
       app.kubernetes.io/instance: lidarr
@@ -86,9 +89,16 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: lidarr-config
         - name: run
           emptyDir:
             medium: Memory
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 2Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

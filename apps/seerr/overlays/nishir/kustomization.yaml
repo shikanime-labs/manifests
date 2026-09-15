@@ -4,7 +4,6 @@ resources:
   - gateway.yaml
 namespace: shikanime
 patches:
-  - path: patch-pvc.yaml
   - path: patch-sts.yaml
   - patch: |-
       - op: add

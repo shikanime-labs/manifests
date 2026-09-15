@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: jellyfin
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -64,6 +67,13 @@ spec:
       volumes:
         - name: cache
           emptyDir: {}
-        - name: config
-          persistentVolumeClaim:
-            claimName: jellyfin-config
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 32Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

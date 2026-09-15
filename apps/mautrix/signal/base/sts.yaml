@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: mautrix-signal
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -70,9 +73,16 @@ spec:
       securityContext:
         fsGroup: 1337
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: mautrix-signal-data
         - name: startup-config
           secret:
             secretName: mautrix-signal
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: synapse
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -33,9 +36,6 @@ spec:
       securityContext:
         fsGroup: 991
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: synapse-data
         - name: startup-config
           projected:
             sources:
@@ -97,3 +97,13 @@ spec:
                       path: appservices/matrix-whatsapp.yaml
                     - key: doublepuppet.yaml
                       path: appservices/matrix-whatsapp-doublepuppet.yaml
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 64Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

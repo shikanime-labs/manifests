@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: metatube
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -54,7 +57,13 @@ spec:
           envFrom:
             - secretRef:
                 name: metatube
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: metatube-data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: qbittorrent
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -89,12 +92,19 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: qbittorrent-config
         - name: rclone-config
           configMap:
             name: qbittorrent-rclone
         - name: startup-config
           secret:
             secretName: qbittorrent
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

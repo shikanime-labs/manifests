@@ -110,7 +110,11 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - Workload: `Deployment` or `StatefulSet` in `apps/<app>/base/`
 - Network: `Service` + `Ingress` in base; tailnet overlays set
   `ingressClassName: tailscale` + Tailscale annotations
-- Storage: `PVC` in `apps/<app>/overlays/<cluster>/` bound to a Longhorn `PV`
+- Storage: STS `volumeClaimTemplates`; overlay `patch-sts.yaml` patches the
+  STS VCT spec (`storageClassName`) — standalone `pvc.yaml` only for claims
+  shared across workloads (e.g. `hermes-agent` profiles/skills RWX).
+  Kustomize replaces VCT list entries: an overlay VCT patch must restate
+  every field, it does not field-merge with base.
 - Secrets/config: `*.enc.*` files fed into `secretGenerator`
 - TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the cluster CA
   issuer, policy wiring, and listener/service patches; the cluster overlay

@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lidarr-config
-spec:
-  storageClassName: nishir-standard
-  volumeName: lidarr-config

@@ -3,6 +3,17 @@ kind: StatefulSet
 metadata:
   name: gitea-mirror
 spec:
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: nishir-standard
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
   template:
     spec:
       containers:
