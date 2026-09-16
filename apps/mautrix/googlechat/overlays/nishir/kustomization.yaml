@@ -3,30 +3,11 @@ resources:
   - cert.yaml
   - gateway.yaml
 patches:
-  - path: patch-sts.yaml
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-googlechat.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: googlechat
-          sectionName: https
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-googlechat.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: googlechat\n    sectionName: https"
     target:
       name: googlechat
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-googlechat.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: googlechat
-          sectionName: http
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-googlechat.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: googlechat\n    sectionName: http"
     target:
       name: googlechat-redirect
       kind: HTTPRoute

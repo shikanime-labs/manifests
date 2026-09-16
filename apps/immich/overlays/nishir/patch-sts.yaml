@@ -32,13 +32,3 @@ spec:
           hostPath:
             type: Directory
             path: /dev/dri
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        resources:
-          requests:
-            storage: 128Gi
-        storageClassName: nishir-capacity
-        accessModes:
-          - ReadWriteOncePod

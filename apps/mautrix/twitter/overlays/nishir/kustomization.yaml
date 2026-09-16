@@ -3,30 +3,11 @@ resources:
   - cert.yaml
   - gateway.yaml
 patches:
-  - path: patch-sts.yaml
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-twitter.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: twitter
-          sectionName: https
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-twitter.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: twitter\n    sectionName: https"
     target:
       name: twitter
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-twitter.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: twitter
-          sectionName: http
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-twitter.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: twitter\n    sectionName: http"
     target:
       name: twitter-redirect
       kind: HTTPRoute

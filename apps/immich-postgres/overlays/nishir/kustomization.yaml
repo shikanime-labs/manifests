@@ -1,8 +1,6 @@
 resources:
   - ../../base
 namespace: shikanime
-patches:
-  - path: patch-sts.yaml
 secretGenerator:
   - name: immich-postgres
     type: kubernetes.io/basic-auth

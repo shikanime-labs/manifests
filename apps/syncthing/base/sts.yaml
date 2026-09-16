@@ -81,5 +81,6 @@ spec:
           requests:
             storage: 4Gi
         volumeMode: Filesystem
+        storageClassName: nishir-standard
         accessModes:
           - ReadWriteOncePod

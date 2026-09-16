@@ -9,30 +9,11 @@ components:
 configurations:
   - namereference.yaml
 patches:
-  - path: patch-sts.yaml
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - prowlarr.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: prowlarr
-          sectionName: https
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - prowlarr.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: prowlarr\n    sectionName: https"
     target:
       name: prowlarr
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - prowlarr.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: prowlarr
-          sectionName: http
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - prowlarr.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: prowlarr\n    sectionName: http"
     target:
       name: prowlarr-redirect
       kind: HTTPRoute

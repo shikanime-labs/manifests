@@ -3,30 +3,11 @@ resources:
   - cert.yaml
   - gateway.yaml
 patches:
-  - path: patch-sts.yaml
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-slack.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: slack
-          sectionName: https
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-slack.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: slack\n    sectionName: https"
     target:
       name: slack
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-slack.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: slack
-          sectionName: http
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-slack.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: slack\n    sectionName: http"
     target:
       name: slack-redirect
       kind: HTTPRoute

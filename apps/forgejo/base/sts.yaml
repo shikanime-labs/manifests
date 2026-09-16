@@ -72,5 +72,6 @@ spec:
           requests:
             storage: 128Gi
         volumeMode: Filesystem
+        storageClassName: nishir-capacity
         accessModes:
           - ReadWriteOncePod

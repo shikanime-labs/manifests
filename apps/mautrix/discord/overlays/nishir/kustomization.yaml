@@ -3,30 +3,11 @@ resources:
   - cert.yaml
   - gateway.yaml
 patches:
-  - path: patch-sts.yaml
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-discord.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: discord
-          sectionName: https
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-discord.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: discord\n    sectionName: https"
     target:
       name: discord
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - mautrix-discord.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: discord
-          sectionName: http
+  - patch: "- op: add\n  path: /spec/hostnames\n  value:\n  - mautrix-discord.i.shikanime.studio\n- op: add\n  path: /spec/parentRefs\n  value:\n  - name: discord\n    sectionName: http"
     target:
       name: discord-redirect
       kind: HTTPRoute

@@ -3,17 +3,6 @@ kind: StatefulSet
 metadata:
   name: synapse
 spec:
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        resources:
-          requests:
-            storage: 64Gi
-        storageClassName: nishir-standard
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
   template:
     spec:
       affinity:
