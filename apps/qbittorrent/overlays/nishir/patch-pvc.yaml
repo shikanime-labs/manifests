@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: qbittorrent-config
-spec:
-  storageClassName: nishir-standard
-  volumeName: qbittorrent-config

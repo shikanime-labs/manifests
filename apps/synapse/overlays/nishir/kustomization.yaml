@@ -49,5 +49,4 @@ patches:
     target:
       name: matrix-redirect
       kind: HTTPRoute
-  - path: patch-pvc.yaml
   - path: patch-sts.yaml

@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: radarr
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   selector:
     matchLabels:
       app.kubernetes.io/instance: radarr
@@ -89,9 +92,16 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: radarr-config
         - name: run
           emptyDir:
             medium: Memory
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 2Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

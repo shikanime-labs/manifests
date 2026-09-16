@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mautrix-twitter-data
-spec:
-  storageClassName: nishir-standard
-  volumeName: mautrix-twitter-data

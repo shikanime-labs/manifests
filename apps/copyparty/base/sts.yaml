@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: copyparty
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   selector:
     matchLabels:
       app.kubernetes.io/instance: copyparty
@@ -47,9 +50,16 @@ spec:
               readOnly: true
               subPath: config.conf
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: copyparty-config
         - name: startup-config
           configMap:
             name: copyparty
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

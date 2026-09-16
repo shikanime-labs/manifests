@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: bazarr
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -84,9 +87,6 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: bazarr-config
         - name: rclone-config
           configMap:
             name: bazarr-rclone
@@ -96,3 +96,13 @@ spec:
         - name: startup-config
           secret:
             secretName: bazarr
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

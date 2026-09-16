@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: whisparr
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   selector:
     matchLabels:
       app.kubernetes.io/instance: whisparr
@@ -89,9 +92,16 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: whisparr-config
         - name: run
           emptyDir:
             medium: Memory
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 8Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

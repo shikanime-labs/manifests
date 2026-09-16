@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: syncthing
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -70,7 +73,13 @@ spec:
         fsGroup: 1000
         supplementalGroups:
           - 10000
-      volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: syncthing-config
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 4Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: honcho-postgres
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -89,8 +92,15 @@ spec:
             items:
               - key: init.sql
                 path: init.sql
-        - name: data
-          persistentVolumeClaim:
-            claimName: honcho-postgres-data
         - name: run-postgresql
           emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 4Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

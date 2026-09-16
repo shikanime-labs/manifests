@@ -1,6 +1,5 @@
 resources:
   - netpol.yaml
-  - pvc.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml

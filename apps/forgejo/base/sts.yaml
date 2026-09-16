@@ -3,6 +3,9 @@ kind: StatefulSet
 metadata:
   name: forgejo
 spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   replicas: 1
   selector:
     matchLabels:
@@ -61,6 +64,13 @@ spec:
         - name: startup-config
           secret:
             secretName: forgejo-config
-        - name: data
-          persistentVolumeClaim:
-            claimName: forgejo-data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 128Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
