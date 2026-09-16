@@ -147,8 +147,6 @@ spec:
               value: q8_0
             - name: LLAMA_ARG_CACHE_TYPE_V
               value: q8_0
-            - name: LLAMA_ARG_RPC
-              value: 10.66.0.4:50052
       volumes:
         - name: models-preset
           configMap:
