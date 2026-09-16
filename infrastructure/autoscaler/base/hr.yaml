@@ -22,6 +22,8 @@ spec:
     crds: CreateReplace
   values:
     admissionController:
+      extraArgs:
+        - --feature-gates=InPlace=true
       certGen:
         enabled: false
       certManager:
