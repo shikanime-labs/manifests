@@ -110,11 +110,11 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - name: cache-huggingface
-              mountPath: /home/llama-cpp/.cache/huggingface
+              mountPath: /home/llama.cpp/.cache/huggingface
             - name: cache-mesa
-              mountPath: /home/llama-cpp/.cache/mesa_shader_cache
+              mountPath: /home/llama.cpp/.cache/mesa_shader_cache
             - name: cache-radv
-              mountPath: /home/llama-cpp/.cache/radv_builtin_shaders
+              mountPath: /home/llama.cpp/.cache/radv_builtin_shaders
             - name: models-preset
               mountPath: /etc/llama-cpp/preset
               readOnly: true

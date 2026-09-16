@@ -93,9 +93,9 @@ spec:
             - name: cache
               mountPath: /cache
             - name: cache-mesa
-              mountPath: /home/llama-cpp/.cache/mesa_shader_cache
+              mountPath: /home/llama.cpp/.cache/mesa_shader_cache
             - name: cache-radv
-              mountPath: /home/llama-cpp/.cache/radv_builtin_shaders
+              mountPath: /home/llama.cpp/.cache/radv_builtin_shaders
             - name: dev-kfd
               mountPath: /dev/kfd
             - name: dev-dri
