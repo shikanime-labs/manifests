@@ -2,7 +2,7 @@
 
 llama.cpp router as a LeaderWorkerSet `llama-cpp` spanning the two Strix Halo
 MS-S1 nodes (`kushira`/`sashina`, label
-`node.kubernetes.io/instance-type: minisforum-ms-s1`). `replicas: 1, size: 2`:
+`node.kubernetes.io/instance-type: minisforum-ms-s1`). `replicas: 2`:
 the leader runs `llama-server` and the worker runs `ggml-rpc-server` on the
 other node (required `podAntiAffinity` on `kubernetes.io/hostname` keeps them on
 separate nodes). The leader offloads layers to the rpc peer via `--rpc`,
@@ -24,11 +24,11 @@ HF cache is an `emptyDir`, so pods re-download after restarts unless the
 
 - `deepseek/deepseek-v4-flash` —
   `lmstudio-community/DeepSeek-V4-Flash-0731-GGUF:MXFP4`
-  (`rpc` worker svc DNS, `fit = off`)
+  (`rpc` = both worker pods, `fit = off`)
 - `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q6_K`
   (dflash draft `incoai/Qwen3.8-27B-DFlash2-GGUF:Q8_0`, `cache-reuse = 512`)
 - `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL`
-  (`rpc` worker svc DNS, `no-warmup = true`)
+  (`rpc` = both worker pods, `no-warmup = true`)
 - `qwen/qwen3-embedding-8b` — `Qwen/Qwen3-Embedding-8B-GGUF:Q6_K` (6.2 GB)
 
 ## GPU backend
@@ -38,7 +38,7 @@ decode on RADV (upstream
 [ggml-org/llama.cpp#29028](https://github.com/ggml-org/llama.cpp/issues/29028));
 qwen3.8-27b and the embedding model were unaffected there too. The fleet flip
 to ROCm is
-[shikanime-labs/machines#1357](https://github.com/shikanime-labs/machines/pull/1357)
+[shikanime-labs/machines#1357][m1357]
 (qwen4exp decodes on ROCm; deepseek-v4 failed at model load in the kushira
 probe — pending a root cause). The two
 issue 2385 experiment lines — deepseek `n-gpu-layers = 48`, flash Q3 quant —
@@ -103,3 +103,5 @@ Envoy Gateway (`ui-gateway.yaml`: GatewayClass + EnvoyProxy + Gateway +
 redirect route in the tailnet overlay), distinct from the API-key-locked
 `inference` Gateway. TLS from the `studio-shikanime-i-chat` cert-manager
 Certificate.
+
+[m1357]: https://github.com/shikanime-labs/machines/pull/1357
