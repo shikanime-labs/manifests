@@ -69,23 +69,6 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: qwen/qwen3.6-35b-a3b
-      modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: nous
-          priority: 1
-          modelNameOverride: qwen/qwen3.6-35b-a3b
-        - name: openrouter
-          priority: 2
-          modelNameOverride: qwen/qwen3.6-35b-a3b
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
               value: z-ai/glm-5.3-flash
       modelsOwnedBy: Shikanime Studio
       # LLM generations routinely exceed Envoy AI Gateway's 60s default route
