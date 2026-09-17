@@ -24,27 +24,26 @@ HF cache is an `emptyDir`, so pods re-download after restarts unless the
 
 - `deepseek/deepseek-v4-flash` —
   `lmstudio-community/DeepSeek-V4-Flash-0731-GGUF:MXFP4`
-  (`rpc` worker svc DNS, `fit = off`; experimentally `n-gpu-layers = 48` until
-  the RADV first-decode abort is fixed — preset intent is 999)
+  (`rpc` worker svc DNS, `fit = off`)
 - `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q6_K`
   (dflash draft `incoai/Qwen3.8-27B-DFlash2-GGUF:Q8_0`, `cache-reuse = 512`)
-- `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q3_K_XL`
-  (`rpc` worker svc DNS, `no-warmup = true`; downgraded Q4→Q3 in #2385 while
-  the abort is under investigation)
+- `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL`
+  (`rpc` worker svc DNS, `no-warmup = true`)
 - `qwen/qwen3-embedding-8b` — `Qwen/Qwen3-Embedding-8B-GGUF:Q6_K` (6.2 GB)
 
 ## GPU backend
 
-The x86_64 image builds against RADV (Vulkan). qwen4exp and deepseek-v4 abort
-at first decode on RADV (upstream
+The x86_64 image builds against ROCm. qwen4exp and deepseek-v4 abort at first
+decode on RADV (upstream
 [ggml-org/llama.cpp#29028](https://github.com/ggml-org/llama.cpp/issues/29028));
-qwen3.8-27b and the embedding model are unaffected. The fleet flip to ROCm is
-tracked in
+qwen3.8-27b and the embedding model were unaffected there too. The fleet flip
+to ROCm is
 [shikanime-labs/machines#1357](
 https://github.com/shikanime-labs/machines/pull/1357)
-(qwen4exp decodes on ROCm; deepseek-v4 pending validation there). The two
+(qwen4exp decodes on ROCm; deepseek-v4 failed at model load in the kushira
+probe — pending a root cause). The two
 issue 2385 experiment lines — deepseek `n-gpu-layers = 48`, flash Q3 quant —
-revert to 999/Q4 once the flip lands or upstream fixes the abort.
+are reverted to 999/Q4 in this change.
 
 Embedding note: the preset section name MUST match the gateway route key
 exactly (`qwen/qwen3-embedding-8b`, as in `aigatewayroute.yaml`), because the

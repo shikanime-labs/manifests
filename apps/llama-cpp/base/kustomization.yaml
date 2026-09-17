@@ -12,7 +12,7 @@ resources:
 images:
   - name: llama-cpp
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
-    digest: sha256:49ffb3db0e955cb716402c4406872b6b2e5ceb7a9958bc01b89ce0d2da740765
+    digest: sha256:0f2d5f4393f95ec0f07ce6eef51b34a3cfaf5903d8fe5512e58ab8fa4e152326
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
