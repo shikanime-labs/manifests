@@ -265,10 +265,10 @@ decrypted output; change the encrypted source instead.
 
 ## Operational knowledge
 
-Failure-mode recovery and on-call procedures live under
-[`runbooks/`](./runbooks/): Longhorn volume recovery, NFS recovery, kubevirt
-VM restart-required Flux health, llama.cpp local-floor throughput
-optimization, and related procedures.
+Failure-mode recovery and on-call procedures live as agent skills under
+[`.agents/skills/`](../.agents/skills/): Longhorn volume recovery, NFS
+recovery, kubevirt VM restart-required Flux health, llama.cpp local-floor
+throughput optimization, and related procedures.
 
 ## Change conventions
 
