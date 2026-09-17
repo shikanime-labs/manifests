@@ -26,7 +26,7 @@ HF cache is an `emptyDir`, so pods re-download after restarts unless the
   `lmstudio-community/DeepSeek-V4-Flash-0731-GGUF:MXFP4`
 - `z-ai/glm-5.3-flash` — `unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS`
 - `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL` (17.6 GB)
-- `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q4_K_XL`
+- `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q3_K_XL`
 - `qwen/qwen3-embedding-8b` — `Qwen/Qwen3-Embedding-8B-GGUF:Q6_K` (6.2 GB)
 
 Embedding note: the preset section name MUST match the gateway route key
