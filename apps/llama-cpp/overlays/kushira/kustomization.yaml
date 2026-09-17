@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+nameSuffix: -kushira
+patches:
+  - path: patch-sts.yaml
+  - path: patch-vpa.yaml
+configMapGenerator:
+  - name: llama-cpp-models-preset
+    behavior: replace
+    files:
+      - models-preset.ini
