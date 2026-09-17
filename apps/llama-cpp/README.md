@@ -10,7 +10,7 @@ aggregating both nodes' ~96 GiB GTT carve-outs (~192 GiB) so the 284B DeepSeek
 V4 Flash floor fits; `--gpu-layers 999` offloads all layers to the iGPU. One
 process serves both LLM and embedding models.
 
-## Model loading (verified 2026-09-07)
+## Model loading
 
 Router mode lazy-loads models on demand: the preset sections map a route key to
 an HF repo via the `hf` key (resolved against `--models-dir` as the download
@@ -24,10 +24,27 @@ HF cache is an `emptyDir`, so pods re-download after restarts unless the
 
 - `deepseek/deepseek-v4-flash` —
   `lmstudio-community/DeepSeek-V4-Flash-0731-GGUF:MXFP4`
-- `z-ai/glm-5.3-flash` — `unsloth/GLM-5.3-Flash-GGUF:UD-IQ3_XXS`
-- `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL` (17.6 GB)
+  (`rpc` worker svc DNS, `fit = off`; experimentally `n-gpu-layers = 48` until
+  the RADV first-decode abort is fixed — preset intent is 999)
+- `qwen/qwen3.8-27b` — `unsloth/Qwen3.8-27B-GGUF:UD-Q6_K`
+  (dflash draft `incoai/Qwen3.8-27B-DFlash2-GGUF:Q8_0`, `cache-reuse = 512`)
 - `qwen/qwen3.8-flash` — `unsloth/Qwen3.8-Flash-Next-GGUF:UD-Q3_K_XL`
+  (`rpc` worker svc DNS, `no-warmup = true`; downgraded Q4→Q3 in #2385 while
+  the abort is under investigation)
 - `qwen/qwen3-embedding-8b` — `Qwen/Qwen3-Embedding-8B-GGUF:Q6_K` (6.2 GB)
+
+## GPU backend
+
+The x86_64 image builds against RADV (Vulkan). qwen4exp and deepseek-v4 abort
+at first decode on RADV (upstream
+[ggml-org/llama.cpp#29028](https://github.com/ggml-org/llama.cpp/issues/29028));
+qwen3.8-27b and the embedding model are unaffected. The fleet flip to ROCm is
+tracked in
+[shikanime-labs/machines#1357](
+https://github.com/shikanime-labs/machines/pull/1357)
+(qwen4exp decodes on ROCm; deepseek-v4 pending validation there). The two
+issue 2385 experiment lines — deepseek `n-gpu-layers = 48`, flash Q3 quant —
+revert to 999/Q4 once the flip lands or upstream fixes the abort.
 
 Embedding note: the preset section name MUST match the gateway route key
 exactly (`qwen/qwen3-embedding-8b`, as in `aigatewayroute.yaml`), because the
@@ -38,8 +55,7 @@ endpoint.
 
 The Envoy AI Gateway (`apps/llama-cpp/base`) routes each model to this workload
 as the `inference` backend at priority 0, then fails over to `nous` /
-`openrouter`. `z-ai/glm-5.3-flash` also has a z-ai-only path when the local
-floor is busy.
+`openrouter`.
 
 ## GLM (Z.ai) via the Anthropic endpoint
 
@@ -53,7 +69,7 @@ The Anthropic endpoint selects the backend from the **body `model` field**, not
 the `x-ai-eg-model` header (that header is only used on the OpenAI path).
 
 ```text
-POST https://inference.taila659a.ts.net/anthropic/v1/messages
+POST https://inference.i.shikanime.studio/anthropic/v1/messages
 Headers:
   Content-Type: application/json
   anthropic-version: 2023-06-01
@@ -72,13 +88,14 @@ Auth is injected by `BackendSecurityPolicy z-ai` (`AnthropicAPIKey` →
 ## OpenAI-compatible models
 
 ```text
-POST https://inference.taila659a.ts.net/v1/chat/completions
+POST https://inference.i.shikanime.studio/v1/chat/completions
 Headers: x-ai-eg-model: <provider/model>
 Body: { "model": "<provider/model>", "messages": [...] }
 ```
 
-Supported: `qwen/*`, `deepseek/deepseek-v4-flash`, `mistral/labs-leanstral-1-5`,
-`z-ai/glm-5.3-flash`, `qwen/qwen3-embedding-8b`.
+Supported: `qwen/qwen3.8-27b`, `qwen/qwen3.8-flash`,
+`deepseek/deepseek-v4-flash`, and `qwen/qwen3-embedding-8b`, all served
+locally. The other advertised models fail over to remote providers.
 
 ## Web UI
 
