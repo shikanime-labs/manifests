@@ -12,6 +12,8 @@ spec:
       "mode": "bridge",
       "ipam": {
         "type": "whereabouts",
-        "range": "10.66.1.16/29"
+        "range": "10.66.1.0/24",
+        "range_start": "10.66.1.17",
+        "range_end": "10.66.1.22"
       }
     }
