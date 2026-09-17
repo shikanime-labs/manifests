@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: llama-cpp-worker
+  namespace: shikanime
+spec:
+  serviceName: llama-cpp-worker-sashina
+  selector:
+    matchLabels:
+      app.kubernetes.io/process: llama-cpp-worker-sashina
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/process: llama-cpp-worker-sashina
+      annotations:
+        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-worker-sashina
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: sashina

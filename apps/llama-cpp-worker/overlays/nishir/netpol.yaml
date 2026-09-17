@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: llama-cpp-rpc
+  name: llama-cpp-worker
   namespace: shikanime
 spec:
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
-      app.kubernetes.io/name: llama-cpp-rpc
+      app.kubernetes.io/name: llama-cpp-worker
   policyTypes:
     - Ingress
   ingress:
