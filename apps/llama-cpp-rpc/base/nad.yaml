@@ -1,3 +1,4 @@
+---
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
@@ -11,12 +12,8 @@ spec:
       "master": "br1",
       "mode": "bridge",
       "ipam": {
-        "type": "static",
-        "addresses": [
-          {
-            "address": "10.66.0.3/29"
-          }
-        ]
+        "type": "whereabouts",
+        "range": "10.66.1.0/24"
       }
     }
 ---
@@ -33,11 +30,7 @@ spec:
       "master": "br1",
       "mode": "bridge",
       "ipam": {
-        "type": "static",
-        "addresses": [
-          {
-            "address": "10.66.0.4/29"
-          }
-        ]
+        "type": "whereabouts",
+        "range": "10.66.1.0/24"
       }
     }
