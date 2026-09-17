@@ -5,7 +5,7 @@ metadata:
   namespace: shikanime
 spec:
   serviceName: llama-cpp
-  replicas: 1
+  replicas: 2
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
@@ -46,8 +46,6 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
-      annotations:
-        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-leader
     spec:
       securityContext:
         fsGroup: 65532
@@ -73,6 +71,7 @@ spec:
             - labelSelector:
                 matchLabels:
                   app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp
               topologyKey: kubernetes.io/hostname
       containers:
         - name: llama-cpp

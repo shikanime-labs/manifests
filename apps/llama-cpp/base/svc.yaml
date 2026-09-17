@@ -4,6 +4,7 @@ metadata:
   name: llama-cpp
   namespace: shikanime
 spec:
+  sessionAffinity: ClientIP
   selector:
     app.kubernetes.io/instance: llama-cpp
     app.kubernetes.io/name: llama-cpp

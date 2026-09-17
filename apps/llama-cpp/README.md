@@ -38,8 +38,7 @@ decode on RADV (upstream
 [ggml-org/llama.cpp#29028](https://github.com/ggml-org/llama.cpp/issues/29028));
 qwen3.8-27b and the embedding model were unaffected there too. The fleet flip
 to ROCm is
-[shikanime-labs/machines#1357](
-https://github.com/shikanime-labs/machines/pull/1357)
+[shikanime-labs/machines#1357](https://github.com/shikanime-labs/machines/pull/1357)
 (qwen4exp decodes on ROCm; deepseek-v4 failed at model load in the kushira
 probe — pending a root cause). The two
 issue 2385 experiment lines — deepseek `n-gpu-layers = 48`, flash Q3 quant —
