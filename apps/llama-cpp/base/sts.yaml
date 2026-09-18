@@ -128,10 +128,6 @@ spec:
               value: 0.0.0.0
             - name: LLAMA_ARG_PORT
               value: "9931"
-            - name: LLAMA_ARG_N_BATCH
-              value: "2048"
-            - name: LLAMA_ARG_UBATCH
-              value: "512"
             - name: LLAMA_ARG_MODELS_PRESET
               value: /etc/llama-cpp/preset/models-preset.ini
             - name: LLAMA_ARG_MODELS_MAX
