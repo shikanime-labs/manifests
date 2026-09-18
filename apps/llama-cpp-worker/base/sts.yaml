@@ -54,6 +54,13 @@ spec:
       securityContext:
         fsGroup: 65532
       affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp
+              topologyKey: kubernetes.io/hostname
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
