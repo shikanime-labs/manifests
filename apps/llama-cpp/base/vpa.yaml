@@ -9,3 +9,8 @@ spec:
     name: llama-cpp
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+      - containerName: llama-cpp
+        minAllowed:
+          memory: 64Gi
