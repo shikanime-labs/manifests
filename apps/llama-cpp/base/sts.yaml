@@ -140,8 +140,6 @@ spec:
               value: "true"
             - name: LLAMA_ARG_ENDPOINT_METRICS
               value: "true"
-            - name: LLAMA_ARG_EMBEDDINGS
-              value: "true"
             - name: LLAMA_ARG_FLASH_ATTN
               value: "on"
             - name: LLAMA_ARG_CACHE_TYPE_K
