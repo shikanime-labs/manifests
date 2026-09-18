@@ -46,10 +46,10 @@ are reverted to 999/Q4 in this change.
 
 Embedding note: the preset section name MUST match the gateway route key
 exactly (`qwen/qwen3-embedding-8b`, as in `aigatewayroute.yaml`), because the
-router looks the requested model up by section name; and
-`LLAMA_ARG_EMBEDDINGS=true` is required — an empty value is not truthy in the
-env parser, so the embedding sub-servers would start without the embedding
-endpoint.
+router looks the requested model up by section name; and the section carries
+`embeddings = true` — without it `/v1/embeddings` returns 501. The flag is
+per-model on purpose: pod-wide `LLAMA_ARG_EMBEDDINGS=true` restricts every
+child to embedding-only mode and aborts generative models at first decode.
 
 The Envoy AI Gateway (`apps/llama-cpp/base`) routes each model to this workload
 as the `inference` backend at priority 0, then fails over to `nous` /
