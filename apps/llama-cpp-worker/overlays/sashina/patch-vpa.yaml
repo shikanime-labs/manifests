@@ -1,7 +1,0 @@
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: llama-cpp-worker
-spec:
-  targetRef:
-    name: llama-cpp-worker-sashina

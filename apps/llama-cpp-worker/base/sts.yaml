@@ -53,6 +53,15 @@ spec:
     spec:
       securityContext:
         fsGroup: 65532
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0380_1002.present
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: llama-cpp-worker
           image: llama-cpp-worker
