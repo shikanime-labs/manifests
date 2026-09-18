@@ -1,11 +1,20 @@
 resources:
-  - ../../base
   - ../../components/monitoring
+  - ../kushira
+  - ../sashina
+  - aigatewayroute.yaml
+  - aiservicebackend.yaml
+  - backend.yaml
+  - backendsecuritypolicy.yaml
   - cert.yaml
   - clienttrafficpolicy.yaml
   - gateway.yaml
   - gatewayconfig.yaml
+  - httproute.yaml
+  - httproutefilter.yaml
+  - netpol.yaml
   - securitypolicy.yaml
+  - svc.yaml
 namespace: shikanime
 configurations:
   - namereference.yaml
@@ -81,7 +90,16 @@ patches:
           name: LLAMA_ARG_CORS_ORIGINS
           value: https://inference.i.shikanime.studio
     target:
-      name: llama-cpp
+      name: llama-cpp-kushira
+      kind: StatefulSet
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: LLAMA_ARG_CORS_ORIGINS
+          value: https://inference.i.shikanime.studio
+    target:
+      name: llama-cpp-sashina
       kind: StatefulSet
   - patch: |-
       - op: add

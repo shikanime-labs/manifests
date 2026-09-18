@@ -1000,7 +1000,11 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: StatefulSet
-      name: llama-cpp
+      name: llama-cpp-kushira
+      namespace: shikanime
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: llama-cpp-sashina
       namespace: shikanime
   interval: 10m
   path: ./apps/llama-cpp/overlays/nishir-tailnet
