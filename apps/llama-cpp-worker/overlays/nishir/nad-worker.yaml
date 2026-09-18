@@ -12,6 +12,10 @@ spec:
       "mode": "bridge",
       "ipam": {
         "type": "static",
-        "address": "10.66.1.1/24"
+        "addresses": [
+          {
+            "address": "10.66.1.1/24"
+          }
+        ]
       }
     }
