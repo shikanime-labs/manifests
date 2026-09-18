@@ -1,8 +1,8 @@
 resources:
-  - nad.yaml
+  - ../../base
+  - nad-worker.yaml
+  - nad-head.yaml
   - netpol.yaml
-  - ../kushira
-  - ../sashina
 namespace: shikanime
 labels:
   - includeTemplates: true

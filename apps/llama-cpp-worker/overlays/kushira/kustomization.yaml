@@ -1,7 +1,0 @@
-resources:
-  - ../../base
-  - nad.yaml
-nameSuffix: -kushira
-patches:
-  - path: patch-sts.yaml
-  - path: patch-vpa.yaml

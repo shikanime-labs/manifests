@@ -1,7 +1,0 @@
-resources:
-  - ../../base
-  - nad.yaml
-nameSuffix: -sashina
-patches:
-  - path: patch-sts.yaml
-  - path: patch-vpa.yaml
