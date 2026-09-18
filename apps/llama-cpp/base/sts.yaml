@@ -47,7 +47,7 @@ spec:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
       annotations:
-        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-head
+        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp
     spec:
       securityContext:
         fsGroup: 65532

@@ -1,7 +1,6 @@
 resources:
   - ../../base
-  - nad-worker.yaml
-  - nad-head.yaml
+  - nad.yaml
   - netpol.yaml
 namespace: shikanime
 labels:
