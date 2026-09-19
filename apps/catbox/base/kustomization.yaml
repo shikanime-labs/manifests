@@ -3,3 +3,14 @@ resources:
   - pvc.yaml
   - svc.yaml
   - vm.yaml
+# The images: transformer does not reach the VirtualMachine CRD
+# (containerDisk.image lives under volumes, not containers), so the
+# catbox short name in vm.yaml is pinned here: machines commit + digest.
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/volumes/0/containerDisk/image
+        value: ghcr.io/shikanime-labs/machines/catbox:1b0c686d@sha256:fd4d37fc0ea3c8684a8692c994a8328e2507ad8111d92b2ec3ae39515cb61e38
+    target:
+      kind: VirtualMachine
+      name: catbox

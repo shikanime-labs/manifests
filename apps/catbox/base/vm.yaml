@@ -23,7 +23,7 @@ spec:
         # CDI is absent in this cluster, so the VM boots directly from the image.
         - name: rootdisk
           containerDisk:
-            image: ghcr.io/shikanime-labs/machines/catbox:latest
+            image: catbox
         - name: workspaces
           persistentVolumeClaim:
             claimName: catbox-workspaces
@@ -50,6 +50,12 @@ spec:
             - name: workspaces
               disk:
                 bus: virtio
+          # The sops-key secret volume is exposed to the guest via virtiofs
+          # (secret-as-filesystem is GA in KubeVirt 1.7); the guest mounts the
+          # tag at /var/lib/sops-nix for sops-nix to read its age key.
+          filesystems:
+            - name: sops-key
+              virtiofs: {}
           interfaces:
             - name: default
               masquerade: {}
