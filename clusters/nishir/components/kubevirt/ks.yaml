@@ -41,7 +41,7 @@ spec:
       name: kubevirt
       namespace: kubevirt-system
   interval: 10m
-  path: ./configs/kubevirt/overlays/nishir
+  path: ./configs/kubevirt/base
   prune: true
   sourceRef:
     name: flux-system
