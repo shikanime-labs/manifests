@@ -6,9 +6,13 @@ resources:
   - httproute.yaml
   - httproutefilter.yaml
   - netpol.yaml
+  - netpol-local.yaml
   - sts.yaml
+  - sts-local.yaml
   - svc.yaml
+  - svc-local.yaml
   - vpa.yaml
+  - vpa-local.yaml
 images:
   - name: llama-cpp
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
@@ -17,3 +21,6 @@ configMapGenerator:
   - name: llama-cpp-models-preset
     files:
       - models-preset.ini=llama-cpp-models-preset/models-preset.ini
+  - name: llama-cpp-local-models-preset
+    files:
+      - models-preset.ini=llama-cpp-local-models-preset/models-preset.ini

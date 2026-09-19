@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: llama-cpp-local
+  namespace: shikanime
+spec:
+  selector:
+    app.kubernetes.io/instance: llama-cpp-local
+    app.kubernetes.io/name: llama-cpp
+  ports:
+    - name: http
+      appProtocol: http
+      port: 9931
+      protocol: TCP
+      targetPort: http

@@ -111,6 +111,17 @@ spec:
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
+  name: llama-cpp-local
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: llama-cpp-local.shikanime.svc.cluster.local
+        port: 9931
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
   name: z-ai-openai
   namespace: shikanime
 spec:
