@@ -3,9 +3,10 @@ resources:
   - pvc.yaml
   - svc.yaml
   - vm.yaml
-# The images: transformer does not reach the VirtualMachine CRD
-# (containerDisk.image lives under volumes, not containers), so the
-# catbox short name in vm.yaml is pinned here: machines commit + digest.
+secretGenerator:
+  - name: catbox-authorized-keys
+    files:
+      - authorized-keys/key1
 patches:
   - patch: |-
       - op: replace
