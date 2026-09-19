@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: jellyfin
+  name: jellyfin-tls
 spec:
   ingress:
     - from:
@@ -27,7 +27,7 @@ spec:
             matchLabels:
               app.kubernetes.io/name: whisparr
       ports:
-        - port: http
+        - port: https
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: jellyfin

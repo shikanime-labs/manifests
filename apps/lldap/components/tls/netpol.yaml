@@ -1,11 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: lldap
+  name: lldap-tls
 spec:
   ingress:
-    - ports:
-        - port: ldap
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: authelia
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jellyfin
+      ports:
         - port: ldaps
   podSelector:
     matchLabels:
