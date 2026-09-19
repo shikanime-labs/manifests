@@ -11,7 +11,6 @@ components:
   - ../../components/honcho
   - ../../components/webhook
 patches:
-  - path: patch-sts.yaml
   - path: patch-pvc.yaml
   - patch: |-
       - op: add

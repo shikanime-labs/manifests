@@ -3,7 +3,6 @@ resources:
   - cert.yaml
   - gateway.yaml
 patches:
-  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/hostnames

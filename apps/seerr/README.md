@@ -9,6 +9,6 @@ tailscale Ingress; config on PVC `seerr-config` (512Mi).
 
 - `base/` — StatefulSet (http :5055, `/api/v1/status` probes), Service, PVC
   `seerr-config`, NetworkPolicy (ingress from jellyfin only), VPA.
-- `overlays/nishir/` — PVC pinned to `nishir-standard`; no secrets.
+- `overlays/nishir/` — PVC pinned to `longhorn-standard`; no secrets.
 - `overlays/nishir-tailnet/` — tailscale Ingress (host `seerr`), netpol opened
   to `tailscale-system`, `nishir-media` labels.

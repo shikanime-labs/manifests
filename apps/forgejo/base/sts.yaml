@@ -71,6 +71,7 @@ spec:
         resources:
           requests:
             storage: 128Gi
+        storageClassName: longhorn-capacity
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod

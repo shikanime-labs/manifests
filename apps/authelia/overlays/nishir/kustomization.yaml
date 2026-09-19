@@ -36,7 +36,6 @@ patches:
     target:
       name: authelia-redirect
       kind: HTTPRoute
-  - path: patch-pvc.yaml
 secretGenerator:
   - name: authelia
     files:

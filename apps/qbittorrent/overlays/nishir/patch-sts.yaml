@@ -3,17 +3,6 @@ kind: StatefulSet
 metadata:
   name: qbittorrent
 spec:
-  volumeClaimTemplates:
-    - metadata:
-        name: config
-      spec:
-        resources:
-          requests:
-            storage: 512Mi
-        storageClassName: nishir-standard
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
   template:
     spec:
       affinity:

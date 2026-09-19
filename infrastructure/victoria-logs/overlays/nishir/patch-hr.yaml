@@ -7,4 +7,4 @@ spec:
   values:
     vlstorage:
       persistentVolume:
-        storageClassName: nishir-ephemeral
+        storageClassName: longhorn-ephemeral
