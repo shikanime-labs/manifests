@@ -64,7 +64,7 @@ spec:
           requests:
             storage: 16Gi
         volumeMode: Filesystem
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -74,7 +74,7 @@ spec:
           requests:
             storage: 512Mi
         volumeMode: Filesystem
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -84,6 +84,6 @@ spec:
           requests:
             storage: 512Mi
         volumeMode: Filesystem
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod

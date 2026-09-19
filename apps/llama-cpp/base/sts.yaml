@@ -16,7 +16,7 @@ spec:
         resources:
           requests:
             storage: 512Gi
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -25,7 +25,7 @@ spec:
         resources:
           requests:
             storage: 512Mi
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -34,7 +34,7 @@ spec:
         resources:
           requests:
             storage: 512Mi
-        storageClassName: nishir-ephemeral
+        storageClassName: nishir-scratch
         accessModes:
           - ReadWriteOncePod
   selector:

@@ -83,3 +83,17 @@ parameters:
       {"name": "default", "isGroup": true},
       {"name": "standard", "isGroup": true}
     ]
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nishir-scratch
+allowVolumeExpansion: true
+provisioner: driver.longhorn.io
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  dataLocality: strict-local
+  diskSelector: nearline
+  fsType: xfs
+  numberOfReplicas: "1"
