@@ -2,6 +2,7 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - netpol.yaml
 namespace: shikanime
 components:
   - ../../components/api-server

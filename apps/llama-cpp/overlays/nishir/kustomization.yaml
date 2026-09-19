@@ -6,6 +6,7 @@ resources:
   - gateway.yaml
   - gatewayconfig.yaml
   - securitypolicy.yaml
+  - netpol.yaml
 namespace: shikanime
 configurations:
   - namereference.yaml
@@ -42,38 +43,6 @@ secretGenerator:
     envs:
       - inference-key/.enc.env
 patches:
-  - patch: |-
-      - op: add
-        path: /spec/ingress/-
-        value:
-          from:
-            - namespaceSelector:
-                matchLabels:
-                  kubernetes.io/metadata.name: envoy-gateway-system
-              podSelector:
-                matchLabels:
-                  app.kubernetes.io/name: envoy
-          ports:
-            - port: http
-    target:
-      name: llama-cpp
-      kind: NetworkPolicy
-  - patch: |-
-      - op: add
-        path: /spec/ingress/-
-        value:
-          from:
-            - namespaceSelector:
-                matchLabels:
-                  kubernetes.io/metadata.name: monitoring-system
-              podSelector:
-                matchLabels:
-                  app.kubernetes.io/name: vmagent
-          ports:
-            - port: http
-    target:
-      name: llama-cpp
-      kind: NetworkPolicy
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/env/-
