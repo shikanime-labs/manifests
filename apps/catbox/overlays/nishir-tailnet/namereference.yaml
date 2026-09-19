@@ -3,3 +3,5 @@ nameReference:
     fieldSpecs:
       - kind: VirtualMachine
         path: spec/template/spec/volumes/secret/secretName
+      - kind: VirtualMachine
+        path: spec/template/spec/accessCredentials/sshPublicKey/propagationMethod/noCloud/source/secret/secretName
