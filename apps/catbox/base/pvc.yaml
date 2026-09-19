@@ -8,5 +8,6 @@ spec:
       storage: 64Gi
   volumeMode: Filesystem
   storageClassName: longhorn-standard
+  volumeName: pvc-d2f60738-dfb7-4579-874f-7dddaa8a0b5e
   accessModes:
     - ReadWriteOncePod
