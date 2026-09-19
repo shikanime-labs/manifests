@@ -23,7 +23,7 @@ spec:
         # CDI is absent in this cluster, so the VM boots directly from the image.
         - name: rootdisk
           containerDisk:
-            image: ghcr.io/shikanime-labs/machines/catbox:latest
+            image: catbox
         - name: workspaces
           persistentVolumeClaim:
             claimName: catbox-workspaces
