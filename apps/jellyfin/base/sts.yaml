@@ -64,10 +64,17 @@ spec:
               mountPath: /config
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: cache
-          emptyDir: {}
   volumeClaimTemplates:
+    - metadata:
+        name: cache
+      spec:
+        resources:
+          requests:
+            storage: 16Gi
+        storageClassName: nishir-scratch
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
     - metadata:
         name: config
       spec:
