@@ -94,6 +94,6 @@ reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 parameters:
   dataLocality: strict-local
-  diskSelector: nearline
+  diskSelector: standard
   fsType: xfs
   numberOfReplicas: "1"
