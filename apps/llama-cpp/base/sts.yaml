@@ -19,24 +19,6 @@ spec:
         storageClassName: longhorn-scratch
         accessModes:
           - ReadWriteOncePod
-    - metadata:
-        name: cache-mesa
-      spec:
-        resources:
-          requests:
-            storage: 512Mi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
-    - metadata:
-        name: cache-radv
-      spec:
-        resources:
-          requests:
-            storage: 512Mi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
@@ -112,10 +94,6 @@ spec:
           volumeMounts:
             - name: cache-huggingface
               mountPath: /home/llama.cpp/.cache/huggingface
-            - name: cache-mesa
-              mountPath: /home/llama.cpp/.cache/mesa_shader_cache
-            - name: cache-radv
-              mountPath: /home/llama.cpp/.cache/radv_builtin_shaders
             - name: models-preset
               mountPath: /etc/llama-cpp/preset
               readOnly: true
