@@ -1,2 +1,3 @@
 resources:
+  - netpol.yaml
   - vmservicescrape.yaml

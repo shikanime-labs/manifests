@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: llama-cpp-metrics
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: http
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp
+  policyTypes:
+    - Ingress

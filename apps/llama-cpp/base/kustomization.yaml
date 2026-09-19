@@ -5,7 +5,6 @@ resources:
   - backendsecuritypolicy.yaml
   - httproute.yaml
   - httproutefilter.yaml
-  - netpol.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
