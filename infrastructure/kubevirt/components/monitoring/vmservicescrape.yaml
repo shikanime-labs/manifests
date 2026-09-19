@@ -1,7 +1,7 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape
 metadata:
-  name: kubevirt
+  name: virt-api
   namespace: kubevirt-system
   labels:
     app.kubernetes.io/name: kubevirt
@@ -11,10 +11,105 @@ spec:
     - interval: 60s
       path: /metrics
       port: metrics
+      scheme: https
       scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          secret:
+            name: kubevirt-ca
+            key: tls.crt
+        serverName: virt-api.kubevirt-system.svc
   namespaceSelector:
     matchNames:
       - kubevirt-system
   selector:
     matchLabels:
-      prometheus.kubevirt.io: "true"
+      app.kubernetes.io/name: kubevirt
+      app.kubernetes.io/component: virt-api
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: virt-controller
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scheme: https
+      scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          secret:
+            name: kubevirt-ca
+            key: tls.crt
+        serverName: virt-controller.kubevirt-system.svc
+  namespaceSelector:
+    matchNames:
+      - kubevirt-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubevirt
+      app.kubernetes.io/component: virt-controller
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: virt-handler
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scheme: https
+      scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          secret:
+            name: kubevirt-ca
+            key: tls.crt
+        serverName: virt-handler.kubevirt-system.svc
+  namespaceSelector:
+    matchNames:
+      - kubevirt-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubevirt
+      app.kubernetes.io/component: virt-handler
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: virt-operator
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+      scheme: https
+      scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          secret:
+            name: kubevirt-ca
+            key: tls.crt
+        serverName: kubevirt-operator-webhook.kubevirt-system.svc
+  namespaceSelector:
+    matchNames:
+      - kubevirt-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubevirt
+      app.kubernetes.io/component: virt-operator
