@@ -71,7 +71,7 @@ spec:
         resources:
           requests:
             storage: 16Gi
-        storageClassName: nishir-scratch
+        storageClassName: longhorn-scratch
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod
@@ -81,6 +81,7 @@ spec:
         resources:
           requests:
             storage: 32Gi
+        storageClassName: longhorn-standard
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod

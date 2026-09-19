@@ -2,7 +2,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nishir-capacity
+  name: longhorn-capacity
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
@@ -23,7 +23,7 @@ parameters:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nishir-ephemeral
+  name: longhorn-ephemeral
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Delete
@@ -44,7 +44,7 @@ parameters:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nishir-transient
+  name: longhorn-transient
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
@@ -65,7 +65,7 @@ parameters:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nishir-standard
+  name: longhorn-standard
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
@@ -87,7 +87,7 @@ parameters:
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nishir-scratch
+  name: longhorn-scratch
 allowVolumeExpansion: true
 provisioner: driver.longhorn.io
 reclaimPolicy: Delete

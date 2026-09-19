@@ -10,7 +10,8 @@ Ingress; config on PVC `bazarr-config` (512Mi).
 - `base/` — StatefulSet (http :6767, TCP probes, PUID/PGID/TZ), Service, PVC
   `bazarr-config`, NetworkPolicy (ingress from prowlarr only), VPA; an rclone
   init container seeds `config.yaml` from the `bazarr` Secret.
-- `overlays/nishir/` — PVC pinned to `nishir-standard`, mounts `movies-data` and
+- `overlays/nishir/` — PVC pinned to `longhorn-standard`, mounts
+  `movies-data` and
   `shows-data`, Secret `bazarr` (`config.enc.yaml`).
 - `overlays/nishir-tailnet/` — tailscale Ingress (host `bazarr`), netpol opened
   to `tailscale-system`, `nishir-media` labels.

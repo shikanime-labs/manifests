@@ -12,7 +12,7 @@ deletes stale items when their watch windows expire. Web UI on :6246
   probes), Service, PVC `maintainerr-config`, NetworkPolicy (deny-all
   ingress; the gateway plane is cross-namespace), VPA.
 - `overlays/nishir/` — cluster-CA cert, Gateway, PVC pinned to
-  `nishir-standard`; no secrets.
+  `longhorn-standard`; no secrets.
 - `overlays/nishir-tailnet/` — tailscale BYOD EnvoyProxy (LB svc
   `maintainerr-proxy`), route hostnames, `nishir-media` labels.
 

@@ -25,7 +25,7 @@ direct media downloads. TLS terminates on :443 from the
 - `components/monitoring/` — VMServiceScrape on the metrics port.
 - `components/tls/` — https :8448 port, TLS secret mount, probes.
 - `overlays/nishir/` — Certificate `synapse-tls` (nishir issuer), PVC pin to
-  `nishir-standard`, 2.5g-network node affinity, Gateway (synapse),
+  `longhorn-standard`, 2.5g-network node affinity, Gateway (synapse),
   BackendTLSPolicy for synapse's TLS backend, patch-httproute (hostnames +
   parentRefs).
 - `overlays/nishir-tailnet/` — SOPS homeserver.yaml + log config

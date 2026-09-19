@@ -245,8 +245,8 @@ external-dns). `telsha` is the lighter node and has not begun the migration.
 - **Serving:** Envoy Gateway is primary (Gateway API); Tailscale is the L4
   transport behind it; legacy apps still use Tailscale Ingress.
 - **Storage:** Longhorn provides the storage class, settings, and recurring
-  jobs; app PVCs bind to Longhorn volumes (`nishir-standard`, `nishir-capacity`
-  cold tier).
+  jobs; app PVCs bind to Longhorn volumes (`longhorn-standard`,
+  `longhorn-capacity` cold tier).
 - **Observability:** VictoriaMetrics + VictoriaLogs + Grafana, exposed over
   Tailscale.
 - **Inference:** `apps/llama-cpp/*` router workloads behind an Envoy AI Gateway

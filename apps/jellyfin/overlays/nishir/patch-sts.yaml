@@ -3,27 +3,6 @@ kind: StatefulSet
 metadata:
   name: jellyfin
 spec:
-  volumeClaimTemplates:
-    - metadata:
-        name: cache
-      spec:
-        resources:
-          requests:
-            storage: 16Gi
-        storageClassName: nishir-scratch
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
-    - metadata:
-        name: config
-      spec:
-        resources:
-          requests:
-            storage: 32Gi
-        storageClassName: nishir-standard
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
   template:
     spec:
       affinity:
