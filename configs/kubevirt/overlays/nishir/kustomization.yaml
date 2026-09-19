@@ -1,2 +1,11 @@
 resources:
   - ../../base
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/configuration/developerConfiguration/featureGates
+        value:
+          - EnableVirtioFsConfigVolumes
+    target:
+      kind: KubeVirt
+      name: kubevirt
