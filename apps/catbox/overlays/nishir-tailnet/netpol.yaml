@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: vaultwarden
+  name: catbox
+  namespace: shikanime
 spec:
   ingress:
     - from:
@@ -9,10 +10,11 @@ spec:
             matchLabels:
               kubernetes.io/metadata.name: tailscale-system
       ports:
-        - port: http
+        - port: ssh
+        - port: mdns
   podSelector:
     matchLabels:
-      app.kubernetes.io/instance: vaultwarden
-      app.kubernetes.io/name: vaultwarden
+      app.kubernetes.io/instance: catbox
+      app.kubernetes.io/name: catbox
   policyTypes:
     - Ingress
