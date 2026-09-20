@@ -2,7 +2,6 @@ resources:
   - ../../base
   - ../../components/monitoring
   - cert.yaml
-  - clienttrafficpolicy.yaml
   - gateway.yaml
   - gatewayconfig.yaml
   - securitypolicy.yaml
@@ -22,26 +21,6 @@ secretGenerator:
   - name: llama-cpp-oidc-client
     envs:
       - llama-cpp-oidc-client/.enc.env
-  - name: z-ai-key
-    namespace: shikanime
-    envs:
-      - z-ai-key/.enc.env
-  - name: nous-key
-    namespace: shikanime
-    envs:
-      - nous-key/.enc.env
-  - name: openrouter-key
-    namespace: shikanime
-    envs:
-      - openrouter-key/.enc.env
-  - name: mistral-key
-    namespace: shikanime
-    envs:
-      - mistral-key/.enc.env
-  - name: inference-key
-    namespace: shikanime
-    envs:
-      - inference-key/.enc.env
   - name: llama-cpp-env
     namespace: shikanime
     envs:

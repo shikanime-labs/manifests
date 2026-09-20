@@ -1,16 +1,16 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-chat
+  name: studio-shikanime-i-inference
   namespace: shikanime
 spec:
-  commonName: chat.i.shikanime.studio
+  commonName: inference.i.shikanime.studio
   dnsNames:
-    - chat.i.shikanime.studio
+    - inference.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-chat
+  secretName: studio-shikanime-i-inference
   usages:
     - digital signature
     - key encipherment

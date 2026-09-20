@@ -1,7 +1,5 @@
 resources:
   - ../nishir
-  - envoyproxy.yaml
-  - gatewayclass.yaml
 namespace: shikanime
 patches:
   - patch: |-
@@ -30,17 +28,6 @@ patches:
     target:
       name: llama-cpp-redirect
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/targetRefs
-        value:
-          - name: inference
-            group: gateway.networking.k8s.io
-            kind: Gateway
-    target:
-      name: inference
-      kind: ClientTrafficPolicy
-      namespace: shikanime
 labels:
   - includeTemplates: true
     pairs:
