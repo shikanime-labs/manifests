@@ -42,7 +42,20 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-key/.enc.env
+  - name: hf-token
+    namespace: shikanime
+    envs:
+      - hf-token/.enc.env
 patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/initContainers/0/envFrom
+        value:
+          - secretRef:
+              name: hf-token
+    target:
+      name: llama-cpp
+      kind: StatefulSet
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/env/-

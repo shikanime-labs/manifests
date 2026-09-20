@@ -20,3 +20,6 @@ nameReference:
       - kind: SecurityPolicy
         path: spec/oidc/clientSecret/name
         group: gateway.envoyproxy.io
+      - kind: StatefulSet
+        path: spec/template/spec/initContainers/envFrom/secretRef/name
+        version: v1
