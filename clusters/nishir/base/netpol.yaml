@@ -9,8 +9,6 @@ spec:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: envoy-gateway-system
-    - from:
-        - podSelector: {}
   podSelector: {}
   policyTypes:
     - Ingress
