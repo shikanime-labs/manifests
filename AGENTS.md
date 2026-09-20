@@ -131,9 +131,13 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - **Tailnet hostnames append:** JSON6902 `op: add` on `path: /spec/hostnames/-`
   with a scalar `value:`. Never a list value (appends a nested list) and never
   `op: replace` on `/spec/hostnames` in tailnet overlays.
-- **Patch placement:** JSON6902 patches go INLINE in `kustomization.yaml`
-  `patches:` entries (`patch: |-` + `target:`). Separate patch files are for
-  strategic-merge only, named `patch-<resource>.yaml`.
+- **Patch placement:** every patch to a core kube resource (StatefulSet,
+  Deployment, Service, ...) is a strategic-merge file `patch-<resource>.yaml`
+  listed under `patches:`. JSON6902 inline entries (`patch: |-` + `target:`)
+  are for CRDs and specific cases strategic merge cannot express (list
+  appends like `env/-`, keyed lists without merge keys). Kustomize rewrites
+  core-resource references to generated Secrets/ConfigMaps natively —
+  `namereference.yaml` entries are only for CRDs.
 - **Kustomize v5 gotchas:** a JSON6902 patch FILE must be a single ops-list doc
   (multidoc `{patch,target}` files fail to parse; multidoc ops-lists are
   order-dependent). `add` on an existing object member acts as replace (RFC
