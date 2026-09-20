@@ -57,6 +57,17 @@ spec:
                   app.kubernetes.io/instance: llama-cpp
                   app.kubernetes.io/name: llama-cpp
               topologyKey: kubernetes.io/hostname
+      initContainers:
+        - name: model-prefetch
+          image: huggingface
+          command:
+            - /scripts/entrypoint.sh
+          volumeMounts:
+            - name: cache-huggingface
+              mountPath: /models
+            - name: prefetch-script
+              mountPath: /scripts
+              readOnly: true
       containers:
         - name: llama-cpp
           image: llama-cpp
@@ -94,6 +105,8 @@ spec:
           volumeMounts:
             - name: cache-huggingface
               mountPath: /home/llama.cpp/.cache/huggingface
+            - name: cache-huggingface
+              mountPath: /models
             - name: models-preset
               mountPath: /etc/llama-cpp/preset
               readOnly: true
@@ -124,6 +137,9 @@ spec:
         - name: models-preset
           configMap:
             name: llama-cpp-models-preset
+        - name: prefetch-script
+          configMap:
+            name: llama-cpp-prefetch
         - name: dev-kfd
           hostPath:
             type: CharDevice
