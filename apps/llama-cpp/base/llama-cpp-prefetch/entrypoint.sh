@@ -18,6 +18,11 @@ hf download incoai/Qwen3.8-27B-DFlash2-GGUF \
   --local-dir /models/Qwen3.8-27B-DFlash2-Q8_0 &
 pids="$pids $!"
 
+hf download unsloth/DeepSeek-V4-Flash-0731-GGUF \
+  --include 'dspark-DeepSeek-V4-Flash-0731-Q8_0.gguf' \
+  --local-dir /models/dspark-DeepSeek-V4-Flash-0731-Q8_0 &
+pids="$pids $!"
+
 hf download lmstudio-community/Qwen3.8-Flash-Next-GGUF \
   --include 'Qwen3.8-Flash-Next-Q4_K_M-*' \
   --local-dir /models/Qwen3.8-Flash-Next-Q4_K_M &
