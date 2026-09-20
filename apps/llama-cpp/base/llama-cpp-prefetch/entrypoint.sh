@@ -3,9 +3,9 @@ set -eu
 
 pids=""
 
-hf download lmstudio-community/DeepSeek-V4-Flash-0731-GGUF \
-  --include 'DeepSeek-V4-Flash-0731-MXFP4-*' \
-  --local-dir /models/DeepSeek-V4-Flash-0731-MXFP4 &
+hf download unsloth/DeepSeek-V4-Flash-0731-GGUF \
+  --include 'UD-Q4_K_XL/*' \
+  --local-dir /models/DeepSeek-V4-Flash-0731-UD-Q4_K_XL &
 pids="$pids $!"
 
 hf download unsloth/Qwen3.8-27B-GGUF \
