@@ -47,15 +47,7 @@ secretGenerator:
     envs:
       - llama-cpp-env/.enc.env
 patches:
-  - patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/envFrom
-        value:
-          - secretRef:
-              name: llama-cpp-env
-    target:
-      name: llama-cpp
-      kind: StatefulSet
+  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/env/-
