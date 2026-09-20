@@ -1,0 +1,10 @@
+resources:
+  - nad.yaml
+  - sts.yaml
+images:
+  - name: ds4
+    newName: docker.io/kyuz0/strix-halo-ds4-toolbox
+    digest: sha256:5e29e066d840ddcf95ca46fcc6fa378f118367c75513566393603fed3a734765
+  - name: huggingface
+    newName: ghcr.io/shikanime-labs/machines/huggingface
+    digest: sha256:23e64361552be361c88f26cea13706429687f1c3301bdaffc656796256fd2902

@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ds4-worker
+spec:
+  serviceName: ds4-worker
+  replicas: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  volumeClaimTemplates:
+    - metadata:
+        name: cache-huggingface
+      spec:
+        resources:
+          requests:
+            storage: 512Gi
+        storageClassName: longhorn-scratch
+        accessModes:
+          - ReadWriteOncePod
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: ds4-worker
+      app.kubernetes.io/name: ds4-worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: ds4-worker
+        app.kubernetes.io/name: ds4-worker
+      annotations:
+        k8s.v1.cni.cncf.io/networks: shikanime/ds4-worker
+    spec:
+      nodeName: sashina
+      securityContext:
+        fsGroup: 65532
+      initContainers:
+        - name: fetch
+          image: huggingface
+          workingDir: /models
+          command:
+            - hf
+            - download
+            - antirez/deepseek-v4-gguf
+            - --include
+            - "DeepSeek-V4-Flash-Q4KExperts-F16HC-F16Compressor-F16Indexer-Q8Attn-Q8Shared-Q8Out-chat-v2.gguf"
+            - --local-dir
+            - /models/deepseek-v4-flash
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+          volumeMounts:
+            - name: models
+              mountPath: /models/deepseek-v4-flash
+              subPath: deepseek-v4-flash
+            - name: cache-huggingface
+              mountPath: /home/huggingface/.cache/huggingface
+          envFrom:
+            - secretRef:
+                name: ds4-env
+      containers:
+        - name: ds4
+          image: ds4
+          command:
+            - ds4
+          args:
+            - -m
+            - /models/deepseek-v4-flash/DeepSeek-V4-Flash-Q4KExperts-F16HC-F16Compressor-F16Indexer-Q8Attn-Q8Shared-Q8Out-chat-v2.gguf
+            - --role
+            - worker
+            - --layers
+            - 20:output
+            - --coordinator
+            - 10.66.2.1
+            - "9911"
+            - --ctx
+            - "1048576"
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: models
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+      volumes:
+        - name: models
+          hostPath:
+            type: DirectoryOrCreate
+            path: /var/lib/ds4/models
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
