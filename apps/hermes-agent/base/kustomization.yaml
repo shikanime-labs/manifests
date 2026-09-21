@@ -9,7 +9,7 @@ images:
     newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
   - name: hermes-agent
     newName: ghcr.io/shikanime-labs/machines/hermes-agent
-    newTag: latest@sha256:585b98776439aa721a89fc4650285f70f59278b91e9b8d0b8f77bb2e55eff6dc
+    newTag: latest@sha256:a7bf4aaddb5a8e78ce75a1c4477e6f9e4b801b23ae6e52fcb726d731fa2b48dd
 configMapGenerator:
   - name: hermes-agent-rclone
     files:
