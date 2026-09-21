@@ -1051,3 +1051,54 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-ds4-coordinator
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-multus
+    - name: infrastructure-envoy-gateway
+    - name: infrastructure-envoy-ai-gateway
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: ds4-coordinator
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/ds4-coordinator/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-ds4-worker
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: apps-ds4-coordinator
+    - name: infrastructure-multus
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: ds4-worker
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/ds4-worker/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
