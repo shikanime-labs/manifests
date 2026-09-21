@@ -4,7 +4,7 @@ metadata:
   name: ds4-coordinator
 spec:
   serviceName: ds4-coordinator
-  replicas: 1
+  replicas: 0
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
@@ -14,7 +14,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 512Gi
+            storage: 256Gi
         storageClassName: longhorn-scratch
         accessModes:
           - ReadWriteOncePod
