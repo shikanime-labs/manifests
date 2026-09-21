@@ -1,0 +1,17 @@
+resources:
+  - ../nishir
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+namespace: shikanime
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/targetRefs
+        value:
+          - name: inference
+            group: gateway.networking.k8s.io
+            kind: Gateway
+    target:
+      name: inference
+      kind: ClientTrafficPolicy
+      namespace: shikanime

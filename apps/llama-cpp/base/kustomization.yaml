@@ -1,10 +1,7 @@
 resources:
-  - aigatewayroute.yaml
   - aiservicebackend.yaml
   - backend.yaml
-  - backendsecuritypolicy.yaml
   - httproute.yaml
-  - httproutefilter.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
