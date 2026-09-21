@@ -8,8 +8,8 @@ images:
     newName: rclone/rclone
     newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
   - name: hermes-agent
-    newName: nousresearch/hermes-agent
-    newTag: v2026.8.27@sha256:e0df6adebddf29b91112aefc999d4aaf6846c9eb544faca5672a16a13590ff79
+    newName: ghcr.io/shikanime-labs/machines/hermes-agent
+    newTag: latest@sha256:a7bf4aaddb5a8e78ce75a1c4477e6f9e4b801b23ae6e52fcb726d731fa2b48dd
 configMapGenerator:
   - name: hermes-agent-rclone
     files:

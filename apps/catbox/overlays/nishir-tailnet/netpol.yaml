@@ -12,6 +12,13 @@ spec:
       ports:
         - port: ssh
         - port: mdns
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: hermes-agent
+              app.kubernetes.io/name: hermes-agent
+      ports:
+        - port: ssh
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: catbox

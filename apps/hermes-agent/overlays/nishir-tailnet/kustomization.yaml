@@ -10,7 +10,7 @@ labels:
       app.kubernetes.io/instance: hermes-agent
       app.kubernetes.io/name: hermes-agent
       app.kubernetes.io/part-of: nishir-automata
-      app.kubernetes.io/version: 2026.8.27
+      app.kubernetes.io/version: 1.0.0
 patches:
   - patch: |-
       - op: add
