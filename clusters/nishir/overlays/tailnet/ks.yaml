@@ -1063,7 +1063,6 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: infrastructure-multus
     - name: infrastructure-envoy-gateway
     - name: infrastructure-envoy-ai-gateway
   healthChecks:
@@ -1090,7 +1089,6 @@ spec:
       name: sops-age
   dependsOn:
     - name: apps-ds4-coordinator
-    - name: infrastructure-multus
   healthChecks:
     - apiVersion: apps/v1
       kind: StatefulSet
