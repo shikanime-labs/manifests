@@ -28,23 +28,13 @@ spec:
           env:
             - name: DISCORD_ALLOW_BOTS
               value: mentions
-            - name: S6_READ_ONLY_ROOT
-              value: "1"
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
           volumeMounts:
             - name: data
-              mountPath: /opt/data
+              mountPath: /home/hermes/.hermes
             - name: profiles-data
-              mountPath: /opt/data/profiles
+              mountPath: /home/hermes/.hermes/profiles
             - name: skills-data
-              mountPath: /opt/data/skills
-            - name: rclone-config
-              mountPath: /config/rclone/rclone.conf
-              readOnly: true
-              subPath: rclone.conf
+              mountPath: /home/hermes/.hermes/skills
             - name: run
               mountPath: /run
             - name: ssh-key
@@ -53,15 +43,6 @@ spec:
           envFrom:
             - secretRef:
                 name: hermes-agent
-          securityContext:
-            capabilities:
-              add:
-                - CHOWN
-                - DAC_OVERRIDE
-                - FOWNER
-                - SETGID
-                - SETUID
-            readOnlyRootFilesystem: false
           lifecycle:
             preStop:
               exec:
@@ -81,10 +62,10 @@ spec:
             - --filter
             - + SOUL.md
             - /mnt/startup-config
-            - /opt/data
+            - /home/hermes/.hermes
           volumeMounts:
             - name: data
-              mountPath: /opt/data
+              mountPath: /home/hermes/.hermes
             - name: rclone-config
               mountPath: /config/rclone/rclone.conf
               readOnly: true
@@ -93,11 +74,18 @@ spec:
               mountPath: /mnt/startup-config
               readOnly: true
           securityContext:
+            runAsUser: 0
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
             capabilities:
+              drop:
+                - ALL
               add:
+                - CHOWN
+                - DAC_OVERRIDE
                 - FOWNER
       securityContext:
-        fsGroup: 1000
+        fsGroup: 65532
       volumes:
         - name: profiles-data
           persistentVolumeClaim:

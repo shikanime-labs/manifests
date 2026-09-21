@@ -344,6 +344,7 @@ smart_model_routing:
 streaming:
   fresh_final_after_seconds: 60
 terminal:
+  backend: ssh
   env_passthrough:
     - GITHUB_TOKEN
   lifetime_seconds: 300
