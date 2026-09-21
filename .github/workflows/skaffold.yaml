@@ -91,6 +91,7 @@ jobs:
           github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
+      - id: skaffold
         uses: shikanime-studio/actions/skaffold/integration@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
         with:
           profile: ${{ matrix.name }}
