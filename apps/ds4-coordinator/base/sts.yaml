@@ -8,20 +8,20 @@ spec:
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
-  volumeClaimTemplates:
-    - metadata:
-        name: cache-huggingface
-      spec:
-        resources:
-          requests:
-            storage: 256Gi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: ds4-coordinator
       app.kubernetes.io/name: ds4-coordinator
+  volumeClaimTemplates:
+    - metadata:
+        name: cache-huggingface
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: local-nvme-ds4
+        resources:
+          requests:
+            storage: 256Gi
   template:
     metadata:
       labels:
