@@ -30,7 +30,8 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: shikanime/ds4-worker
     spec:
-      nodeName: sashina
+      nodeSelector:
+        kubernetes.io/hostname: sashina
       securityContext:
         fsGroup: 65532
       initContainers:

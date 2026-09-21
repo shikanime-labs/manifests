@@ -30,7 +30,8 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: shikanime/ds4-coordinator
     spec:
-      nodeName: kushira
+      nodeSelector:
+        kubernetes.io/hostname: kushira
       securityContext:
         fsGroup: 65532
       initContainers:
