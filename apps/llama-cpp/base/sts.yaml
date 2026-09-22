@@ -133,9 +133,8 @@ spec:
             name: llama-cpp-prefetch
             defaultMode: 0755
         - name: cache-huggingface
-          hostPath:
-            type: DirectoryOrCreate
-            path: /var/cache/huggingface
+          persistentVolumeClaim:
+            claimName: cache-huggingface
         - name: dev-kfd
           hostPath:
             type: CharDevice
