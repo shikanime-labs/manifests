@@ -8,16 +8,6 @@ spec:
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
-  volumeClaimTemplates:
-    - metadata:
-        name: cache-huggingface
-      spec:
-        resources:
-          requests:
-            storage: 512Gi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
@@ -142,6 +132,10 @@ spec:
           configMap:
             name: llama-cpp-prefetch
             defaultMode: 0755
+        - name: cache-huggingface
+          hostPath:
+            type: DirectoryOrCreate
+            path: /var/cache/huggingface
         - name: dev-kfd
           hostPath:
             type: CharDevice

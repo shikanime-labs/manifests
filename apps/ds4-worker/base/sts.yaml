@@ -8,16 +8,6 @@ spec:
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
-  volumeClaimTemplates:
-    - metadata:
-        name: cache-huggingface
-      spec:
-        resources:
-          requests:
-            storage: 512Gi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: ds4-worker
@@ -30,8 +20,6 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: shikanime/ds4-worker
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: sashina
       securityContext:
         fsGroup: 65532
       initContainers:
@@ -86,6 +74,10 @@ spec:
             - name: dev-dri
               mountPath: /dev/dri
       volumes:
+        - name: cache-huggingface
+          hostPath:
+            type: DirectoryOrCreate
+            path: /var/cache/huggingface
         - name: models
           hostPath:
             type: DirectoryOrCreate
