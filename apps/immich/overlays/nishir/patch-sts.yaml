@@ -14,6 +14,11 @@ spec:
                     operator: In
                     values:
                       - "true"
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0380_1002.present
+                    operator: In
+                    values:
+                      - "true"
       containers:
         - name: immich
           volumeMounts:
