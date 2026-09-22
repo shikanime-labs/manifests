@@ -10,7 +10,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/template/spec/volumes/0/containerDisk/image
-        value: ghcr.io/shikanime-labs/machines/catbox:a8488aeb@sha256:3683df01865927806a5dabc32191b879d9be91b231c6cfb106441ab7e8bde1e7
+        value: ghcr.io/shikanime-labs/machines/catbox:e67ebf9c@sha256:b9ed723303c6dd42f46122eae28739e32a70c739f64e3476efe3c56dd1b5019a
     target:
       name: catbox
       kind: VirtualMachine
