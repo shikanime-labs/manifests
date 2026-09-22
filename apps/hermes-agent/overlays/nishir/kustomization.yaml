@@ -99,6 +99,7 @@ secretGenerator:
     files:
       - hermes-agent/config.yaml
       - hermes-agent/SOUL.md
+      - .env=hermes-agent/runtime.env.enc
   - name: hermes-agent-ssh
     files:
       - id_ed25519=hermes-agent-ssh/id_ed25519.enc
