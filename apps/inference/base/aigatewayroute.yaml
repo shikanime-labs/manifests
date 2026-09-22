@@ -49,26 +49,6 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek/deepseek-v4-flash
-      modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: llama-cpp
-          priority: 0
-          modelNameOverride: deepseek/deepseek-v4-flash
-        - name: nous
-          priority: 1
-          modelNameOverride: deepseek/deepseek-v4-flash-latest
-        - name: openrouter
-          priority: 2
-          modelNameOverride: deepseek/deepseek-v4-flash-latest
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
               value: z-ai/glm-5.3-flash
       modelsOwnedBy: Shikanime Studio
       # LLM generations routinely exceed Envoy AI Gateway's 60s default route

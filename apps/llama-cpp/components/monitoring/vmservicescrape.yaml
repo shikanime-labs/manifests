@@ -11,20 +11,6 @@ spec:
       path: /metrics
       params:
         model:
-          - deepseek/deepseek-v4-flash
-        autoload:
-          - "false"
-      port: http
-      scrapeTimeout: 30s
-      relabelConfigs:
-        - targetLabel: model
-          replacement: deepseek/deepseek-v4-flash
-        - targetLabel: instance
-          replacement: llama-cpp-deepseek-v4-flash
-    - interval: 60s
-      path: /metrics
-      params:
-        model:
           - qwen/qwen3.8-27b
         autoload:
           - "false"
