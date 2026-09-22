@@ -253,6 +253,8 @@ fallback_providers:
   - api_mode: anthropic_messages
     model: z-ai/glm-5.3
     provider: custom:shikanime-anthropic
+gateway:
+  multiplex_profiles: false
 group_sessions_per_user: true
 mcp_servers:
   aperture:
