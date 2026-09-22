@@ -18,10 +18,10 @@ jobs:
           permission-contents: read
           permission-pull-requests: write
           private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
-      - uses: shikanime-studio/actions/nix/setup@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
         with:
           github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
-      - uses: shikanime-studio/actions/checkout@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
+      - uses: shikanime-studio/actions/checkout@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
         with:
           github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - env:
