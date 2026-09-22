@@ -47,6 +47,7 @@ jobs:
           github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@68a5b49e707bb499fe73cd1b7dddb95fd4a66716
+      - name: Run flake check
         run: nix flake check --accept-flake-config --no-pure-eval --system "${{ matrix.system }}"
         shell: bash
   packages:

@@ -8,5 +8,5 @@ patches:
         value:
           - EnableVirtioFsConfigVolumes
     target:
-      kind: KubeVirt
       name: kubevirt
+      kind: KubeVirt

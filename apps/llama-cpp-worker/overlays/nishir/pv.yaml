@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -25,10 +26,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: llama-cpp-worker-cache
 spec:
-  volumeName: llama-cpp-worker-cache
-  accessModes:
-    - ReadWriteOncePod
-  storageClassName: ""
   resources:
     requests:
       storage: 256Gi
+  volumeName: llama-cpp-worker-cache
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOncePod
