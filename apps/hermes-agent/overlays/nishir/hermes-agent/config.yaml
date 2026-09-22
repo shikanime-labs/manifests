@@ -348,8 +348,7 @@ streaming:
   fresh_final_after_seconds: 60
 terminal:
   backend: ssh
-  env_passthrough:
-    - GITHUB_TOKEN
+  env_passthrough: []
   lifetime_seconds: 300
   modal_mode: managed
   ssh_host: catbox.shikanime.svc.cluster.local
