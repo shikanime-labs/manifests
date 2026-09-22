@@ -354,7 +354,7 @@ terminal:
     - GITHUB_TOKEN
   lifetime_seconds: 300
   modal_mode: managed
-  ssh_host: catbox
+  ssh_host: catbox.taila659a.ts.net
   ssh_key: /root/.ssh/id_ed25519
   ssh_port: 22
   ssh_user: automata
