@@ -1,9 +1,0 @@
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: Backend
-metadata:
-  name: ds4-coordinator
-spec:
-  endpoints:
-    - fqdn:
-        hostname: ds4-coordinator.shikanime.svc.cluster.local
-        port: 8000

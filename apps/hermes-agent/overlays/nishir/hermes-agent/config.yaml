@@ -205,7 +205,6 @@ custom_providers:
     key_env: SKS_API_KEY
     model: z-ai/glm-5.3-flash
     models:
-      - deepseek/deepseek-v4-flash
       - poolside/laguna-s-2.1:free
       - z-ai/glm-5.3
       - z-ai/glm-5.3-flash
@@ -215,7 +214,6 @@ custom_providers:
     key_env: SKS_API_KEY
     model: poolside/laguna-s-2.1:free
     models:
-      - deepseek/deepseek-v4-flash-0731
       - poolside/laguna-s-2.1:free
       - poolside/laguna-xs-2.1:free
 dashboard:

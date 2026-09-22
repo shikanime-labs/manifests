@@ -1,7 +1,0 @@
-resources:
-  - ../../base
-namespace: shikanime
-secretGenerator:
-  - name: ds4-env
-    envs:
-      - ds4-env/.enc.env
