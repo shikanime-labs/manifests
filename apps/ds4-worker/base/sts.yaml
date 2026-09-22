@@ -12,16 +12,6 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: ds4-worker
       app.kubernetes.io/name: ds4-worker
-  volumeClaimTemplates:
-    - metadata:
-        name: cache-huggingface
-      spec:
-        accessModes:
-          - ReadWriteOncePod
-        storageClassName: local-nvme-ds4
-        resources:
-          requests:
-            storage: 512Gi
   template:
     metadata:
       labels:
@@ -86,6 +76,10 @@ spec:
             - name: dev-dri
               mountPath: /dev/dri
       volumes:
+        - name: cache-huggingface
+          hostPath:
+            type: DirectoryOrCreate
+            path: /var/lib/ds4/cache
         - name: models
           hostPath:
             type: DirectoryOrCreate

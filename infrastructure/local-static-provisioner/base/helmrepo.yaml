@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: kubernetes-sigs-sig-storage
-  namespace: flux-system
-spec:
-  url: https://kubernetes-sigs.github.io/sig-storage-local-static-provisioner
-  interval: 1h
