@@ -269,6 +269,9 @@ model:
 platform_toolsets:
   a2a:
     - a2a
+  api_server:
+    - hermes-api-server
+    - a2a
   cli:
     - hermes-cli
     - a2a
@@ -349,5 +352,9 @@ terminal:
     - GITHUB_TOKEN
   lifetime_seconds: 300
   modal_mode: managed
+  ssh_host: catbox
+  ssh_key: /root/.ssh/id_ed25519
+  ssh_port: 22
+  ssh_user: automata
 web:
   backend: ddgs
