@@ -109,7 +109,7 @@ spec:
         - name: cache-huggingface
           hostPath:
             type: DirectoryOrCreate
-            path: /var/lib/ds4/cache
+            path: /var/cache/huggingface
         - name: models
           hostPath:
             type: DirectoryOrCreate

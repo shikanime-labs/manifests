@@ -20,8 +20,6 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: sashina
       securityContext:
         fsGroup: 65532
       affinity:
@@ -137,7 +135,7 @@ spec:
         - name: cache-huggingface
           hostPath:
             type: DirectoryOrCreate
-            path: /var/lib/llama-cpp/models
+            path: /var/cache/huggingface
         - name: dev-kfd
           hostPath:
             type: CharDevice
