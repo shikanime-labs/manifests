@@ -9,16 +9,6 @@ spec:
     whenScaled: Retain
   serviceName: llama-cpp-worker
   replicas: 1
-  volumeClaimTemplates:
-    - metadata:
-        name: cache
-      spec:
-        resources:
-          requests:
-            storage: 256Gi
-        storageClassName: longhorn-scratch
-        accessModes:
-          - ReadWriteOncePod
   selector:
     matchLabels:
       app.kubernetes.io/instance: llama-cpp
@@ -87,3 +77,7 @@ spec:
           hostPath:
             type: Directory
             path: /dev/dri
+        - name: cache
+          hostPath:
+            type: DirectoryOrCreate
+            path: /var/cache/llama-cpp
