@@ -78,6 +78,5 @@ spec:
             type: Directory
             path: /dev/dri
         - name: cache
-          hostPath:
-            type: DirectoryOrCreate
-            path: /var/cache/llama-cpp
+          persistentVolumeClaim:
+            claimName: llama-cpp-worker-cache

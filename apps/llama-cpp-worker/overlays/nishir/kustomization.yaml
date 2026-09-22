@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - pv.yaml
   - nad.yaml
   - netpol.yaml
 namespace: shikanime
