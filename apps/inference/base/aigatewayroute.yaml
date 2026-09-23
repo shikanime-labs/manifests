@@ -31,8 +31,6 @@ spec:
               type: Exact
               value: qwen/qwen3.8-flash
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -51,8 +49,6 @@ spec:
               type: Exact
               value: z-ai/glm-5.3-flash
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -68,8 +64,6 @@ spec:
               type: Exact
               value: qwen/qwen3-embedding-8b
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -88,8 +82,6 @@ spec:
               type: Exact
               value: mistral/labs-leanstral-1-5
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -102,8 +94,6 @@ spec:
               type: Exact
               value: z-ai/glm-5.3
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -122,8 +112,6 @@ spec:
               type: Exact
               value: poolside/laguna-s-2.1
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
@@ -139,8 +127,6 @@ spec:
               type: RegularExpression
               value: ".*"
       modelsOwnedBy: Shikanime Studio
-      # LLM generations routinely exceed Envoy AI Gateway's 60s default route
-      # timeout (envoy flakes UT response_timeout and resets long streams).
       timeouts:
         request: 0s
       backendRefs:
