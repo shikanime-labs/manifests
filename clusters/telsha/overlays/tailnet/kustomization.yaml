@@ -10,6 +10,7 @@ components:
   - ../../components/gatekeeper
   - ../../components/victoria-metrics
   - ../../components/victoria-logs
+  - ../../components/grafana-operator
   - ../../components/tailscale
   - ../../components/trust-manager
 patches:

@@ -13,6 +13,7 @@ components:
   - ../../components/longhorn
   - ../../components/victoria-metrics
   - ../../components/victoria-logs
+  - ../../components/grafana-operator
   - ../../components/kubevirt
   - ../../components/node-feature-discovery
   - ../../components/tailscale

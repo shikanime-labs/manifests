@@ -5,9 +5,6 @@ metadata:
   namespace: flux-system
 spec:
   values:
-    grafana:
-      persistence:
-        storageClassName: local-path
     vmsingle:
       spec:
         extraArgs:
