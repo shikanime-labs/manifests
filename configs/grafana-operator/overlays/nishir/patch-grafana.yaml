@@ -20,7 +20,7 @@ spec:
     server:
       root_url: https://grafana.i.shikanime.studio/
     auth.generic_oauth:
-      name: Authelia
+      name: Shikanime Studio
       enabled: "true"
       client_id: grafana
       client_secret: ${GRAFANA_OIDC_SECRET}
