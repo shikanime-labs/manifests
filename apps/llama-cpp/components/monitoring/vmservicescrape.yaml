@@ -25,20 +25,6 @@ spec:
       path: /metrics
       params:
         model:
-          - qwen/qwen3.8-flash
-        autoload:
-          - "false"
-      port: http
-      scrapeTimeout: 30s
-      relabelConfigs:
-        - targetLabel: model
-          replacement: qwen/qwen3.8-flash
-        - targetLabel: instance
-          replacement: llama-cpp-qwen3.8-flash
-    - interval: 60s
-      path: /metrics
-      params:
-        model:
           - qwen/qwen3-embedding-8b
         autoload:
           - "false"

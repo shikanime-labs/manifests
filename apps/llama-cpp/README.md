@@ -1,16 +1,27 @@
 # llama-cpp
 
-Self-hosted llama.cpp inference for `nishir`: a `llama-server` router
-(StatefulSet `llama-cpp`) plus a `ggml-rpc-server` peer (StatefulSet
-`llama-cpp-worker`, see `apps/llama-cpp-worker/`), pinned by node affinity
-to the two Strix Halo MS-S1 nodes (`kushira`/`sashina`, via
-`feature.node.kubernetes.io/pci-0380_1002.present`). Mutual
-`podAntiAffinity` on `kubernetes.io/hostname` keeps the two pods on
-separate nodes. MoE models carrying a preset `rpc = 10.66.1.1:50052` key
-offload layers to the peer over the macvlan lane, aggregating both nodes'
-~96 GiB GTT carve-outs; dense models (the 27B, the embedding model) load
-entirely in the leader's pool. `--gpu-layers 999` (preset
-`n-gpu-layers`) offloads all layers to the iGPU.
+Self-hosted llama.cpp inference for `nishir`: the small-model pool —
+a `llama-server` router (StatefulSet `llama-cpp`, 2 replicas, one pod
+per Strix Halo MS-S1 node `kushira`/`sashina` via
+`feature.node.kubernetes.io/pci-0380_1002.present` affinity plus
+required `podAntiAffinity` on `kubernetes.io/hostname`). Serves
+`qwen/qwen3.8-27b` and `qwen/qwen3-embedding-8b`, both single-node
+models: each loads entirely in its pod's pool (`--gpu-layers 999` via
+preset `n-gpu-layers`), so no RPC peer and no macvlan lane are needed.
+The dedicated 111 GiB flash model lives in `apps/llama-cpp-rpc-head/`,
+which dials the RPC peer `apps/llama-cpp-rpc-worker/`.
+
+## Layout
+
+- `base/` — StatefulSet (2 replicas, per-replica 64Gi `longhorn-scratch`
+  VCT `cache-huggingface`), Service, Envoy `Backend`/`AIServiceBackend`,
+  HTTPRoutes, VPA, preset + prefetch ConfigMap generators.
+- `components/monitoring/` — VMServiceScrape on `/metrics` (60s) for
+  27b + embedding.
+- `overlays/nishir/` — monitoring component, BYOD `llama-cpp` Gateway
+  pieces (Certificate, Gateway, GatewayConfig, SecurityPolicy OIDC),
+  gateway netpol, OIDC/env secrets.
+- `overlays/nishir-tailnet/` — hostname appends + five-key label set.
 
 ## Model loading (prefetch init container)
 
@@ -18,7 +29,9 @@ An init container (`model-prefetch`, `ghcr.io/shikanime-labs/machines/
 huggingface` image) runs `llama-cpp-prefetch/entrypoint.sh`: one
 `hf download` per preset model, in parallel with per-PID error
 propagation, into flat `/models/<Model>-<Quant>/` directories on the
-512Gi `longhorn-scratch` PVC `cache-huggingface`. The volume is mounted a
+per-replica 64Gi `longhorn-scratch` VCT `cache-huggingface` (~2x the
+~33 GiB of prefetched models). The
+volume is mounted a
 second time at the image's native HF cache path
 (`/home/huggingface/.cache/huggingface`) because the init container root
 filesystem is read-only. The serving container mounts the same PVC at
@@ -35,17 +48,13 @@ referenced via `model-draft =`.
 
 Preset sections and tuning keys:
 
-- `deepseek/deepseek-v4-flash` → `DeepSeek-V4-Flash-0731-MXFP4`
-  (lmstudio-community, 4 shards): `rpc =` + `fit = off` (MoE exceeds one
-  node's pool), `load-mode = dio`.
 - `qwen/qwen3.8-27b` → `Qwen3.8-27B-UD-Q6_K` (unsloth): dflash
   speculative decoding (`spec-type = draft-dflash`, drafter
   `Qwen3.8-27B-DFlash2-Q8_0`, `spec-draft-n-max = 4`),
   `ubatch-size = 1024` / `batch-size = 4096`, `cache-reuse = 512`,
   `load-mode = dio`.
-- `qwen/qwen3.8-flash` → `Qwen3.8-Flash-Next-Q4_K_M` (lmstudio-community,
-  3 shards): `rpc =`, `no-mmproj = true`, `ubatch/batch 1024/4096`,
-  `cache-reuse = 512`, `load-mode = dio`.
+- `qwen/qwen3.8-flash` → served by the dedicated `llama-cpp-rpc-head`
+  app (see `apps/llama-cpp-rpc-head/README.md`), not this pool.
 - `qwen/qwen3-embedding-8b` → `Qwen3-Embedding-8B-Q6_K`:
   `embeddings = true`.
 
@@ -124,9 +133,9 @@ Headers: x-ai-eg-model: <provider/model>
 Body: { "model": "<provider/model>", "messages": [...] }
 ```
 
-Served locally: `qwen/qwen3.8-27b`, `qwen/qwen3.8-flash`,
-`deepseek/deepseek-v4-flash`, `qwen/qwen3-embedding-8b`. The remaining
-routes go to remote providers only: `z-ai/glm-5.3-flash` to the Z.ai
+Served locally: `qwen/qwen3.8-27b`, `qwen/qwen3-embedding-8b`. The
+remaining routes go to remote providers only: `qwen/qwen3.8-flash` to
+`apps/llama-cpp-rpc-head`, `z-ai/glm-5.3-flash` to the Z.ai
 OpenAI-compatible endpoint, `z-ai/glm-5.3` to the Anthropic endpoint,
 `mistral/labs-leanstral-1-5` to Mistral, and the catch-all to
 nous/openrouter.
@@ -147,5 +156,5 @@ get 401 JSON with CORS headers instead of an OIDC redirect.
 
 - `components/monitoring/` exposes the router `:9931/metrics` to vmagent
   (`VMServiceScrape llama-cpp`).
-- `vpa.yaml` targets the StatefulSet (`updateMode: InPlace`, 64Gi memory
-  floor on the router container).
+- `vpa.yaml` targets the StatefulSet (`updateMode: InPlace`, 32Gi memory
+  floor on the router container — above the 27B resident working set).

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: llama-cpp
+  name: llama-cpp-rpc-head
 spec:
-  serviceName: llama-cpp
-  replicas: 2
+  serviceName: llama-cpp-rpc-head
+  replicas: 1
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
   selector:
     matchLabels:
-      app.kubernetes.io/instance: llama-cpp
-      app.kubernetes.io/name: llama-cpp
+      app.kubernetes.io/instance: llama-cpp-rpc-head
+      app.kubernetes.io/name: llama-cpp-rpc-head
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: llama-cpp
-        app.kubernetes.io/name: llama-cpp
+        app.kubernetes.io/instance: llama-cpp-rpc-head
+        app.kubernetes.io/name: llama-cpp-rpc-head
     spec:
       securityContext:
         fsGroup: 65532
@@ -42,7 +42,8 @@ spec:
             - labelSelector:
                 matchLabels:
                   app.kubernetes.io/instance: llama-cpp
-                  app.kubernetes.io/name: llama-cpp
+                  app.kubernetes.io/name: llama-cpp-rpc-worker
+                  app.kubernetes.io/process: llama-cpp-rpc-worker
               topologyKey: kubernetes.io/hostname
       initContainers:
         - name: model-prefetch
@@ -144,7 +145,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 64Gi
+            storage: 128Gi
         storageClassName: longhorn-scratch
         accessModes:
           - ReadWriteOncePod
