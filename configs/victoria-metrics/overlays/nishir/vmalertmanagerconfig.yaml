@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlertmanagerConfig
+metadata:
+  name: discord
+  namespace: monitoring-system
+spec:
+  route:
+    receiver: discord
+  receivers:
+    - name: discord
+      discord_configs:
+        - send_resolved: true
+          webhook_url_secret:
+            name: discord-webhook
+            key: webhook-url

@@ -1,2 +1,9 @@
 resources:
-  - vmalertmanagerconfig.enc.yaml
+  - vmalertmanagerconfig.yaml
+secretGenerator:
+  - name: discord-webhook
+    namespace: monitoring-system
+    envs:
+      - discord-webhook/.enc.env
+configurations:
+  - namereference.yaml
