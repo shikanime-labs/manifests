@@ -15,7 +15,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: vaultwarden-env
+        - name: vaultwarden
           sectionName: https
     target:
       name: vaultwarden
@@ -28,7 +28,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: vaultwarden-env
+        - name: vaultwarden
           sectionName: http
     target:
       name: vaultwarden-redirect

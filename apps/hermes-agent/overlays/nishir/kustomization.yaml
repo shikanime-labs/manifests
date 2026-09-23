@@ -21,7 +21,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: https
     target:
       name: hermes-agent-dashboard
@@ -34,7 +34,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: https
     target:
       name: hermes-agent-api-server
@@ -47,7 +47,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: https
     target:
       name: hermes-agent-a2a
@@ -60,7 +60,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: http
     target:
       name: hermes-agent-dashboard-redirect
@@ -73,7 +73,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: http
     target:
       name: hermes-agent-api-server-redirect
@@ -86,7 +86,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent-env
+        - name: hermes-agent
           sectionName: http
     target:
       name: hermes-agent-a2a-redirect

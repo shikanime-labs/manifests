@@ -15,7 +15,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: immich-env
+        - name: immich
           sectionName: https
     target:
       name: immich
@@ -28,7 +28,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: immich-env
+        - name: immich
           sectionName: http
     target:
       name: immich-redirect

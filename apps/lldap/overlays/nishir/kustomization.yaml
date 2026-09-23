@@ -15,7 +15,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: lldap-env
+        - name: lldap
           sectionName: https
     target:
       name: lldap
