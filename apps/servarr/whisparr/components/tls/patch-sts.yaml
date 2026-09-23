@@ -31,11 +31,6 @@ spec:
               value: "True"
             - name: WHISPARR__SERVER__SSLCERTPATH
               value: /etc/ssl/private/keystore.p12
-            - name: WHISPARR__SERVER__SSLCERTPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: whisparr-env
-                  key: ssl-cert-password
             - name: WHISPARR__SERVER__SSLPORT
               value: "9898"
       volumes:

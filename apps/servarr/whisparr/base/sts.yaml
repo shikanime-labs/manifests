@@ -68,11 +68,6 @@ spec:
               value: Whisparr
             - name: WHISPARR__APP__LAUNCHBROWSER
               value: "False"
-            - name: WHISPARR__AUTH__APIKEY
-              valueFrom:
-                secretKeyRef:
-                  name: whisparr-env
-                  key: apikey
             - name: WHISPARR__AUTH__METHOD
               value: External
             - name: WHISPARR__AUTH__REQUIRED
@@ -89,6 +84,9 @@ spec:
               value: eros
             - name: WHISPARR__UPDATE__MECHANISM
               value: Docker
+          envFrom:
+            - secretRef:
+                name: whisparr-env
       securityContext:
         fsGroup: 1000
       volumes:

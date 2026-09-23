@@ -67,11 +67,6 @@ spec:
               value: Lidarr
             - name: LIDARR__APP__LAUNCHBROWSER
               value: "False"
-            - name: LIDARR__AUTH__APIKEY
-              valueFrom:
-                secretKeyRef:
-                  name: lidarr-env
-                  key: apikey
             - name: LIDARR__AUTH__METHOD
               value: Forms
             - name: LIDARR__LOG__LEVEL
@@ -86,6 +81,9 @@ spec:
               value: master
             - name: LIDARR__UPDATE__MECHANISM
               value: Docker
+          envFrom:
+            - secretRef:
+                name: lidarr-env
       securityContext:
         fsGroup: 1000
       volumes:

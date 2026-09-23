@@ -68,11 +68,6 @@ spec:
               value: Radarr
             - name: RADARR__APP__LAUNCHBROWSER
               value: "False"
-            - name: RADARR__AUTH__APIKEY
-              valueFrom:
-                secretKeyRef:
-                  name: radarr-env
-                  key: apikey
             - name: RADARR__AUTH__METHOD
               value: External
             - name: RADARR__AUTH__REQUIRED
@@ -89,6 +84,9 @@ spec:
               value: master
             - name: RADARR__UPDATE__MECHANISM
               value: Docker
+          envFrom:
+            - secretRef:
+                name: radarr-env
       securityContext:
         fsGroup: 1000
       volumes:
