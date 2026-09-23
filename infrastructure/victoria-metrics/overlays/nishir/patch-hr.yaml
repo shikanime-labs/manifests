@@ -26,9 +26,10 @@ spec:
                 caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
                 serverName: 127.0.0.1
     vmalert:
-      ruleNamespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: monitoring-system
+      spec:
+        ruleNamespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-system
     vmcluster:
       spec:
         vminsert:
