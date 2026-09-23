@@ -30,5 +30,3 @@ patches:
     target:
       name: googlechat-redirect
       kind: HTTPRoute
-components:
-  - ../../../components/monitoring
