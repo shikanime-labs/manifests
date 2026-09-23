@@ -27,6 +27,8 @@ spec:
                 serverName: 127.0.0.1
     vmalert:
       spec:
+        externalLabels:
+          namespace: monitoring-system
         ruleNamespaceSelector:
           matchLabels:
             kubernetes.io/metadata.name: monitoring-system
