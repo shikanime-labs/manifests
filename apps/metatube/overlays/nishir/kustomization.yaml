@@ -12,7 +12,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: metatube
+        - name: metatube-env
           sectionName: https
     target:
       name: metatube
@@ -25,12 +25,12 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: metatube
+        - name: metatube-env
           sectionName: http
     target:
       name: metatube-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: metatube
+  - name: metatube-env
     envs:
-      - metatube/.enc.env
+      - metatube-env/.enc.env

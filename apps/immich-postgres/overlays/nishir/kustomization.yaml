@@ -3,9 +3,9 @@ resources:
 namespace: shikanime
 patches:
 secretGenerator:
-  - name: immich-postgres
+  - name: immich-postgres-env
     type: kubernetes.io/basic-auth
     envs:
-      - immich-postgres/.enc.env
+      - immich-postgres-env/.enc.env
     options:
       disableNameSuffixHash: true

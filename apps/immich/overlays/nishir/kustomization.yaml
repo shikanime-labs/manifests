@@ -15,7 +15,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: immich
+        - name: immich-env
           sectionName: https
     target:
       name: immich
@@ -28,14 +28,14 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: immich
+        - name: immich-env
           sectionName: http
     target:
       name: immich-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: immich
+  - name: immich-env
     envs:
-      - .enc.env
+      - immich-env/.enc.env
     options:
       disableNameSuffixHash: true

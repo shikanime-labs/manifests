@@ -70,17 +70,17 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: immich-postgres
+                  name: immich-postgres-env
                   key: database
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: immich-postgres
+                  name: immich-postgres-env
                   key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: immich-postgres
+                  name: immich-postgres-env
                   key: password
       securityContext:
         fsGroup: 999

@@ -71,17 +71,17 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: database
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: password
       securityContext:
         fsGroup: 999

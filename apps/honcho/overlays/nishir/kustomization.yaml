@@ -14,7 +14,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: honcho
+        - name: honcho-env
           sectionName: https
     target:
       name: honcho
@@ -27,12 +27,12 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: honcho
+        - name: honcho-env
           sectionName: http
     target:
       name: honcho-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: honcho
+  - name: honcho-env
     envs:
-      - honcho/.enc.env
+      - honcho-env/.enc.env

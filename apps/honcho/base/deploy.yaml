@@ -47,22 +47,22 @@ spec:
               subPath: config.toml
           envFrom:
             - secretRef:
-                name: honcho
+                name: honcho-env
           env:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: password
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: database
             - name: DB_CONNECTION_URI
               value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)
@@ -75,22 +75,22 @@ spec:
             - head
           envFrom:
             - secretRef:
-                name: honcho
+                name: honcho-env
           env:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: password
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: honcho-postgres
+                  name: honcho-postgres-env
                   key: database
             - name: DB_CONNECTION_URI
               value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)

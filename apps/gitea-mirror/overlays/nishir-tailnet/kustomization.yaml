@@ -19,7 +19,7 @@ patches:
       - op: replace
         path: /spec/parentRefs
         value:
-          - name: gitea-mirror
+          - name: gitea-mirror-env
             sectionName: http
     target:
       name: gitea-mirror-redirect
@@ -31,12 +31,12 @@ patches:
       - op: replace
         path: /spec/parentRefs
         value:
-          - name: gitea-mirror
+          - name: gitea-mirror-env
             sectionName: https
     target:
       name: gitea-mirror
       kind: HTTPRoute
 secretGenerator:
-  - name: gitea-mirror
+  - name: gitea-mirror-env
     envs:
-      - gitea-mirror/.enc.env
+      - gitea-mirror-env/.enc.env

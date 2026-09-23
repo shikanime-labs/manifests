@@ -56,7 +56,7 @@ spec:
               mountPath: /data
           envFrom:
             - secretRef:
-                name: metatube
+                name: metatube-env
   volumeClaimTemplates:
     - metadata:
         name: data
