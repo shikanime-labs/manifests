@@ -6,10 +6,23 @@ spec:
   template:
     spec:
       containers:
-        - name: hermes-agent
-          env:
-            - name: HERMES_DASHBOARD
-              value: "1"
+        - name: dashboard
+          image: hermes-agent
+          command:
+            - hermes
+            - dashboard
+            - --host
+            - 0.0.0.0
+            - --port
+            - "9119"
+            - --no-open
+            - --skip-build
           ports:
             - name: dashboard
               containerPort: 9119
+          env:
+            - name: HOME
+              value: /home/hermes
+          volumeMounts:
+            - name: data
+              mountPath: /home/hermes/.hermes
