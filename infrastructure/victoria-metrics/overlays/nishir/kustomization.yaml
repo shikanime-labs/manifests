@@ -1,5 +1,9 @@
 resources:
   - ../../base
+  - vmrules/authelia.yaml
+  - vmrules/forgejo.yaml
+  - vmrules/honcho.yaml
+  - vmrules/mautrix.yaml
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
