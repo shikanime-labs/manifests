@@ -3,7 +3,7 @@ resources:
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
-  - vmalertmanagerconfig.yaml
+  - vmalertmanagerconfig.enc.yaml
 patches:
   - patch: |-
       - op: add
@@ -68,8 +68,3 @@ components:
   - ../../components/forgejo
   - ../../components/honcho
   - ../../components/mautrix
-secretGenerator:
-  - name: discord-webhook
-    namespace: monitoring-system
-    envs:
-      - discord-webhook/.enc.env
