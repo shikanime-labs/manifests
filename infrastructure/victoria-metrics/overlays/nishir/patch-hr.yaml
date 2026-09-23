@@ -27,6 +27,8 @@ spec:
                 serverName: 127.0.0.1
     vmalert:
       spec:
+        datasource:
+          url: http://vmalert-datasource-vmauth.monitoring-system.svc:8427
         externalLabels:
           namespace: monitoring-system
         ruleNamespaceSelector:
