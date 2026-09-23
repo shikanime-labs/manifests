@@ -62,7 +62,6 @@ patches:
       kind: HTTPRoute
       namespace: monitoring-system
   - path: patch-hr.yaml
-  - path: patch-hr-vmalertmanager.yaml
 components:
   - ../../components/authelia
   - ../../components/forgejo
