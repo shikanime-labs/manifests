@@ -217,9 +217,6 @@ custom_providers:
       - poolside/laguna-s-2.1:free
       - poolside/laguna-xs-2.1:free
 dashboard:
-  basic_auth:
-    password_hash: $2y$05$vfQMVf.qFiTB62aGVmmL6OV3TXzcOORB5s3DHoXdQOIrTOS7IzMlm
-    username: hermes
   oauth:
     provider: self-hosted
     self_hosted:
