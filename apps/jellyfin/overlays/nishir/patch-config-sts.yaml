@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copy
+            - --copy-links
+            - /mnt/jellyfin/
+            - /mnt/config/config/
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: jellyfin
+              mountPath: /mnt/jellyfin
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
+      volumes:
+        - name: jellyfin
+          secret:
+            secretName: jellyfin
