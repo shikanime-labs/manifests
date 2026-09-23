@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: local-path-provisioner
+  namespace: flux-system
+spec:
+  url: oci://ghcr.io/rancher/local-path-provisioner/charts
+  interval: 1h
+  type: oci

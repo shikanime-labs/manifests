@@ -68,6 +68,10 @@ spec:
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Gi
           ports:
             - name: http
               containerPort: 9931
@@ -148,6 +152,6 @@ spec:
         resources:
           requests:
             storage: 128Gi
-        storageClassName: longhorn-scratch
+        storageClassName: local-path
         accessModes:
           - ReadWriteOncePod
