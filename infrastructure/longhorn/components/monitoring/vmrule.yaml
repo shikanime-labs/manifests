@@ -1,8 +1,8 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
-  name: vmrules-longhorn
   namespace: monitoring-system
+  name: longhorn
 spec:
   groups:
     - name: longhorn.rules

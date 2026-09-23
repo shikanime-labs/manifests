@@ -1,8 +1,8 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
-  name: vmrules-kubevirt
   namespace: monitoring-system
+  name: kubevirt
 spec:
   groups:
     - name: kubevirt.alerts

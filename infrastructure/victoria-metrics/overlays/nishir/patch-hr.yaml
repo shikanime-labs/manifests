@@ -28,7 +28,7 @@ spec:
     vmalert:
       ruleNamespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: shikanime
+          kubernetes.io/metadata.name: monitoring-system
     vmcluster:
       spec:
         vminsert:
