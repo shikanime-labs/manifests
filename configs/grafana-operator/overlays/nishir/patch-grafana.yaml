@@ -15,8 +15,10 @@ spec:
                   valueFrom:
                     secretKeyRef:
                       name: grafana-oidc-client
-                      key: client_secret
+                      key: client-secret
   config:
+    server:
+      root_url: https://grafana.i.shikanime.studio/
     auth.generic_oauth:
       name: Authelia
       enabled: "true"
