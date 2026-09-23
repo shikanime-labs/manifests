@@ -30,6 +30,9 @@ spec:
         ruleNamespaceSelector:
           matchLabels:
             kubernetes.io/metadata.name: monitoring-system
+    vmalertmanager:
+      spec:
+        configSelector: {}
     vmcluster:
       spec:
         vminsert:
