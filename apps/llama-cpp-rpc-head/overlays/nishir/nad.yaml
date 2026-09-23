@@ -11,11 +11,9 @@ spec:
       "master": "br1",
       "mode": "bridge",
       "ipam": {
-        "type": "static",
-        "addresses": [
-          {
-            "address": "10.66.1.2/24"
-          }
-        ]
+        "type": "whereabouts",
+        "range": "10.66.1.0/24",
+        "range_start": "10.66.1.100",
+        "range_end": "10.66.1.200"
       }
     }
