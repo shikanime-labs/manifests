@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+      shareProcessNamespace: true
       containers:
         - name: dashboard
           image: hermes-agent
@@ -26,11 +27,11 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /home/hermes/.hermes
-          envFrom:
-            - secretRef:
-                name: hermes-agent-env
           readinessProbe:
             httpGet:
               path: /api/status
               port: 9119
             periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: hermes-agent-env
