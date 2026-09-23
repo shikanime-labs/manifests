@@ -9,7 +9,15 @@ resources:
 namespace: shikanime
 configurations:
   - namereference.yaml
+secretGenerator:
+  - name: llama-cpp-oidc-client
+    envs:
+      - llama-cpp-oidc-client/.enc.env
+  - name: llama-cpp-env
+    envs:
+      - llama-cpp-env/.enc.env
 patches:
+  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/env/-
