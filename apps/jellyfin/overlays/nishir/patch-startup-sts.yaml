@@ -6,19 +6,19 @@ spec:
   template:
     spec:
       initContainers:
-        - name: encoding-config-sync
+        - name: startup-config-sync
           image: rclone
           args:
-            - copyto
+            - copy
             - --copy-links
-            - /mnt/startup-config/encoding.xml
-            - /mnt/config/configurations/encoding.xml
+            - /mnt/startup-config/
+            - /mnt/config/config/
           command:
             - rclone
           volumeMounts:
             - name: config
               mountPath: /mnt/config
-            - name: encoding-startup-config
+            - name: startup-config
               mountPath: /mnt/startup-config
               readOnly: true
           securityContext:
@@ -26,6 +26,6 @@ spec:
               add:
                 - FOWNER
       volumes:
-        - name: encoding-startup-config
+        - name: startup-config
           secret:
-            secretName: jellyfin-encoding
+            secretName: jellyfin-startup
