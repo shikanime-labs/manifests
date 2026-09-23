@@ -6,26 +6,26 @@ spec:
   template:
     spec:
       initContainers:
-        - name: startup-config-sync
+        - name: config-sync
           image: rclone
           args:
             - copy
             - --copy-links
-            - /mnt/startup-config/
+            - /mnt/jellyfin/
             - /mnt/config/config/
           command:
             - rclone
           volumeMounts:
             - name: config
               mountPath: /mnt/config
-            - name: startup-config
-              mountPath: /mnt/startup-config
+            - name: jellyfin
+              mountPath: /mnt/jellyfin
               readOnly: true
           securityContext:
             capabilities:
               add:
                 - FOWNER
       volumes:
-        - name: startup-config
+        - name: jellyfin
           secret:
-            secretName: jellyfin-startup
+            secretName: jellyfin
