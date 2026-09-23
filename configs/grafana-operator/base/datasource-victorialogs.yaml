@@ -6,7 +6,7 @@ metadata:
 spec:
   instanceSelector:
     matchLabels:
-      app: grafana
+      dashboards: grafana
   datasource:
     name: VictoriaLogs
     type: victoriametrics-logs-datasource
