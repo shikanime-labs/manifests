@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: longhorn-oidc-client
+  namespace: longhorn-system
+spec:
+  targetRefs:
+    - name: longhorn
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: longhorn
+    clientSecret:
+      name: longhorn-oidc-client
+    redirectURL: https://longhorn.i.shikanime.studio/oauth2/callback

@@ -2,6 +2,9 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
+configurations:
+  - namereference.yaml
 patches:
   - patch: |-
       - op: add
@@ -25,3 +28,8 @@ labels:
       app.kubernetes.io/name: flux-operator
       app.kubernetes.io/part-of: nishir-infrastructure
       app.kubernetes.io/version: 0.0.0
+secretGenerator:
+  - name: flux-oidc-client
+    namespace: flux-system
+    envs:
+      - flux-oidc-client/.enc.env

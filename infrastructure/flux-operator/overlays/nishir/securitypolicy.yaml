@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: flux-oidc-client
+  namespace: flux-system
+spec:
+  targetRefs:
+    - name: flux-operator
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: flux
+    clientSecret:
+      name: flux-oidc-client
+    redirectURL: https://flux.i.shikanime.studio/oauth2/callback
