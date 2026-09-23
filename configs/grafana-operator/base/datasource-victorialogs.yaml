@@ -1,0 +1,15 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: victorialogs
+  namespace: monitoring-system
+spec:
+  instanceSelector:
+    matchLabels:
+      app.kubernetes.io/name: grafana
+  datasource:
+    name: VictoriaLogs
+    type: victoriametrics-logs-datasource
+    access: proxy
+    url: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
+    isDefault: false
