@@ -3,6 +3,8 @@ kind: Grafana
 metadata:
   name: grafana
   namespace: monitoring-system
+  labels:
+    dashboards: grafana
 spec:
   persistentVolumeClaim:
     spec:
