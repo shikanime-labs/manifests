@@ -1,13 +1,7 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
-<<<<<<< conflict 1 of 1
-+++++++ nyzonntp 271862ee "Rotate the gitea-mirror Authelia client secret (#2534)" (rebase destination)
-  name: vmrules-longhorn
-%%%%%%% diff from: rlkywtpu 347014b1 "Rename VMRules to bare owner names and pin them to monitoring-system" (parents of rebased revision)
-\\\\\\\        to: kvtkvlvw f3df9f8d "Fix the gitea-mirror client secret field swap" (rebased revision)
-+  name: longhorn
->>>>>>> conflict 1 of 1 ends
+  name: longhorn
   namespace: monitoring-system
 spec:
   groups:

@@ -1,15 +1,8 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
-<<<<<<< conflict 1 of 1
-%%%%%%% diff from: rlkywtpu 347014b1 "Rename VMRules to bare owner names and pin them to monitoring-system" (parents of rebased revision)
-\\\\\\\        to: nyzonntp 271862ee "Rotate the gitea-mirror Authelia client secret (#2534)" (rebase destination)
--  namespace: monitoring-system
-   name: forgejo
-+++++++ kvtkvlvw f3df9f8d "Fix the gitea-mirror client secret field swap" (rebased revision)
   name: forgejo
   namespace: monitoring-system
->>>>>>> conflict 1 of 1 ends
 spec:
   groups:
     - name: forgejo
