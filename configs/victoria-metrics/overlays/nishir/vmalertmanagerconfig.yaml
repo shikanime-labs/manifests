@@ -12,4 +12,4 @@ spec:
         - send_resolved: true
           webhook_url_secret:
             name: discord-webhook
-            key: webhook_url
+            key: webhook-url
