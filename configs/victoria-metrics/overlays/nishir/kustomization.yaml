@@ -5,5 +5,13 @@ secretGenerator:
     namespace: monitoring-system
     envs:
       - discord-webhook/.enc.env
+  - name: discord-webhook
+    namespace: longhorn-system
+    envs:
+      - discord-webhook/.enc.env
+  - name: discord-webhook
+    namespace: shikanime
+    envs:
+      - discord-webhook/.enc.env
 configurations:
   - namereference.yaml
