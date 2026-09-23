@@ -6,8 +6,8 @@ metadata:
 spec:
   chart:
     spec:
-      chart: grafana-operator
       version: 5.24.0
+      chart: grafana-operator
       interval: 1h
       sourceRef:
         name: grafana
