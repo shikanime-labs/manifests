@@ -37,6 +37,6 @@ patches:
       name: gitea-mirror
       kind: HTTPRoute
 secretGenerator:
-  - name: gitea-mirror
+  - name: gitea-mirror-env
     envs:
-      - gitea-mirror/.enc.env
+      - gitea-mirror-env/.enc.env

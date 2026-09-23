@@ -34,6 +34,6 @@ patches:
       name: vaultwarden-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: vaultwarden
+  - name: vaultwarden-env
     envs:
-      - vaultwarden/.enc.env
+      - vaultwarden-env/.enc.env

@@ -92,13 +92,13 @@ patches:
       name: hermes-agent-a2a-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: hermes-agent
+  - name: hermes-agent-env
     envs:
-      - hermes-agent/.enc.env
+      - hermes-agent-env/.enc.env
   - name: hermes-agent-startup-config
     files:
-      - hermes-agent/config.yaml
-      - hermes-agent/SOUL.md
+      - hermes-agent-env/config.yaml
+      - hermes-agent-env/SOUL.md
   - name: hermes-agent-ssh
     files:
       - id_ed25519=hermes-agent-ssh/id_ed25519.enc

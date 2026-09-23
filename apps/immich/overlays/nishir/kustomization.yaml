@@ -34,8 +34,8 @@ patches:
       name: immich-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: immich
+  - name: immich-env
     envs:
-      - .enc.env
+      - immich-env/.enc.env
     options:
       disableNameSuffixHash: true

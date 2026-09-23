@@ -33,6 +33,6 @@ patches:
       name: honcho-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: honcho
+  - name: honcho-env
     envs:
-      - honcho/.enc.env
+      - honcho-env/.enc.env

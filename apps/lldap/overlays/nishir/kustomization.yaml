@@ -21,6 +21,6 @@ patches:
       name: lldap
       kind: HTTPRoute
 secretGenerator:
-  - name: lldap
+  - name: lldap-env
     envs:
-      - lldap/.enc.env
+      - lldap-env/.enc.env

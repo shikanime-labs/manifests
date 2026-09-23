@@ -48,7 +48,7 @@ spec:
               mountPath: /data
           envFrom:
             - secretRef:
-                name: vaultwarden
+                name: vaultwarden-env
           securityContext:
             capabilities:
               add:

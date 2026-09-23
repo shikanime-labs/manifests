@@ -31,6 +31,6 @@ patches:
       name: metatube-redirect
       kind: HTTPRoute
 secretGenerator:
-  - name: metatube
+  - name: metatube-env
     envs:
-      - metatube/.enc.env
+      - metatube-env/.enc.env

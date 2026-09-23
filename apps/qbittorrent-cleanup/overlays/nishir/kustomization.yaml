@@ -2,6 +2,6 @@ resources:
   - ../../base
 namespace: shikanime
 secretGenerator:
-  - name: qbittorrent-cleanup
+  - name: qbittorrent-cleanup-env
     envs:
-      - qbittorrent-cleanup/.enc.env
+      - qbittorrent-cleanup-env/.enc.env

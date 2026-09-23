@@ -44,7 +44,7 @@ spec:
               mountPath: /home/hermes/.local/state/hermes
           envFrom:
             - secretRef:
-                name: hermes-agent
+                name: hermes-agent-env
           lifecycle:
             preStop:
               exec:

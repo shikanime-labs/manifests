@@ -3,9 +3,9 @@ resources:
 namespace: shikanime
 patches:
 secretGenerator:
-  - name: honcho-postgres
+  - name: honcho-postgres-env
     type: basic-auth
     envs:
-      - honcho-postgres/.enc.env
+      - honcho-postgres-env/.enc.env
     options:
       disableNameSuffixHash: true
