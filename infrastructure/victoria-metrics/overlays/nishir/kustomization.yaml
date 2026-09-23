@@ -3,6 +3,7 @@ resources:
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
+  - vmalertmanagerconfig.yaml
 patches:
   - patch: |-
       - op: add
@@ -61,8 +62,14 @@ patches:
       kind: HTTPRoute
       namespace: monitoring-system
   - path: patch-hr.yaml
+  - path: patch-hr-vmalertmanager.yaml
 components:
   - ../../components/authelia
   - ../../components/forgejo
   - ../../components/honcho
   - ../../components/mautrix
+secretGenerator:
+  - name: discord-webhook
+    namespace: monitoring-system
+    envs:
+      - discord-webhook/.enc.env
