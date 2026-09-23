@@ -1,0 +1,62 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlertmanagerConfig
+metadata:
+  name: discord
+  namespace: monitoring-system
+spec:
+  route:
+    receiver: discord
+    group_by:
+      - alertname
+    group_wait: 30s
+    group_interval: 4h
+    repeat_interval: 4h
+  receivers:
+    - name: discord
+      discord_configs:
+        - send_resolved: true
+          webhook_url_secret:
+            name: discord-webhook
+            key: webhook-url
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlertmanagerConfig
+metadata:
+  name: discord
+  namespace: longhorn-system
+spec:
+  route:
+    receiver: discord
+    group_by:
+      - alertname
+    group_wait: 30s
+    group_interval: 4h
+    repeat_interval: 4h
+  receivers:
+    - name: discord
+      discord_configs:
+        - send_resolved: true
+          webhook_url_secret:
+            name: discord-webhook
+            key: webhook-url
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlertmanagerConfig
+metadata:
+  name: discord
+  namespace: shikanime
+spec:
+  route:
+    receiver: discord
+    group_by:
+      - alertname
+    group_wait: 30s
+    group_interval: 4h
+    repeat_interval: 4h
+  receivers:
+    - name: discord
+      discord_configs:
+        - send_resolved: true
+          webhook_url_secret:
+            name: discord-webhook
+            key: webhook-url

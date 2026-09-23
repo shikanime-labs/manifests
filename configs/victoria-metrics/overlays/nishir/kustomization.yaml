@@ -1,7 +1,17 @@
-namespace: monitoring-system
+resources:
+  - vmalertmanagerconfig.yaml
 secretGenerator:
-  - name: alertmanager-config
-    options:
-      disableNameSuffixHash: true
-    files:
-      - alertmanager.yaml=alertmanager-config/alertmanager.enc.yaml
+  - name: discord-webhook
+    namespace: monitoring-system
+    envs:
+      - discord-webhook/.enc.env
+  - name: discord-webhook
+    namespace: longhorn-system
+    envs:
+      - discord-webhook/.enc.env
+  - name: discord-webhook
+    namespace: shikanime
+    envs:
+      - discord-webhook/.enc.env
+configurations:
+  - namereference.yaml
