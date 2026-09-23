@@ -83,7 +83,7 @@ spec:
   accessModes:
     - ReadWriteMany
   capacity:
-    storage: 64Gi
+    storage: 128Gi
   claimRef:
     name: downloads-sonarr-data
     namespace: shikanime
