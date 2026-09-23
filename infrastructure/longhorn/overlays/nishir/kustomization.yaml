@@ -2,8 +2,11 @@ resources:
   - ../../base
   - gateway.yaml
   - httproute.yaml
+  - securitypolicy.yaml
 components:
   - ../../components/monitoring
+configurations:
+  - namereference.yaml
 patches:
   - patch: |-
       - op: add
@@ -43,3 +46,7 @@ secretGenerator:
       annotations:
         longhorn.io/backup-target: s3://shikanime-studio-nishir-longhorn-backups-e9750005@fsn1/
       disableNameSuffixHash: true
+  - name: longhorn-oidc-client
+    namespace: longhorn-system
+    envs:
+      - longhorn-oidc-client/.enc.env
