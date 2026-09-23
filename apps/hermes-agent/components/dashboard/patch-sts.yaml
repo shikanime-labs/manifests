@@ -26,3 +26,11 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /home/hermes/.hermes
+          envFrom:
+            - secretRef:
+                name: hermes-agent-env
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 9119
+            periodSeconds: 10
