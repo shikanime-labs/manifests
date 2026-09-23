@@ -68,11 +68,6 @@ spec:
               value: Sonarr
             - name: SONARR__APP__LAUNCHBROWSER
               value: "False"
-            - name: SONARR__AUTH__APIKEY
-              valueFrom:
-                secretKeyRef:
-                  name: sonarr-env
-                  key: apikey
             - name: SONARR__AUTH__METHOD
               value: External
             - name: SONARR__AUTH__REQUIRED
@@ -89,6 +84,9 @@ spec:
               value: main
             - name: SONARR__UPDATE__MECHANISM
               value: Docker
+          envFrom:
+            - secretRef:
+                name: sonarr-env
       securityContext:
         fsGroup: 1000
       volumes:

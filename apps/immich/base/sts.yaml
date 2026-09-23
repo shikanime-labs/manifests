@@ -78,15 +78,13 @@ spec:
               value: "6379"
             - name: IMMICH_MACHINE_LEARNING_URL
               value: http://immich-ml:3003
-            - name: IMMICH_JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: immich-env
-                  key: jwt-secret
             - name: IMMICH_CONFIG_FILE
               value: /etc/immich/config.yaml
             - name: IMMICH_TELEMETRY_INCLUDE
               value: all
+          envFrom:
+            - secretRef:
+                name: immich-env
       volumes:
         - name: config
           secret:
