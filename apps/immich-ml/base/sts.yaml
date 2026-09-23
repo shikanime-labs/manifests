@@ -64,7 +64,7 @@ spec:
           requests:
             storage: 16Gi
         volumeMode: Filesystem
-        storageClassName: longhorn-scratch
+        storageClassName: local-path
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -74,7 +74,7 @@ spec:
           requests:
             storage: 512Mi
         volumeMode: Filesystem
-        storageClassName: longhorn-scratch
+        storageClassName: local-path
         accessModes:
           - ReadWriteOncePod
     - metadata:
@@ -84,6 +84,6 @@ spec:
           requests:
             storage: 512Mi
         volumeMode: Filesystem
-        storageClassName: longhorn-scratch
+        storageClassName: local-path
         accessModes:
           - ReadWriteOncePod
