@@ -9,7 +9,7 @@ spec:
       dashboards: grafana
   datasource:
     name: VictoriaLogs
+    url: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
     type: victoriametrics-logs-datasource
     access: proxy
-    url: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
     isDefault: false
