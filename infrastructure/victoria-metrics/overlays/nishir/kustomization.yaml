@@ -3,7 +3,6 @@ resources:
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
-  - vmalertmanagerconfig.enc.yaml
 patches:
   - patch: |-
       - op: add
