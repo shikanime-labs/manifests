@@ -60,3 +60,4 @@ patches:
       name: telemetry-redirect
       kind: HTTPRoute
       namespace: monitoring-system
+  - path: patch-hr.yaml
