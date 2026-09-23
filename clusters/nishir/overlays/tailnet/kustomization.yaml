@@ -11,7 +11,7 @@ components:
   - ../../components/flux-operator
   - ../../components/gatekeeper
   - ../../components/longhorn
-  - ../../components/local-static-provisioner
+  - ../../components/local-path-provisioner
   - ../../components/victoria-metrics
   - ../../components/victoria-logs
   - ../../components/grafana-operator
