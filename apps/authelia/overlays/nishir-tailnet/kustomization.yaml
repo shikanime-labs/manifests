@@ -5,8 +5,6 @@ resources:
   - ../nishir
   - envoyproxy.yaml
   - gatewayclass.yaml
-components:
-  - ../../components/monitoring
 patches:
   - patch: |-
       - op: add
