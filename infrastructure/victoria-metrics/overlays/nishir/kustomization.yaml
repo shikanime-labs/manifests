@@ -1,9 +1,5 @@
 resources:
   - ../../base
-  - config/authelia-vmrule.yaml
-  - config/forgejo-vmrule.yaml
-  - config/honcho-vmrule.yaml
-  - config/mautrix-vmrule.yaml
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
@@ -65,3 +61,8 @@ patches:
       kind: HTTPRoute
       namespace: monitoring-system
   - path: patch-hr.yaml
+components:
+  - ../../components/authelia
+  - ../../components/forgejo
+  - ../../components/honcho
+  - ../../components/mautrix
