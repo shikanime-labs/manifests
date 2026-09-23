@@ -25,6 +25,7 @@ spec:
         enabled: true
     grafana:
       enabled: false
+      forceDeployDatasource: true
     kubeEtcd:
       vmScrape:
         enabled: false
