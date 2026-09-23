@@ -17,6 +17,8 @@ spec:
                       name: grafana-oidc-client
                       key: client-secret
   config:
+    auth:
+      disable_login_form: "true"
     server:
       root_url: https://grafana.i.shikanime.studio/
     auth.generic_oauth:
@@ -31,8 +33,6 @@ spec:
       use_pkce: "false"
       role_attribute_path: "contains(groups[*], 'lldap_admin') && 'Admin' || 'Viewer'"
       allow_sign_up: "true"
-    auth:
-      disable_login_form: "true"
   persistentVolumeClaim:
     spec:
       storageClassName: longhorn-ephemeral
