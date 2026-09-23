@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: encoding-config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/encoding.xml
+            - /mnt/config/configurations/encoding.xml
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: encoding-startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
+      volumes:
+        - name: encoding-startup-config
+          secret:
+            secretName: jellyfin-encoding
