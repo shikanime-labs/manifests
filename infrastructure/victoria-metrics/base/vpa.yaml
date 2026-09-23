@@ -2,19 +2,6 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: vmks-grafana
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: vmks-grafana
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
   name: vmks-kube-state-metrics
   namespace: monitoring-system
 spec:
@@ -35,18 +22,5 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: vmks-victoria-metrics-operator
-  updatePolicy:
-    updateMode: InPlaceOrRecreate
----
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: monitoring-system-grafana-operator
-  namespace: monitoring-system
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: monitoring-system-grafana-operator
   updatePolicy:
     updateMode: InPlaceOrRecreate

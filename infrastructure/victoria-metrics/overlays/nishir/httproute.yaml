@@ -7,7 +7,7 @@ metadata:
 spec:
   rules:
     - backendRefs:
-        - name: vmks-grafana
+        - name: grafana-service
           port: 80
 ---
 apiVersion: gateway.networking.k8s.io/v1

@@ -18,15 +18,13 @@ spec:
   targetNamespace: monitoring-system
   values:
     defaultDashboards:
-      enabled: true
-    grafana:
-      enabled: true
-      persistence:
-        type: pvc
+      grafanaOperator:
         enabled: true
-        size: 2Gi
-        accessModes:
-          - ReadWriteOncePod
+    defaultDatasources:
+      grafanaOperator:
+        enabled: true
+    grafana:
+      enabled: false
     kubeEtcd:
       vmScrape:
         enabled: false
