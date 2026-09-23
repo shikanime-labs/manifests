@@ -38,7 +38,7 @@ patches:
         path: /spec/parentRefs
         value:
         - name: grafana
-          sectionName: https-telemetry
+          sectionName: https-metrics
     target:
       name: telemetry
       kind: HTTPRoute
