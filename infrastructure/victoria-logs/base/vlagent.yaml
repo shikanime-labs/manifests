@@ -7,4 +7,4 @@ spec:
   k8sCollector:
     enabled: true
   remoteWrite:
-    - url: http://vlogs-vlinsert.monitoring-system.svc:9481/insert/native
+    - url: http://vlogs-vlinsert.monitoring-system.svc.cluster.local:9481/insert/native
