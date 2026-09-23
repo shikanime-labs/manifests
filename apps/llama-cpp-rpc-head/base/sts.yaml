@@ -17,6 +17,8 @@ spec:
       labels:
         app.kubernetes.io/instance: llama-cpp-rpc-head
         app.kubernetes.io/name: llama-cpp-rpc-head
+      annotations:
+        k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-rpc-head
     spec:
       securityContext:
         fsGroup: 65532
