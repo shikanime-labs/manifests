@@ -1,9 +1,9 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
-  name: llama-cpp
+  name: llama-cpp-rpc-head
 spec:
   endpoints:
     - fqdn:
-        hostname: llama-cpp.shikanime.svc.cluster.local
+        hostname: llama-cpp-rpc-head.shikanime.svc.cluster.local
         port: 9931

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: llama-cpp-rpc-head
+spec:
+  selector:
+    app.kubernetes.io/instance: llama-cpp-rpc-head
+    app.kubernetes.io/name: llama-cpp-rpc-head
+  ports:
+    - name: http
+      appProtocol: http
+      port: 9931
+      protocol: TCP
+      targetPort: http

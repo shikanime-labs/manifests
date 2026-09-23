@@ -36,7 +36,7 @@ spec:
       timeouts:
         request: 0s
       backendRefs:
-        - name: llama-cpp
+        - name: llama-cpp-rpc-head
           priority: 0
           modelNameOverride: qwen/qwen3.8-flash
         - name: nous
