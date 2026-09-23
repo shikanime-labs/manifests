@@ -7,6 +7,7 @@ resources:
   - cert.yaml
   - gateway.yaml
 components:
+  - ../../components/monitoring
   - ../../components/tls
 patches:
   - patch: |-

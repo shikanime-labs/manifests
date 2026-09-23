@@ -2,6 +2,7 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+namespace: shikanime
 patches:
   - patch: |-
       - op: add
@@ -29,3 +30,5 @@ patches:
     target:
       name: googlechat-redirect
       kind: HTTPRoute
+components:
+  - ../../../components/monitoring

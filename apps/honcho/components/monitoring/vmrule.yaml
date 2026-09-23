@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: honcho
+spec:
+  groups:
+    - name: honcho
+      rules:
+        - alert: HonchoDown
+          expr: up{job="honcho"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: Honcho has been down for 5 minutes
