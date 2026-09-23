@@ -1,3 +1,4 @@
 resources:
   - grafana.yaml
   - datasource-victorialogs.yaml
+  - oidc-secret.enc.yaml
