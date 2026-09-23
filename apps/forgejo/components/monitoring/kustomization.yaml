@@ -3,3 +3,4 @@ kind: Component
 resources:
   - netpol.yaml
   - vmservicescrape.yaml
+  - vmrule.yaml
