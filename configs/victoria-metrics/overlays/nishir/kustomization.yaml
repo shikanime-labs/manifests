@@ -1,9 +1,7 @@
-resources:
-  - vmalertmanagerconfig.yaml
+namespace: monitoring-system
 secretGenerator:
-  - name: discord-webhook
-    namespace: monitoring-system
-    envs:
-      - discord-webhook/.enc.env
-configurations:
-  - namereference.yaml
+  - name: alertmanager-config
+    options:
+      disableNameSuffixHash: true
+    files:
+      - alertmanager.yaml=alertmanager-config/alertmanager.enc.yaml
