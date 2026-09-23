@@ -7,6 +7,16 @@ spec:
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
+  volumeClaimTemplates:
+    - metadata:
+        name: cache
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 256Gi
   serviceName: llama-cpp-rpc-worker
   replicas: 1
   selector:
@@ -77,6 +87,3 @@ spec:
           hostPath:
             type: Directory
             path: /dev/dri
-        - name: cache
-          persistentVolumeClaim:
-            claimName: llama-cpp-rpc-worker-cache
