@@ -6,10 +6,31 @@ spec:
   template:
     spec:
       containers:
-        - name: hermes-agent
-          env:
-            - name: HERMES_DASHBOARD
-              value: "1"
-          ports:
-            - name: dashboard
-              containerPort: 9119
+        - name: dashboard
+          image: ghcr.io/shikanime-labs/machines/hermes-agent:latest@sha256:a7bf4aaddb5a8e78ce75a1c4477e6f9e4b801b23ae6e52fcb726d731fa2b48dd
+          args:
+            - dashboard
+            - --host
+            - 0.0.0.0
+            - --port
+            - "9119"
+            - --no-open
+          envFrom:
+            - secretRef:
+                name: hermes-agent-env
+          volumeMounts:
+            - name: data
+              mountPath: /home/hermes/.hermes
+            - name: profiles-data
+              mountPath: /home/hermes/.hermes/profiles
+            - name: skills-data
+              mountPath: /home/hermes/.hermes/skills
+            - name: run
+              mountPath: /run
+            - name: local-state
+              mountPath: /home/hermes/.local/state/hermes
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 9119
+            periodSeconds: 10
