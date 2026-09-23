@@ -71,7 +71,7 @@ spec:
         resources:
           requests:
             storage: 16Gi
-        storageClassName: longhorn-scratch
+        storageClassName: local-path
         volumeMode: Filesystem
         accessModes:
           - ReadWriteOncePod
