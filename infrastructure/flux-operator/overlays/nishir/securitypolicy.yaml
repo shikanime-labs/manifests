@@ -1,0 +1,24 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: flux-oidc-client
+  namespace: flux-system
+spec:
+  targetRefs:
+    - name: flux-operator
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    # offline_access + refreshToken: Envoy silently refreshes the session at
+    # access-token expiry instead of 302-ing live SPA fetches to authelia
+    # (a cross-origin redirect Firefox reports as a fake CORS failure).
+    scopes:
+      - openid
+      - offline_access
+    refreshToken: true
+    clientID: flux
+    clientSecret:
+      name: flux-oidc-client
+    redirectURL: https://flux.i.shikanime.studio/oauth2/callback
