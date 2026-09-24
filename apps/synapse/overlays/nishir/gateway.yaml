@@ -6,7 +6,7 @@ metadata:
     # Pin external-dns to a CNAME at the Tailscale hostname. Without this the
     # Gateway status exposes both an IPAddress and a Hostname, producing
     # conflicting A/CNAME record candidates.
-    external-dns.alpha.kubernetes.io/target: synapse.taila659a.ts.net
+    external-dns.alpha.kubernetes.io/target: matrix.taila659a.ts.net
 spec:
   gatewayClassName: synapse
   listeners:
