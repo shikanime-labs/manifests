@@ -2,13 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: synapse
-  annotations:
-    # Pin external-dns to an A record at the Tailscale load-balancer IP.
-    # Gateway status exposes both an IPAddress and a Hostname; a Hostname
-    # target yields a CNAME at the funnel edge, which SNI-gates TLS for the
-    # .i names. The bare IP lets tailnet clients resolve and reach envoy
-    # directly.
-    external-dns.alpha.kubernetes.io/target: 100.112.94.69
 spec:
   gatewayClassName: synapse
   listeners:
