@@ -3,10 +3,12 @@ kind: Gateway
 metadata:
   name: synapse
   annotations:
-    # Pin external-dns to a CNAME at the Tailscale hostname. Without this the
-    # Gateway status exposes both an IPAddress and a Hostname, producing
-    # conflicting A/CNAME record candidates.
-    external-dns.alpha.kubernetes.io/target: matrix.taila659a.ts.net
+    # Pin external-dns to an A record at the Tailscale load-balancer IP.
+    # Gateway status exposes both an IPAddress and a Hostname; a Hostname
+    # target yields a CNAME at the funnel edge, which SNI-gates TLS for the
+    # .i names. The bare IP lets tailnet clients resolve and reach envoy
+    # directly.
+    external-dns.alpha.kubernetes.io/target: 100.112.94.69
 spec:
   gatewayClassName: synapse
   listeners:
