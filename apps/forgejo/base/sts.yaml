@@ -70,7 +70,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 128Gi
+            storage: 256Gi
         storageClassName: longhorn-capacity
         volumeMode: Filesystem
         accessModes:
