@@ -192,6 +192,7 @@
                 pkgs.fluxcd
                 pkgs.fluxcd-operator
                 pkgs.gatekeeper
+                pkgs.gcx
                 pkgs.k0sctl
                 pkgs.kubectl
                 pkgs.kubevirt
