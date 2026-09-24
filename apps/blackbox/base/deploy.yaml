@@ -17,6 +17,9 @@ spec:
           image: docker.io/prom/blackbox-exporter:v0.26.0
           args:
             - --config.file=/etc/blackbox_exporter/config.yml
+          volumeMounts:
+            - name: config
+              mountPath: /etc/blackbox_exporter
           ports:
             - name: http
               containerPort: 9115
@@ -28,3 +31,7 @@ spec:
             requests:
               cpu: 10m
               memory: 32Mi
+      volumes:
+        - name: config
+          configMap:
+            name: blackbox-config
