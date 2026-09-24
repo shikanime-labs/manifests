@@ -17,6 +17,9 @@ spec:
       port: http
       scrapeTimeout: 30s
       relabelConfigs:
+        - sourceLabels: [__meta_kubernetes_service_name]
+          regex: llama-cpp-headless
+          action: drop
         - targetLabel: model
           replacement: qwen/qwen3.8-27b
         - targetLabel: instance
@@ -31,6 +34,9 @@ spec:
       port: http
       scrapeTimeout: 30s
       relabelConfigs:
+        - sourceLabels: [__meta_kubernetes_service_name]
+          regex: llama-cpp-headless
+          action: drop
         - targetLabel: model
           replacement: qwen/qwen3-embedding-8b
         - targetLabel: instance
