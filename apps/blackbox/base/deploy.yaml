@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: blackbox
-  namespace: monitoring-system
 spec:
   replicas: 1
   selector:

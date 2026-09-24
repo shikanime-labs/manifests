@@ -3,6 +3,7 @@ kind: GrafanaDashboard
 metadata:
   name: blackbox
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana

@@ -1,6 +1,6 @@
 resources:
   - ../../base
-namespace: monitoring-system
+namespace: shikanime
 components:
   - ../../components/monitoring
 labels:
