@@ -8,7 +8,7 @@ spec:
       dashboards: grafana
   json: |
     {
-      "title": "App SLO Overview",
+      "title": "SLO / Overview",
       "uid": "app-slo",
       "timezone": "utc",
       "refresh": "1m",

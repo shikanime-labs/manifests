@@ -17,6 +17,12 @@ secretGenerator:
     envs:
       - llama-cpp-env/.enc.env
 patches:
+  - patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: monitoring-system
+    target:
+      kind: GrafanaDashboard
   - path: patch-sts.yaml
   - patch: |-
       - op: add
