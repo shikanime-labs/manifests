@@ -2,6 +2,9 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+components:
+  - ../../../components/monitoring
+
 patches:
   - patch: |-
       - op: add

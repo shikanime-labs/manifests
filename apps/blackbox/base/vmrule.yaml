@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
   name: blackbox
-  namespace: monitoring-system
 spec:
   groups:
     - name: blackbox

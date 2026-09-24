@@ -48,6 +48,7 @@ spec:
     vmalert:
       extraArgs:
         enableTCP6: "true"
+      ruleNamespaceSelector: null
     vmcluster:
       spec:
         vmstorage:

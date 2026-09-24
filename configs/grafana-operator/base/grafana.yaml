@@ -6,6 +6,7 @@ metadata:
   labels:
     dashboards: grafana
 spec:
+  dashboardNamespaceSelector: {}
   persistentVolumeClaim:
     spec:
       resources:

@@ -3,3 +3,5 @@ resources:
   - netpol.yaml
   - svc.yaml
   - vpa.yaml
+  - vmprobe.yaml
+  - vmrule.yaml

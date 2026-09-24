@@ -2,7 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
   name: mautrix
-  namespace: monitoring-system
 spec:
   groups:
     - name: mautrix

@@ -62,8 +62,3 @@ patches:
       namespace: monitoring-system
   - path: patch-hr.yaml
 components:
-  - ../../components/authelia
-  - ../../components/forgejo
-  - ../../components/honcho
-  - ../../components/mautrix
-  - ../../components/blackbox
