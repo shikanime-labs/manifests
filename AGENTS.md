@@ -128,6 +128,11 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - **Hostname split:** `overlays/nishir/` carries `*.i.shikanime.studio` ONLY;
   `overlays/nishir-tailnet/` carries `*.taila659a.ts.net` ONLY. Never duplicate
   a hostname across both.
+- **Overlay inheritance:** `overlays/<cluster>-<overlay>/` (e.g.
+  `nishir-tailnet`) builds on `resources: - ../<cluster>` — cluster-wide
+  transforms (labels, patches) set in `overlays/<cluster>/` apply to every
+  overlay flavor of that cluster. Transforms needed on ALL clusters belong in
+  base; transforms only for one flavor go in that flavor's overlay.
 - **Tailnet hostnames append:** JSON6902 `op: add` on `path: /spec/hostnames/-`
   with a scalar `value:`. Never a list value (appends a nested list) and never
   `op: replace` on `/spec/hostnames` in tailnet overlays.
