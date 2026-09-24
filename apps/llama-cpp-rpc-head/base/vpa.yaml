@@ -12,5 +12,3 @@ spec:
   resourcePolicy:
     containerPolicies:
       - containerName: llama-cpp
-        minAllowed:
-          memory: 64Gi
