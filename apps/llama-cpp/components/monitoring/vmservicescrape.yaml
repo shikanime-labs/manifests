@@ -21,7 +21,7 @@ spec:
           replacement: qwen/qwen3.8-27b
         - targetLabel: instance
           replacement: llama-cpp-qwen3.8-27b
-    - interval: 60s
+    - interval: 2h
       path: /metrics
       params:
         model:
