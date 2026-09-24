@@ -1,5 +1,5 @@
 ---
-name: kubevirt-restartrequired-flux
+name: kubevirt-restart-required-recovery
 description: Use when a KubeVirt VM RestartRequired stalls a Flux health check.
 version: 0.1.0
 author: Shikanime Deva, Hermes Agent

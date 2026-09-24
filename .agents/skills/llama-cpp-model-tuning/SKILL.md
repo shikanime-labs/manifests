@@ -78,6 +78,19 @@ worker 19.33 t/s.
   stream, not MXFP4 behavior (issue #2309).
 - `spec-draft-n-max` is per-model — re-sweep, never copy blind. The mmproj
   (~0.9 GiB) auto-loads and rides the RPC buffers.
+- Preset keys ARE CLI flags (kebab-case, no `--`): a key that is not a flag
+  silently does nothing. Context is `c`, NOT batch-size — `-b`/`batch-size`
+  is the logical batch (compute buffer sizing, upstream #9784); batch-tuning
+  keys are `ubatch-size`/`batch-size` and ctx keys are `c`/`ctx-size`.
+- Qwen3.8 context: 262144 native; 1M is YaRN-only — do not request native
+  1M ctx.
+- `llama-server` runs as PID 1 with every flag via `LLAMA_ARG_*` env vars;
+  the HF cache lives on a dedicated `cache-huggingface` emptyDir at
+  `/root/.cache/huggingface` (default HOME path — an env override breaks
+  the lazy re-download).
+- Lazy model loading: presets point at Unsloth `repo:quant` so first request
+  downloads on demand; a failed/partial download surfaces as a load error
+  on the first request, not at startup.
 
 ## Verification
 
