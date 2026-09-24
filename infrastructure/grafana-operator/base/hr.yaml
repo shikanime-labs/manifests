@@ -20,5 +20,5 @@ spec:
     crds:
       immutable: false
     env:
-      - name: WATCH_NAMESPACE_SELECTOR
-        value: kubernetes.io/metadata.name
+      - name: WATCH_NAMESPACE
+        value: "*"
