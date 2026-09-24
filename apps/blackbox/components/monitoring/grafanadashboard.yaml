@@ -1,0 +1,274 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: blackbox
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  json: |
+    {
+      "title": "App SLO Overview",
+      "uid": "app-slo",
+      "timezone": "utc",
+      "refresh": "1m",
+      "time": {
+        "from": "now-24h",
+        "to": "now"
+      },
+      "templating": {
+        "list": []
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "table",
+          "title": "Availability (30d SLI, 99% objective)",
+          "datasource": {
+            "type": "victoriametrics-metrics-datasource",
+            "uid": "VictoriaMetricsDS"
+          },
+          "gridPos": {
+            "h": 18,
+            "w": 18,
+            "x": 0,
+            "y": 0
+          },
+          "targets": [
+            {
+              "expr": "sort_desc(avg_over_time(probe_success{job=\"blackbox\"}[30d]) * 100)",
+              "instant": true,
+              "refId": "A",
+              "format": "table"
+            }
+          ],
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "__name__": true,
+                  "job": true
+                },
+                "renameByName": {
+                  "Value": "availability %",
+                  "instance": "endpoint"
+                }
+              }
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 97
+                  },
+                  {
+                    "color": "green",
+                    "value": 99
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "options": {
+            "showHeader": true
+          }
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Endpoints down now",
+          "datasource": {
+            "type": "victoriametrics-metrics-datasource",
+            "uid": "VictoriaMetricsDS"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 0
+          },
+          "targets": [
+            {
+              "expr": "count(probe_success{job=\"blackbox\"} == 0) or vector(0)",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Error budget consumed (30d, fleet avg)",
+          "datasource": {
+            "type": "victoriametrics-metrics-datasource",
+            "uid": "VictoriaMetricsDS"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 6,
+            "x": 18,
+            "y": 8
+          },
+          "targets": [
+            {
+              "expr": "clamp_min(100 - avg(avg_over_time(probe_success{job=\"blackbox\"}[30d])) * 100, 0)",
+              "instant": true,
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "max": 1,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 0.5
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 4,
+          "type": "timeseries",
+          "title": "Probe latency by endpoint",
+          "datasource": {
+            "type": "victoriametrics-metrics-datasource",
+            "uid": "VictoriaMetricsDS"
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 18
+          },
+          "targets": [
+            {
+              "expr": "avg_over_time(probe_duration_seconds{job=\"blackbox\"}[5m])",
+              "refId": "A",
+              "legendFormat": "{{endpoint}}"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "right",
+              "calcs": [
+                "lastNotNull",
+                "max"
+              ]
+            }
+          }
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "Availability by endpoint (1h window)",
+          "datasource": {
+            "type": "victoriametrics-metrics-datasource",
+            "uid": "VictoriaMetricsDS"
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 28
+          },
+          "targets": [
+            {
+              "expr": "avg_over_time(probe_success{job=\"blackbox\"}[1h]) * 100",
+              "refId": "A",
+              "legendFormat": "{{endpoint}}"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 97
+                  },
+                  {
+                    "color": "green",
+                    "value": 99
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "right",
+              "calcs": [
+                "lastNotNull",
+                "min"
+              ]
+            }
+          }
+        }
+      ],
+      "schemaVersion": 41,
+      "version": 1
+    }

@@ -66,3 +66,4 @@ components:
   - ../../components/forgejo
   - ../../components/honcho
   - ../../components/mautrix
+  - ../../components/blackbox
