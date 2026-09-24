@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+patches:
+  - path: patch-grafana.yaml
+secretGenerator:
+  - name: grafana-oidc-client
+    namespace: monitoring-system
+    envs:
+      - grafana-oidc-client/.enc.env
+    options:
+      disableNameSuffixHash: true

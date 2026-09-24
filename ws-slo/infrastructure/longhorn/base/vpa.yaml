@@ -1,0 +1,26 @@
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: longhorn-driver-deployer
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: longhorn-driver-deployer
+  updatePolicy:
+    updateMode: InPlaceOrRecreate
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: longhorn-ui
+  namespace: longhorn-system
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: longhorn-ui
+  updatePolicy:
+    updateMode: InPlaceOrRecreate

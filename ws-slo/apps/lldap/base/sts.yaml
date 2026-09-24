@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lldap
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: lldap
+      app.kubernetes.io/name: lldap
+  serviceName: lldap
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: lldap
+        app.kubernetes.io/name: lldap
+    spec:
+      containers:
+        - name: lldap
+          image: lldap
+          livenessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: ldap
+            timeoutSeconds: 5
+          ports:
+            - name: ldap
+              containerPort: 3890
+            - name: http
+              containerPort: 17170
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: ldap
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          envFrom:
+            - secretRef:
+                name: lldap-env
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETUID
+                - SETGID
+            readOnlyRootFilesystem: false
+      securityContext:
+        fsGroup: 1000
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: longhorn-standard
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

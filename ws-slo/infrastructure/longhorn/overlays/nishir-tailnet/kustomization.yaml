@@ -1,0 +1,11 @@
+resources:
+  - ../nishir
+  - cert.yaml
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+patches:
+  - path: patch-hr.yaml
+    target:
+      name: longhorn
+      version: v2
+      kind: HelmRelease

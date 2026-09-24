@@ -1,0 +1,52 @@
+resources:
+  - ../../base
+  - backendtlspolicy.yaml
+  - cert.yaml
+  - gateway.yaml
+  - httproutefilter.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+  - ../../components/monitoring
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: https
+    target:
+      name: matrix
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix-discord-media.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: https
+    target:
+      name: matrix-discord-media
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - matrix.i.shikanime.studio
+        - matrix-discord-media.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: synapse
+          sectionName: http
+    target:
+      name: matrix-redirect
+      kind: HTTPRoute
+  - path: patch-sts.yaml

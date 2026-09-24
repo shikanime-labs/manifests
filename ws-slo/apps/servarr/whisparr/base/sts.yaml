@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: whisparr
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: whisparr
+      app.kubernetes.io/name: whisparr
+  serviceName: whisparr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: whisparr
+        app.kubernetes.io/name: whisparr
+    spec:
+      containers:
+        - name: whisparr
+          image: whisparr
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          ports:
+            - name: http
+              containerPort: 6969
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 360
+            httpGet:
+              path: /ping
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: run
+              mountPath: /run
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: false
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
+            - name: TZ
+              value: Europe/Paris
+            - name: WHISPARR__APP__INSTANCENAME
+              value: Whisparr
+            - name: WHISPARR__APP__LAUNCHBROWSER
+              value: "False"
+            - name: WHISPARR__AUTH__METHOD
+              value: External
+            - name: WHISPARR__AUTH__REQUIRED
+              value: Enabled
+            - name: WHISPARR__LOG__LEVEL
+              value: info
+            - name: WHISPARR__LOG__ANALYTICSENABLED
+              value: "False"
+            - name: WHISPARR__SERVER__BINDADDRESS
+              value: "*"
+            - name: WHISPARR__SERVER__PORT
+              value: "6969"
+            - name: WHISPARR__UPDATE__BRANCH
+              value: eros
+            - name: WHISPARR__UPDATE__MECHANISM
+              value: Docker
+          envFrom:
+            - secretRef:
+                name: whisparr-env
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: run
+          emptyDir:
+            medium: Memory
+  volumeClaimTemplates:
+    - metadata:
+        name: config
+      spec:
+        resources:
+          requests:
+            storage: 8Gi
+        storageClassName: longhorn-standard
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

@@ -1,0 +1,81 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      # The cluster's Gateway API CRDs are bundle v1.5.1, and the
+      # safe-upgrades ValidatingAdmissionPolicy denies any chart shipping an
+      # older bundle (v1.6.x/v1.7.x ship v1.4.1). v1.8.3 was the floor
+      # (bundles v1.5.1); v1.9.0 (bundles v1.6.1) is allowed because it ships
+      # a NEWER bundle and fixes the xDS translator bug where a Gateway with
+      # TCP/UDP listeners (syncthing:22000) failed to program after the
+      # ai-gateway extension hook injected an HTTP filter into the non-HTTP
+      # filter chain. ai-gateway stays at 1.1.0; v1.9.0 keeps the same
+      # extensionManager hook schema.
+      version: v1.9.0
+      chart: gateway-helm
+      interval: 1h
+      sourceRef:
+        name: envoyproxy
+        kind: HelmRepository
+        namespace: flux-system
+  interval: 10m
+  releaseName: envoy-gateway
+  targetNamespace: envoy-gateway-system
+  values:
+    config:
+      envoyGateway:
+        # Enable the Backend API so EG accepts Backend refs (incl. the Z.ai
+        # MCP backends). Without this, generated routes fail ResolvedRefs with
+        # "Backend is disabled in Envoy Gateway configuration" -> 500.
+        extensionApis:
+          enableBackend: true
+        # Wire the ai-gateway extension into Envoy Gateway's xDS translation so
+        # the inference Gateway emits its ext-proc filter bundle. Without this,
+        # the ai-gateway controller never gets called back and the data plane
+        # mounts a non-existent filter-config-bundle ConfigMap -> empty route
+        # table -> universal direct_response 500 on every request.
+        # listener.includeAll is TRUE: the hook needs listener IR to insert the
+        # router-level ext_proc filter (source of the internal request ID the
+        # upstream ext-proc leg requires). Without it inference 500s with
+        # "missing internal request ID header from router filter". The TCP/UDP
+        # filter chains of other Gateways (syncthing:22000) are safe now:
+        # ai-gateway only patches listeners carrying AIGateway-generated routes,
+        # and its header_to_metadata listener injection is disabled via
+        # controller.logRequestHeaderAttributes="" in the ai-gateway HelmRelease.
+        # InferencePool support (Envoy AI Gateway addon): watch InferencePool
+        # CRs from the inference-extension.
+        extensionManager:
+          hooks:
+            xdsTranslator:
+              translation:
+                listener:
+                  includeAll: true
+                route:
+                  includeAll: true
+                cluster:
+                  includeAll: true
+                secret:
+                  includeAll: true
+              post:
+                - Translation
+                - Cluster
+                - Route
+          service:
+            fqdn:
+              hostname: ai-gateway-controller.envoy-ai-gateway-system.svc.cluster.local
+              port: 1063
+    envoyDeployment:
+      pod:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: feature.node.kubernetes.io/cpu-model.vendor_id
+                      operator: In
+                      values:
+                        - Intel

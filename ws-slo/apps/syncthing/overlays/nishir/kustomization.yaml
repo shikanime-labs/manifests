@@ -1,0 +1,54 @@
+resources:
+  - ../../base
+  - backendtlspolicy.yaml
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - syncthing.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: https
+    target:
+      name: syncthing
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - syncthing.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: http
+    target:
+      name: syncthing-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: syncthing
+    target:
+      name: syncthing
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: syncthing
+          sectionName: syncthing-udp
+    target:
+      name: syncthing
+      kind: UDPRoute

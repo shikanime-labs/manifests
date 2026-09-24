@@ -1,0 +1,41 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+components:
+  - ../../components/monitoring
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - immich.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: immich
+          sectionName: https
+    target:
+      name: immich
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - immich.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: immich
+          sectionName: http
+    target:
+      name: immich-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: immich-env
+    envs:
+      - immich-env/.enc.env
+    options:
+      disableNameSuffixHash: true

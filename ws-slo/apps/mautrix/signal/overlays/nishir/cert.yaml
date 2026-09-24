@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-signal
+  namespace: shikanime
+spec:
+  commonName: mautrix-signal.i.shikanime.studio
+  dnsNames:
+    - mautrix-signal.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-signal
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mautrix-whatsapp
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: synapse
+      ports:
+        - port: http
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: mautrix-whatsapp
+      app.kubernetes.io/name: mautrix-whatsapp
+  policyTypes:
+    - Ingress

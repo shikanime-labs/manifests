@@ -1,0 +1,4 @@
+resources:
+  - grafana.yaml
+  - datasource.yaml
+  - grafanadashboard-slo.yaml

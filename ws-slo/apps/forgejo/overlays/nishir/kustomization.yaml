@@ -1,0 +1,45 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+components:
+  - ../../components/monitoring
+  - ../../components/tls
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - forgejo.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: https
+    target:
+      name: forgejo
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - forgejo.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: http
+    target:
+      name: forgejo-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: forgejo
+          sectionName: ssh
+    target:
+      name: forgejo
+      kind: TCPRoute

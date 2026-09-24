@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-twitter
+  namespace: shikanime
+spec:
+  commonName: mautrix-twitter.i.shikanime.studio
+  dnsNames:
+    - mautrix-twitter.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-twitter
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

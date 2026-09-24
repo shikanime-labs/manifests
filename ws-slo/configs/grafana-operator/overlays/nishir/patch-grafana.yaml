@@ -1,0 +1,38 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  namespace: monitoring-system
+spec:
+  deployment:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: grafana
+              env:
+                - name: GRAFANA_OIDC_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      name: grafana-oidc-client
+                      key: client-secret
+  config:
+    auth:
+      disable_login_form: "true"
+    server:
+      root_url: https://grafana.i.shikanime.studio/
+    auth.generic_oauth:
+      name: Shikanime Studio
+      enabled: "true"
+      client_id: grafana
+      client_secret: ${GRAFANA_OIDC_SECRET}
+      auth_url: https://accounts.i.shikanime.studio/api/oidc/authorization
+      token_url: https://accounts.i.shikanime.studio/api/oidc/token
+      api_url: https://accounts.i.shikanime.studio/api/oidc/userinfo
+      scopes: "openid profile email groups"
+      use_pkce: "false"
+      role_attribute_path: "contains(groups[*], 'lldap_admin') && 'Admin' || 'Viewer'"
+      allow_sign_up: "true"
+  persistentVolumeClaim:
+    spec:
+      storageClassName: longhorn-ephemeral

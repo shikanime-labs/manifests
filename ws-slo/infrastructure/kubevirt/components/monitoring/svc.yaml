@@ -1,0 +1,72 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virt-api-metrics
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/component: virt-api
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  ports:
+    - name: metrics
+      port: 8443
+      protocol: TCP
+      targetPort: metrics
+  selector:
+    kubevirt.io: virt-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virt-controller-metrics
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/component: virt-controller
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  ports:
+    - name: metrics
+      port: 8443
+      protocol: TCP
+      targetPort: metrics
+  selector:
+    kubevirt.io: virt-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virt-handler-metrics
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/component: virt-handler
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  ports:
+    - name: metrics
+      port: 8443
+      protocol: TCP
+      targetPort: metrics
+  selector:
+    kubevirt.io: virt-handler
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virt-operator-metrics
+  namespace: kubevirt-system
+  labels:
+    app.kubernetes.io/name: kubevirt
+    app.kubernetes.io/component: virt-operator
+    app.kubernetes.io/part-of: kubevirt
+spec:
+  ports:
+    - name: metrics
+      port: 8443
+      protocol: TCP
+      targetPort: metrics
+  selector:
+    kubevirt.io: virt-operator

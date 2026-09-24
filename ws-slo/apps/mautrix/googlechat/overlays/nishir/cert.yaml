@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-googlechat
+  namespace: shikanime
+spec:
+  commonName: mautrix-googlechat.i.shikanime.studio
+  dnsNames:
+    - mautrix-googlechat.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-googlechat
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

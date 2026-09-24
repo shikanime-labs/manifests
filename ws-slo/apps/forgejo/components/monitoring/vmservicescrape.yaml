@@ -1,0 +1,27 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: forgejo
+  labels:
+    app.kubernetes.io/name: forgejo
+    app.kubernetes.io/part-of: forgejo
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http
+      scheme: https
+      scrapeTimeout: 30s
+      tlsConfig:
+        ca:
+          secret:
+            name: forgejo-tls
+            key: ca.crt
+        serverName: forgejo
+  namespaceSelector:
+    matchNames:
+      - shikanime
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: forgejo
+      app.kubernetes.io/name: forgejo

@@ -1,0 +1,21 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: cert-manager
+  namespace: cert-manager-system
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http-monitor
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - cert-manager-system
+  selector:
+    matchLabels:
+      app: cert-manager
+      app.kubernetes.io/name: cert-manager

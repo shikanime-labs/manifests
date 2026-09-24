@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cluster-api-operator
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      version: 0.27.0
+      chart: cluster-api-operator
+      interval: 1h
+      sourceRef:
+        name: cluster-api-operator
+        kind: HelmRepository
+  install:
+    crds: Create
+    createNamespace: true
+  interval: 10m
+  releaseName: cluster-api-operator
+  targetNamespace: capi-operator-system
+  upgrade:
+    crds: CreateReplace
+  values:
+    bootstrap:
+      rke2:
+        version: v0.22.0
+    cert-manager:
+      enabled: true
+    controlPlane:
+      rke2:
+        version: v0.22.0
+    core:
+      cluster-api:
+        version: v1.11.5
+    enableHelmHook: true
+    infrastructure:
+      hetzner:
+        version: v1.4.2
+    leaderElection:
+      enabled: true
+    replicaCount: 2

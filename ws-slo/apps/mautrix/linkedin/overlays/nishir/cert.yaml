@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-linkedin
+  namespace: shikanime
+spec:
+  commonName: mautrix-linkedin.i.shikanime.studio
+  dnsNames:
+    - mautrix-linkedin.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-linkedin
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

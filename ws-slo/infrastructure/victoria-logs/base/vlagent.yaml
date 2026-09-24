@@ -1,0 +1,10 @@
+apiVersion: operator.victoriametrics.com/v1
+kind: VLAgent
+metadata:
+  name: vlogs
+  namespace: monitoring-system
+spec:
+  k8sCollector:
+    enabled: true
+  remoteWrite:
+    - url: http://vlogs-vlinsert.monitoring-system.svc.cluster.local:9481/insert/native

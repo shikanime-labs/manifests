@@ -1,0 +1,118 @@
+name: Commands
+permissions:
+  contents: read
+"on":
+  issue_comment:
+    types:
+      - created
+jobs:
+  backport:
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '.backport')
+    runs-on: ubuntu-slim
+    steps:
+      - id: createGithubAppToken
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ vars.OPERATOR_APP_ID }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          permission-workflows: write
+          private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+      - uses: shikanime-studio/actions/command/backport@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          sign-commits: true
+  close:
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '.close')
+    runs-on: ubuntu-slim
+    steps:
+      - id: createGithubAppToken
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ vars.OPERATOR_APP_ID }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+      - uses: shikanime-studio/actions/command/close@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+          username: yorha-automata
+  land:
+    if: github.event.issue.pull_request != null && (contains(github.event.comment.body, '.land') || contains(github.event.comment.body, '.force-land'))
+    runs-on: ubuntu-slim
+    steps:
+      - id: createGithubAppToken
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ vars.OPERATOR_APP_ID }}
+          permission-administration: read
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          permission-workflows: write
+          private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+      - uses: shikanime-studio/actions/command/land@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          email: automata@shikanime.studio
+          fullname: Automata
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          sign-commits: true
+          username: yorha-automata
+  rebase:
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '.rebase')
+    runs-on: ubuntu-slim
+    steps:
+      - id: createGithubAppToken
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ vars.OPERATOR_APP_ID }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          permission-workflows: write
+          private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+      - uses: shikanime-studio/actions/command/rebase@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          email: automata@shikanime.studio
+          fullname: Automata
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          sign-commits: true
+          username: yorha-automata
+  run:
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '.run')
+    runs-on: ubuntu-slim
+    steps:
+      - id: createGithubAppToken
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ vars.OPERATOR_APP_ID }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+          private-key: ${{ secrets.OPERATOR_PRIVATE_KEY }}
+      - uses: shikanime-studio/actions/nix/setup@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}
+      - uses: shikanime-studio/actions/command/run@a91a9b57c78121e303aa30aea2d8ed2ee03ff45f
+        with:
+          github-token: ${{ steps.createGithubAppToken.outputs.token }}

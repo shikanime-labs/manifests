@@ -1,0 +1,5 @@
+resources:
+  - ../../base
+  - nad.yaml
+  - netpol.yaml
+namespace: shikanime

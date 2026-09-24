@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: catbox-workspaces
+spec:
+  resources:
+    requests:
+      storage: 64Gi
+  volumeMode: Filesystem
+  storageClassName: longhorn-standard
+  accessModes:
+    - ReadWriteOncePod

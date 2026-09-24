@@ -1,0 +1,5 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: telsha-webhook
+  namespace: flux-system

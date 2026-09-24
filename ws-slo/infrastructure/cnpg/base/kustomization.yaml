@@ -1,0 +1,5 @@
+resources:
+  - hr.yaml
+  - helmrepo.yaml
+  - ns.yaml
+  - vpa.yaml

@@ -1,0 +1,46 @@
+resources:
+  - ../nishir
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+namespace: shikanime
+images:
+  - name: honcho
+    newName: ghcr.io/plastic-labs/honcho
+    newTag: v3.0.12@sha256:8ed9a3f50269f7f18c69848f8cc9b6ed54a24fd773fbea905cafae174174fab5
+configMapGenerator:
+  - name: honcho
+    files:
+      - honcho/config.toml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: agent
+      app.kubernetes.io/instance: honcho
+      app.kubernetes.io/name: honcho
+      app.kubernetes.io/part-of: nishir-automata
+      app.kubernetes.io/version: 3.0.12
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: honcho.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: honcho
+            sectionName: http
+    target:
+      name: honcho-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: honcho.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: honcho
+            sectionName: https
+    target:
+      name: honcho
+      kind: HTTPRoute

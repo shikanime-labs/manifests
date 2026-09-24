@@ -1,0 +1,26 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+  - netpol.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - lldap.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: lldap
+          sectionName: https
+    target:
+      name: lldap
+      kind: HTTPRoute
+secretGenerator:
+  - name: lldap-env
+    envs:
+      - lldap-env/.enc.env

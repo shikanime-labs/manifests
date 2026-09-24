@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bazarr
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: network.speed.2.5g
+                    operator: In
+                    values:
+                      - "true"
+              weight: 50
+      containers:
+        - name: bazarr
+          volumeMounts:
+            - name: movies-data
+              mountPath: /data/movies
+            - name: shows-data
+              mountPath: /data/shows
+      volumes:
+        - name: movies-data
+          persistentVolumeClaim:
+            claimName: movies-data
+        - name: shows-data
+          persistentVolumeClaim:
+            claimName: shows-data

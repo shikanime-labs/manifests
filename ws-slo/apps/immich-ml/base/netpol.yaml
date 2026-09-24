@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: immich-ml
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: immich
+      ports:
+        - port: http
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: immich-ml
+      app.kubernetes.io/name: immich-ml
+  policyTypes:
+    - Ingress

@@ -1,0 +1,31 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-signal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: signal
+          sectionName: https
+    target:
+      name: signal
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-signal.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: signal
+          sectionName: http
+    target:
+      name: signal-redirect
+      kind: HTTPRoute

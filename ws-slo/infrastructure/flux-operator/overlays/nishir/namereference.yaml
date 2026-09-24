@@ -1,0 +1,6 @@
+nameReference:
+  - kind: Secret
+    fieldSpecs:
+      - kind: SecurityPolicy
+        group: gateway.envoyproxy.io
+        path: spec/oidc/clientSecret/name

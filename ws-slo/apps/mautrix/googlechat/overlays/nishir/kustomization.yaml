@@ -1,0 +1,32 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-googlechat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: googlechat
+          sectionName: https
+    target:
+      name: googlechat
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - mautrix-googlechat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: googlechat
+          sectionName: http
+    target:
+      name: googlechat-redirect
+      kind: HTTPRoute

@@ -1,0 +1,16 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: immich-ml
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: immich-ml
+  updatePolicy:
+    updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+      - containerName: immich-ml
+        minAllowed:
+          memory: 3Gi

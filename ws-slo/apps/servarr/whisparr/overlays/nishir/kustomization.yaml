@@ -1,0 +1,48 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+  - securitypolicy.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - whisparr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: whisparr
+          sectionName: https
+    target:
+      name: whisparr
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - whisparr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: whisparr
+          sectionName: http
+    target:
+      name: whisparr-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: whisparr-env
+    envs:
+      - whisparr-env/.enc.env
+  - name: whisparr-pkcs12-password
+    envs:
+      - whisparr-pkcs12-password/.enc.env
+  - name: whisparr-oidc-client
+    envs:
+      - whisparr-oidc-client/.enc.env

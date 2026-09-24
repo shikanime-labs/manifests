@@ -1,0 +1,150 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: llama-cpp
+spec:
+  serviceName: llama-cpp
+  replicas: 2
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/name: llama-cpp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: llama-cpp
+        app.kubernetes.io/name: llama-cpp
+    spec:
+      securityContext:
+        fsGroup: 65532
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0380_1002.present
+                    operator: In
+                    values:
+                      - "true"
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: feature.node.kubernetes.io/network.speed.10g
+                    operator: In
+                    values:
+                      - "true"
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/name: llama-cpp
+              topologyKey: kubernetes.io/hostname
+      initContainers:
+        - name: model-prefetch
+          image: huggingface
+          command:
+            - /scripts/entrypoint.sh
+          volumeMounts:
+            - name: cache-huggingface
+              mountPath: /models
+            - name: cache-huggingface
+              mountPath: /home/huggingface/.cache/huggingface
+            - name: prefetch-script
+              mountPath: /scripts
+              readOnly: true
+      containers:
+        - name: llama-cpp
+          image: llama-cpp
+          command:
+            - llama-server
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          ports:
+            - name: http
+              containerPort: 9931
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 120
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: cache-huggingface
+              mountPath: /home/llama.cpp/.cache/huggingface
+            - name: cache-huggingface
+              mountPath: /models
+            - name: models-preset
+              mountPath: /etc/llama-cpp/preset
+              readOnly: true
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+          env:
+            - name: LLAMA_ARG_HOST
+              value: 0.0.0.0
+            - name: LLAMA_ARG_PORT
+              value: "9931"
+            - name: LLAMA_ARG_MODELS_PRESET
+              value: /etc/llama-cpp/preset/models-preset.ini
+            - name: LLAMA_ARG_MODELS_MAX
+              value: "1"
+            - name: LLAMA_ARG_MODELS_AUTOLOAD
+              value: "true"
+            - name: LLAMA_ARG_ENDPOINT_METRICS
+              value: "true"
+            - name: LLAMA_ARG_FLASH_ATTN
+              value: "on"
+            - name: LLAMA_ARG_CACHE_TYPE_K
+              value: q8_0
+            - name: LLAMA_ARG_CACHE_TYPE_V
+              value: q8_0
+      volumes:
+        - name: models-preset
+          configMap:
+            name: llama-cpp-models-preset
+        - name: prefetch-script
+          configMap:
+            name: llama-cpp-prefetch
+            defaultMode: 0755
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
+  volumeClaimTemplates:
+    - metadata:
+        name: cache-huggingface
+      spec:
+        resources:
+          requests:
+            storage: 64Gi
+        storageClassName: local-path
+        accessModes:
+          - ReadWriteOncePod

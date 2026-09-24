@@ -1,0 +1,12 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vpa
+  namespace: flux-system
+spec:
+  values:
+    admissionController:
+      certManager:
+        issuerRef:
+          name: telsha
+          kind: ClusterIssuer

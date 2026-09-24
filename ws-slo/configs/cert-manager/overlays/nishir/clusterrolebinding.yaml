@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ca-rotation-heal
+roleRef:
+  name: ca-rotation-heal
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+subjects:
+  - name: ca-rotation-heal
+    kind: ServiceAccount
+    namespace: cert-manager-trust

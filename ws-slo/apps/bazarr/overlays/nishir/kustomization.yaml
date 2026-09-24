@@ -1,0 +1,37 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - bazarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: bazarr
+          sectionName: https
+    target:
+      name: bazarr
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - bazarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: bazarr
+          sectionName: http
+    target:
+      name: bazarr-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: bazarr
+    files:
+      - config.yaml=bazarr/config.enc.yaml

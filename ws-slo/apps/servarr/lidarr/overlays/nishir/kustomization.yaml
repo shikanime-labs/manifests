@@ -1,0 +1,44 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - lidarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: lidarr
+          sectionName: https
+    target:
+      name: lidarr
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - lidarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: lidarr
+          sectionName: http
+    target:
+      name: lidarr-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: lidarr-env
+    envs:
+      - lidarr-env/.enc.env
+  - name: lidarr-pkcs12-password
+    envs:
+      - lidarr-pkcs12-password/.enc.env

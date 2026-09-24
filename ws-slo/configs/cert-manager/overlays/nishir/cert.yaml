@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nishir-ca
+  namespace: cert-manager-trust
+spec:
+  commonName: cluster.local
+  isCA: true
+  issuerRef:
+    name: nishir-selfsigned
+    kind: ClusterIssuer
+  secretName: nishir-ca

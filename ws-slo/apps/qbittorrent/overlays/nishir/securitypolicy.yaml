@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: qbittorrent-oidc-client
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: qbittorrent
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: qbittorrent
+    clientSecret:
+      name: qbittorrent-oidc-client
+    redirectURL: https://qbittorrent.i.shikanime.studio/oauth2/callback

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mautrix-googlechat-metrics
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: metrics
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: mautrix-googlechat
+      app.kubernetes.io/name: mautrix-googlechat
+  policyTypes:
+    - Ingress

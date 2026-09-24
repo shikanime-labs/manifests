@@ -1,0 +1,38 @@
+resources:
+  - ../nishir
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+namespace: shikanime
+patches:
+  - patch: |
+      - op: add
+        path: /spec/hostnames/-
+        value: prowlarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: prowlarr
+            sectionName: http
+    target:
+      name: prowlarr-redirect
+      kind: HTTPRoute
+  - patch: |
+      - op: add
+        path: /spec/hostnames/-
+        value: prowlarr.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: prowlarr
+            sectionName: https
+    target:
+      name: prowlarr
+      kind: HTTPRoute
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: torrent-tracker
+      app.kubernetes.io/instance: prowlarr
+      app.kubernetes.io/name: prowlarr
+      app.kubernetes.io/part-of: nishir-media
+      app.kubernetes.io/version: 2.5.2

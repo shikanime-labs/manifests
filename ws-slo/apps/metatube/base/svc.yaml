@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: metatube
+spec:
+  sessionAffinity: ClientIP
+  ports:
+    - name: http
+      appProtocol: http
+      port: 80
+      targetPort: http
+  selector:
+    app.kubernetes.io/instance: metatube
+    app.kubernetes.io/name: metatube

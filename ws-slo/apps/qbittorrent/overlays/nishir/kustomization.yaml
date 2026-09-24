@@ -1,0 +1,64 @@
+resources:
+  - ../../base
+  - backendtlspolicy.yaml
+  - cert.yaml
+  - gateway.yaml
+  - securitypolicy.yaml
+namespace: shikanime
+components:
+  - ../../components/tls
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - qbittorrent.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: qbittorrent
+          sectionName: https
+    target:
+      name: qbittorrent
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - qbittorrent.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: qbittorrent
+          sectionName: http
+    target:
+      name: qbittorrent-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: qbittorrent
+          sectionName: bittorrent
+    target:
+      name: qbittorrent
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: qbittorrent
+          sectionName: bittorrent-udp
+    target:
+      name: qbittorrent
+      kind: UDPRoute
+secretGenerator:
+  - name: qbittorrent
+    files:
+      - qBittorrent.conf=qbittorrent/qBittorrent.enc.conf
+  - name: qbittorrent-oidc-client
+    envs:
+      - qbittorrent-oidc-client/.enc.env

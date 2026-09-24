@@ -1,0 +1,80 @@
+resources:
+  - ../../base
+  - ../../components/monitoring
+  - cert.yaml
+  - gateway.yaml
+  - gatewayconfig.yaml
+  - securitypolicy.yaml
+  - netpol.yaml
+namespace: shikanime
+configurations:
+  - namereference.yaml
+secretGenerator:
+  - name: llama-cpp-oidc-client
+    envs:
+      - llama-cpp-oidc-client/.enc.env
+  - name: llama-cpp-env
+    envs:
+      - llama-cpp-env/.enc.env
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: LLAMA_ARG_CORS_ORIGINS
+          value: https://inference.i.shikanime.studio
+    target:
+      name: llama-cpp
+      kind: StatefulSet
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - chat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: llama-cpp
+          sectionName: https
+    target:
+      name: llama-cpp
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - chat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: https
+    target:
+      name: llama-cpp-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - chat.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: http
+    target:
+      name: llama-cpp-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: inference
+            kind: Gateway
+            group: gateway.networking.k8s.io
+    target:
+      name: default
+      version: v1beta1
+      group: aigateway.envoyproxy.io
+      kind: AIGatewayRoute

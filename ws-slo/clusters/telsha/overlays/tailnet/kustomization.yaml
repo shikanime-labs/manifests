@@ -1,0 +1,34 @@
+resources:
+  - ../../base
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+components:
+  - ../../components/autoscaler
+  - ../../components/cert-manager
+  - ../../components/cluster-api
+  - ../../components/envoy-gateway
+  - ../../components/gatekeeper
+  - ../../components/victoria-metrics
+  - ../../components/victoria-logs
+  - ../../components/grafana-operator
+  - ../../components/tailscale
+  - ../../components/trust-manager
+patches:
+  - path: patch-gateway.yaml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: cluster
+      app.kubernetes.io/instance: telsha
+      app.kubernetes.io/name: telsha
+      app.kubernetes.io/part-of: telsha-infrastructure
+      app.kubernetes.io/version: 0.0.0
+secretGenerator:
+  - name: discord-webhook
+    namespace: flux-system
+    envs:
+      - discord-webhook/.enc.env
+  - name: receiver-token
+    namespace: flux-system
+    envs:
+      - receiver-token/.enc.env

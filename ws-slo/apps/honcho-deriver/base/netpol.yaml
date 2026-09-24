@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: honcho-deriver
+spec:
+  ingress: []
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: honcho-deriver
+      app.kubernetes.io/name: honcho-deriver
+  policyTypes:
+    - Ingress

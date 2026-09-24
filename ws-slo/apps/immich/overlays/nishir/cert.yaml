@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-immich
+  namespace: shikanime
+spec:
+  commonName: immich.i.shikanime.studio
+  dnsNames:
+    - immich.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-immich
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

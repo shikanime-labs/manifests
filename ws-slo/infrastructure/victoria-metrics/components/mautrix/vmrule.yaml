@@ -1,0 +1,23 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: mautrix
+  namespace: monitoring-system
+spec:
+  groups:
+    - name: mautrix
+      rules:
+        - alert: MautrixGooglechatDown
+          expr: up{job="mautrix-googlechat"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: mautrix-googlechat bridge has been down for 5 minutes
+        - alert: MautrixMatrixApiFailures
+          expr: sum(rate(bridge_matrix_api_calls_failed_total[10m])) > 0.1
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: mautrix-googlechat Matrix API failures above 0.1/s for 10 minutes

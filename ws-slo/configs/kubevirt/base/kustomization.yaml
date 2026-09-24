@@ -1,0 +1,12 @@
+resources:
+  - https://github.com/kubevirt/kubevirt/releases/download/v1.7.4/kubevirt-cr.yaml
+namespace: kubevirt-system
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/configuration/developerConfiguration/featureGates
+        value:
+          - EnableVirtioFsConfigVolumes
+    target:
+      name: kubevirt
+      kind: KubeVirt

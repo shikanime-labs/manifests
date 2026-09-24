@@ -1,0 +1,93 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: hourly-snapshot
+  namespace: longhorn-system
+spec:
+  task: snapshot
+  concurrency: 2
+  cron: 0 * * * *
+  retain: 24
+  groups:
+    - default
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: transient-backup
+  namespace: longhorn-system
+spec:
+  task: backup
+  concurrency: 1
+  cron: 0 4 * * *
+  retain: 1
+  groups:
+    - transient
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: daily-backup
+  namespace: longhorn-system
+spec:
+  task: backup
+  concurrency: 1
+  cron: 0 2 * * *
+  retain: 7
+  groups:
+    - capacity
+    - standard
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: weekly-backup
+  namespace: longhorn-system
+spec:
+  task: backup
+  concurrency: 1
+  cron: 0 3 * * 0
+  retain: 4
+  groups:
+    - capacity
+    - standard
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: daily-snapshot-delete
+  namespace: longhorn-system
+spec:
+  task: snapshot-delete
+  concurrency: 1
+  cron: 0 5 * * *
+  retain: 3
+  groups:
+    - default
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: weekly-snapshot-cleanup
+  namespace: longhorn-system
+spec:
+  task: snapshot-cleanup
+  concurrency: 1
+  cron: 0 7 * * 0
+  retain: 4
+  groups:
+    - default
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: weekly-filesystem-trim
+  namespace: longhorn-system
+spec:
+  task: filesystem-trim
+  concurrency: 1
+  cron: 0 8 * * 0
+  retain: 0
+  groups:
+    - default

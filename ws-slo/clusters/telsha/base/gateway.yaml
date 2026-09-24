@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: telsha-webhook
+  namespace: flux-system
+spec:
+  gatewayClassName: telsha-webhook
+  listeners:
+    - name: https
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: telsha-webhook-tls
+            group: ""
+            kind: Secret

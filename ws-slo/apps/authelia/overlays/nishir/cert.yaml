@@ -1,0 +1,38 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: authelia-tls
+spec:
+  commonName: authelia
+  dnsNames:
+    - authelia
+    - authelia.shikanime
+    - authelia.shikanime.svc.cluster.local
+  issuerRef:
+    name: nishir
+    kind: ClusterIssuer
+  secretName: authelia-tls
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-authelia
+  namespace: shikanime
+spec:
+  commonName: authelia.i.shikanime.studio
+  dnsNames:
+    - authelia.i.shikanime.studio
+    - accounts.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-authelia
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth

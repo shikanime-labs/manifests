@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: qbittorrent-cleanup
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/instance: qbittorrent-cleanup
+            app.kubernetes.io/name: qbittorrent-cleanup
+        spec:
+          containers:
+            - name: qbittorrent-cleanup
+              image: qbittorrent-cleanup
+              env:
+                - name: QBT_URL
+                  value: https://qbittorrent.shikanime.svc.cluster.local:8080
+              envFrom:
+                - secretRef:
+                    name: qbittorrent-cleanup-env
+          restartPolicy: Never
+  schedule: "*/2 * * * *"
+  successfulJobsHistoryLimit: 3

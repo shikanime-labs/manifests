@@ -1,0 +1,5 @@
+resources:
+  - ../nishir
+  - cert.yaml
+  - envoyproxy.yaml
+  - gatewayclass.yaml

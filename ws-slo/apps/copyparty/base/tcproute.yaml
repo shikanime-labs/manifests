@@ -1,0 +1,130 @@
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-control
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 21
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftps
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 990
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-sftp
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 22
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12000
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12000
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12001
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12001
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12002
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12002
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12003
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12003
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12004
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12004
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12005
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12005
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12006
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12006
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12007
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12007
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12008
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12008
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: copyparty-ftp-data-12009
+spec:
+  rules:
+    - backendRefs:
+        - name: ftp
+          port: 12009

@@ -1,0 +1,38 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+namespace: shikanime
+components:
+  - ../../components/monitoring
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - honcho.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: honcho
+          sectionName: https
+    target:
+      name: honcho
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - honcho.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: honcho
+          sectionName: http
+    target:
+      name: honcho-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: honcho-env
+    envs:
+      - honcho-env/.enc.env

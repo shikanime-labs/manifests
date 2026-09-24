@@ -1,0 +1,40 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+  - securitypolicy.yaml
+namespace: shikanime
+configurations:
+  - namereference.yaml
+patches:
+  - path: patch-sts.yaml
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - maintainerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: maintainerr
+          sectionName: https
+    target:
+      name: maintainerr
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - maintainerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: maintainerr
+          sectionName: http
+    target:
+      name: maintainerr-redirect
+      kind: HTTPRoute
+secretGenerator:
+  - name: maintainerr-oidc-client
+    envs:
+      - maintainerr-oidc-client/.enc.env
