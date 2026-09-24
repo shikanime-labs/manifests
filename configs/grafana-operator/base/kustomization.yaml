@@ -1,3 +1,4 @@
 resources:
+  - llama-cpp-dashboard.yaml
   - grafana.yaml
   - datasource.yaml
