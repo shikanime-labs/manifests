@@ -65,6 +65,9 @@ spec:
           image: llama-cpp
           command:
             - llama-server
+          resources:
+            requests:
+              memory: 26Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
