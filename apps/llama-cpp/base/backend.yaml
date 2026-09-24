@@ -5,5 +5,5 @@ metadata:
 spec:
   endpoints:
     - fqdn:
-        hostname: llama-cpp.shikanime.svc.cluster.local
+        hostname: llama-cpp-headless.shikanime.svc.cluster.local
         port: 9931

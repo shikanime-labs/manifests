@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -10,6 +11,28 @@ spec:
   ports:
     - name: http
       appProtocol: http
+      port: 9931
+      protocol: TCP
+      targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llama-cpp-headless
+  namespace: shikanime
+  labels:
+    app.kubernetes.io/component: inference
+    app.kubernetes.io/instance: llama-cpp
+    app.kubernetes.io/name: llama-cpp
+    app.kubernetes.io/part-of: nishir-inference
+    app.kubernetes.io/version: "3.8"
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/instance: llama-cpp
+    app.kubernetes.io/name: llama-cpp
+  ports:
+    - name: http
       port: 9931
       protocol: TCP
       targetPort: http
