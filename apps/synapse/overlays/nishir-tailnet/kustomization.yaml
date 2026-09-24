@@ -14,45 +14,29 @@ labels:
 patches:
   - patch: |-
       - op: add
-        path: /spec/hostnames/-
-        value: matrix-discord-media.taila659a.ts.net
-      - op: replace
-        path: /spec/parentRefs
+        path: /spec/hostnames
         value:
-          - name: synapse
-            sectionName: https
-    target:
-      name: matrix-discord-media
-      kind: HTTPRoute
-  - patch: |-
+          - matrix.taila659a.ts.net
       - op: add
-        path: /spec/hostnames/-
-        value: matrix.taila659a.ts.net
-      - op: add
-        path: /spec/hostnames/-
-        value: matrix-discord-media.taila659a.ts.net
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: synapse
-            sectionName: http
-      - op: add
-        path: /spec/rules/0/filters/0/requestRedirect/hostname
-        value: matrix.taila659a.ts.net
-    target:
-      name: matrix-redirect
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: matrix.taila659a.ts.net
-      - op: replace
         path: /spec/parentRefs
         value:
           - name: synapse
             sectionName: https
     target:
       name: matrix
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - matrix-discord-media.taila659a.ts.net
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: synapse
+            sectionName: https
+    target:
+      name: matrix-discord-media
       kind: HTTPRoute
 secretGenerator:
   - name: synapse
