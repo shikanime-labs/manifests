@@ -1,0 +1,13 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: gatekeeper
+  namespace: gatekeeper-system
+spec:
+  podMetricsEndpoints:
+    - interval: 60s
+      path: /metrics
+      port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: gatekeeper

@@ -1,0 +1,13 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: cluster-api-operator
+  namespace: capi-operator-system
+spec:
+  podMetricsEndpoints:
+    - interval: 60s
+      path: /metrics
+      port: diagnostics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cluster-api-operator
