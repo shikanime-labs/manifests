@@ -10,10 +10,10 @@ spec:
       rules:
         - record: blackbox:availability_ir
           expr: |
-            avg_over_time(probe_success{job="public-endpoints"}[1h])
+            avg_over_time(probe_success{job="blackbox"}[1h])
         - alert: SLOAvailabilityPage
           expr: |
-            avg_over_time(probe_success{job="public-endpoints"}[5m]) == 0
+            avg_over_time(probe_success{job="blackbox"}[5m]) == 0
           for: 2m
           labels:
             severity: critical
@@ -22,9 +22,9 @@ spec:
         - alert: SLOBurnRateFast
           expr: |
             (
-              (1 - avg_over_time(probe_success{job="public-endpoints"}[1h])) > (14.4 * 0.01)
+              (1 - avg_over_time(probe_success{job="blackbox"}[1h])) > (14.4 * 0.01)
               and
-              (1 - avg_over_time(probe_success{job="public-endpoints"}[5m])) > (14.4 * 0.01)
+              (1 - avg_over_time(probe_success{job="blackbox"}[5m])) > (14.4 * 0.01)
             )
           for: 2m
           labels:
@@ -34,9 +34,9 @@ spec:
         - alert: SLOBurnRateSlow
           expr: |
             (
-              (1 - avg_over_time(probe_success{job="public-endpoints"}[6h])) > (6 * 0.01)
+              (1 - avg_over_time(probe_success{job="blackbox"}[6h])) > (6 * 0.01)
               and
-              (1 - avg_over_time(probe_success{job="public-endpoints"}[30m])) > (6 * 0.01)
+              (1 - avg_over_time(probe_success{job="blackbox"}[30m])) > (6 * 0.01)
             )
           for: 15m
           labels:
@@ -45,7 +45,7 @@ spec:
             summary: 'SLO burn rate slow: {{ $labels.instance }} (99% availability objective)'
         - alert: SLOLatencyHigh
           expr: |
-            avg_over_time(probe_duration_seconds{job="public-endpoints"}[10m]) > 1
+            avg_over_time(probe_duration_seconds{job="blackbox"}[10m]) > 1
           for: 10m
           labels:
             severity: warning

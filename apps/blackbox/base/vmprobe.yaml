@@ -1,16 +1,25 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMProbe
 metadata:
-  name: public-endpoints
-  namespace: monitoring-system
+  name: blackbox
+  labels:
+    app.kubernetes.io/name: blackbox
 spec:
-  jobName: public-endpoints
+  jobName: blackbox
   interval: 60s
   module: http_2xx
   vmProberSpec:
     url: http://blackbox.monitoring-system.svc:9115
   targets:
     static:
+      labels:
+        app.kubernetes.io/name: blackbox
+      relabelingConfigs:
+        - sourceLabels:
+            - instance
+          targetLabel: endpoint
+        - action: labeldrop
+          regex: instance
       targets:
         - https://a2a.automata.i.shikanime.studio
         - https://accounts.i.shikanime.studio

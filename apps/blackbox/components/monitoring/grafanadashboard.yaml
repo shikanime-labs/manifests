@@ -36,7 +36,7 @@ spec:
           },
           "targets": [
             {
-              "expr": "sort_desc(avg_over_time(probe_success{job=\"public-endpoints\"}[30d]) * 100)",
+              "expr": "sort_desc(avg_over_time(probe_success{job=\"blackbox\"}[30d]) * 100)",
               "instant": true,
               "refId": "A",
               "format": "table"
@@ -103,7 +103,7 @@ spec:
           },
           "targets": [
             {
-              "expr": "count(probe_success{job=\"public-endpoints\"} == 0) or vector(0)",
+              "expr": "count(probe_success{job=\"blackbox\"} == 0) or vector(0)",
               "instant": true,
               "refId": "A"
             }
@@ -143,7 +143,7 @@ spec:
           },
           "targets": [
             {
-              "expr": "clamp_min(100 - avg(avg_over_time(probe_success{job=\"public-endpoints\"}[30d])) * 100, 0)",
+              "expr": "clamp_min(100 - avg(avg_over_time(probe_success{job=\"blackbox\"}[30d])) * 100, 0)",
               "instant": true,
               "refId": "A"
             }
@@ -189,9 +189,9 @@ spec:
           },
           "targets": [
             {
-              "expr": "avg_over_time(probe_duration_seconds{job=\"public-endpoints\"}[5m])",
+              "expr": "avg_over_time(probe_duration_seconds{job=\"blackbox\"}[5m])",
               "refId": "A",
-              "legendFormat": "{{instance}}"
+              "legendFormat": "{{endpoint}}"
             }
           ],
           "fieldConfig": {
@@ -227,9 +227,9 @@ spec:
           },
           "targets": [
             {
-              "expr": "avg_over_time(probe_success{job=\"public-endpoints\"}[1h]) * 100",
+              "expr": "avg_over_time(probe_success{job=\"blackbox\"}[1h]) * 100",
               "refId": "A",
-              "legendFormat": "{{instance}}"
+              "legendFormat": "{{endpoint}}"
             }
           ],
           "fieldConfig": {
