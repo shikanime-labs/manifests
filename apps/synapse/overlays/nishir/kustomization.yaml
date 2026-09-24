@@ -46,6 +46,9 @@ patches:
         value:
         - name: synapse
           sectionName: http
+      - op: add
+        path: /spec/rules/0/filters/0/requestRedirect/hostname
+        value: matrix.taila659a.ts.net
     target:
       name: matrix-redirect
       kind: HTTPRoute
