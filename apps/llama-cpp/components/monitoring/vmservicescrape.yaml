@@ -12,8 +12,6 @@ spec:
       params:
         model:
           - qwen/qwen3.8-27b
-        autoload:
-          - "true"
       port: http
       scrapeTimeout: 30s
       relabelConfigs:
@@ -29,8 +27,6 @@ spec:
       params:
         model:
           - qwen/qwen3-embedding-8b
-        autoload:
-          - "true"
       port: http
       scrapeTimeout: 30s
       relabelConfigs:
