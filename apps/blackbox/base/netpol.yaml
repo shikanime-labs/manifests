@@ -14,5 +14,5 @@ spec:
             matchLabels:
               kubernetes.io/metadata.name: monitoring-system
       ports:
-        - port: 9115
+        - port: http
           protocol: TCP

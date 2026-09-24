@@ -13,7 +13,7 @@ spec:
             matchLabels:
               app.kubernetes.io/name: vmagent
       ports:
-        - port: 9153
+        - port: tcp-9153
   podSelector:
     matchLabels:
       k8s-app: kube-dns
