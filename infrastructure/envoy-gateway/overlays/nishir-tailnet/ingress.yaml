@@ -40,6 +40,25 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: matrix-discord-media
+  namespace: envoy-gateway-system
+  annotations:
+    tailscale.com/funnel: "true"
+    tailscale.com/tags: tag:web
+spec:
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - matrix-discord-media
+  defaultBackend:
+    service:
+      name: synapse
+      port:
+        number: 443
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: copyparty
   namespace: envoy-gateway-system
   annotations:
