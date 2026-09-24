@@ -11,6 +11,13 @@ spec:
     - interval: 60s
       path: /stats/prometheus
       port: metrics
+      relabelConfigs:
+        - sourceLabels:
+            - __meta_kubernetes_pod_label_gateway_envoyproxy_io_owning_gateway_name
+          targetLabel: gateway
+        - sourceLabels:
+            - __meta_kubernetes_pod_label_gateway_envoyproxy_io_owning_gateway_namespace
+          targetLabel: gateway_namespace
   selector:
     matchLabels:
       app.kubernetes.io/component: proxy
