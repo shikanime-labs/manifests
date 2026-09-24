@@ -56,6 +56,11 @@ spec:
     vmagent:
       extraArgs:
         enableTCP6: "true"
+      relabel:
+        - target_label: job
+          source_labels: [job]
+          regex: node
+          replacement: node-exporter
     vmalert:
       extraArgs:
         enableTCP6: "true"
