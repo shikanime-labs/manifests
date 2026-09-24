@@ -5,3 +5,7 @@ resources:
   - vpa.yaml
   - vmprobe.yaml
   - vmrule.yaml
+configMapGenerator:
+  - name: blackbox-config
+    files:
+      - config.yml=blackbox-config/config.yml
