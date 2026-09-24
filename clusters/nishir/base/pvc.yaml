@@ -268,3 +268,31 @@ spec:
   volumeName: timeline-data
   accessModes:
     - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hermes-agent-profiles-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 16Gi
+  volumeMode: Filesystem
+  storageClassName: longhorn-standard
+  accessModes:
+    - ReadWriteMany
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hermes-agent-skills-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 512Mi
+  volumeMode: Filesystem
+  storageClassName: longhorn-standard
+  accessModes:
+    - ReadWriteMany

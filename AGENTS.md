@@ -40,7 +40,7 @@ provides** from **how operators are installed**. Conventions:
 - `apps/<app>/overlays/<cluster>/` — Cluster-specific patches/config
 - `apps/<app>/overlays/<cluster>-tailnet/` — Tailnet flavor overlays
 
-Nested examples: `hermes-agent/{dashboard,gateway}`,
+Nested examples:
 `servarr/{lidarr,radarr,sonarr,whisparr}`, `mautrix/{discord,whatsapp,...}`.
 
 ### `infrastructure/` (operator/platform deployments)
@@ -89,7 +89,7 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 ## Repository Layout
 
 - `apps/` — application workloads. Nested examples:
-  `hermes-agent/{dashboard,gateway}`, `servarr/{lidarr,radarr,sonarr,whisparr}`,
+  `servarr/{lidarr,radarr,sonarr,whisparr}`,
   `mautrix/{discord,whatsapp,...}`
 - `clusters/` — cluster entrypoints
 - `bootstraps/` — controller/operator installation
@@ -113,7 +113,7 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - Storage: STS `volumeClaimTemplates` and `pvc.yaml` carry their
   `storageClassName` (Longhorn classes) directly in base — overlays never
   patch the class. Standalone `pvc.yaml` covers claims shared across
-  workloads (e.g. `hermes-agent` profiles/skills RWX).
+  workloads (e.g. `syncthing` shared data RWX under `clusters/<cluster>/base`).
   Kustomize replaces VCT list entries: an overlay VCT patch must restate
   every field, it does not field-merge with base.
   PVC/PV sizes grow to the next power of two above measured live usage —

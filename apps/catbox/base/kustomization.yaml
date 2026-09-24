@@ -1,4 +1,5 @@
 resources:
+  - httproutes.yaml
   - pvc.yaml
   - svc.yaml
   - vm.yaml
@@ -10,7 +11,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/template/spec/volumes/0/containerDisk/image
-        value: ghcr.io/shikanime-labs/machines/catbox:5ad8a0dc@sha256:c4a24ca7c2dcdb088e7f7064184995daca4e4cf9d61fdf3abb2e96af500e600a
+        value: ghcr.io/shikanime-labs/machines/catbox:dfe68d0e@sha256:ada4ae87373c3b97147057625a251f982df7e5f7889974f89e77797dbf2e2c5c
     target:
       name: catbox
       kind: VirtualMachine

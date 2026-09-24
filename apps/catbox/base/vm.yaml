@@ -66,3 +66,12 @@ spec:
                 - name: mdns
                   port: 5353
                   protocol: UDP
+                - name: dashboard
+                  port: 9119
+                  protocol: TCP
+                - name: a2a
+                  port: 9900
+                  protocol: TCP
+                - name: api-server
+                  port: 8642
+                  protocol: TCP

@@ -1,3 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: hermes-agent
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  parametersRef:
+    name: hermes-agent
+    group: gateway.envoyproxy.io
+    kind: EnvoyProxy
+    namespace: shikanime
+---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
 metadata:

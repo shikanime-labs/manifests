@@ -13,12 +13,16 @@ spec:
         - port: ssh
         - port: mdns
     - from:
-        - podSelector:
+        - namespaceSelector:
             matchLabels:
-              app.kubernetes.io/instance: hermes-agent
-              app.kubernetes.io/name: hermes-agent
+              kubernetes.io/metadata.name: envoy-gateway-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: envoy
       ports:
-        - port: ssh
+        - port: a2a
+        - port: api-server
+        - port: dashboard
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: catbox
