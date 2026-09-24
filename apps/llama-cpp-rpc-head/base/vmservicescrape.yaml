@@ -13,7 +13,7 @@ spec:
         model:
           - qwen/qwen3.8-flash
         autoload:
-          - "false"
+          - "true"
       port: http
       scrapeTimeout: 30s
       relabelConfigs:
