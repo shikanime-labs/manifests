@@ -18,6 +18,6 @@ spec:
           - name: studio-shikanime-i-grafana
             group: ""
             kind: Secret
-          - name: studio-shikanime-i-telemetry
+          - name: studio-shikanime-i-metrics
             group: ""
             kind: Secret

@@ -36,12 +36,12 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-        - telemetry.i.shikanime.studio
+        - metrics.i.shikanime.studio
       - op: add
         path: /spec/parentRefs
         value:
         - name: grafana
-          sectionName: https-telemetry
+          sectionName: https-metrics
     target:
       name: telemetry
       kind: HTTPRoute
@@ -50,7 +50,7 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-        - telemetry.i.shikanime.studio
+        - metrics.i.shikanime.studio
       - op: add
         path: /spec/parentRefs
         value:
