@@ -28,6 +28,27 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: apps-blackbox
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-cert-manager
+    - name: infrastructure-victoria-metrics
+    - name: infrastructure-grafana-operator
+  interval: 10m
+  path: ./apps/blackbox/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: apps-catbox
   namespace: flux-system
 spec:

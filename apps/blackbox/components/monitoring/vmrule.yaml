@@ -1,14 +1,14 @@
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMRule
 metadata:
-  name: slo
+  name: blackbox
   namespace: monitoring-system
 spec:
   groups:
-    - name: slo
+    - name: blackbox
       interval: 30s
       rules:
-        - record: slo:availability_ir
+        - record: blackbox:availability_ir
           expr: |
             avg_over_time(probe_success{job="public-endpoints"}[1h])
         - alert: SLOAvailabilityPage
