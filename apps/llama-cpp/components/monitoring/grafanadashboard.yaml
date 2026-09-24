@@ -89,7 +89,7 @@ spec:
           },
           "id": 100,
           "panels": [],
-          "title": "Overview",
+          "title": "llama.cpp",
           "type": "row"
         },
         {
@@ -146,7 +146,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:requests_processing",
+              "expr": "sum(llamacpp:requests_processing)",
               "legendFormat": "Active requests",
               "range": true,
               "refId": "A"
@@ -281,7 +281,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:prompt_tokens_seconds * on() (llamacpp:requests_processing > bool 0)",
+              "expr": "sum(llamacpp:prompt_tokens_seconds) * on() group_left() (sum(llamacpp:requests_processing) > bool 0)",
               "legendFormat": "Prompt throughput",
               "range": true,
               "refId": "A"
@@ -345,7 +345,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:predicted_tokens_seconds * on() (llamacpp:requests_processing > bool 0)",
+              "expr": "sum(llamacpp:predicted_tokens_seconds) * on() group_left() (sum(llamacpp:requests_processing) > bool 0)",
               "legendFormat": "Generation throughput",
               "range": true,
               "refId": "A"
@@ -408,7 +408,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:n_busy_slots_per_decode * on() (llamacpp:requests_processing > bool 0)",
+              "expr": "sum(llamacpp:n_busy_slots_per_decode) * on() group_left() (sum(llamacpp:requests_processing) > bool 0)",
               "legendFormat": "Busy slots",
               "range": true,
               "refId": "A"
@@ -472,7 +472,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:n_tokens_max * on() (llamacpp:requests_processing > bool 0)",
+              "expr": "sum(llamacpp:n_tokens_max) * on() group_left() (sum(llamacpp:requests_processing) > bool 0)",
               "legendFormat": "Largest context",
               "range": true,
               "refId": "A"
@@ -585,7 +585,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:prompt_tokens_seconds",
+              "expr": "sum by (instance) (llamacpp:prompt_tokens_seconds)",
               "legendFormat": "Prompt",
               "range": true,
               "refId": "A"
@@ -685,7 +685,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:predicted_tokens_seconds",
+              "expr": "sum by (instance) (llamacpp:predicted_tokens_seconds)",
               "legendFormat": "Generation",
               "range": true,
               "refId": "B"
@@ -785,7 +785,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "1000 * rate(llamacpp:prompt_seconds_total[$__rate_interval]) / rate(llamacpp:prompt_tokens_total[$__rate_interval])",
+              "expr": "1000 * sum(rate(llamacpp:prompt_seconds_total[$__rate_interval])) / sum(rate(llamacpp:prompt_tokens_total[$__rate_interval]))",
               "legendFormat": "Prompt",
               "range": true,
               "refId": "A"
@@ -908,7 +908,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "llamacpp:requests_processing",
+              "expr": "sum(llamacpp:requests_processing)",
               "legendFormat": "Requests processing",
               "range": true,
               "refId": "A"
@@ -1434,7 +1434,7 @@ spec:
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "1000 * rate(llamacpp:prompt_seconds_total[$__rate_interval]) / rate(llamacpp:prompt_tokens_total[$__rate_interval])",
+              "expr": "1000 * sum(rate(llamacpp:prompt_seconds_total[$__rate_interval])) / sum(rate(llamacpp:prompt_tokens_total[$__rate_interval]))",
               "legendFormat": "Prompt latency/token",
               "range": true,
               "refId": "A"
