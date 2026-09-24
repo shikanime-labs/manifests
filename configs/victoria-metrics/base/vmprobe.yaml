@@ -1,0 +1,54 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMProbe
+metadata:
+  name: public-endpoints
+  namespace: monitoring-system
+spec:
+  jobName: public-endpoints
+  interval: 60s
+  module: http_2xx
+  vmProberSpec:
+    url: http://vmblackbox-exporter.monitoring-system.svc:9115
+  targets:
+    static:
+      targets:
+        - https://a2a.automata.i.shikanime.studio
+        - https://accounts.i.shikanime.studio
+        - https://api.automata.i.shikanime.studio
+        - https://authelia.i.shikanime.studio
+        - https://automata.i.shikanime.studio
+        - https://bazarr.i.shikanime.studio
+        - https://chat.i.shikanime.studio
+        - https://copyparty.i.shikanime.studio
+        - https://flux.i.shikanime.studio
+        - https://forgejo.i.shikanime.studio
+        - https://gitea-mirror.i.shikanime.studio
+        - https://grafana.i.shikanime.studio
+        - https://honcho.i.shikanime.studio
+        - https://immich.i.shikanime.studio
+        - https://jellyfin.i.shikanime.studio
+        - https://lidarr.i.shikanime.studio
+        - https://lldap.i.shikanime.studio
+        - https://logs.i.shikanime.studio
+        - https://longhorn.i.shikanime.studio
+        - https://maintainerr.i.shikanime.studio
+        - https://matrix-discord-media.i.shikanime.studio
+        - https://matrix.i.shikanime.studio
+        - https://mautrix-discord.i.shikanime.studio
+        - https://mautrix-googlechat.i.shikanime.studio
+        - https://mautrix-linkedin.i.shikanime.studio
+        - https://mautrix-meta.i.shikanime.studio
+        - https://mautrix-signal.i.shikanime.studio
+        - https://mautrix-slack.i.shikanime.studio
+        - https://mautrix-twitter.i.shikanime.studio
+        - https://mautrix-whatsapp.i.shikanime.studio
+        - https://metatube.i.shikanime.studio
+        - https://metrics.i.shikanime.studio
+        - https://prowlarr.i.shikanime.studio
+        - https://qbittorrent.i.shikanime.studio
+        - https://radarr.i.shikanime.studio
+        - https://seerr.i.shikanime.studio
+        - https://sonarr.i.shikanime.studio
+        - https://syncthing.i.shikanime.studio
+        - https://vaultwarden.i.shikanime.studio
+        - https://whisparr.i.shikanime.studio
