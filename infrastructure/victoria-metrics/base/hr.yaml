@@ -59,7 +59,7 @@ spec:
       spec:
         extraArgs:
           enableTCP6: "true"
-        relabelConfigs:
+        inlineRelabelConfig:
           - targetLabel: job
             sourceLabels:
               - job
