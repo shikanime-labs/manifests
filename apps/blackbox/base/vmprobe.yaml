@@ -2,9 +2,6 @@ apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMProbe
 metadata:
   name: blackbox
-  labels:
-    app.kubernetes.io/instance: blackbox
-    app.kubernetes.io/name: blackbox
 spec:
   jobName: blackbox
   interval: 60s
@@ -13,9 +10,6 @@ spec:
     url: http://blackbox.monitoring-system.svc:9115
   targets:
     static:
-      labels:
-        app.kubernetes.io/instance: blackbox
-        app.kubernetes.io/name: blackbox
       relabelingConfigs:
         - sourceLabels:
             - instance
