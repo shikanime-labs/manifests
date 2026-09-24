@@ -9,4 +9,4 @@ spec:
   instanceSelector:
     matchLabels:
       dashboards: grafana
-  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.2.0/dashboards/blackbox.json
+  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.3.0/dashboards/blackbox.json
