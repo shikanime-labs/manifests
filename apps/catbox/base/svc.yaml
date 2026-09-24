@@ -17,3 +17,15 @@ spec:
       port: 5353
       protocol: UDP
       targetPort: mdns
+    - name: dashboard
+      appProtocol: http
+      port: 9119
+      targetPort: dashboard
+    - name: a2a
+      appProtocol: http
+      port: 9900
+      targetPort: a2a
+    - name: api-server
+      appProtocol: http
+      port: 8642
+      targetPort: api-server

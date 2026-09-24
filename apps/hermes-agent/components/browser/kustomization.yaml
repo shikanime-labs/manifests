@@ -1,8 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1alpha1
-kind: Component
-images:
-  - name: chrome
-    newName: chromedp/headless-shell
-    newTag: 149.0.7808.0@sha256:78109ccd8701fee19917ab416cf2b5ecc19042aa5298a840c137f83734e32883
-patches:
-  - path: patch-sts.yaml
