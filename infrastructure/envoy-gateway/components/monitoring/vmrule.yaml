@@ -1,0 +1,31 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: envoy-gateway-sli
+  namespace: monitoring-system
+spec:
+  groups:
+    - name: envoy-gateway-sli
+      interval: 30s
+      rules:
+        - record: sli:envoy:availability
+          expr: |
+            sum by (envoy_http_conn_manager_prefix, gateway_envoyproxy_io_owning_gateway_name) (
+              envoy_http_downstream_rq_xx{envoy_http_conn_manager_prefix=~"https?-.*",envoy_response_code_class!~"5"}
+            )
+            /
+            sum by (envoy_http_conn_manager_prefix, gateway_envoyproxy_io_owning_gateway_name) (
+              envoy_http_downstream_rq_xx{envoy_http_conn_manager_prefix=~"https?-.*"}
+            )
+        - record: sli:envoy:rq_rate
+          expr: |
+            sum by (envoy_http_conn_manager_prefix, gateway_envoyproxy_io_owning_gateway_name) (
+              rate(envoy_http_downstream_rq_xx{envoy_http_conn_manager_prefix=~"https?-.*"}[5m])
+            )
+        - record: sli:envoy:latency_p99
+          expr: |
+            histogram_quantile(0.99,
+              sum by (le, gateway_envoyproxy_io_owning_gateway_name) (
+                rate(envoy_http_downstream_rq_time_bucket{envoy_http_conn_manager_prefix=~"https?-.*"}[5m])
+              )
+            )
