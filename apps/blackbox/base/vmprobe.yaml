@@ -7,7 +7,7 @@ spec:
   interval: 60s
   module: http_2xx
   vmProberSpec:
-    url: http://blackbox.shikanime.svc:9115
+    url: http://blackbox.shikanime.svc.cluster.local:9115
   targets:
     static:
       relabelingConfigs:
