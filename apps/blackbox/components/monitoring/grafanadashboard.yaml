@@ -5,6 +5,7 @@ metadata:
     app.kubernetes.io/part-of: dashboards
   name: blackbox
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: grafana
