@@ -20,6 +20,9 @@ spec:
       containers:
         - name: copyparty
           image: copyparty
+          resources:
+            requests:
+              memory: 3Gi
           livenessProbe:
             httpGet:
               path: /?reset=/._

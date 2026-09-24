@@ -21,6 +21,9 @@ spec:
       containers:
         - name: immich
           image: immich-server
+          resources:
+            requests:
+              memory: 24Gi
           livenessProbe:
             httpGet:
               path: /api/server/ping

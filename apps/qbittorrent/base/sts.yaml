@@ -21,6 +21,9 @@ spec:
       containers:
         - name: qbittorrent
           image: qbittorrent
+          resources:
+            requests:
+              memory: 7Gi
           env:
             - name: QBT_LEGAL_NOTICE
               value: confirm

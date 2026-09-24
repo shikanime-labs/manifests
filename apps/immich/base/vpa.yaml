@@ -9,8 +9,3 @@ spec:
     name: immich
   updatePolicy:
     updateMode: InPlace
-  resourcePolicy:
-    containerPolicies:
-      - containerName: immich
-        minAllowed:
-          memory: 8Gi

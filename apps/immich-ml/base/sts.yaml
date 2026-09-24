@@ -21,6 +21,9 @@ spec:
       containers:
         - name: immich-ml
           image: immich-machine-learning
+          resources:
+            requests:
+              memory: 3Gi
           env:
             - name: TZ
               value: Europe/Paris
