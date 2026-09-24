@@ -116,6 +116,9 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   workloads (e.g. `hermes-agent` profiles/skills RWX).
   Kustomize replaces VCT list entries: an overlay VCT patch must restate
   every field, it does not field-merge with base.
+  PVC/PV sizes grow to the next power of two above measured live usage —
+  never speculative multiples (verify with `df`/`du` in-cluster before
+  sizing an expansion).
 - Secrets/config: `*.enc.*` files fed into `secretGenerator`
 - TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the cluster CA
   issuer, policy wiring, and listener/service patches; the cluster overlay
