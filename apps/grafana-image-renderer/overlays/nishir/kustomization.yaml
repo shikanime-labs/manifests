@@ -1,0 +1,17 @@
+resources:
+  - ../../base
+namespace: monitoring-system
+secretGenerator:
+  - name: grafana-image-renderer-token
+    envs:
+      - grafana-image-renderer-token/.enc.env
+    options:
+      disableNameSuffixHash: true
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: renderer
+      app.kubernetes.io/instance: grafana-image-renderer
+      app.kubernetes.io/name: grafana-image-renderer
+      app.kubernetes.io/part-of: monitoring
+      app.kubernetes.io/version: v5.12.4
