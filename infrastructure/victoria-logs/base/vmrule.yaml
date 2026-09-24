@@ -1,0 +1,17 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: victoria-logs
+  namespace: monitoring-system
+spec:
+  groups:
+    - name: victoria-logs
+      type: vlogs
+      rules:
+        - alert: PodErrorLogBurst
+          expr: '_time:5m kubernetes.pod_namespace:!~"monitoring-system|kube-system" error | stats by (kubernetes.pod_name, kubernetes.pod_namespace) count() as errors | filter errors:>20'
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: 'More than 20 error logs in 5m from {{ $labels.kubernetes.pod_name }} ({{ $labels.kubernetes.pod_namespace }})'

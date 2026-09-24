@@ -1,5 +1,7 @@
 resources:
   - hr.yaml
   - httproute.yaml
+  - vmauth.yaml
   - vlagent.yaml
+  - vmrule.yaml
   - vpa.yaml
