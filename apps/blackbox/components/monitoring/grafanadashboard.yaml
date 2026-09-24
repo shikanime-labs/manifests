@@ -17,7 +17,24 @@ spec:
         "to": "now"
       },
       "templating": {
-        "list": []
+        "list": [
+          {
+            "current": {
+              "text": "VictoriaMetrics",
+              "value": "VictoriaMetrics",
+              "selected": true
+            },
+            "hide": 2,
+            "includeAll": false,
+            "label": "Datasource",
+            "name": "datasource",
+            "options": [],
+            "query": "prometheus",
+            "refresh": 1,
+            "regex": "",
+            "type": "datasource"
+          }
+        ]
       },
       "panels": [
         {
@@ -25,8 +42,8 @@ spec:
           "type": "table",
           "title": "Availability (30d SLI, 99% objective)",
           "datasource": {
-            "type": "victoriametrics-metrics-datasource",
-            "uid": "VictoriaMetricsDS"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 18,
@@ -92,8 +109,8 @@ spec:
           "type": "stat",
           "title": "Endpoints down now",
           "datasource": {
-            "type": "victoriametrics-metrics-datasource",
-            "uid": "VictoriaMetricsDS"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 8,
@@ -132,8 +149,8 @@ spec:
           "type": "stat",
           "title": "Error budget consumed (30d, fleet avg)",
           "datasource": {
-            "type": "victoriametrics-metrics-datasource",
-            "uid": "VictoriaMetricsDS"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 8,
@@ -178,8 +195,8 @@ spec:
           "type": "timeseries",
           "title": "Probe latency by endpoint",
           "datasource": {
-            "type": "victoriametrics-metrics-datasource",
-            "uid": "VictoriaMetricsDS"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 10,
@@ -216,8 +233,8 @@ spec:
           "type": "timeseries",
           "title": "Availability by endpoint (1h window)",
           "datasource": {
-            "type": "victoriametrics-metrics-datasource",
-            "uid": "VictoriaMetricsDS"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 10,
