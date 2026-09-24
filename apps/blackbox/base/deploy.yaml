@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vmblackbox-exporter
+  name: blackbox
   namespace: monitoring-system
   labels:
-    app.kubernetes.io/name: vmblackbox-exporter
+    app.kubernetes.io/name: blackbox
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: vmblackbox-exporter
+      app.kubernetes.io/name: blackbox
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: vmblackbox-exporter
+        app.kubernetes.io/name: blackbox
     spec:
       containers:
         - name: exporter
@@ -35,13 +35,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: vmblackbox-exporter
+  name: blackbox
   namespace: monitoring-system
   labels:
-    app.kubernetes.io/name: vmblackbox-exporter
+    app.kubernetes.io/name: blackbox
 spec:
   selector:
-    app.kubernetes.io/name: vmblackbox-exporter
+    app.kubernetes.io/name: blackbox
   ports:
     - name: http
       port: 9115
