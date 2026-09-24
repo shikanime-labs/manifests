@@ -14,4 +14,4 @@ spec:
           labels:
             severity: warning
           annotations:
-            summary: 'More than 20 error logs in 5m from {{ $labels.kubernetes.pod_name }} ({{ $labels.kubernetes.pod_namespace }})'
+            summary: 'More than 20 error logs in 5m from {{ index $labels "kubernetes.pod_name" }} ({{ index $labels "kubernetes.pod_namespace" }})'
