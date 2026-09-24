@@ -40,7 +40,7 @@ spec:
         vminsert:
           extraArgs:
             enableTCP6: "true"
-            maxLabels: "80"
+            maxLabelsPerTimeseries: "80"
         vmselect:
           extraArgs:
             enableTCP6: "true"
