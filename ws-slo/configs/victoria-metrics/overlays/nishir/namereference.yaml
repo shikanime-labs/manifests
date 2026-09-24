@@ -1,7 +1,0 @@
-nameReference:
-  - kind: Secret
-    version: v1
-    fieldSpecs:
-      - kind: VMAlertmanagerConfig
-        group: operator.victoriametrics.com
-        path: spec/receivers/discord_configs/webhook_url_secret/name

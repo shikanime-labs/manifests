@@ -1,4 +1,0 @@
-resources:
-  - ../../base
-patches:
-  - path: patch-hr.yaml

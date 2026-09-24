@@ -1,8 +1,0 @@
-apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
-kind: RKE2WorkerConfigTemplate
-metadata:
-  name: shana
-spec:
-  template:
-    spec:
-      version: v1.33.3+rke2.0

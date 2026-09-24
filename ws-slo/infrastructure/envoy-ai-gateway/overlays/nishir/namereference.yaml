@@ -1,7 +1,0 @@
-nameReference:
-  - version: v1
-    kind: Secret
-    fieldSpecs:
-      - kind: HelmRelease
-        path: spec/valuesFrom/name
-        group: helm.toolkit.fluxcd.io

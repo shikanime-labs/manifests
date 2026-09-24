@@ -1,4 +1,0 @@
-resources:
-  - blackbox.yaml
-  - vmprobe.yaml
-  - vmrule-slo.yaml

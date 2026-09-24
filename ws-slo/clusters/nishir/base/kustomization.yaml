@@ -1,6 +1,0 @@
-resources:
-  - netpol.yaml
-  - ns.yaml
-  - pvc.yaml
-  - pv.yaml
-  - vpa.yaml

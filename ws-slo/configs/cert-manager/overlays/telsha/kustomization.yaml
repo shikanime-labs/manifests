@@ -1,5 +1,0 @@
-resources:
-  - ../../base
-  - bundle.yaml
-  - cert.yaml
-  - clusterissuer.yaml

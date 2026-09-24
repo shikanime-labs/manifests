@@ -1,4 +1,0 @@
-resources:
-  - netpol.yaml
-  - vmservicescrape.yaml
-  - grafanadashboard.yaml
