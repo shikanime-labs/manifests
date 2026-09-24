@@ -3,6 +3,7 @@ kind: VerticalPodAutoscaler
 metadata:
   name: blackbox
   labels:
+    app.kubernetes.io/instance: blackbox
     app.kubernetes.io/name: blackbox
 spec:
   targetRef:

@@ -5,6 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
+      app.kubernetes.io/instance: blackbox
       app.kubernetes.io/name: blackbox
   policyTypes:
     - Ingress
