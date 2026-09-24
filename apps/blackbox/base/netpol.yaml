@@ -8,4 +8,11 @@ spec:
       app.kubernetes.io/name: blackbox
   policyTypes:
     - Ingress
-  ingress: []
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+      ports:
+        - port: 9115
+          protocol: TCP
