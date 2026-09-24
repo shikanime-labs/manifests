@@ -31,9 +31,7 @@ spec:
           url: http://vmauth-vmalert-datasource.monitoring-system.svc:8427
         externalLabels:
           namespace: monitoring-system
-        ruleNamespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: monitoring-system
+        ruleNamespaceSelector: {}
     vmalertmanager:
       spec:
         configSelector: {}
