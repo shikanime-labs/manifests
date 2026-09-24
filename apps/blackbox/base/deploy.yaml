@@ -31,18 +31,3 @@ spec:
             requests:
               cpu: 10m
               memory: 32Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: blackbox
-  namespace: monitoring-system
-  labels:
-    app.kubernetes.io/name: blackbox
-spec:
-  selector:
-    app.kubernetes.io/name: blackbox
-  ports:
-    - name: http
-      port: 9115
-      targetPort: http

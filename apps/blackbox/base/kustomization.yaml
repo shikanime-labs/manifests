@@ -1,3 +1,6 @@
 resources:
   - deploy.yaml
+  - netpol.yaml
+  - svc.yaml
   - vmprobe.yaml
+  - vpa.yaml
