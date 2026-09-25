@@ -279,6 +279,7 @@ spec:
     requests:
       storage: 16Gi
   volumeMode: Filesystem
+  volumeName: hermes-agent-profiles-data
   storageClassName: longhorn-standard
   accessModes:
     - ReadWriteMany
@@ -293,6 +294,7 @@ spec:
     requests:
       storage: 512Mi
   volumeMode: Filesystem
+  volumeName: hermes-agent-skills-data
   storageClassName: longhorn-standard
   accessModes:
     - ReadWriteMany
