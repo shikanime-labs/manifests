@@ -15,10 +15,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: archives-data
-    volumeAttributes:
-      diskSelector: nearline
-      fsType: xfs
-      numberOfReplicas: "2"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-capacity
   volumeMode: Filesystem
@@ -39,12 +35,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: downloads-data
-    volumeAttributes:
-      diskSelector: standard
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -65,12 +55,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: downloads-radarr-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -91,12 +75,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: downloads-sonarr-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -117,12 +95,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: downloads-lidarr-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -143,12 +115,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: downloads-whisparr-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -169,10 +135,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: games-data
-    volumeAttributes:
-      diskSelector: nearline
-      fsType: xfs
-      numberOfReplicas: "2"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-capacity
   volumeMode: Filesystem
@@ -193,11 +155,8 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: hermes-agent-profiles-data
-    volumeAttributes:
-      numberOfReplicas: "1"
-      staleReplicaTimeout: "30"
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-standard
+  storageClassName: longhorn-transient
   volumeMode: Filesystem
 ---
 apiVersion: v1
@@ -208,7 +167,7 @@ spec:
   accessModes:
     - ReadWriteMany
   capacity:
-    storage: 512Mi
+    storage: 1Gi
   claimRef:
     name: hermes-agent-skills-data
     namespace: shikanime
@@ -216,9 +175,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: hermes-agent-skills-data
-    volumeAttributes:
-      numberOfReplicas: "1"
-      staleReplicaTimeout: "30"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -239,12 +195,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: movies-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -265,12 +215,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: music-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -291,12 +235,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: shows-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "1"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-ephemeral
   volumeMode: Filesystem
@@ -317,12 +255,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: staging-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -343,12 +275,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sukebe-doujins-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -369,10 +295,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sukebe-games-data
-    volumeAttributes:
-      diskSelector: nearline
-      fsType: xfs
-      numberOfReplicas: "2"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -393,12 +315,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sukebe-scenes-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -419,10 +335,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sukebe-shows-data
-    volumeAttributes:
-      diskSelector: nearline
-      fsType: xfs
-      numberOfReplicas: "2"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -443,12 +355,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sukebe-videos-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-transient
   volumeMode: Filesystem
@@ -469,12 +375,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: sync-data
-    volumeAttributes:
-      diskSelector: nearline
-      migratable: "false"
-      nodeSelector: storage
-      numberOfReplicas: "2"
-      staleReplicaTimeout: "20"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-capacity
   volumeMode: Filesystem
@@ -495,10 +395,6 @@ spec:
     driver: driver.longhorn.io
     fsType: xfs
     volumeHandle: timeline-data
-    volumeAttributes:
-      diskSelector: nearline
-      fsType: xfs
-      numberOfReplicas: "2"
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-capacity
   volumeMode: Filesystem
