@@ -30,6 +30,10 @@ spec:
         - name: sops-key
           secret:
             secretName: catbox-sops-key
+        - name: cloudinit
+          cloudInitNoCloud:
+            secretRef:
+              name: catbox-authorized-keys
       domain:
         resources:
           requests:

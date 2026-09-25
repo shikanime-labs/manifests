@@ -6,7 +6,7 @@ resources:
 secretGenerator:
   - name: catbox-authorized-keys
     files:
-      - authorized-keys/key1
+      - authorized-keys/userdata
 patches:
   - patch: |-
       - op: replace
