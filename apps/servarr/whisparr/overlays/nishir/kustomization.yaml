@@ -32,6 +32,19 @@ patches:
         path: /spec/parentRefs
         value:
         - name: whisparr
+          sectionName: https
+    target:
+      name: whisparr-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - whisparr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: whisparr
           sectionName: http
     target:
       name: whisparr-redirect
