@@ -52,6 +52,24 @@ a healthy share-manager pod is NOT XFS — see Gotchas before escalating.
   replica count to hide it.
 - `kubectl delete node` on a fenced node drops its Longhorn membership —
   reboot instead, and never loop reboots on a disk that stays fenced.
+- ENOSPC on a PVC: expand the claim (`allowVolumeExpansion`), verify
+  `status.capacity.storage` catches up, and size to the next power of two
+  above measured live usage (`df`/`du`), never speculative multiples.
+- VCT→hostPath (or any STS volume-structure change): the live STS dry-run
+  rejects it and wedges the KS — `kubectl delete sts <name>
+  --cascade=orphan`, let Flux recreate from git, then verify pods actually
+  carry the NEW volume list (adopted pods outlive their old spec until
+  deleted) and delete the orphaned claims explicitly.
+- hostPath volumes provisioned root:root 755 → EPERM for app uids (e.g.
+  65532): chown via a one-shot alpine container `runAsUser: 0` against the
+  hostPath.
+- An RWOP PVC "already in-use by another pod" never frees by rescheduling —
+  the consumer pod must actually die first (delete it), and if the claim
+  itself must go, delete pod then PVC in that order (pvc-protection).
+- A PV policy patch has a silent-drop trap: the field is
+  `spec.persistentVolumeReclaimPolicy` (`spec.reclaimPolicy` is unknown and
+  ignored, no error). Never delete a claim after a policy patch without
+  reading the policy back.
 
 ## Verification
 

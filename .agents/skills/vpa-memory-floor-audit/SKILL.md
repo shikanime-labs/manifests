@@ -30,8 +30,8 @@ the wrong skill.
    container. Flag: no floor with lowerBound ≥ 300Mi, or a floor more than
    1.5× below the lower bound. Revisit the 300Mi threshold only if node sizes
    change.
-2. **Resolve pods by owner**, never by name guess (VPA name ≠ pod name) — join
-   on namespace + container name or ownerReferences.
+2. **Resolve pods by owner**, never by name guess (VPA name ≠ pod name) —
+   join on namespace + container name or ownerReferences.
 3. **Gather kill evidence** (restartCount + `lastState.terminated.reason` per
    container) and give one of three verdicts:
    - **Floor** — recent `OOMKilled` or working set tracking the lowerBound.
@@ -60,6 +60,17 @@ the wrong skill.
   JSON, not table output.
 - The 250Mi floor is the recommender's global default, not a per-VPA
   `minAllowed`; do not read it out of fields that do not exist.
+- VPA InPlace mode sets requests live, overriding the STS template — before
+  forcing a reschedule, cap `maxAllowed` or set `updateMode: Off` on the
+  VPA, or the recommender re-drifts the request the moment the pod
+  restarts.
+- `exitCode 137` with NO container memory limit is a NODE-level OOM kill
+  from overcommit, not a cgroup limit hit (immich on nalsha: requests-only
+  pod killed while the node was oversubscribed). A floor cannot fix node
+  overcommit — check node allocatable vs requested before sizing anything.
+- Size floors from the live cluster (`kubectl describe pod` working set,
+  VPA `target`/`upperBound`), never from the STS template — the template's
+  requests are whatever was last committed, not what runs.
 
 ## Verification
 
