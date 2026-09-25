@@ -277,7 +277,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 16Gi
+      storage: 32Gi
   volumeMode: Filesystem
   volumeName: hermes-agent-profiles-data
   storageClassName: longhorn-standard
@@ -292,7 +292,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 512Mi
+      storage: 1Gi
   volumeMode: Filesystem
   volumeName: hermes-agent-skills-data
   storageClassName: longhorn-standard
