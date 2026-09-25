@@ -15,3 +15,10 @@ spec:
             severity: warning
           annotations:
             summary: 'More than 20 error logs in 5m from {{ index $labels "kubernetes.pod_name" }} ({{ index $labels "kubernetes.pod_namespace" }})'
+        - alert: RpcPeerUnreachable
+          expr: '_time:5m "Failed to connect to 10.66.1." | stats by (kubernetes.pod_name, kubernetes.pod_namespace) count() as failures | filter failures:>0'
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: '{{ index $labels "kubernetes.pod_name" }} cannot reach its RPC peer on the macvlan lane'
