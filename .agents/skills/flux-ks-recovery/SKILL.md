@@ -29,7 +29,8 @@ before re-debugging the fix.
    revision actually being attempted.
 
    ```bash
-   kubectl get kustomization <ks> -n flux-system -o jsonpath='{range .status.conditions[*]}{.type}={.status}: {.message}{"\n"}{end}'
+   kubectl get kustomization <ks> -n flux-system -o jsonpath \
+     '{range .status.conditions[*]}{.type}={.status}: {.message}{"\n"}{end}'
    ```
 
 3. **Check the Git source revision is current** —
