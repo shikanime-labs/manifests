@@ -73,14 +73,12 @@ spec:
               containerPort: 50052
           readinessProbe:
             tcpSocket:
-              host: 10.66.1.1
               port: rpc
             initialDelaySeconds: 15
             periodSeconds: 30
             failureThreshold: 2
           livenessProbe:
             tcpSocket:
-              host: 10.66.1.1
               port: rpc
             initialDelaySeconds: 60
             periodSeconds: 60
