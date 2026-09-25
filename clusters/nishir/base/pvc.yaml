@@ -295,6 +295,6 @@ spec:
       storage: 512Mi
   volumeMode: Filesystem
   volumeName: hermes-agent-skills-data
-  storageClassName: longhorn-standard
+  storageClassName: longhorn-transient
   accessModes:
     - ReadWriteMany
