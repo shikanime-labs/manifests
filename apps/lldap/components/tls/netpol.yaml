@@ -11,6 +11,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: jellyfin
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: syncthing
       ports:
         - port: ldaps
   podSelector:
