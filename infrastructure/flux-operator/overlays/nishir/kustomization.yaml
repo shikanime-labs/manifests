@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - clusterrolebinding.yaml
   - gateway.yaml
   - securitypolicy.yaml
 configurations:
@@ -25,6 +26,14 @@ secretGenerator:
     namespace: flux-system
     envs:
       - flux-oidc-client/.enc.env
+  # Consumed by the operator's --web-config-secret-name, so the name must stay
+  # stable across content changes (no hash suffix).
+  - name: flux-web-config
+    namespace: flux-system
+    files:
+      - config.yaml=flux-web-config/config.enc.yaml
+    options:
+      disableNameSuffixHash: true
 labels:
   - includeTemplates: true
     pairs:
