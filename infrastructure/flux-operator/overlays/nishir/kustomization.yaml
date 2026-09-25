@@ -3,9 +3,6 @@ resources:
   - cert.yaml
   - clusterrolebinding.yaml
   - gateway.yaml
-  - securitypolicy.yaml
-configurations:
-  - namereference.yaml
 patches:
   - patch: |-
       - op: add
@@ -22,10 +19,6 @@ patches:
       kind: HTTPRoute
       namespace: flux-system
 secretGenerator:
-  - name: flux-oidc-client
-    namespace: flux-system
-    envs:
-      - flux-oidc-client/.enc.env
   # Consumed by the operator's --web-config-secret-name, so the name must stay
   # stable across content changes (no hash suffix).
   - name: flux-web-config
