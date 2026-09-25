@@ -125,6 +125,15 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   composes the component
 - Resources in a base are one kind per file, named
   `<short-kube-resource-name>.yaml`, listed sorted
+- Monitoring: `components/monitoring/` carries the app's
+  `vmservicescrape.yaml`, `netpol.yaml`, and `vmrule.yaml`; the overlay
+  composes it via `components:` and owns the namespace. Every app ships a
+  VMRule — bare app name, one group, each alert carrying `labels.severity`
+  and `annotations.summary`. Monitoring is part of the app, not a follow-up.
+- Probes target the pod's own port (named `tcpSocket.port`), never a
+  secondary-CNI address: kubelet dials probes from the node network
+  namespace, so a macvlan/br1 `host` times out forever and liveness then
+  restart-loops a healthy pod.
 
 ## Overlay Conventions
 
@@ -202,8 +211,10 @@ files.
   `Signed-off-by: Shikanime Deva <william.phetsinorath@shikanime.studio>` and
   `Co-authored-by: Automata <automata@shikanime.studio>` (gitlint CC1 rejects
   commits without Signed-off-by)
-- Keep Markdown lines wrapped at 80 columns and run `nix fmt` (treefmt) before
-  shipping. The `gitlint` commit-msg hook enforces the title style locally.
+- Keep Markdown lines wrapped at 80 columns and run `nix fmt` (treefmt) scoped
+  to your changed files — a tree-wide run rewrites unrelated files and can
+  corrupt `.enc.yaml`. The `gitlint` commit-msg hook enforces the title style
+  locally.
 
 ## PR Workflow
 
@@ -212,6 +223,10 @@ files.
   directory containing a `kustomization.yaml`).
 - Squash-merge after checks pass: `gh pr merge N --squash --admin`; capture the
   mergeCommit oid and reset local main to `origin/main` afterwards.
+- The fix is the commit: Flux reverts a live `kubectl patch` at the next
+  reconcile (suspend the Kustomization only for interim relief). A running
+  object with no manifest in this repo is drift — delete it, never build on
+  it.
 
 ## Stack Workflow
 
