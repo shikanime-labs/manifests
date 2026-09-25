@@ -5,6 +5,14 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    defaultRules:
+      rules:
+        "cluster:node_cpu:ratio":
+          enabled: false
+        "instance:node_load1_per_cpu:ratio":
+          enabled: false
+        "node:node_num_cpu:sum":
+          enabled: false
     kubeControllerManager:
       vmScrape:
         spec:
