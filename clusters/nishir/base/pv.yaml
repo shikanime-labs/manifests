@@ -208,7 +208,7 @@ spec:
   accessModes:
     - ReadWriteMany
   capacity:
-    storage: 512Mi
+    storage: 1Gi
   claimRef:
     name: hermes-agent-skills-data
     namespace: shikanime
