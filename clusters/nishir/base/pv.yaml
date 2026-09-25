@@ -197,7 +197,7 @@ spec:
       numberOfReplicas: "1"
       staleReplicaTimeout: "30"
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-standard
+  storageClassName: longhorn-transient
   volumeMode: Filesystem
 ---
 apiVersion: v1
