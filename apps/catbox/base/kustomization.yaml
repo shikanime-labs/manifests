@@ -9,6 +9,8 @@ secretGenerator:
       disableNameSuffixHash: true
     files:
       - authorized-keys/userdata
+configurations:
+  - namereference.yaml
 patches:
   - patch: |-
       - op: replace
