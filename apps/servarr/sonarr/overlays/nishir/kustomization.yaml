@@ -32,6 +32,19 @@ patches:
         path: /spec/parentRefs
         value:
         - name: sonarr
+          sectionName: https
+    target:
+      name: sonarr-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - sonarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: sonarr
           sectionName: http
     target:
       name: sonarr-redirect

@@ -36,7 +36,7 @@ spec:
         - https://lldap.i.shikanime.studio
         - https://logs.i.shikanime.studio
         - https://longhorn.i.shikanime.studio
-        - https://maintainerr.i.shikanime.studio
+        - https://maintainerr.i.shikanime.studio/api/health
         - https://matrix-discord-media.taila659a.ts.net
         - https://matrix.taila659a.ts.net
         - https://mautrix-discord.i.shikanime.studio
@@ -49,11 +49,11 @@ spec:
         - https://mautrix-whatsapp.i.shikanime.studio
         - https://metatube.i.shikanime.studio
         - https://metrics.i.shikanime.studio
-        - https://prowlarr.i.shikanime.studio
+        - https://prowlarr.i.shikanime.studio/ping
         - https://qbittorrent.i.shikanime.studio
-        - https://radarr.i.shikanime.studio
+        - https://radarr.i.shikanime.studio/ping
         - https://seerr.i.shikanime.studio
-        - https://sonarr.i.shikanime.studio
+        - https://sonarr.i.shikanime.studio/ping
         - https://syncthing.i.shikanime.studio
         - https://vaultwarden.i.shikanime.studio
-        - https://whisparr.i.shikanime.studio
+        - https://whisparr.i.shikanime.studio/ping

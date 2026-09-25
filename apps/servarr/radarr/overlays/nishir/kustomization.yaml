@@ -32,6 +32,19 @@ patches:
         path: /spec/parentRefs
         value:
         - name: radarr
+          sectionName: https
+    target:
+      name: radarr-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - radarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: radarr
           sectionName: http
     target:
       name: radarr-redirect
