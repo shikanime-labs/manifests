@@ -180,6 +180,52 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: hermes-agent-profiles-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 16Gi
+  claimRef:
+    name: hermes-agent-profiles-data
+    namespace: shikanime
+  csi:
+    driver: driver.longhorn.io
+    fsType: xfs
+    volumeHandle: hermes-agent-profiles-data
+    volumeAttributes:
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "30"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-standard
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hermes-agent-skills-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 512Mi
+  claimRef:
+    name: hermes-agent-skills-data
+    namespace: shikanime
+  csi:
+    driver: driver.longhorn.io
+    fsType: xfs
+    volumeHandle: hermes-agent-skills-data
+    volumeAttributes:
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "30"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-transient
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: movies-data
 spec:
   accessModes:
