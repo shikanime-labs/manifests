@@ -120,7 +120,7 @@
                           }
                           {
                             path_regex = "apps/authelia/overlays/${env.name}(.*)?/authelia/configuration\\.enc\\.yaml";
-                            encrypted_regex = "^(key|secret|password|encryption_key|jwt_secret|hmac_secret|client_secret)$";
+                            encrypted_regex = "^(key|secret|password|encryption_key|jwt_secret|hmac_secret)$";
                             key_groups = keyGroup;
                           }
                           {
