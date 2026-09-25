@@ -54,7 +54,7 @@ spec:
               source_labels: [__name__]
               regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
             - action: labeldrop
-              regex: (cpu_feature_node_kubevirt_io_.*|hyperv_node_kubevirt_io_.*|machine_type_node_kubevirt_io_.*|host_model_required_features_node_kubevirt_io_.*|scheduling_node_kubevirt_io_.*|feature_node_kubernetes_io_cpu_cpuid.*)
+              regex: (.*node_kubevirt_io_.*|.*node_kubernetes_io_.*|.*node_longhorn_io_.*|kubernetes_io_.*|kubevirt_io_.*|shikanime_dev_.*)
     vmagent:
       spec:
         extraArgs:
