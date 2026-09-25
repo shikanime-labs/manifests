@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: llama-cpp-rpc-head
+spec:
+  groups:
+    - name: llama-cpp-rpc-head
+      rules:
+        - alert: LlamaCppRpcHeadDown
+          expr: up{job="llama-cpp-rpc-head"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: llama-cpp-rpc-head has been down for 5 minutes

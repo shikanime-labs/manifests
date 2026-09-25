@@ -1,4 +1,5 @@
 resources:
   - netpol.yaml
   - vmservicescrape.yaml
+  - vmrule.yaml
   - grafanadashboard.yaml

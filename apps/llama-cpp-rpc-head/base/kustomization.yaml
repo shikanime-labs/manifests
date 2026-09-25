@@ -4,6 +4,7 @@ resources:
   - sts.yaml
   - svc.yaml
   - vmservicescrape.yaml
+  - vmrule.yaml
   - vpa.yaml
 images:
   - name: llama-cpp

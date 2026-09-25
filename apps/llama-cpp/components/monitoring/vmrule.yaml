@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: llama-cpp
+spec:
+  groups:
+    - name: llama-cpp
+      rules:
+        - alert: LlamaCppDown
+          expr: up{job="llama-cpp"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: llama-cpp has been down for 5 minutes
