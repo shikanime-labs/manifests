@@ -1,0 +1,44 @@
+apiVersion: web.fluxcd.controlplane.io/v1
+kind: Config
+spec:
+    baseURL: https://flux.i.shikanime.studio
+    authentication:
+        type: OAuth2
+        oauth2:
+            provider: OIDC
+            clientID: flux
+            clientSecret: ENC[AES256_GCM,data:/29sYQtoU3FS8BwxT1lriqZjOALa7Rx5FjRFvDp3G2o=,iv:0iXhATDfFbtUdDgYEJcG5Xny6I2MxAD0IKb4CyxRbWA=,tag:YxF2o3x/Av85Bxe8BQmcDQ==,type:str]
+            issuerURL: https://accounts.i.shikanime.studio
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoeE9TSC9tYWZsbDhIOXdx
+            YnNVZjVwWm5IUWhUcUs4U2tVVWhlWTJldHd3Ck84NDE1SVdZNnFXenIxWEtrVXEw
+            bGxDclJWZXpQWWNSeTk3Nk1FT2FVYW8KLS0tIGZxdXZrOXIzM1J6djFRKytvZElX
+            b0FpaitXU0RWeVJSV1NhNHhic0dOdzQKoy5z7Owb+FUzMDrz4SucUgVxHsj9piNz
+            hNfjvdx9NJmT53H2nGQ8ZtrSK2D+L7ShvcY9+d8gDiy9d8F2GpuUpA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDQmhrL2RtKzA1bEZzUjJ3
+            Rk9DbFN0MEFVQUFOYWJmeUpleUtLd2d4clZRCmhwOFpDUmJnMWNqeDFRbkttTnRE
+            d09kVmRvcVFzdFd1Y3dKSDFDTVlXWUUKLS0tIEczNFIzSG9wZEdvbkpFT0pDb0s5
+            TmVQcEh6R3c3OHFlRnB2cmFyU2NwYlUK/githLGkkkAAhNgiDOMSReM2hUtFW41g
+            bBaioGdfnZeVr8XEJrkZXYg2kjwM4/pboT4HuJDe6tRUxwyX1gJfwQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIT2lzUkFwdTFSZkptMVR6
+            RmJMNDdialh3czRkM0VTZ3ZjYjl0OFp4c3hRCkVkbERQODhHWHMrODVZL1RJWkRP
+            cFJvNFZJVmdjdmI0clZJKzhlVG91Q2MKLS0tIEZOa00xRHpzS1JUVmY4bTR0NG5F
+            bHZmdC9BNVhSRDhQRFp4dm9NZllrdHMKdamfiaPWP5TUBUqN82kbMI/zc7BWE6Pp
+            tkXfMWR7pKM1TvqYOpLpEmAY/jXCYVKFnqnVw+UgCCAbeJsCetl0YQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: ^(clientSecret)$
+    lastmodified: "2026-09-25T12:47:28Z"
+    mac: ENC[AES256_GCM,data:NjQCJP63bBcvDIdbIa2AZcKtYLP/FqO1WY14okKMyJpORKWR+2JVfQLxg7QmR8za+PUD21CfpFvtdPuPstPDkaDmbEC4ZNalwEv5WLNckJeuGib8vQMtx80OTxhQFefTpgm5y21uoGIadL/pgX71fQcuUU+xqlXA0mauVw1kNbY=,iv:mqzxJ+KaGEW7BMdRFQ5CKPMQpCD2HjZ5v/pPabFuB4M=,tag:OWd5KUesif+GLITLHTRvaQ==,type:str]
+    version: 3.13.3
