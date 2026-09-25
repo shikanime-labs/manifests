@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: synapse
+spec:
+  template:
+    spec:
+      containers:
+        - name: synapse
+          ports:
+            - name: http
+              containerPort: 8008
+            - name: metrics
+              containerPort: 9090
