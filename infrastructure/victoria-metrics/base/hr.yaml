@@ -59,12 +59,6 @@ spec:
       spec:
         extraArgs:
           enableTCP6: "true"
-        inlineRelabelConfig:
-          - targetLabel: job
-            sourceLabels:
-              - job
-            regex: node
-            replacement: node-exporter
     vmalert:
       extraArgs:
         enableTCP6: "true"
