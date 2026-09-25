@@ -5,6 +5,8 @@ resources:
   - vm.yaml
 secretGenerator:
   - name: catbox-authorized-keys
+    options:
+      disableNameSuffixHash: true
     files:
       - authorized-keys/userdata
 patches:
