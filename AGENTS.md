@@ -127,9 +127,13 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   `<short-kube-resource-name>.yaml`, listed sorted
 - Monitoring: `components/monitoring/` carries the app's
   `vmservicescrape.yaml`, `netpol.yaml`, and `vmrule.yaml`; the overlay
-  composes it via `components:` and owns the namespace. Every app ships a
-  VMRule — bare app name, one group, each alert carrying `labels.severity`
-  and `annotations.summary`. Monitoring is part of the app, not a follow-up.
+  composes it via `components:` and owns the namespace. Every app that
+  exposes a signal ships a VMRule — a metrics job it reports, or a log line
+  it emits — and the rule keys on that signal: bare app name, one group,
+  every alert carrying `labels.severity` and `annotations.summary`. The
+  fleet rules cover the apps with no signal of their own; never key a rule
+  on a series nothing reports. Monitoring is part of the app, not a
+  follow-up.
 - Probes target the pod's own port (named `tcpSocket.port`), never a
   secondary-CNI address: kubelet dials probes from the node network
   namespace, so a macvlan/br1 `host` times out forever and liveness then
