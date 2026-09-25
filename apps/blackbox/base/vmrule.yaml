@@ -50,3 +50,11 @@ spec:
             severity: warning
           annotations:
             summary: 'SLO latency: {{ $labels.instance }} p50 probe > 1s'
+        - alert: InternalEndpointDown
+          expr: |
+            avg_over_time(probe_success{job="blackbox-internal"}[5m]) == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: 'App endpoint unreachable in-cluster: {{ $labels.endpoint }}'

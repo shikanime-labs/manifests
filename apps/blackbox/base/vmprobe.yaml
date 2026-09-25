@@ -57,3 +57,46 @@ spec:
         - https://syncthing.i.shikanime.studio
         - https://vaultwarden.i.shikanime.studio
         - https://whisparr.i.shikanime.studio
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMProbe
+metadata:
+  name: blackbox-internal
+spec:
+  jobName: blackbox-internal
+  interval: 60s
+  module: http_2xx
+  vmProberSpec:
+    url: http://blackbox.shikanime.svc.cluster.local:9115
+  targets:
+    static:
+      relabelingConfigs:
+        - sourceLabels:
+            - instance
+          targetLabel: endpoint
+        - action: labeldrop
+          regex: instance
+      targets:
+        - http://bazarr.shikanime.svc.cluster.local:6767/ping
+        - http://gitea-mirror.shikanime.svc.cluster.local:80/api/health
+        - http://honcho.shikanime.svc.cluster.local:8000/health
+        - http://immich.shikanime.svc.cluster.local:2283/api/server/ping
+        - http://jellyfin.shikanime.svc.cluster.local:8096/System/Info/Public
+        - http://lidarr.shikanime.svc.cluster.local:8686/ping
+        - http://lldap.shikanime.svc.cluster.local:17170/health
+        - http://maintainerr.shikanime.svc.cluster.local:6246/api/health
+        - http://mautrix-discord.shikanime.svc.cluster.local:29334/_matrix/mau/live
+        - http://mautrix-linkedin.shikanime.svc.cluster.local:29341/_matrix/mau/live
+        - http://mautrix-meta.shikanime.svc.cluster.local:29319/_matrix/mau/live
+        - http://mautrix-signal.shikanime.svc.cluster.local:29328/_matrix/mau/live
+        - http://mautrix-slack.shikanime.svc.cluster.local:29335/_matrix/mau/live
+        - http://mautrix-twitter.shikanime.svc.cluster.local:29327/_matrix/mau/live
+        - http://mautrix-whatsapp.shikanime.svc.cluster.local:29318/_matrix/mau/live
+        - http://metatube.shikanime.svc.cluster.local:80/
+        - http://prowlarr.shikanime.svc.cluster.local:9696/ping
+        - http://radarr.shikanime.svc.cluster.local:7878/ping
+        - http://seerr.shikanime.svc.cluster.local:5055/api/v1/status
+        - http://sonarr.shikanime.svc.cluster.local:8989/ping
+        - https://syncthing.shikanime.svc.cluster.local:8384/rest/noauth/health
+        - https://vaultwarden.shikanime.svc.cluster.local:443/alive
+        - http://whisparr.shikanime.svc.cluster.local:6969/ping

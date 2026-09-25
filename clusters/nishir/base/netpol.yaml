@@ -9,6 +9,57 @@ spec:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: envoy-gateway-system
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: blackbox
+      ports:
+        - port: 80
+          protocol: TCP
+        - port: 2283
+          protocol: TCP
+        - port: 4321
+          protocol: TCP
+        - port: 5055
+          protocol: TCP
+        - port: 6246
+          protocol: TCP
+        - port: 6767
+          protocol: TCP
+        - port: 6969
+          protocol: TCP
+        - port: 7878
+          protocol: TCP
+        - port: 8000
+          protocol: TCP
+        - port: 8080
+          protocol: TCP
+        - port: 8096
+          protocol: TCP
+        - port: 8384
+          protocol: TCP
+        - port: 8686
+          protocol: TCP
+        - port: 8989
+          protocol: TCP
+        - port: 9696
+          protocol: TCP
+        - port: 17170
+          protocol: TCP
+        - port: 29318
+          protocol: TCP
+        - port: 29319
+          protocol: TCP
+        - port: 29327
+          protocol: TCP
+        - port: 29328
+          protocol: TCP
+        - port: 29334
+          protocol: TCP
+        - port: 29335
+          protocol: TCP
+        - port: 29341
+          protocol: TCP
   podSelector: {}
   policyTypes:
     - Ingress
