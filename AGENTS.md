@@ -251,10 +251,91 @@ files.
 - Never `gh pr merge` on a stacked PR — only `gh stack merge` lands stacks.
 - Never force-push stack branches; `gh stack` owns the branch pointers.
 
-## Environment
+## Local workflow
 
-This repository ships a `.envrc` for direnv. Run `direnv allow` once after
-cloning; direnv then loads the Nix flake dev shell automatically on every
-directory change (`.envrc` runs
-`use flake . --accept-flake-config --no-pure-eval`). Without direnv, enter
-the same shell manually with `nix develop`.
+This repo is managed with
+[Jujutsu](https://jj-vcs.dev/) underneath, with GitHub as the remote and the `gh`
+CLI for PRs. CONTRIBUTING.md is where the human decisions live (file an issue,
+one change per PR, what a good commit and PR carry, the code-owner review gate).
+This section assumes those are already settled and gives the agent the runbook:
+branch, commit, verify, push, PR, amend after push, stacked work — with the skill
+that owns each step so the procedure isn't duplicated here.
+
+### Branch
+
+Every implementation unit starts in a fresh workspace — the cloned checkout is a
+read-only reference surface, never where edits are made. The workspace recipe
+(branch off `main@origin`, copy in only the change files, bookmark + track + push,
+hand off to the PR step) is mandatory for every unit and is owned by
+[`sks-delegate`](https://github.com/shikanime-labs/skills/blob/main/skills/sks-delegate/SKILL.md);
+it is the isolation lane of
+[`sks-dev-workflow`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-dev-workflow/SKILL.md),
+which also owns branch discipline, landing gates, and the pre-push verify gate.
+Stacked work uses `gh stack` (below), not manual force-pushes — `gh stack` owns
+the branch pointers.
+
+### Commit envelope
+
+The repo enforces a plain-text commit envelope via `gitlint` — CC1 rejects commits
+without `Signed-off-by`, and the hook auto-injects `Signed-off-by` (do not pass it
+yourself or it duplicates). Every commit also carries
+`Co-authored-by: Automata <automata@shikanime.studio>`. The required trailers and the
+subtitle rules are in CONTRIBUTING.md's `## Commit shape`. The procedure for
+producing the envelope with jj — including how to amend after push — is in
+[`sks-commit`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-commit/SKILL.md).
+
+### Verify
+
+Before pushing, confirm the change builds and the tree is clean. The gate is part of
+[`sks-dev-workflow`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-dev-workflow/SKILL.md).
+
+### Push
+
+Push to `origin` on the feature bookmark with `jj git push --remote origin -b <bookmark>`.
+jj does not auto-track bookmarks — `jj bookmark track <branch> --remote=origin` first,
+or push is rejected; verify the bookmark and PR head actually moved after pushing.
+The bookmark-tracking caveat and the post-push verify are covered by
+[`sks-dev-workflow`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-dev-workflow/SKILL.md).
+
+### PR
+
+The human decisions are in CONTRIBUTING.md's `## PR` (open against `main`, link the
+issue with `Closes #N` or `Related:`, code-owner review required) and `## Commit shape`
+(PR body shape: `## Why` / `## What` / `## References`). The runbook for opening the PR
+from the pushed bookmark is in
+[`sks-pr`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-pr/SKILL.md);
+the wider PR side (review handoff, post-review amendment) is in
+[`sks-pr-workflow`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-pr-workflow/SKILL.md);
+review etiquette (YAGNI, root cause, conventions) is in
+[`sks-pr-review`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-pr-review/SKILL.md).
+Land with a squash-merge and rebase local main onto the remote after — landing is in
+[`sks-land`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-land/SKILL.md).
+Do not force-push stack branches — `gh stack` owns those pointers; do not
+`gh pr merge` on a stacked PR.
+
+### Amend after push
+
+If review asks for a change on a pushed branch, edit, amend in place, and force-push
+the bookmark. The amend procedure — including the `Signed-off-by` duplication caveat —
+is in
+[`sks-commit`](https://github.com/shikanime-labs/skills/blob/main/skills/shikanime-studio/sks-commit/SKILL.md).
+
+### Stacked work
+
+For a stack of PRs, use the official GitHub stack extension — never `gh pr merge` on
+a stacked PR, and never force-push stack branches manually. The full stack discipline
+is in `## Stack Workflow` above.
+
+### Environment
+
+This repository ships a `.envrc` for direnv. Run `direnv allow` once after cloning;
+direnv then loads the Nix flake dev shell automatically on every directory change
+(`.envrc` runs `use flake . --accept-flake-config --no-pure-eval`). Without direnv,
+enter the same shell manually with `nix develop`.
+
+### Skills
+
+This repo's contributor conventions are encoded as loadable skills in the org
+skill catalog at
+[`shikanime-labs/skills`](https://github.com/shikanime-labs/skills). Each
+workflow step above names the one skill that owns its procedure.
