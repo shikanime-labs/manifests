@@ -36,6 +36,20 @@ patches:
       name: longhorn-redirect
       kind: HTTPRoute
       namespace: longhorn-system
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: longhorn
+          sectionName: https
+      - op: add
+        path: /spec/hostnames
+        value:
+        - longhorn.i.shikanime.studio
+    target:
+      name: longhorn-health
+      kind: HTTPRoute
+      namespace: longhorn-system
   - path: patch-hr.yaml
 secretGenerator:
   - name: longhorn-hetzner-backups

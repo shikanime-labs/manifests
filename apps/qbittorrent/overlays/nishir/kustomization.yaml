@@ -39,6 +39,19 @@ patches:
       kind: HTTPRoute
   - patch: |-
       - op: add
+        path: /spec/hostnames
+        value:
+        - qbittorrent.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: qbittorrent
+          sectionName: https
+    target:
+      name: qbittorrent-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
         path: /spec/parentRefs
         value:
         - name: qbittorrent
