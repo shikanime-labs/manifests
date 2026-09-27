@@ -19,38 +19,38 @@ spec:
       targets:
         - https://a2a.automata.i.shikanime.studio
         - https://accounts.i.shikanime.studio
-        - https://api.automata.i.shikanime.studio
+        - https://api.automata.i.shikanime.studio/health
         - https://authelia.i.shikanime.studio
         - https://automata.i.shikanime.studio
         - https://bazarr.i.shikanime.studio
-        - https://chat.i.shikanime.studio
+        - https://chat.i.shikanime.studio/health
         - https://copyparty.i.shikanime.studio
         - https://flux.i.shikanime.studio
         - https://forgejo.i.shikanime.studio
         - https://gitea-mirror.i.shikanime.studio
         - https://grafana.i.shikanime.studio
-        - https://honcho.i.shikanime.studio
+        - https://honcho.i.shikanime.studio/health
         - https://immich.i.shikanime.studio
         - https://jellyfin.i.shikanime.studio
         - https://lidarr.i.shikanime.studio
         - https://lldap.i.shikanime.studio
         - https://logs.i.shikanime.studio
-        - https://longhorn.i.shikanime.studio
+        - https://longhorn.i.shikanime.studio/healthz
         - https://maintainerr.i.shikanime.studio/api/health
-        - https://matrix-discord-media.taila659a.ts.net
-        - https://matrix.taila659a.ts.net
-        - https://mautrix-discord.i.shikanime.studio
-        - https://mautrix-googlechat.i.shikanime.studio
-        - https://mautrix-linkedin.i.shikanime.studio
-        - https://mautrix-meta.i.shikanime.studio
-        - https://mautrix-signal.i.shikanime.studio
-        - https://mautrix-slack.i.shikanime.studio
-        - https://mautrix-twitter.i.shikanime.studio
-        - https://mautrix-whatsapp.i.shikanime.studio
+        - https://matrix-discord-media.taila659a.ts.net/_matrix/client/versions
+        - https://matrix.taila659a.ts.net/_matrix/client/versions
+        - https://mautrix-discord.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-googlechat.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-linkedin.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-meta.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-signal.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-slack.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-twitter.i.shikanime.studio/_matrix/mau/live
+        - https://mautrix-whatsapp.i.shikanime.studio/_matrix/mau/live
         - https://metatube.i.shikanime.studio
         - https://metrics.i.shikanime.studio
         - https://prowlarr.i.shikanime.studio/ping
-        - https://qbittorrent.i.shikanime.studio
+        - https://qbittorrent.i.shikanime.studio/api/v2/app/version
         - https://radarr.i.shikanime.studio/ping
         - https://seerr.i.shikanime.studio
         - https://sonarr.i.shikanime.studio/ping

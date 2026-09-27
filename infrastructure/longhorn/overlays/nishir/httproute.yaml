@@ -10,6 +10,24 @@ spec:
         - name: longhorn-frontend
           port: 80
 ---
+# Deliberately absent from the longhorn-oidc-client SecurityPolicy targetRefs:
+# the blackbox probe must reach the UI's own /healthz (200 unauthenticated), not
+# the SSO gate's login page, which answers 200 whatever the backend does.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: longhorn-health
+  namespace: longhorn-system
+spec:
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /healthz
+      backendRefs:
+        - name: longhorn-frontend
+          port: 80
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:

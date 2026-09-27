@@ -36,6 +36,22 @@ spec:
       timeouts:
         request: 600s
 ---
+# Deliberately absent from the llama-cpp-oidc-client SecurityPolicy targetRefs:
+# the blackbox probe must reach the router's own /health, not the SSO gate.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: llama-cpp-health
+spec:
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /health
+      backendRefs:
+        - name: llama-cpp
+          port: 9931
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:

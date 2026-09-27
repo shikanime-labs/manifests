@@ -9,6 +9,23 @@ spec:
         - name: qbittorrent
           port: 8080
 ---
+# Deliberately absent from the qbittorrent-oidc-client SecurityPolicy targetRefs:
+# the blackbox probe must reach qBittorrent's own API (403 when unauthenticated,
+# which the blackbox module accepts), not the SSO gate's login page.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: qbittorrent-health
+spec:
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /api/v2/app/version
+      backendRefs:
+        - name: qbittorrent
+          port: 8080
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
