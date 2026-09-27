@@ -8,6 +8,9 @@ spec:
     - backendRefs:
         - name: jellyfin
           port: 8096
+      # it mid-body.
+      timeouts:
+        request: 0s
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute

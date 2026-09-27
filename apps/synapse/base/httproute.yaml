@@ -39,6 +39,9 @@ spec:
       backendRefs:
         - name: synapse
           port: 8448
+      # outlives the 15s route default.
+      timeouts:
+        request: 600s
       filters:
         - type: URLRewrite
           urlRewrite:
@@ -72,6 +75,8 @@ spec:
       backendRefs:
         - name: mautrix-discord
           port: 29334
+      timeouts:
+        request: 0s
     - matches:
         - path:
             type: PathPrefix
@@ -85,6 +90,8 @@ spec:
       backendRefs:
         - name: synapse
           port: 8448
+      timeouts:
+        request: 600s
       filters:
         - type: URLRewrite
           urlRewrite:

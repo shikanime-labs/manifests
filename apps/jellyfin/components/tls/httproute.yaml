@@ -12,3 +12,5 @@ spec:
     - backendRefs:
         - name: jellyfin
           port: 8920
+      timeouts:
+        request: 0s

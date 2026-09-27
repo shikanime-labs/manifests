@@ -8,6 +8,8 @@ spec:
     - backendRefs:
         - name: honcho
           port: 8000
+      timeouts:
+        request: 600s
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
