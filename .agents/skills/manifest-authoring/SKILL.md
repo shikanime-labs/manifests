@@ -88,7 +88,8 @@ Reading the file tree is enough to answer "where does this go?" in most cases:
   `infrastructure/<operator>/`.
 - **Global config not app-tied** (storage class, recurring jobs, issuers, machine
   templates) → `configs/<area>/`.
-- **Bootstrap controller install** (the operator that the overlays assume exists) →
+- **Bootstrap controller install** (the operator that the overlays
+  assume exists) →
   `bootstraps/<cluster>/`.
 
 ## Per-app shape (the common case)
@@ -126,8 +127,8 @@ Observed per-app base layouts (exact, from the repo):
 - qbittorrent base: `httproute.yaml`, `netpol.yaml`, `pvc.yaml`, `svc.yaml`,
   `vpa.yaml`.
 - blackbox base: `blackbox-config` dir, `deploy.yaml`, `netpol.yaml`, `svc.yaml`,
-  `vmprobe.yaml`, `vmrule.yaml`, `vpa.yaml` (probing app, so it carries a VMRule +
-  VMProbe, not an HTTPRoute).
+  `vmprobe.yaml`, `vmrule.yaml`, `vpa.yaml` (probing app, so it carries a
+  VMRule + VMProbe, not an HTTPRoute).
 - inference / llama-cpp-rpc-head / llama-cpp base: `aiservicebackend.yaml`,
   `backend.yaml`, optional `backendsecuritypolicy.yaml`, `httproute.yaml`,
   optional `httproutefilter.yaml`, optional `llama-cpp-models-preset` +
@@ -281,13 +282,13 @@ tree, not in the app base. Observed pattern: an app base carries `httproute.yaml
 the `nishir-tailnet` overlay patches `parentRefs` and adds hostnames.
 
 Tailnet overlays append hostnames with a JSON6902 `op: add` on
-`/spec/hostnames/-` with a scalar `value:`. Never pass a list value (that appends a
-nested list) and never use `op: replace` on `/spec/hostnames` in tailnet overlays.
+`/spec/hostnames/-` with a scalar `value:`. Never pass a list value (that appends
+a nested list) and never use `op: replace` on `/spec/hostnames` in tailnet overlays.
 
 Cluster-local internal hosts are prefixed where needed (e.g. `grafana`). Hostname
 split is strict: `overlays/<cluster>/` carries `*.i.shikanime.studio` ONLY;
-`overlays/<cluster>-tailnet/` carries `*.taila659a.ts.net` ONLY. Never duplicate a
-hostname across both.
+`overlays/<cluster>-tailnet/` carries `*.taila659a.ts.net` ONLY. Never duplicate
+a hostname across both.
 
 ## NetworkPolicy placement
 
@@ -324,13 +325,13 @@ A multi-chart operator merges its charts into one multi-doc `hr.yaml` and deploy
 into a matching `<operator>-system` namespace via `targetNamespace` (e.g.
 `infrastructure/envoy/` → `envoy-gateway-system`).
 
-KubeVirt is the documented exception: it has no official Helm chart, so it uses the
-upstream operator + CR manifest pair instead of the `HelmRelease` pattern
-(`infrastructure/kubevirt/base/kustomization.yaml` pulls the operator YAML from the
-release URL and adds local `netpol.yaml` + `vpa.yaml`). KubeVirt requires
+KubeVirt is the documented exception: it has no official Helm chart, so it uses
+the upstream operator + CR manifest pair instead of the `HelmRelease` pattern
+(`infrastructure/kubevirt/base/kustomization.yaml` pulls the operator YAML from
+the release URL and adds local `netpol.yaml` + `vpa.yaml`). KubeVirt requires
 `/dev/kvm` on every node that should run VMs (nested virt if nodes are themselves
-VMs), and the operator manifest already sets the `kubevirt-system` namespace to the
-`privileged` Pod Security Standard.
+VMs), and the operator manifest already sets the `kubevirt-system` namespace to
+the `privileged` Pod Security Standard.
 
 ## Configs (global, not app-tied)
 
