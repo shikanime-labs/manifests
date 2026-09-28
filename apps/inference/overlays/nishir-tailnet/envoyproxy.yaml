@@ -34,7 +34,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: inference.i.shikanime.studio
           tailscale.com/hostname: inference-proxy
-          tailscale.com/tags: "tag:ai"
+          tailscale.com/tags: "tag:inference"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyProxy
