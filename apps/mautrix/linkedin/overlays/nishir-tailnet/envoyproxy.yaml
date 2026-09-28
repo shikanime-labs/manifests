@@ -21,4 +21,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: linkedin-proxy
-          tailscale.com/tags: "tag:web"
+          tailscale.com/tags: "tag:matrix"

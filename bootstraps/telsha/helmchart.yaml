@@ -62,7 +62,7 @@ spec:
         enabled: true
         className: tailscale
         annotations:
-          tailscale.com/tags: tag:web
+          tailscale.com/tags: "tag:telsha-webhook"
         hosts:
           - host: telsha-flux
             paths:

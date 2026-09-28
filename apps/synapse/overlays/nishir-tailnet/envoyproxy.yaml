@@ -21,5 +21,5 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: synapse
-          tailscale.com/tags: "tag:web"
+          tailscale.com/tags: "tag:matrix"
           tailscale.com/funnel: "true"

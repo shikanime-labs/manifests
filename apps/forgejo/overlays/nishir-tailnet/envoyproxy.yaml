@@ -21,4 +21,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: forgejo-proxy
-          tailscale.com/tags: "tag:web,tag:git"
+          tailscale.com/tags: "tag:forgejo,tag:git,tag:git"
