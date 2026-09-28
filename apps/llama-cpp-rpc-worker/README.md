@@ -7,7 +7,9 @@ It hosts the layer shards the head offloads via its preset `rpc =` key.
 
 ## Layout
 
-- `base/` — StatefulSet, VPA.
+- `base/` — StatefulSet, VPA. The container requests 60Gi — its half of
+  the flash model's 117.3 GiB resident set, mirroring the head's
+  request.
 - `overlays/nishir/` — macvlan NAD `llama-cpp-rpc-worker` (bridge on
   `br1`, static IPAM `10.66.1.1/24`, attached via the pod annotation
   `k8s.v1.cni.cncf.io/networks`), netpol admitting only the head pods
