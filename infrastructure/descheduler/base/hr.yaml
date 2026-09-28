@@ -103,6 +103,28 @@ spec:
                 thresholds:
                   memory: 25
                 useDeviationThresholds: true
+        - name: pods
+          plugins:
+            balance:
+              enabled:
+                - LowNodeUtilization
+          pluginConfig:
+            - name: DefaultEvictor
+              args:
+                podProtections:
+                  extraEnabled:
+                    - PodsWithPVC
+                    - PodsWithResourceClaims
+            - name: LowNodeUtilization
+              args:
+                evictableNamespaces:
+                  exclude:
+                    - kube-system
+                    - longhorn-system
+                targetThresholds:
+                  pods: 85
+                thresholds:
+                  pods: 60
         - name: spread
           pluginConfig:
             - name: DefaultEvictor
