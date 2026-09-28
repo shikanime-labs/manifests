@@ -14,6 +14,9 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: studio-shikanime-i-chat
+          - name: studio-shikanime-i-llama-cpp
+            group: ""
+            kind: Secret
+          - name: studio-shikanime-i-llama-cpp-rpc-head
             group: ""
             kind: Secret

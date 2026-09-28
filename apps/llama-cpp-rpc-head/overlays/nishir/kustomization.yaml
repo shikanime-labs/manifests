@@ -2,4 +2,64 @@ resources:
   - ../../base
   - nad.yaml
   - netpol.yaml
+  - securitypolicy.yaml
 namespace: shikanime
+configurations:
+  - namereference.yaml
+secretGenerator:
+  - name: llama-cpp-rpc-head-oidc-client
+    envs:
+      - llama-cpp-rpc-head-oidc-client/.enc.env
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - llama-cpp-rpc-head.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: https
+    target:
+      name: llama-cpp-rpc-head
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - llama-cpp-rpc-head.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: https
+    target:
+      name: llama-cpp-rpc-head-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - llama-cpp-rpc-head.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: http
+    target:
+      name: llama-cpp-rpc-head-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+          - llama-cpp-rpc-head.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: llama-cpp
+            sectionName: https
+    target:
+      name: llama-cpp-rpc-head-health
+      kind: HTTPRoute
