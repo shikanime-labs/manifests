@@ -23,6 +23,19 @@ spec:
     defaultDatasources:
       grafanaOperator:
         enabled: true
+      victoriametrics:
+        datasources:
+          - name: VictoriaMetrics
+            type: prometheus
+            access: proxy
+            uid: VictoriaMetrics
+            isDefault: true
+          - name: VictoriaMetrics (DS)
+            version: 0.26.1
+            isDefault: false
+            access: proxy
+            uid: VictoriaMetricsDS
+            type: victoriametrics-metrics-datasource
     grafana:
       enabled: false
       forceDeployDatasource: true

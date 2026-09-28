@@ -13,3 +13,6 @@ spec:
     type: victoriametrics-logs-datasource
     access: proxy
     isDefault: false
+  plugins:
+    - name: victoriametrics-logs-datasource
+      version: 0.32.0
