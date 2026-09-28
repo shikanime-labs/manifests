@@ -32,7 +32,6 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: inference.i.shikanime.studio
           tailscale.com/hostname: inference-proxy
           tailscale.com/tags: "tag:inference"
 ---

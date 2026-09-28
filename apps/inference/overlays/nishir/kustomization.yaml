@@ -32,6 +32,10 @@ secretGenerator:
 patches:
   - patch: |-
       - op: add
+        path: /spec/hostnames
+        value:
+          - inference.i.shikanime.studio
+      - op: add
         path: /spec/parentRefs
         value:
           - name: inference
