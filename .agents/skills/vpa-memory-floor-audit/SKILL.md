@@ -51,7 +51,7 @@ the wrong skill.
    inert until Flux applies — verify the live spec after reconcile, not the
    merge.
 
-## Gotchas
+## Pitfalls
 
 - Only the literal `OOMKilled` reason (exit 137) indicts memory. Exit 255 /
   `Unknown` terminations are not OOM; counting restarts without the reason

@@ -38,7 +38,7 @@ this is expected behaviour, not a manifest defect.
    `reconcile.fluxcd.io/requestedAt="$(date +%s)" --overwrite`, then confirm
    `READY=True Healthy=True`.
 
-## Gotchas
+## Pitfalls
 
 - The restart drops the VM's SSH/mDNS for the boot duration — schedule around
   its usage.

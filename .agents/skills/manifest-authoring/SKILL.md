@@ -439,7 +439,7 @@ grep -E 'op: (add|replace)' apps/<app>/overlays/*-tailnet/*.yaml
 jj diff --git | grep -E '^diff --git a/.*\.yaml'
 ```
 
-## Gotchas
+## Pitfalls
 
 The detail lives in the sections above — this is the one-liner version:
 

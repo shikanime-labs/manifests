@@ -59,7 +59,7 @@ Worked example (27B, ctx 131072, KV q8_0, 2026-09-11): baseline 10.4 →
 draft-mtp n4 12.96 → +ubatch 1024 16.85 → n6 regressed 14.1-14.8 → 1 local
 worker 19.33 t/s.
 
-## Gotchas
+## Pitfalls
 
 - Sharded unsloth GGUF repos are broken upstream: shard `*-00001-of-*.gguf` is
   metadata-only (`n_tensors=0`); loader streams ~120 GB then dies

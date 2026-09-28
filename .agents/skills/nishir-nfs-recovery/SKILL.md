@@ -53,7 +53,7 @@ denied by tailnet policy; the `nishir` user lacks passwordless sudo).
 The restart clears every wedged volume on the node at once — after it, sweep
 ALL pods on the node, not just the reported one.
 
-## Gotchas
+## Pitfalls
 
 - Do not rebuild/reinstall ganesha.nfsd on any host — the share-manager pod IS
   the NFS server (a stray host ganesha on manash was a red herring).

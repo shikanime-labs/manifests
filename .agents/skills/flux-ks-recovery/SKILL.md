@@ -61,7 +61,7 @@ before re-debugging the fix.
 | `dependency not up to date` forever | a `dependsOn` dependency has `suspend: true` | unsuspend or restructure; a suspended KS never advances `lastAppliedRevision` |
 | dry-run `Invalid` on an STS VCT/immutable field | git drifts from live (VCT size, storage class) | see `workload-migration`; never revert git to match live |
 
-## Gotchas
+## Pitfalls
 
 - `suspend: true` freezes `lastAppliedRevision` permanently and blocks every
   dependent KS (`dependsOn`) — even when the suspended app's workload is

@@ -39,7 +39,7 @@ a healthy share-manager pod is NOT XFS — see Gotchas before escalating.
 2. Load exactly one reference, follow it end to end.
 3. Verify per that reference's final section; report any gate that fails.
 
-## Gotchas
+## Pitfalls
 
 - Never cordon nodes to pin a volume — it broke the API server on this fleet.
   Pin via `.spec.nodeID` after the RWX→RWOP flip, never cordons.

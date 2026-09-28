@@ -74,7 +74,7 @@ Then land via the normal PR flow; after merge, gate on
 `flux get kustomization` Ready AND `lastAppliedRevision` = merge SHA, then
 re-measure on production.
 
-## Gotchas
+## Pitfalls
 
 - Rename files with plain `mv` in a jj workspace — no `.git`, `git mv`
   fatals.
