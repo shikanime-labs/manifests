@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: llama-cpp
 spec:
-  replicas: 0
+  replicas: 1
   template:
     spec:
       initContainers:
