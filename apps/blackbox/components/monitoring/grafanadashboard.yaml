@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: dashboards
 spec:
-  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.4/dashboards/blackbox.json
+  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.5/dashboards/blackbox.json
   allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
