@@ -8,6 +8,8 @@ spec:
     - backendRefs:
         - name: syncthing
           port: 8384
+      timeouts:
+        request: 0s
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
