@@ -109,21 +109,6 @@ spec:
     - matches:
         - headers:
             - name: x-ai-eg-model
-              type: Exact
-              value: poolside/laguna-s-2.1
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: nous
-          priority: 0
-          modelNameOverride: poolside/laguna-s-2.1:free
-        - name: openrouter
-          priority: 1
-          modelNameOverride: poolside/laguna-s-2.1:free
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
               type: RegularExpression
               value: ".*"
       modelsOwnedBy: Shikanime Studio
