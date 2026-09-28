@@ -6,7 +6,7 @@ metadata:
   namespace: envoy-gateway-system
   annotations:
     tailscale.com/funnel: "true"
-    tailscale.com/tags: tag:flux-receivers
+    tailscale.com/tags: tag:flux-receivers,tag:web
 spec:
   ingressClassName: tailscale
   tls:
@@ -25,7 +25,7 @@ metadata:
   namespace: envoy-gateway-system
   annotations:
     tailscale.com/funnel: "true"
-    tailscale.com/tags: tag:matrix
+    tailscale.com/tags: tag:matrix,tag:web
 spec:
   ingressClassName: tailscale
   tls:
@@ -44,7 +44,7 @@ metadata:
   namespace: envoy-gateway-system
   annotations:
     tailscale.com/funnel: "true"
-    tailscale.com/tags: tag:matrix
+    tailscale.com/tags: tag:matrix,tag:web
 spec:
   ingressClassName: tailscale
   tls:
@@ -63,7 +63,7 @@ metadata:
   namespace: envoy-gateway-system
   annotations:
     tailscale.com/funnel: "true"
-    tailscale.com/tags: tag:copyparty
+    tailscale.com/tags: tag:copyparty,tag:web
 spec:
   ingressClassName: tailscale
   tls:
