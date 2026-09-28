@@ -17,7 +17,10 @@ pair placement is deterministic because the worker NAD is static IPAM.
   preset + prefetch ConfigMap generators (same ConfigMap names as
   `apps/llama-cpp`, same layout).
 - `overlays/nishir/` — netpol admitting envoy on `http` plus vmagent
-  scrapes only (RPC rides out; no return-path rule).
+  scrapes only (RPC rides out; no return-path rule), and the
+  `llama-cpp-rpc-head.i.shikanime.studio` hostnames + OIDC gate (own
+  `llama-cpp-rpc-head` authelia client) on the HTTPRoutes that serve
+  the router through the `llama-cpp` Gateway.
 - The head container requests 60Gi: half the pair's 117.3 GiB resident
   set from the model ledger — 111.0 GiB of Q4_K_M weights plus the
   6.4 GiB q8_0 KV of the 262144-token context across two slots (12 of

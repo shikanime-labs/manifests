@@ -1,16 +1,35 @@
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-chat
+  name: studio-shikanime-i-llama-cpp
   namespace: shikanime
 spec:
-  commonName: chat.i.shikanime.studio
+  commonName: llama-cpp.i.shikanime.studio
   dnsNames:
-    - chat.i.shikanime.studio
+    - llama-cpp.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-chat
+  secretName: studio-shikanime-i-llama-cpp
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: studio-shikanime-i-llama-cpp-rpc-head
+  namespace: shikanime
+spec:
+  commonName: llama-cpp-rpc-head.i.shikanime.studio
+  dnsNames:
+    - llama-cpp-rpc-head.i.shikanime.studio
+  issuerRef:
+    name: studio-shikanime
+    kind: ClusterIssuer
+  secretName: studio-shikanime-i-llama-cpp-rpc-head
   usages:
     - digital signature
     - key encipherment

@@ -1,11 +1,11 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
-  name: llama-cpp-oidc-client
+  name: llama-cpp-rpc-head-oidc-client
   namespace: shikanime
 spec:
   targetRefs:
-    - name: llama-cpp
+    - name: llama-cpp-rpc-head
       kind: HTTPRoute
       group: gateway.networking.k8s.io
   oidc:
@@ -18,7 +18,7 @@ spec:
       - openid
       - offline_access
     refreshToken: true
-    clientID: llama-cpp
+    clientID: llama-cpp-rpc-head
     clientSecret:
-      name: llama-cpp-oidc-client
-    redirectURL: https://llama-cpp.i.shikanime.studio/oauth2/callback
+      name: llama-cpp-rpc-head-oidc-client
+    redirectURL: https://llama-cpp-rpc-head.i.shikanime.studio/oauth2/callback

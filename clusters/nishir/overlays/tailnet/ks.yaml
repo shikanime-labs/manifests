@@ -1075,6 +1075,10 @@ metadata:
   name: apps-llama-cpp-rpc-head
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
     - name: apps-llama-cpp-rpc-worker
   healthChecks:

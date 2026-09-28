@@ -19,8 +19,8 @@ which dials the RPC peer `apps/llama-cpp-rpc-worker/`.
 - `components/monitoring/` — VMServiceScrape on `/metrics` (60s) for
   27b + embedding.
 - `overlays/nishir/` — monitoring component, BYOD `llama-cpp` Gateway
-  pieces (Certificate, Gateway, GatewayConfig, SecurityPolicy OIDC),
-  gateway netpol, OIDC/env secrets.
+  pieces (Certificate per host, Gateway, GatewayConfig, SecurityPolicy
+  OIDC), gateway netpol, OIDC/env secrets.
 - `overlays/nishir-tailnet/` — hostname appends + five-key label set.
 
 ## Model loading (prefetch init container)
@@ -145,12 +145,15 @@ nous/openrouter.
 The llama.cpp built-in chat UI (same `:9931` port) is exposed through the
 dedicated BYOD `llama-cpp` Gateway (`GatewayClass` + `EnvoyProxy` +
 `Gateway` in `overlays/nishir-tailnet/`, tailscale loadBalancerClass) at
-`chat.i.shikanime.studio` / `chat.taila659a.ts.net`, behind authelia OIDC
-(`SecurityPolicy llama-cpp-oidc-client`) with TLS from the
-`studio-shikanime-i-chat` Certificate. Browser `/v1` calls are split onto
-the `llama-cpp-api` HTTPRoute (API key + CORS, with the overlay setting
-`LLAMA_ARG_CORS_ORIGINS=https://inference.i.shikanime.studio`) so they
-get 401 JSON with CORS headers instead of an OIDC redirect.
+`llama-cpp.i.shikanime.studio` / `llama-cpp.taila659a.ts.net`, behind
+authelia OIDC (`SecurityPolicy llama-cpp-oidc-client`) with TLS from the
+`studio-shikanime-i-llama-cpp` Certificate. `apps/llama-cpp-rpc-head/`
+serves `llama-cpp-rpc-head.i.shikanime.studio` from the same listener,
+with its own `studio-shikanime-i-llama-cpp-rpc-head` Certificate and
+`llama-cpp-rpc-head` authelia client. Browser
+`/v1` calls are split onto the `llama-cpp-api` HTTPRoute (with the overlay
+setting `LLAMA_ARG_CORS_ORIGINS=https://inference.i.shikanime.studio`) so
+they get 401 JSON with CORS headers instead of an OIDC redirect.
 
 ## Observability and scaling
 

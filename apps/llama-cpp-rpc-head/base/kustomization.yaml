@@ -1,6 +1,7 @@
 resources:
   - aiservicebackend.yaml
   - backend.yaml
+  - httproute.yaml
   - sts.yaml
   - svc.yaml
   - vmservicescrape.yaml
