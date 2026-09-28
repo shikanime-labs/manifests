@@ -18,6 +18,12 @@ pair placement is deterministic because the worker NAD is static IPAM.
   `apps/llama-cpp`, same layout).
 - `overlays/nishir/` — netpol admitting envoy on `http` plus vmagent
   scrapes only (RPC rides out; no return-path rule).
+- The head container requests 60Gi: half the pair's 117.3 GiB resident
+  set from the model ledger — 111.0 GiB of Q4_K_M weights plus the
+  6.4 GiB q8_0 KV of the 262144-token context across two slots (12 of
+  the 48 layers carry KV, `full_attention_interval = 4`). The layer
+  split puts the other half on `llama-cpp-rpc-worker`, which requests
+  the same.
 
 The flash route rule's priority-0 backend is `Backend
 llama-cpp-rpc-head`; this app's Flux Kustomization

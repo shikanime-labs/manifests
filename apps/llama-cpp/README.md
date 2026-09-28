@@ -156,5 +156,10 @@ get 401 JSON with CORS headers instead of an OIDC redirect.
 
 - `components/monitoring/` exposes the router `:9931/metrics` to vmagent
   (`VMServiceScrape llama-cpp`).
-- `vpa.yaml` targets the StatefulSet (`updateMode: InPlace`, 32Gi memory
-  floor on the router container — above the 27B resident working set).
+- `vpa.yaml` targets the StatefulSet (`updateMode: InPlace`).
+- The router container requests 32Gi, the 27B path's resident set from
+  the model ledger: 20.5 GiB of UD-Q6_K weights, the 1.9 GiB DFlash2
+  Q8_0 drafter, and the 8.5 GiB q8_0 KV of the 262144-token context (16
+  of the 65 layers carry KV, `full_attention_interval = 4`). One model
+  is resident at a time (`LLAMA_ARG_MODELS_MAX=1`), so the 8.8 GiB
+  embedding path is not the ceiling.

@@ -67,7 +67,7 @@ spec:
             - llama-server
           resources:
             requests:
-              memory: 26Gi
+              memory: 60Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true

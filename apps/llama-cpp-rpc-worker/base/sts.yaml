@@ -56,6 +56,9 @@ spec:
           image: llama-cpp-rpc-worker
           command:
             - ggml-rpc-server
+          resources:
+            requests:
+              memory: 60Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
