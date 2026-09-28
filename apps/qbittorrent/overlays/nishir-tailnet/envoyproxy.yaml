@@ -21,4 +21,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: qbittorrent-proxy
-          tailscale.com/tags: "tag:web,tag:bittorrent"
+          tailscale.com/tags: "tag:qbittorrent,tag:bittorrent,tag:bittorrent"

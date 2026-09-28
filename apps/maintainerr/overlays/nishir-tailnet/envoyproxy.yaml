@@ -21,4 +21,4 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: maintainerr-proxy
-          tailscale.com/tags: "tag:web"
+          tailscale.com/tags: "tag:maintainerr"
