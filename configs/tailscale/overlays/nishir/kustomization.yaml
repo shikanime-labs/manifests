@@ -1,5 +1,3 @@
 resources:
   - ../../base
   - proxyclass.yaml
-  - proxygroup.yaml
-  - svc.yaml
