@@ -23,6 +23,8 @@ spec:
                     secretKeyRef:
                       name: grafana-image-renderer-token
                       key: auth-token
+          securityContext:
+            fsGroup: 10001
           volumes:
             - name: grafana-data
               persistentVolumeClaim:
