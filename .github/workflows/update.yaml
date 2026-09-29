@@ -19,6 +19,7 @@ jobs:
       - uses: actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629
         with:
           days-before-close: 14
+          days-before-issue-close: -1
           days-before-stale: 30
           repo-token: ${{ steps.createGithubAppToken.outputs.token }}
           stale-issue-label: stale
