@@ -1,7 +1,17 @@
 resources:
   - ../../base
+  - pvc.yaml
 patches:
   - path: patch-grafana.yaml
+  - target:
+      name: grafana
+      version: v1beta1
+      group: grafana.integreatly.org
+      kind: Grafana
+      namespace: monitoring-system
+    patch: |-
+      - op: remove
+        path: /spec/persistentVolumeClaim
 secretGenerator:
   - name: grafana-oidc-client
     namespace: monitoring-system

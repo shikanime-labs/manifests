@@ -6,6 +6,8 @@ metadata:
 spec:
   deployment:
     spec:
+      strategy:
+        type: Recreate
       template:
         spec:
           containers:
@@ -21,6 +23,10 @@ spec:
                     secretKeyRef:
                       name: grafana-image-renderer-token
                       key: auth-token
+          volumes:
+            - name: grafana-data
+              persistentVolumeClaim:
+                claimName: grafana-data
   config:
     auth:
       disable_login_form: "true"
@@ -42,6 +48,3 @@ spec:
       server_url: http://grafana-image-renderer.monitoring-system.svc.cluster.local:8081/render
       callback_url: http://grafana-service.monitoring-system.svc.cluster.local:3000/
       renderer_token: ${GRAFANA_IMAGE_RENDERER_TOKEN}
-  persistentVolumeClaim:
-    spec:
-      storageClassName: longhorn-ephemeral
