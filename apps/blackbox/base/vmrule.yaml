@@ -17,7 +17,7 @@ spec:
           labels:
             severity: critical
           annotations:
-            summary: 'SLO: {{ $labels.instance }} down'
+            summary: "SLO: {{ $labels.instance }} down"
         - alert: SLOBurnRateFast
           expr: |
             (
@@ -29,7 +29,7 @@ spec:
           labels:
             severity: critical
           annotations:
-            summary: 'SLO burn rate fast: {{ $labels.instance }} (99% availability objective)'
+            summary: "SLO burn rate fast: {{ $labels.instance }} (99% availability objective)"
         - alert: SLOBurnRateSlow
           expr: |
             (
@@ -41,7 +41,7 @@ spec:
           labels:
             severity: warning
           annotations:
-            summary: 'SLO burn rate slow: {{ $labels.instance }} (99% availability objective)'
+            summary: "SLO burn rate slow: {{ $labels.instance }} (99% availability objective)"
         - alert: SLOLatencyHigh
           expr: |
             avg_over_time(probe_duration_seconds{job="blackbox"}[10m]) > 1
@@ -49,4 +49,4 @@ spec:
           labels:
             severity: warning
           annotations:
-            summary: 'SLO latency: {{ $labels.instance }} p50 probe > 1s'
+            summary: "SLO latency: {{ $labels.instance }} p50 probe > 1s"

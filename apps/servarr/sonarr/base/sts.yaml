@@ -47,14 +47,6 @@ spec:
               mountPath: /config
             - name: run
               mountPath: /run
-          securityContext:
-            capabilities:
-              add:
-                - CHOWN
-                - FOWNER
-                - SETGID
-                - SETUID
-            readOnlyRootFilesystem: false
           env:
             - name: PUID
               value: "1000"
@@ -84,6 +76,14 @@ spec:
               value: main
             - name: SONARR__UPDATE__MECHANISM
               value: Docker
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: false
           envFrom:
             - secretRef:
                 name: sonarr-env

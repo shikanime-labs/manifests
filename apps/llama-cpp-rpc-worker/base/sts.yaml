@@ -11,12 +11,12 @@ spec:
     - metadata:
         name: cache
       spec:
-        accessModes:
-          - ReadWriteOncePod
-        storageClassName: local-path
         resources:
           requests:
             storage: 256Gi
+        storageClassName: local-path
+        accessModes:
+          - ReadWriteOncePod
   serviceName: llama-cpp-rpc-worker
   replicas: 0
   selector:
@@ -54,9 +54,6 @@ spec:
           image: llama-cpp-rpc-worker
           command:
             - ggml-rpc-server
-          resources:
-            requests:
-              memory: 60Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
@@ -66,6 +63,9 @@ spec:
             - --port
             - "50052"
             - --cache
+          resources:
+            requests:
+              memory: 60Gi
           env:
             - name: LLAMA_CACHE
               value: /cache

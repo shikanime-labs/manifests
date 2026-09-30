@@ -12,5 +12,6 @@ node. Land the cutover (route `qwen/qwen3.8-flash` here, scale the RPC pair
 down) as a separate change after soak.
 
 Weights prefetch into a local-path PVC (`qwen38-flash-next-w4b.hgn` 115.5 GiB
+
 + mtp sidecar + tokenizer). No `HALOGEN_DOWNLOAD`: the engine container makes
 no outbound connections.

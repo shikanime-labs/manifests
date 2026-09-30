@@ -62,12 +62,12 @@ spec:
           image: llama-cpp
           command:
             - llama-server
-          resources:
-            requests:
-              memory: 32Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
+          resources:
+            requests:
+              memory: 32Gi
           ports:
             - name: http
               containerPort: 9931
