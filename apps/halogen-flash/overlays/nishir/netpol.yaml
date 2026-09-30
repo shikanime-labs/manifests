@@ -20,3 +20,12 @@ spec:
               app.kubernetes.io/name: envoy
       ports:
         - port: http
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vmagent
+      ports:
+        - port: http

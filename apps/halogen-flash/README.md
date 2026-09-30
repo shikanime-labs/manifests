@@ -15,3 +15,16 @@ Weights prefetch into a local-path PVC (`qwen38-flash-next-w4b.hgn` 115.5 GiB
 
 + mtp sidecar + tokenizer). No `HALOGEN_DOWNLOAD`: the engine container makes
 no outbound connections.
+
+## Layout
+
+- `base/` — StatefulSet (2 replicas, one pod per Strix Halo node via
+  `podAntiAffinity` on `kubernetes.io/hostname`), Service, Envoy
+  `Backend`/`AIServiceBackend`, VPA.
+- `components/monitoring/` — VMServiceScrape on `/metrics` (60s), a
+  `HalogenFlashDown` VMRule, vmagent netpol ingress.
+- `overlays/nishir/` — monitoring component, gateway netpol.
+- `overlays/nishir-tailnet/` — hostname appends + five-key label set.
+
+The engine serves Prometheus `llamacpp:*` series on its published API port
+(`:8731/metrics`); the engine port `:8730` is loopback-only.
