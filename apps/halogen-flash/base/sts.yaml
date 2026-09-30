@@ -76,6 +76,8 @@ spec:
           volumeMounts:
             - name: models
               mountPath: /models
+            - name: cache-huggingface
+              mountPath: /root/.cache/huggingface
             - name: dev-kfd
               mountPath: /dev/kfd
             - name: dev-dri
@@ -103,6 +105,15 @@ spec:
         resources:
           requests:
             storage: 256Gi
+        storageClassName: local-path
+        accessModes:
+          - ReadWriteOncePod
+    - metadata:
+        name: cache-huggingface
+      spec:
+        resources:
+          requests:
+            storage: 128Gi
         storageClassName: local-path
         accessModes:
           - ReadWriteOncePod

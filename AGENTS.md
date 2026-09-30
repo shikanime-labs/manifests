@@ -119,6 +119,11 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
   PVC/PV sizes grow to the next power of two above measured live usage —
   never speculative multiples (verify with `df`/`du` in-cluster before
   sizing an expansion).
+- HuggingFace caches: workloads that pull from the Hub mount a dedicated
+  `cache-huggingface` claim at the tool's default path (`/root/.cache/huggingface`)
+  — never override `HF_HOME` and never let the cache land on a read-only
+  rootfs (the gatekeeper RO-root mutation is fleet-wide) or share a volume
+  with model weights.
 - Secrets/config: `*.enc.*` files fed into `secretGenerator`
 - TLS: opt-in via `apps/<app>/components/tls/` — Certificate from the cluster CA
   issuer, policy wiring, and listener/service patches; the cluster overlay
