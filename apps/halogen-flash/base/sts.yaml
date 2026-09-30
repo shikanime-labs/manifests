@@ -4,7 +4,7 @@ metadata:
   name: halogen-flash
 spec:
   serviceName: halogen-flash
-  replicas: 1
+  replicas: 2
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
