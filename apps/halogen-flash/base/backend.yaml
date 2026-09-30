@@ -5,5 +5,5 @@ metadata:
 spec:
   endpoints:
     - fqdn:
-        hostname: halogen-flash.shikanime.svc.cluster.local
+        hostname: halogen-flash-headless.shikanime.svc.cluster.local
         port: 8731
