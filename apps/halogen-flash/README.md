@@ -19,8 +19,8 @@ no outbound connections.
 ## Layout
 
 - `base/` — StatefulSet (2 replicas, one pod per Strix Halo node via
-  `podAntiAffinity` on `kubernetes.io/hostname`), Service, Envoy
-  `Backend`/`AIServiceBackend`, VPA.
+  `podAntiAffinity` on `kubernetes.io/hostname`), Service + headless
+  Service, Envoy `Backend`/`AIServiceBackend`, VPA.
 - `components/monitoring/` — VMServiceScrape on `/metrics` (60s), a
   `HalogenFlashDown` VMRule, vmagent netpol ingress.
 - `overlays/nishir/` — monitoring component, gateway netpol.
