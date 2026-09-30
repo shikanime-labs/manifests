@@ -4,7 +4,7 @@ metadata:
   name: llama-cpp-rpc-head
 spec:
   serviceName: llama-cpp-rpc-head
-  replicas: 1
+  replicas: 0
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
@@ -43,9 +43,8 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchLabels:
-                  app.kubernetes.io/instance: llama-cpp
+                  app.kubernetes.io/instance: llama-cpp-rpc-worker
                   app.kubernetes.io/name: llama-cpp-rpc-worker
-                  app.kubernetes.io/process: llama-cpp-rpc-worker
               topologyKey: kubernetes.io/hostname
       initContainers:
         - name: model-prefetch
