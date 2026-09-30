@@ -30,7 +30,7 @@ no outbound connections.
 
 Each replica holds its own prompt cache, and an agent conversation is one
 long prompt, so a turn that lands on the other replica re-reads the whole
-history. The gateway hash-rings the pod endpoints on `agent-session-id`
+history. The gateway hash-rings the pod endpoints on `x-sks-session-id`
 (`backendtrafficpolicy.yaml`): every turn carrying the header stays on one
 replica, requests without it balance normally. hermes ships the value per
 conversation (`session_affinity_header`).
