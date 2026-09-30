@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/instance: llama-cpp-rpc-worker
       app.kubernetes.io/name: llama-cpp-rpc-worker
   policyTypes:
     - Ingress

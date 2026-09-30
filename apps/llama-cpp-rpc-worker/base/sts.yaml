@@ -18,18 +18,16 @@ spec:
           requests:
             storage: 256Gi
   serviceName: llama-cpp-rpc-worker
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
-      app.kubernetes.io/instance: llama-cpp
+      app.kubernetes.io/instance: llama-cpp-rpc-worker
       app.kubernetes.io/name: llama-cpp-rpc-worker
-      app.kubernetes.io/process: llama-cpp-rpc-worker
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: llama-cpp
+        app.kubernetes.io/instance: llama-cpp-rpc-worker
         app.kubernetes.io/name: llama-cpp-rpc-worker
-        app.kubernetes.io/process: llama-cpp-rpc-worker
       annotations:
         k8s.v1.cni.cncf.io/networks: shikanime/llama-cpp-rpc-worker
     spec:
