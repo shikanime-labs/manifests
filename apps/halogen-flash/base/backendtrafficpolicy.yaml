@@ -1,6 +1,5 @@
 # Keep a conversation's turns on the replica holding its prompt cache
-# (manifests#2712): clients send `agent-session-id` — the name the
-# ai-gateway itself treats as the session identifier — via hermes'
+# (manifests#2712): clients send `x-sks-session-id` via hermes'
 # `session_affinity_header`; requests without it balance as before.
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -17,4 +16,4 @@ spec:
     consistentHash:
       type: Headers
       headers:
-        - name: agent-session-id
+        - name: x-sks-session-id
