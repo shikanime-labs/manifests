@@ -15,12 +15,6 @@ spec:
       containers:
         - name: renderer
           image: docker.io/grafana/grafana-image-renderer:v5.12.4
-          env:
-            - name: AUTH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: grafana-image-renderer-token
-                  key: auth-token
           ports:
             - name: http
               containerPort: 8081
@@ -37,6 +31,9 @@ spec:
               memory: 512Mi
             limits:
               memory: 4Gi
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -46,9 +43,12 @@ spec:
             runAsGroup: 10001
             runAsNonRoot: true
             runAsUser: 10001
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
+          env:
+            - name: AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: grafana-image-renderer-token
+                  key: auth-token
       volumes:
         - name: tmp
           emptyDir: {}

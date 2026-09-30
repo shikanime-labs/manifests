@@ -1,5 +1,7 @@
 resources:
   - vmalertmanagerconfig.yaml
+configurations:
+  - namereference.yaml
 secretGenerator:
   - name: discord-webhook
     namespace: monitoring-system
@@ -13,5 +15,3 @@ secretGenerator:
     namespace: shikanime
     envs:
       - discord-webhook/.enc.env
-configurations:
-  - namereference.yaml

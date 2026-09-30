@@ -3,6 +3,7 @@ resources:
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
+components:
 patches:
   - patch: |-
       - op: add
@@ -61,4 +62,3 @@ patches:
       kind: HTTPRoute
       namespace: monitoring-system
   - path: patch-hr.yaml
-components:
