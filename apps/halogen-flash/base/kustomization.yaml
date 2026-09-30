@@ -1,0 +1,10 @@
+resources:
+  - aiservicebackend.yaml
+  - backend.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: halogen-flash
+    newName: ghcr.io/peonist-ai/halogen-flash-server
+    newTag: 0.15.0

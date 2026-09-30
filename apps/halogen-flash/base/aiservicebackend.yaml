@@ -1,0 +1,12 @@
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: halogen-flash
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: halogen-flash
+    kind: Backend
+    group: gateway.envoyproxy.io

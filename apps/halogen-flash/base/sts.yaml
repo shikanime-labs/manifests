@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: halogen-flash
+spec:
+  serviceName: halogen-flash
+  replicas: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: halogen-flash
+      app.kubernetes.io/name: halogen-flash
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: halogen-flash
+        app.kubernetes.io/name: halogen-flash
+    spec:
+      securityContext:
+        fsGroup: 65532
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: feature.node.kubernetes.io/pci-0380_1002.present
+                    operator: In
+                    values:
+                      - "true"
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/instance: halogen-flash
+                  app.kubernetes.io/name: halogen-flash
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: halogen-flash
+          image: halogen-flash
+          resources:
+            requests:
+              memory: 110Gi
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+            seccompProfile:
+              type: Unconfined
+          ports:
+            - name: http
+              containerPort: 8731
+          livenessProbe:
+            failureThreshold: 10
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 180
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: models
+              mountPath: /models
+            - name: dev-kfd
+              mountPath: /dev/kfd
+            - name: dev-dri
+              mountPath: /dev/dri
+          env:
+            - name: HALOGEN_DOWNLOAD
+              value: peonist-ai/halogen-qwen3.8-flash-next
+            - name: HALOGEN_KV_POOL_POSITIONS
+              value: "262144"
+            - name: HALOGEN_MAX_TOK
+              value: "16384"
+      volumes:
+        - name: dev-kfd
+          hostPath:
+            type: CharDevice
+            path: /dev/kfd
+        - name: dev-dri
+          hostPath:
+            type: Directory
+            path: /dev/dri
+  volumeClaimTemplates:
+    - metadata:
+        name: models
+      spec:
+        resources:
+          requests:
+            storage: 256Gi
+        storageClassName: local-path
+        accessModes:
+          - ReadWriteOncePod
