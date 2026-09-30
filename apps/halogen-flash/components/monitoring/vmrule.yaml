@@ -1,0 +1,15 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: halogen-flash
+spec:
+  groups:
+    - name: halogen-flash
+      rules:
+        - alert: HalogenFlashDown
+          expr: up{job="halogen-flash"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: halogen-flash has been down for 5 minutes
