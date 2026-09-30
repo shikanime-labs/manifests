@@ -13,18 +13,28 @@ down) as a separate change after soak.
 
 Weights prefetch into a local-path PVC (`qwen38-flash-next-w4b.hgn` 115.5 GiB
 
-+ mtp sidecar + tokenizer). No `HALOGEN_DOWNLOAD`: the engine container makes
+- mtp sidecar + tokenizer). No `HALOGEN_DOWNLOAD`: the engine container makes
 no outbound connections.
 
 ## Layout
 
 - `base/` — StatefulSet (2 replicas, one pod per Strix Halo node via
-  `podAntiAffinity` on `kubernetes.io/hostname`), Service, Envoy
-  `Backend`/`AIServiceBackend`, VPA.
+  `podAntiAffinity` on `kubernetes.io/hostname`), Service + headless
+  Service, Envoy `Backend`/`AIServiceBackend`, a `BackendTrafficPolicy`
+  that keeps a conversation on the replica holding its prompt cache, VPA.
 - `components/monitoring/` — VMServiceScrape on `/metrics` (60s), a
   `HalogenFlashDown` VMRule, vmagent netpol ingress.
 - `overlays/nishir/` — monitoring component, gateway netpol.
 - `overlays/nishir-tailnet/` — hostname appends + five-key label set.
+
+## Routing
+
+Each replica holds its own prompt cache, and an agent conversation is one
+long prompt, so a turn that lands on the other replica re-reads the whole
+history. The gateway hash-rings the pod endpoints on `x-halogen-affinity`
+(`backendtrafficpolicy.yaml`): every turn carrying the header stays on one
+replica, requests without it balance normally. hermes sets the header per
+provider (`extra_headers`).
 
 The engine serves Prometheus `llamacpp:*` series on its published API port
 (`:8731/metrics`); the engine port `:8730` is loopback-only.
