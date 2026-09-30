@@ -26,5 +26,14 @@ no outbound connections.
 - `overlays/nishir/` — monitoring component, gateway netpol.
 - `overlays/nishir-tailnet/` — hostname appends + five-key label set.
 
+## Routing
+
+Each replica holds its own prompt cache, and an agent conversation is one
+long prompt, so a turn that lands on the other replica re-reads the whole
+history. The gateway hash-rings the pod endpoints on `x-halogen-affinity`
+(`backendtrafficpolicy.yaml`): every turn carrying the header stays on one
+replica, requests without it balance normally. hermes ships the value per
+conversation (`session_affinity_header`).
+
 The engine serves Prometheus `llamacpp:*` series on its published API port
 (`:8731/metrics`); the engine port `:8730` is loopback-only.
