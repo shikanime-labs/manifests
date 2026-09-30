@@ -37,9 +37,6 @@ spec:
         - name: halogen-flash
           priority: 0
           modelNameOverride: halogen-qwen3.8-flash-next
-        - name: llama-cpp-rpc-head
-          priority: 1
-          modelNameOverride: qwen/qwen3.8-flash
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.8-flash
