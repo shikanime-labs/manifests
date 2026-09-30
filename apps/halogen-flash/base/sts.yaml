@@ -41,7 +41,7 @@ spec:
           image: halogen-flash
           resources:
             requests:
-              memory: 110Gi
+              memory: 80Gi
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
