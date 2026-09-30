@@ -33,8 +33,6 @@ spec:
         - https://jellyfin.i.shikanime.studio
         - https://lidarr.i.shikanime.studio
         - https://lldap.i.shikanime.studio
-        - https://llama-cpp.i.shikanime.studio/health
-        - https://llama-cpp-rpc-head.i.shikanime.studio/health
         - https://logs.i.shikanime.studio
         - https://longhorn.i.shikanime.studio/healthz
         - https://maintainerr.i.shikanime.studio/api/health
