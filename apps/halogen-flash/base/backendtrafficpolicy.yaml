@@ -1,0 +1,19 @@
+# Keep a conversation's turns on the replica holding its prompt cache
+# (manifests#2712): clients send `x-halogen-affinity` (hermes:
+# `session_affinity_header`); requests without it balance as before.
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: halogen-flash-affinity
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: default
+      group: gateway.networking.k8s.io
+      kind: HTTPRoute
+  loadBalancer:
+    type: ConsistentHash
+    consistentHash:
+      type: Headers
+      headers:
+        - name: x-halogen-affinity
