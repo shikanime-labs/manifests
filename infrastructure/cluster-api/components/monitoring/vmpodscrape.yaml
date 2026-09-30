@@ -8,6 +8,9 @@ spec:
     - interval: 60s
       path: /metrics
       port: diagnostics
+      scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
   selector:
     matchLabels:
       app.kubernetes.io/name: cluster-api-operator

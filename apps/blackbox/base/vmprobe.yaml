@@ -21,7 +21,6 @@ spec:
         - https://accounts.i.shikanime.studio
         - https://api.automata.i.shikanime.studio/health
         - https://authelia.i.shikanime.studio
-        - https://automata.i.shikanime.studio
         - https://bazarr.i.shikanime.studio
         - https://copyparty.i.shikanime.studio
         - https://flux.i.shikanime.studio
@@ -33,8 +32,6 @@ spec:
         - https://jellyfin.i.shikanime.studio
         - https://lidarr.i.shikanime.studio
         - https://lldap.i.shikanime.studio
-        - https://llama-cpp.i.shikanime.studio/health
-        - https://llama-cpp-rpc-head.i.shikanime.studio/health
         - https://logs.i.shikanime.studio
         - https://longhorn.i.shikanime.studio/healthz
         - https://maintainerr.i.shikanime.studio/api/health
