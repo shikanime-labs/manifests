@@ -27,6 +27,7 @@ extra_well_known_client_content:
     m.integrations:
         managers: []
 form_secret: ENC[AES256_GCM,data:IijZcM/akIatrpI9imP5WakbyZRO9+A8gjibgVH25ox/2Ry8hUFh6lKjqmuq2DWkm7c=,iv:OSAIK8zIZEr1d3eXM5vb/La7EhtSO5/EMb+ngLdwjY0=,tag:8L/E8WE4N2t6LricMPbaCA==,type:str]
+enable_metrics: true
 listeners:
     - port: 8008
       resources:
@@ -110,6 +111,6 @@ sops:
             -----END AGE ENCRYPTED FILE-----
           recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
     encrypted_regex: ^(registration_shared_secret|form_secret|macaroon_secret_key)$
-    lastmodified: "2026-09-25T12:51:47Z"
-    mac: ENC[AES256_GCM,data:rhQAKOaoa525mFDugvVUGSBMiK0CxofgdcgF2NcbV21/B1API1NyOjQ7lqOEgWf/p77Qi1mkzONs0n4fSW9tURVaMIUkt7mc3LQ1Ha59Np0BVRXpmdogcb4Y3cCG0oU7Td2k/tABHv3E8gcC+8fYB8Im9kdduoBVz4LyNjC5oy0=,iv:0BbeyvizSeWgSMBcSOPgiPO586kc/Z1ivHPBz0P0/ds=,tag:IW9YHqYIZM+EFz6S0RX4HQ==,type:str]
+    lastmodified: "2026-09-30T11:20:50Z"
+    mac: ENC[AES256_GCM,data:zGoKnqHAuEPP/OD9/6Fzh/KZ0Qa69WlNHYsJAfPBqPa7OxZe0CmBl0utu6GWdAR7RzvHf24//+gFET8vNDpXwZJ9IOKFI8R37dFJILBgPunEOiUwHnd4v6W/xHHXNpCQh/DS8zuBc3QRo8cLDd2ucLF4fzoocMNBlJB8lkGNVaw=,iv:P1RPJL2jbWTqv6GRvQ30uunIOGX4usu6/yTF9HzGTsU=,tag:KNgpn7kMNdybPzJf3JRYcg==,type:str]
     version: 3.13.3
