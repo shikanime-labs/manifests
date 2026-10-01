@@ -218,6 +218,7 @@ identity_providers:
                 - openid
                 - profile
                 - email
+                - groups
                 - offline_access
               response_types:
                 - code
@@ -311,6 +312,6 @@ sops:
             -----END AGE ENCRYPTED FILE-----
           recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
     encrypted_regex: ^(key|secret|password|encryption_key|jwt_secret|hmac_secret)$
-    lastmodified: "2026-09-28T16:45:46Z"
-    mac: ENC[AES256_GCM,data:hjfj7qGTuPTyXv5kAboqzbPFiFun1mJmbvzFjgN/7+raDOaaQDyzq4KLMJprmeEPCPe3IGyvYKbYd5jFGZTGq6aLSn3i1E6Tdzwc1CgPfA/sZ4rE8+U+p1POaTVLcAbjUHta0deJ3wrjdSrzGjuIY3vod3Qzb5hnANJZ5oXJaEk=,iv:crCH2/BD9+TBUUET+54wzUBNzWSwQFEO804H3MLDOHs=,tag:kBQE73RF93wpwS/TX2R92g==,type:str]
+    lastmodified: "2026-10-01T15:35:19Z"
+    mac: ENC[AES256_GCM,data:nMcoa+Nq9BINVVi7czo4DAqDi3EQnYLIBi+7URBXh2rsccfkFuG5BZepEZB/J9xuIzTVVxVmBjm9+NhfuDkcRzERASd++uFLiKjC1zmwuaO2ncDGC4ISyZY8s3h28ki//QuIWC5bx8G5xiFe5gYQ8w/HomtlGYdtouFs7uU/D7Q=,iv:QZqI47um9foLDx0uN2vwmaC/geEgCl9NqluZkSZM7go=,tag:HCK9/zj6WYOWW/ZOrf0LOA==,type:str]
     version: 3.13.3
