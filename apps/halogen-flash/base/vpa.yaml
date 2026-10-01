@@ -12,5 +12,4 @@ spec:
   resourcePolicy:
     containerPolicies:
       - containerName: halogen-flash
-        maxAllowed:
-          memory: 128Gi
+        controlledResources: ["cpu"]
