@@ -9,6 +9,7 @@ spec:
       path: /metrics
       port: diagnostics
       scheme: https
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
       tlsConfig:
         insecureSkipVerify: true
   selector:
