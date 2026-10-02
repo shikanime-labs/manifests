@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dsh
+  namespace: shikanime
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: dsh
+      app.kubernetes.io/name: dsh
+  serviceName: dsh
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: dsh
+        app.kubernetes.io/name: dsh
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+      securityContext:
+        fsGroup: 65532
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: dsh
+          image: dsh
+          stdin: true
+          command:
+            - dsh
+          args:
+            - --profile
+            - web
+            - --port
+            - "18080"
+            - --no-open
+            - --trusted-host
+            - chat.i.shikanime.studio
+          env:
+            - name: TZ
+              value: Europe/Paris
+            - name: DSH_TELEMETRY_DISABLED
+              value: "1"
+          volumeMounts:
+            - name: home
+              mountPath: /home/dsh
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+        - name: bridge
+          image: docker.io/alpine/socat@sha256:5ffbd6ae916cbad86a58fabe0d6d5a6fd5c2b47ddf031e82996baac9300e732f
+          args:
+            - -s
+            - TCP-LISTEN:8080,fork,reuseaddr,bind=0.0.0.0
+            - TCP:127.0.0.1:18080
+          ports:
+            - name: bridge
+              containerPort: 8080
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 64Mi
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+  volumeClaimTemplates:
+    - metadata:
+        name: home
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: longhorn-standard
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod

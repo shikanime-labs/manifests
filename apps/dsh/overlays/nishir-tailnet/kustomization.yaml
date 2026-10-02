@@ -1,0 +1,46 @@
+resources:
+  - ../nishir
+  - envoyproxy.yaml
+  - gatewayclass.yaml
+namespace: shikanime
+patches:
+  - path: patch-netpol.yaml
+    target:
+      name: dsh
+      kind: NetworkPolicy
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - chat.i.shikanime.studio
+        - dsh-proxy.taila659a.ts.net
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: dsh
+          sectionName: https
+    target:
+      name: dsh
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - chat.i.shikanime.studio
+        - dsh-proxy.taila659a.ts.net
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: dsh
+          sectionName: http
+    target:
+      name: dsh-redirect
+      kind: HTTPRoute
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: agent
+      app.kubernetes.io/instance: dsh
+      app.kubernetes.io/name: dsh
+      app.kubernetes.io/part-of: nishir-automata
+      app.kubernetes.io/version: 0.2.0-rc.2

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dsh
+spec:
+  selector:
+    app.kubernetes.io/instance: dsh
+    app.kubernetes.io/name: dsh
+  ports:
+    - name: http
+      port: 80
+      targetPort: bridge

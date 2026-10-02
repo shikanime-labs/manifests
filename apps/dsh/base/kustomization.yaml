@@ -1,0 +1,12 @@
+resources:
+  - cert.yaml
+  - gateway.yaml
+  - httproute.yaml
+  - netpol.yaml
+  - sts.yaml
+  - svc.yaml
+  - vpa.yaml
+images:
+  - name: dsh
+    newName: ghcr.io/shikanime-labs/machines/dsh
+    digest: sha256:5c2f2c042c216dac6b09041e2a4ff3bf81f2a9472d8e49d6eaa10dbd4c9fd1cc
