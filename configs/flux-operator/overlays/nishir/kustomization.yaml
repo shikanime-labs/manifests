@@ -11,11 +11,3 @@ secretGenerator:
     namespace: flux-system
     envs:
       - receiver-token/.enc.env
-  # Consumed by the operator's --web-config-secret-name, so the name must stay
-  # stable across content changes (no hash suffix).
-  - name: flux-web
-    namespace: flux-system
-    files:
-      - config.yaml=flux-web/config.enc.yaml
-    options:
-      disableNameSuffixHash: true
