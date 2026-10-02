@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: dashboards
 spec:
-  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.6/dashboards/halogen-flash.json
+  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.7/dashboards/halogen-flash.json
   allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
