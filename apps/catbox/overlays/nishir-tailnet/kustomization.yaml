@@ -40,6 +40,13 @@ patches:
         path: /spec/hostnames/-
         value: automata.taila659a.ts.net
     target:
+      name: hermes-agent-webhook
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: automata.taila659a.ts.net
+    target:
       name: hermes-agent-dashboard-redirect
       kind: HTTPRoute
   - patch: |-
