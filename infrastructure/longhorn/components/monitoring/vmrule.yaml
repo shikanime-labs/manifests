@@ -64,7 +64,7 @@ spec:
             summary: "Longhorn Backup Error"
             description: "Backup {{ $labels.backup }} of volume {{ $labels.volume }} is in Error state."
         - alert: LonghornVolumeBackupStalled
-          expr: (time() - longhorn_volume_last_backup_at) > 86400
+          expr: (time() - longhorn_volume_last_backup_at) > 86400 and on (volume) longhorn_backup_volume_backups_count > 0
           for: 5m
           labels:
             severity: warning
