@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
@@ -15,3 +16,22 @@ spec:
     clientSecret:
       name: whisparr-oidc-client
     redirectURL: https://whisparr.i.shikanime.studio/oauth2/callback
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: whisparr-apikey
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: whisparr-api
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  apiKeyAuth:
+    credentialRefs:
+      - name: whisparr-env
+        kind: Secret
+    extractFrom:
+      - headers:
+          - X-Api-Key
+    sanitize: false

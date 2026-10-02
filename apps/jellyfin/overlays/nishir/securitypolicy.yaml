@@ -1,0 +1,19 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: jellyfin-apikey
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: jellyfin-api
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  apiKeyAuth:
+    credentialRefs:
+      - name: jellyfin-key
+        kind: Secret
+    extractFrom:
+      - headers:
+          - X-Api-Key
+    sanitize: false

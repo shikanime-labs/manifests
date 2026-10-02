@@ -3,6 +3,7 @@ resources:
   - backendtlspolicy.yaml
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/tls
@@ -43,10 +44,26 @@ patches:
     target:
       name: jellyfin-redirect
       kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - jellyfin.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: jellyfin
+          sectionName: http
+    target:
+      name: jellyfin-api
+      kind: HTTPRoute
 secretGenerator:
   - name: jellyfin-pkcs12-password
     envs:
       - jellyfin-env/.enc.env
+  - name: jellyfin-key
+    envs:
+      - jellyfin-key/.enc.env
   - name: jellyfin-ldap
     files:
       - LDAP-Auth.xml=jellyfin-ldap/LDAP-Auth.enc.xml
