@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: dsh
+  namespace: shikanime
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: dsh
+      app.kubernetes.io/name: dsh
+  policyTypes:
+    - Ingress
+  ingress: []

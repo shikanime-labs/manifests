@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dsh
+  namespace: shikanime
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: dsh
+      app.kubernetes.io/name: dsh
+  serviceName: dsh
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: dsh
+        app.kubernetes.io/name: dsh
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+      securityContext:
+        fsGroup: 65532
+      containers:
+        - name: dsh
+          image: dsh
+          stdin: true
+          command:
+            - dsh
+          args:
+            - --profile
+            - acp
+          env:
+            - name: TZ
+              value: Europe/Paris
+            - name: DSH_TELEMETRY_DISABLED
+              value: "1"
+          volumeMounts:
+            - name: home
+              mountPath: /home/dsh
+  volumeClaimTemplates:
+    - metadata:
+        name: home
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: longhorn-standard
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
