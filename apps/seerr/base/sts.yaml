@@ -48,8 +48,32 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/config
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/settings.json
+            - /mnt/config/settings.json
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       securityContext:
         fsGroup: 1000
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: seerr
   volumeClaimTemplates:
     - metadata:
         name: config
