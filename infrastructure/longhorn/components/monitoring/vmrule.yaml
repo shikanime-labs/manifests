@@ -8,13 +8,13 @@ spec:
     - name: longhorn.rules
       rules:
         - alert: LonghornVolumeActualSpaceUsedWarning
-          expr: (longhorn_volume_actual_size_bytes / longhorn_volume_capacity_bytes) * 100 > 90
+          expr: (kubelet_volume_stats_used_bytes{persistentvolumeclaim=~".+"} / kubelet_volume_stats_capacity_bytes) * 100 > 90
           for: 5m
           labels:
             severity: warning
           annotations:
             summary: "Longhorn Volume Actual Space Used Warning"
-            description: "The actual space used by Longhorn volume {{ $labels.volume }} on {{ $labels.node }} is at {{ $value }}% of its capacity."
+            description: "Filesystem usage of PVC {{ $labels.persistentvolumeclaim }} on node {{ $labels.namespace }} is at {{ $value }}%."
         - alert: LonghornVolumeStatusCritical
           expr: longhorn_volume_robustness == 3
           for: 5m
