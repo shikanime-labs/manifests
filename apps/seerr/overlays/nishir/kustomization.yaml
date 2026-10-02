@@ -2,7 +2,10 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
 namespace: shikanime
+configurations:
+  - namereference.yaml
 patches:
   - path: patch-sts.yaml
   - patch: |-
@@ -31,3 +34,20 @@ patches:
     target:
       name: seerr-redirect
       kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - seerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: seerr
+          sectionName: https
+    target:
+      name: seerr-api
+      kind: HTTPRoute
+secretGenerator:
+  - name: seerr-key
+    envs:
+      - seerr-key/.enc.env
