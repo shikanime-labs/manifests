@@ -1,6 +1,11 @@
 resources:
+  - cert.yaml
+  - gateway.yaml
+  - httproute-redirect.yaml
+  - httproute.yaml
   - netpol.yaml
   - sts.yaml
+  - svc.yaml
   - vpa.yaml
 images:
   - name: dsh
