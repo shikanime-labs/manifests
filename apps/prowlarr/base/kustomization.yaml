@@ -8,3 +8,6 @@ images:
   - name: prowlarr
     newName: lscr.io/linuxserver/prowlarr
     newTag: 2.5.2@sha256:1295cff29d10b486c0d8324d1559a552140a5932bf8b3d87e398654414f63f92
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.75.0@sha256:b06aed988cf5967de7c25be5925240983981c757f4ed1ac9d2fa659d51d60548
