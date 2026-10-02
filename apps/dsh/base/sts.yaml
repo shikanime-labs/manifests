@@ -22,27 +22,8 @@ spec:
       nodeSelector:
         kubernetes.io/arch: arm64
       securityContext:
-        fsGroup: 65532
         seccompProfile:
           type: RuntimeDefault
-      initContainers:
-        - name: fix-perms
-          image: docker.io/alpine/socat@sha256:5ffbd6ae916cbad86a58fabe0d6d5a6fd5c2b47ddf031e82996baac9300e732f
-          command:
-            - sh
-            - -c
-            - chmod -R u+rwX,go-rwx /home/dsh/.dsh; for d in /home/dsh/profiles /home/dsh/logs; do [ -d "$d" ] && chmod -R u+rwX,go-rwx "$d"; done; true
-          volumeMounts:
-            - name: home
-              mountPath: /home/dsh
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 65532
-            runAsGroup: 65532
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
       containers:
         - name: dsh
           image: dsh
