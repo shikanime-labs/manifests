@@ -55,3 +55,6 @@ secretGenerator:
   - name: prowlarr-oidc-client
     envs:
       - prowlarr-oidc-client/.enc.env
+  - name: prowlarr
+    files:
+      - config.xml=prowlarr/config.enc.yaml

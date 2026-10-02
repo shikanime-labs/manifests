@@ -1,0 +1,19 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: seerr-apikey
+  namespace: shikanime
+spec:
+  targetRefs:
+    - name: seerr-api
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  apiKeyAuth:
+    credentialRefs:
+      - name: seerr-key
+        kind: Secret
+    extractFrom:
+      - headers:
+          - X-Api-Key
+    sanitize: false
