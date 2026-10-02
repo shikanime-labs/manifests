@@ -17,7 +17,6 @@ secretGenerator:
     envs:
       - llama-cpp-env/.enc.env
 patches:
-  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/env/-

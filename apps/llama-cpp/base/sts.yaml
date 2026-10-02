@@ -4,7 +4,7 @@ metadata:
   name: llama-cpp
 spec:
   serviceName: llama-cpp
-  replicas: 2
+  replicas: 1
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
@@ -57,6 +57,9 @@ spec:
             - name: prefetch-script
               mountPath: /scripts
               readOnly: true
+          envFrom:
+            - secretRef:
+                name: llama-cpp-env
       containers:
         - name: llama-cpp
           image: llama-cpp
