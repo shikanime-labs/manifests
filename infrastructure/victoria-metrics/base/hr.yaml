@@ -79,6 +79,9 @@ spec:
     vmcluster:
       spec:
         vmstorage:
+          resources:
+            limits:
+              memory: 2Gi
           storage:
             volumeClaimTemplate:
               spec:
