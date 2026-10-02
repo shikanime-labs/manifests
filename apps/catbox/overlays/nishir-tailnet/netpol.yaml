@@ -23,6 +23,7 @@ spec:
         - port: a2a
         - port: api-server
         - port: dashboard
+        - port: webhook
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: catbox

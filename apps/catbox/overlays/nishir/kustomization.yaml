@@ -66,6 +66,19 @@ patches:
         path: /spec/parentRefs
         value:
         - name: hermes-agent
+          sectionName: https
+    target:
+      name: hermes-agent-webhook
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - automata.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: hermes-agent
           sectionName: http
     target:
       name: hermes-agent-dashboard-redirect

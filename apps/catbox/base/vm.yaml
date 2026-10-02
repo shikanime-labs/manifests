@@ -79,3 +79,6 @@ spec:
                 - name: api-server
                   port: 8642
                   protocol: TCP
+                - name: webhook
+                  port: 8644
+                  protocol: TCP
