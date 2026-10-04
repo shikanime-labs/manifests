@@ -6,4 +6,4 @@ resources:
 images:
   - name: valkey
     newName: valkey/valkey
-    newTag: 7-alpine@sha256:211d9cb02395987d3740b11fdbb7be0cb66c5f36a065640ce5753c933700d6cc
+    newTag: 7-alpine@sha256:c6c2f0020be34bbf684a53a0ef716ab16ff70295186d4d9f2518435beb7afbff
