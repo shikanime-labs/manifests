@@ -10,3 +10,8 @@ spec:
     name: monitoring-system-grafana-operator
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: grafana-operator
+      maxAllowed:
+        memory: 1Gi

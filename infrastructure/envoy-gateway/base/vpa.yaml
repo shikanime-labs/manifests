@@ -10,3 +10,8 @@ spec:
     name: envoy-gateway
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: envoy-gateway
+      maxAllowed:
+        memory: 1Gi

@@ -9,3 +9,8 @@ spec:
     name: honcho-postgres
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: postgres
+      maxAllowed:
+        memory: 4Gi

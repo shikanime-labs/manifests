@@ -10,3 +10,8 @@ spec:
     name: capi-controller-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: manager
+      maxAllowed:
+        memory: 1Gi

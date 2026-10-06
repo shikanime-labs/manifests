@@ -9,3 +9,8 @@ spec:
     name: prowlarr
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: prowlarr
+      maxAllowed:
+        memory: 4Gi

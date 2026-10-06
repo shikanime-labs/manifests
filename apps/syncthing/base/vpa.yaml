@@ -9,3 +9,8 @@ spec:
     name: syncthing
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: syncthing
+      maxAllowed:
+        memory: 4Gi

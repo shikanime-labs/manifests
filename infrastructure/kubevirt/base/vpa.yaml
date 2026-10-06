@@ -10,3 +10,8 @@ spec:
     name: virt-operator
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: virt-operator
+      maxAllowed:
+        memory: 1Gi

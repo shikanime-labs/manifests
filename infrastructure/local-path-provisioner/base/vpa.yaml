@@ -10,3 +10,8 @@ spec:
     name: local-path-provisioner
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: local-path-provisioner
+      maxAllowed:
+        memory: 1Gi

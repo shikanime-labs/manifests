@@ -10,3 +10,8 @@ spec:
     name: ai-gateway-controller
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: ai-gateway-helm
+      maxAllowed:
+        memory: 1Gi

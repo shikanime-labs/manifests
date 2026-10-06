@@ -10,3 +10,8 @@ spec:
     name: cnpg-controller-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: cnpg-controller-manager
+      maxAllowed:
+        memory: 1Gi

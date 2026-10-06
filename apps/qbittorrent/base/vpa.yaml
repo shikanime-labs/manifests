@@ -9,3 +9,8 @@ spec:
     name: qbittorrent
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: qbittorrent
+      maxAllowed:
+        memory: 1Gi

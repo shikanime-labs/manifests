@@ -9,3 +9,8 @@ spec:
     name: grafana-image-renderer
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: renderer
+      maxAllowed:
+        memory: 4Gi

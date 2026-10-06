@@ -9,3 +9,8 @@ spec:
     name: immich-valkey
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: valkey
+      maxAllowed:
+        memory: 4Gi
