@@ -7,21 +7,6 @@ metadata:
     app.kubernetes.io/part-of: nishir-inference
 spec:
   endpoints:
-    - interval: 60s
-      path: /metrics
-      params:
-        model:
-          - qwen/qwen3.8-27b
-      port: http
-      scrapeTimeout: 30s
-      relabelConfigs:
-        - sourceLabels: [__meta_kubernetes_service_name]
-          regex: llama-cpp-headless
-          action: drop
-        - targetLabel: model
-          replacement: qwen/qwen3.8-27b
-        - targetLabel: instance
-          replacement: llama-cpp-qwen3.8-27b
     - interval: 2h
       path: /metrics
       params:
