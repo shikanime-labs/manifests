@@ -7,9 +7,9 @@ replacement for the llama.cpp RPC pair. Adopted from the live evaluation in
 10-20x prefill, 3x decode, 13x lower TTFT at 32K depth versus the RPC baseline.
 
 Exclusive: the w4b checkpoint pins ~68 GiB locked RAM plus KV pool on one
-128 GB Halo node — the pod anti-affinity keeps it off the llama-cpp-rpc-head
-node. Land the cutover (route `qwen/qwen3.8-flash` here, scale the RPC pair
-down) as a separate change after soak.
+128 GB Halo node. Cutover complete: the route sends `qwen/qwen3.8-flash`
+here and the llama.cpp RPC pair (`apps/llama-cpp-rpc-head/`,
+`apps/llama-cpp-rpc-worker/`) is removed.
 
 Weights prefetch into a local-path PVC (`qwen38-flash-next-w4b.hgn` 115.5 GiB
 
