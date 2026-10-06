@@ -3,3 +3,5 @@ nameReference:
     fieldSpecs:
       - kind: VirtualMachine
         path: spec/template/spec/volumes/cloudInitNoCloud/secretRef/name
+      - kind: VirtualMachine
+        path: spec/template/spec/volumes/secret/secretName
