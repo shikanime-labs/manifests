@@ -9,3 +9,8 @@ spec:
     name: sonarr
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: sonarr
+      maxAllowed:
+        memory: 4Gi

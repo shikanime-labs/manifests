@@ -1,4 +1,3 @@
----
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -11,6 +10,11 @@ spec:
     name: longhorn-driver-deployer
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: longhorn-driver-deployer
+      maxAllowed:
+        memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -24,3 +28,8 @@ spec:
     name: longhorn-ui
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: longhorn-ui
+      maxAllowed:
+        memory: 1Gi

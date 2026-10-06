@@ -1,4 +1,3 @@
----
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -11,6 +10,11 @@ spec:
     name: gatekeeper-audit
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: manager
+      maxAllowed:
+        memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -24,3 +28,8 @@ spec:
     name: gatekeeper-controller-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: manager
+      maxAllowed:
+        memory: 1Gi

@@ -9,3 +9,8 @@ spec:
     name: seerr
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: seerr
+      maxAllowed:
+        memory: 4Gi

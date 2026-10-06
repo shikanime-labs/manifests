@@ -9,3 +9,8 @@ spec:
     name: whisparr
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: whisparr
+      maxAllowed:
+        memory: 4Gi

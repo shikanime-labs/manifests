@@ -9,3 +9,8 @@ spec:
     name: synapse
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: synapse
+      maxAllowed:
+        memory: 8Gi

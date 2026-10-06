@@ -9,3 +9,8 @@ spec:
     name: copyparty
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: copyparty
+      maxAllowed:
+        memory: 4Gi

@@ -9,3 +9,8 @@ spec:
     name: radarr
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: radarr
+      maxAllowed:
+        memory: 4Gi

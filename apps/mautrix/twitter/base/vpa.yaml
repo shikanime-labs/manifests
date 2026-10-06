@@ -9,3 +9,8 @@ spec:
     name: mautrix-twitter
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: mautrix
+      maxAllowed:
+        memory: 4Gi

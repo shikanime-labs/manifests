@@ -10,3 +10,8 @@ spec:
     name: trust-manager
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: trust-manager
+      maxAllowed:
+        memory: 1Gi

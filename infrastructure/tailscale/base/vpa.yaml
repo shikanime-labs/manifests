@@ -10,3 +10,8 @@ spec:
     name: operator
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: operator
+      maxAllowed:
+        memory: 1Gi

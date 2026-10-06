@@ -9,3 +9,8 @@ spec:
     name: forgejo
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: forgejo
+      maxAllowed:
+        memory: 16Gi

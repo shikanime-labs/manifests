@@ -9,3 +9,8 @@ spec:
     name: honcho
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: honcho
+      maxAllowed:
+        memory: 4Gi

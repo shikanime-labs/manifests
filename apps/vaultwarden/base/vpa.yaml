@@ -9,3 +9,8 @@ spec:
     name: vaultwarden
   updatePolicy:
     updateMode: InPlaceOrRecreate
+  resourcePolicy:
+    containerPolicies:
+    - containerName: vaultwarden
+      maxAllowed:
+        memory: 1Gi

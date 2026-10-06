@@ -9,3 +9,8 @@ spec:
     name: jellyfin
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: jellyfin
+      maxAllowed:
+        memory: 8Gi

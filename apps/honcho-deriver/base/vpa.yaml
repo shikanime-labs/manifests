@@ -9,3 +9,8 @@ spec:
     name: honcho-deriver
   updatePolicy:
     updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+    - containerName: deriver
+      maxAllowed:
+        memory: 4Gi
