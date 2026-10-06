@@ -7,9 +7,8 @@ per Strix Halo MS-S1 node `kushira`/`sashina` via
 required `podAntiAffinity` on `kubernetes.io/hostname`). Serves
 `qwen/qwen3-embedding-8b`, single-node: it loads entirely in its
 pod's pool (`--gpu-layers 999` via preset `n-gpu-layers`), so no RPC
-peer and no macvlan lane are needed.
-The dedicated 111 GiB flash model lives in `apps/llama-cpp-rpc-head/`,
-which dials the RPC peer `apps/llama-cpp-rpc-worker/`.
+peer and no macvlan lane are needed. Flash inference is served by
+`apps/halogen-flash/` and remote providers, not by llama.cpp.
 
 ## Layout
 
@@ -126,7 +125,7 @@ Body: { "model": "<provider/model>", "messages": [...] }
 
 Served locally: `qwen/qwen3-embedding-8b`. The
 remaining routes go to remote providers only: `qwen/qwen3.8-flash` to
-`apps/llama-cpp-rpc-head`, `z-ai/glm-5.3-flash` to the Z.ai
+`apps/halogen-flash`, `z-ai/glm-5.3-flash` to the Z.ai
 OpenAI-compatible endpoint, `z-ai/glm-5.3` to the Anthropic endpoint,
 `mistral/labs-leanstral-1-5` to Mistral, and the catch-all to
 nous/openrouter.
@@ -138,10 +137,7 @@ dedicated BYOD `llama-cpp` Gateway (`GatewayClass` + `EnvoyProxy` +
 `Gateway` in `overlays/nishir-tailnet/`, tailscale loadBalancerClass) at
 `llama-cpp.i.shikanime.studio` / `llama-cpp.taila659a.ts.net`, behind
 authelia OIDC (`SecurityPolicy llama-cpp-oidc-client`) with TLS from the
-`studio-shikanime-i-llama-cpp` Certificate. `apps/llama-cpp-rpc-head/`
-serves `llama-cpp-rpc-head.i.shikanime.studio` from the same listener,
-with its own `studio-shikanime-i-llama-cpp-rpc-head` Certificate and
-`llama-cpp-rpc-head` authelia client. Browser
+`studio-shikanime-i-llama-cpp` Certificate. Browser
 `/v1` calls are split onto the `llama-cpp-api` HTTPRoute (with the overlay
 setting `LLAMA_ARG_CORS_ORIGINS=https://inference.i.shikanime.studio`) so
 they get 401 JSON with CORS headers instead of an OIDC redirect.
