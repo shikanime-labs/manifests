@@ -3,8 +3,6 @@ resources:
   - gatewayclass.yaml
   - netpol.yaml
 namespace: shikanime
-configurations:
-  - namereference.yaml
 patches:
   - path: patch-svc.yaml
   - patch: |-
