@@ -29,3 +29,7 @@ spec:
       appProtocol: http
       port: 8642
       targetPort: api-server
+    - name: webhook
+      appProtocol: http
+      port: 8644
+      targetPort: webhook
