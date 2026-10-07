@@ -38,5 +38,17 @@ patches:
           - name: copyparty
             sectionName: https
     target:
+      name: copyparty-public
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: copyparty.taila659a.ts.net
+      - op: replace
+        path: /spec/parentRefs
+        value:
+          - name: copyparty
+            sectionName: https
+    target:
       name: copyparty
       kind: HTTPRoute
