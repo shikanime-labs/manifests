@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: discord
+          tailscale.com/hostname: mautrix-discord
           tailscale.com/tags: "tag:matrix"
