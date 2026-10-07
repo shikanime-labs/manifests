@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: vaultwarden-proxy
+          tailscale.com/hostname: vaultwarden
           tailscale.com/tags: "tag:vaultwarden"

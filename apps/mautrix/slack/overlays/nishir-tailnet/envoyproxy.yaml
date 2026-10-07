@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: slack-proxy
+          tailscale.com/hostname: slack
           tailscale.com/tags: "tag:matrix"

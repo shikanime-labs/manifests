@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: whisparr-proxy
+          tailscale.com/hostname: whisparr
           tailscale.com/tags: "tag:whisparr"

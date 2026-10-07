@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: honcho-proxy
+          tailscale.com/hostname: honcho
           tailscale.com/tags: "tag:honcho"

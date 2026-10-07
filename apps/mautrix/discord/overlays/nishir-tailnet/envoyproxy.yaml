@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: discord-proxy
+          tailscale.com/hostname: discord
           tailscale.com/tags: "tag:matrix"

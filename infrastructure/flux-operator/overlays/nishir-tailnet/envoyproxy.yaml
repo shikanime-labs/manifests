@@ -12,5 +12,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: flux-proxy
+          tailscale.com/hostname: flux
           tailscale.com/tags: "tag:flux-operator"

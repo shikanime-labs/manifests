@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: metatube-proxy
+          tailscale.com/hostname: metatube
           tailscale.com/tags: "tag:metatube"
