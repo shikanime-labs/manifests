@@ -28,6 +28,7 @@
     }
   ],
   "postUpgradeTasks": {
+    "allowedCommands": ["nix fmt"],
     "commands": ["nix fmt"],
     "executionMode": "branch",
     "fileFilters": ["**/*.nix"],
