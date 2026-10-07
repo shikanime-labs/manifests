@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: prowlarr-proxy
+          tailscale.com/hostname: prowlarr
           tailscale.com/tags: "tag:prowlarr"

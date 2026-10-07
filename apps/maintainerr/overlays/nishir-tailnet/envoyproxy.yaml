@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: maintainerr-proxy
+          tailscale.com/hostname: maintainerr
           tailscale.com/tags: "tag:maintainerr"

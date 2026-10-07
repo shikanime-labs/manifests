@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: meta-proxy
+          tailscale.com/hostname: meta
           tailscale.com/tags: "tag:matrix"

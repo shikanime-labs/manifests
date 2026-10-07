@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: sonarr-proxy
+          tailscale.com/hostname: sonarr
           tailscale.com/tags: "tag:sonarr"

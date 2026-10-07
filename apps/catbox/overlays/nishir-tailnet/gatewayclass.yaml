@@ -33,5 +33,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: hermes-agent-proxy
+          tailscale.com/hostname: hermes-agent
           tailscale.com/tags: "tag:automata"

@@ -32,7 +32,7 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: inference-proxy
+          tailscale.com/hostname: inference
           tailscale.com/tags: "tag:inference"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
@@ -60,5 +60,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: llama-cpp-proxy
+          tailscale.com/hostname: llama-cpp
           tailscale.com/tags: "tag:llama-cpp"

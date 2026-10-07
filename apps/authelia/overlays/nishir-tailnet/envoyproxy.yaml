@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: authelia-proxy
+          tailscale.com/hostname: authelia
           tailscale.com/tags: "tag:authelia"

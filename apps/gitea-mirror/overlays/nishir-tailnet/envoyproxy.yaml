@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: gitea-mirror-proxy
+          tailscale.com/hostname: gitea-mirror
           tailscale.com/tags: "tag:gitea-mirror"
