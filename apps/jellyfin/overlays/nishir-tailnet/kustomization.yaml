@@ -48,15 +48,3 @@ patches:
     target:
       name: jellyfin
       kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: jellyfin.taila659a.ts.net
-      - op: replace
-        path: /spec/parentRefs
-        value:
-          - name: jellyfin
-            sectionName: http
-    target:
-      name: jellyfin-api
-      kind: HTTPRoute

@@ -1,4 +1,3 @@
----
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
@@ -16,22 +15,3 @@ spec:
     clientSecret:
       name: radarr-oidc-client
     redirectURL: https://radarr.i.shikanime.studio/oauth2/callback
----
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: SecurityPolicy
-metadata:
-  name: radarr-apikey
-  namespace: shikanime
-spec:
-  targetRefs:
-    - name: radarr-api
-      kind: HTTPRoute
-      group: gateway.networking.k8s.io
-  apiKeyAuth:
-    credentialRefs:
-      - name: radarr-env
-        kind: Secret
-    extractFrom:
-      - headers:
-          - X-Api-Key
-    sanitize: false
