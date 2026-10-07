@@ -7,7 +7,7 @@ resources:
 images:
   - name: bazarr
     newName: lscr.io/linuxserver/bazarr
-    newTag: 1.6.2@sha256:8b30e81c4aec2991f469e78fae8afaa89ecc9b21a80e3897f50427216b55470c
+    newTag: 1.6.2@sha256:c1673816321156b904af9b7e6415ea547ae9622e4acc375358f1e1eb9ed1e904
   - name: rclone
     newName: rclone/rclone
     newTag: 1.75.1@sha256:45401ad7410db1d67ffdb58e19059ad20b0d8e0285a60e38bbec55cc1019c7a5
