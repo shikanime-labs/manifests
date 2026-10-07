@@ -7,4 +7,4 @@ resources:
 images:
   - name: lidarr
     newName: lscr.io/linuxserver/lidarr
-    newTag: 3.1.0@sha256:044d616beb43c5e7810991242c6a9c42b93ff238c8c0850684939634ea751208
+    newTag: 3.1.0@sha256:67887807b13ae025c0fe979da298347c8609969087ab064c81d8e9acc1e06bbf
