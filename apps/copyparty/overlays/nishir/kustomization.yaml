@@ -36,6 +36,19 @@ patches:
         path: /spec/parentRefs
         value:
         - name: copyparty
+          sectionName: https
+    target:
+      name: copyparty-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - copyparty.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
           sectionName: http
     target:
       name: copyparty-redirect
