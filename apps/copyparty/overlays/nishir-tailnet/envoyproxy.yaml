@@ -20,6 +20,6 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: copyparty
+          tailscale.com/hostname: copyparty-internal
           tailscale.com/tags: "tag:copyparty,tag:ftp,tag:ftp"
           tailscale.com/tailnet-ip: 100.68.52.27
