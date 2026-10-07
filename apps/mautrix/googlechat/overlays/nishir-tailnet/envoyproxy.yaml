@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: googlechat
+          tailscale.com/hostname: mautrix-googlechat
           tailscale.com/tags: "tag:matrix"
