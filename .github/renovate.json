@@ -25,6 +25,12 @@
       "description": "Pinned to a Postgres major (pg15); do not auto-jump majors.",
       "matchCurrentVersion": "!/^pg\\d+$/",
       "matchPackageNames": ["/^pgvector/pgvector$/"]
+    },
+    {
+      "description": "Postgres major bumps need a dump/restore migration; do not auto-jump majors (see #2807).",
+      "matchPackageNames": ["^ghcr\\.io/immich-app/postgres$"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ],
   "postUpgradeTasks": {
