@@ -20,6 +20,10 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /etc/blackbox_exporter
+            - name: web-auth
+              mountPath: /etc/blackbox_exporter/web-auth
+              subPath: password
+              readOnly: true
           ports:
             - name: http
               containerPort: 9115
@@ -35,3 +39,7 @@ spec:
         - name: config
           configMap:
             name: blackbox-config
+        - name: web-auth
+          secret:
+            secretName: blackbox-web-auth
+            defaultMode: 0400

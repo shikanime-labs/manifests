@@ -10,3 +10,12 @@ modules:
         - 404
       preferred_ip_protocol: ip4
       follow_redirects: true
+  http_2xx_basic:
+    prober: http
+    timeout: 9s
+    http:
+      preferred_ip_protocol: ip4
+      follow_redirects: true
+      basic_auth:
+        username: automata
+        password_file: /etc/blackbox_exporter/web-auth

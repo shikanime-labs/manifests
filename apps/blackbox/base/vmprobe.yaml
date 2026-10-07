@@ -21,7 +21,6 @@ spec:
         - https://accounts.i.shikanime.studio
         - https://api.automata.i.shikanime.studio/health
         - https://authelia.i.shikanime.studio
-        - https://bazarr.i.shikanime.studio
         - https://copyparty.i.shikanime.studio/health
         - https://flux.i.shikanime.studio/healthz
         - https://forgejo.i.shikanime.studio
@@ -56,3 +55,25 @@ spec:
         - https://syncthing.i.shikanime.studio
         - https://vaultwarden.i.shikanime.studio
         - https://whisparr.i.shikanime.studio/ping
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMProbe
+metadata:
+  name: blackbox-auth
+spec:
+  jobName: blackbox
+  interval: 60s
+  module: http_2xx_basic
+  vmProberSpec:
+    url: http://blackbox.shikanime.svc.cluster.local:9115
+  targets:
+    static:
+      relabelingConfigs:
+        - sourceLabels:
+            - instance
+          targetLabel: endpoint
+        - action: labeldrop
+          regex: instance
+      targets:
+        - https://bazarr.i.shikanime.studio/ping
+        - https://copyparty.i.shikanime.studio/

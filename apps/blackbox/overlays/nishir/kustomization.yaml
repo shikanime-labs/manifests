@@ -3,6 +3,10 @@ resources:
 namespace: shikanime
 components:
   - ../../components/monitoring
+secretGenerator:
+  - name: blackbox-web-auth
+    envs:
+      - blackbox-web-auth/.enc.env
 labels:
   - includeTemplates: true
     pairs:
