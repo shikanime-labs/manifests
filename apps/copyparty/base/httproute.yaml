@@ -15,6 +15,20 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
+  name: copyparty-health
+spec:
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /health
+      backendRefs:
+        - name: copyparty
+          port: 3923
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
   name: copyparty-redirect
 spec:
   rules:
