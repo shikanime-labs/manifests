@@ -46,6 +46,8 @@ spec:
               mountPath: /data/sync
             - name: timeline-data
               mountPath: /data/timeline
+            - name: public-data
+              mountPath: /data/public
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -92,6 +94,9 @@ spec:
         - name: timeline-data
           persistentVolumeClaim:
             claimName: timeline-data
+        - name: public-data
+          persistentVolumeClaim:
+            claimName: public-data
         - name: startup-config
           configMap:
             name: copyparty

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: public-data
+  namespace: shikanime
+spec:
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: longhorn-standard
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOncePod
