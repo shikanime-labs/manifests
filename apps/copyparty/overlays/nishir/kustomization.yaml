@@ -3,7 +3,7 @@ resources:
   - cert.yaml
   - gateway.yaml
   - securitypolicy.yaml
-  - pvc-public-data.yaml
+  - pvc.yaml
 namespace: shikanime
 components:
   - ../../components/ftp
