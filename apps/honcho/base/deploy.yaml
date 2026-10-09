@@ -45,6 +45,10 @@ spec:
             - name: config
               mountPath: /app/config.toml
               subPath: config.toml
+          resources:
+            requests:
+              cpu: 12m
+              memory: 423Mi
           envFrom:
             - secretRef:
                 name: honcho-env

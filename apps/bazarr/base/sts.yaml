@@ -52,6 +52,10 @@ spec:
               mountPath: /config
             - name: run
               mountPath: /run
+          resources:
+            requests:
+              cpu: 25m
+              memory: 309Mi
           securityContext:
             capabilities:
               add:

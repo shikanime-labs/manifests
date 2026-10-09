@@ -1,3 +1,4 @@
+---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -12,9 +13,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: gc
-      maxAllowed:
-        memory: 1Gi
+      - containerName: gc
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -30,6 +31,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: master
-      maxAllowed:
-        memory: 1Gi
+      - containerName: master
+        maxAllowed:
+          memory: 1Gi

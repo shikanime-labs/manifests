@@ -28,6 +28,10 @@ spec:
               mountPath: /data/homeserver.yaml
               readOnly: true
               subPath: homeserver.yaml
+          resources:
+            requests:
+              cpu: 163m
+              memory: 879Mi
           securityContext:
             capabilities:
               add:

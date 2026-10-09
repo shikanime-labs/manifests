@@ -29,8 +29,8 @@ spec:
               port: http
           resources:
             requests:
-              cpu: 10m
-              memory: 32Mi
+              cpu: 25m
+              memory: 250Mi
       volumes:
         - name: config
           configMap:
