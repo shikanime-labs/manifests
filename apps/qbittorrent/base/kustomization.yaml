@@ -15,7 +15,7 @@ images:
     newTag: 5.2.4-1@sha256:92bfd78d731e254ba64f62b77b0696add6447a33642ee5feda106a26b285aa7f
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.75.1@sha256:45401ad7410db1d67ffdb58e19059ad20b0d8e0285a60e38bbec55cc1019c7a5
+    newTag: 1.75.2@sha256:2687085f718d3c628f7fdfb77c52a1d344332aed543110bb88088f2c70d43eb5
 configMapGenerator:
   - name: qbittorrent-rclone
     namespace: shikanime
