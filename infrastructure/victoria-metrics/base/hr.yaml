@@ -58,6 +58,9 @@ spec:
     kubelet:
       vmScrape:
         spec:
+          relabelConfigs:
+            - action: labelkeep
+              regex: node|job|instance|metrics_path
           metricRelabelConfigs:
             - action: labeldrop
               regex: (uid)
