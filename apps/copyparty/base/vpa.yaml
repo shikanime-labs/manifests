@@ -13,4 +13,4 @@ spec:
     containerPolicies:
     - containerName: copyparty
       maxAllowed:
-        memory: 4Gi
+        memory: 8Gi
