@@ -8,3 +8,6 @@ images:
   - name: seerr
     newName: ghcr.io/seerr-team/seerr
     newTag: v3.5.0@sha256:27602401178d54f1964442287b9f23f67a3fa2252645ee8065839ea1c3f69e45
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.75.2@sha256:2687085f718d3c628f7fdfb77c52a1d344332aed543110bb88088f2c70d43eb5

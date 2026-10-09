@@ -18,6 +18,26 @@ spec:
         app.kubernetes.io/instance: seerr
         app.kubernetes.io/name: seerr
     spec:
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/settings.json
+            - /mnt/config/settings.json
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       containers:
         - name: seerr
           image: seerr
@@ -50,6 +70,10 @@ spec:
               mountPath: /app/config
       securityContext:
         fsGroup: 1000
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: seerr
   volumeClaimTemplates:
     - metadata:
         name: config

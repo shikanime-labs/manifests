@@ -18,6 +18,26 @@ spec:
         app.kubernetes.io/instance: prowlarr
         app.kubernetes.io/name: prowlarr
     spec:
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copyto
+            - --copy-links
+            - /mnt/startup-config/config.xml
+            - /mnt/config/config.xml
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       containers:
         - name: prowlarr
           image: prowlarr
@@ -72,6 +92,9 @@ spec:
         - name: run
           emptyDir:
             medium: Memory
+        - name: startup-config
+          secret:
+            secretName: prowlarr
   volumeClaimTemplates:
     - metadata:
         name: config
