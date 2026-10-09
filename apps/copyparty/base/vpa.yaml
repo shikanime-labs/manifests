@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: copyparty
-      maxAllowed:
-        memory: 8Gi
+      - containerName: copyparty
+        maxAllowed:
+          memory: 8Gi

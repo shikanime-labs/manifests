@@ -12,6 +12,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: external-dns
-      maxAllowed:
-        memory: 1Gi
+      - containerName: external-dns
+        maxAllowed:
+          memory: 1Gi

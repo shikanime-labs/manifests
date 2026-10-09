@@ -62,6 +62,10 @@ spec:
               mountPath: /cache
             - name: config
               mountPath: /config
+          resources:
+            requests:
+              cpu: 49m
+              memory: 1484Mi
       securityContext:
         fsGroup: 1000
   volumeClaimTemplates:

@@ -3,14 +3,14 @@ resources:
   - pvc.yaml
   - svc.yaml
   - vm.yaml
+configurations:
+  - namereference.yaml
 secretGenerator:
   - name: catbox-authorized-keys
     options:
       disableNameSuffixHash: true
     files:
       - authorized-keys/userdata
-configurations:
-  - namereference.yaml
 patches:
   - patch: |-
       - op: replace

@@ -14,8 +14,8 @@ patches:
           port: 6360
           protocol: TCP
     target:
-      kind: Gateway
       name: lldap
+      kind: Gateway
   - patch: |-
       - op: add
         path: /spec/parentRefs

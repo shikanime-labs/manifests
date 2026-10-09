@@ -1,3 +1,4 @@
+---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -12,9 +13,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: kube-state-metrics
-      maxAllowed:
-        memory: 1Gi
+      - containerName: kube-state-metrics
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -30,9 +31,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: operator
-      maxAllowed:
-        memory: 1Gi
+      - containerName: operator
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -48,9 +49,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vmagent
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vmagent
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -66,9 +67,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vmalert
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vmalert
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -84,9 +85,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vmauth
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vmauth
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -102,9 +103,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vminsert
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vminsert
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -120,9 +121,9 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: vmstorage
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vmstorage
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -138,9 +139,9 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: vmselect
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vmselect
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -156,6 +157,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: config-reloader
-      maxAllowed:
-        memory: 1Gi
+      - containerName: config-reloader
+        maxAllowed:
+          memory: 1Gi

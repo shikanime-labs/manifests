@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: qbittorrent
-      maxAllowed:
-        memory: 1Gi
+      - containerName: qbittorrent
+        maxAllowed:
+          memory: 1Gi

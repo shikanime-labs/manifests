@@ -42,6 +42,7 @@ spec:
           resources:
             requests:
               memory: 80Gi
+              cpu: 1554m
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
