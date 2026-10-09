@@ -58,6 +58,9 @@ spec:
     kubelet:
       vmScrape:
         spec:
+          relabelConfigs:
+            - action: labelkeep
+              regex: node|job|instance|metrics_path
           metricRelabelConfigs:
             - action: labeldrop
               regex: (uid)
@@ -72,6 +75,10 @@ spec:
       spec:
         extraArgs:
           enableTCP6: "true"
+        resources:
+          requests:
+            cpu: 250m
+            memory: 300Mi
     vmalert:
       extraArgs:
         enableTCP6: "true"
@@ -84,7 +91,7 @@ spec:
               spec:
                 resources:
                   requests:
-                    storage: 16Gi
+                    storage: 32Gi
                 accessModes:
                   - ReadWriteOncePod
         vmselect:
