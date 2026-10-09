@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: gitea-mirror
-        maxAllowed:
-          memory: 4Gi
+    - containerName: gitea-mirror
+      maxAllowed:
+        memory: 4Gi

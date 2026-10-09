@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: mautrix
-        maxAllowed:
-          memory: 4Gi
+    - containerName: mautrix
+      maxAllowed:
+        memory: 4Gi

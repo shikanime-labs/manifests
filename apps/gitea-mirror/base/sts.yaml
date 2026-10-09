@@ -88,10 +88,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /app/data
-          resources:
-            requests:
-              cpu: 25m
-              memory: 729Mi
       securityContext:
         fsGroup: 1000
   volumeClaimTemplates:

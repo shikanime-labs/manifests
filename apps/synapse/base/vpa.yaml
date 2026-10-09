@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: synapse
-        maxAllowed:
-          memory: 8Gi
+    - containerName: synapse
+      maxAllowed:
+        memory: 8Gi

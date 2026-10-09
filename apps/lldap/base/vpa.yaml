@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: lldap
-        maxAllowed:
-          memory: 1Gi
+    - containerName: lldap
+      maxAllowed:
+        memory: 1Gi

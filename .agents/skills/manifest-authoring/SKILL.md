@@ -35,7 +35,7 @@ repo's structure and conventions. The repo is Kustomize-based, split into
 `apps/`, `clusters/`, `configs/`, `infrastructure/`, and `bootstraps/` — with one
 Kubernetes kind per file, sorted `resources:` lists, and the repo's own labeling,
 probe, storage, and netpol discipline, grounded in the repo's README and the actual
-base layouts observed across the fleet (metatube, syncthing, catbox, blackbox,
+base layouts observed across the fleet (metatube, syncthing, automata, blackbox,
 qbittorrent, the inference/llama-cpp trees, cluster-api, cert-manager,
 grafana-operator, and the bootstraps tree).
 
@@ -122,7 +122,7 @@ Observed per-app base layouts (exact, from the repo):
   `httproute.yaml` or `httproutes.yaml`, optional `netpol.yaml`, workload
   (`sts.yaml` or `deploy.yaml`), `svc.yaml`, `vpa.yaml`, optionally `tcproute.yaml`
   / `udproute.yaml` / `pvc.yaml`.
-- catbox base: `httproutes.yaml`, `pvc.yaml`, `svc.yaml`, `vm.yaml` (KubeVirt
+- automata base: `httproutes.yaml`, `pvc.yaml`, `svc.yaml`, `vm.yaml` (KubeVirt
   VirtualMachine, no VPA — VMs are sized at the VM spec, not by VPA).
 - qbittorrent base: `httproute.yaml`, `netpol.yaml`, `pvc.yaml`, `svc.yaml`,
   `vpa.yaml`.

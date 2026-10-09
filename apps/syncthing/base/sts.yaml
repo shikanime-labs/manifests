@@ -62,10 +62,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-          resources:
-            requests:
-              cpu: 49m
-              memory: 1252Mi
           securityContext:
             capabilities:
               add:

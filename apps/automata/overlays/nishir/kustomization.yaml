@@ -16,7 +16,7 @@ patches:
       - op: replace
         path: /spec/rules/0/backendRefs
         value:
-        - name: catbox
+        - name: automata
           port: 9119
     target:
       name: hermes-agent-dashboard
@@ -34,7 +34,7 @@ patches:
       - op: replace
         path: /spec/rules/0/backendRefs
         value:
-        - name: catbox
+        - name: automata
           port: 8642
     target:
       name: hermes-agent-api-server
@@ -52,7 +52,7 @@ patches:
       - op: replace
         path: /spec/rules/0/backendRefs
         value:
-        - name: catbox
+        - name: automata
           port: 9900
     target:
       name: hermes-agent-a2a

@@ -49,10 +49,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /opt/data
-          resources:
-            requests:
-              cpu: 25m
-              memory: 250Mi
       securityContext:
         fsGroup: 1000
   volumeClaimTemplates:

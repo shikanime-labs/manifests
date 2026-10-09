@@ -73,10 +73,6 @@ spec:
               value: master
             - name: LIDARR__UPDATE__MECHANISM
               value: Docker
-          resources:
-            requests:
-              cpu: 25m
-              memory: 260Mi
           securityContext:
             capabilities:
               add:

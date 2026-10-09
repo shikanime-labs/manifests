@@ -22,8 +22,7 @@ spec:
           image: copyparty
           resources:
             requests:
-              memory: 4Gi
-              cpu: 25m
+              memory: 3Gi
           livenessProbe:
             httpGet:
               path: /?reset=/._

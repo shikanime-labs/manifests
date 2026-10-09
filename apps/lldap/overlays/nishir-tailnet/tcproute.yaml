@@ -1,9 +1,0 @@
-apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: TCPRoute
-metadata:
-  name: lldap-ldaps
-spec:
-  rules:
-    - backendRefs:
-        - name: lldap
-          port: 6360

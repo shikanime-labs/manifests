@@ -1,6 +1,6 @@
 nameReference:
-  - version: v1
-    kind: Secret
+  - kind: Secret
+    version: v1
     fieldSpecs:
       - kind: VMAlertmanagerConfig
         group: operator.victoriametrics.com

@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: lidarr
-        maxAllowed:
-          memory: 4Gi
+    - containerName: lidarr
+      maxAllowed:
+        memory: 4Gi

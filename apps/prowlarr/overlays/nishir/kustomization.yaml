@@ -33,19 +33,6 @@ patches:
         - name: prowlarr
           sectionName: https
     target:
-      name: prowlarr-api
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames
-        value:
-        - prowlarr.i.shikanime.studio
-      - op: add
-        path: /spec/parentRefs
-        value:
-        - name: prowlarr
-          sectionName: https
-    target:
       name: prowlarr-health
       kind: HTTPRoute
   - patch: |-
@@ -68,6 +55,3 @@ secretGenerator:
   - name: prowlarr-oidc-client
     envs:
       - prowlarr-oidc-client/.enc.env
-  - name: prowlarr
-    files:
-      - config.xml=prowlarr/config.enc.yaml

@@ -68,7 +68,6 @@ spec:
           resources:
             requests:
               memory: 32Gi
-              cpu: 11m
           ports:
             - name: http
               containerPort: 9931

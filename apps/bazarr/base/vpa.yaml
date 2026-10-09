@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-      - containerName: bazarr
-        maxAllowed:
-          memory: 4Gi
+    - containerName: bazarr
+      maxAllowed:
+        memory: 4Gi

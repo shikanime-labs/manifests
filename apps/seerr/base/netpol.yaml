@@ -11,9 +11,6 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: maintainerr
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: http
   podSelector:

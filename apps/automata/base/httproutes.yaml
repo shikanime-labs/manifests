@@ -6,7 +6,7 @@ metadata:
 spec:
   rules:
     - backendRefs:
-        - name: catbox
+        - name: automata
           port: 9119
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -28,7 +28,7 @@ metadata:
 spec:
   rules:
     - backendRefs:
-        - name: catbox
+        - name: automata
           port: 8642
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -50,7 +50,7 @@ metadata:
 spec:
   rules:
     - backendRefs:
-        - name: catbox
+        - name: automata
           port: 9900
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -76,5 +76,5 @@ spec:
             type: PathPrefix
             value: /webhooks
       backendRefs:
-        - name: catbox
+        - name: automata
           port: 8644

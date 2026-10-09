@@ -1,15 +1,15 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  name: catbox
+  name: automata
 spec:
   # Always keeps the guest running and auto-restarts it on failure.
   runStrategy: Always
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: catbox
-        app.kubernetes.io/name: catbox
+        app.kubernetes.io/instance: automata
+        app.kubernetes.io/name: automata
     spec:
       networks:
         - name: default
@@ -23,17 +23,17 @@ spec:
         # CDI is absent in this cluster, so the VM boots directly from the image.
         - name: rootdisk
           containerDisk:
-            image: catbox
+            image: automata
         - name: workspaces
           persistentVolumeClaim:
-            claimName: catbox-workspaces
+            claimName: automata-workspaces
         - name: sops-key
           secret:
-            secretName: catbox-sops-key
+            secretName: automata-sops-key
         - name: cloudinit
           cloudInitNoCloud:
             secretRef:
-              name: catbox-authorized-keys
+              name: automata-authorized-keys
       domain:
         resources:
           requests:

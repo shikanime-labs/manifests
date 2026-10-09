@@ -8,13 +8,6 @@ patches:
       - op: add
         path: /spec/hostnames/-
         value: whisparr.taila659a.ts.net
-    target:
-      name: whisparr-api
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: whisparr.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:

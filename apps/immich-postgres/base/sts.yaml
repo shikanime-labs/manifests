@@ -31,10 +31,6 @@ spec:
               mountPath: /var/run/postgresql
             - name: pgconfig
               mountPath: /etc/postgresql
-          resources:
-            requests:
-              cpu: 25m
-              memory: 933Mi
           livenessProbe:
             exec:
               command:

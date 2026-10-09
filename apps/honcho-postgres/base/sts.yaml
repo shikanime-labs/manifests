@@ -32,10 +32,6 @@ spec:
               readOnly: true
             - name: run-postgresql
               mountPath: /var/run/postgresql
-          resources:
-            requests:
-              cpu: 25m
-              memory: 309Mi
           livenessProbe:
             exec:
               command:

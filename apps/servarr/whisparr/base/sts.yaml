@@ -76,10 +76,6 @@ spec:
               value: eros
             - name: WHISPARR__UPDATE__MECHANISM
               value: Docker
-          resources:
-            requests:
-              cpu: 25m
-              memory: 392Mi
           securityContext:
             capabilities:
               add:
