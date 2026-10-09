@@ -74,11 +74,8 @@ spec:
           enableTCP6: "true"
         resources:
           requests:
-            cpu: 200m
-            memory: 256Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
+            cpu: 250m
+            memory: 300Mi
     vmalert:
       extraArgs:
         enableTCP6: "true"
@@ -95,14 +92,6 @@ spec:
                 accessModes:
                   - ReadWriteOncePod
         vmselect:
-          spec:
-            resources:
-              requests:
-                cpu: 100m
-                memory: 512Mi
-              limits:
-                cpu: 500m
-                memory: 1Gi
           storage:
             volumeClaimTemplate:
               spec:
