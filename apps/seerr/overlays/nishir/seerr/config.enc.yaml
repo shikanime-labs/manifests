@@ -1,0 +1,293 @@
+clientId: 1a570e7b-b30e-4235-a254-aa9bee781b9b
+sessionSecret: ENC[AES256_GCM,data:WoH7O8JVfehUUmwiWqZV87yiP1Y6OK0Lg+CB7+dBDeHlICnMsW/BI0uVbYtcC79DZYis2PaeAEHGbd1Uaq8rAQ==,iv:Uvf9dfK1lsGimLzc5IhSwMQATNAulMZHpCqT49nX7MM=,tag:ifT89vBD7nSUB2YsKadjvg==,type:str]
+vapidPrivate: ENC[AES256_GCM,data:ifH4+qfKlIx1VV/KL67JqjhEhF8dN4UN+q89jC63/DJ4ihA8D1GR7hsTfg==,iv:NTkNwfmpqvIw+wCTfdIxdPoUY5uhCANXmY2ydAkc3+0=,tag:rVLcasPHJhA+37ZbdfoIlg==,type:str]
+vapidPublic: ENC[AES256_GCM,data:6St/JGxmDijdpvjf3jyok0lhxXrkcu9ey4T3dP0RntkkU20kMm3ZcNcLP2dGUra81/+Hn1q5hMzITAuqRbNNSaXM4drOjSaYvOUVA7CY3NtQ9/Lrvumd,iv:JCJaW4opDS2AaPV/avNNHf2dEp8PgC+qLPH8i11hjEs=,tag:tZkKDlU3CoIBe1nCe3CQVw==,type:str]
+main:
+    apiKey: ENC[AES256_GCM,data:VZMb3IC06Yjjs2NxAfCUmqA+jRw7knwMyNyH6woQfUe3rA+zxp7joCZ8ag3Mvy8aFfk/kdRMenA51MBkIR5zdchUJzo=,iv:Ih51EVWzTGRP613MLoNdtZeuDc2hVlB/ufEcHw2UVM8=,tag:WpiurAr/gq/3OXQEM33KpA==,type:str]
+    applicationTitle: Seerr
+    applicationUrl: https://seerr.i.shikanime.studio
+    cacheImages: true
+    defaultPermissions: 8388768
+    defaultQuotas:
+        movie:
+            quotaLimit: 0
+            quotaDays: 7
+        tv:
+            quotaLimit: 0
+            quotaDays: 7
+    hideAvailable: false
+    hideBlocklisted: false
+    hideRequested: false
+    localLogin: true
+    mediaServerLogin: true
+    newPlexLogin: true
+    discoverRegion: ""
+    streamingRegion: FR
+    originalLanguage: ""
+    blocklistRegion: ""
+    blocklistLanguage: ""
+    blocklistedTags: ""
+    blocklistedTagsLimit: 50
+    mediaServerType: 2
+    partialRequestsEnabled: true
+    enableSpecialEpisodes: true
+    locale: en
+    youtubeUrl: ""
+    versionCheck: true
+plex:
+    name: ""
+    ip: ""
+    port: 32400
+    useSsl: false
+    libraries: []
+jellyfin:
+    name: nishir
+    ip: jellyfin.shikanime.svc.cluster.local
+    port: 8920
+    useSsl: true
+    urlBase: ""
+    externalHostname: https://jellyfin.i.shikanime.studio
+    jellyfinForgotPasswordUrl: ENC[AES256_GCM,data:dH04PTv9lmwaLgtkdv/u4ZBlCp9bmKs/guy57CT/p0fZsGTNyYN41h3z+FCPtqEIVomeyH6ofPg=,iv:IQINg8reCCxfDxPCugZpsNESViyk0Zp945Mo+8/G7IU=,tag:nG3dLHsWeWY4GgMhHcUr1g==,type:str]
+    libraries:
+        - id: f137a2dd21bbc1b99aa5c0f6bf02a805
+          name: Movies
+          enabled: true
+          type: movie
+        - id: a656b907eb3a73532e40e44b968d0225
+          name: Shows
+          enabled: true
+          type: show
+        - id: bda69716f5f5f93a2330540b1db54498
+          name: Sukebe Doujins
+          enabled: false
+          type: movie
+        - id: 16697aacf770ddf48bc221ce97bdf3c4
+          name: Sukebe Scenes
+          enabled: false
+          type: movie
+        - id: 116d2a7602a40900bd0ce9c814aea6de
+          name: Sukebe Shows
+          enabled: true
+          type: show
+    serverId: e26fda2efb534c53be54c896afb1b594
+    apiKey: ENC[AES256_GCM,data:AD6up22YI+BDQRh5lvlcAFZwNU6W+UQNPMfOx/IXBpM=,iv:829AEn8+c3f6FvQVbp7n9m79OedoD+4Gq5Xb86MvvWg=,tag:MzrcrPVU16FpFWn4KTpMFA==,type:str]
+tautulli: {}
+metadataSettings:
+    tv: tmdb
+    anime: tmdb
+radarr:
+    - name: radarr
+      hostname: radarr.shikanime.svc.cluster.local
+      port: 9898
+      apiKey: ENC[AES256_GCM,data:sG5eISKGQekl/e7x7jcs6ZUKbDEDxkbatNJoXcu2hWw=,iv:871HPILmx4JmXfUQRTjn/CO5ju8RM4X+0v5NOn1LQvo=,tag:cb3vTUgEGDItLm4hN7Tu7Q==,type:str]
+      useSsl: true
+      baseUrl: ""
+      activeProfileId: 7
+      activeProfileName: Standard
+      activeDirectory: /data/movies
+      is4k: false
+      minimumAvailability: released
+      tags: []
+      isDefault: true
+      externalUrl: https://radarr.taila659a.ts.net
+      syncEnabled: true
+      preventSearch: false
+      tagRequests: false
+      id: 0
+sonarr:
+    - name: sonarr
+      hostname: sonarr.shikanime.svc.cluster.local
+      port: 9898
+      apiKey: ENC[AES256_GCM,data:V/EBLqBd2geVZc6vqjetddgViPK6uq21Pf0NY+XFw4Q=,iv:oBxSnl8StlpI1z/xSqYAX9cih8pQZvL+zMRF40uzBtY=,tag:N6aA68UbcgmwSZBwxuLEZg==,type:str]
+      useSsl: true
+      baseUrl: ""
+      activeProfileId: 8
+      activeProfileName: Standard
+      activeDirectory: /data/shows
+      animeSeriesType: anime
+      activeAnimeProfileId: 1
+      activeAnimeProfileName: Anime
+      activeAnimeDirectory: /data/shows
+      tags: []
+      animeTags: []
+      is4k: false
+      isDefault: true
+      enableSeasonFolders: false
+      externalUrl: https://sonarr.taila659a.ts.net
+      syncEnabled: true
+      preventSearch: false
+      tagRequests: false
+      monitorNewItems: all
+      id: 0
+public:
+    initialized: true
+notifications:
+    agents:
+        email:
+            enabled: false
+            embedPoster: true
+            options:
+                userEmailRequired: false
+                emailFrom: ""
+                smtpHost: ""
+                smtpPort: 587
+                secure: false
+                ignoreTls: false
+                requireTls: false
+                allowSelfSigned: false
+                senderName: Seerr
+                usePublicLogo: false
+        discord:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                webhookUrl: ""
+                webhookRoleId: ""
+                enableMentions: true
+                locale: en
+                useUserLocale: true
+        slack:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                webhookUrl: ""
+                locale: en
+        telegram:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                botAPI: ""
+                chatId: ""
+                messageThreadId: ""
+                sendSilently: false
+        pushbullet:
+            enabled: false
+            embedPoster: false
+            types: 0
+            options:
+                accessToken: ""
+        pushover:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                accessToken: ""
+                userToken: ""
+                sound: ""
+        webhook:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                webhookUrl: ""
+                jsonPayload: IntcbiAgXCJub3RpZmljYXRpb25fdHlwZVwiOiBcInt7bm90aWZpY2F0aW9uX3R5cGV9fVwiLFxuICBcImV2ZW50XCI6IFwie3tldmVudH19XCIsXG4gIFwic3ViamVjdFwiOiBcInt7c3ViamVjdH19XCIsXG4gIFwibWVzc2FnZVwiOiBcInt7bWVzc2FnZX19XCIsXG4gIFwiaW1hZ2VcIjogXCJ7e2ltYWdlfX1cIixcbiAgXCJ7e21lZGlhfX1cIjoge1xuICAgIFwibWVkaWFfdHlwZVwiOiBcInt7bWVkaWFfdHlwZX19XCIsXG4gICAgXCJ0bWRiSWRcIjogXCJ7e21lZGlhX3RtZGJpZH19XCIsXG4gICAgXCJ0dmRiSWRcIjogXCJ7e21lZGlhX3R2ZGJpZH19XCIsXG4gICAgXCJzdGF0dXNcIjogXCJ7e21lZGlhX3N0YXR1c319XCIsXG4gICAgXCJzdGF0dXM0a1wiOiBcInt7bWVkaWFfc3RhdHVzNGt9fVwiXG4gIH0sXG4gIFwie3tyZXF1ZXN0fX1cIjoge1xuICAgIFwicmVxdWVzdF9pZFwiOiBcInt7cmVxdWVzdF9pZH19XCIsXG4gICAgXCJyZXF1ZXN0ZWRCeV9lbWFpbFwiOiBcInt7cmVxdWVzdGVkQnlfZW1haWx9fVwiLFxuICAgIFwicmVxdWVzdGVkQnlfdXNlcm5hbWVcIjogXCJ7e3JlcXVlc3RlZEJ5X3VzZXJuYW1lfX1cIixcbiAgICBcInJlcXVlc3RlZEJ5X2F2YXRhclwiOiBcInt7cmVxdWVzdGVkQnlfYXZhdGFyfX1cIixcbiAgICBcInJlcXVlc3RlZEJ5X3NldHRpbmdzX2Rpc2NvcmRJZFwiOiBcInt7cmVxdWVzdGVkQnlfc2V0dGluZ3NfZGlzY29yZElkfX1cIixcbiAgICBcInJlcXVlc3RlZEJ5X3NldHRpbmdzX3RlbGVncmFtQ2hhdElkXCI6IFwie3tyZXF1ZXN0ZWRCeV9zZXR0aW5nc190ZWxlZ3JhbUNoYXRJZH19XCJcbiAgfSxcbiAgXCJ7e2lzc3VlfX1cIjoge1xuICAgIFwiaXNzdWVfaWRcIjogXCJ7e2lzc3VlX2lkfX1cIixcbiAgICBcImlzc3VlX3R5cGVcIjogXCJ7e2lzc3VlX3R5cGV9fVwiLFxuICAgIFwiaXNzdWVfc3RhdHVzXCI6IFwie3tpc3N1ZV9zdGF0dXN9fVwiLFxuICAgIFwicmVwb3J0ZWRCeV9lbWFpbFwiOiBcInt7cmVwb3J0ZWRCeV9lbWFpbH19XCIsXG4gICAgXCJyZXBvcnRlZEJ5X3VzZXJuYW1lXCI6IFwie3tyZXBvcnRlZEJ5X3VzZXJuYW1lfX1cIixcbiAgICBcInJlcG9ydGVkQnlfYXZhdGFyXCI6IFwie3tyZXBvcnRlZEJ5X2F2YXRhcn19XCIsXG4gICAgXCJyZXBvcnRlZEJ5X3NldHRpbmdzX2Rpc2NvcmRJZFwiOiBcInt7cmVwb3J0ZWRCeV9zZXR0aW5nc19kaXNjb3JkSWR9fVwiLFxuICAgIFwicmVwb3J0ZWRCeV9zZXR0aW5nc190ZWxlZ3JhbUNoYXRJZFwiOiBcInt7cmVwb3J0ZWRCeV9zZXR0aW5nc190ZWxlZ3JhbUNoYXRJZH19XCJcbiAgfSxcbiAgXCJ7e2NvbW1lbnR9fVwiOiB7XG4gICAgXCJjb21tZW50X21lc3NhZ2VcIjogXCJ7e2NvbW1lbnRfbWVzc2FnZX19XCIsXG4gICAgXCJjb21tZW50ZWRCeV9lbWFpbFwiOiBcInt7Y29tbWVudGVkQnlfZW1haWx9fVwiLFxuICAgIFwiY29tbWVudGVkQnlfdXNlcm5hbWVcIjogXCJ7e2NvbW1lbnRlZEJ5X3VzZXJuYW1lfX1cIixcbiAgICBcImNvbW1lbnRlZEJ5X2F2YXRhclwiOiBcInt7Y29tbWVudGVkQnlfYXZhdGFyfX1cIixcbiAgICBcImNvbW1lbnRlZEJ5X3NldHRpbmdzX2Rpc2NvcmRJZFwiOiBcInt7Y29tbWVudGVkQnlfc2V0dGluZ3NfZGlzY29yZElkfX1cIixcbiAgICBcImNvbW1lbnRlZEJ5X3NldHRpbmdzX3RlbGVncmFtQ2hhdElkXCI6IFwie3tjb21tZW50ZWRCeV9zZXR0aW5nc190ZWxlZ3JhbUNoYXRJZH19XCJcbiAgfSxcbiAgXCJ7e2V4dHJhfX1cIjogW11cbn0i
+        webpush:
+            enabled: false
+            embedPoster: true
+            options: {}
+        gotify:
+            enabled: false
+            embedPoster: false
+            types: 0
+            options:
+                url: ""
+                token: ""
+                priority: 0
+                locale: en
+        ntfy:
+            enabled: false
+            embedPoster: true
+            types: 0
+            options:
+                url: ""
+                topic: ""
+                tags: ""
+                priority: 3
+                locale: en
+jobs:
+    plex-recently-added-scan:
+        schedule: 0 */5 * * * *
+    plex-full-scan:
+        schedule: 0 0 3 * * *
+    plex-watchlist-sync:
+        schedule: 0 */3 * * * *
+    plex-refresh-token:
+        schedule: ENC[AES256_GCM,data:9PwopJAdzUa/3SQ=,iv:1UdiHRTYldYfVHkJxU/xTsi0/MDZmZRo1Hkaa5DQY7Y=,tag:g4nx6vPbchsNvm2arBTOCg==,type:str]
+    radarr-scan:
+        schedule: 0 0 4 * * *
+    sonarr-scan:
+        schedule: 0 30 4 * * *
+    availability-sync:
+        schedule: 0 0 5 * * *
+    download-sync:
+        schedule: 0 * * * * *
+    download-sync-reset:
+        schedule: 0 0 1 * * *
+    jellyfin-recently-added-scan:
+        schedule: 0 */5 * * * *
+    jellyfin-full-scan:
+        schedule: 0 0 3 * * *
+    image-cache-cleanup:
+        schedule: 0 0 5 * * *
+    process-blocklisted-tags:
+        schedule: 0 30 1 */7 * *
+network:
+    csrfProtection: false
+    forceIpv4First: false
+    trustProxy: false
+    proxy:
+        enabled: false
+        hostname: ""
+        port: 8080
+        useSsl: false
+        user: ""
+        password: ""
+        bypassFilter: ""
+        bypassLocalAddresses: true
+    dnsCache:
+        enabled: true
+        forceMinTtl: 0
+        forceMaxTtl: -1
+    apiRequestTimeout: 10000
+migrations:
+    - 0007_migrate_arr_tags
+    - 0008_migrate_blacklist_to_blocklist
+jellyfinIp: jellyfin.shikanime.svc.cluster.local
+jellyfinUseSsl: false
+jellyfinPort: 8096
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqYWNOdE1pbmY3cWZobFRy
+            WUM4YVFmZHAzazB4UHVxUU1wbDlsSFZnOHhRCm1hMDZwei9jaU5wSnRhNFhiektB
+            aElWcXBBNnVtR3dFMi9HdnVWSmd0bzQKLS0tIE4vY3E3WWIrM2lpdmRjejJLTHg5
+            dWZxL1U5QW1BcXBPSlh1a2hha0lmeEEKd0S7awbN1+zsQiS2WhiiOelr4pF7RosR
+            kpPTPzxuM6rz9Z5IS7b0XAf+T0yykzpfOoBV09tHA4kN150Id8FqMQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0RUVQSXhFRU0zNlJ4NGxD
+            OVR1NTdpVklvNE03ckFseFZJdWFFS2lUWlNNCmRHaTBrVWhFM0MwS3d1Qm5EUjRN
+            QUpSTERyZjJqUSt0ZWdpemVMdmxsQ2MKLS0tIGswdkxSRHdlMktyY1ZocG0xcWph
+            eGpXT29GMkJTUjROa3VtOEJyWC9RUjgKPlK1O71gNTtpUDdEvniw/WYbq5ykNAT/
+            Y8pO0M35h7ZYzOqG2GBkjD21DpJ35FXLCGfbX4PHzSo8kZ5gSqYcNg==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUVVJuSUgvWWI3bXdkVmNj
+            blBIcHI3NExLMi9HaENoUkZDeWF4TkpJVEdBCmxKSTdMUnVJdzgyL0xHMFg5OEQw
+            QlBiNVNIbk9aWmlXU05RTVlaOXcxZUEKLS0tICt6UHlRNG9ZRXBSSGdDTlF1VzNn
+            K2ZjRG51U2tDdyt6ZjlGMGxxQ2w4QWMKS2gsXGb011LFGo+h20yp8uRObuLJldl/
+            Ip6salHxkPKEaxjsgrzKX7veMvIN2GspceB4rTxah3mX0ZIOxkDEyQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    encrypted_regex: (?i)(sessionSecret|vapidPrivate|vapidPublic|apiKey|apisecret|clientSecret|password|token|secret|key)
+    lastmodified: "2026-10-09T18:14:54Z"
+    mac: ENC[AES256_GCM,data:3BCRFHX5DQWxiljOy7RRqZh5LVuuRFo4/Vw4qwSpofSPKhXpdq6I2+rDOhuHl7bgOqksh4CkvXssLucxDrCaCcuqp/5rkHwlSMdLWXAoy4PcqDeOJH1t3W78++22iJNxPa9nRl1ats01cxrTRFA/QDznhY+diFuP3C2CfDIeNos=,iv:GiN5QYL1aJp7hgM2KaqAOYmQDrLErexMKYuFOZDeX4s=,tag:3hHu8bCWUtu5O6qzuqCc2A==,type:str]
+    version: 3.13.3
