@@ -18,6 +18,26 @@ spec:
         app.kubernetes.io/instance: jellyfin
         app.kubernetes.io/name: jellyfin
     spec:
+      initContainers:
+        - name: config-sync
+          image: rclone
+          args:
+            - copy
+            - --copy-links
+            - /mnt/startup-config/
+            - /mnt/config/config/
+          command:
+            - rclone
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
+          securityContext:
+            capabilities:
+              add:
+                - FOWNER
       containers:
         - name: jellyfin
           image: jellyfin
@@ -64,6 +84,10 @@ spec:
               mountPath: /config
       securityContext:
         fsGroup: 1000
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: jellyfin
   volumeClaimTemplates:
     - metadata:
         name: cache

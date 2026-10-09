@@ -17,8 +17,12 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: whisparr
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: tailscale-system
       ports:
         - port: https
+        - port: http
   podSelector:
     matchLabels:
       app.kubernetes.io/instance: prowlarr

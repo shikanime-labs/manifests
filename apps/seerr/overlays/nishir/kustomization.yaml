@@ -31,3 +31,7 @@ patches:
     target:
       name: seerr-redirect
       kind: HTTPRoute
+secretGenerator:
+  - name: seerr
+    files:
+      - settings.json=seerr/config.enc.yaml
