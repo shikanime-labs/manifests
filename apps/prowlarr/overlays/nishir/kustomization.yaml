@@ -33,6 +33,19 @@ patches:
         - name: prowlarr
           sectionName: https
     target:
+      name: prowlarr-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - prowlarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: prowlarr
+          sectionName: https
+    target:
       name: prowlarr-health
       kind: HTTPRoute
   - patch: |-
