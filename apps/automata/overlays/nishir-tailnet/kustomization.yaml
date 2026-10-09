@@ -37,6 +37,9 @@ patches:
       - op: add
         path: /spec/hostnames/-
         value: automata.taila659a.ts.net
+      - op: add
+        path: /spec/hostnames/-
+        value: automata-webhook.taila659a.ts.net
     target:
       name: hermes-agent-webhook
       kind: HTTPRoute
