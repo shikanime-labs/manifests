@@ -63,6 +63,10 @@ spec:
               mountPath: /data/registration.yaml
               readOnly: true
               subPath: registration.yaml
+          resources:
+            requests:
+              cpu: 25m
+              memory: 250Mi
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:

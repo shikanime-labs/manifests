@@ -41,6 +41,10 @@ spec:
       containers:
         - name: prowlarr
           image: prowlarr
+          resources:
+            requests:
+              cpu: 25m
+              memory: 260Mi
           env:
             - name: PUID
               value: "1000"

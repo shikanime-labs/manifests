@@ -41,6 +41,10 @@ spec:
       containers:
         - name: seerr
           image: seerr
+          resources:
+            requests:
+              cpu: 25m
+              memory: 423Mi
           livenessProbe:
             failureThreshold: 3
             httpGet:
