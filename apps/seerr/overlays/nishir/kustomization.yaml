@@ -5,6 +5,7 @@ resources:
 namespace: shikanime
 patches:
   - path: patch-sts.yaml
+  - path: patch-config-sts.yaml
   - patch: |-
       - op: add
         path: /spec/hostnames
@@ -31,3 +32,11 @@ patches:
     target:
       name: seerr-redirect
       kind: HTTPRoute
+secretGenerator:
+  - name: seerr
+    files:
+      - settings.json=seerr/config.enc.yaml
+images:
+  - name: rclone
+    newName: rclone/rclone
+    newTag: 1.75.2@sha256:2687085f718d3c628f7fdfb77c52a1d344332aed543110bb88088f2c70d43eb5
