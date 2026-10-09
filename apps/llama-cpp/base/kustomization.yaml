@@ -8,7 +8,7 @@ resources:
 images:
   - name: llama-cpp
     newName: ghcr.io/shikanime-labs/machines/llama-cpp
-    digest: sha256:8ddc2d08fcee2af346b2ad3ff0695bb40948a12296c69072d6c7d7101f1f2812
+    digest: sha256:71e39797e57d7eea2efdc4deea6040ccfe1cb2416773a7bb2f0b4e0ef614cd5a
   - name: huggingface
     newName: ghcr.io/shikanime-labs/machines/huggingface
     digest: sha256:68e5c95a2f748d960a7520d5aacd08f920449ba911bb421c51579050e841eed1
