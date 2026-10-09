@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: catbox
+  name: automata
   namespace: shikanime
 spec:
   ingress:
@@ -26,7 +26,7 @@ spec:
         - port: webhook
   podSelector:
     matchLabels:
-      app.kubernetes.io/instance: catbox
-      app.kubernetes.io/name: catbox
+      app.kubernetes.io/instance: automata
+      app.kubernetes.io/name: automata
   policyTypes:
     - Ingress

@@ -76,10 +76,6 @@ spec:
               value: main
             - name: SONARR__UPDATE__MECHANISM
               value: Docker
-          resources:
-            requests:
-              cpu: 35m
-              memory: 1658Mi
           securityContext:
             capabilities:
               add:

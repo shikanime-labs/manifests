@@ -11,6 +11,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-      - containerName: metatube
-        maxAllowed:
-          memory: 4Gi
+    - containerName: metatube
+      maxAllowed:
+        memory: 4Gi

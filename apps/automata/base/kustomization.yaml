@@ -3,19 +3,19 @@ resources:
   - pvc.yaml
   - svc.yaml
   - vm.yaml
-configurations:
-  - namereference.yaml
 secretGenerator:
-  - name: catbox-authorized-keys
+  - name: automata-authorized-keys
     options:
       disableNameSuffixHash: true
     files:
       - authorized-keys/userdata
+configurations:
+  - namereference.yaml
 patches:
   - patch: |-
       - op: replace
         path: /spec/template/spec/volumes/0/containerDisk/image
-        value: ghcr.io/shikanime-labs/machines/catbox:latest@sha256:c790de09faac6b16bd5ae78fb5492629acb59288f2bd31f08a5ef887feaa9280
+        value: ghcr.io/shikanime-labs/machines/automata:latest@sha256:cfd1654f7b4451eafbff6f3e3a81ca2e33d19ecb8defd66b460e94eebad038cc
     target:
-      name: catbox
+      name: automata
       kind: VirtualMachine

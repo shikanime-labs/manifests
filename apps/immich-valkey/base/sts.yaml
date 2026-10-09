@@ -44,10 +44,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-          resources:
-            requests:
-              cpu: 25m
-              memory: 250Mi
           securityContext:
             capabilities:
               add:

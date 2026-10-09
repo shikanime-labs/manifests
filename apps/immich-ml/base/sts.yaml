@@ -23,8 +23,7 @@ spec:
           image: immich-machine-learning
           resources:
             requests:
-              memory: 3320Mi
-              cpu: 25m
+              memory: 3Gi
           env:
             - name: TZ
               value: Europe/Paris

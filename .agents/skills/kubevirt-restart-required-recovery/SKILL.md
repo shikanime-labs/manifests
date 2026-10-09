@@ -51,7 +51,7 @@ this is expected behaviour, not a manifest defect.
 
 If VM readiness is not needed as a deploy gate, remove the
 `VirtualMachine/<name>` entry from `healthChecks` in the owning Kustomization
-(e.g. `clusters/nishir/overlays/tailnet/ks.yaml`, `apps-catbox`). Deliberate
+(e.g. `clusters/nishir/overlays/tailnet/ks.yaml`, `apps-automata`). Deliberate
 trade-off: the gate exists to surface this drift — document it in the PR.
 
 ## Verification

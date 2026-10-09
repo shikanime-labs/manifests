@@ -27,11 +27,7 @@ patches:
         path: /spec/parentRefs
         value:
         - name: seerr
-          sectionName: https
+          sectionName: http
     target:
       name: seerr-redirect
       kind: HTTPRoute
-secretGenerator:
-  - name: seerr
-    files:
-      - settings.json=seerr/config.enc.yaml

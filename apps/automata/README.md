@@ -1,14 +1,14 @@
-# catbox
+# automata
 
 KubeVirt VM running the hermes-agent natively via the upstream NixOS module
-(see shikanime-labs/machines, hosts/catbox), published as
-`ghcr.io/shikanime-labs/machines/catbox:latest` containerDisk (NixOS qcow2,
+(see shikanime-labs/machines, hosts/automata), published as
+`ghcr.io/shikanime-labs/machines/automata:latest` containerDisk (NixOS qcow2,
 no CDI). SSH :22 and mDNS :5353/UDP are exposed over a LoadBalancer Service;
-boots on amd64 nodes with a 64Gi `catbox-workspaces` PVC.
+boots on amd64 nodes with a 64Gi `automata-workspaces` PVC.
 
 Serves the automata stack — dashboard :9119, api-server :8642, a2a :9900,
 webhook :8644. All automata hostnames route through the envoy Gateway and
-backend to the `catbox` Service.
+backend to the `automata` Service.
 
 ## Layout
 

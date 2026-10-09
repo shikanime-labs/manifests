@@ -24,7 +24,6 @@ spec:
           resources:
             requests:
               memory: 24Gi
-              cpu: 25m
           livenessProbe:
             httpGet:
               path: /api/server/ping

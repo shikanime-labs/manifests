@@ -1,6 +1,6 @@
 resources:
   - ../../base
   - netpol.yaml
-namespace: shikanime
 components:
   - ../../components/monitoring
+namespace: shikanime

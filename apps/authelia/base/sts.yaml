@@ -57,10 +57,6 @@ spec:
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: "template"
-          resources:
-            requests:
-              cpu: 25m
-              memory: 250Mi
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
