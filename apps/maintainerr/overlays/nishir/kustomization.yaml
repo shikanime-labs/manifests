@@ -32,6 +32,19 @@ patches:
         - name: maintainerr
           sectionName: https
     target:
+      name: maintainerr-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - maintainerr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: maintainerr
+          sectionName: https
+    target:
       name: maintainerr-health
       kind: HTTPRoute
   - patch: |-
