@@ -41,6 +41,10 @@ spec:
       containers:
         - name: jellyfin
           image: jellyfin
+          resources:
+            requests:
+              cpu: 49m
+              memory: 1484Mi
           env:
             - name: PUID
               value: "1000"

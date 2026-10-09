@@ -3,8 +3,28 @@ resources:
   - envoyproxy.yaml
   - gatewayclass.yaml
   - httproute.yaml
+  - tcproute.yaml
 namespace: shikanime
 patches:
+  - patch: |-
+      - op: add
+        path: /spec/listeners/-
+        value:
+          name: ldaps
+          port: 6360
+          protocol: TCP
+    target:
+      name: lldap
+      kind: Gateway
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: lldap
+            sectionName: ldaps
+    target:
+      name: lldap-ldaps
+      kind: TCPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames/-

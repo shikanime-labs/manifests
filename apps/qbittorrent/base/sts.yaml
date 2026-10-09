@@ -24,6 +24,7 @@ spec:
           resources:
             requests:
               memory: 7Gi
+              cpu: 126m
           env:
             - name: QBT_LEGAL_NOTICE
               value: confirm
