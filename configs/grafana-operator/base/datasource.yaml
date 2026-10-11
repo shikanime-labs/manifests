@@ -11,6 +11,7 @@ spec:
     name: VictoriaLogs
     url: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
     type: victoriametrics-logs-datasource
+    uid: VictoriaLogs
     access: proxy
     isDefault: false
   plugins:
