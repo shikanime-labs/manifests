@@ -104,7 +104,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 12Gi
+            storage: 16Gi
         storageClassName: longhorn-standard
         volumeMode: Filesystem
         accessModes:
