@@ -32,13 +32,13 @@ MAX_MESSAGE_CONTENT_CHARS = 2000 # Max chars per message in tool results
 
 # Embedding settings
 [embedding]
-VECTOR_DIMENSIONS = 1536
+VECTOR_DIMENSIONS = 4096
 MAX_INPUT_TOKENS = 8192
 MAX_TOKENS_PER_REQUEST = 300000
 
 [embedding.model_config]
 transport = "openai"
-model = "openai/text-embedding-3-small"
+model = "qwen/qwen3-embedding-8b"
 
 [embedding.model_config.overrides]
 base_url = "https://inference.i.shikanime.studio/v1"
