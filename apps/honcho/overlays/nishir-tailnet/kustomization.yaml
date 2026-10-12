@@ -23,7 +23,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: honcho.taila659a.ts.net
+        value: honcho-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
@@ -35,7 +35,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: honcho.taila659a.ts.net
+        value: honcho-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
