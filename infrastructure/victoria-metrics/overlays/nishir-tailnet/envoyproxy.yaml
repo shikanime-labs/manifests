@@ -12,5 +12,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: grafana
+          tailscale.com/hostname: grafana-gateway
           tailscale.com/tags: "tag:victoria-metrics"
