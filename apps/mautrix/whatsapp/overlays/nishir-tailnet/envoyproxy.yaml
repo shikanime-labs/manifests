@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: mautrix-whatsapp
+          tailscale.com/hostname: mautrix-whatsapp-gateway
           tailscale.com/tags: "tag:matrix"
