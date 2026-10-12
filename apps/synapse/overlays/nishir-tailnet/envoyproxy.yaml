@@ -20,6 +20,6 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: synapse
+          tailscale.com/hostname: synapse-gateway
           tailscale.com/tags: "tag:matrix"
           tailscale.com/funnel: "true"
