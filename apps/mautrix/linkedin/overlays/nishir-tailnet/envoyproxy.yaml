@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: mautrix-linkedin
+          tailscale.com/hostname: mautrix-linkedin-gateway
           tailscale.com/tags: "tag:matrix"
