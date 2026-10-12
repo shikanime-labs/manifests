@@ -12,3 +12,4 @@ spec:
   resourcePolicy:
     containerPolicies:
       - containerName: llama-cpp
+        controlledResources: ["cpu"]
