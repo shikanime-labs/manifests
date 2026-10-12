@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: immich
+          tailscale.com/hostname: immich-gateway
           tailscale.com/tags: "tag:immich"
