@@ -1,0 +1,10 @@
+resources:
+  - deploy.yaml
+  - netpol.yaml
+  - routes.yaml
+  - svc.yaml
+  - tcproute.yaml
+images:
+  - name: blocky
+    newName: ghcr.io/0xerr0r/blocky
+    newTag: v0.35.0@sha256:4f165b63db0d76c96ecc47c7a8f57caeedc003a912bdce29abb0e283ce02e16b

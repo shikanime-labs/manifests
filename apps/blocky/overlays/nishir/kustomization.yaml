@@ -1,0 +1,52 @@
+resources:
+  - ../../base
+  - cert.yaml
+  - gateway.yaml
+components:
+  - ../../components/monitoring
+namespace: shikanime
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - ns.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: blocky
+          sectionName: https
+    target:
+      name: blocky
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - ns.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: blocky
+          sectionName: http
+    target:
+      name: blocky-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: blocky
+          sectionName: dns-udp
+    target:
+      name: blocky
+      kind: UDPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: blocky
+          sectionName: dns
+    target:
+      name: blocky
+      kind: TCPRoute

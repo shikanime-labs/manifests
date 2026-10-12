@@ -1,0 +1,20 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: blocky
+  labels:
+    app.kubernetes.io/name: blocky
+    app.kubernetes.io/part-of: blocky
+spec:
+  endpoints:
+    - interval: 60s
+      path: /metrics
+      port: http
+      scrapeTimeout: 30s
+  namespaceSelector:
+    matchNames:
+      - shikanime
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: blocky
+      app.kubernetes.io/name: blocky
