@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: lldap
+          tailscale.com/hostname: lldap-gateway
           tailscale.com/tags: "tag:lldap"
