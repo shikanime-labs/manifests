@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: sonarr
+          tailscale.com/hostname: sonarr-gateway
           tailscale.com/tags: "tag:sonarr"
