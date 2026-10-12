@@ -17,4 +17,4 @@ the 32Gi `jellyfin-config` PVC, and the NetworkPolicy admits the servarr family
   (pci-0380_1002) + 2.5g node affinity (ffmpeg VAAPI works on both), SOPS
   secrets.
 - `overlays/nishir-tailnet/` — Tailscale Ingress (defaultBackend https), netpol
-  for tailscale-system/vmagent, published URL jellyfin.taila659a.ts.net.
+  for tailscale-system/vmagent, published URL jellyfin-gateway.taila659a.ts.net.
