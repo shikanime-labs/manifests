@@ -7,14 +7,14 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: sonarr.taila659a.ts.net
+        value: sonarr-gateway.taila659a.ts.net
     target:
       name: sonarr-api
       kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: sonarr.taila659a.ts.net
+        value: sonarr-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
@@ -26,7 +26,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: sonarr.taila659a.ts.net
+        value: sonarr-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
