@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: forgejo
+          tailscale.com/hostname: forgejo-gateway
           tailscale.com/tags: "tag:forgejo,tag:git,tag:git"
