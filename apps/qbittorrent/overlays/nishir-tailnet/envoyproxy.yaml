@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: qbittorrent
+          tailscale.com/hostname: qbittorrent-gateway
           tailscale.com/tags: "tag:qbittorrent,tag:bittorrent,tag:bittorrent"
