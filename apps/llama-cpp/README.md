@@ -135,7 +135,7 @@ nous/openrouter.
 The llama.cpp built-in chat UI (same `:9931` port) is exposed through the
 dedicated BYOD `llama-cpp` Gateway (`GatewayClass` + `EnvoyProxy` +
 `Gateway` in `overlays/nishir-tailnet/`, tailscale loadBalancerClass) at
-`llama-cpp.i.shikanime.studio` / `llama-cpp.taila659a.ts.net`, behind
+`llama-cpp.i.shikanime.studio` / `llama-cpp-gateway.taila659a.ts.net`, behind
 authelia OIDC (`SecurityPolicy llama-cpp-oidc-client`) with TLS from the
 `studio-shikanime-i-llama-cpp` Certificate. Browser
 `/v1` calls are split onto the `llama-cpp-api` HTTPRoute (with the overlay
