@@ -7,7 +7,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: bazarr.taila659a.ts.net
+        value: bazarr-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
@@ -19,7 +19,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: bazarr.taila659a.ts.net
+        value: bazarr-gateway.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:

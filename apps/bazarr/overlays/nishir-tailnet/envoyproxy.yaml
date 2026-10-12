@@ -20,5 +20,5 @@ spec:
         type: LoadBalancer
         loadBalancerClass: tailscale
         annotations:
-          tailscale.com/hostname: bazarr
+          tailscale.com/hostname: bazarr-gateway
           tailscale.com/tags: "tag:bazarr"
