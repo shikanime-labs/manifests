@@ -29,3 +29,12 @@ spec:
         - name: shows-data
           persistentVolumeClaim:
             claimName: shows-data
+        - name: startup-config
+          secret:
+            secretName: bazarr
+      initContainers:
+        - name: config-sync
+          volumeMounts:
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true

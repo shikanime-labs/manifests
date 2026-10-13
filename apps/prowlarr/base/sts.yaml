@@ -31,9 +31,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /mnt/config
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
           securityContext:
             capabilities:
               add:
@@ -96,9 +93,6 @@ spec:
         - name: run
           emptyDir:
             medium: Memory
-        - name: startup-config
-          secret:
-            secretName: prowlarr
   volumeClaimTemplates:
     - metadata:
         name: config

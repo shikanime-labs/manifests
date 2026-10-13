@@ -86,9 +86,6 @@ spec:
               mountPath: /config/rclone/rclone.conf
               readOnly: true
               subPath: rclone.conf
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
           securityContext:
             capabilities:
               add:
@@ -99,9 +96,6 @@ spec:
         - name: rclone-config
           configMap:
             name: qbittorrent-rclone
-        - name: startup-config
-          secret:
-            secretName: qbittorrent
   volumeClaimTemplates:
     - metadata:
         name: config

@@ -10,3 +10,13 @@ spec:
           env:
             - name: NODE_EXTRA_CA_CERTS
               value: /etc/ssl/certs/ca-certificates.crt
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: seerr
+      initContainers:
+        - name: config-sync
+          volumeMounts:
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true

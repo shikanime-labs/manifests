@@ -2,6 +2,7 @@ resources:
   - ../../base
 namespace: shikanime
 patches:
+  - path: patch-sts.yaml
 secretGenerator:
   - name: honcho-postgres-env
     type: basic-auth

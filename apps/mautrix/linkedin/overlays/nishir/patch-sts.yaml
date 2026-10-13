@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mautrix-linkedin
+spec:
+  template:
+    spec:
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: mautrix-linkedin
+      containers:
+        - name: mautrix
+          volumeMounts:
+            - name: startup-config
+              mountPath: /data/config.yaml
+              readOnly: true
+              subPath: config.yaml
+            - name: startup-config
+              mountPath: /data/doublepuppet.yaml
+              readOnly: true
+              subPath: doublepuppet.yaml
+            - name: startup-config
+              mountPath: /data/registration.yaml
+              readOnly: true
+              subPath: registration.yaml

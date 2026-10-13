@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: authelia
+spec:
+  template:
+    spec:
+      volumes:
+        - name: config
+          secret:
+            secretName: authelia
+      containers:
+        - name: authelia
+          volumeMounts:
+            - name: config
+              mountPath: /config/configuration.enc.yaml
+              subPath: configuration.enc.yaml
+              readOnly: true

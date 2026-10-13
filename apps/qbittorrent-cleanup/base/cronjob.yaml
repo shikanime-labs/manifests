@@ -19,9 +19,6 @@ spec:
               env:
                 - name: QBT_URL
                   value: https://qbittorrent.shikanime.svc.cluster.local:8080
-              envFrom:
-                - secretRef:
-                    name: qbittorrent-cleanup-env
           restartPolicy: Never
   schedule: "*/2 * * * *"
   successfulJobsHistoryLimit: 3

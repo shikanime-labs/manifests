@@ -51,18 +51,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-            - name: startup-config
-              mountPath: /data/config.yaml
-              readOnly: true
-              subPath: config.yaml
-            - name: startup-config
-              mountPath: /data/doublepuppet.yaml
-              readOnly: true
-              subPath: doublepuppet.yaml
-            - name: startup-config
-              mountPath: /data/registration.yaml
-              readOnly: true
-              subPath: registration.yaml
           resources:
             requests:
               cpu: 25m
@@ -76,10 +64,6 @@ spec:
                 - SETGID
       securityContext:
         fsGroup: 1337
-      volumes:
-        - name: startup-config
-          secret:
-            secretName: mautrix-meta
   volumeClaimTemplates:
     - metadata:
         name: data

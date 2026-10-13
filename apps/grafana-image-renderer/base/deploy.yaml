@@ -43,12 +43,6 @@ spec:
             runAsGroup: 10001
             runAsNonRoot: true
             runAsUser: 10001
-          env:
-            - name: AUTH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: grafana-image-renderer-token
-                  key: auth-token
       volumes:
         - name: tmp
           emptyDir: {}

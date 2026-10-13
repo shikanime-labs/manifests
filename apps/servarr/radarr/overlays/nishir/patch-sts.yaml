@@ -23,6 +23,9 @@ spec:
             - name: downloads-radarr-data
               mountPath: /downloads/radarr
               subPath: radarr
+          envFrom:
+            - secretRef:
+                name: radarr-env
       volumes:
         - name: movies-data
           persistentVolumeClaim:

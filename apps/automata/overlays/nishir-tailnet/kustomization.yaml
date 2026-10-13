@@ -4,6 +4,7 @@ resources:
   - netpol.yaml
 namespace: shikanime
 patches:
+  - path: patch-vm.yaml
   - path: patch-svc.yaml
   - patch: |-
       - op: add

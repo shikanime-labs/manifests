@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: metatube
+spec:
+  template:
+    spec:
+      containers:
+        - name: metatube
+          envFrom:
+            - secretRef:
+                name: metatube-env

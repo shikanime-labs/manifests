@@ -1,0 +1,21 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: automata
+spec:
+  template:
+    spec:
+      volumes:
+        - name: rootdisk
+          containerDisk:
+            image: ghcr.io/shikanime-labs/machines/automata:96308008@sha256:9e66b52160547dd66df846afbd320d3725939796163e13423911a4106cb22ed4
+        - name: workspaces
+          persistentVolumeClaim:
+            claimName: automata-workspaces
+        - name: sops-key
+          secret:
+            secretName: automata-sops-key-69f7td6tc8
+        - name: cloudinit
+          cloudInitNoCloud:
+            secretRef:
+              name: automata-authorized-keys

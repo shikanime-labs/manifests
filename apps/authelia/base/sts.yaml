@@ -48,15 +48,11 @@ spec:
               port: http
             timeoutSeconds: 5
           volumeMounts:
-            - name: config
-              mountPath: /config/configuration.enc.yaml
-              subPath: configuration.enc.yaml
-              readOnly: true
             - name: data
               mountPath: /config
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
-              value: "template"
+              value: template
           resources:
             requests:
               cpu: 25m
@@ -66,10 +62,6 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
-      volumes:
-        - name: config
-          secret:
-            secretName: authelia
   volumeClaimTemplates:
     - metadata:
         name: data

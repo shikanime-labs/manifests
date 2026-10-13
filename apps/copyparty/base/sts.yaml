@@ -49,14 +49,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /cfg
-            - name: startup-config
-              mountPath: /cfg/config.conf
-              readOnly: true
-              subPath: config.conf
-      volumes:
-        - name: startup-config
-          configMap:
-            name: copyparty
   volumeClaimTemplates:
     - metadata:
         name: config
