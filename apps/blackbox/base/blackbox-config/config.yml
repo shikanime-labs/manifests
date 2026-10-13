@@ -10,3 +10,9 @@ modules:
         - 404
       preferred_ip_protocol: ip4
       follow_redirects: true
+  dns_blocky:
+    prober: dns
+    timeout: 9s
+    dns:
+      query_name: github.com
+      preferred_ip_protocol: ip4

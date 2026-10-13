@@ -10,7 +10,7 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-        - ns.i.shikanime.studio
+        - dns.i.shikanime.studio
       - op: add
         path: /spec/parentRefs
         value:
@@ -23,7 +23,7 @@ patches:
       - op: add
         path: /spec/hostnames
         value:
-        - ns.i.shikanime.studio
+        - dns.i.shikanime.studio
       - op: add
         path: /spec/parentRefs
         value:

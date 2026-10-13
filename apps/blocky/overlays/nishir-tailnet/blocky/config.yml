@@ -2,7 +2,7 @@ upstreams:
   strategy: strict
   groups:
     default:
-      - https://base.dns.mullvad.net/dns-query
+      - https://dns.adguard-dns.com/dns-query
       - https://dns.quad9.net/dns-query
       - https://security.cloudflare-dns.com/dns-query
 blocking:
