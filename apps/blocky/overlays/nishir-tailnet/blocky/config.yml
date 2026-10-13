@@ -4,6 +4,7 @@ upstreams:
     default:
       - https://base.dns.mullvad.net/dns-query
       - https://dns.quad9.net/dns-query
+      - https://security.cloudflare-dns.com/dns-query
 blocking:
   denylists:
     ads:
