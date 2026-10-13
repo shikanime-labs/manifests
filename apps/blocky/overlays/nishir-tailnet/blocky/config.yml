@@ -1,0 +1,18 @@
+upstreams:
+  strategy: strict
+  groups:
+    default:
+      - https://base.dns.mullvad.net/dns-query
+      - https://dns.quad9.net/dns-query
+blocking:
+  denylists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  clientGroupsBlock:
+    default:
+      - ads
+ports:
+  dns: 53
+  http: 4000
+prometheus:
+  enable: true

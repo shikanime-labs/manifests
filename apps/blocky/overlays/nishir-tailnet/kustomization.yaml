@@ -1,0 +1,51 @@
+resources:
+  - ../nishir
+  - gatewayclass.yaml
+namespace: shikanime
+configMapGenerator:
+  - name: blocky
+    files:
+      - blocky/config.yml
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/component: dns
+      app.kubernetes.io/instance: blocky
+      app.kubernetes.io/name: blocky
+      app.kubernetes.io/part-of: nishir-platform
+      app.kubernetes.io/version: v0.35.0
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: BLOCKY_CONFIG_FILE
+            value: /config/config.yml
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts
+        value:
+          - name: config
+            mountPath: /config
+      - op: add
+        path: /spec/template/spec/volumes
+        value:
+          - name: config
+            configMap:
+              name: blocky
+    target:
+      name: blocky
+      kind: Deployment
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: blocky.taila659a.ts.net
+    target:
+      name: blocky
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: blocky.taila659a.ts.net
+    target:
+      name: blocky-redirect
+      kind: HTTPRoute
