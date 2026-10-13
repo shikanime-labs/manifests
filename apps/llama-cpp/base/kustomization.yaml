@@ -11,7 +11,7 @@ images:
     digest: sha256:a721934fa89902eb2b37702a875ea7faa51b0d1e63490e9703ef4e0fd0bc744f
   - name: huggingface
     newName: ghcr.io/shikanime-labs/machines/huggingface
-    digest: sha256:68e5c95a2f748d960a7520d5aacd08f920449ba911bb421c51579050e841eed1
+    digest: sha256:8c19b37212d0d7789a9efe709176e494f70a8d28a58c1cbf264ec987679a278f
 configMapGenerator:
   - name: llama-cpp-models-preset
     files:
