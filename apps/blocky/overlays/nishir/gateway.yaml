@@ -14,7 +14,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: studio-shikanime-i-ns
+          - name: studio-shikanime-i-dns
             group: ""
             kind: Secret
     - name: dns-udp

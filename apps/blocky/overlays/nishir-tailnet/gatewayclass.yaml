@@ -34,4 +34,5 @@ spec:
         loadBalancerClass: tailscale
         annotations:
           tailscale.com/hostname: blocky
+          tailscale.com/tailnet-ip: "100.95.153.81"
           tailscale.com/tags: "tag:blocky"

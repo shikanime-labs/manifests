@@ -56,3 +56,24 @@ spec:
         - https://syncthing.i.shikanime.studio
         - https://vaultwarden.i.shikanime.studio
         - https://whisparr.i.shikanime.studio/ping
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMProbe
+metadata:
+  name: blackbox-dns
+spec:
+  jobName: blackbox
+  interval: 60s
+  module: dns_blocky
+  vmProberSpec:
+    url: http://blackbox.shikanime.svc.cluster.local:9115
+  targets:
+    static:
+      relabelingConfigs:
+        - sourceLabels:
+            - instance
+          targetLabel: endpoint
+        - action: labeldrop
+          regex: instance
+      targets:
+        - blocky.envoy-gateway-system.svc.cluster.local:53
