@@ -1,0 +1,35 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: copyparty-tailnet-oidc-client
+spec:
+  targetRefs:
+    - name: copyparty-tailnet
+      kind: HTTPRoute
+      group: gateway.networking.k8s.io
+  oidc:
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    clientID: copyparty
+    clientSecret:
+      name: copyparty-oidc-client
+    redirectURL: https://copyparty.taila659a.ts.net/oauth2/callback
+    scopes:
+      - openid
+      - profile
+    forwardIDToken:
+      header: X-Id-Token
+  jwt:
+    providers:
+      - name: authelia
+        issuer: https://accounts.i.shikanime.studio
+        extractFrom:
+          headers:
+            - name: X-Id-Token
+        remoteJWKS:
+          uri: https://accounts.i.shikanime.studio/jwks.json
+        audiences:
+          - copyparty
+        claimToHeaders:
+          - claim: preferred_username
+            header: X-WEBAUTH-USER
