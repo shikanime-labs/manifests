@@ -2,6 +2,8 @@ resources:
   - ../nishir
   - envoyproxy.yaml
   - gatewayclass.yaml
+  - httproute.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 configMapGenerator:
   - name: copyparty
@@ -41,9 +43,6 @@ patches:
       name: copyparty-public
       kind: HTTPRoute
   - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: copyparty.taila659a.ts.net
       - op: replace
         path: /spec/parentRefs
         value:
