@@ -31,9 +31,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /mnt/config
-            - name: startup-config
-              mountPath: /mnt/startup-config
-              readOnly: true
           securityContext:
             capabilities:
               add:
@@ -88,10 +85,6 @@ spec:
               mountPath: /config
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: startup-config
-          secret:
-            secretName: jellyfin
   volumeClaimTemplates:
     - metadata:
         name: cache

@@ -88,9 +88,6 @@ spec:
                 - SETGID
                 - SETUID
             readOnlyRootFilesystem: false
-          envFrom:
-            - secretRef:
-                name: radarr-env
       securityContext:
         fsGroup: 1000
       volumes:

@@ -29,6 +29,15 @@ spec:
               readOnly: true
             - name: dev-dri
               mountPath: /dev/dri
+            - name: config
+              mountPath: /etc/immich
+              readOnly: true
+            - name: secrets
+              mountPath: /run/secrets/immich-postgres
+              readOnly: true
+          envFrom:
+            - secretRef:
+                name: immich-env
       volumes:
         - name: timeline-data
           persistentVolumeClaim:
@@ -37,3 +46,9 @@ spec:
           hostPath:
             type: Directory
             path: /dev/dri
+        - name: config
+          secret:
+            secretName: immich-config
+        - name: secrets
+          secret:
+            secretName: immich-postgres-env

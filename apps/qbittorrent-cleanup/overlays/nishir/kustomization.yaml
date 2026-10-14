@@ -1,6 +1,8 @@
 resources:
   - ../../base
 namespace: shikanime
+patches:
+  - path: patch-cronjob.yaml
 secretGenerator:
   - name: qbittorrent-cleanup-env
     envs:

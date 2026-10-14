@@ -70,22 +70,6 @@ spec:
             failureThreshold: 180
             periodSeconds: 5
             timeoutSeconds: 5
-          env:
-            - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-env
-                  key: database
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-env
-                  key: username
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-env
-                  key: password
       securityContext:
         fsGroup: 999
       volumes:

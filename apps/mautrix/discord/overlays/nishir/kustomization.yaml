@@ -5,6 +5,7 @@ resources:
 components:
   - ../../../components/monitoring
 patches:
+  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/hostnames

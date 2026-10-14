@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prowlarr
+spec:
+  template:
+    spec:
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: prowlarr
+      containers:
+        - name: prowlarr
+      initContainers:
+        - name: config-sync
+          volumeMounts:
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true

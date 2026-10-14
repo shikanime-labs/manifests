@@ -6,6 +6,7 @@ namespace: shikanime
 components:
   - ../../components/monitoring
 patches:
+  - path: patch-deploy.yaml
   - patch: |-
       - op: add
         path: /spec/hostnames

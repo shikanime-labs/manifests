@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: honcho
+spec:
+  template:
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: honcho
+      containers:
+        - name: honcho
+          volumeMounts:
+            - name: config
+              mountPath: /app/config.toml
+              subPath: config.toml
+          envFrom:
+            - secretRef:
+                name: honcho-env
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: database
+      initContainers:
+        - name: alembic-upgrade
+          envFrom:
+            - secretRef:
+                name: honcho-env
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: database

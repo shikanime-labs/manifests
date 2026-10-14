@@ -23,6 +23,9 @@ spec:
             - name: downloads-lidarr-data
               mountPath: /downloads/lidarr
               subPath: lidarr
+          envFrom:
+            - secretRef:
+                name: lidarr-env
       volumes:
         - name: music-data
           persistentVolumeClaim:

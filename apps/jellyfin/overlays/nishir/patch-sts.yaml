@@ -71,3 +71,9 @@ spec:
         - name: timeline-data
           persistentVolumeClaim:
             claimName: timeline-data
+      initContainers:
+        - name: config-sync
+          volumeMounts:
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true

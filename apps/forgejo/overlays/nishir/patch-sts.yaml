@@ -15,3 +15,14 @@ spec:
                     values:
                       - "true"
               weight: 50
+      volumes:
+        - name: startup-config
+          secret:
+            secretName: forgejo-config
+      containers:
+        - name: forgejo
+          volumeMounts:
+            - name: startup-config
+              mountPath: /var/lib/gitea/custom/conf/app.ini
+              readOnly: true
+              subPath: app.ini

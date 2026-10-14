@@ -1,6 +1,8 @@
 resources:
   - ../../base
 namespace: monitoring-system
+patches:
+  - path: patch-deploy.yaml
 secretGenerator:
   - name: grafana-image-renderer-token
     envs:

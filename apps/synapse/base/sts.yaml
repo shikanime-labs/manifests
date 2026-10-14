@@ -24,10 +24,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-            - name: startup-config
-              mountPath: /data/homeserver.yaml
-              readOnly: true
-              subPath: homeserver.yaml
           resources:
             requests:
               cpu: 163m
@@ -39,68 +35,6 @@ spec:
                 - SETGID
       securityContext:
         fsGroup: 991
-      volumes:
-        - name: startup-config
-          projected:
-            sources:
-              - secret:
-                  name: synapse
-              - secret:
-                  name: mautrix-discord
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-discord.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-discord-doublepuppet.yaml
-              - secret:
-                  name: mautrix-googlechat
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-googlechat.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-googlechat-doublepuppet.yaml
-              - secret:
-                  name: mautrix-linkedin
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-linkedin.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-linkedin-doublepuppet.yaml
-              - secret:
-                  name: mautrix-meta
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-meta.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-meta-doublepuppet.yaml
-              - secret:
-                  name: mautrix-signal
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-signal.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-signal-doublepuppet.yaml
-              - secret:
-                  name: mautrix-slack
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-slack.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-slack-doublepuppet.yaml
-              - secret:
-                  name: mautrix-twitter
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-twitter.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-twitter-doublepuppet.yaml
-              - secret:
-                  name: mautrix-whatsapp
-                  items:
-                    - key: registration.yaml
-                      path: appservices/matrix-whatsapp.yaml
-                    - key: doublepuppet.yaml
-                      path: appservices/matrix-whatsapp-doublepuppet.yaml
   volumeClaimTemplates:
     - metadata:
         name: data

@@ -23,6 +23,9 @@ spec:
             - name: downloads-sonarr-data
               mountPath: /downloads/sonarr
               subPath: sonarr
+          envFrom:
+            - secretRef:
+                name: sonarr-env
       volumes:
         - name: shows-data
           persistentVolumeClaim:

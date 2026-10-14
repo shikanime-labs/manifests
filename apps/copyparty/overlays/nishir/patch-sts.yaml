@@ -48,6 +48,10 @@ spec:
               mountPath: /data/timeline
             - name: public-data
               mountPath: /data/public
+            - name: startup-config
+              mountPath: /cfg/config.conf
+              readOnly: true
+              subPath: config.conf
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -97,6 +101,9 @@ spec:
         - name: public-data
           persistentVolumeClaim:
             claimName: public-data
+        - name: startup-config
+          configMap:
+            name: copyparty
         - name: startup-config
           configMap:
             name: copyparty

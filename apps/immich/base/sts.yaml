@@ -51,12 +51,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/src/app/upload
-            - name: config
-              mountPath: /etc/immich
-              readOnly: true
-            - name: secrets
-              mountPath: /run/secrets/immich-postgres
-              readOnly: true
           env:
             - name: TZ
               value: Europe/Paris
@@ -86,16 +80,6 @@ spec:
               value: /etc/immich/config.yaml
             - name: IMMICH_TELEMETRY_INCLUDE
               value: all
-          envFrom:
-            - secretRef:
-                name: immich-env
-      volumes:
-        - name: config
-          secret:
-            secretName: immich-config
-        - name: secrets
-          secret:
-            secretName: immich-postgres-env
   volumeClaimTemplates:
     - metadata:
         name: data

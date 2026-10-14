@@ -43,9 +43,6 @@ spec:
             requests:
               cpu: 25m
               memory: 250Mi
-          envFrom:
-            - secretRef:
-                name: lldap-env
           securityContext:
             capabilities:
               add:

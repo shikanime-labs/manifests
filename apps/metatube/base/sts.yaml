@@ -58,9 +58,6 @@ spec:
             requests:
               cpu: 25m
               memory: 250Mi
-          envFrom:
-            - secretRef:
-                name: metatube-env
   volumeClaimTemplates:
     - metadata:
         name: data

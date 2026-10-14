@@ -50,9 +50,6 @@ spec:
             requests:
               cpu: 25m
               memory: 392Mi
-          envFrom:
-            - secretRef:
-                name: vaultwarden-env
           securityContext:
             capabilities:
               add:

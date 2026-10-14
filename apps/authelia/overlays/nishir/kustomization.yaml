@@ -10,6 +10,7 @@ components:
   - ../../components/monitoring
   - ../../components/tls
 patches:
+  - path: patch-sts.yaml
   - patch: |-
       - op: add
         path: /spec/hostnames

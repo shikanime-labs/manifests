@@ -60,3 +60,12 @@ spec:
         - name: downloads-whisparr-data
           persistentVolumeClaim:
             claimName: downloads-whisparr-data
+        - name: startup-config
+          secret:
+            secretName: qbittorrent
+      initContainers:
+        - name: config-sync
+          volumeMounts:
+            - name: startup-config
+              mountPath: /mnt/startup-config
+              readOnly: true
