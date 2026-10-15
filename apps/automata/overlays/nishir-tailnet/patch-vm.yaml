@@ -14,7 +14,7 @@ spec:
             claimName: automata-workspaces
         - name: sops-key
           secret:
-            secretName: automata-sops-key-69f7td6tc8
+            secretName: automata-sops-key
         - name: cloudinit
           cloudInitNoCloud:
             secretRef:
