@@ -1,0 +1,99 @@
+apiVersion: pool.kubevirt.io/v1beta1
+kind: VirtualMachinePool
+metadata:
+  name: automata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: automata
+      app.kubernetes.io/name: automata
+  virtualMachineTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: automata
+        app.kubernetes.io/name: automata
+    spec:
+      runStrategy: Always
+      dataVolumeTemplates:
+        - metadata:
+            name: workspaces
+          spec:
+            source:
+              pvc:
+                name: automata-workspaces
+            storage:
+              accessModes:
+                - ReadWriteOncePod
+              resources:
+                requests:
+                  storage: 64Gi
+              storageClassName: longhorn-standard
+              volumeMode: Filesystem
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/instance: automata
+            app.kubernetes.io/name: automata
+        spec:
+          networks:
+            - name: default
+              pod: {}
+          nodeSelector:
+            kubernetes.io/arch: amd64
+          volumes:
+            - name: rootdisk
+              containerDisk:
+                image: automata
+            - name: workspaces
+              dataVolume:
+                name: workspaces
+            - name: cloudinit
+              cloudInitNoCloud:
+                secretRef:
+                  name: automata-authorized-keys
+          domain:
+            resources:
+              requests:
+                memory: 6Gi
+                cpu: "2"
+            machine:
+              type: q35
+            firmware:
+              bootloader:
+                efi:
+                  secureBoot: false
+            devices:
+              disks:
+                - name: rootdisk
+                  bootOrder: 1
+                  disk:
+                    bus: virtio
+                - name: workspaces
+                  disk:
+                    bus: virtio
+              filesystems:
+                - name: sops-key
+                  virtiofs: {}
+              interfaces:
+                - name: default
+                  masquerade: {}
+                  ports:
+                    - name: ssh
+                      port: 22
+                      protocol: TCP
+                    - name: mdns
+                      port: 5353
+                      protocol: UDP
+                    - name: dashboard
+                      port: 9119
+                      protocol: TCP
+                    - name: a2a
+                      port: 9900
+                      protocol: TCP
+                    - name: api-server
+                      port: 8642
+                      protocol: TCP
+                    - name: webhook
+                      port: 8644
+                      protocol: TCP

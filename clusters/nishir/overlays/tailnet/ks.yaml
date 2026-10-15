@@ -88,7 +88,7 @@ spec:
   healthChecks:
     - apiVersion: kubevirt.io/v1
       kind: VirtualMachine
-      name: automata
+      name: automata-0
       namespace: shikanime
   interval: 10m
   path: ./apps/automata/overlays/nishir-tailnet
