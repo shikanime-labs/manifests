@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: dashboards
 spec:
-  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.22/dashboards/honcho.json
+  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.23/dashboards/honcho.json
   allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
