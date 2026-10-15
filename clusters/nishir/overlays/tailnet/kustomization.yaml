@@ -3,6 +3,7 @@ resources:
   - ks.yaml
 components:
   - ../../components/autoscaler
+  - ../../components/cdi
   - ../../components/cert-manager
   - ../../components/cluster-api
   - ../../components/descheduler
