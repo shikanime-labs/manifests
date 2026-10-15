@@ -8,4 +8,4 @@ resources:
 images:
   - name: copyparty
     newName: copyparty/dj
-    newTag: 1.20.25@sha256:2398f578d6a5edb6be894bd45a0b5c22c81a88311015fec10b001ff955eceb67
+    newTag: 1.20.26@sha256:c8b279b62e7e05d99d1ac7acac3876ebea90c54b16ca3e2b966e7381fc53b6f9
