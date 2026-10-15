@@ -2,7 +2,7 @@ resources:
   - httproutes.yaml
   - pvc.yaml
   - svc.yaml
-  - vm.yaml
+  - vmpool.yaml
 secretGenerator:
   - name: automata-authorized-keys
     options:
@@ -14,8 +14,8 @@ configurations:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/template/spec/volumes/0/containerDisk/image
+        path: /spec/virtualMachineTemplate/spec/template/spec/volumes/0/containerDisk/image
         value: ghcr.io/shikanime-labs/machines/automata:96308008@sha256:9e66b52160547dd66df846afbd320d3725939796163e13423911a4106cb22ed4
     target:
       name: automata
-      kind: VirtualMachine
+      kind: VirtualMachinePool
