@@ -19,3 +19,6 @@ dnssec:
   validate: true
 prometheus:
   enable: true
+redis:
+  address: blocky-valkey.shikanime.svc.cluster.local:6379
+  required: true
