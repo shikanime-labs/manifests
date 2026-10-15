@@ -1,9 +1,9 @@
 # immich-valkey
 
 Valkey 7 (valkey/valkey 7-alpine) on :6379 as the immich stack's cache
-(REDIS_HOSTNAME immich-valkey). Ephemeral by design: persistence is disabled
-(--save "" --appendonly no) and the data dir is an emptyDir. Only the immich pod
-may connect (NetworkPolicy).
+(REDIS_HOSTNAME immich-valkey). Persistent: AOF enabled (--appendonly yes)
+on a 512Mi local-path volume. Only the immich pod may connect
+(NetworkPolicy).
 
 ## Layout
 

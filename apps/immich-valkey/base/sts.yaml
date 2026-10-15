@@ -19,10 +19,8 @@ spec:
         - name: valkey
           image: valkey
           args:
-            - --save
-            - ""
             - --appendonly
-            - "no"
+            - "yes"
           livenessProbe:
             initialDelaySeconds: 10
             tcpSocket:
@@ -58,6 +56,14 @@ spec:
                 - DAC_OVERRIDE
       securityContext:
         fsGroup: 999
-      volumes:
-        - name: data
-          emptyDir: {}
+      volumeClaimTemplates:
+        - metadata:
+            name: data
+          spec:
+            resources:
+              requests:
+                storage: 512Mi
+            storageClassName: local-path
+            volumeMode: Filesystem
+            accessModes:
+              - ReadWriteOncePod
