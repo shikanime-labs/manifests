@@ -4,7 +4,7 @@ metadata:
   name: copyparty-tailnet-oidc-client
 spec:
   targetRefs:
-    - name: copyparty-tailnet
+    - name: copyparty-tailnet-sso
       kind: HTTPRoute
       group: gateway.networking.k8s.io
   oidc:
@@ -14,6 +14,7 @@ spec:
     clientSecret:
       name: copyparty-oidc-client
     redirectURL: https://copyparty.taila659a.ts.net/oauth2/callback
+    logoutPath: /oauth2/logout
     scopes:
       - openid
       - profile

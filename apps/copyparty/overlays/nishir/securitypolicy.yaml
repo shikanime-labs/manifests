@@ -5,7 +5,7 @@ metadata:
   namespace: shikanime
 spec:
   targetRefs:
-    - name: copyparty
+    - name: copyparty-sso
       kind: HTTPRoute
       group: gateway.networking.k8s.io
   oidc:
@@ -15,6 +15,7 @@ spec:
     clientSecret:
       name: copyparty-oidc-client
     redirectURL: https://copyparty.i.shikanime.studio/oauth2/callback
+    logoutPath: /oauth2/logout
     scopes:
       - openid
       - profile
