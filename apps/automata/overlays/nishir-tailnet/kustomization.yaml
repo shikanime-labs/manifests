@@ -2,6 +2,7 @@ resources:
   - ../nishir
   - gatewayclass.yaml
   - netpol.yaml
+  - netpol-cdi-upload.yaml
 namespace: shikanime
 patches:
   - path: patch-vm.yaml
