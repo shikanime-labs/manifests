@@ -2,6 +2,7 @@ resources:
   - ../../base
   - cert.yaml
   - gateway.yaml
+  - securitypolicy.yaml
 namespace: shikanime
 components:
   - ../../components/tls
@@ -31,6 +32,32 @@ patches:
         path: /spec/parentRefs
         value:
         - name: lidarr
+          sectionName: https
+    target:
+      name: lidarr-api
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - lidarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: lidarr
+          sectionName: https
+    target:
+      name: lidarr-health
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - lidarr.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: lidarr
           sectionName: http
     target:
       name: lidarr-redirect
@@ -42,3 +69,6 @@ secretGenerator:
   - name: lidarr-pkcs12-password
     envs:
       - lidarr-pkcs12-password/.enc.env
+  - name: lidarr-oidc-client
+    envs:
+      - lidarr-oidc-client/.enc.env
