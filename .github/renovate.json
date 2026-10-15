@@ -11,6 +11,11 @@
   "nix": { "enabled": true },
   "packageRules": [
     {
+      "description": "linuxserver tags lidarr 0.8.x builds as 8.x (leading zero stripped); cap below the phantom major.",
+      "matchPackageNames": ["lscr.io/linuxserver/lidarr"],
+      "allowedVersions": "<4"
+    },
+    {
       "groupName": "flux-helm-releases",
       "matchDepTypes": ["helm"],
       "matchManagers": ["flux"]
