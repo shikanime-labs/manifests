@@ -53,6 +53,9 @@ spec:
               cloudInitNoCloud:
                 secretRef:
                   name: automata-authorized-keys
+            - name: serviceaccount
+              serviceAccount:
+                serviceAccountName: automata
           domain:
             resources:
               requests:

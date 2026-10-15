@@ -1,6 +1,7 @@
 resources:
   - httproutes.yaml
   - pvc.yaml
+  - rbac.yaml
   - svc.yaml
   - vmpool.yaml
 secretGenerator:
