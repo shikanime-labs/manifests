@@ -22,6 +22,7 @@ spec:
             source:
               pvc:
                 name: automata-workspaces
+                namespace: shikanime
             storage:
               accessModes:
                 - ReadWriteOncePod
