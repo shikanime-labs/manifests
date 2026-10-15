@@ -30,7 +30,7 @@ spec:
         - https://honcho.i.shikanime.studio/health
         - https://immich.i.shikanime.studio
         - https://jellyfin.i.shikanime.studio
-        - https://lidarr.i.shikanime.studio
+        - https://lidarr.i.shikanime.studio/ping
         - https://llama-cpp.i.shikanime.studio/health
         - https://lldap.i.shikanime.studio
         - https://logs.i.shikanime.studio

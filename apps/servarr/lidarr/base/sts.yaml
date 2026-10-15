@@ -60,7 +60,7 @@ spec:
             - name: LIDARR__APP__LAUNCHBROWSER
               value: "False"
             - name: LIDARR__AUTH__METHOD
-              value: Forms
+              value: External
             - name: LIDARR__LOG__LEVEL
               value: info
             - name: LIDARR__LOG__ANALYTICSENABLED

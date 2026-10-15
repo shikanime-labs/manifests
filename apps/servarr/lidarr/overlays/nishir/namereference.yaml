@@ -3,3 +3,6 @@ nameReference:
     fieldSpecs:
       - kind: Certificate
         path: spec/keystores/pkcs12/passwordSecretRef/name
+      - kind: SecurityPolicy
+        group: gateway.envoyproxy.io
+        path: spec/oidc/clientSecret/name
