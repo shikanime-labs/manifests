@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cdi-upload
+  namespace: shikanime
+spec:
+  podSelector:
+    matchLabels:
+      cdi.kubevirt.io: cdi-upload-server
+  ingress:
+    - from:
+        - podSelector: {}
+      ports:
+        - port: 8443
+          protocol: TCP
+  policyTypes:
+    - Ingress
