@@ -1072,11 +1072,32 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: apps-blocky-valkey
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: infrastructure-autoscaler
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: blocky-valkey
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/blocky-valkey/overlays/nishir-tailnet
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: apps-blocky
   namespace: flux-system
 spec:
   dependsOn:
     - name: infrastructure-tailscale
+    - name: apps-blocky-valkey
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
