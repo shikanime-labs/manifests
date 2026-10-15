@@ -3,7 +3,6 @@ resources:
   - cert.yaml
   - gateway.yaml
   - securitypolicy.yaml
-  - pvc.yaml
 namespace: shikanime
 components:
   - ../../components/ftp
@@ -50,9 +49,9 @@ patches:
         path: /spec/parentRefs
         value:
         - name: copyparty
-          sectionName: https
+          sectionName: http
     target:
-      name: copyparty-public
+      name: copyparty-redirect
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -63,9 +62,9 @@ patches:
         path: /spec/parentRefs
         value:
         - name: copyparty
-          sectionName: http
+          sectionName: https
     target:
-      name: copyparty-redirect
+      name: copyparty-sso
       kind: HTTPRoute
   - patch: |-
       - op: add

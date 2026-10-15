@@ -7,6 +7,10 @@ media/share PVCs (archives, movies, music, ...) under /data. The NetworkPolicy
 admits HTTP, ftp-control, ftp data 12000-12099, ftps and sftp from
 `tailscale-system`.
 
+Auth is anonymous-first: the catch-alls strip `X-WEBAUTH-USER`/`X-Id-Token`,
+while the OIDC-gated `copyparty-sso`/`copyparty-tailnet-sso` routes (Envoy
+session cookie or `/?h`) are where the gateway mints identity for members.
+
 ## Layout
 
 - `base/` — sts.yaml (:3923), svc.yaml (http), pvc.yaml (config 512Mi),
