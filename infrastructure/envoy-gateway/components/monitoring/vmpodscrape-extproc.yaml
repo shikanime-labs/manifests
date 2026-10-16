@@ -1,0 +1,18 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: envoy-gateway-extproc
+  namespace: envoy-gateway-system
+  labels:
+    app.kubernetes.io/name: envoy-gateway
+    app.kubernetes.io/part-of: envoy-gateway
+spec:
+  podMetricsEndpoints:
+    - interval: 30s
+      path: /metrics
+      port: aigw-admin
+      scrapeTimeout: 15s
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: proxy
+      app.kubernetes.io/managed-by: envoy-gateway
