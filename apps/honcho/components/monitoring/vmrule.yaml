@@ -7,14 +7,14 @@ spec:
     - name: honcho
       rules:
         - alert: HonchoDown
-          expr: up{job="honcho"} == 0
+          expr: up{job="honcho"} == 0 or absent(up{job="honcho"})
           for: 5m
           labels:
             severity: critical
           annotations:
             summary: Honcho has been down for 5 minutes
         - alert: HonchoDeriverDown
-          expr: up{job="honcho-deriver"} == 0
+          expr: up{job="honcho-deriver"} == 0 or absent(up{job="honcho-deriver"})
           for: 5m
           labels:
             severity: critical
