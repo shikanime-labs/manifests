@@ -12,6 +12,9 @@ spec:
       path: /metrics
       port: metrics
       scrapeTimeout: 30s
+      relabelConfigs:
+        - targetLabel: job
+          replacement: honcho-deriver
   namespaceSelector:
     matchNames:
       - shikanime
