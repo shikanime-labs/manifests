@@ -13,3 +13,31 @@ spec:
             severity: critical
           annotations:
             summary: Honcho has been down for 5 minutes
+        - alert: HonchoDeriverDown
+          expr: up{job="honcho-deriver"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: Honcho deriver metrics endpoint is down
+        - alert: HonchoDeriverStalled
+          expr: sum(increase(deriver_queue_items_processed_total[2h])) == 0 and on() (deriver_queue_items_pending > 0)
+          for: 15m
+          labels:
+            severity: warning
+          annotations:
+            summary: 'Honcho deriver processed nothing in 2h with {{ $value }} queue items pending'
+        - alert: HonchoEmbeddingsPending
+          expr: message_embeddings_pending > 100
+          for: 30m
+          labels:
+            severity: warning
+          annotations:
+            summary: 'Honcho embedding backlog: {{ $value }} rows pending'
+        - alert: HonchoQueueBacklog
+          expr: deriver_queue_oldest_pending_age_seconds > 7200
+          for: 30m
+          labels:
+            severity: warning
+          annotations:
+            summary: 'Honcho deriver oldest pending work is {{ $value | humanize }} old'

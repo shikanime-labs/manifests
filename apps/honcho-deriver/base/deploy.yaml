@@ -21,6 +21,9 @@ spec:
             - python
             - -m
             - src.deriver
+          ports:
+            - name: metrics
+              containerPort: 9090
           resources:
             requests:
               cpu: 25m
