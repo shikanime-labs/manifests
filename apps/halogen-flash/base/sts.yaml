@@ -87,7 +87,7 @@ spec:
             - name: HALOGEN_DOWNLOAD
               value: peonist-ai/halogen-qwen3.8-flash-next
             - name: HALOGEN_KV_POOL_POSITIONS
-              value: "262144"
+              value: "786432"
             - name: HALOGEN_MAX_TOK
               value: "16384"
       volumes:
