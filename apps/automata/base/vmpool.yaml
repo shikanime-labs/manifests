@@ -79,6 +79,8 @@ spec:
               filesystems:
                 - name: sops-key
                   virtiofs: {}
+                - name: serviceaccount
+                  virtiofs: {}
               interfaces:
                 - name: default
                   masquerade: {}
