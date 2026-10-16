@@ -33,5 +33,18 @@
     "executionMode": "branch",
     "fileFilters": ["**/*.nix"],
     "installTools": { "nix": {} }
-  }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "GrafanaDashboard CRs pin dashboards release tags in spec.url",
+      "fileMatch": ["(^|/)grafanadashboard\\.yaml$"],
+      "matchStrings": [
+        "url: https://raw\\.githubusercontent\\.com/(?<registry>[^/]+/[^/]+)/(?<currentValue>v[^/]+)/"
+      ],
+      "datasource": "github-releases",
+      "depNameTemplate": "shikanime-labs/dashboards",
+      "versioningTemplate": "regex:^(?<compatibility>\\d+)\\.(?<major>\\d+)\\.(?<minor>\\d+)?$"
+    }
+  ]
 }
