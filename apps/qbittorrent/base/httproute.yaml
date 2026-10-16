@@ -5,7 +5,13 @@ metadata:
   name: qbittorrent
 spec:
   rules:
-    - backendRefs:
+    - filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            remove:
+              - Referer
+              - Origin
+      backendRefs:
         - name: qbittorrent
           port: 8080
 ---
