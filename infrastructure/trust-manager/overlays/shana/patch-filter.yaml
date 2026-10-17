@@ -1,0 +1,7 @@
+# ponytail: deletes VPA objects until the autoscaler CRDs exist; revert when the fleet gains post-CRD landing
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: trust-manager
+  namespace: cert-manager-system
+$patch: delete

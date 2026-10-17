@@ -1,6 +1,7 @@
 resources:
   - ../../base
 patches:
+  - path: patch-filter.yaml
   - path: patch-hr.yaml
 secretGenerator:
   - name: operator-oauth
