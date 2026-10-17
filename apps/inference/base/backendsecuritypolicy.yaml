@@ -66,6 +66,22 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
+  name: deepseek
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: deepseek
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: deepseek-key
+      namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
   name: nous
   namespace: shikanime
 spec:

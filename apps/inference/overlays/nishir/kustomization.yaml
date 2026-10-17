@@ -26,6 +26,10 @@ secretGenerator:
     namespace: shikanime
     envs:
       - mistral-key/.enc.env
+  - name: deepseek-key
+    namespace: shikanime
+    envs:
+      - deepseek-key/.enc.env
   - name: inference-key
     namespace: shikanime
     envs:

@@ -71,3 +71,16 @@ spec:
     name: mistral
     kind: Backend
     group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: deepseek
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+  backendRef:
+    name: deepseek
+    kind: Backend
+    group: gateway.envoyproxy.io
