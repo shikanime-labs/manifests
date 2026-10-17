@@ -27,7 +27,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: config-cluster-api
+  name: apps-shana
   namespace: flux-system
 spec:
   decryption:
@@ -38,7 +38,7 @@ spec:
   dependsOn:
     - name: infrastructure-cluster-api
   interval: 10m
-  path: ./configs/cluster-api/overlays/nishir
+  path: ./apps/shana/overlays/nishir
   prune: true
   sourceRef:
     name: flux-system
