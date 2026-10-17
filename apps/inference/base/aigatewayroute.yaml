@@ -36,6 +36,9 @@ spec:
           priority: 0
           modelNameOverride: glm-5.3-flash
         - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: openrouter
           priority: 2
           modelNameOverride: z-ai/glm-5.3-flash
     - matches:
@@ -86,6 +89,21 @@ spec:
         - name: openrouter
           priority: 2
           modelNameOverride: z-ai/glm-5.3
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-v4.1-flash
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: nous
+          priority: 1
+          modelNameOverride: deepseek/deepseek-v4.1-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: deepseek/deepseek-v4.1-flash
     - matches:
         - headers:
             - name: x-ai-eg-model
