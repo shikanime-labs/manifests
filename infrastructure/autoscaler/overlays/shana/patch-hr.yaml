@@ -8,5 +8,5 @@ spec:
     admissionController:
       certManager:
         issuerRef:
-          name: telsha
+          name: shana
           kind: ClusterIssuer
