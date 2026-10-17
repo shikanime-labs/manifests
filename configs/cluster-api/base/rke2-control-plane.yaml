@@ -3,7 +3,7 @@ kind: RKE2ControlPlane
 metadata:
   name: shana
 spec:
-  version: v1.33.13+rke2r3
+  version: v1.33.13+rke2r2
   replicas: 1
   registrationMethod: control-plane-endpoint
   manifestsConfigMapReference:
