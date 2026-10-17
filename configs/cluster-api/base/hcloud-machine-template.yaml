@@ -6,18 +6,17 @@ metadata:
 spec:
   template:
     spec:
-      type: cax11
-      image: fedora-43
+      type: cpx11
+      imageName: ubuntu-24.04
       placementGroupName: control-plane
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
   name: shana-workers
-  namespace: shana
 spec:
   template:
     spec:
-      type: cax11
-      image: fedora-43
+      type: cpx11
+      imageName: ubuntu-24.04
       placementGroupName: workers

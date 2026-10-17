@@ -5,7 +5,6 @@ resources:
 components:
   - ../../components/autoscaler
   - ../../components/cert-manager
-  - ../../components/cluster-api
   - ../../components/envoy-gateway
   - ../../components/gatekeeper
   - ../../components/victoria-metrics
