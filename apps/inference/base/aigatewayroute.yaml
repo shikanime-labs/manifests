@@ -89,6 +89,18 @@ spec:
     - matches:
         - headers:
             - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-v4.1-flash
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: openrouter
+          priority: 0
+          modelNameOverride: deepseek/deepseek-v4.1-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
               type: RegularExpression
               value: ".*"
       modelsOwnedBy: Shikanime Studio
