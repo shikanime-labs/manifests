@@ -1,7 +1,5 @@
 resources:
   - ../../base
-  - envoyproxy.yaml
-  - gatewayclass.yaml
 components:
   - ../../components/autoscaler
   - ../../components/cert-manager
@@ -12,8 +10,6 @@ components:
   - ../../components/grafana-operator
   - ../../components/tailscale
   - ../../components/trust-manager
-patches:
-  - path: patch-gateway.yaml
 labels:
   - includeTemplates: true
     pairs:
