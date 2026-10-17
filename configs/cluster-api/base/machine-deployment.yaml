@@ -13,7 +13,7 @@ spec:
       labels:
         cluster.x-k8s.io/cluster-name: shana
     spec:
-      version: v1.33.13+rke2r3
+      version: v1.33.13+rke2r2
       clusterName: shana
       failureDomain: fsn1
       infrastructureRef:
