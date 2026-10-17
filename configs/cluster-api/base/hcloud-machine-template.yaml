@@ -6,7 +6,7 @@ metadata:
 spec:
   template:
     spec:
-      type: cpx11
+      type: cx23
       imageName: ubuntu-24.04
       placementGroupName: control-plane
 ---
@@ -17,6 +17,6 @@ metadata:
 spec:
   template:
     spec:
-      type: cpx11
+      type: cx23
       imageName: ubuntu-24.04
       placementGroupName: workers
