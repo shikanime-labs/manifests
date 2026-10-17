@@ -8,3 +8,4 @@ spec:
   chart: hcloud-cloud-controller-manager
   version: "1.39.0"
   targetNamespace: kube-system
+  bootstrap: true
