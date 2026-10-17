@@ -6,4 +6,4 @@ metadata:
 spec:
   values:
     operatorConfig:
-      hostname: telsha-k8s-operator
+      hostname: shana-k8s-operator
