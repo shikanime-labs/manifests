@@ -14,4 +14,4 @@ configMapGenerator:
     options:
       disableNameSuffixHash: true
     files:
-      - ccm.yaml=ccm/ccm.yaml
+      - ccm.yaml=shana-manifests/ccm.yaml
