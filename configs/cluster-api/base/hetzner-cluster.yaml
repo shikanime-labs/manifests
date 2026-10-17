@@ -9,6 +9,10 @@ spec:
   controlPlaneLoadBalancer:
     enabled: true
     region: fsn1
+    extraServices:
+      - protocol: tcp
+        listenPort: 9345
+        destinationPort: 9345
   controlPlaneRegions:
     - fsn1
   hcloudNetwork:
