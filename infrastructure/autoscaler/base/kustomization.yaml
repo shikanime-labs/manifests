@@ -3,4 +3,3 @@ resources:
   - hr.yaml
   - ns.yaml
   - svc.yaml
-  - vpa.yaml
