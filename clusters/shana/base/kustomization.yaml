@@ -1,0 +1,10 @@
+resources:
+  - fluxinstance.yaml
+  - alert.yaml
+  - gateway.yaml
+  - httproute.yaml
+  - ns.yaml
+  - provider.yaml
+  - receiver.yaml
+configurations:
+  - config.yaml

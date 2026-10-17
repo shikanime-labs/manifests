@@ -1,0 +1,29 @@
+apiVersion: fluxcd.controlplane.io/v1
+kind: FluxInstance
+metadata:
+  name: flux
+  namespace: flux-system
+spec:
+  distribution:
+    registry: ghcr.io/fluxcd
+    artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:latest
+    version: 2.8.8
+  components:
+    - source-controller
+    - kustomize-controller
+    - helm-controller
+    - notification-controller
+  cluster:
+    type: kubernetes
+    domain: cluster.local
+    networkPolicy: false
+  sync:
+    interval: 1m
+    kind: GitRepository
+    path: clusters/shana/overlays/tailnet
+    ref: refs/heads/main
+  kustomize:
+    patches:
+      - target:
+          kind: Kustomization
+        patch: '[{"op":"add","path":"/spec/decryption","value":{"provider":"sops","secretRef":{"name":"sops-age"}}}]' 
