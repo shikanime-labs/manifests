@@ -17,13 +17,11 @@ spec:
       clusterName: shana
       failureDomain: fsn1
       infrastructureRef:
-        apiVersion: v1beta1
-        kind: HCloudMachineTemplate
         apiGroup: infrastructure.cluster.x-k8s.io
+        kind: HCloudMachineTemplate
         name: shana-workers
       bootstrap:
         configRef:
-          apiVersion: v1beta2
-          kind: RKE2ConfigTemplate
           apiGroup: bootstrap.cluster.x-k8s.io
+          kind: RKE2ConfigTemplate
           name: shana
