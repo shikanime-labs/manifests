@@ -1,0 +1,63 @@
+# ponytail: deletes VPA objects until the autoscaler CRDs exist; revert when the fleet gains post-CRD landing
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmks-kube-state-metrics
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmks-victoria-metrics-operator
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmagent-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmalert-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmauth-vmalert-datasource
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vminsert-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmstorage-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmselect-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vmalertmanager-vmks-victoria-metrics-k8s-stack
+  namespace: monitoring-system
+$patch: delete
