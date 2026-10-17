@@ -98,12 +98,15 @@ spec:
       timeouts:
         request: 0s
       backendRefs:
+        - name: deepseek
+          priority: 0
+          modelNameOverride: deepseek-flash
         - name: nous
           priority: 1
-          modelNameOverride: ~deepseek/deepseek-flash-latest
+          modelNameOverride: deepseek/deepseek-flash-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: ~deepseek/deepseek-flash-latest
+          modelNameOverride: deepseek/deepseek-flash-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
