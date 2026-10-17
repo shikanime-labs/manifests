@@ -8,3 +8,10 @@ resources:
   - rke2-worker-config-template.yaml
 configurations:
   - config.yaml
+configMapGenerator:
+  - name: ccm-hcloud
+    namespace: shana
+    options:
+      disableNameSuffixHash: true
+    files:
+      - ccm.yaml=ccm/ccm.yaml

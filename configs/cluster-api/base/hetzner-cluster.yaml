@@ -4,16 +4,15 @@ metadata:
   name: shana
 spec:
   controlPlaneEndpoint:
-    host: 0.0.0.0
+    host: ""
     port: 443
   controlPlaneLoadBalancer:
-    enabled: false
+    enabled: true
+    region: fsn1
   controlPlaneRegions:
     - fsn1
-    - nbg1
-    - hel1
   hcloudNetwork:
-    enabled: true
+    enabled: false
   hcloudPlacementGroups:
     - name: control-plane
       type: spread
@@ -26,4 +25,3 @@ spec:
   sshKeys:
     hcloud:
       - name: shikanimedeva@telsha
-        fingerprint: 13:83:0f:dc:cb:f9:79:3e:94:ba:55:27:dd:d2:a0:3a
