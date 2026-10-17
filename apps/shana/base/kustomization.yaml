@@ -9,7 +9,7 @@ resources:
 configurations:
   - config.yaml
 configMapGenerator:
-  - name: ccm-hcloud
+  - name: shana-manifests
     namespace: shana
     options:
       disableNameSuffixHash: true

@@ -7,7 +7,7 @@ spec:
   replicas: 1
   registrationMethod: control-plane-endpoint
   manifestsConfigMapReference:
-    name: ccm-hcloud
+    name: shana-manifests
     namespace: shana
   rolloutStrategy:
     type: RollingUpdate
