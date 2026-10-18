@@ -2,6 +2,7 @@ resources:
   - ../../base
 components:
   - ../../components/autoscaler
+  - ../../components/local-path-provisioner
   - ../../components/cert-manager
   - ../../components/envoy-gateway
   - ../../components/gatekeeper
