@@ -13,6 +13,8 @@ spec:
           enabled: false
         "node:node_num_cpu:sum":
           enabled: false
+        "code_verb:apiserver_request_total:increase30d":
+          enabled: false
     kubeControllerManager:
       vmScrape:
         spec:
