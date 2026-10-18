@@ -18,10 +18,6 @@ spec:
       kind: HelmRelease
       name: gatekeeper
       namespace: flux-system
-    - apiVersion: kustomize.toolkit.fluxcd.io/v1
-      kind: Kustomization
-      name: config-gatekeeper
-      namespace: flux-system
   interval: 10m
   path: ./infrastructure/gatekeeper/overlays/shana
   prune: true

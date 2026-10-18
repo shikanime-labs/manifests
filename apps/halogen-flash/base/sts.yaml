@@ -52,7 +52,7 @@ spec:
             - name: http
               containerPort: 8731
           livenessProbe:
-            failureThreshold: 6
+            failureThreshold: 30
             httpGet:
               path: /health
               port: http
