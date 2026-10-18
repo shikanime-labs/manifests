@@ -1,11 +1,11 @@
 apiVersion: trust.cert-manager.io/v1alpha1
 kind: Bundle
 metadata:
-  name: telsha-ca-certificates.crt
+  name: shana-ca-certificates.crt
 spec:
   sources:
     - secret:
-        name: telsha-ca
+        name: shana-ca
         key: tls.crt
     - useDefaultCAs: true
   target:

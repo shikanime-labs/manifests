@@ -2,29 +2,29 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: telsha-ca
+  name: shana-ca
   namespace: cert-manager-trust
 spec:
   commonName: cluster.local
   isCA: true
   issuerRef:
-    name: telsha-selfsigned
+    name: shana-selfsigned
     kind: ClusterIssuer
-  secretName: telsha-ca
+  secretName: shana-ca
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: telsha-webhook-tls
+  name: shana-webhook-tls
   namespace: flux-system
 spec:
-  commonName: telsha-webhook
+  commonName: shana-webhook
   dnsNames:
-    - telsha-webhook
+    - shana-webhook
   issuerRef:
-    name: telsha
+    name: shana
     kind: ClusterIssuer
-  secretName: telsha-webhook-tls
+  secretName: shana-webhook-tls
   usages:
     - digital signature
     - key encipherment

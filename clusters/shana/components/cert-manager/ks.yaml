@@ -10,6 +10,8 @@ spec:
     secretRef:
       name: sops-age
   deletionPolicy: Orphan
+  dependsOn:
+    - name: infrastructure-victoria-metrics
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
@@ -34,6 +36,7 @@ spec:
       name: sops-age
   deletionPolicy: Orphan
   dependsOn:
+    - name: infrastructure-victoria-metrics
     - name: infrastructure-cert-manager
   interval: 10m
   path: ./configs/cert-manager/overlays/shana
