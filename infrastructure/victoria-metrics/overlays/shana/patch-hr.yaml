@@ -5,13 +5,18 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    alertmanager:
+      enabled: false
+    vmagent:
+      remoteWrite:
+        - url: https://ts-metrics-ingest.monitoring-system.svc.cluster.local/insert/0/prometheus/api/v1/write
+          tlsConfig:
+            serverName: metrics.i.shikanime.studio
+          inlineRelabelConfig:
+            - action: replace
+              targetLabel: cluster
+              replacement: shana
+    vmalert:
+      enabled: false
     vmsingle:
-      spec:
-        extraArgs:
-          enableTCP6: "true"
-        storage:
-          resources:
-            requests:
-              storage: 8Gi
-          storageClassName: local-path
-      enabled: true
+      enabled: false

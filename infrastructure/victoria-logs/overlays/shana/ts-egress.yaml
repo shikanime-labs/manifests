@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ts-logs-ingest
+  namespace: monitoring-system
+  annotations:
+    tailscale.com/hostname: shana-logs-ingest
+spec:
+  externalName: logs.i.shikanime.studio
+  type: ExternalName

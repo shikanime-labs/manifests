@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ts-metrics-ingest
+  namespace: monitoring-system
+  annotations:
+    tailscale.com/hostname: shana-metrics-ingest
+spec:
+  externalName: metrics.i.shikanime.studio
+  type: ExternalName

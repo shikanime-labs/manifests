@@ -1,0 +1,16 @@
+apiVersion: operator.victoriametrics.com/v1
+kind: VLAgent
+metadata:
+  name: vlogs
+  namespace: monitoring-system
+spec:
+  k8sCollector:
+    enabled: true
+  remoteWrite:
+    - url: https://ts-logs-ingest.monitoring-system.svc.cluster.local/insert/native
+      tlsConfig:
+        serverName: logs.i.shikanime.studio
+      inlineRelabelConfig:
+        - action: replace
+          targetLabel: cluster
+          replacement: shana

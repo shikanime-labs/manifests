@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+  - ts-egress.yaml
+patches:
+  - path: patch-vlagent.yaml
+  - path: patch-hr.yaml
+  - path: patch-vpa-delete.yaml
+  - path: patch-delete-query-plane.yaml

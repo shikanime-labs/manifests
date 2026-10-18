@@ -1,0 +1,21 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlinsert
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlselect
+  namespace: monitoring-system
+$patch: delete
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vlogs-vlstorage
+  namespace: monitoring-system
+$patch: delete
+---
