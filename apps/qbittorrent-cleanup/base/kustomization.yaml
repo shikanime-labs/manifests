@@ -3,4 +3,4 @@ resources:
 images:
   - name: qbittorrent-cleanup
     newName: ghcr.io/shikanime-labs/xqbit/qbittorrent-cleanup
-    newTag: 7b852a7@sha256:7f6e5a6fdc35de5f0eb6c45bf306ae4782a792877e51b633d7a0deb6bb45b04c
+    newTag: 2d216e4@sha256:750ccd015759c6f554619e41bb5d6e822f2d3fceb8f18d75365578c634dd3697
