@@ -16,7 +16,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/virtualMachineTemplate/spec/template/spec/volumes/0/containerDisk/image
-        value: ghcr.io/shikanime-labs/machines/automata@sha256:9ef804c7a387c791bc32e36355a023d54cb3fe352226c7e03f66a646f89019a8
+        value: ghcr.io/shikanime-labs/machines/automata@sha256:37d2a179ca6c504cc86defbf2962c3456c6b543dbf772e4ccae313f2ee191dcc
     target:
       name: automata
       kind: VirtualMachinePool
