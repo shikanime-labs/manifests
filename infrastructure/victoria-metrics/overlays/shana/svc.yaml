@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-metrics-ingest
+  name: metrics-ingest
   namespace: monitoring-system
   annotations:
     tailscale.com/hostname: shana-metrics-ingest
