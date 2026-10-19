@@ -45,7 +45,7 @@ spec:
                   app.kubernetes.io/name: llama-cpp
               topologyKey: kubernetes.io/hostname
       tolerations:
-        - key: halogen.shikanime.studio/priority
+        - key: shikanime.studio/inference
           operator: Equal
           value: "true"
           effect: NoSchedule
