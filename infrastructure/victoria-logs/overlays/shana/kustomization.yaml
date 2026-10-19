@@ -1,0 +1,5 @@
+resources:
+  - ../../base
+  - svc.yaml
+patches:
+  - path: patch-vlagent.yaml
