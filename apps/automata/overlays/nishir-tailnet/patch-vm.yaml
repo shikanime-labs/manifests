@@ -10,7 +10,7 @@ spec:
           volumes:
             - name: rootdisk
               containerDisk:
-                image: ghcr.io/shikanime-labs/machines/automata:v1.0.2-8-gb6978459@sha256:721e60d0769cfd8b7eea7f2485f86df4dee06f9acac6efb622ed98da1560129b
+                image: ghcr.io/shikanime-labs/machines/automata:v1.0.2-11-gb0ccdf06@sha256:b00004671bfa705643790a60de80939d0e214a5b6c262b9b6b5e2a880259a71b
             - name: workspaces
               dataVolume:
                 name: workspaces
