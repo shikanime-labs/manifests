@@ -1,6 +1,6 @@
 resources:
   - ../../base
-  - service.yaml
+  - svc.yaml
 patches:
   - path: patch-filter.yaml
   - path: patch-hr.yaml

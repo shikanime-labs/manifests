@@ -1,5 +1,5 @@
 resources:
   - ../../base
-  - service.yaml
+  - svc.yaml
 patches:
   - path: patch-vlagent.yaml
