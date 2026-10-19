@@ -1,6 +1,11 @@
 resources:
   - ../../base
   - gateway.yaml
+  - hr.yaml
+  - httproute.yaml
+  - vmauth.yaml
+  - vmrule.yaml
+  - vpa.yaml
 patches:
   - patch: |-
       - op: add
