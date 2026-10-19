@@ -1,5 +1,5 @@
 resources:
   - ../../base
-  - ts-egress.yaml
+  - service.yaml
 patches:
   - path: patch-vlagent.yaml
