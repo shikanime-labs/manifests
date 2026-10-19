@@ -9,7 +9,7 @@ spec:
       enabled: false
     vmagent:
       remoteWrite:
-        - url: https://ts-metrics-ingest.monitoring-system.svc.cluster.local/insert/0/prometheus/api/v1/write
+        - url: https://metrics-ingest.monitoring-system.svc.cluster.local/insert/0/prometheus/api/v1/write
           tlsConfig:
             serverName: metrics.i.shikanime.studio
           inlineRelabelConfig:
