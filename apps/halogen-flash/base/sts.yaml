@@ -36,6 +36,11 @@ spec:
                   app.kubernetes.io/instance: halogen-flash
                   app.kubernetes.io/name: halogen-flash
               topologyKey: kubernetes.io/hostname
+      tolerations:
+        - key: halogen.shikanime.studio/priority
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
       containers:
         - name: halogen-flash
           image: halogen-flash
