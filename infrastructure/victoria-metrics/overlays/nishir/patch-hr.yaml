@@ -54,6 +54,7 @@ spec:
         vmselect:
           extraArgs:
             enableTCP6: "true"
+            search.maxConcurrentRequests: "4"
           storage:
             volumeClaimTemplate:
               spec:
