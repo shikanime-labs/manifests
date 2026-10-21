@@ -1,0 +1,16 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: victoriametrics
+  namespace: monitoring-system
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  datasource:
+    name: VictoriaMetrics
+    type: prometheus
+    url: http://vmselect-vmks-victoria-metrics-k8s-stack.monitoring-system.svc.cluster.local:8481/select/0/prometheus
+    uid: VictoriaMetricsDS
+    access: proxy
+    isDefault: false

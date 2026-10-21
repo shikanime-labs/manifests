@@ -2,6 +2,7 @@ resources:
   - ../../base
   - pvc.yaml
   - grafanadashboard.yaml
+  - grafana-datasource.vm.yaml
 patches:
   - path: patch-grafana.yaml
   - target:
