@@ -67,13 +67,7 @@
         git-hooks.flakeModule
         treefmt-nix.flakeModule
       ];
-      perSystem =
-        {
-          lib,
-          pkgs,
-          ...
-        }:
-        with lib;
+      perSystem = { lib, pkgs, ... }: with lib;
         {
           devenv = {
             modules = [
@@ -94,15 +88,11 @@
                       overlays = [
                         {
                           name = "telsha";
-                          keys = [
-                            "age1eak84xcr44yfqsg843rfu2xajxsyvjwh67a630htpnd0scy7yu5szjfh8d"
-                          ];
+                          keys = [ "age1eak84xcr44yfqsg843rfu2xajxsyvjwh67a630htpnd0scy7yu5szjfh8d" ];
                         }
                         {
                           name = "nishir";
-                          keys = [
-                            "age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64"
-                          ];
+                          keys = [ "age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64" ];
                         }
                       ];
 

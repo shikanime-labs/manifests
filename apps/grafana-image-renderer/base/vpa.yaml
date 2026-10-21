@@ -11,6 +11,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: renderer
-      maxAllowed:
-        memory: 4Gi
+      - containerName: renderer
+        maxAllowed:
+          memory: 4Gi

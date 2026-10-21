@@ -11,6 +11,6 @@ spec:
     updateMode: InPlace
   resourcePolicy:
     containerPolicies:
-    - containerName: jellyfin
-      maxAllowed:
-        memory: 8Gi
+      - containerName: jellyfin
+        maxAllowed:
+          memory: 8Gi

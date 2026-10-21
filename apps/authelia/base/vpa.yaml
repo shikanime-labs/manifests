@@ -11,6 +11,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: authelia
-      maxAllowed:
-        memory: 1Gi
+      - containerName: authelia
+        maxAllowed:
+          memory: 1Gi

@@ -11,6 +11,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: valkey
-      maxAllowed:
-        memory: 4Gi
+      - containerName: valkey
+        maxAllowed:
+          memory: 4Gi

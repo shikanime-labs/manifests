@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -37,16 +38,16 @@ spec:
             type: PathPrefix
             value: /
           headers:
-            - type: RegularExpression
-              name: Cookie
-              value: '.*(^|; *)(OauthHMAC|OauthExpires|IdToken|AccessToken)-[^=;]+=[^;]*.*'
+            - name: Cookie
+              type: RegularExpression
+              value: ".*(^|; *)(OauthHMAC|OauthExpires|IdToken|AccessToken)-[^=;]+=[^;]*.*"
         - path:
             type: PathPrefix
             value: /
           queryParams:
-            - type: RegularExpression
-              name: h
-              value: '.*'
+            - name: h
+              type: RegularExpression
+              value: ".*"
         - path:
             type: Exact
             value: /oauth2/callback

@@ -73,12 +73,12 @@ spec:
               regex: (.*node_kubevirt_io_.*|.*node_kubernetes_io_.*|.*node_longhorn_io_.*|kubernetes_io_.*|kubevirt_io_.*|shikanime_dev_.*)
     vmagent:
       spec:
-        extraArgs:
-          enableTCP6: "true"
         resources:
           requests:
             cpu: 250m
             memory: 300Mi
+        extraArgs:
+          enableTCP6: "true"
     vmalert:
       extraArgs:
         enableTCP6: "true"

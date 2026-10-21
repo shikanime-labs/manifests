@@ -1,3 +1,4 @@
+---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -12,9 +13,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: admission-controller
-      maxAllowed:
-        memory: 1Gi
+      - containerName: admission-controller
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -30,9 +31,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: recommender
-      maxAllowed:
-        memory: 1Gi
+      - containerName: recommender
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -48,6 +49,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: updater
-      maxAllowed:
-        memory: 1Gi
+      - containerName: updater
+        maxAllowed:
+          memory: 1Gi
