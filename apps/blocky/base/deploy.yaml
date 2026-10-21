@@ -17,6 +17,9 @@ spec:
       containers:
         - name: blocky
           image: blocky
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
           ports:
             - name: dns-udp
               containerPort: 53
@@ -42,6 +45,3 @@ spec:
             requests:
               cpu: 10m
               memory: 64Mi
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1000

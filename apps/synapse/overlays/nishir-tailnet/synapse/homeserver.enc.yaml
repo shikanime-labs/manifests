@@ -1,77 +1,77 @@
 app_service_config_files:
-    - /data/appservices/matrix-discord.yaml
-    - /data/appservices/matrix-discord-doublepuppet.yaml
-    - /data/appservices/matrix-googlechat.yaml
-    - /data/appservices/matrix-googlechat-doublepuppet.yaml
-    - /data/appservices/matrix-linkedin.yaml
-    - /data/appservices/matrix-linkedin-doublepuppet.yaml
-    - /data/appservices/matrix-meta.yaml
-    - /data/appservices/matrix-meta-doublepuppet.yaml
-    - /data/appservices/matrix-signal.yaml
-    - /data/appservices/matrix-signal-doublepuppet.yaml
-    - /data/appservices/matrix-slack.yaml
-    - /data/appservices/matrix-slack-doublepuppet.yaml
-    - /data/appservices/matrix-twitter.yaml
-    - /data/appservices/matrix-twitter-doublepuppet.yaml
-    - /data/appservices/matrix-whatsapp.yaml
-    - /data/appservices/matrix-whatsapp-doublepuppet.yaml
+  - /data/appservices/matrix-discord.yaml
+  - /data/appservices/matrix-discord-doublepuppet.yaml
+  - /data/appservices/matrix-googlechat.yaml
+  - /data/appservices/matrix-googlechat-doublepuppet.yaml
+  - /data/appservices/matrix-linkedin.yaml
+  - /data/appservices/matrix-linkedin-doublepuppet.yaml
+  - /data/appservices/matrix-meta.yaml
+  - /data/appservices/matrix-meta-doublepuppet.yaml
+  - /data/appservices/matrix-signal.yaml
+  - /data/appservices/matrix-signal-doublepuppet.yaml
+  - /data/appservices/matrix-slack.yaml
+  - /data/appservices/matrix-slack-doublepuppet.yaml
+  - /data/appservices/matrix-twitter.yaml
+  - /data/appservices/matrix-twitter-doublepuppet.yaml
+  - /data/appservices/matrix-whatsapp.yaml
+  - /data/appservices/matrix-whatsapp-doublepuppet.yaml
 auto_accept_invites:
-    enabled: true
-    only_from_local_users: true
+  enabled: true
+  only_from_local_users: true
 database:
-    args:
-        database: /data/homeserver.db
-    name: sqlite3
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
 encryption_enabled_by_default_for_room_type: all
 extra_well_known_client_content:
-    m.integrations:
-        managers: []
-form_secret: ENC[AES256_GCM,data:VqJjmO8aEWLcladFtJE5sYLb6G0j2cfGBysznD1+WE8O2g8fp6H+3CWhLPWqiyHSufE=,iv:7RQvmLnrWL5kAIGt66sA5Fug3zq7CIHb2ylKtVjo5sc=,tag:bZc7CVr7HkpX6E/Ov6nXsQ==,type:str]
+  m.integrations:
+    managers: []
+form_secret: ENC[AES256_GCM,data:xPO8oTPK2V4zwHofRv/EYYyfDqXyh9t/8IT8g4kB63iOapHeUtsZKmBnLx7lU9kbNAE=,iv:c1dE9VguSyB/sc0Nc0QqFt/V/jUy0rcK1+tjIxgi5Rg=,tag:k57TIfhXM669+9sfkRBidQ==,type:str]
 enable_metrics: true
 listeners:
-    - port: 8008
-      resources:
-        - compress: false
-          names:
-            - client
-            - federation
-      tls: false
-      type: http
-      x_forwarded: true
-    - port: 8448
-      resources:
-        - compress: false
-          names:
-            - client
-            - federation
-      tls: true
-      type: http
-      x_forwarded: true
-    - port: 9090
-      type: metrics
+  - resources:
+      - compress: false
+        names:
+          - client
+          - federation
+    port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+  - resources:
+      - compress: false
+        names:
+          - client
+          - federation
+    port: 8448
+    tls: true
+    type: http
+    x_forwarded: true
+  - type: metrics
+    port: 9090
 log_config: /data/matrix.taila659a.ts.net.log.config
-macaroon_secret_key: ENC[AES256_GCM,data:0u8d1HrQ5c4EPJB9cpY9rVaB0aUUQDpJZmOAJ9nxTZjUPWdcnnOEeJ22I7WfPnclqZc=,iv:n8ABB9HmbXMLF1w1J+kkyrwb96SEmcJ7wQzphtZ8M+M=,tag:AzJjntQ/eF4CDGdzwr0ytw==,type:str]
+macaroon_secret_key: ENC[AES256_GCM,data:JhllvUj9tHsLo0ULegjyUS1DZ2np9dBNBSSS+oswUWIkZiqgXsODmgcxJprqJM6yRbs=,iv:VmBvBrHcW71DDi+zrDiwzQ583K0ub0lRTQOJSrm5enY=,tag:FCE2uq7tnhmwAiEI1nHFAQ==,type:str]
 media_store_path: /data/media_store
 oidc_providers:
-    - client_id: synapse
-      client_secret: fed430bcb205f645604026f5581b6c4f9e08e7928c42d1d79185accc98e73416
-      discover: true
-      idp_id: synapse
-      idp_name: Shikanime Studio
-      issuer: https://accounts.i.shikanime.studio
-      scopes:
-        - openid
-        - profile
-      skip_authorization: true
-      user_mapping:
-        display_name_template: '{{ user.name }}'
-        localpart_template: '{{ user.preferred_username }}'
-        subject_claim: sub
+  - client_id: synapse
+    client_secret: fed430bcb205f645604026f5581b6c4f9e08e7928c42d1d79185accc98e73416
+    discover: true
+    idp_id: synapse
+    idp_name: Shikanime Studio
+    issuer: https://accounts.i.shikanime.studio
+    scopes:
+      - openid
+      - profile
+    skip_authorization: true
+    user_mapping:
+      display_name_template: "{{ user.name }}"
+      localpart_template: "{{ user.preferred_username }}"
+      subject_claim: sub
 password_config:
-    enabled: true
+  enabled: true
 pid_file: /data/homeserver.pid
 public_baseurl: https://matrix.taila659a.ts.net/
-registration_shared_secret: ENC[AES256_GCM,data:ECPsE1Fp69XGuWsGfW2hHyGc4V0Q5MyGmQSqqwVMCD5Jfj5sWjHcE1rRXRERzAH1p0c=,iv:f/BqJ2thsqxAZQtVYqQmpaQXh7cqn/qrd7/5KQ+J0Fk=,tag:P6D4KGPOCzo5vcVvfbF2nw==,type:str]
+registration_shared_secret: ENC[AES256_GCM,data:o+hvdVNkGPWjnf8gT0TVJSyObVgnh+rMm/0S+rTjUOBJ6aFoikKeK0mdItTgxTJCmyo=,iv:fjdUH9hfbX8HOOMY3NkUgH1o3KQTIOfZtMCLIoI2UzM=,tag:8uJz2x8JROV42js8gq09rg==,type:str]
 report_stats: false
 serve_server_wellknown: true
 server_name: matrix.taila659a.ts.net
@@ -80,38 +80,38 @@ suppress_key_server_warning: true
 tls_certificate_path: /etc/ssl/private/tls.crt
 tls_private_key_path: /etc/ssl/private/tls.key
 trusted_key_servers:
-    - server_name: matrix.org
-    - server_name: nixos.org
+  - server_name: matrix.org
+  - server_name: nixos.org
 sops:
-    age:
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlZHBLM04yMjdPaGRIY2t3
-            Mk9Zb1pUbFd1TzdjTXBLQ0RHRlR3S21sdWowCjJFYXdBQXNCaWs1ekU4Ykl0a3Y1
-            RFZDcnlmbEF6eWk1dWRXcG1EZHpqYk0KLS0tIE5zOEE3Q0xXZHMxM25Pb3gxM2hN
-            UGN2WFUwWEEweHVCVG1MVFNhbGk1MXMKluNBIz/l5l6rgl+YjEomhBY3r255Tz1C
-            bt7wcB2yT0yWuUMAnE4YGs7z5zsR72toRJojdYIDkonZLdfWN6WMNg==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBKdUdNa3F0L2NiT3Vid2Zw
-            azhFT0tZTWVyb0h3ZXd0V2VZM01JWk1KY0FRCngyVjVvZ1NPcVdJQlhQREdRWXk3
-            MWpNVi9lbXdEOUpMVXVoT2Z0SFFvS1UKLS0tIHNXMldpMTV6WWIyWHR6bG1nUkVl
-            cUpuUmdUZHZSSGo5OXprbThsZ2JEYzQKOiBr5YX4PDncFcCM9ow2v7vssIQ0OBBz
-            xK4vyFBWEEzc35Ww6vlOZT84LVBuoZIvGyF/j443i46la+AhAK8UPw==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
-        - enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpaEovZVJDWElmSUNDQ0pU
-            MGVKVHRCVnJPTzg1ZCt3VEtPcUNPUTJ3dGpzClhtUnJSTEpjUzlRb3hKUXVibWRR
-            SVpQQlZQK0lnUEx5QldoRGxidUtGck0KLS0tIG1uUlRPTjN3YVAvRTdIUE14K2ZZ
-            YzJDdVhscjMyVU9WbTk5Z0ZVa1FCSlEKvZdA6Cc/1gxoXsNuBvfD+Okr08T4T8/d
-            ZICBK2jtuI8oMWf+BDnEfKbg6dH9lvRN3743VDHwRv9WGAIW3PCEtQ==
-            -----END AGE ENCRYPTED FILE-----
-          recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay
-    encrypted_regex: ^(registration_shared_secret|form_secret|macaroon_secret_key)$
-    lastmodified: "2026-10-12T09:45:52Z"
-    mac: ENC[AES256_GCM,data:350UmuGt2ITXimYO8YjusCbeUv3AGVzRbvtCzex7a4X0OsYlV8Po3t61rcm3SY+8ZfSoibw47/twZssY16Z22BKapkRv2A9svAFUWCbzqbNBORVF/cLiO5+jc8eX7b62ZvzfI9lgoUDbefJOTIQz77Uz1E3TQKoO1AIe3/El9HQ=,iv:T4bK/lSsaZDqBOAbQGp0cwlfNxLNjFEFmnVtNsAa2rk=,tag:Cl1i4VcgXyZhtc/OHSA/Dw==,type:str]
-    version: 3.13.3
+  version: 3.13.3
+  encrypted_regex: ^(registration_shared_secret|form_secret|macaroon_secret_key)$
+  lastmodified: "2026-10-21T09:54:45Z"
+  mac: ENC[AES256_GCM,data:yxnyFt3NmASIyWqCycIxPjt6qmhcS73RX4ccDNkY1IGT1zDqxI73nYWCoLifS3rnyrD0TlzKGMSWUiu6oW9j3yPwemPcdG/21dUy8Q3IEqwhrOWaP8TAUDSyZ2NqiORwsCgL7XEy5nMkQ0eGlbiKsZz3qILI/zXlT0pJu5gaasQ=,iv:ZY8SZ/nMyFtSsL5Lw670dGl7snBM2W/ftP1DabZTxCE=,tag:xwpAjRmVhM+bSaAc/HfIiQ==,type:str]
+  age:
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBxeGNkcjlBM2RjZUM0RExo
+        NFRYcDhKUDU0WTJPZS9zVkNyY3dsOWYzUm1nClE1MzBpOW5pZVZKMFNkeWpUR2d6
+        MHBFajdZZUFRd2tXQU5SeEtwb0prbmsKLS0tIExGQmtvM2xzRENiQ0JYaFNLQlYr
+        Z1pjN3pTUDJZR01SU3ZmTDBYa1BJdjgKkLgWGGHbOL4t6gU6foQmHTExMDKQNtGb
+        F/m74NK8bNYcJeyGig4dSMGYPIihIWvLkJPSrCu5Rnfmhh4ptPkX+Q==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age17q5ljstyzkvqtejwfnyf5jvqduars2yauw7vtgu5fcf54tm2jf0sspvt3c
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSck5UY0MyTTQ5U0Z4T3dt
+        ZWhTbVNrSlVGaVBueGlKSWFiZWVJSy9aZEdZCmpsV0gxVkMzeGRKaVBPZjd6OUdY
+        aHhteGEzRDh5V09hSDBqc1RSdVR5WncKLS0tIEJESllyZTFyOTR2eU9SdGZTY3lp
+        dit0c0JLSWZ5bXZQYWJoUTdUUDc2ZWMKTOXf+8b0aTXiXntGHVD+Fl1yKmFHsLyv
+        w1XKIxCbR2Bv9RXD4CyFqPzelxBg9E9Zws/wteOSgETcEHxp8xi75A==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1f4yuh4j3gqafjduusfpxz3na9xtwth9s6gznq043mfex0zglp5jqkkdm64
+    - enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEVDhOYmdUYTBBYnBHR0Er
+        dmdOUjg3N2k3NGU2Yjhtb040OHBLc2dOV0Y0CnluTzQ4bWVhOC9tajBBcDkwSWU4
+        RkRzTE9NQkhmWG8vWERBYVNYM1hTeXcKLS0tIDRGTUdjMGFGeU9xaFA3bU9kTGNZ
+        dzE4U0FHOXJHdjVCK2lhdEVpeTM2Q2sKs5iWmzoWpcfZRfTbxyWmRxlzg1+BCzxN
+        HAHNJ5dL8Q95p0o+frYxmj2MhHgH+7+SKjGQ2UZVPJ20oNPDXBNbsQ==
+        -----END AGE ENCRYPTED FILE-----
+      recipient: age1x9v4ps90txy9mk4392uya93tyzx40te4dvns4chg5s6q8mfy03ns74jpay

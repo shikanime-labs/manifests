@@ -220,9 +220,10 @@ files.
   `Signed-off-by: Shikanime Deva <william.phetsinorath@shikanime.studio>` and
   `Co-authored-by: Automata <automata@shikanime.studio>` (gitlint CC1 rejects
   commits without Signed-off-by)
-- Keep Markdown lines wrapped at 80 columns and run `nix fmt` (treefmt) scoped
-  to your changed files — a tree-wide run rewrites unrelated files and can
-  corrupt `.enc.yaml`. The `gitlint` commit-msg hook enforces the title style
+- Keep Markdown lines wrapped at 80 columns and run `nix fmt` (treefmt) on the
+  whole tree: the tree is format-clean and a run is a no-op. Re-encrypt a
+  `.enc.yaml` with `sops` after the formatter re-indents it, otherwise its MAC
+  no longer verifies. The `gitlint` commit-msg hook enforces the title style
   locally.
 
 ## PR Workflow

@@ -1,3 +1,4 @@
+---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -12,9 +13,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: cert-manager-controller
-      maxAllowed:
-        memory: 1Gi
+      - containerName: cert-manager-controller
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -30,9 +31,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: cert-manager-cainjector
-      maxAllowed:
-        memory: 1Gi
+      - containerName: cert-manager-cainjector
+        maxAllowed:
+          memory: 1Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -48,6 +49,6 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: cert-manager-webhook
-      maxAllowed:
-        memory: 1Gi
+      - containerName: cert-manager-webhook
+        maxAllowed:
+          memory: 1Gi

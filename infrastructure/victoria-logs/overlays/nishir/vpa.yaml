@@ -1,3 +1,4 @@
+---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -12,11 +13,11 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vlinsert
-      minAllowed:
-        memory: 1Gi
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vlinsert
+        minAllowed:
+          memory: 1Gi
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -32,9 +33,9 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vlselect
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vlselect
+        maxAllowed:
+          memory: 4Gi
 ---
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
@@ -50,8 +51,8 @@ spec:
     updateMode: InPlaceOrRecreate
   resourcePolicy:
     containerPolicies:
-    - containerName: vlstorage
-      minAllowed:
-        memory: 1Gi
-      maxAllowed:
-        memory: 4Gi
+      - containerName: vlstorage
+        minAllowed:
+          memory: 1Gi
+        maxAllowed:
+          memory: 4Gi

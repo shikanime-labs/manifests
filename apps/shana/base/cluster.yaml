@@ -11,10 +11,10 @@ spec:
       cidrBlocks:
         - 10.96.0.0/12
   controlPlaneRef:
+    name: shana
     apiGroup: controlplane.cluster.x-k8s.io
     kind: RKE2ControlPlane
-    name: shana
   infrastructureRef:
+    name: shana
     apiGroup: infrastructure.cluster.x-k8s.io
     kind: HetznerCluster
-    name: shana
