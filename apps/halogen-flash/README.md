@@ -11,6 +11,12 @@ Exclusive: the w4b checkpoint pins ~68 GiB locked RAM plus KV pool on one
 here and the llama.cpp RPC pair (`apps/llama-cpp-rpc-head/`,
 `apps/llama-cpp-rpc-worker/`) is removed.
 
+The 80Gi memory request is that locked-RAM budget, not an estimate of RSS
+(measured RSS is ~4.6 Gi). Do not trim it: it is what reserves the Halo
+node's memory for the lock, and evicting one replica to schedule it back
+requires 80 Gi of request headroom on a single node — two nodes must be
+nearly empty at once for both replicas to land after any churn.
+
 Weights prefetch into a local-path PVC (`qwen38-flash-next-w4b.hgn` 115.5 GiB
 
 - mtp sidecar + tokenizer). No `HALOGEN_DOWNLOAD`: the engine container makes
