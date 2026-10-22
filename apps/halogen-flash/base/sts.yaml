@@ -95,6 +95,8 @@ spec:
               value: "524288"
             - name: HALOGEN_KV8
               value: "1"
+            - name: HALOGEN_KV_SLOTS
+              value: "6"
             - name: HALOGEN_MAX_TOK
               value: "16384"
       volumes:
