@@ -18,6 +18,7 @@ components:
   - ../../components/grafana-operator
   - ../../components/kubevirt
   - ../../components/node-feature-discovery
+  - ../../components/rke2-coredns
   - ../../components/tailscale
   - ../../components/trust-manager
   - ../../components/external-dns
