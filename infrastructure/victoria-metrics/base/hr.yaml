@@ -17,6 +17,10 @@ spec:
   releaseName: vmks
   targetNamespace: monitoring-system
   values:
+    # rke2-coredns serves no metrics port (53/53 only); the chart's kubeDns
+    # scrape produces dead 9153 targets that fire TooManyScrapeErrors (#3057).
+    kubeDns:
+      enabled: false
     defaultDashboards:
       grafanaOperator:
         enabled: true
