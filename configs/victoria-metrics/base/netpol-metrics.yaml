@@ -1,0 +1,22 @@
+# The rke2 default-network-dns-policy allows only port 53 ingress to kube-dns
+# pods, which blocks the coredns metrics scrape (9153). This policy ADDS the
+# metrics ingress from the monitoring namespace (#3057).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: coredns-metrics-ingress
+  namespace: kube-system
+spec:
+  policyTypes:
+    - Ingress
+  podSelector:
+    matchLabels:
+      k8s-app: kube-dns
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring-system
+      ports:
+        - port: 9153
+          protocol: TCP

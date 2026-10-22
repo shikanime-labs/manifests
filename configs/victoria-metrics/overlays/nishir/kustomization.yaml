@@ -1,4 +1,5 @@
 resources:
+  - ../../base
   - vmalertmanagerconfig.yaml
 configurations:
   - namereference.yaml

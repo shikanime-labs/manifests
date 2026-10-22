@@ -60,7 +60,9 @@ spec:
         spec:
           relabelConfigs:
             - action: labelkeep
-              regex: node|job|instance|metrics_path
+              # __address__ must survive: dropping it discards the target
+              # entirely (0 active kubelet targets, dashboards empty) (#3057).
+              regex: __address__|node|job|instance|metrics_path
           metricRelabelConfigs:
             - action: labeldrop
               regex: (uid)
