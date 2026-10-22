@@ -88,6 +88,14 @@ spec:
               mountPath: /dev/kfd
             - name: dev-dri
               mountPath: /dev/dri
+            - name: dev-accel
+              mountPath: /dev/accel/accel0
+            - name: host-sys
+              mountPath: /host/sys
+              readOnly: true
+            - name: host-xrt
+              mountPath: /opt/xilinx/xrt
+              readOnly: true
           env:
             - name: HALOGEN_DOWNLOAD
               value: peonist-ai/halogen-qwen3.8-flash-next
@@ -97,6 +105,8 @@ spec:
               value: "1"
             - name: HALOGEN_MAX_TOK
               value: "16384"
+            - name: HALOGEN_NPU_MODELS
+              value: qwen3-embedding-4b
       volumes:
         - name: dev-kfd
           hostPath:
@@ -106,6 +116,18 @@ spec:
           hostPath:
             type: Directory
             path: /dev/dri
+        - name: dev-accel
+          hostPath:
+            type: CharDevice
+            path: /dev/accel/accel0
+        - name: host-sys
+          hostPath:
+            type: Directory
+            path: /sys
+        - name: host-xrt
+          hostPath:
+            type: DirectoryOrCreate
+            path: /opt/xilinx/xrt
   volumeClaimTemplates:
     - metadata:
         name: models
