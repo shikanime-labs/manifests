@@ -4,7 +4,7 @@ metadata:
   name: llama-cpp
 spec:
   serviceName: llama-cpp
-  replicas: 1
+  replicas: 2
   persistentVolumeClaimRetentionPolicy:
     whenDeleted: Retain
     whenScaled: Retain
