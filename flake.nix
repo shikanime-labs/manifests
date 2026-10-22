@@ -185,7 +185,6 @@
                 pkgs.gatekeeper
                 pkgs.gcx
                 pkgs.grafanactl
-                pkgs.k0sctl
                 pkgs.kubectl
                 pkgs.kubevirt
                 pkgs.kubernetes-helm
