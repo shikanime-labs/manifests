@@ -184,13 +184,16 @@
                 pkgs.fluxcd-operator
                 pkgs.gatekeeper
                 pkgs.gcx
+                pkgs.grafanactl
                 pkgs.k0sctl
                 pkgs.kubectl
                 pkgs.kubevirt
                 pkgs.kubernetes-helm
                 pkgs.kustomize
+                pkgs.prometheus-alertmanager
                 pkgs.ssh-to-age
                 pkgs.skaffold
+                pkgs.victorialogs
               ];
 
               renovate.settings = {
