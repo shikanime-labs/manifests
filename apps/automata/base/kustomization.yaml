@@ -4,19 +4,16 @@ resources:
   - rbac.yaml
   - svc.yaml
   - vmpool.yaml
+images:
+  - name: automata
+    newName: ghcr.io/shikanime-labs/machines/automata
+    newTag: v1.0.2-40-g0b151f00-dirty@sha256:120cbafacd4ded75982f2e2e6e48dad0986b100620cf70a820fe313338ec55a0
 configurations:
   - namereference.yaml
+  - images.yaml
 secretGenerator:
   - name: automata-authorized-keys
     options:
       disableNameSuffixHash: true
     files:
       - authorized-keys/userdata
-patches:
-  - patch: |-
-      - op: replace
-        path: /spec/virtualMachineTemplate/spec/template/spec/volumes/0/containerDisk/image
-        value: ghcr.io/shikanime-labs/machines/automata:v1.0.2-40-g0b151f00-dirty@sha256:120cbafacd4ded75982f2e2e6e48dad0986b100620cf70a820fe313338ec55a0
-    target:
-      name: automata
-      kind: VirtualMachinePool

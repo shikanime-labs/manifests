@@ -1,0 +1,3 @@
+images:
+  - path: spec/virtualMachineTemplate/spec/template/spec/volumes/containerDisk/image
+    kind: VirtualMachinePool

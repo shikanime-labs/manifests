@@ -5,7 +5,16 @@ resources:
   - netpol-cdi-upload.yaml
 namespace: shikanime
 patches:
-  - path: patch-vm.yaml
+  - patch: |-
+      - op: add
+        path: /spec/virtualMachineTemplate/spec/template/spec/volumes/2
+        value:
+          name: sops-key
+          secret:
+            secretName: automata-sops-key
+    target:
+      kind: VirtualMachinePool
+      name: automata
   - path: patch-svc.yaml
   - patch: |-
       - op: add
