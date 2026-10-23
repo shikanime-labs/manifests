@@ -97,6 +97,9 @@ spec:
                 accessModes:
                   - ReadWriteOncePod
         vmselect:
+          extraArgs:
+            search.maxConcurrentRequests: "16"
+            search.maxQueueDuration: "60s"
           storage:
             volumeClaimTemplate:
               spec:
