@@ -32,13 +32,13 @@ MAX_MESSAGE_CONTENT_CHARS = 2000 # Max chars per message in tool results
 
 # Embedding settings
 [embedding]
-VECTOR_DIMENSIONS = 4096
+VECTOR_DIMENSIONS = 2560
 MAX_INPUT_TOKENS = 8192
 MAX_TOKENS_PER_REQUEST = 300000
 
 [embedding.model_config]
 transport = "openai"
-model = "qwen/qwen3-embedding-8b"
+model = "qwen/qwen3-embedding-4b"
 
 [embedding.model_config.overrides]
 base_url = "https://inference.i.shikanime.studio/v1"
@@ -225,4 +225,4 @@ TYPE = "pgvector"
 MIGRATED = false
 NAMESPACE = "honcho"
 LANCEDB_PATH = "./lancedb_data"
-RECONCILIATION_INTERVAL_SECONDS = 300
+RECONCILIATION_INTERVAL_SECONDS = 60

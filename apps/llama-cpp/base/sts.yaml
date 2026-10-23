@@ -72,7 +72,7 @@ spec:
             allowPrivilegeEscalation: true
           resources:
             requests:
-              memory: 10Gi
+              memory: 6Gi
               cpu: 63m
           ports:
             - name: http
