@@ -60,7 +60,7 @@ spec:
                 resources:
                   requests:
                     storage: 8Gi
-                storageClassName: local-path
+                storageClassName: longhorn-ephemeral
         vmstorage:
           extraArgs:
             enableTCP6: "true"
