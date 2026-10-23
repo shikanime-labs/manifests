@@ -2,7 +2,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-dashboard
+  name: automata-dashboard
 spec:
   rules:
     - backendRefs:
@@ -12,7 +12,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-dashboard-redirect
+  name: automata-dashboard-redirect
 spec:
   rules:
     - filters:
@@ -24,7 +24,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-api-server
+  name: automata-api-server
 spec:
   rules:
     - backendRefs:
@@ -34,7 +34,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-api-server-redirect
+  name: automata-api-server-redirect
 spec:
   rules:
     - filters:
@@ -46,7 +46,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-a2a
+  name: automata-a2a
 spec:
   rules:
     - backendRefs:
@@ -58,7 +58,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-a2a-redirect
+  name: automata-a2a-redirect
 spec:
   rules:
     - filters:
@@ -70,7 +70,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hermes-agent-webhook
+  name: automata-webhook
 spec:
   rules:
     - matches:

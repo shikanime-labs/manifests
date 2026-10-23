@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: automata-a2a
+spec:
+  rules:
+    - backendRefs:
+        - name: automata
+          port: 9900
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: automata-ssh
+spec:
+  rules:
+    - backendRefs:
+        - name: automata
+          port: 22

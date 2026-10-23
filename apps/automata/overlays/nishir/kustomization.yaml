@@ -11,7 +11,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: https
       - op: replace
         path: /spec/rules/0/backendRefs
@@ -19,7 +19,7 @@ patches:
         - name: automata
           port: 9119
     target:
-      name: hermes-agent-dashboard
+      name: automata-dashboard
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -29,7 +29,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: https
       - op: replace
         path: /spec/rules/0/backendRefs
@@ -37,7 +37,7 @@ patches:
         - name: automata
           port: 8642
     target:
-      name: hermes-agent-api-server
+      name: automata-api-server
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -47,7 +47,7 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: https
       - op: replace
         path: /spec/rules/0/backendRefs
@@ -55,7 +55,7 @@ patches:
         - name: automata
           port: 9900
     target:
-      name: hermes-agent-a2a
+      name: automata-a2a
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -65,10 +65,10 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: https
     target:
-      name: hermes-agent-webhook
+      name: automata-webhook
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -78,10 +78,10 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: http
     target:
-      name: hermes-agent-dashboard-redirect
+      name: automata-dashboard-redirect
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -91,10 +91,10 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: http
     target:
-      name: hermes-agent-api-server-redirect
+      name: automata-api-server-redirect
       kind: HTTPRoute
   - patch: |-
       - op: add
@@ -104,8 +104,8 @@ patches:
       - op: add
         path: /spec/parentRefs
         value:
-        - name: hermes-agent
+        - name: automata
           sectionName: http
     target:
-      name: hermes-agent-a2a-redirect
+      name: automata-a2a-redirect
       kind: HTTPRoute
