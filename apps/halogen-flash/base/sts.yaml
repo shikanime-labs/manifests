@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/instance: halogen-flash
         app.kubernetes.io/name: halogen-flash
     spec:
+      priorityClassName: inference
       securityContext:
         fsGroup: 65532
       affinity:
@@ -46,7 +47,7 @@ spec:
           image: halogen-flash
           resources:
             requests:
-              memory: 80Gi
+              memory: 105Gi
               cpu: 1554m
           securityContext:
             privileged: true

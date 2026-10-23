@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/instance: llama-cpp
         app.kubernetes.io/name: llama-cpp
     spec:
+      priorityClassName: inference
       securityContext:
         fsGroup: 65532
       affinity:
