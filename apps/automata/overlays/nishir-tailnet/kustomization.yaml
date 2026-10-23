@@ -13,60 +13,90 @@ patches:
           secret:
             secretName: automata-sops-key
     target:
-      kind: VirtualMachinePool
       name: automata
-  - path: patch-svc.yaml
+      kind: VirtualMachinePool
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: automata
+            sectionName: ssh
+    target:
+      name: automata-ssh
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: automata
+            sectionName: a2a
+    target:
+      name: automata-a2a
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+          - name: automata
+            sectionName: mdns
+    target:
+      name: automata-mdns
+      kind: UDPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames/-
-        value: a2a.automata.taila659a.ts.net
+        value: automata.taila659a.ts.net
     target:
-      name: hermes-agent-a2a-redirect
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: a2a.automata.taila659a.ts.net
-    target:
-      name: hermes-agent-a2a
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: api.automata.taila659a.ts.net
-    target:
-      name: hermes-agent-api-server-redirect
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: api.automata.taila659a.ts.net
-    target:
-      name: hermes-agent-api-server
+      name: automata-dashboard
       kind: HTTPRoute
   - patch: |-
       - op: add
         path: /spec/hostnames/-
         value: automata.taila659a.ts.net
+    target:
+      name: automata-dashboard-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: api.automata.taila659a.ts.net
+    target:
+      name: automata-api-server
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: api.automata.taila659a.ts.net
+    target:
+      name: automata-api-server-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: a2a.automata.taila659a.ts.net
+    target:
+      name: automata-a2a
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: a2a.automata.taila659a.ts.net
+    target:
+      name: automata-a2a-redirect
+      kind: HTTPRoute
+  - patch: |-
+      - op: add
+        path: /spec/hostnames/-
+        value: automata.taila659a.ts.net
+    target:
+      name: automata-webhook
+      kind: HTTPRoute
+  - patch: |-
       - op: add
         path: /spec/hostnames/-
         value: automata-webhook.taila659a.ts.net
     target:
-      name: hermes-agent-webhook
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: automata.taila659a.ts.net
-    target:
-      name: hermes-agent-dashboard-redirect
-      kind: HTTPRoute
-  - patch: |-
-      - op: add
-        path: /spec/hostnames/-
-        value: automata.taila659a.ts.net
-    target:
-      name: hermes-agent-dashboard
+      name: automata-webhook
       kind: HTTPRoute
 labels:
   - includeTemplates: true

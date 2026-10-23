@@ -71,7 +71,7 @@ spec:
         - automata-webhook
   defaultBackend:
     service:
-      name: hermes-agent
+      name: automata
       port:
         number: 443
 ---

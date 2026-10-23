@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: automata
 spec:
-  type: LoadBalancer
   selector:
     app.kubernetes.io/instance: automata
     app.kubernetes.io/name: automata

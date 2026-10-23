@@ -1,16 +1,18 @@
 resources:
   - httproutes.yaml
   - pvc.yaml
+  - tcproute.yaml
+  - udproute.yaml
   - rbac.yaml
   - svc.yaml
   - vmpool.yaml
+configurations:
+  - namereference.yaml
+  - images.yaml
 images:
   - name: automata
     newName: ghcr.io/shikanime-labs/machines/automata
     newTag: v1.0.2-40-g0b151f00-dirty@sha256:120cbafacd4ded75982f2e2e6e48dad0986b100620cf70a820fe313338ec55a0
-configurations:
-  - namereference.yaml
-  - images.yaml
 secretGenerator:
   - name: automata-authorized-keys
     options:
