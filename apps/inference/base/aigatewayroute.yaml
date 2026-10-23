@@ -45,20 +45,20 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: qwen/qwen3-embedding-8b
+              value: qwen/qwen3-embedding-4b
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: llama-cpp
           priority: 0
-          modelNameOverride: qwen/qwen3-embedding-8b
+          modelNameOverride: qwen/qwen3-embedding-4b
         - name: nous
           priority: 1
-          modelNameOverride: qwen/qwen3-embedding-8b
+          modelNameOverride: qwen/qwen3-embedding-4b
         - name: openrouter
           priority: 2
-          modelNameOverride: qwen/qwen3-embedding-8b
+          modelNameOverride: qwen/qwen3-embedding-4b
     - matches:
         - headers:
             - name: x-ai-eg-model
