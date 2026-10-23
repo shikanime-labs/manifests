@@ -97,7 +97,7 @@ spec:
         vmselect:
           extraArgs:
             search.maxConcurrentRequests: "16"
-            search.maxConcurrentRequests.maxQueueDuration: "60s"
+            search.maxQueueDuration: "60s"
           storage:
             volumeClaimTemplate:
               spec:
