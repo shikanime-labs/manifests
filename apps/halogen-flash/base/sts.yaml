@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/instance: halogen-flash
         app.kubernetes.io/name: halogen-flash
     spec:
+      priorityClassName: inference-critical
       securityContext:
         fsGroup: 65532
       affinity:

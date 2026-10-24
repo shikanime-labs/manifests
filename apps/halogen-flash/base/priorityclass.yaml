@@ -1,0 +1,9 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: inference-critical
+value: 100000000
+preemptionPolicy: PreemptLowerPriority
+globalDefault: false
+description: Primary inference serving (halogen-flash) — preempts sibling inference
+  workloads when the 105Gi Flash pod needs its node back.
