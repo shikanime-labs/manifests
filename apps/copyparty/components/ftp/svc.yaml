@@ -52,3 +52,763 @@ spec:
       appProtocol: shikanime.studio/ftp-data
       port: 12009
       targetPort: ftp-data-12009
+    - name: ftp-data-12010
+      appProtocol: shikanime.studio/ftp-data
+      port: 12010
+      targetPort: ftp-data-12010
+    - name: ftp-data-12011
+      appProtocol: shikanime.studio/ftp-data
+      port: 12011
+      targetPort: ftp-data-12011
+    - name: ftp-data-12012
+      appProtocol: shikanime.studio/ftp-data
+      port: 12012
+      targetPort: ftp-data-12012
+    - name: ftp-data-12013
+      appProtocol: shikanime.studio/ftp-data
+      port: 12013
+      targetPort: ftp-data-12013
+    - name: ftp-data-12014
+      appProtocol: shikanime.studio/ftp-data
+      port: 12014
+      targetPort: ftp-data-12014
+    - name: ftp-data-12015
+      appProtocol: shikanime.studio/ftp-data
+      port: 12015
+      targetPort: ftp-data-12015
+    - name: ftp-data-12016
+      appProtocol: shikanime.studio/ftp-data
+      port: 12016
+      targetPort: ftp-data-12016
+    - name: ftp-data-12017
+      appProtocol: shikanime.studio/ftp-data
+      port: 12017
+      targetPort: ftp-data-12017
+    - name: ftp-data-12018
+      appProtocol: shikanime.studio/ftp-data
+      port: 12018
+      targetPort: ftp-data-12018
+    - name: ftp-data-12019
+      appProtocol: shikanime.studio/ftp-data
+      port: 12019
+      targetPort: ftp-data-12019
+    - name: ftp-data-12020
+      appProtocol: shikanime.studio/ftp-data
+      port: 12020
+      targetPort: ftp-data-12020
+    - name: ftp-data-12021
+      appProtocol: shikanime.studio/ftp-data
+      port: 12021
+      targetPort: ftp-data-12021
+    - name: ftp-data-12022
+      appProtocol: shikanime.studio/ftp-data
+      port: 12022
+      targetPort: ftp-data-12022
+    - name: ftp-data-12023
+      appProtocol: shikanime.studio/ftp-data
+      port: 12023
+      targetPort: ftp-data-12023
+    - name: ftp-data-12024
+      appProtocol: shikanime.studio/ftp-data
+      port: 12024
+      targetPort: ftp-data-12024
+    - name: ftp-data-12025
+      appProtocol: shikanime.studio/ftp-data
+      port: 12025
+      targetPort: ftp-data-12025
+    - name: ftp-data-12026
+      appProtocol: shikanime.studio/ftp-data
+      port: 12026
+      targetPort: ftp-data-12026
+    - name: ftp-data-12027
+      appProtocol: shikanime.studio/ftp-data
+      port: 12027
+      targetPort: ftp-data-12027
+    - name: ftp-data-12028
+      appProtocol: shikanime.studio/ftp-data
+      port: 12028
+      targetPort: ftp-data-12028
+    - name: ftp-data-12029
+      appProtocol: shikanime.studio/ftp-data
+      port: 12029
+      targetPort: ftp-data-12029
+    - name: ftp-data-12030
+      appProtocol: shikanime.studio/ftp-data
+      port: 12030
+      targetPort: ftp-data-12030
+    - name: ftp-data-12031
+      appProtocol: shikanime.studio/ftp-data
+      port: 12031
+      targetPort: ftp-data-12031
+    - name: ftp-data-12032
+      appProtocol: shikanime.studio/ftp-data
+      port: 12032
+      targetPort: ftp-data-12032
+    - name: ftp-data-12033
+      appProtocol: shikanime.studio/ftp-data
+      port: 12033
+      targetPort: ftp-data-12033
+    - name: ftp-data-12034
+      appProtocol: shikanime.studio/ftp-data
+      port: 12034
+      targetPort: ftp-data-12034
+    - name: ftp-data-12035
+      appProtocol: shikanime.studio/ftp-data
+      port: 12035
+      targetPort: ftp-data-12035
+    - name: ftp-data-12036
+      appProtocol: shikanime.studio/ftp-data
+      port: 12036
+      targetPort: ftp-data-12036
+    - name: ftp-data-12037
+      appProtocol: shikanime.studio/ftp-data
+      port: 12037
+      targetPort: ftp-data-12037
+    - name: ftp-data-12038
+      appProtocol: shikanime.studio/ftp-data
+      port: 12038
+      targetPort: ftp-data-12038
+    - name: ftp-data-12039
+      appProtocol: shikanime.studio/ftp-data
+      port: 12039
+      targetPort: ftp-data-12039
+    - name: ftp-data-12040
+      appProtocol: shikanime.studio/ftp-data
+      port: 12040
+      targetPort: ftp-data-12040
+    - name: ftp-data-12041
+      appProtocol: shikanime.studio/ftp-data
+      port: 12041
+      targetPort: ftp-data-12041
+    - name: ftp-data-12042
+      appProtocol: shikanime.studio/ftp-data
+      port: 12042
+      targetPort: ftp-data-12042
+    - name: ftp-data-12043
+      appProtocol: shikanime.studio/ftp-data
+      port: 12043
+      targetPort: ftp-data-12043
+    - name: ftp-data-12044
+      appProtocol: shikanime.studio/ftp-data
+      port: 12044
+      targetPort: ftp-data-12044
+    - name: ftp-data-12045
+      appProtocol: shikanime.studio/ftp-data
+      port: 12045
+      targetPort: ftp-data-12045
+    - name: ftp-data-12046
+      appProtocol: shikanime.studio/ftp-data
+      port: 12046
+      targetPort: ftp-data-12046
+    - name: ftp-data-12047
+      appProtocol: shikanime.studio/ftp-data
+      port: 12047
+      targetPort: ftp-data-12047
+    - name: ftp-data-12048
+      appProtocol: shikanime.studio/ftp-data
+      port: 12048
+      targetPort: ftp-data-12048
+    - name: ftp-data-12049
+      appProtocol: shikanime.studio/ftp-data
+      port: 12049
+      targetPort: ftp-data-12049
+    - name: ftp-data-12050
+      appProtocol: shikanime.studio/ftp-data
+      port: 12050
+      targetPort: ftp-data-12050
+    - name: ftp-data-12051
+      appProtocol: shikanime.studio/ftp-data
+      port: 12051
+      targetPort: ftp-data-12051
+    - name: ftp-data-12052
+      appProtocol: shikanime.studio/ftp-data
+      port: 12052
+      targetPort: ftp-data-12052
+    - name: ftp-data-12053
+      appProtocol: shikanime.studio/ftp-data
+      port: 12053
+      targetPort: ftp-data-12053
+    - name: ftp-data-12054
+      appProtocol: shikanime.studio/ftp-data
+      port: 12054
+      targetPort: ftp-data-12054
+    - name: ftp-data-12055
+      appProtocol: shikanime.studio/ftp-data
+      port: 12055
+      targetPort: ftp-data-12055
+    - name: ftp-data-12056
+      appProtocol: shikanime.studio/ftp-data
+      port: 12056
+      targetPort: ftp-data-12056
+    - name: ftp-data-12057
+      appProtocol: shikanime.studio/ftp-data
+      port: 12057
+      targetPort: ftp-data-12057
+    - name: ftp-data-12058
+      appProtocol: shikanime.studio/ftp-data
+      port: 12058
+      targetPort: ftp-data-12058
+    - name: ftp-data-12059
+      appProtocol: shikanime.studio/ftp-data
+      port: 12059
+      targetPort: ftp-data-12059
+    - name: ftp-data-12060
+      appProtocol: shikanime.studio/ftp-data
+      port: 12060
+      targetPort: ftp-data-12060
+    - name: ftp-data-12061
+      appProtocol: shikanime.studio/ftp-data
+      port: 12061
+      targetPort: ftp-data-12061
+    - name: ftp-data-12062
+      appProtocol: shikanime.studio/ftp-data
+      port: 12062
+      targetPort: ftp-data-12062
+    - name: ftp-data-12063
+      appProtocol: shikanime.studio/ftp-data
+      port: 12063
+      targetPort: ftp-data-12063
+    - name: ftp-data-12064
+      appProtocol: shikanime.studio/ftp-data
+      port: 12064
+      targetPort: ftp-data-12064
+    - name: ftp-data-12065
+      appProtocol: shikanime.studio/ftp-data
+      port: 12065
+      targetPort: ftp-data-12065
+    - name: ftp-data-12066
+      appProtocol: shikanime.studio/ftp-data
+      port: 12066
+      targetPort: ftp-data-12066
+    - name: ftp-data-12067
+      appProtocol: shikanime.studio/ftp-data
+      port: 12067
+      targetPort: ftp-data-12067
+    - name: ftp-data-12068
+      appProtocol: shikanime.studio/ftp-data
+      port: 12068
+      targetPort: ftp-data-12068
+    - name: ftp-data-12069
+      appProtocol: shikanime.studio/ftp-data
+      port: 12069
+      targetPort: ftp-data-12069
+    - name: ftp-data-12070
+      appProtocol: shikanime.studio/ftp-data
+      port: 12070
+      targetPort: ftp-data-12070
+    - name: ftp-data-12071
+      appProtocol: shikanime.studio/ftp-data
+      port: 12071
+      targetPort: ftp-data-12071
+    - name: ftp-data-12072
+      appProtocol: shikanime.studio/ftp-data
+      port: 12072
+      targetPort: ftp-data-12072
+    - name: ftp-data-12073
+      appProtocol: shikanime.studio/ftp-data
+      port: 12073
+      targetPort: ftp-data-12073
+    - name: ftp-data-12074
+      appProtocol: shikanime.studio/ftp-data
+      port: 12074
+      targetPort: ftp-data-12074
+    - name: ftp-data-12075
+      appProtocol: shikanime.studio/ftp-data
+      port: 12075
+      targetPort: ftp-data-12075
+    - name: ftp-data-12076
+      appProtocol: shikanime.studio/ftp-data
+      port: 12076
+      targetPort: ftp-data-12076
+    - name: ftp-data-12077
+      appProtocol: shikanime.studio/ftp-data
+      port: 12077
+      targetPort: ftp-data-12077
+    - name: ftp-data-12078
+      appProtocol: shikanime.studio/ftp-data
+      port: 12078
+      targetPort: ftp-data-12078
+    - name: ftp-data-12079
+      appProtocol: shikanime.studio/ftp-data
+      port: 12079
+      targetPort: ftp-data-12079
+    - name: ftp-data-12080
+      appProtocol: shikanime.studio/ftp-data
+      port: 12080
+      targetPort: ftp-data-12080
+    - name: ftp-data-12081
+      appProtocol: shikanime.studio/ftp-data
+      port: 12081
+      targetPort: ftp-data-12081
+    - name: ftp-data-12082
+      appProtocol: shikanime.studio/ftp-data
+      port: 12082
+      targetPort: ftp-data-12082
+    - name: ftp-data-12083
+      appProtocol: shikanime.studio/ftp-data
+      port: 12083
+      targetPort: ftp-data-12083
+    - name: ftp-data-12084
+      appProtocol: shikanime.studio/ftp-data
+      port: 12084
+      targetPort: ftp-data-12084
+    - name: ftp-data-12085
+      appProtocol: shikanime.studio/ftp-data
+      port: 12085
+      targetPort: ftp-data-12085
+    - name: ftp-data-12086
+      appProtocol: shikanime.studio/ftp-data
+      port: 12086
+      targetPort: ftp-data-12086
+    - name: ftp-data-12087
+      appProtocol: shikanime.studio/ftp-data
+      port: 12087
+      targetPort: ftp-data-12087
+    - name: ftp-data-12088
+      appProtocol: shikanime.studio/ftp-data
+      port: 12088
+      targetPort: ftp-data-12088
+    - name: ftp-data-12089
+      appProtocol: shikanime.studio/ftp-data
+      port: 12089
+      targetPort: ftp-data-12089
+    - name: ftp-data-12090
+      appProtocol: shikanime.studio/ftp-data
+      port: 12090
+      targetPort: ftp-data-12090
+    - name: ftp-data-12091
+      appProtocol: shikanime.studio/ftp-data
+      port: 12091
+      targetPort: ftp-data-12091
+    - name: ftp-data-12092
+      appProtocol: shikanime.studio/ftp-data
+      port: 12092
+      targetPort: ftp-data-12092
+    - name: ftp-data-12093
+      appProtocol: shikanime.studio/ftp-data
+      port: 12093
+      targetPort: ftp-data-12093
+    - name: ftp-data-12094
+      appProtocol: shikanime.studio/ftp-data
+      port: 12094
+      targetPort: ftp-data-12094
+    - name: ftp-data-12095
+      appProtocol: shikanime.studio/ftp-data
+      port: 12095
+      targetPort: ftp-data-12095
+    - name: ftp-data-12096
+      appProtocol: shikanime.studio/ftp-data
+      port: 12096
+      targetPort: ftp-data-12096
+    - name: ftp-data-12097
+      appProtocol: shikanime.studio/ftp-data
+      port: 12097
+      targetPort: ftp-data-12097
+    - name: ftp-data-12098
+      appProtocol: shikanime.studio/ftp-data
+      port: 12098
+      targetPort: ftp-data-12098
+    - name: ftp-data-12099
+      appProtocol: shikanime.studio/ftp-data
+      port: 12099
+      targetPort: ftp-data-12099
+    - name: ftp-data-12100
+      appProtocol: shikanime.studio/ftp-data
+      port: 12100
+      targetPort: ftp-data-12100
+    - name: ftp-data-12101
+      appProtocol: shikanime.studio/ftp-data
+      port: 12101
+      targetPort: ftp-data-12101
+    - name: ftp-data-12102
+      appProtocol: shikanime.studio/ftp-data
+      port: 12102
+      targetPort: ftp-data-12102
+    - name: ftp-data-12103
+      appProtocol: shikanime.studio/ftp-data
+      port: 12103
+      targetPort: ftp-data-12103
+    - name: ftp-data-12104
+      appProtocol: shikanime.studio/ftp-data
+      port: 12104
+      targetPort: ftp-data-12104
+    - name: ftp-data-12105
+      appProtocol: shikanime.studio/ftp-data
+      port: 12105
+      targetPort: ftp-data-12105
+    - name: ftp-data-12106
+      appProtocol: shikanime.studio/ftp-data
+      port: 12106
+      targetPort: ftp-data-12106
+    - name: ftp-data-12107
+      appProtocol: shikanime.studio/ftp-data
+      port: 12107
+      targetPort: ftp-data-12107
+    - name: ftp-data-12108
+      appProtocol: shikanime.studio/ftp-data
+      port: 12108
+      targetPort: ftp-data-12108
+    - name: ftp-data-12109
+      appProtocol: shikanime.studio/ftp-data
+      port: 12109
+      targetPort: ftp-data-12109
+    - name: ftp-data-12110
+      appProtocol: shikanime.studio/ftp-data
+      port: 12110
+      targetPort: ftp-data-12110
+    - name: ftp-data-12111
+      appProtocol: shikanime.studio/ftp-data
+      port: 12111
+      targetPort: ftp-data-12111
+    - name: ftp-data-12112
+      appProtocol: shikanime.studio/ftp-data
+      port: 12112
+      targetPort: ftp-data-12112
+    - name: ftp-data-12113
+      appProtocol: shikanime.studio/ftp-data
+      port: 12113
+      targetPort: ftp-data-12113
+    - name: ftp-data-12114
+      appProtocol: shikanime.studio/ftp-data
+      port: 12114
+      targetPort: ftp-data-12114
+    - name: ftp-data-12115
+      appProtocol: shikanime.studio/ftp-data
+      port: 12115
+      targetPort: ftp-data-12115
+    - name: ftp-data-12116
+      appProtocol: shikanime.studio/ftp-data
+      port: 12116
+      targetPort: ftp-data-12116
+    - name: ftp-data-12117
+      appProtocol: shikanime.studio/ftp-data
+      port: 12117
+      targetPort: ftp-data-12117
+    - name: ftp-data-12118
+      appProtocol: shikanime.studio/ftp-data
+      port: 12118
+      targetPort: ftp-data-12118
+    - name: ftp-data-12119
+      appProtocol: shikanime.studio/ftp-data
+      port: 12119
+      targetPort: ftp-data-12119
+    - name: ftp-data-12120
+      appProtocol: shikanime.studio/ftp-data
+      port: 12120
+      targetPort: ftp-data-12120
+    - name: ftp-data-12121
+      appProtocol: shikanime.studio/ftp-data
+      port: 12121
+      targetPort: ftp-data-12121
+    - name: ftp-data-12122
+      appProtocol: shikanime.studio/ftp-data
+      port: 12122
+      targetPort: ftp-data-12122
+    - name: ftp-data-12123
+      appProtocol: shikanime.studio/ftp-data
+      port: 12123
+      targetPort: ftp-data-12123
+    - name: ftp-data-12124
+      appProtocol: shikanime.studio/ftp-data
+      port: 12124
+      targetPort: ftp-data-12124
+    - name: ftp-data-12125
+      appProtocol: shikanime.studio/ftp-data
+      port: 12125
+      targetPort: ftp-data-12125
+    - name: ftp-data-12126
+      appProtocol: shikanime.studio/ftp-data
+      port: 12126
+      targetPort: ftp-data-12126
+    - name: ftp-data-12127
+      appProtocol: shikanime.studio/ftp-data
+      port: 12127
+      targetPort: ftp-data-12127
+    - name: ftp-data-12128
+      appProtocol: shikanime.studio/ftp-data
+      port: 12128
+      targetPort: ftp-data-12128
+    - name: ftp-data-12129
+      appProtocol: shikanime.studio/ftp-data
+      port: 12129
+      targetPort: ftp-data-12129
+    - name: ftp-data-12130
+      appProtocol: shikanime.studio/ftp-data
+      port: 12130
+      targetPort: ftp-data-12130
+    - name: ftp-data-12131
+      appProtocol: shikanime.studio/ftp-data
+      port: 12131
+      targetPort: ftp-data-12131
+    - name: ftp-data-12132
+      appProtocol: shikanime.studio/ftp-data
+      port: 12132
+      targetPort: ftp-data-12132
+    - name: ftp-data-12133
+      appProtocol: shikanime.studio/ftp-data
+      port: 12133
+      targetPort: ftp-data-12133
+    - name: ftp-data-12134
+      appProtocol: shikanime.studio/ftp-data
+      port: 12134
+      targetPort: ftp-data-12134
+    - name: ftp-data-12135
+      appProtocol: shikanime.studio/ftp-data
+      port: 12135
+      targetPort: ftp-data-12135
+    - name: ftp-data-12136
+      appProtocol: shikanime.studio/ftp-data
+      port: 12136
+      targetPort: ftp-data-12136
+    - name: ftp-data-12137
+      appProtocol: shikanime.studio/ftp-data
+      port: 12137
+      targetPort: ftp-data-12137
+    - name: ftp-data-12138
+      appProtocol: shikanime.studio/ftp-data
+      port: 12138
+      targetPort: ftp-data-12138
+    - name: ftp-data-12139
+      appProtocol: shikanime.studio/ftp-data
+      port: 12139
+      targetPort: ftp-data-12139
+    - name: ftp-data-12140
+      appProtocol: shikanime.studio/ftp-data
+      port: 12140
+      targetPort: ftp-data-12140
+    - name: ftp-data-12141
+      appProtocol: shikanime.studio/ftp-data
+      port: 12141
+      targetPort: ftp-data-12141
+    - name: ftp-data-12142
+      appProtocol: shikanime.studio/ftp-data
+      port: 12142
+      targetPort: ftp-data-12142
+    - name: ftp-data-12143
+      appProtocol: shikanime.studio/ftp-data
+      port: 12143
+      targetPort: ftp-data-12143
+    - name: ftp-data-12144
+      appProtocol: shikanime.studio/ftp-data
+      port: 12144
+      targetPort: ftp-data-12144
+    - name: ftp-data-12145
+      appProtocol: shikanime.studio/ftp-data
+      port: 12145
+      targetPort: ftp-data-12145
+    - name: ftp-data-12146
+      appProtocol: shikanime.studio/ftp-data
+      port: 12146
+      targetPort: ftp-data-12146
+    - name: ftp-data-12147
+      appProtocol: shikanime.studio/ftp-data
+      port: 12147
+      targetPort: ftp-data-12147
+    - name: ftp-data-12148
+      appProtocol: shikanime.studio/ftp-data
+      port: 12148
+      targetPort: ftp-data-12148
+    - name: ftp-data-12149
+      appProtocol: shikanime.studio/ftp-data
+      port: 12149
+      targetPort: ftp-data-12149
+    - name: ftp-data-12150
+      appProtocol: shikanime.studio/ftp-data
+      port: 12150
+      targetPort: ftp-data-12150
+    - name: ftp-data-12151
+      appProtocol: shikanime.studio/ftp-data
+      port: 12151
+      targetPort: ftp-data-12151
+    - name: ftp-data-12152
+      appProtocol: shikanime.studio/ftp-data
+      port: 12152
+      targetPort: ftp-data-12152
+    - name: ftp-data-12153
+      appProtocol: shikanime.studio/ftp-data
+      port: 12153
+      targetPort: ftp-data-12153
+    - name: ftp-data-12154
+      appProtocol: shikanime.studio/ftp-data
+      port: 12154
+      targetPort: ftp-data-12154
+    - name: ftp-data-12155
+      appProtocol: shikanime.studio/ftp-data
+      port: 12155
+      targetPort: ftp-data-12155
+    - name: ftp-data-12156
+      appProtocol: shikanime.studio/ftp-data
+      port: 12156
+      targetPort: ftp-data-12156
+    - name: ftp-data-12157
+      appProtocol: shikanime.studio/ftp-data
+      port: 12157
+      targetPort: ftp-data-12157
+    - name: ftp-data-12158
+      appProtocol: shikanime.studio/ftp-data
+      port: 12158
+      targetPort: ftp-data-12158
+    - name: ftp-data-12159
+      appProtocol: shikanime.studio/ftp-data
+      port: 12159
+      targetPort: ftp-data-12159
+    - name: ftp-data-12160
+      appProtocol: shikanime.studio/ftp-data
+      port: 12160
+      targetPort: ftp-data-12160
+    - name: ftp-data-12161
+      appProtocol: shikanime.studio/ftp-data
+      port: 12161
+      targetPort: ftp-data-12161
+    - name: ftp-data-12162
+      appProtocol: shikanime.studio/ftp-data
+      port: 12162
+      targetPort: ftp-data-12162
+    - name: ftp-data-12163
+      appProtocol: shikanime.studio/ftp-data
+      port: 12163
+      targetPort: ftp-data-12163
+    - name: ftp-data-12164
+      appProtocol: shikanime.studio/ftp-data
+      port: 12164
+      targetPort: ftp-data-12164
+    - name: ftp-data-12165
+      appProtocol: shikanime.studio/ftp-data
+      port: 12165
+      targetPort: ftp-data-12165
+    - name: ftp-data-12166
+      appProtocol: shikanime.studio/ftp-data
+      port: 12166
+      targetPort: ftp-data-12166
+    - name: ftp-data-12167
+      appProtocol: shikanime.studio/ftp-data
+      port: 12167
+      targetPort: ftp-data-12167
+    - name: ftp-data-12168
+      appProtocol: shikanime.studio/ftp-data
+      port: 12168
+      targetPort: ftp-data-12168
+    - name: ftp-data-12169
+      appProtocol: shikanime.studio/ftp-data
+      port: 12169
+      targetPort: ftp-data-12169
+    - name: ftp-data-12170
+      appProtocol: shikanime.studio/ftp-data
+      port: 12170
+      targetPort: ftp-data-12170
+    - name: ftp-data-12171
+      appProtocol: shikanime.studio/ftp-data
+      port: 12171
+      targetPort: ftp-data-12171
+    - name: ftp-data-12172
+      appProtocol: shikanime.studio/ftp-data
+      port: 12172
+      targetPort: ftp-data-12172
+    - name: ftp-data-12173
+      appProtocol: shikanime.studio/ftp-data
+      port: 12173
+      targetPort: ftp-data-12173
+    - name: ftp-data-12174
+      appProtocol: shikanime.studio/ftp-data
+      port: 12174
+      targetPort: ftp-data-12174
+    - name: ftp-data-12175
+      appProtocol: shikanime.studio/ftp-data
+      port: 12175
+      targetPort: ftp-data-12175
+    - name: ftp-data-12176
+      appProtocol: shikanime.studio/ftp-data
+      port: 12176
+      targetPort: ftp-data-12176
+    - name: ftp-data-12177
+      appProtocol: shikanime.studio/ftp-data
+      port: 12177
+      targetPort: ftp-data-12177
+    - name: ftp-data-12178
+      appProtocol: shikanime.studio/ftp-data
+      port: 12178
+      targetPort: ftp-data-12178
+    - name: ftp-data-12179
+      appProtocol: shikanime.studio/ftp-data
+      port: 12179
+      targetPort: ftp-data-12179
+    - name: ftp-data-12180
+      appProtocol: shikanime.studio/ftp-data
+      port: 12180
+      targetPort: ftp-data-12180
+    - name: ftp-data-12181
+      appProtocol: shikanime.studio/ftp-data
+      port: 12181
+      targetPort: ftp-data-12181
+    - name: ftp-data-12182
+      appProtocol: shikanime.studio/ftp-data
+      port: 12182
+      targetPort: ftp-data-12182
+    - name: ftp-data-12183
+      appProtocol: shikanime.studio/ftp-data
+      port: 12183
+      targetPort: ftp-data-12183
+    - name: ftp-data-12184
+      appProtocol: shikanime.studio/ftp-data
+      port: 12184
+      targetPort: ftp-data-12184
+    - name: ftp-data-12185
+      appProtocol: shikanime.studio/ftp-data
+      port: 12185
+      targetPort: ftp-data-12185
+    - name: ftp-data-12186
+      appProtocol: shikanime.studio/ftp-data
+      port: 12186
+      targetPort: ftp-data-12186
+    - name: ftp-data-12187
+      appProtocol: shikanime.studio/ftp-data
+      port: 12187
+      targetPort: ftp-data-12187
+    - name: ftp-data-12188
+      appProtocol: shikanime.studio/ftp-data
+      port: 12188
+      targetPort: ftp-data-12188
+    - name: ftp-data-12189
+      appProtocol: shikanime.studio/ftp-data
+      port: 12189
+      targetPort: ftp-data-12189
+    - name: ftp-data-12190
+      appProtocol: shikanime.studio/ftp-data
+      port: 12190
+      targetPort: ftp-data-12190
+    - name: ftp-data-12191
+      appProtocol: shikanime.studio/ftp-data
+      port: 12191
+      targetPort: ftp-data-12191
+    - name: ftp-data-12192
+      appProtocol: shikanime.studio/ftp-data
+      port: 12192
+      targetPort: ftp-data-12192
+    - name: ftp-data-12193
+      appProtocol: shikanime.studio/ftp-data
+      port: 12193
+      targetPort: ftp-data-12193
+    - name: ftp-data-12194
+      appProtocol: shikanime.studio/ftp-data
+      port: 12194
+      targetPort: ftp-data-12194
+    - name: ftp-data-12195
+      appProtocol: shikanime.studio/ftp-data
+      port: 12195
+      targetPort: ftp-data-12195
+    - name: ftp-data-12196
+      appProtocol: shikanime.studio/ftp-data
+      port: 12196
+      targetPort: ftp-data-12196
+    - name: ftp-data-12197
+      appProtocol: shikanime.studio/ftp-data
+      port: 12197
+      targetPort: ftp-data-12197
+    - name: ftp-data-12198
+      appProtocol: shikanime.studio/ftp-data
+      port: 12198
+      targetPort: ftp-data-12198
+    - name: ftp-data-12199
+      appProtocol: shikanime.studio/ftp-data
+      port: 12199
+      targetPort: ftp-data-12199

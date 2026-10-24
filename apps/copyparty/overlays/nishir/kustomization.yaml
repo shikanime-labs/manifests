@@ -183,6 +183,1716 @@ patches:
     target:
       name: copyparty-ftp-data-12009
       kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12010
+    target:
+      name: copyparty-ftp-data-12010
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12011
+    target:
+      name: copyparty-ftp-data-12011
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12012
+    target:
+      name: copyparty-ftp-data-12012
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12013
+    target:
+      name: copyparty-ftp-data-12013
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12014
+    target:
+      name: copyparty-ftp-data-12014
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12015
+    target:
+      name: copyparty-ftp-data-12015
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12016
+    target:
+      name: copyparty-ftp-data-12016
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12017
+    target:
+      name: copyparty-ftp-data-12017
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12018
+    target:
+      name: copyparty-ftp-data-12018
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12019
+    target:
+      name: copyparty-ftp-data-12019
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12020
+    target:
+      name: copyparty-ftp-data-12020
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12021
+    target:
+      name: copyparty-ftp-data-12021
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12022
+    target:
+      name: copyparty-ftp-data-12022
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12023
+    target:
+      name: copyparty-ftp-data-12023
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12024
+    target:
+      name: copyparty-ftp-data-12024
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12025
+    target:
+      name: copyparty-ftp-data-12025
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12026
+    target:
+      name: copyparty-ftp-data-12026
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12027
+    target:
+      name: copyparty-ftp-data-12027
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12028
+    target:
+      name: copyparty-ftp-data-12028
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12029
+    target:
+      name: copyparty-ftp-data-12029
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12030
+    target:
+      name: copyparty-ftp-data-12030
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12031
+    target:
+      name: copyparty-ftp-data-12031
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12032
+    target:
+      name: copyparty-ftp-data-12032
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12033
+    target:
+      name: copyparty-ftp-data-12033
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12034
+    target:
+      name: copyparty-ftp-data-12034
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12035
+    target:
+      name: copyparty-ftp-data-12035
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12036
+    target:
+      name: copyparty-ftp-data-12036
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12037
+    target:
+      name: copyparty-ftp-data-12037
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12038
+    target:
+      name: copyparty-ftp-data-12038
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12039
+    target:
+      name: copyparty-ftp-data-12039
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12040
+    target:
+      name: copyparty-ftp-data-12040
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12041
+    target:
+      name: copyparty-ftp-data-12041
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12042
+    target:
+      name: copyparty-ftp-data-12042
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12043
+    target:
+      name: copyparty-ftp-data-12043
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12044
+    target:
+      name: copyparty-ftp-data-12044
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12045
+    target:
+      name: copyparty-ftp-data-12045
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12046
+    target:
+      name: copyparty-ftp-data-12046
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12047
+    target:
+      name: copyparty-ftp-data-12047
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12048
+    target:
+      name: copyparty-ftp-data-12048
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12049
+    target:
+      name: copyparty-ftp-data-12049
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12050
+    target:
+      name: copyparty-ftp-data-12050
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12051
+    target:
+      name: copyparty-ftp-data-12051
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12052
+    target:
+      name: copyparty-ftp-data-12052
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12053
+    target:
+      name: copyparty-ftp-data-12053
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12054
+    target:
+      name: copyparty-ftp-data-12054
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12055
+    target:
+      name: copyparty-ftp-data-12055
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12056
+    target:
+      name: copyparty-ftp-data-12056
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12057
+    target:
+      name: copyparty-ftp-data-12057
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12058
+    target:
+      name: copyparty-ftp-data-12058
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12059
+    target:
+      name: copyparty-ftp-data-12059
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12060
+    target:
+      name: copyparty-ftp-data-12060
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12061
+    target:
+      name: copyparty-ftp-data-12061
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12062
+    target:
+      name: copyparty-ftp-data-12062
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12063
+    target:
+      name: copyparty-ftp-data-12063
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12064
+    target:
+      name: copyparty-ftp-data-12064
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12065
+    target:
+      name: copyparty-ftp-data-12065
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12066
+    target:
+      name: copyparty-ftp-data-12066
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12067
+    target:
+      name: copyparty-ftp-data-12067
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12068
+    target:
+      name: copyparty-ftp-data-12068
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12069
+    target:
+      name: copyparty-ftp-data-12069
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12070
+    target:
+      name: copyparty-ftp-data-12070
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12071
+    target:
+      name: copyparty-ftp-data-12071
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12072
+    target:
+      name: copyparty-ftp-data-12072
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12073
+    target:
+      name: copyparty-ftp-data-12073
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12074
+    target:
+      name: copyparty-ftp-data-12074
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12075
+    target:
+      name: copyparty-ftp-data-12075
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12076
+    target:
+      name: copyparty-ftp-data-12076
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12077
+    target:
+      name: copyparty-ftp-data-12077
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12078
+    target:
+      name: copyparty-ftp-data-12078
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12079
+    target:
+      name: copyparty-ftp-data-12079
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12080
+    target:
+      name: copyparty-ftp-data-12080
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12081
+    target:
+      name: copyparty-ftp-data-12081
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12082
+    target:
+      name: copyparty-ftp-data-12082
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12083
+    target:
+      name: copyparty-ftp-data-12083
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12084
+    target:
+      name: copyparty-ftp-data-12084
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12085
+    target:
+      name: copyparty-ftp-data-12085
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12086
+    target:
+      name: copyparty-ftp-data-12086
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12087
+    target:
+      name: copyparty-ftp-data-12087
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12088
+    target:
+      name: copyparty-ftp-data-12088
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12089
+    target:
+      name: copyparty-ftp-data-12089
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12090
+    target:
+      name: copyparty-ftp-data-12090
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12091
+    target:
+      name: copyparty-ftp-data-12091
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12092
+    target:
+      name: copyparty-ftp-data-12092
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12093
+    target:
+      name: copyparty-ftp-data-12093
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12094
+    target:
+      name: copyparty-ftp-data-12094
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12095
+    target:
+      name: copyparty-ftp-data-12095
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12096
+    target:
+      name: copyparty-ftp-data-12096
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12097
+    target:
+      name: copyparty-ftp-data-12097
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12098
+    target:
+      name: copyparty-ftp-data-12098
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12099
+    target:
+      name: copyparty-ftp-data-12099
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12100
+    target:
+      name: copyparty-ftp-data-12100
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12101
+    target:
+      name: copyparty-ftp-data-12101
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12102
+    target:
+      name: copyparty-ftp-data-12102
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12103
+    target:
+      name: copyparty-ftp-data-12103
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12104
+    target:
+      name: copyparty-ftp-data-12104
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12105
+    target:
+      name: copyparty-ftp-data-12105
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12106
+    target:
+      name: copyparty-ftp-data-12106
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12107
+    target:
+      name: copyparty-ftp-data-12107
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12108
+    target:
+      name: copyparty-ftp-data-12108
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12109
+    target:
+      name: copyparty-ftp-data-12109
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12110
+    target:
+      name: copyparty-ftp-data-12110
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12111
+    target:
+      name: copyparty-ftp-data-12111
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12112
+    target:
+      name: copyparty-ftp-data-12112
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12113
+    target:
+      name: copyparty-ftp-data-12113
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12114
+    target:
+      name: copyparty-ftp-data-12114
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12115
+    target:
+      name: copyparty-ftp-data-12115
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12116
+    target:
+      name: copyparty-ftp-data-12116
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12117
+    target:
+      name: copyparty-ftp-data-12117
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12118
+    target:
+      name: copyparty-ftp-data-12118
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12119
+    target:
+      name: copyparty-ftp-data-12119
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12120
+    target:
+      name: copyparty-ftp-data-12120
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12121
+    target:
+      name: copyparty-ftp-data-12121
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12122
+    target:
+      name: copyparty-ftp-data-12122
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12123
+    target:
+      name: copyparty-ftp-data-12123
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12124
+    target:
+      name: copyparty-ftp-data-12124
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12125
+    target:
+      name: copyparty-ftp-data-12125
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12126
+    target:
+      name: copyparty-ftp-data-12126
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12127
+    target:
+      name: copyparty-ftp-data-12127
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12128
+    target:
+      name: copyparty-ftp-data-12128
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12129
+    target:
+      name: copyparty-ftp-data-12129
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12130
+    target:
+      name: copyparty-ftp-data-12130
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12131
+    target:
+      name: copyparty-ftp-data-12131
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12132
+    target:
+      name: copyparty-ftp-data-12132
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12133
+    target:
+      name: copyparty-ftp-data-12133
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12134
+    target:
+      name: copyparty-ftp-data-12134
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12135
+    target:
+      name: copyparty-ftp-data-12135
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12136
+    target:
+      name: copyparty-ftp-data-12136
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12137
+    target:
+      name: copyparty-ftp-data-12137
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12138
+    target:
+      name: copyparty-ftp-data-12138
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12139
+    target:
+      name: copyparty-ftp-data-12139
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12140
+    target:
+      name: copyparty-ftp-data-12140
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12141
+    target:
+      name: copyparty-ftp-data-12141
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12142
+    target:
+      name: copyparty-ftp-data-12142
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12143
+    target:
+      name: copyparty-ftp-data-12143
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12144
+    target:
+      name: copyparty-ftp-data-12144
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12145
+    target:
+      name: copyparty-ftp-data-12145
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12146
+    target:
+      name: copyparty-ftp-data-12146
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12147
+    target:
+      name: copyparty-ftp-data-12147
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12148
+    target:
+      name: copyparty-ftp-data-12148
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12149
+    target:
+      name: copyparty-ftp-data-12149
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12150
+    target:
+      name: copyparty-ftp-data-12150
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12151
+    target:
+      name: copyparty-ftp-data-12151
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12152
+    target:
+      name: copyparty-ftp-data-12152
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12153
+    target:
+      name: copyparty-ftp-data-12153
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12154
+    target:
+      name: copyparty-ftp-data-12154
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12155
+    target:
+      name: copyparty-ftp-data-12155
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12156
+    target:
+      name: copyparty-ftp-data-12156
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12157
+    target:
+      name: copyparty-ftp-data-12157
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12158
+    target:
+      name: copyparty-ftp-data-12158
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12159
+    target:
+      name: copyparty-ftp-data-12159
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12160
+    target:
+      name: copyparty-ftp-data-12160
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12161
+    target:
+      name: copyparty-ftp-data-12161
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12162
+    target:
+      name: copyparty-ftp-data-12162
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12163
+    target:
+      name: copyparty-ftp-data-12163
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12164
+    target:
+      name: copyparty-ftp-data-12164
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12165
+    target:
+      name: copyparty-ftp-data-12165
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12166
+    target:
+      name: copyparty-ftp-data-12166
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12167
+    target:
+      name: copyparty-ftp-data-12167
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12168
+    target:
+      name: copyparty-ftp-data-12168
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12169
+    target:
+      name: copyparty-ftp-data-12169
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12170
+    target:
+      name: copyparty-ftp-data-12170
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12171
+    target:
+      name: copyparty-ftp-data-12171
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12172
+    target:
+      name: copyparty-ftp-data-12172
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12173
+    target:
+      name: copyparty-ftp-data-12173
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12174
+    target:
+      name: copyparty-ftp-data-12174
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12175
+    target:
+      name: copyparty-ftp-data-12175
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12176
+    target:
+      name: copyparty-ftp-data-12176
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12177
+    target:
+      name: copyparty-ftp-data-12177
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12178
+    target:
+      name: copyparty-ftp-data-12178
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12179
+    target:
+      name: copyparty-ftp-data-12179
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12180
+    target:
+      name: copyparty-ftp-data-12180
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12181
+    target:
+      name: copyparty-ftp-data-12181
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12182
+    target:
+      name: copyparty-ftp-data-12182
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12183
+    target:
+      name: copyparty-ftp-data-12183
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12184
+    target:
+      name: copyparty-ftp-data-12184
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12185
+    target:
+      name: copyparty-ftp-data-12185
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12186
+    target:
+      name: copyparty-ftp-data-12186
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12187
+    target:
+      name: copyparty-ftp-data-12187
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12188
+    target:
+      name: copyparty-ftp-data-12188
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12189
+    target:
+      name: copyparty-ftp-data-12189
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12190
+    target:
+      name: copyparty-ftp-data-12190
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12191
+    target:
+      name: copyparty-ftp-data-12191
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12192
+    target:
+      name: copyparty-ftp-data-12192
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12193
+    target:
+      name: copyparty-ftp-data-12193
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12194
+    target:
+      name: copyparty-ftp-data-12194
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12195
+    target:
+      name: copyparty-ftp-data-12195
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12196
+    target:
+      name: copyparty-ftp-data-12196
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12197
+    target:
+      name: copyparty-ftp-data-12197
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12198
+    target:
+      name: copyparty-ftp-data-12198
+      kind: TCPRoute
+  - patch: |-
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: copyparty
+          sectionName: ftp-data-12199
+    target:
+      name: copyparty-ftp-data-12199
+      kind: TCPRoute
 secretGenerator:
   - name: copyparty-oidc-client
     envs:
