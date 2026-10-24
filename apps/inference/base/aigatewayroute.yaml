@@ -11,8 +11,16 @@ spec:
               type: Exact
               value: qwen/qwen3.8-flash
       modelsOwnedBy: Shikanime Studio
+      # request stays unbounded for long agent streams; streamIdleTimeout
+      # bounds the silent pre-first-token wait instead. When halogen saturates
+      # (6/6 slots busy, hundreds of seconds queued), requests sit silent in
+      # its queue until upstream clients time out. Firing at 60s before the
+      # first token lets the retry policy in halogen-flash-affinity fail over
+      # to nous/openrouter; a healthy halogen admits and starts prefilling
+      # well under 60s (observed p90 prefill ~20s).
       timeouts:
         request: 0s
+      streamIdleTimeout: 60s
       backendRefs:
         - name: halogen-flash
           priority: 0
