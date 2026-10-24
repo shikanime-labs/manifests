@@ -15,8 +15,6 @@ blocking:
 ports:
   dns: 53
   http: 4000
-dnssec:
-  validate: true
 prometheus:
   enable: true
 redis:
