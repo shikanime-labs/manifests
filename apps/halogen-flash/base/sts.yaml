@@ -47,7 +47,7 @@ spec:
           image: halogen-flash
           resources:
             requests:
-              memory: 105Gi
+              memory: 96Gi
               cpu: 1554m
           securityContext:
             privileged: true
