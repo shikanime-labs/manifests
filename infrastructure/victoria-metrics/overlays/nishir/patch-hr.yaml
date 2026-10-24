@@ -15,6 +15,10 @@ spec:
           enabled: false
         "code_verb:apiserver_request_total:increase30d":
           enabled: false
+        "apiserver_request:availability30d":
+          enabled: false
+        "code:apiserver_request_total:increase30d":
+          enabled: false
     kubeControllerManager:
       vmScrape:
         spec:
