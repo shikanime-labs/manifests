@@ -2,7 +2,6 @@ resources:
   - aiservicebackend.yaml
   - backend.yaml
   - backendtrafficpolicy.yaml
-  - priorityclass.yaml
   - sts.yaml
   - svc.yaml
   - vpa.yaml
