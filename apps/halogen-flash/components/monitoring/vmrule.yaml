@@ -20,12 +20,7 @@ spec:
             severity: warning
           annotations:
             summary: >-
-              {{ $labels.instance }} lost {{ $value | humanize }}s of GPU
-              service to driver queue eviction in 30m: host memory compaction
-              or reclaim moved pages the GPU maps, and every in-flight request
-              stalled for them. This is the #3079 stall class as a metric, not
-              a crash; the node's budget line is what moved, and
-              #3084/#3086 own the memory.
+              {{ $labels.instance }} lost {{ $value | humanize }}s of GPU service to driver queue eviction in 30m: host memory compaction or reclaim moved pages the GPU maps, and every in-flight request stalled for them. This is the #3079 stall class as a metric, not a crash; the node's budget line is what moved, and #3084/#3086 own the memory.
         - alert: HalogenFlashQueueSaturated
           expr: halogen:queue_wait_longest_seconds > 300
           for: 15m
@@ -33,6 +28,4 @@ spec:
             severity: warning
           annotations:
             summary: >-
-              {{ $labels.instance }} has queued requests past 300s for 15m.
-              Demand exceeds the admitted slots; check
-              halogen:queue_gave_up_total for clients that already left.
+              {{ $labels.instance }} has queued requests past 300s for 15m. Demand exceeds the admitted slots; check halogen:queue_gave_up_total for clients that already left.
