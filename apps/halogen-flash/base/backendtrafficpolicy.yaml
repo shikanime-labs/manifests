@@ -11,10 +11,6 @@ spec:
     - name: default
       group: gateway.networking.k8s.io
       kind: HTTPRoute
-  # One attempt per priority: when a backend stalls (streamIdleTimeout fires
-  # before the first token) or resets the connection, move to the next
-  # priority instead of retrying the same backend. The affinity hash stays
-  # per-attempt, so each failover attempt re-hashes to a fresh backend.
   retry:
     numRetries: 2
     numAttemptsPerPriority: 1
