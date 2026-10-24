@@ -1,6 +1,7 @@
 resources:
   - netpol.yaml
   - ns.yaml
+  - priorityclass.yaml
   - pvc.yaml
   - pv.yaml
   - vpa.yaml
