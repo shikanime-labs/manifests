@@ -29,3 +29,21 @@ spec:
           annotations:
             summary: >-
               {{ $labels.instance }} has queued requests past 300s for 15m. Demand exceeds the admitted slots; check halogen:queue_gave_up_total for clients that already left.
+        - alert: HalogenFlashDrops
+          expr: |
+            sum by (pod) (rate(halogen:queue_gave_up_total[10m]))
+              / clamp_min(sum by (pod) (rate(halogen:requests_total[10m])), 0.01) > 0.05
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              {{ $labels.pod }} is dropping {{ $value | humanizePercentage }} of admitted requests — clients gave up waiting for pool room or a slot. Capacity, not faults: check HalogenFlashQueueSaturated and halogen:kv_pool_waiting_for_room for which bound.
+        - alert: HalogenFlashPoolWaiting
+          expr: halogen:kv_pool_waiting_for_room > 0
+          for: 15m
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              {{ $labels.pod }} has requests held waiting for KV pool room for 15m — the pool is the binding constraint and gave-up drops follow. This signature preceded the #3143 pool raise.
