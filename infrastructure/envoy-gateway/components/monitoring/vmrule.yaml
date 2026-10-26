@@ -29,3 +29,24 @@ spec:
                 rate(envoy_http_downstream_rq_time_bucket{envoy_http_conn_manager_prefix=~"https?-.*"}[5m])
               )
             )
+        - record: sli:envoy:error_ratio
+          expr: |
+            sum by (gateway) (
+              rate(envoy_http_downstream_rq_xx{envoy_http_conn_manager_prefix=~"https?-.*",envoy_response_code_class="5"}[5m])
+            )
+            /
+            clamp_min(
+              sum by (gateway) (
+                rate(envoy_http_downstream_rq_xx{envoy_http_conn_manager_prefix=~"https?-.*"}[5m])
+              ),
+              0.001)
+        - alert: EnvoyGatewayErrorRatioHigh
+          expr: |
+            sli:envoy:error_ratio > 0.05
+              and on (gateway) sli:envoy:rq_rate > 0.02
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              Gateway {{ $labels.gateway }} is returning 5xx for {{ $value | humanizePercentage }} of requests over 5m at non-trivial volume. Check the route's backends: on the inference gateway this is usually halogen-flash pool-room drops (see HalogenFlashDrops) or a rolling replica.
