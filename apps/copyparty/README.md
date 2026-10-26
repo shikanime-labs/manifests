@@ -8,8 +8,8 @@ admits HTTP, ftp-control, ftp data 12000-12099, ftps and sftp from
 `tailscale-system`.
 
 Auth is anonymous-first: the catch-alls strip `X-WEBAUTH-USER`/`X-Id-Token`,
-while the OIDC-gated `copyparty-sso`/`copyparty-tailnet-sso` routes (Envoy
-session cookie or `/?h`) are where the gateway mints identity for members.
+while the OIDC-gated `copyparty-sso` route (Envoy
+session cookie or `/?h`) is where the gateway mints identity for members.
 
 ## Layout
 
@@ -21,5 +21,5 @@ session cookie or `/?h`) are where the gateway mints identity for members.
   patches.
 - `overlays/nishir/` — cluster CA cert, all components, data PVC mounts, 2.5GbE
   node affinity.
-- `overlays/nishir-tailnet/` — Tailscale Ingress + FTP funnel, config from
+- `overlays/nishir-tailnet/` — Tailscale LB Gateway, config from
   `copyparty/config.conf`.
