@@ -3,6 +3,7 @@
   "customManagers": [
     {
       "customType": "regex",
+      "datasourceTemplate": "github-releases",
       "depNameTemplate": "shikanime-labs/dashboards",
       "description": "GrafanaDashboard CRs pin dashboards release tags in spec.url",
       "fileMatch": ["(^|/)grafanadashboard\\.yaml$"],
