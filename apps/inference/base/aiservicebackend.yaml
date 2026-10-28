@@ -84,3 +84,17 @@ spec:
     name: deepseek
     kind: Backend
     group: gateway.envoyproxy.io
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: AIServiceBackend
+metadata:
+  name: hetzner-inference
+  namespace: shikanime
+spec:
+  schema:
+    name: OpenAI
+    prefix: api/v1
+  backendRef:
+    name: hetzner-inference
+    kind: Backend
+    group: gateway.envoyproxy.io

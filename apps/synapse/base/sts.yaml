@@ -39,6 +39,7 @@ spec:
     - metadata:
         name: data
       spec:
+        volumeName: synapse-data
         resources:
           requests:
             storage: 64Gi
