@@ -82,15 +82,15 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: hetzner-inference
+  name: hetzner
   namespace: shikanime
 spec:
   type: APIKey
   targetRefs:
-    - name: hetzner-inference
+    - name: hetzner
       group: aigateway.envoyproxy.io
       kind: AIServiceBackend
   apiKey:
     secretRef:
-      name: hetzner-inference-key
+      name: hetzner-key
       namespace: shikanime

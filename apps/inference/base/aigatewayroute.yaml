@@ -105,7 +105,7 @@ spec:
       timeouts:
         request: 0s
       backendRefs:
-        - name: hetzner-inference
+        - name: hetzner
           priority: 0
           modelNameOverride: Qwen/Qwen3.6-35B-A3B-FP8
         - name: nous
@@ -123,7 +123,7 @@ spec:
       timeouts:
         request: 0s
       backendRefs:
-        - name: hetzner-inference
+        - name: hetzner
           priority: 0
           modelNameOverride: Qwen3.8-27B
         - name: nous

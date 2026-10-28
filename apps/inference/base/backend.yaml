@@ -114,7 +114,7 @@ spec:
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: Backend
 metadata:
-  name: hetzner-inference
+  name: hetzner
   namespace: shikanime
 spec:
   endpoints:

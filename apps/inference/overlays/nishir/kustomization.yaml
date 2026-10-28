@@ -30,10 +30,10 @@ secretGenerator:
     namespace: shikanime
     envs:
       - inference-key/.enc.env
-  - name: hetzner-inference-key
+  - name: hetzner-key
     namespace: shikanime
     envs:
-      - hetzner-inference-key/.enc.env
+      - hetzner-key/.enc.env
 patches:
   - patch: |-
       - op: add
