@@ -1,0 +1,60 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMRule
+metadata:
+  name: comin
+  namespace: monitoring-system
+spec:
+  groups:
+    - name: comin.rules
+      rules:
+        - alert: CominDeployStale
+          expr: '(time() - max by (instance) (comin_deployment_info{status="done"})) > 48 * 3600'
+          for: 1h
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              comin on this host has not deployed a new generation in over 48h.
+              Healthy comin deploys within one poll (about 10 minutes) of a
+              merge; a stale timestamp means the builder or deployer is wedged
+              (a failed generation never retries) and the host silently misses
+              every deploy until main moves or the store is repaired.
+        - alert: CominBuildFailed
+          expr: 'max by (instance) (comin_last_build_failed) == 1'
+          for: 30m
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              The last comin build failed on this host and comin does not retry
+              it: the host stays pinned to its previous generation until a new
+              commit re-queues the build. Rebuild manually or land a trigger
+              commit.
+        - alert: CominDeployFailed
+          expr: 'max by (instance) (comin_last_deployment_failed) == 1'
+          for: 15m
+          labels:
+            severity: critical
+          annotations:
+            summary: >-
+              The last comin deployment failed on this host (activation or
+              switch error). The host may be running a stale or broken
+              generation; check the comin journal.
+        - alert: CominSuspended
+          expr: 'max by (instance) (comin_is_suspended) == 1'
+          for: 1h
+          labels:
+            severity: warning
+          annotations:
+            summary: comin suspended on this host; deploys are frozen.
+        - alert: CominScraperGone
+          expr: 'up{job="comin"} == 0'
+          for: 30m
+          labels:
+            severity: warning
+          annotations:
+            summary: >-
+              The comin exporter on this host has been unreachable for 30m:
+              the vmagent scrape or the host itself is down, so there is no
+              deploy-state signal at all (the blind spot that let a two-week
+              builder wedge pass unnoticed, machines#1651).

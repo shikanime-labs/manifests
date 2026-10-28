@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - vmalertmanagerconfig.yaml
+  - vmrule.yaml
 configurations:
   - namereference.yaml
 secretGenerator:
