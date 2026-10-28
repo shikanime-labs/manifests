@@ -34,7 +34,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: dashboards
 spec:
-  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.40/dashboards/power.json
+  url: https://raw.githubusercontent.com/shikanime-labs/dashboards/v0.4.41/dashboards/power.json
   allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
