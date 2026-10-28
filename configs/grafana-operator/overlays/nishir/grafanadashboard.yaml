@@ -16,7 +16,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
   name: security
-  namespace: monitoring-system
+  namespace: shikanime
   labels:
     app.kubernetes.io/part-of: dashboards
 spec:
