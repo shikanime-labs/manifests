@@ -124,3 +124,17 @@ spec:
   tls:
     wellKnownCACertificates: System
     sni: api.deepseek.com
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: Backend
+metadata:
+  name: hetzner-inference
+  namespace: shikanime
+spec:
+  endpoints:
+    - fqdn:
+        hostname: inference.hetzner.com
+        port: 443
+  tls:
+    wellKnownCACertificates: System
+    sni: inference.hetzner.com
