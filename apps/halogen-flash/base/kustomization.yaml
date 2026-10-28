@@ -8,4 +8,4 @@ resources:
 images:
   - name: halogen-flash
     newName: ghcr.io/peonist-ai/halogen-flash-server
-    newTag: 0.18.14@sha256:e0c1d1b48e07c8acdd204fbdbafbb421a395a73cf704271845a1846ad1fd767f
+    newTag: 0.18.17@sha256:e30d6bf9a325d75fb4904c108745df7d77dc8e25ae3b2ce9b9007e55d70757d7
