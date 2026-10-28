@@ -111,6 +111,42 @@ spec:
     - matches:
         - headers:
             - name: x-ai-eg-model
+              type: Exact
+              value: Qwen/Qwen3.6-35B-A3B-FP8
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: hetzner-inference
+          priority: 0
+          modelNameOverride: Qwen/Qwen3.6-35B-A3B-FP8
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen3.6-35b-a3b
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen3.6-35b-a3b
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: Qwen3.8-27B
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: hetzner-inference
+          priority: 0
+          modelNameOverride: Qwen3.8-27B
+        - name: nous
+          priority: 1
+          modelNameOverride: qwen/qwen3.8-27b
+        - name: openrouter
+          priority: 2
+          modelNameOverride: qwen/qwen3.8-27b
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
               type: RegularExpression
               value: ".*"
       modelsOwnedBy: Shikanime Studio

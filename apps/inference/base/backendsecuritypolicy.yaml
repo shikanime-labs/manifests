@@ -94,3 +94,19 @@ spec:
     secretRef:
       name: nous-key
       namespace: shikanime
+---
+apiVersion: aigateway.envoyproxy.io/v1beta1
+kind: BackendSecurityPolicy
+metadata:
+  name: hetzner-inference
+  namespace: shikanime
+spec:
+  type: APIKey
+  targetRefs:
+    - name: hetzner-inference
+      group: aigateway.envoyproxy.io
+      kind: AIServiceBackend
+  apiKey:
+    secretRef:
+      name: hetzner-inference-key
+      namespace: shikanime
