@@ -78,6 +78,11 @@ spec:
                 - LowNodeUtilization
           pluginConfig:
             - name: DefaultEvictor
+              args:
+                podProtections:
+                  extraEnabled:
+                    - PodsWithPVC
+                    - PodsWithResourceClaims
             - name: LowNodeUtilization
               args:
                 metricsUtilization:
@@ -94,6 +99,11 @@ spec:
                 - LowNodeUtilization
           pluginConfig:
             - name: DefaultEvictor
+              args:
+                podProtections:
+                  extraEnabled:
+                    - PodsWithPVC
+                    - PodsWithResourceClaims
             - name: LowNodeUtilization
               args:
                 metricsUtilization:
