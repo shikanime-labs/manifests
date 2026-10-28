@@ -50,22 +50,6 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: BackendSecurityPolicy
 metadata:
-  name: mistral
-  namespace: shikanime
-spec:
-  type: APIKey
-  targetRefs:
-    - name: mistral
-      group: aigateway.envoyproxy.io
-      kind: AIServiceBackend
-  apiKey:
-    secretRef:
-      name: mistral-key
-      namespace: shikanime
----
-apiVersion: aigateway.envoyproxy.io/v1beta1
-kind: BackendSecurityPolicy
-metadata:
   name: deepseek
   namespace: shikanime
 spec:

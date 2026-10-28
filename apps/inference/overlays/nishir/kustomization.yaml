@@ -22,10 +22,6 @@ secretGenerator:
     namespace: shikanime
     envs:
       - openrouter-key/.enc.env
-  - name: mistral-key
-    namespace: shikanime
-    envs:
-      - mistral-key/.enc.env
   - name: deepseek-key
     namespace: shikanime
     envs:
