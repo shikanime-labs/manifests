@@ -1,2 +1,2 @@
 resources:
-  - netpol-metrics.yaml
+  - netpol.yaml
