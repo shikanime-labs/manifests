@@ -64,18 +64,6 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: mistral/labs-leanstral-1-5
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: mistral
-          priority: 0
-          modelNameOverride: labs-leanstral-1-5
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
               value: z-ai/glm-5.3
       modelsOwnedBy: Shikanime Studio
       timeouts:

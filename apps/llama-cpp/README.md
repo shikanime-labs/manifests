@@ -126,9 +126,8 @@ Body: { "model": "<provider/model>", "messages": [...] }
 Served locally: `qwen/qwen3-embedding-8b`. The
 remaining routes go to remote providers only: `qwen/qwen3.8-flash` to
 `apps/halogen-flash`, `z-ai/glm-5.3-flash` to the Z.ai
-OpenAI-compatible endpoint, `z-ai/glm-5.3` to the Anthropic endpoint,
-`mistral/labs-leanstral-1-5` to Mistral, and the catch-all to
-nous/openrouter.
+OpenAI-compatible endpoint, `z-ai/glm-5.3` to the Anthropic endpoint, and the
+catch-all to nous/openrouter.
 
 ## Web UI
 
