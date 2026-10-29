@@ -12,7 +12,7 @@ configurations:
 images:
   - name: automata
     newName: ghcr.io/shikanime-labs/machines/automata
-    newTag: v1.0.2-72-g4e65d2c4-dirty@sha256:40b31a0867c177ac6177e963aee92e2204c5d482bf1743db6d07a35caf0d3972
+    newTag: v1.0.2-74-g6309a12c-dirty@sha256:155b5995ffe03e998c088938d3b1d8c6968ccd5ab4f210b3a9988aca6f0fbc92
 secretGenerator:
   - name: automata-authorized-keys
     options:
