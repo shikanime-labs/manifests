@@ -13,6 +13,6 @@ spec:
         - name: authelia
           volumeMounts:
             - name: config
-              mountPath: /config/configuration.enc.yaml
-              subPath: configuration.enc.yaml
+              mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
               readOnly: true
