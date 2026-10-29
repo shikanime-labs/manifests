@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: honcho-deriver
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/instance: honcho-deriver
