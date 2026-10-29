@@ -6,10 +6,6 @@ metadata:
   labels:
     dashboards: grafana
 spec:
-  persistentVolumeClaim:
+  deployment:
     spec:
-      resources:
-        requests:
-          storage: 2Gi
-      accessModes:
-        - ReadWriteOncePod
+      replicas: 3
