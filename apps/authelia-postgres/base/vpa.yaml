@@ -1,0 +1,16 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: authelia-postgres
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: authelia-postgres
+  updatePolicy:
+    updateMode: InPlace
+  resourcePolicy:
+    containerPolicies:
+      - containerName: postgres
+        maxAllowed:
+          memory: 1Gi

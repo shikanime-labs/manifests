@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: authelia-valkey
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: authelia
+      ports:
+        - port: valkey
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: authelia-valkey
+      app.kubernetes.io/name: valkey
+  policyTypes:
+    - Ingress

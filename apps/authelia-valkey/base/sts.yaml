@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: authelia-valkey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: authelia-valkey
+      app.kubernetes.io/name: valkey
+  serviceName: authelia-valkey
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: local-path
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOncePod
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: authelia-valkey
+        app.kubernetes.io/name: valkey
+    spec:
+      containers:
+        - name: valkey
+          image: valkey
+          args:
+            - --appendonly
+            - "yes"
+          livenessProbe:
+            initialDelaySeconds: 10
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          ports:
+            - name: valkey
+              containerPort: 6379
+          readinessProbe:
+            initialDelaySeconds: 5
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 30
+            tcpSocket:
+              port: valkey
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 25m
+              memory: 250Mi
+          securityContext:
+            capabilities:
+              add:
+                - CHOWN
+                - FOWNER
+                - SETUID
+                - SETGID
+                - DAC_OVERRIDE
+      securityContext:
+        fsGroup: 999

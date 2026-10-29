@@ -1,0 +1,16 @@
+resources:
+  - ../../base
+namespace: shikanime
+patches:
+  - path: patch-sts.yaml
+secretGenerator:
+  - name: authelia-postgres-env
+    type: kubernetes.io/basic-auth
+    envs:
+      - authelia-postgres-env/.enc.env
+    options:
+      disableNameSuffixHash: true
+labels:
+  - includeTemplates: true
+    pairs:
+      app.kubernetes.io/part-of: authelia
