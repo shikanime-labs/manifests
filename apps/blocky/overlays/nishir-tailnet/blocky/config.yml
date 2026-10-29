@@ -9,9 +9,12 @@ blocking:
   denylists:
     ads:
       - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+    fakenews:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
   clientGroupsBlock:
     default:
       - ads
+      - fakenews
 ports:
   dns: 53
   http: 4000
