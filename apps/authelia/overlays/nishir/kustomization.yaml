@@ -41,4 +41,4 @@ patches:
 secretGenerator:
   - name: authelia
     files:
-      - authelia/configuration.enc.yaml
+      - configuration.yaml=authelia/configuration.enc.yaml

@@ -15,15 +15,12 @@ spec:
         app.kubernetes.io/name: authelia
     spec:
       priorityClassName: shikanime-critical
-      volumes:
-        - name: state
-          emptyDir: {}
       containers:
         - name: authelia
           image: authelia
           args:
             - --config
-            - /config/configuration.enc.yaml
+            - /config/configuration.yaml
           livenessProbe:
             httpGet:
               path: /healthz
@@ -47,9 +44,6 @@ spec:
               path: /healthz
               port: http
             timeoutSeconds: 5
-          volumeMounts:
-            - name: state
-              mountPath: /config
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
               value: template
