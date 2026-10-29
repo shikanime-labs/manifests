@@ -6,6 +6,7 @@ components:
   - ../../components/cdi
   - ../../components/cert-manager
   - ../../components/cluster-api
+  - ../../components/cnpg
   - ../../components/descheduler
   - ../../components/envoy-gateway
   - ../../components/envoy-ai-gateway
