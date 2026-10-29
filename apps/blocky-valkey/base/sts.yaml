@@ -26,6 +26,7 @@ spec:
         app.kubernetes.io/instance: blocky-valkey
         app.kubernetes.io/name: valkey
     spec:
+      priorityClassName: shikanime-critical
       containers:
         - name: valkey
           image: valkey
