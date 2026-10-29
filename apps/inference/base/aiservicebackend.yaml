@@ -75,13 +75,13 @@ spec:
 apiVersion: aigateway.envoyproxy.io/v1beta1
 kind: AIServiceBackend
 metadata:
-  name: hetzner-inference
+  name: hetzner
   namespace: shikanime
 spec:
   schema:
     name: OpenAI
     prefix: api/v1
   backendRef:
-    name: hetzner-inference
+    name: hetzner
     kind: Backend
     group: gateway.envoyproxy.io
