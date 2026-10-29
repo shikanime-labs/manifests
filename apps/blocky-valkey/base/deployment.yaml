@@ -1,25 +1,16 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: blocky-valkey
 spec:
-  replicas: 1
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
   selector:
     matchLabels:
       app.kubernetes.io/instance: blocky-valkey
       app.kubernetes.io/name: valkey
-  serviceName: blocky-valkey
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        resources:
-          requests:
-            storage: 512Mi
-        storageClassName: local-path
-        volumeMode: Filesystem
-        accessModes:
-          - ReadWriteOncePod
   template:
     metadata:
       labels:
@@ -30,9 +21,6 @@ spec:
       containers:
         - name: valkey
           image: valkey
-          args:
-            - --appendonly
-            - "yes"
           livenessProbe:
             initialDelaySeconds: 10
             tcpSocket:
@@ -51,9 +39,6 @@ spec:
             tcpSocket:
               port: valkey
             timeoutSeconds: 5
-          volumeMounts:
-            - name: data
-              mountPath: /data
           resources:
             requests:
               cpu: 25m
@@ -66,5 +51,3 @@ spec:
                 - SETUID
                 - SETGID
                 - DAC_OVERRIDE
-      securityContext:
-        fsGroup: 999
