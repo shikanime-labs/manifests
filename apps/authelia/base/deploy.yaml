@@ -16,7 +16,7 @@ spec:
     spec:
       priorityClassName: shikanime-critical
       volumes:
-        - name: config
+        - name: state
           emptyDir: {}
       containers:
         - name: authelia
@@ -48,7 +48,7 @@ spec:
               port: http
             timeoutSeconds: 5
           volumeMounts:
-            - name: config
+            - name: state
               mountPath: /config
           env:
             - name: X_AUTHELIA_CONFIG_FILTER
