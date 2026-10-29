@@ -156,6 +156,61 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: apps-authelia-postgres
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-autoscaler
+    - name: infrastructure-cert-manager
+    - name: infrastructure-cnpg
+    - name: infrastructure-victoria-metrics
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: authelia-postgres
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/authelia-postgres/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-authelia-valkey
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infrastructure-autoscaler
+    - name: infrastructure-cert-manager
+    - name: infrastructure-victoria-metrics
+    - name: infrastructure-tailscale
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: authelia-valkey
+      namespace: shikanime
+  interval: 10m
+  path: ./apps/authelia-valkey/overlays/nishir
+  prune: true
+  sourceRef:
+    name: flux-system
+    kind: GitRepository
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: apps-forgejo
   namespace: flux-system
 spec:
@@ -227,61 +282,6 @@ spec:
       namespace: shikanime
   interval: 10m
   path: ./apps/honcho-postgres/overlays/nishir-tailnet
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: apps-authelia-postgres
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-    - name: infrastructure-cnpg
-    - name: infrastructure-victoria-metrics
-    - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: authelia-postgres
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/authelia-postgres/overlays/nishir
-  prune: true
-  sourceRef:
-    name: flux-system
-    kind: GitRepository
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: apps-authelia-valkey
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: infrastructure-autoscaler
-    - name: infrastructure-cert-manager
-    - name: infrastructure-victoria-metrics
-    - name: infrastructure-tailscale
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: authelia-valkey
-      namespace: shikanime
-  interval: 10m
-  path: ./apps/authelia-valkey/overlays/nishir
   prune: true
   sourceRef:
     name: flux-system
