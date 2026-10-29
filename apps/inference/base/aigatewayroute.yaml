@@ -118,7 +118,7 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: Qwen3.8-27B
+              value: qwen/qwen3.8-27b
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
