@@ -77,6 +77,7 @@ spec:
               regex: (.*node_kubevirt_io_.*|.*node_kubernetes_io_.*|.*node_longhorn_io_.*|kubernetes_io_.*|kubevirt_io_.*|shikanime_dev_.*)
     vmagent:
       spec:
+        replicaCount: 2
         resources:
           requests:
             cpu: 250m
@@ -84,6 +85,8 @@ spec:
         extraArgs:
           enableTCP6: "true"
     vmalert:
+      spec:
+        replicaCount: 2
       extraArgs:
         enableTCP6: "true"
       ruleNamespaceSelector: null
@@ -107,5 +110,7 @@ spec:
               spec:
                 accessModes:
                   - ReadWriteOncePod
+    kube-state-metrics:
+      replicas: 2
     vmsingle:
       enabled: false
