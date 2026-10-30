@@ -25,10 +25,6 @@ spec:
                       key: auth-token
           securityContext:
             fsGroup: 10001
-          volumes:
-            - name: grafana-data
-              persistentVolumeClaim:
-                claimName: grafana-data
   config:
     auth:
       disable_login_form: "true"
