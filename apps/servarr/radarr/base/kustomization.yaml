@@ -7,4 +7,4 @@ resources:
 images:
   - name: radarr
     newName: lscr.io/linuxserver/radarr
-    newTag: 6.4.4@sha256:ea6822c956d26db648b237919f41340318f32e5b7dcc4ba702cf256a0f5f3c12
+    newTag: 6.4.4@sha256:084b3b2ab1d0ef930660727259546a241f2bdf67c9ed085d54bf1486a6887c9b
