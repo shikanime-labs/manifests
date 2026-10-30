@@ -6,11 +6,13 @@
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "shikanime-labs/dashboards",
       "description": "GrafanaDashboard CRs pin dashboards release tags in spec.url",
-      "fileMatch": ["(^|/)grafanadashboard\\.yaml$"],
+      "managerFilePatterns": [
+        "/(^|/)grafanadashboard\\.yaml$/"
+      ],
       "matchStrings": [
         "url: https://raw\\.githubusercontent\\.com/(?\u003cregistry\u003e[^/]+/[^/]+)/(?\u003ccurrentValue\u003ev[^/]+)/"
       ],
-      "versioningTemplate": "regex:^(?\u003ccompatibility\u003e\\d+)\\.(?\u003cmajor\u003e\\d+)\\.(?\u003cminor\u003e\\d+)?$"
+      "versioningTemplate": "regex:^(?<compatibility>\\d+)\\.(?<major>\\d+)\\.(?<minor>\\d+)?$"
     }
   ],
   "extends": ["config:best-practices", "security:openssf-scorecard"],
