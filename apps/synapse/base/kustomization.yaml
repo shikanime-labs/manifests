@@ -6,4 +6,4 @@ resources:
 images:
   - name: synapse
     newName: matrixdotorg/synapse
-    newTag: v1.163.0@sha256:e98ab72138d90fa8b8876c6421fe78a9fdb181c0d7cc690ad740e5173e0c65e6
+    newTag: v1.164.1@sha256:fa4aa980f279bcf26d4e7ecc2a2c9a701c73f2ebe8841da9bdcf3b2fdf693d75
