@@ -16,3 +16,20 @@ modules:
     dns:
       query_name: github.com
       preferred_ip_protocol: ip4
+  # Liveness of blocky's upstream DoH group. A real DoH GET query: any HTTP
+  # answer (200, or the 400/405/505 a plain client gets back) means the
+  # endpoint is up and speaking; a hang times out the 9s probe. These are the
+  # providers blocky resolves cold names through (blocky/config.yml), probed
+  # because a single cached-name probe against blocky stays green while the
+  # upstream is dead (incident 2026-11-02, #3230).
+  doh:
+    prober: http
+    timeout: 9s
+    http:
+      valid_status_codes:
+        - 200
+        - 400
+        - 405
+        - 505
+      preferred_ip_protocol: ip4
+      follow_redirects: false
