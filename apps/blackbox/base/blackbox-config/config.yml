@@ -14,5 +14,9 @@ modules:
     prober: dns
     timeout: 9s
     dns:
-      query_name: github.com
+      # Cache-expiring name, 5m cadence: the entry expires between probes, so
+      # every probe forces a real blocky-to-upstream round-trip and an upstream
+      # hang flips probe_success (#3230: github.com is fleet-warmed and always
+      # served from cache, which stayed green through the 2026-11-02 outage).
+      query_name: whoami.akamai.net
       preferred_ip_protocol: ip4

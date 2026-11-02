@@ -64,7 +64,11 @@ metadata:
   name: blackbox-dns
 spec:
   jobName: blackbox
-  interval: 60s
+  # 5m: whoami.akamai.net is probed by nothing else, so its cache entry
+  # expires between probes (upstream TTLs 32-166s) and each probe must
+  # reach the upstream. A 60s cadence would keep the entry warm and hide
+  # an upstream hang (#3230).
+  interval: 300s
   module: dns_blocky
   vmProberSpec:
     url: http://blackbox.shikanime.svc.cluster.local:9115
