@@ -1,0 +1,11 @@
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: egress
+  namespace: tailscale-system
+spec:
+  type: egress
+  replicas: 2
+  tags:
+    - tag:egress
+  proxyClass: nishir

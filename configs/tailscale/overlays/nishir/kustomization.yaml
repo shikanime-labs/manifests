@@ -1,3 +1,6 @@
 resources:
   - ../../base
   - proxyclass.yaml
+  - egress-proxygroup.yaml
+  - dnsconfig.yaml
+  - dns-glue-service.yaml
