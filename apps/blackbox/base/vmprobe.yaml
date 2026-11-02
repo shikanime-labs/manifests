@@ -64,7 +64,11 @@ metadata:
   name: blackbox-dns
 spec:
   jobName: blackbox
-  interval: 60s
+  # 5m: whoami.akamai.net is probed by nothing else, so its cache entry
+  # expires between probes (upstream TTLs 32-166s) and each probe must
+  # reach the upstream. A 60s cadence would keep the entry warm and hide
+  # an upstream hang (#3230).
+  interval: 300s
   module: dns_blocky
   vmProberSpec:
     url: http://blackbox.shikanime.svc.cluster.local:9115
@@ -78,29 +82,3 @@ spec:
           regex: instance
       targets:
         - blocky.envoy-gateway-system.svc.cluster.local:53
----
-apiVersion: operator.victoriametrics.com/v1beta1
-kind: VMProbe
-metadata:
-  name: blackbox-doh
-spec:
-  jobName: blackbox
-  interval: 60s
-  module: doh
-  vmProberSpec:
-    url: http://blackbox.shikanime.svc.cluster.local:9115
-  targets:
-    static:
-      relabelingConfigs:
-        - sourceLabels:
-            - instance
-          targetLabel: endpoint
-        - action: labeldrop
-          regex: instance
-      # Real DoH GET queries (A record, example.com): 200 when the upstream is
-      # answering, probe timeout (probe_success=0) when it hangs. Covers the
-      # failure mode the cached-name blocky probe cannot see (#3230).
-      targets:
-        - https://dns.adguard-dns.com/dns-query?dns=EjQBAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE
-        - https://dns.quad9.net/dns-query?dns=EjQBAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE
-        - https://security.cloudflare-dns.com/dns-query?dns=EjQBAAABAAAAAAAAB2V4YW1wbGUDY29tAAABAAE
