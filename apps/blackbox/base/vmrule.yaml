@@ -50,3 +50,38 @@ spec:
             severity: warning
           annotations:
             summary: "SLO latency: {{ $labels.instance }} p50 probe > 1s"
+    - name: blackbox-dns
+      interval: 30s
+      rules:
+        - alert: DNSResolutionDown
+          expr: |
+            absent(probe_success{instance=~"blocky\\..*"})
+            or
+            probe_success{instance=~"blocky\\..*"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "DNS: blocky probe failing or absent"
+            description: |
+              The DNS probe against blocky failed or its series went absent,
+              so blocky is not answering the probe or the probe itself died.
+              A hang on this leg has taken the resolver down for every
+              consumer behind it before; triage this alert first, not the app
+              SLO burn-rates that follow.
+              Runbook: check blocky-side envoy access logs in
+              envoy-gateway-system for duration 60001 / response_code 0 per
+              query (upstream DoH hang), then node systemd-resolved udp
+              timeouts to 127.0.0.53. Heal DNS FIRST: replacement pods
+              (coredns, vmalert) sit in ImagePullBackOff through the broken
+              DNS, so deleting wedged pods before the resolver recovers just
+              re-triggers the same failed pull.
+        - alert: DNSResolutionSLOBurnRateFast
+          expr: |
+            (1 - avg_over_time(probe_success{instance=~"blocky\\..*"}[15m])) > (14.4 * 0.01)
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "DNS SLO burn rate fast: {{ $labels.instance }} (99% availability objective)"
+
