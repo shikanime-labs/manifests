@@ -84,4 +84,21 @@ spec:
             severity: critical
           annotations:
             summary: "DNS SLO burn rate fast: {{ $labels.instance }} (99% availability objective)"
+        - alert: TailnetResolutionDown
+          expr: |
+            absent(probe_success{instance=~"k8s-nameserver\\..*",module="dns_tailnet"})
+            or
+            probe_success{instance=~"k8s-nameserver\\..*",module="dns_tailnet"} == 0
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "DNS: tailnet ts.net resolution failing"
+            description: |
+              The ts.net resolution leg (glue service -> operator nameserver)
+              is failing or its series went absent. The in-cluster blocky leg
+              is separately alerted; triage this one by walking the chain:
+              k8s-nameserver glue service endpoints, DNSConfig nameserver pods.
+              Stays warning-level: apps keep dialing via the host-level hack
+              until U5 removes it, so this failing degrades the new path only.
 
