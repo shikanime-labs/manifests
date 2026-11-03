@@ -1,3 +1,6 @@
 resources:
   - ../../base
   - proxyclass.yaml
+  - proxygroup.yaml
+  - dnsconfig.yaml
+  - service.yaml
