@@ -3,4 +3,4 @@ resources:
   - proxyclass.yaml
   - proxygroup.yaml
   - dnsconfig.yaml
-  - service.yaml
+  - svc.yaml
