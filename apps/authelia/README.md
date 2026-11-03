@@ -26,11 +26,11 @@ re-encrypting, the `encrypted_regex` collaterally matches `server.tls.key`
 - `components/monitoring/` — vmservicescrape for the metrics port.
 - `components/tls/` — patches the Deployment (serving certs) and adds an https
   Service port.
-- `overlays/nishir/` — cluster CA cert, tls component, secretGenerator
-  feeding `authelia` from `authelia/configuration.enc.yaml` as
-  `configuration.yaml`.
+- `overlays/nishir/` — cluster CA cert, tls component.
 - `overlays/nishir-tailnet/` — BYOD tailnet gateway on
-  `accounts.taila659a.ts.net` plus monitoring component.
+  `accounts.taila659a.ts.net` plus monitoring component, and the
+  secretGenerator feeding `authelia` from
+  `authelia/configuration.enc.yaml` as `configuration.yaml`.
 
 ## Cutover note
 

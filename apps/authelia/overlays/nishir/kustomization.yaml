@@ -38,7 +38,3 @@ patches:
     target:
       name: authelia-redirect
       kind: HTTPRoute
-secretGenerator:
-  - name: authelia
-    files:
-      - configuration.yaml=authelia/configuration.enc.yaml
