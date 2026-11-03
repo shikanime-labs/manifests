@@ -38,3 +38,7 @@ labels:
       app.kubernetes.io/name: authelia
       app.kubernetes.io/part-of: nishir-platform
       app.kubernetes.io/version: 4.39.20
+secretGenerator:
+  - name: authelia
+    files:
+      - configuration.yaml=authelia/configuration.enc.yaml
