@@ -64,7 +64,6 @@ metadata:
   name: blackbox-dns
 spec:
   jobName: blackbox
-  # 5m: exceeds the name's max upstream TTL (166s), entry always expired.
   interval: 300s
   module: dns_blocky
   vmProberSpec:

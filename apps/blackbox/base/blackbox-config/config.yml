@@ -14,7 +14,5 @@ modules:
     prober: dns
     timeout: 9s
     dns:
-      # Only name in the fleet not queried elsewhere: cache expires between
-      # probes, every probe must reach the upstream (#3230).
       query_name: whoami.akamai.net
       preferred_ip_protocol: ip4
