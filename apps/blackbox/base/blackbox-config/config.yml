@@ -21,4 +21,5 @@ modules:
     timeout: 9s
     dns:
       query_name: blocky.taila659a.ts.net
+      query_type: A
       preferred_ip_protocol: ip4
