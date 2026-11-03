@@ -4,3 +4,5 @@ resources:
   - proxygroup.yaml
   - dnsconfig.yaml
   - service.yaml
+  - egress-matrix.yaml
+  - egress-matrix-discord-media.yaml
