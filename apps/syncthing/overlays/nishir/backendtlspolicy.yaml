@@ -9,7 +9,7 @@ spec:
       kind: Service
   validation:
     caCertificateRefs:
-      - name: nishir-ca-certificates.crt
+      - name: nishir-cluster-ca
         group: ""
         kind: ConfigMap
     hostname: syncthing

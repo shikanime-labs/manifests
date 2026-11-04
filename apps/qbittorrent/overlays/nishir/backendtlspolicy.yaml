@@ -11,6 +11,6 @@ spec:
   validation:
     hostname: qbittorrent
     caCertificateRefs:
-      - name: nishir-ca-certificates.crt
+      - name: nishir-cluster-ca
         group: ""
         kind: ConfigMap

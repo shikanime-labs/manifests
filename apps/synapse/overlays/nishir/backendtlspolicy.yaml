@@ -12,6 +12,6 @@ spec:
   validation:
     hostname: synapse.shikanime.svc.cluster.local
     caCertificateRefs:
-      - name: nishir-ca-certificates.crt
+      - name: nishir-cluster-ca
         group: ""
         kind: ConfigMap
