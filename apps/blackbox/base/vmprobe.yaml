@@ -99,4 +99,4 @@ spec:
           regex: instance
       targets:
         - k8s-nameserver.tailscale-system.svc.cluster.local:53
-        - kubernetes.default.svc.cluster.local:53
+        - kube-dns.kube-system.svc.cluster.local:53
