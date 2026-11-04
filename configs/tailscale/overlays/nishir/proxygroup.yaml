@@ -5,7 +5,7 @@ metadata:
   namespace: tailscale-system
 spec:
   type: egress
-  replicas: 3
+  replicas: 2
   tags:
     - tag:egress
   proxyClass: nishir
