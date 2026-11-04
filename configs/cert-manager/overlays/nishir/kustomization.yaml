@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - bundle.yaml
+  - bundle-cluster-ca.yaml
   - cert.yaml
   - clusterissuer.yaml
   - clusterrole.yaml
