@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/instance: immich
         app.kubernetes.io/name: immich
     spec:
+      priorityClassName: shikanime-critical
       containers:
         - name: immich
           image: immich-server

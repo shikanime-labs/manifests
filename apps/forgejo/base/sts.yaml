@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/instance: forgejo
         app.kubernetes.io/name: forgejo
     spec:
+      priorityClassName: shikanime-critical
       containers:
         - name: forgejo
           image: forgejo
