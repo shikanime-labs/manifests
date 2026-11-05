@@ -6,4 +6,4 @@ resources:
 images:
   - name: postgres
     newName: postgres
-    newTag: 17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3
+    newTag: 18.6@sha256:bd5dfa494a5a259704365813dbfa5fa6b3e69be7348d43b547f540c730478583
