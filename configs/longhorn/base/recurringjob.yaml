@@ -56,25 +56,12 @@ spec:
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 metadata:
-  name: daily-snapshot-delete
-  namespace: longhorn-system
-spec:
-  task: snapshot-delete
-  concurrency: 1
-  cron: 0 5 * * *
-  retain: 3
-  groups:
-    - default
----
-apiVersion: longhorn.io/v1beta2
-kind: RecurringJob
-metadata:
-  name: weekly-snapshot-cleanup
+  name: daily-snapshot-cleanup
   namespace: longhorn-system
 spec:
   task: snapshot-cleanup
   concurrency: 1
-  cron: 0 7 * * 0
+  cron: 0 5 * * *
   retain: 4
   groups:
     - default
