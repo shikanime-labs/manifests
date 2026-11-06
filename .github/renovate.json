@@ -15,7 +15,10 @@
       "versioningTemplate": "regex:^(?<compatibility>\\d+)\\.(?<major>\\d+)\\.(?<minor>\\d+)?$"
     }
   ],
-  "extends": ["config:best-practices", "security:openssf-scorecard"],
+  "extends": [
+    "config:best-practices",
+    "security:openssf-scorecard"
+  ],
   "flux": {
     "managerFilePatterns": [
       "/(^|/)apps/.*kustomization\\.yaml$/",
@@ -23,63 +26,95 @@
       "/(^|/)infrastructure/.*hr\\.yaml$/"
     ]
   },
-  "nix": { "enabled": true },
+  "nix": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "groupName": "flux-helm-releases",
-      "matchDepTypes": ["helm"],
-      "matchManagers": ["flux"]
+      "matchDepTypes": [
+        "helm"
+      ],
+      "matchManagers": [
+        "flux"
+      ]
     },
-    { "groupName": "rclone-sidecars", "matchPackageNames": ["rclone/rclone"] },
+    {
+      "groupName": "rclone-sidecars",
+      "matchPackageNames": [
+        "rclone/rclone"
+      ]
+    },
     {
       "description": "Private registry (dock.mau.dev) requires auth; bump manually.",
       "enabled": false,
-      "matchPackageNames": ["/^dock\\.mau\\.dev//"]
+      "matchPackageNames": [
+        "/^dock\\.mau\\.dev//"
+      ]
     },
     {
       "description": "Pinned to a Postgres major (pg15); do not auto-jump majors.",
       "matchCurrentVersion": "!/^pg\\d+$/",
-      "matchPackageNames": ["/^pgvector/pgvector$/"]
+      "matchPackageNames": [
+        "/^pgvector/pgvector$/"
+      ]
     },
     {
       "description": "Stateful image majors need a data migration; bump manually.",
       "enabled": false,
-      "matchPackageNames": ["/^postgres$/"],
-      "matchUpdateTypes": ["major"]
+      "matchPackageNames": [
+        "/^postgres$/"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ]
     },
     {
-      "description": "qbittorrent-nox 5.3 changed ServerDomains to anchored matching and 401s the cleanup job's svc FQDN (#3242); pinned to 5.2.4-1 (#3300). Lift when the job URL is in ServerDomains or HostHeaderValidation drops it.",
-      "enabled": false,
-      "matchPackageNames": ["qbittorrentofficial/qbittorrent-nox"]
+      "description": "qbittorrent-nox 5.3.0 anchored ServerDomains and 401s the cleanup svc FQDN (#3242); 5.3.1+ should be fine.",
+      "matchPackageNames": [
+        "qbittorrentofficial/qbittorrent-nox"
+      ],
+      "allowedVersions": "!=5.3.0-1"
     },
     {
-      "description": "Lidarr 0.8 is the fleet's known-good line: 2.x breaks config.xml seeding (config-sync, #2949 OIDC, postStart hooks) and 3.x→8.x major bumps were blindly merged (#2952). Bump manually after a migration.",
-      "enabled": false,
-      "matchPackageNames": ["lscr.io/linuxserver/lidarr"]
+      "description": "Lidarr pre-8.x lines broke env-config and config seeding on the 0.8 data (#2949).",
+      "matchPackageNames": [
+        "lscr.io/linuxserver/lidarr"
+      ],
+      "allowedVersions": ">=8.1.2135"
     },
     {
-      "description": "Honcho majors carry alembic migrations; a skipped revision wedged the rollout across two ReplicaSets (#3229). Bump manually with a migration check.",
-      "enabled": false,
-      "matchUpdateTypes": ["major"],
-      "matchPackageNames": ["ghcr.io/plastic-labs/honcho"]
+      "description": "Honcho v3.3.0 digests carried a diverged alembic head (#3229); v3.5.0+ is the converged line.",
+      "matchPackageNames": [
+        "ghcr.io/plastic-labs/honcho"
+      ],
+      "allowedVersions": ">=3.5.0"
     },
     {
-      "description": "Authelia minors can drop config keys fatally (4.39 removed webauthn.relying_party, #2119). Bump manually with validate-config.",
-      "enabled": false,
-      "matchUpdateTypes": ["major", "minor"],
-      "matchPackageNames": ["authelia/authelia"]
+      "description": "Authelia 4.39 removed webauthn.relying_party fatally (#2119); 4.39.20+ carries the fixed schema handling.",
+      "matchPackageNames": [
+        "authelia/authelia"
+      ],
+      "allowedVersions": ">=4.39.20"
     },
     {
-      "description": "Immich-postgres majors need the data-directory migration (#2807); pin to the VectorChord 16 line.",
-      "enabled": false,
-      "matchUpdateTypes": ["major"],
-      "matchPackageNames": ["ghcr.io/immich-app/postgres"]
+      "description": "Immich-postgres v16+ is the VectorChord line with the migrated data dir (#2807).",
+      "matchPackageNames": [
+        "ghcr.io/immich-app/postgres"
+      ],
+      "allowedVersions": ">=16"
     }
   ],
   "postUpgradeTasks": {
-    "commands": ["nix fmt"],
+    "commands": [
+      "nix fmt"
+    ],
     "executionMode": "branch",
-    "fileFilters": ["**/*.nix"],
-    "installTools": { "nix": {} }
+    "fileFilters": [
+      "**/*.nix"
+    ],
+    "installTools": {
+      "nix": {}
+    }
   }
 }
