@@ -98,7 +98,7 @@ spec:
               spec:
                 resources:
                   requests:
-                    storage: 32Gi
+                    storage: 64Gi
                 accessModes:
                   - ReadWriteOncePod
         vmselect:
