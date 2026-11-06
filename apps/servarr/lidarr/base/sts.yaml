@@ -95,7 +95,6 @@ spec:
     - metadata:
         name: config
       spec:
-        volumeName: lidarr-config
         resources:
           requests:
             storage: 2Gi
