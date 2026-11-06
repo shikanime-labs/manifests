@@ -46,13 +46,6 @@
       ]
     },
     {
-      "description": "Private registry (dock.mau.dev) requires auth; bump manually.",
-      "enabled": false,
-      "matchPackageNames": [
-        "/^dock\\.mau\\.dev//"
-      ]
-    },
-    {
       "description": "Pinned to a Postgres major (pg15); do not auto-jump majors.",
       "matchCurrentVersion": "!/^pg\\d+$/",
       "matchPackageNames": [
@@ -106,5 +99,6 @@
     "installTools": {
       "nix": {}
     }
-  }
+  },
+  "hostRules": []
 }
