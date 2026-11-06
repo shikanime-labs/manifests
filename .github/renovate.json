@@ -10,7 +10,7 @@
         "/(^|/)grafanadashboard\\.yaml$/"
       ],
       "matchStrings": [
-        "url: https://raw\\.githubusercontent\\.com/(?\u003cregistry\u003e[^/]+/[^/]+)/(?\u003ccurrentValue\u003ev[^/]+)/"
+        "url: https://raw\\.githubusercontent\\.com/(?<registry>[^/]+/[^/]+)/(?<currentValue>v[^/]+)/"
       ],
       "versioningTemplate": "regex:^(?<compatibility>\\d+)\\.(?<major>\\d+)\\.(?<minor>\\d+)?$"
     }
@@ -46,6 +46,34 @@
       "enabled": false,
       "matchPackageNames": ["/^postgres$/"],
       "matchUpdateTypes": ["major"]
+    },
+    {
+      "description": "qbittorrent-nox 5.3 changed ServerDomains to anchored matching and 401s the cleanup job's svc FQDN (#3242); pinned to 5.2.4-1 (#3300). Lift when the job URL is in ServerDomains or HostHeaderValidation drops it.",
+      "enabled": false,
+      "matchPackageNames": ["qbittorrentofficial/qbittorrent-nox"]
+    },
+    {
+      "description": "Lidarr 0.8 is the fleet's known-good line: 2.x breaks config.xml seeding (config-sync, #2949 OIDC, postStart hooks) and 3.x→8.x major bumps were blindly merged (#2952). Bump manually after a migration.",
+      "enabled": false,
+      "matchPackageNames": ["lscr.io/linuxserver/lidarr"]
+    },
+    {
+      "description": "Honcho majors carry alembic migrations; a skipped revision wedged the rollout across two ReplicaSets (#3229). Bump manually with a migration check.",
+      "enabled": false,
+      "matchUpdateTypes": ["major"],
+      "matchPackageNames": ["ghcr.io/plastic-labs/honcho"]
+    },
+    {
+      "description": "Authelia minors can drop config keys fatally (4.39 removed webauthn.relying_party, #2119). Bump manually with validate-config.",
+      "enabled": false,
+      "matchUpdateTypes": ["major", "minor"],
+      "matchPackageNames": ["authelia/authelia"]
+    },
+    {
+      "description": "Immich-postgres majors need the data-directory migration (#2807); pin to the VectorChord 16 line.",
+      "enabled": false,
+      "matchUpdateTypes": ["major"],
+      "matchPackageNames": ["ghcr.io/immich-app/postgres"]
     }
   ],
   "postUpgradeTasks": {
