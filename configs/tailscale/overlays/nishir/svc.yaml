@@ -74,3 +74,21 @@ spec:
     - name: dns-tcp
       port: 53
       protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: grafana.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: grafana.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
