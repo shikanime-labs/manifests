@@ -17,6 +17,21 @@ spec:
               weight: 50
       containers:
         - name: lidarr
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    XML=/config/config.xml
+                    [ -f "$XML" ] || exit 0
+                    grep -q "<EnableSsl>False</EnableSsl>" "$XML" || exit 0
+                    sed -i \
+                      -e "s|<EnableSsl>False</EnableSsl>|<EnableSsl>True</EnableSsl>|" \
+                      -e "s|<SslCertPath></SslCertPath>|<SslCertPath>${LIDARR__SERVER__SSLCERTPATH}|" \
+                      -e "s|<SslCertPassword></SslCertPassword>|<SslCertPassword>${LIDARR__SERVER__SSLCERTPASSWORD}|" \
+                      "$XML"
           volumeMounts:
             - name: music-data
               mountPath: /data/music
