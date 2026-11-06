@@ -43,3 +43,4 @@ spec:
   sourceRef:
     name: flux-system
     kind: GitRepository
+  suspend: true
