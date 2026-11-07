@@ -10,7 +10,7 @@ images:
     newTag: 1.6.2@sha256:7ef0e58216900dbce30b123e0eb65f5cb30e36f126de9474acdd2022fb069c54
   - name: rclone
     newName: rclone/rclone
-    newTag: 1.75.2@sha256:2687085f718d3c628f7fdfb77c52a1d344332aed543110bb88088f2c70d43eb5
+    newTag: 1.76.0@sha256:7cbeec24a44f206067597c0368be4de90ae19a64d5113c7d1938bd737a81e466
 configMapGenerator:
   - name: bazarr-rclone
     namespace: shikanime
