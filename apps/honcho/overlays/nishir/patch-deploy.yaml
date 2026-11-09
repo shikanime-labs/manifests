@@ -35,6 +35,23 @@ spec:
                   name: honcho-postgres-env
                   key: database
       initContainers:
+        - name: embedding-indexes
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: honcho-postgres-env
+                  key: database
         - name: alembic-upgrade
           envFrom:
             - secretRef:
