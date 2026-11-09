@@ -15,7 +15,7 @@ spec:
     containerPolicies:
       - containerName: vlinsert
         minAllowed:
-          memory: 1Gi
+          memory: 256Mi
         maxAllowed:
           memory: 4Gi
 ---
