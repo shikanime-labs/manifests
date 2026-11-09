@@ -4,6 +4,7 @@ metadata:
   name: victoria-logs
   namespace: monitoring-system
 spec:
+  mergeType: StrategicMerge
   provider:
     type: Kubernetes
     kubernetes:

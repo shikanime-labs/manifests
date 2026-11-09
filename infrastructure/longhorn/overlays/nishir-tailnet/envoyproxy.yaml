@@ -4,6 +4,7 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 spec:
+  mergeType: StrategicMerge
   provider:
     type: Kubernetes
     kubernetes:
