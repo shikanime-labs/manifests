@@ -15,6 +15,14 @@ spec:
         app.kubernetes.io/name: blocky
     spec:
       priorityClassName: shikanime-critical
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/instance: blocky
+              app.kubernetes.io/name: blocky
       containers:
         - name: blocky
           image: blocky

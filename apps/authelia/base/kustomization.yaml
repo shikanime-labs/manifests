@@ -1,6 +1,7 @@
 resources:
   - httproute.yaml
   - netpol.yaml
+  - pdb.yaml
   - deploy.yaml
   - svc.yaml
   - vpa.yaml
