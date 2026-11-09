@@ -133,3 +133,65 @@ spec:
     pathTests:
       - condition: MustNotExist
         subPath: spec.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: set-envoyproxy-replicas
+spec:
+  applyTo:
+    - groups:
+        - gateway.envoyproxy.io
+      kinds:
+        - EnvoyProxy
+      versions:
+        - v1alpha1
+  location: spec.provider.kubernetes.envoyDeployment.replicas
+  match:
+    kinds:
+      - apiGroups:
+          - gateway.envoyproxy.io
+        kinds:
+          - EnvoyProxy
+    scope: Namespaced
+  parameters:
+    assign:
+      value: 2
+    pathTests:
+      - condition: MustNotExist
+        subPath: spec.provider.kubernetes.envoyDeployment.replicas
+---
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: set-envoyproxy-topology-spread
+spec:
+  applyTo:
+    - groups:
+        - gateway.envoyproxy.io
+      kinds:
+        - EnvoyProxy
+      versions:
+        - v1alpha1
+  location: spec.provider.kubernetes.envoyDeployment.pod.topologySpreadConstraints
+  match:
+    kinds:
+      - apiGroups:
+          - gateway.envoyproxy.io
+        kinds:
+          - EnvoyProxy
+    scope: Namespaced
+  parameters:
+    assign:
+      value:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: envoy
+          matchLabelKeys:
+            - gateway.envoyproxy.io/owning-gateway-name
+    pathTests:
+      - condition: MustNotExist
+        subPath: spec.provider.kubernetes.envoyDeployment.pod.topologySpreadConstraints
