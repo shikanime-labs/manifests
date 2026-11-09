@@ -31,8 +31,8 @@ metadata:
 spec:
   rules:
     - backendRefs:
-        - name: vminsert-vmks-victoria-metrics-k8s-stack
-          port: 8480
+        - name: vmauth-telemetry-edge
+          port: 8427
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
