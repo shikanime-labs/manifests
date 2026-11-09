@@ -49,6 +49,49 @@ spec:
             - name: DB_CONNECTION_URI
               value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)
       initContainers:
+        - name: embedding-indexes
+          image: honcho
+          command:
+            - python
+            - -c
+          args:
+            - |
+              import os
+
+              import psycopg
+
+              uri = os.environ["DB_CONNECTION_URI"].replace(
+                  "postgresql+psycopg://", "postgresql://"
+              )
+              with psycopg.connect(uri) as conn:
+                  row = conn.execute(
+                      "SELECT a.atttypmod FROM pg_attribute a"
+                      " WHERE a.attrelid = to_regclass('public.message_embeddings')"
+                      " AND a.attname = 'embedding'"
+                  ).fetchone()
+                  if row is None:
+                      print("embedding schema absent yet; skipping")
+                      raise SystemExit(0)
+                  dims = row[0]
+                  if dims <= 2000:
+                      print(f"vector({dims}) fits the hnsw ceiling; skipping")
+                      raise SystemExit(0)
+                  if dims > 4000:
+                      raise SystemExit(f"vector({dims}) exceeds the halfvec ceiling of 4000")
+                  # pgvector caps hnsw on vector at 2000 dims but allows 4000 on
+                  # halfvec; pre-creating the names keeps alembic revision
+                  # e5fe7f8bcf62 idempotent above the vector ceiling.
+                  for table in ("message_embeddings", "documents"):
+                      conn.execute(
+                          f"CREATE INDEX IF NOT EXISTS ix_{table}_embedding_hnsw"
+                          f" ON public.{table} USING hnsw"
+                          f" ((embedding::halfvec({dims})) halfvec_cosine_ops)"
+                          " WITH (m = 16, ef_construction = 64)"
+                      )
+                  print(f"halfvec({dims}) hnsw indexes present")
+          env:
+            - name: DB_CONNECTION_URI
+              value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)
         - name: alembic-upgrade
           image: honcho
           command:
