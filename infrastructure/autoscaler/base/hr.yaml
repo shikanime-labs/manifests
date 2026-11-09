@@ -31,13 +31,25 @@ spec:
       podDisruptionBudget:
         minAvailable: 1
       replicas: 2
+      resources:
+        requests:
+          cpu: 20m
+          memory: 64Mi
       tls:
         create: false
     recommender:
       podDisruptionBudget:
         minAvailable: 1
       replicas: 2
+      resources:
+        requests:
+          cpu: 20m
+          memory: 64Mi
     updater:
       podDisruptionBudget:
         minAvailable: 1
       replicas: 2
+      resources:
+        requests:
+          cpu: 20m
+          memory: 64Mi
