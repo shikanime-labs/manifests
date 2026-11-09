@@ -34,7 +34,7 @@ spec:
         - https://lidarr.i.shikanime.studio/ping
         - https://llama-cpp.i.shikanime.studio/health
         - https://lldap.i.shikanime.studio
-        - https://logs.i.shikanime.studio
+        - https://logs.i.shikanime.studio/health
         - https://longhorn.i.shikanime.studio/healthz
         - https://maintainerr.i.shikanime.studio/api/health
         - https://matrix-discord-media.taila659a.ts.net/_matrix/client/versions
@@ -48,7 +48,7 @@ spec:
         - https://mautrix-twitter.i.shikanime.studio/_matrix/mau/live
         - https://mautrix-whatsapp.i.shikanime.studio/_matrix/mau/live
         - https://metatube.i.shikanime.studio
-        - https://metrics.i.shikanime.studio
+        - https://metrics.i.shikanime.studio/health
         - https://prowlarr.i.shikanime.studio/ping
         - https://qbittorrent.i.shikanime.studio/api/v2/app/version
         - https://radarr.i.shikanime.studio/ping

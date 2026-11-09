@@ -3,6 +3,14 @@ resources:
   - cert.yaml
   - gateway.yaml
   - httproute.yaml
+  - vmauth.yaml
+secretGenerator:
+  - name: telemetry-edge-auth
+    namespace: monitoring-system
+    envs:
+      - telemetry-edge-auth/.enc.env
+generatorOptions:
+  disableNameSuffixHash: true
 components:
 patches:
   - patch: |-
