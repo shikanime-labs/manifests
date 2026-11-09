@@ -15,6 +15,14 @@ spec:
         app.kubernetes.io/name: authelia
     spec:
       priorityClassName: shikanime-critical
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/instance: authelia
+              app.kubernetes.io/name: authelia
       containers:
         - name: authelia
           image: authelia
