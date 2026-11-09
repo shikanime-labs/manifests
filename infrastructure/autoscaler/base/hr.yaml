@@ -35,9 +35,9 @@ spec:
         create: false
     recommender:
       podDisruptionBudget:
-        minAvailable: 1
-      replicas: 2
+        enabled: false
+      replicas: 1
     updater:
       podDisruptionBudget:
-        minAvailable: 1
-      replicas: 2
+        enabled: false
+      replicas: 1
