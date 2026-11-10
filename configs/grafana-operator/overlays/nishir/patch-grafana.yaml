@@ -16,6 +16,9 @@ spec:
                 requests:
                   cpu: 100m
                   memory: 512Mi
+              readinessProbe:
+                failureThreshold: 12
+                periodSeconds: 10
               env:
                 - name: GRAFANA_OIDC_SECRET
                   valueFrom:
