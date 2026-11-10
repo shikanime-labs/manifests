@@ -68,6 +68,7 @@ spec:
         vmstorage:
           extraArgs:
             enableTCP6: "true"
+          replicaCount: 1
           storage:
             volumeClaimTemplate:
               spec:
