@@ -22,6 +22,10 @@ spec:
     crds: CreateReplace
   values:
     controllerManager:
+      resources:
+        requests:
+          cpu: 60m
+          memory: 320Mi
       networkPolicy:
         enabled: true
         ingress:
