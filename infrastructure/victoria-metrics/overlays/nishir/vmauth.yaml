@@ -21,15 +21,36 @@ spec:
       - src_paths:
           - ^/health$
         url_prefix: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
-  users:
-    - username: telemetry
-      passwordRef:
-        name: telemetry-edge-auth
-        key: password
-      url_map:
-        - src_paths:
-            - ^/select/logsql/.*
-          url_prefix: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
-        - src_paths:
-            - ^/api/v1/.*
-          url_prefix: http://vmselect-vmks-victoria-metrics-k8s-stack.monitoring-system.svc.cluster.local:8481/select/0/prometheus
+  userSelector:
+    matchLabels:
+      vmauth: telemetry-edge
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: telemetry-edge
+  namespace: monitoring-system
+  labels:
+    vmauth: telemetry-edge
+spec:
+  username: telemetry
+  passwordRef:
+    name: telemetry-edge-auth
+    key: password
+  targetRefs:
+    - static:
+        url: http://vlogs-vlinsert.monitoring-system.svc.cluster.local:9481
+      paths:
+        - ^/insert/native.*
+    - static:
+        url: http://vminsert-vmks-victoria-metrics-k8s-stack.monitoring-system.svc.cluster.local:8480
+      paths:
+        - ^/insert/0/prometheus.*
+    - static:
+        url: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
+      paths:
+        - ^/select/logsql/.*
+    - static:
+        url: http://vmselect-vmks-victoria-metrics-k8s-stack.monitoring-system.svc.cluster.local:8481/select/0/prometheus
+      paths:
+        - ^/api/v1/.*
