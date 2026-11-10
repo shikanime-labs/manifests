@@ -65,7 +65,7 @@ spec:
           resources:
             requests:
               cpu: 49m
-              memory: 1252Mi
+              memory: 641Mi
           securityContext:
             capabilities:
               add:

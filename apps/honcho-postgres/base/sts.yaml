@@ -35,7 +35,7 @@ spec:
           resources:
             requests:
               cpu: 25m
-              memory: 309Mi
+              memory: 260Mi
           livenessProbe:
             exec:
               command:
