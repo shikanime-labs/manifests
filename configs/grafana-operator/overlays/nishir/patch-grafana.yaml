@@ -30,6 +30,15 @@ spec:
                     secretKeyRef:
                       name: grafana-image-renderer-token
                       key: auth-token
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: kubernetes.io/hostname
+                        operator: NotIn
+                        values:
+                          - minish
           securityContext:
             fsGroup: 10001
   config:
