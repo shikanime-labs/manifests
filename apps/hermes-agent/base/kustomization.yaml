@@ -1,0 +1,30 @@
+resources:
+  - httproutes.yaml
+  - pvc.yaml
+  - rbac.yaml
+  - statefulset.yaml
+  - svc.yaml
+  - tcproute.yaml
+  - vpa.yaml
+images:
+  - name: automata
+    newName: ghcr.io/shikanime-labs/machines/automata-oci
+    newTag: latest
+configMapGenerator:
+  - name: hermes-agent-config
+    files:
+      - config/entrypoint.sh
+      - config/config.yaml
+      - config/SOUL.md
+      - config/honcho.json
+      - config/kubeconfig
+      - config/env-base
+      - config/cron-jobs.json
+secretGenerator:
+  - name: hermes-agent-channel-env
+    envs:
+      - secrets/discord-env.env
+      - secrets/email-env.env
+      - secrets/webhook-env.env
+    options:
+      disableNameSuffixHash: true

@@ -1,0 +1,9 @@
+nameReference:
+  - kind: ConfigMap
+    fieldSpecs:
+      - kind: StatefulSet
+        path: spec/template/spec/volumes/configMap/name
+  - kind: Secret
+    fieldSpecs:
+      - kind: StatefulSet
+        path: spec/template/spec/volumes/secret/secretName
