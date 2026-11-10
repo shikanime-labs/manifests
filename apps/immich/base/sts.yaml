@@ -24,7 +24,7 @@ spec:
           image: immich-server
           resources:
             requests:
-              memory: 8Gi
+              memory: 2Gi
               cpu: 25m
           livenessProbe:
             httpGet:

@@ -13,4 +13,4 @@ spec:
     containerPolicies:
       - containerName: immich
         maxAllowed:
-          memory: 8Gi
+          memory: 2Gi
