@@ -17,6 +17,7 @@ spec:
   releaseName: monitoring-system-grafana-operator
   targetNamespace: monitoring-system
   values:
+    replicas: 2
     crds:
       immutable: false
     watchNamespaceSelector: kubernetes.io/metadata.name

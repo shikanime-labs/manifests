@@ -18,3 +18,5 @@ spec:
   interval: 10m
   releaseName: cloudnative-pg
   targetNamespace: cnpg-system
+  values:
+    replicas: 2

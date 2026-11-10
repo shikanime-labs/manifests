@@ -20,9 +20,10 @@ spec:
     featureGates:
       NodeFeatureGroupAPI: true
     master:
+      replicaCount: 2
       extraArgs:
         - -feature-gates=NodeFeatureGroupAPI=true
-      replicaCount: 1
+
     worker:
       config:
         core:
