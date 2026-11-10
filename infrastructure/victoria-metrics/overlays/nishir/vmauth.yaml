@@ -7,9 +7,6 @@ metadata:
 spec:
   extraArgs:
     enableTCP6: "true"
-  # Reads need the shared telemetry credentials. Ingest paths and the health
-  # probe stay open until the fleet agents carry the same credentials; the
-  # vmalert datasource keeps its own unauthenticated VMAuth in-cluster.
   unauthorizedUserAccessSpec:
     url_map:
       - src_paths:
@@ -20,22 +17,23 @@ spec:
         url_prefix: http://vminsert-vmks-victoria-metrics-k8s-stack.monitoring-system.svc.cluster.local:8480
       - src_paths:
           - ^/health$
+          - ^/select/vmui.*
         url_prefix: http://vlogs-vlselect.monitoring-system.svc.cluster.local:9471
   userSelector:
     matchLabels:
-      vmauth: telemetry-edge
+      vmauth: cli-logs
 ---
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMUser
 metadata:
-  name: telemetry-edge
+  name: cli-logs
   namespace: monitoring-system
   labels:
-    vmauth: telemetry-edge
+    vmauth: cli-logs
 spec:
-  username: telemetry
+  username: cli
   passwordRef:
-    name: telemetry-edge-auth
+    name: cli-logs-auth
     key: password
   targetRefs:
     - static:
