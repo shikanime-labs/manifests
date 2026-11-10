@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hermes-agent
+spec:
+  serviceName: hermes-agent
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: hermes-agent
+      app.kubernetes.io/name: hermes-agent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: hermes-agent
+        app.kubernetes.io/name: hermes-agent
+    spec:
+      serviceAccountName: hermes-agent
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+        - name: hermes-agent
+          image: automata
+          command:
+            - bash
+            - /etc/hermes-agent/entrypoint.sh
+          resources:
+            requests:
+              memory: 6Gi
+              cpu: "2"
+          ports:
+            - name: dashboard
+              containerPort: 9119
+            - name: a2a
+              containerPort: 9900
+            - name: api-server
+              containerPort: 8642
+            - name: webhook
+              containerPort: 8644
+          volumeMounts:
+            - name: workspaces
+              mountPath: /var/lib/hermes
+            - name: config
+              mountPath: /etc/hermes-agent
+            - name: sops-key
+              mountPath: /run/secrets/sops-key
+              readOnly: true
+            - name: channel-env
+              mountPath: /run/secrets/channel-env
+              readOnly: true
+      volumes:
+        - name: workspaces
+          persistentVolumeClaim:
+            claimName: hermes-agent-workspaces
+        - name: config
+          configMap:
+            name: hermes-agent-config
+        - name: sops-key
+          secret:
+            secretName: hermes-agent-sops-key
+        - name: channel-env
+          secret:
+            secretName: hermes-agent-channel-env
