@@ -44,7 +44,7 @@ spec:
           resources:
             requests:
               cpu: 12m
-              memory: 423Mi
+              memory: 455Mi
           env:
             - name: DB_CONNECTION_URI
               value: postgresql+psycopg://$(DB_USER):$(DB_PASSWORD)@honcho-postgres.shikanime.svc.cluster.local:5432/$(DB_NAME)

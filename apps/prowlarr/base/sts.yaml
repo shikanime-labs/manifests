@@ -41,7 +41,7 @@ spec:
           resources:
             requests:
               cpu: 25m
-              memory: 260Mi
+              memory: 250Mi
           env:
             - name: PUID
               value: "1000"
