@@ -4,9 +4,17 @@ resources:
   - hr.yaml
   - httproute.yaml
   - netpol.yaml
+  - securitypolicy.yaml
   - vmauth.yaml
   - vmrule.yaml
   - vpa.yaml
+secretGenerator:
+  - name: victorialogs-client
+    namespace: monitoring-system
+    envs:
+      - victorialogs-client/.enc.env
+configurations:
+  - namereference.yaml
 patches:
   - patch: |-
       - op: add
@@ -20,6 +28,20 @@ patches:
           sectionName: https
     target:
       name: victoria-logs
+      kind: HTTPRoute
+      namespace: monitoring-system
+  - patch: |-
+      - op: add
+        path: /spec/hostnames
+        value:
+        - logs.i.shikanime.studio
+      - op: add
+        path: /spec/parentRefs
+        value:
+        - name: victoria-logs
+          sectionName: https
+    target:
+      name: victoria-logs-ui
       kind: HTTPRoute
       namespace: monitoring-system
   - patch: |-

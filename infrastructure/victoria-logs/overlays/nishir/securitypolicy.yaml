@@ -1,0 +1,22 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: victorialogs-ui
+  namespace: monitoring-system
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: victoria-logs-ui
+  oidc:
+    clientID: victorialogs
+    clientSecret:
+      name: victorialogs-client
+    scopes:
+      - openid
+      - offline_access
+    provider:
+      issuer: https://accounts.i.shikanime.studio
+    redirectURL: https://logs.i.shikanime.studio/oauth2/callback
+    refreshToken: true
