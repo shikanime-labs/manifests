@@ -69,6 +69,10 @@ spec:
           extraArgs:
             enableTCP6: "true"
           replicaCount: 1
+          resources:
+            requests:
+              cpu: 150m
+              memory: 4Gi
           storage:
             volumeClaimTemplate:
               spec:
