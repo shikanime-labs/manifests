@@ -9,8 +9,8 @@ secretGenerator:
     namespace: monitoring-system
     envs:
       - telemetry-edge-auth/.enc.env
-generatorOptions:
-  disableNameSuffixHash: true
+configurations:
+  - namereference.yaml
 components:
 patches:
   - patch: |-
