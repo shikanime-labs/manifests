@@ -16,8 +16,6 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: vmauth
-        # Grafana reads this datasource in-cluster; its own OIDC-gated UI is
-        # the identity layer, so it keeps a direct path rather than a token.
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: grafana
