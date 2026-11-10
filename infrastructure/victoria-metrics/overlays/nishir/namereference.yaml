@@ -1,0 +1,7 @@
+nameReference:
+  - kind: Secret
+    fieldSpecs:
+      - kind: VMUser
+        group: operator.victoriametrics.com
+        version: v1beta1
+        path: spec/passwordRef/name
