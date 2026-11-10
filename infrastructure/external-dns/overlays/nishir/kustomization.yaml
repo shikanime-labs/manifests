@@ -5,3 +5,19 @@ secretGenerator:
     namespace: external-dns-system
     envs:
       - cloudflare-api-token/.enc.env
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/values/replicas
+        value: 2
+      - op: add
+        path: /spec/values/deploymentStrategy
+        value:
+          type: RollingUpdate
+      - op: add
+        path: /spec/values/podDisruptionBudget
+        value:
+          maxUnavailable: 1
+    target:
+      kind: HelmRelease
+      name: external-dns
