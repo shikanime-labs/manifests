@@ -17,6 +17,7 @@ spec:
   releaseName: external-dns
   targetNamespace: external-dns-system
   values:
+    replicaCount: 2
     provider:
       name: cloudflare
     domainFilters:
