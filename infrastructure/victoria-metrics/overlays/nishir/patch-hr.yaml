@@ -41,6 +41,10 @@ spec:
                 serverName: 127.0.0.1
     vmalert:
       spec:
+        resources:
+          requests:
+            cpu: 25m
+            memory: 128Mi
         datasource:
           url: http://vmauth-vmalert-datasource.monitoring-system.svc.cluster.local:8427
         externalLabels:
