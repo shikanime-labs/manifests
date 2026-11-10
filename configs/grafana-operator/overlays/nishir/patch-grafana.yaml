@@ -12,6 +12,10 @@ spec:
         spec:
           containers:
             - name: grafana
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 512Mi
               env:
                 - name: GRAFANA_OIDC_SECRET
                   valueFrom:
