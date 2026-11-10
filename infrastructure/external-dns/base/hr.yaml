@@ -17,7 +17,11 @@ spec:
   releaseName: external-dns
   targetNamespace: external-dns-system
   values:
-    replicaCount: 2
+    replicas: 2
+    deploymentStrategy:
+      type: RollingUpdate
+    podDisruptionBudget:
+      maxUnavailable: 1
     provider:
       name: cloudflare
     domainFilters:
@@ -30,8 +34,6 @@ spec:
       - gateway-httproute
       - ingress
       - service
-    deploymentStrategy:
-      type: RollingUpdate
     env:
       - name: CF_API_TOKEN
         valueFrom:
