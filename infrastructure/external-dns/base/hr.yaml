@@ -17,11 +17,8 @@ spec:
   releaseName: external-dns
   targetNamespace: external-dns-system
   values:
-    replicas: 2
     deploymentStrategy:
       type: RollingUpdate
-    podDisruptionBudget:
-      maxUnavailable: 1
     provider:
       name: cloudflare
     domainFilters:
