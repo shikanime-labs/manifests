@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: googlechat
+  annotations:
+    external-dns.alpha.kubernetes.io/target: mautrix-googlechat-gateway.taila659a.ts.net
 spec:
   gatewayClassName: googlechat
   listeners:

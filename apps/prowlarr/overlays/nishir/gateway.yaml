@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: prowlarr
+  annotations:
+    external-dns.alpha.kubernetes.io/target: prowlarr-gateway.taila659a.ts.net
 spec:
   gatewayClassName: prowlarr
   listeners:

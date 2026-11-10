@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: inference
+  annotations:
+    external-dns.alpha.kubernetes.io/target: inference-gateway.taila659a.ts.net
   namespace: shikanime
   # Tells the ai-gateway controller to generate the ext-proc filter bundle for
   # this Gateway. Without it the controller reconciles the Gateway/route as

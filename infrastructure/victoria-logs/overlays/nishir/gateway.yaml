@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: victoria-logs
+  annotations:
+    external-dns.alpha.kubernetes.io/target: logs-gateway.taila659a.ts.net
   namespace: monitoring-system
 spec:
   gatewayClassName: victoria-logs

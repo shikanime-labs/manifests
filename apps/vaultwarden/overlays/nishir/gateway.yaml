@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: vaultwarden
+  annotations:
+    external-dns.alpha.kubernetes.io/target: vaultwarden-gateway.taila659a.ts.net
 spec:
   gatewayClassName: vaultwarden
   listeners:
