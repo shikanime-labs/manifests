@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: bazarr
+  annotations:
+    external-dns.alpha.kubernetes.io/target: bazarr-gateway.taila659a.ts.net
 spec:
   gatewayClassName: bazarr
   listeners:

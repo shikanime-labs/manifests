@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: qbittorrent
+  annotations:
+    external-dns.alpha.kubernetes.io/target: qbittorrent-gateway.taila659a.ts.net
 spec:
   gatewayClassName: qbittorrent
   listeners:
