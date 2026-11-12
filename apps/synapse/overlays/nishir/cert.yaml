@@ -27,6 +27,7 @@ spec:
   commonName: matrix.i.shikanime.studio
   dnsNames:
     - matrix.i.shikanime.studio
+    - matrix-discord-media.i.shikanime.studio
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
