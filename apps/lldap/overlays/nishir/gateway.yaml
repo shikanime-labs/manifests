@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: lldap
-  annotations:
-    external-dns.alpha.kubernetes.io/target: lldap-gateway.taila659a.ts.net
 spec:
   gatewayClassName: lldap
   listeners:

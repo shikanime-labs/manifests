@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: seerr
-  annotations:
-    external-dns.alpha.kubernetes.io/target: seerr-gateway.taila659a.ts.net
 spec:
   gatewayClassName: seerr
   listeners:

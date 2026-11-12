@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: whatsapp
-  annotations:
-    external-dns.alpha.kubernetes.io/target: mautrix-whatsapp-gateway.taila659a.ts.net
 spec:
   gatewayClassName: whatsapp
   listeners:
