@@ -92,3 +92,667 @@ spec:
     - name: https
       port: 443
       protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authelia-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: authelia-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: authelia-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: automata-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: automata-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: automata-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bazarr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: bazarr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: bazarr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: copyparty-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: copyparty-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: copyparty-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flux-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: flux-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: flux-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forgejo-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: forgejo-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: forgejo-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitea-mirror-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: gitea-mirror-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: gitea-mirror-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: honcho-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: honcho-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: honcho-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: immich-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: immich-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inference-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: inference-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: inference-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: jellyfin-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: jellyfin-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lidarr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: lidarr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: lidarr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llama-cpp-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: llama-cpp-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: llama-cpp-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lldap-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: lldap-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: lldap-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: logs-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: logs-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: logs-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: longhorn-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: longhorn-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: longhorn-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maintainerr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: maintainerr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: maintainerr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-discord-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-discord-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-discord-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-googlechat-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-googlechat-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-googlechat-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-linkedin-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-linkedin-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-linkedin-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-meta-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-meta-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-meta-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-signal-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-signal-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-signal-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-slack-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-slack-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-slack-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-twitter-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-twitter-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-twitter-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mautrix-whatsapp-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: mautrix-whatsapp-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: mautrix-whatsapp-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: metatube-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: metatube-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: metatube-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: prowlarr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: prowlarr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: qbittorrent-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: qbittorrent-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: radarr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: radarr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: seerr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: seerr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: seerr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: sonarr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: sonarr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: synapse-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: synapse-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: synapse-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: syncthing-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: syncthing-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vaultwarden-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: vaultwarden-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: vaultwarden-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisparr-egress-proxy
+  namespace: tailscale-system
+  labels:
+    app.kubernetes.io/part-of: tailscale-egress
+  annotations:
+    tailscale.com/tailnet-fqdn: whisparr-gateway.taila659a.ts.net
+    tailscale.com/proxy-group: egress
+spec:
+  type: ExternalName
+  externalName: whisparr-gateway.taila659a.ts.net
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
