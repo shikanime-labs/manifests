@@ -53,39 +53,39 @@
       ]
     },
     {
+      "allowedVersions": "!=5.3.0-1",
       "description": "qbittorrent-nox 5.3.0 anchored ServerDomains and 401s the cleanup svc FQDN (#3242); 5.3.1+ should be fine.",
       "matchPackageNames": [
         "qbittorrentofficial/qbittorrent-nox"
-      ],
-      "allowedVersions": "!=5.3.0-1"
+      ]
     },
     {
+      "allowedVersions": ">=8.1.2135",
       "description": "Lidarr pre-8.x lines broke env-config and config seeding on the 0.8 data (#2949).",
       "matchPackageNames": [
         "lscr.io/linuxserver/lidarr"
-      ],
-      "allowedVersions": ">=8.1.2135"
+      ]
     },
     {
+      "allowedVersions": ">=3.5.0",
       "description": "Honcho v3.3.0 digests carried a diverged alembic head (#3229); v3.5.0+ is the converged line.",
       "matchPackageNames": [
         "ghcr.io/plastic-labs/honcho"
-      ],
-      "allowedVersions": ">=3.5.0"
+      ]
     },
     {
+      "allowedVersions": ">=4.39.20",
       "description": "Authelia 4.39 removed webauthn.relying_party fatally (#2119); 4.39.20+ carries the fixed schema handling.",
       "matchPackageNames": [
         "authelia/authelia"
-      ],
-      "allowedVersions": ">=4.39.20"
+      ]
     },
     {
+      "allowedVersions": ">=16",
       "description": "Immich-postgres v16+ is the VectorChord line with the migrated data dir (#2807).",
       "matchPackageNames": [
         "ghcr.io/immich-app/postgres"
-      ],
-      "allowedVersions": ">=16"
+      ]
     }
   ],
   "postUpgradeTasks": {
@@ -99,6 +99,5 @@
     "installTools": {
       "nix": {}
     }
-  },
-  "hostRules": []
+  }
 }
