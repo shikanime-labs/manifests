@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: longhorn
-  annotations:
-    external-dns.alpha.kubernetes.io/target: longhorn-gateway.taila659a.ts.net
   namespace: longhorn-system
 spec:
   gatewayClassName: longhorn
