@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: sonarr
-  annotations:
-    external-dns.alpha.kubernetes.io/target: sonarr-gateway.taila659a.ts.net
 spec:
   gatewayClassName: sonarr
   listeners:

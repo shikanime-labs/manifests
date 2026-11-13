@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: linkedin
-  annotations:
-    external-dns.alpha.kubernetes.io/target: mautrix-linkedin-gateway.taila659a.ts.net
 spec:
   gatewayClassName: linkedin
   listeners:

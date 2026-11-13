@@ -3,7 +3,6 @@ kind: Gateway
 metadata:
   name: inference
   annotations:
-    external-dns.alpha.kubernetes.io/target: inference-gateway.taila659a.ts.net
     aigateway.envoyproxy.io/gateway-config: inference
 spec:
   gatewayClassName: inference

@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: blocky
-  annotations:
-    external-dns.alpha.kubernetes.io/target: blocky.taila659a.ts.net
 spec:
   gatewayClassName: blocky
   listeners:

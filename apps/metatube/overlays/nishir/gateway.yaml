@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: metatube
-  annotations:
-    external-dns.alpha.kubernetes.io/target: metatube-gateway.taila659a.ts.net
 spec:
   gatewayClassName: metatube
   listeners:

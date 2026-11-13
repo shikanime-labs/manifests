@@ -2,8 +2,6 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: radarr
-  annotations:
-    external-dns.alpha.kubernetes.io/target: radarr-gateway.taila659a.ts.net
 spec:
   gatewayClassName: radarr
   listeners:
