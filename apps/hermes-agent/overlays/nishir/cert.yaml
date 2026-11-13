@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-automata
+  name: studio-shikanime-i-hermes-agent
   namespace: shikanime
 spec:
   commonName: automata.i.shikanime.studio
@@ -11,7 +11,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-automata
+  secretName: studio-shikanime-i-hermes-agent
   usages:
     - digital signature
     - key encipherment
@@ -20,7 +20,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-automata-a2a
+  name: studio-shikanime-i-hermes-agent-a2a
   namespace: shikanime
 spec:
   commonName: a2a.automata.i.shikanime.studio
@@ -29,7 +29,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-automata-a2a
+  secretName: studio-shikanime-i-hermes-agent-a2a
   usages:
     - digital signature
     - key encipherment
@@ -38,7 +38,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: studio-shikanime-i-automata-api
+  name: studio-shikanime-i-hermes-agent-api
   namespace: shikanime
 spec:
   commonName: api.automata.i.shikanime.studio
@@ -47,7 +47,7 @@ spec:
   issuerRef:
     name: studio-shikanime
     kind: ClusterIssuer
-  secretName: studio-shikanime-i-automata-api
+  secretName: studio-shikanime-i-hermes-agent-api
   usages:
     - digital signature
     - key encipherment
@@ -56,7 +56,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: automata
+  name: hermes-agent
 spec:
   gatewayClassName: automata
   listeners:
@@ -69,13 +69,13 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: studio-shikanime-i-automata
+          - name: studio-shikanime-i-hermes-agent
             group: ""
             kind: Secret
-          - name: studio-shikanime-i-automata-api
+          - name: studio-shikanime-i-hermes-agent-api
             group: ""
             kind: Secret
-          - name: studio-shikanime-i-automata-a2a
+          - name: studio-shikanime-i-hermes-agent-a2a
             group: ""
             kind: Secret
     - name: ssh

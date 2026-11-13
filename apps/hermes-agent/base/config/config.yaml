@@ -1,0 +1,15 @@
+_config_version: 3
+display:
+  interface: chat
+model:
+  default: z-ai/glm-5.3-flash
+gateway:
+  channels:
+    discord:
+      enabled: true
+    email:
+      enabled: true
+    webhook:
+      enabled: true
+dashboard:
+  public_url: https://hermes-agent.i.shikanime.studio

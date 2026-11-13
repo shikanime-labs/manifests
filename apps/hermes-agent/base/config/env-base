@@ -1,0 +1,11 @@
+A2A_HOST=0.0.0.0
+A2A_PUBLIC_URL=https://a2a.hermes-agent.i.shikanime.studio
+API_SERVER_HOST=0.0.0.0
+WEBHOOK_ENABLED=true
+WEBHOOK_PORT=8644
+DISCORD_HOME_CHANNEL=hermes-gateway
+EMAIL_ADDRESS=operator6o.automata@gmail.com
+EMAIL_IMAP_HOST=imap.gmail.com
+EMAIL_SMTP_HOST=smtp.gmail.com
+EMAIL_AUTHSERV_ID=mx.google.com
+KUBECONFIG=/var/lib/hermes/.hermes/kubeconfig
