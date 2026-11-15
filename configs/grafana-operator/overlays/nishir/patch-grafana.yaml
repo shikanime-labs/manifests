@@ -23,6 +23,13 @@ spec:
                   path: /api/health
                   port: 3000
                   scheme: HTTP
+              readinessProbe:
+                failureThreshold: 3
+                timeoutSeconds: 10
+                httpGet:
+                  path: /api/health
+                  port: 3000
+                  scheme: HTTP
               env:
                 - name: GRAFANA_OIDC_SECRET
                   valueFrom:
