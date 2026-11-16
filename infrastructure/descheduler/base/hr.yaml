@@ -72,7 +72,7 @@ spec:
                 nodeAffinityType:
                   - requiredDuringSchedulingIgnoredDuringExecution
             - name: RemovePodsViolatingNodeTaints
-        - name: podlifetime
+        - name: lifetime
           plugins:
             deschedule:
               enabled:
