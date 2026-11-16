@@ -67,7 +67,7 @@ spec:
       spec:
         resources:
           requests:
-            storage: 512Gi
+            storage: 1Ti
         storageClassName: longhorn-capacity
         volumeMode: Filesystem
         accessModes:
