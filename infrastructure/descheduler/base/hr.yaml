@@ -18,6 +18,7 @@ spec:
   targetNamespace: descheduler-system
   values:
     deschedulerPolicy:
+      maxNoOfPodsToEvictPerNamespace: 4
       metricsProviders:
         - source: KubernetesMetrics
       profiles:
@@ -71,6 +72,27 @@ spec:
                 nodeAffinityType:
                   - requiredDuringSchedulingIgnoredDuringExecution
             - name: RemovePodsViolatingNodeTaints
+        - name: podlifetime
+          plugins:
+            deschedule:
+              enabled:
+                - PodLifeTime
+          pluginConfig:
+            - name: DefaultEvictor
+              args:
+                evictableNamespaces:
+                  exclude:
+                    - kube-system
+                    - longhorn-system
+                podProtections:
+                  extraEnabled:
+                    - PodsWithPVC
+                    - PodsWithResourceClaims
+            - name: PodLifeTime
+              args:
+                maxPodLifeTimeSeconds: 604800
+                states:
+                  - Running
         - name: cpu
           plugins:
             balance:
