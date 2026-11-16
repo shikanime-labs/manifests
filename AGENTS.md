@@ -86,24 +86,6 @@ Examples: `cert-manager`, `cluster-api`, `gatekeeper`, `longhorn`,
 - **VPA:** Every app and operator base includes `vpa.yaml` — the VPA controller
   must be present
 
-## Repository Layout
-
-- `apps/` — application workloads. Nested examples:
-  `servarr/{lidarr,radarr,sonarr,whisparr}`,
-  `mautrix/{discord,whatsapp,...}`
-- `clusters/` — cluster entrypoints
-- `bootstraps/` — controller/operator installation
-- `configs/` — reusable configuration blocks (`cert-manager`, `cluster-api`,
-  `gatekeeper`, `longhorn`, `tailscale`, ...)
-- `infrastructure/` — infrastructure providers/manifests. Examples:
-  `cert-manager`, `cluster-api`, `longhorn`, `tailscale`, `monitoring`,
-  `trust-manager`. Operators spanning multiple charts merge them into one
-  multi-doc `hr.yaml` (e.g. `infrastructure/envoy/`: envoy, ai-gateway-crds,
-  ai-gateway) and deploy into a matching `<operator>-system` namespace via
-  `targetNamespace`
-- `modules/` — reusable Kustomize modules
-- `skaffold.yaml` — render profiles
-- `flake.lock` / AGENTS.md / `README.md` at repo root
 
 ## App Pattern
 
@@ -238,24 +220,6 @@ files.
   object with no manifest in this repo is drift — delete it, never build on
   it.
 
-## Stack Workflow
-
-- Install the official GitHub extension once:
-  `gh extension install github/gh-stack` (requires GitHub CLI ≥ 2.0; `gh stack`
-  is in public preview and may change).
-- Keep one logical change per PR; split large work into a stack of PRs.
-- Create a stack: `gh stack init`, then `gh stack add` for each new branch, and
-  commit on the active branch. `gh stack view` lists the stack.
-- Submit/update: `gh stack submit` (add `--open` to open PRs, `--auto` to skip
-  prompts). Resubmit after each change to refresh titles, bodies, and branches.
-- Pull down an existing stack: `gh stack checkout <PR_NUMBER>` (also accepts a
-  stack number, PR URL, or branch name).
-- Rebase onto updated trunk: `gh stack rebase` (cascading), then
-  `gh stack submit`.
-- Land a stack: `gh stack merge` (interactive) or
-  `gh stack merge <PR_NUMBER> --yes --squash` to merge up to a PR.
-- Never `gh pr merge` on a stacked PR — only `gh stack merge` lands stacks.
-- Never force-push stack branches; `gh stack` owns the branch pointers.
 
 ## Environment
 
