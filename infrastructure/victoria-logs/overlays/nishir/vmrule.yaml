@@ -22,3 +22,13 @@ spec:
             severity: critical
           annotations:
             summary: '{{ index $labels "kubernetes.pod_name" }} cannot reach its RPC peer on the macvlan lane'
+    - name: exfil-paths
+      type: vlogs
+      rules:
+        - alert: ExfilPathIndicator
+          expr: '_time:5m kubernetes.pod_namespace:!~"monitoring-system|kube-system" ("aliyuncs" or "169.254.169.254") | stats by (kubernetes.pod_name, kubernetes.pod_namespace) count() as hits | filter hits:>0'
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: '{{ index $labels "kubernetes.pod_name" }} logged an exfil-path indicator (aliyuncs / metadata IP) — check for model-origin egress (see #3165)'
