@@ -17,6 +17,17 @@ spec:
   releaseName: vmks
   targetNamespace: monitoring-system
   values:
+    defaultRules:
+      rules:
+        KubeQuotaAlmostFull:
+          spec:
+            expr: '((max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="used"}) / on(cluster,namespace,resource,resourcequota) group_left() max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="hard"})) > 0.9) < 1'
+        KubeQuotaFullyUsed:
+          spec:
+            expr: '(max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="used"}) / on(cluster,namespace,resource,resourcequota) group_left() max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="hard"})) >= 0.9'
+        KubeQuotaExceeded:
+          spec:
+            expr: 'max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="used"}) / on(cluster,namespace,resource,resourcequota) group_left() max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="hard"}) >= 1'
     defaultDashboards:
       grafanaOperator:
         enabled: true
