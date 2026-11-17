@@ -40,3 +40,19 @@ spec:
         minAvailable: 1
     upgradeCRDs:
       enabled: false
+    # x509 escape window: chart default of 1s admitted pods unmutated on slow
+    # webhook responses (manifests#3409).
+    mutatingWebhookTimeoutSeconds: 5
+    # Plain pod UPDATEs must stay out of the mutating webhook: re-mutating a
+    # terminated pod on finalizer-removal updates wedged the job-tracking
+    # finalizer and stalled the CronJob (manifests#3409). Ephemeral containers
+    # only ever arrive through pods/ephemeral, so hardening survives.
+    mutatingWebhookCustomRules:
+      - apiGroups: ['*']
+        apiVersions: ['*']
+        operations: [CREATE]
+        resources: ['*']
+      - apiGroups: ['']
+        apiVersions: [v1]
+        operations: [UPDATE]
+        resources: ['pods/ephemeral']
