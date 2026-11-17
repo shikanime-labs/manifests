@@ -92,6 +92,8 @@ spec:
           env:
             - name: HALOGEN_DOWNLOAD
               value: peonist-ai/halogen-qwen3.8-flash-next
+            - name: HALOGEN_VISION_TOWER
+              value: "1"
             - name: HALOGEN_KV_POOL_POSITIONS
               value: "786432"
             - name: HALOGEN_KV8
