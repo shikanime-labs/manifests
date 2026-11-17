@@ -10,7 +10,7 @@ spec:
   cron: 0 * * * *
   retain: 24
   groups:
-    - default
+    - standard
 ---
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
@@ -52,6 +52,21 @@ spec:
   groups:
     - capacity
     - standard
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: every-6-hour-snapshot
+  namespace: longhorn-system
+spec:
+  task: snapshot
+  concurrency: 2
+  cron: 0 */6 * * *
+  retain: 4
+  groups:
+    - ephemeral
+    - transient
+    - capacity
 ---
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
