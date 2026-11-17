@@ -28,6 +28,9 @@ spec:
         KubeQuotaExceeded:
           spec:
             expr: 'max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="used"}) / on(cluster,namespace,resource,resourcequota) group_left() max by (cluster,namespace,resource,resourcequota) (kube_resourcequota{job="kube-state-metrics",type="hard"}) >= 1'
+        KubeStatefulSetUpdateNotRolledOut:
+          spec:
+            expr: 'max by (namespace,statefulset,job,cluster) (kube_statefulset_status_current_revision{namespace=~".*",job="kube-state-metrics"} unless kube_statefulset_status_update_revision{namespace=~".*",job="kube-state-metrics"}) * on(namespace,statefulset,job,cluster) max by (namespace,statefulset,job,cluster) (kube_statefulset_replicas{namespace=~".*",job="kube-state-metrics"} != kube_statefulset_status_replicas_updated{namespace=~".*",job="kube-state-metrics"}) and on(namespace,statefulset,job,cluster) max by (namespace,statefulset,job,cluster) (changes(kube_statefulset_status_replicas_updated{namespace=~".*",job="kube-state-metrics"}[5m]) == 0)'
     defaultDashboards:
       grafanaOperator:
         enabled: true
