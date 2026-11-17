@@ -219,6 +219,9 @@ files.
   reconcile (suspend the Kustomization only for interim relief). A running
   object with no manifest in this repo is drift — delete it, never build on
   it.
+- Bot PRs: the reviewer takes the lead — the bot author never acts on
+  review comments, so apply the verdict at review time (merge clean PRs,
+  fix or close broken ones) instead of commenting and waiting.
 
 
 ## Environment
