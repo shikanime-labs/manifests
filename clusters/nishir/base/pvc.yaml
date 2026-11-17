@@ -292,7 +292,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
   volumeMode: Filesystem
   volumeName: hermes-agent-skills-data
   storageClassName: longhorn-transient
