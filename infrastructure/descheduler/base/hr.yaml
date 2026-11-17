@@ -80,10 +80,6 @@ spec:
           pluginConfig:
             - name: DefaultEvictor
               args:
-                evictableNamespaces:
-                  exclude:
-                    - kube-system
-                    - longhorn-system
                 podProtections:
                   extraEnabled:
                     - PodsWithPVC
@@ -91,6 +87,10 @@ spec:
             - name: PodLifeTime
               args:
                 maxPodLifeTimeSeconds: 604800
+                namespaces:
+                  exclude:
+                    - kube-system
+                    - longhorn-system
                 states:
                   - Running
         - name: cpu
