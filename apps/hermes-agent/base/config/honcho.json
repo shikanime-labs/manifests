@@ -1,0 +1,19 @@
+{
+  "baseUrl": "https://honcho.i.shikanime.studio",
+  "hosts": {
+    "hermes-agent": {
+      "aiPeer": "hermes",
+      "dialecticCadence": 3,
+      "dialecticReasoningLevel": "low",
+      "enabled": true,
+      "observationMode": "directional",
+      "peerName": "hermes-agent",
+      "pinPeerName": false,
+      "recallMode": "hybrid",
+      "saveMessages": true,
+      "sessionStrategy": "per-session",
+      "workspace": "hermes",
+      "writeFrequency": "async"
+    }
+  }
+}

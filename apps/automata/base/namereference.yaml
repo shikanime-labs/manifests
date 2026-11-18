@@ -1,7 +1,0 @@
-nameReference:
-  - kind: Secret
-    fieldSpecs:
-      - kind: VirtualMachinePool
-        path: spec/virtualMachineTemplate/spec/template/spec/volumes/cloudInitNoCloud/secretRef/name
-      - kind: VirtualMachinePool
-        path: spec/virtualMachineTemplate/spec/template/spec/volumes/secret/secretName

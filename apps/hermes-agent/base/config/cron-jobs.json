@@ -1,0 +1,88 @@
+{
+  "jobs": [
+    {
+      "name": "daily-docs-sync",
+      "deliver": "local",
+      "enabled": true,
+      "id": "adfc09a25ae9",
+      "prompt": "Daily docs sync for the fleet: mirror recent org changes into the\nper-repo GitHub wikis, then keep docs.shikanime.studio factually true.\n\n1. Enumerate recently changed repos, one query per org (shikanime-labs,\n   shikanime-studio, cloud-pi-native):\n   gh api -H 'Accept: application/vnd.github.cloak-preview' \"search/commits?q=org%3A\u003corg\u003e+committer-date%3A\u003e$(date -u -d '-30 days' +%F)\u0026per_page=100\u0026sort=committer-date\u0026order=desc\" --jq '.items[] | [.repository.full_name, .commit.committer.date, (.commit.message | split(\"\\n\")[0])] | @tsv'\n   The explicit sort matters: without sort=committer-date\u0026order=desc the search returns\n   best-match results and the org cap fills with the oldest commits of the window.\n   Group by repo and drop repos whose only changes are dependency noise (renovate,\n   bump, pin, chore(deps) subjects). Expect roughly 20 repos: do NOT cap this list\n   before the wiki probe in step 2 - the repos carrying a wiki are the ones that\n   matter and they are not the most recently changed ones.\n   Never add -repo: excludes: org plus negated repo qualifiers return zero results\n   on GitHub commit search.\n2. Probe every candidate wiki, one line each:\n   git ls-remote \"https://github.com/\u003cowner\u003e/\u003crepo\u003e.wiki.git\" HEAD\n   Empty output means the wiki has no pages: page creation is a manual GitHub UI step,\n   so never attempt it here - collect those repos for one report line.\n   Otherwise clone it shallow - git clone --depth 1 -q\n   \"https://github.com/\u003cowner\u003e/\u003crepo\u003e.wiki.git\" /tmp/\u003crepo\u003e.wiki - and compare\n   git -C /tmp/\u003crepo\u003e.wiki log -1 --format=%cI with the newest change timestamp of\n   that repo from step 1. A wiki equal to or newer than its repo is already in sync:\n   skip it silently. Keep the rest as lagging.\n3. Sync the lagging wikis, stalest first (oldest wiki commit first), AT MOST 2 PER RUN;\n   list every other lagging wiki as a Deferred bullet. The order is self-correcting: a\n   wiki you just synced becomes the newest and drops to the back, so the backlog drains\n   instead of one busy repo winning every run, and a wiki that is already current is\n   never re-synced.\n   Page doctrine: a page documents THIS repo own internals - architecture, mechanics,\n   runbooks, procedure detail - never another repo automation, jobs or machinery.\n   Update the page that already covers the changed area; add a page only when a whole\n   new subsystem appeared, and then register it in BOTH Home.md and _Sidebar.md in the\n   same commit - an unlisted page is unreachable. Head each new page with\n   `\u003c!-- owner: Automata | zone: technical | purpose: \u003cone line\u003e --\u003e` and keep the\n   voice of the pages already there.\n   Ground every claim in the changed code (gh api repos/\u003cowner\u003e/\u003crepo\u003e/commits/\u003csha\u003e,\n   or a depth 1 clone under /tmp), never in a commit subject, never in another wiki\n   page.\n4. Land each wiki update as ONE commit on master - no PR, no review, no sign-off, a\n   wiki bypasses branch protection by design: imperative one line title, blank line,\n   then Co-authored-by: Automata \u003cautomata@shikanime.studio\u003e.\n   Push with the GitHub token, never through origin (the hermes user has no SSH key):\n   git -C /tmp/\u003crepo\u003e.wiki push -q \"https://x-access-token:$GITHUB_TOKEN@github.com/\u003cowner\u003e/\u003crepo\u003e.wiki.git\" HEAD:master\n   Verify with git ls-remote\n   \"https://x-access-token:$GITHUB_TOKEN@github.com/\u003cowner\u003e/\u003crepo\u003e.wiki.git\" HEAD and\n   require it to equal git -C /tmp/\u003crepo\u003e.wiki rev-parse HEAD. A push success line is\n   not proof.\n5. docs.shikanime.studio drift check, unchanged scope: clone\n   https://github.com/shikanime-studio/websites (depth 1) to /tmp; the site is\n   apps/docs, pages under apps/docs/docs/\u003csection\u003e/, sidebars.ts, product table.\n   Verify factual claims against ground truth - deployed manifests (clone\n   https://github.com/shikanime-labs/manifests depth 1), live cluster state (kubectl,\n   context automata), repo git logs - never from memory. Stale references are the norm.\n   Drift between a documented service (name, hostname, port, image) and its manifest is\n   a defect. File new drift in shikanime-studio/websites: page, claim, ground truth,\n   source links. Assignee yorha-operator if eligible. Small factual fixes only (typo,\n   stale name, corrected port): fastlane. Deploy stays manual - never wrangler deploy\n   from this job. If step 3 already spent the run, report this step as Deferred\n   instead of starting it.\n\nReport: one bullet per wiki page updated (repo, page, change mirrored), the Deferred\nlist, one line naming the changed repos whose wiki has no pages yet, then the drift\nfindings with the issues and PRs opened.\n",
+      "schedule": { "kind": "cron", "expr": "45 0 * * *" },
+      "skills": [
+        "sks-wiki",
+        "sks-issue",
+        "sks-commit",
+        "sks-pr",
+        "sks-fastlane"
+      ]
+    },
+    {
+      "name": "weekly-fleet-efficiency-audit",
+      "deliver": "local",
+      "enabled": true,
+      "id": "3453978b1312",
+      "prompt": "Weekly fleet-efficiency brainstorm with the A2A fleet.\n\n1. Discover peers with a2a_list. Every reachable peer participates; note unreachable\n   ones and continue.\n2. One a2a_call per peer: \"From your vantage point, what is the single\n   highest-leverage efficiency improvement in the fleet right now (compute, storage,\n   cost, redundancy)?\" Each answer must state: observation, evidence, proposed change,\n   expected saving.\n3. Aggregate: dedup overlapping proposals, rank by leverage / effort. Drop proposals\n   already filed or rejected: gh issue list -R shikanime-labs/manifests, open and\n   recently closed.\n4. File the top proposals (max 3) as issues in shikanime-labs/manifests, one per proposal, crediting the contributing agents in the body.\n5. Audit family policy: at most 3 filed issues per run; never close,\n   dismiss or edit what the brainstorm touches; proposals only, no PRs.\n6. Before reporting: honcho_search \"fleet efficiency\" and honcho_reasoning\n   \"Which efficiency lessons from previous audits still apply?\" - drop proposals\n   already tried and rejected, then honcho_conclude write one line per durable\n   lesson.\n",
+      "schedule": { "kind": "cron", "expr": "0 1 * * 1" },
+      "skills": ["sks-issue"]
+    },
+    {
+      "name": "daily-fleet-health-audit",
+      "deliver": "local",
+      "enabled": true,
+      "id": "a13c7b90e4f2",
+      "prompt": "Daily fleet health audit over the entire fleet and its orgs\n(shikanime-labs, shikanime-studio and cloud-pi-native), across every\nsks-audit surface: GitHub security alerts, perimeter redteam, CI\nfailures, alertmanager alerts, Flux readiness, Kubernetes warning\nevents.\n\n1. Cover every surface each run; the skill owns procedure, filing,\n   adversarial discovery and the memory loop.\n2. File issues across all three orgs on equal footing: no author\n   filtering, no repo exclusions.\n3. After the surfaces: hunt for audit gaps the surfaces do not cover\n   yet - an org repo, fleet endpoint, alert class or failure mode with\n   no surface - and file one issue per gap in shikanime-labs/manifests\n   proposing the new surface (what to read, with which command).\n4. Audit family policy: at most 3 filed issues per run; never close,\n   dismiss, silence or edit anything audited; fastlane only where the\n   owning skill's surface allows it.\n",
+      "schedule": { "kind": "cron", "expr": "15 1 * * *" },
+      "skills": [
+        "sks-audit",
+        "sks-issue",
+        "sks-commit",
+        "sks-pr",
+        "sks-fastlane"
+      ]
+    },
+    {
+      "name": "daily-github-triage",
+      "deliver": "local",
+      "enabled": true,
+      "id": "84f435ca5d9e",
+      "prompt": "Daily GitHub triage for shikanime-labs, shikanime-studio and\ncloud-pi-native.\n",
+      "schedule": { "kind": "cron", "expr": "30 1 * * *" },
+      "skills": ["sks-triage", "sks-issue"]
+    },
+    {
+      "name": "daily-github-cleanup",
+      "deliver": "local",
+      "enabled": true,
+      "id": "886e812cac7f",
+      "prompt": "Daily GitHub cleanup for shikanime-labs, shikanime-studio and\ncloud-pi-native.\n",
+      "schedule": { "kind": "cron", "expr": "45 1 * * *" },
+      "skills": ["sks-gc"]
+    },
+    {
+      "name": "hourly-github-notification-sweep",
+      "deliver": "local",
+      "enabled": true,
+      "id": "3c7ce2a4c3e1",
+      "prompt": "Frequent sweep of unread GitHub notifications for shikanime-labs and\nshikanime-studio.\n",
+      "schedule": { "kind": "cron", "expr": "23 * * * *" },
+      "skills": ["sks-github-notif-sweep", "sks-triage"]
+    },
+    {
+      "name": "daily-renovate-landing",
+      "deliver": "local",
+      "enabled": true,
+      "id": "f077dc14361e",
+      "prompt": "Daily landing pass over open renovate PRs across shikanime-labs,\nshikanime-studio and cloud-pi-native.\n",
+      "schedule": { "kind": "cron", "expr": "30 2 * * *" },
+      "skills": ["sks-maintenance", "sks-issue", "sks-land"]
+    },
+    {
+      "name": "monthly-sdlc-efficiency-audit",
+      "deliver": "local",
+      "enabled": true,
+      "id": "98bded605070",
+      "prompt": "Monthly SDLC efficiency audit for shikanime-labs and shikanime-studio,\nover the sks-audit SDLC efficiency surface.\n\n1. Measure every surface metric each run: census, untriaged scan,\n   review and merge latency with bot rows split out, merged-PR\n   residue, landing-gate stalls, stale branches; the skill owns\n   procedure, filing, dedup and the memory loop.\n2. Dedup findings against open issues in\n   shikanime-labs/manifests: gh issue list -R shikanime-labs/manifests\n   --state open. Already-tracked findings are listed, never re-filed.\n3. Audit family policy: at most 3 filed issues per run in\n   shikanime-labs/manifests, each acceptance ledger carrying the\n   measured baseline; never close, dismiss, silence or edit anything\n   audited; the SDLC surface allows no fastlane PR; the run is\n   interrupted at about 3 minutes.\n",
+      "schedule": { "kind": "cron", "expr": "0 3 1 * *" },
+      "skills": ["sks-audit", "sks-issue"]
+    }
+  ]
+}
