@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: workspaces-0
+spec:
+  accessModes: [ReadWriteOncePod]
+  storageClassName: longhorn-standard
+  volumeName: pvc-7b8bdf9a-e571-44c6-a3d8-071ae15515cb
+  resources:
+    requests:
+      storage: 69470Mi
