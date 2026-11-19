@@ -32,7 +32,7 @@ spec:
                 image: automata
             - name: workspaces
               persistentVolumeClaim:
-                claimName: automata-workspaces
+                claimName: workspaces-0
             - name: cloudinit
               cloudInitNoCloud:
                 secretRef:

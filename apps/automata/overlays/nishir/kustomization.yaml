@@ -1,6 +1,7 @@
 resources:
   - ../../base
   - cert.yaml
+  - workspaces-pvc.yaml
 namespace: shikanime
 patches:
   - patch: |-
