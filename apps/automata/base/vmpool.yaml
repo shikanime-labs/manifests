@@ -15,22 +15,6 @@ spec:
         app.kubernetes.io/name: automata
     spec:
       runStrategy: Always
-      dataVolumeTemplates:
-        - metadata:
-            name: workspaces
-          spec:
-            source:
-              pvc:
-                name: automata-workspaces
-                namespace: shikanime
-            storage:
-              resources:
-                requests:
-                  storage: 64Gi
-              storageClassName: longhorn-standard
-              volumeMode: Filesystem
-              accessModes:
-                - ReadWriteOncePod
       template:
         metadata:
           labels:
@@ -47,8 +31,8 @@ spec:
               containerDisk:
                 image: automata
             - name: workspaces
-              dataVolume:
-                name: workspaces
+              persistentVolumeClaim:
+                claimName: automata-workspaces
             - name: cloudinit
               cloudInitNoCloud:
                 secretRef:
