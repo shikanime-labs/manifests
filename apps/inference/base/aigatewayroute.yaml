@@ -136,6 +136,21 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: RegularExpression
+              value: "mistralai/.*"
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: mistral
+          priority: 0
+        - name: nous
+          priority: 1
+        - name: openrouter
+          priority: 2
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: RegularExpression
               value: ".*"
       modelsOwnedBy: Shikanime Studio
       timeouts:
