@@ -56,10 +56,10 @@ spec:
           modelNameOverride: deepseek-flash
         - name: nous
           priority: 1
-          modelNameOverride: deepseek/deepseek-flash-latest
+          modelNameOverride: ~deepseek/deepseek-flash-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek/deepseek-flash-latest
+          modelNameOverride: ~deepseek/deepseek-flash-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -100,6 +100,24 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
+              value: z-ai/glm-5.3-flash
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: z-ai-openai
+          priority: 0
+          modelNameOverride: glm-5.3-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.3-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-5.3-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
               value: z-ai/glm-5.4
       modelsOwnedBy: Shikanime Studio
       timeouts:
@@ -110,10 +128,10 @@ spec:
           modelNameOverride: glm-5.4
         - name: nous
           priority: 1
-          modelNameOverride: z-ai/glm-5.4-latest
+          modelNameOverride: z-ai/glm-5.4
         - name: openrouter
           priority: 2
-          modelNameOverride: z-ai/glm-5.4-latest
+          modelNameOverride: z-ai/glm-5.4
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -128,10 +146,10 @@ spec:
           modelNameOverride: mistral-large-latest
         - name: nous
           priority: 1
-          modelNameOverride: mistralai/mistral-large-latest
+          modelNameOverride: mistralai/mistral-large
         - name: openrouter
           priority: 2
-          modelNameOverride: mistralai/mistral-large-latest
+          modelNameOverride: mistralai/mistral-large
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -146,10 +164,10 @@ spec:
           modelNameOverride: deepseek-flash
         - name: nous
           priority: 1
-          modelNameOverride: deepseek-flash-latest
+          modelNameOverride: ~deepseek/deepseek-flash-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek-flash-latest
+          modelNameOverride: ~deepseek/deepseek-flash-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -164,10 +182,10 @@ spec:
           modelNameOverride: deepseek-pro
         - name: nous
           priority: 1
-          modelNameOverride: deepseek-pro-latest
+          modelNameOverride: ~deepseek/deepseek-pro-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek-pro-latest
+          modelNameOverride: ~deepseek/deepseek-pro-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
