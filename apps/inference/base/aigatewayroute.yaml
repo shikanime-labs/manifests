@@ -64,14 +64,14 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: Qwen/Qwen3.6-35B-A3B-FP8
+              value: qwen/qwen3.6-35b-a3b
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: hetzner
           priority: 0
-          modelNameOverride: Qwen/Qwen3.6-35B-A3B-FP8
+          modelNameOverride: qwen/qwen3.6-35b-a3b
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.6-35b-a3b
@@ -136,7 +136,7 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek-flash
+              value: deepseek/deepseek-flash
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
@@ -154,7 +154,7 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek-pro
+              value: deepseek/deepseek-pro-latest
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
