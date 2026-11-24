@@ -136,6 +136,24 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
+              value: z-ai/glm-5.4-flash
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: z-ai-openai
+          priority: 0
+          modelNameOverride: glm-5.4-flash
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.4-flash
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-5.4-flash
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
               value: z-ai/glm-5.4
       modelsOwnedBy: Shikanime Studio
       timeouts:
@@ -172,38 +190,20 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: mistralai/mistral-large-latest
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: mistral
-          priority: 0
-          modelNameOverride: mistral-large-latest
-        - name: nous
-          priority: 1
-          modelNameOverride: mistralai/mistral-large-latest
-        - name: openrouter
-          priority: 2
-          modelNameOverride: mistralai/mistral-large-latest
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
-              value: deepseek/deepseek-chat
+              value: deepseek/deepseek-pro
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: deepseek
           priority: 0
-          modelNameOverride: deepseek-chat
+          modelNameOverride: deepseek-pro
         - name: nous
           priority: 1
-          modelNameOverride: deepseek/deepseek-chat
+          modelNameOverride: deepseek/deepseek-pro
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek/deepseek-chat
+          modelNameOverride: deepseek/deepseek-pro
     - matches:
         - headers:
             - name: x-ai-eg-model
