@@ -135,6 +135,78 @@ spec:
     - matches:
         - headers:
             - name: x-ai-eg-model
+              type: Exact
+              value: z-ai/glm-5.4
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: z-ai
+          priority: 0
+          modelNameOverride: glm-5.4
+        - name: nous
+          priority: 1
+          modelNameOverride: z-ai/glm-5.4
+        - name: openrouter
+          priority: 2
+          modelNameOverride: z-ai/glm-5.4
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: mistralai/mistral-large
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: mistral
+          priority: 0
+          modelNameOverride: mistral-large-latest
+        - name: nous
+          priority: 1
+          modelNameOverride: mistralai/mistral-large
+        - name: openrouter
+          priority: 2
+          modelNameOverride: mistralai/mistral-large
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: mistralai/mistral-large-latest
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: mistral
+          priority: 0
+          modelNameOverride: mistral-large-latest
+        - name: nous
+          priority: 1
+          modelNameOverride: mistralai/mistral-large-latest
+        - name: openrouter
+          priority: 2
+          modelNameOverride: mistralai/mistral-large-latest
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: Exact
+              value: deepseek/deepseek-chat
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: deepseek
+          priority: 0
+          modelNameOverride: deepseek-chat
+        - name: nous
+          priority: 1
+          modelNameOverride: deepseek/deepseek-chat
+        - name: openrouter
+          priority: 2
+          modelNameOverride: deepseek/deepseek-chat
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
               type: RegularExpression
               value: "deepseek/.*"
       modelsOwnedBy: Shikanime Studio
