@@ -105,7 +105,7 @@ spec:
       timeouts:
         request: 0s
       backendRefs:
-        - name: z-ai
+        - name: z-ai-openai
           priority: 0
           modelNameOverride: glm-5.4
         - name: nous
