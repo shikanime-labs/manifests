@@ -28,24 +28,6 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: z-ai/glm-5.3-flash
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: z-ai-openai
-          priority: 0
-          modelNameOverride: glm-5.3-flash
-        - name: nous
-          priority: 1
-          modelNameOverride: z-ai/glm-5.3-flash
-        - name: openrouter
-          priority: 2
-          modelNameOverride: z-ai/glm-5.3-flash
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
               value: qwen/qwen3-embedding-4b
       modelsOwnedBy: Shikanime Studio
       timeouts:
@@ -60,24 +42,6 @@ spec:
         - name: openrouter
           priority: 2
           modelNameOverride: qwen/qwen3-embedding-4b
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
-              value: z-ai/glm-5.3
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: z-ai
-          priority: 0
-          modelNameOverride: glm-5.3
-        - name: nous
-          priority: 1
-          modelNameOverride: z-ai/glm-5.3
-        - name: openrouter
-          priority: 2
-          modelNameOverride: z-ai/glm-5.3
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -100,14 +64,14 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: Qwen/Qwen3.6-35B-A3B-FP8
+              value: qwen/qwen3.6-35b-a3b
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: hetzner
           priority: 0
-          modelNameOverride: Qwen/Qwen3.6-35B-A3B-FP8
+          modelNameOverride: qwen/qwen3.6-35b-a3b
         - name: nous
           priority: 1
           modelNameOverride: qwen/qwen3.6-35b-a3b
@@ -146,10 +110,10 @@ spec:
           modelNameOverride: glm-5.4
         - name: nous
           priority: 1
-          modelNameOverride: z-ai/glm-5.4
+          modelNameOverride: z-ai/glm-5.4-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: z-ai/glm-5.4
+          modelNameOverride: z-ai/glm-5.4-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
@@ -164,24 +128,6 @@ spec:
           modelNameOverride: mistral-large-latest
         - name: nous
           priority: 1
-          modelNameOverride: mistralai/mistral-large
-        - name: openrouter
-          priority: 2
-          modelNameOverride: mistralai/mistral-large
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: Exact
-              value: mistralai/mistral-large-latest
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: mistral
-          priority: 0
-          modelNameOverride: mistral-large-latest
-        - name: nous
-          priority: 1
           modelNameOverride: mistralai/mistral-large-latest
         - name: openrouter
           priority: 2
@@ -190,65 +136,38 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: Exact
-              value: deepseek/deepseek-chat
+              value: deepseek/deepseek-flash
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: deepseek
           priority: 0
-          modelNameOverride: deepseek-chat
+          modelNameOverride: deepseek-flash
         - name: nous
           priority: 1
-          modelNameOverride: deepseek/deepseek-chat
+          modelNameOverride: deepseek-flash-latest
         - name: openrouter
           priority: 2
-          modelNameOverride: deepseek/deepseek-chat
+          modelNameOverride: deepseek-flash-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
-              type: RegularExpression
-              value: "deepseek/.*"
+              type: Exact
+              value: deepseek/deepseek-pro-latest
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: deepseek
           priority: 0
+          modelNameOverride: deepseek-pro
         - name: nous
           priority: 1
+          modelNameOverride: deepseek-pro-latest
         - name: openrouter
           priority: 2
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: RegularExpression
-              value: "mistralai/.*"
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: mistral
-          priority: 0
-        - name: nous
-          priority: 1
-        - name: openrouter
-          priority: 2
-    - matches:
-        - headers:
-            - name: x-ai-eg-model
-              type: RegularExpression
-              value: "z-ai/.*"
-      modelsOwnedBy: Shikanime Studio
-      timeouts:
-        request: 0s
-      backendRefs:
-        - name: z-ai
-          priority: 0
-        - name: nous
-          priority: 1
-        - name: openrouter
-          priority: 2
+          modelNameOverride: deepseek-pro-latest
     - matches:
         - headers:
             - name: x-ai-eg-model
