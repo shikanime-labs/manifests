@@ -16,5 +16,6 @@ The NetworkPolicy admits only tailscale-system on http and vmagent on metrics.
   `timeline-data`, monitoring component, QSV/AMD node affinity + `/dev/dri`
   mount for hardware transcoding (ffmpeg `accel: vaapi` in the server config).
 - `overlays/nishir-tailnet/` — Tailscale Ingress, SOPS `config.yaml`
-  (externalDomain immich.i.shikanime.studio, ffmpeg VAAPI, SMTP, Dex OAuth) as
-  `immich-config` Secret.
+  (externalDomain immich.i.shikanime.studio, ffmpeg VAAPI, SMTP, Authelia
+  OAuth) as a hash-suffixed `immich-config` Secret, so a config edit rolls the
+  server.

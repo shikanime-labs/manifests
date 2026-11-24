@@ -15,8 +15,6 @@ secretGenerator:
   - name: immich-config
     files:
       - config.yaml=immich/config.enc.yaml
-    options:
-      disableNameSuffixHash: true
 patches:
   - patch: |-
       - op: add
