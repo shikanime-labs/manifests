@@ -136,12 +136,42 @@ spec:
         - headers:
             - name: x-ai-eg-model
               type: RegularExpression
+              value: "deepseek/.*"
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: deepseek
+          priority: 0
+        - name: nous
+          priority: 1
+        - name: openrouter
+          priority: 2
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: RegularExpression
               value: "mistralai/.*"
       modelsOwnedBy: Shikanime Studio
       timeouts:
         request: 0s
       backendRefs:
         - name: mistral
+          priority: 0
+        - name: nous
+          priority: 1
+        - name: openrouter
+          priority: 2
+    - matches:
+        - headers:
+            - name: x-ai-eg-model
+              type: RegularExpression
+              value: "z-ai/.*"
+      modelsOwnedBy: Shikanime Studio
+      timeouts:
+        request: 0s
+      backendRefs:
+        - name: z-ai
           priority: 0
         - name: nous
           priority: 1
