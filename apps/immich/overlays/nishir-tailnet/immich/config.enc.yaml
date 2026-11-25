@@ -26,10 +26,11 @@ oauth:
   signingAlgorithm: ENC[AES256_GCM,data:FZEDTtw=,iv:kCfNu61HdO2StmK2BC1b0u0SPFCRiXzHiuSHraEywhU=,tag:8hcS5cQRq5oAg1HZWxJDaQ==,type:str]
   storageLabelClaim: ENC[AES256_GCM,data:XSpd/ahE7hTNMDlyMzLv//K/,iv:Xfu+fWvXumegha6PEezUhTe3MfnKOkYyS/+jEJGYJNg=,tag:L9e66Ox5GYUvRJZ6mZVi0A==,type:str]
   storageQuotaClaim: ENC[AES256_GCM,data:gAm2GKjbhwqPc8tW,iv:8whUyai6C0LJA9Jj+HCGDnE7lWbP2gtgffuhee9mWYA=,tag:D4jZ/fQaDMQFWv4QF8xmug==,type:str]
+  tokenEndpointAuthMethod: ENC[AES256_GCM,data:fCgvVONoC7J0QaIkWL9+kjYepw==,iv:8XenlJzLkGgMRSt6WXLNm/2QlwPmtrGn1wxot5npGek=,tag:Mk3o8RH2Zu2K+4enqTridQ==,type:str]
 sops:
   version: 3.13.3
-  lastmodified: "2026-09-23T01:38:38Z"
-  mac: ENC[AES256_GCM,data:AE7Lesv+mgc7P8rgv7f5YLllfb80RkCBzOAIGIbFjJPi75cqJNy6Yza83VAMyciBdJvvdsDIax675DFQJjGsA/IYGj4XtNEKf/yNXkGUy4zbG3z2jXosfCRHhB5UgHvqi2E55FiWQmY9uYil9WghcGfgPLd0W5FYpyNYQM1hIpk=,iv:yU8LU+i2IzgyKk+1U5y1I4HERu/Qc51Mq6uS5U9Ialk=,tag:YoUFTfxOXHav+72Ks3v41g==,type:str]
+  lastmodified: "2026-11-24T22:56:51Z"
+  mac: ENC[AES256_GCM,data:cngjgI8otnmRWGFeMqKJOaPmunbGig9k++Z+AmnuxdrRHGsiIIyK/bbwy+yaWt456t7w8phSl4cCQPwr54C29SmGoQBoZWOVjbNtmqeQRo7r11VIDC/g3tETasabB0hPAIRB50uwbUEp4UwZvvcRe5TaIHq4RA7JcJDpNEgnk7s=,iv:0T921fc7OZTQGJthBibscXWlmrA2ai/uvYqkjqr7zDs=,tag:+9zyMn0spZB551MvNUmKRQ==,type:str]
   unencrypted_suffix: _unencrypted
   age:
     - enc: |
