@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: blocky
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/instance: blocky
@@ -14,15 +13,9 @@ spec:
         app.kubernetes.io/instance: blocky
         app.kubernetes.io/name: blocky
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       priorityClassName: shikanime-critical
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/instance: blocky
-              app.kubernetes.io/name: blocky
       containers:
         - name: blocky
           image: blocky
@@ -31,11 +24,11 @@ spec:
             runAsUser: 1000
           ports:
             - name: dns-udp
-              containerPort: 53
+              containerPort: 5353
               protocol: UDP
             - name: dns
               protocol: TCP
-              containerPort: 53
+              containerPort: 5353
             - name: http
               containerPort: 4000
           readinessProbe:
