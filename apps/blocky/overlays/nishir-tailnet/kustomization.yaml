@@ -34,7 +34,7 @@ patches:
               name: blocky
     target:
       name: blocky
-      kind: Deployment
+      kind: DaemonSet
   - patch: |-
       - op: add
         path: /spec/hostnames/-
