@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/meta
-    newTag: v0.2607.0@sha256:c65eb7f10a3880933490972bed574678874d780df70458a5ab0568157f9cc15c
+    newTag: v26.08.1@sha256:42e1b5303054520a3a8eeadab6e9c06d2b45b5919108c29a0583811fead7af76
