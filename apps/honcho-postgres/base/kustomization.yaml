@@ -6,7 +6,7 @@ resources:
 images:
   - name: postgres
     newName: pgvector/pgvector
-    newTag: pg15@sha256:88164492558c9773a1e17a8305abaca7863e05b3d8bbcdb792774890a2047e06
+    newTag: pg15@sha256:e0b617fffc06dd37323ee99873c7a8683f19f1dce34633670262b0113ce32638
 configMapGenerator:
   - name: honcho-postgres
     files:
