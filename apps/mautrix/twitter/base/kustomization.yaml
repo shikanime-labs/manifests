@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/twitter
-    newTag: v0.2604.0@sha256:a4ff140c431b5e2ffb17cc3dfd28956963417b1205d04806f40e29d8a6a1e8c6
+    newTag: v0.2609.0@sha256:7f70378b4bd00530f790c9282ff844cefd7900be955c998012b30ebbebc158cd
