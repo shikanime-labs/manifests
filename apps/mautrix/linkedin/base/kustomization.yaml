@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/linkedin
-    newTag: v0.2604.0
+    newTag: v0.2604.0@sha256:3c7d40cad5ff97333ca72e6f8eb33f55e53928b413d5a6e7eeab0eb10a405506

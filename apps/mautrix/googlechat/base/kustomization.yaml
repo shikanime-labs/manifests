@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/googlechat
-    newTag: v0.5.2
+    newTag: v0.5.2@sha256:eff822629c6d0878c390f7933a0775f5721187b697aef2b6d855836bd55d2889
