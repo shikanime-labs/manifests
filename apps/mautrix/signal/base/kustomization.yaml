@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/signal
-    newTag: v0.2611.0@sha256:5e6e8f4a9b840e71484e330538a73994a8b31bc11a10054ef662971019bc2d2f
+    newTag: v26.02.2@sha256:577e37ad5f41bfd72a236e6ab4a1b1b2d4f960890ff0767ed3b0b7cbb6817c29
