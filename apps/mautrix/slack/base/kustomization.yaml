@@ -7,4 +7,4 @@ resources:
 images:
   - name: mautrix
     newName: dock.mau.dev/mautrix/slack
-    newTag: v0.2611.0@sha256:167df19c4fdd62077f4acc475f0cd9111dfbb5ae4bcf961fffb3a4d0c9df219e
+    newTag: v26.09.1@sha256:f4a9ec0bd3261dcc5ecbf09c59ebd35ce812e0099a2ea0845a92be3fd090e484
