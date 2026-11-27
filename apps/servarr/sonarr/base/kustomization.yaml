@@ -7,4 +7,4 @@ resources:
 images:
   - name: sonarr
     newName: lscr.io/linuxserver/sonarr
-    newTag: 4.0.20@sha256:386c962ee6e260e3a5656b25df2ed056bcc9b6410e197d075f9547fd14c23bca
+    newTag: 4.0.20@sha256:339814bbf50599ac3b59077c252f29833d0138b59a062d0e82ce37bdc7f04f86
