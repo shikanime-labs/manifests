@@ -8,4 +8,4 @@ resources:
 images:
   - name: blocky
     newName: ghcr.io/0xerr0r/blocky
-    newTag: v0.35.0@sha256:4f165b63db0d76c96ecc47c7a8f57caeedc003a912bdce29abb0e283ce02e16b
+    newTag: v0.37.0@sha256:d9b6344d7c8f3fe577a47bc97b523faa116f7ea8a8901bfaf800a4dbdce64c96
