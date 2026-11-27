@@ -6,7 +6,7 @@ namespace: shikanime
 images:
   - name: honcho
     newName: ghcr.io/plastic-labs/honcho
-    newTag: v3.6.0@sha256:eb906a2d251aa48b22347e4465b40785ea7a84e2bfd1105780416bf1f0121099
+    newTag: v3.7.0@sha256:c504f51e124ee225634251b3c99cdb324667d0e7355982dad0cc7a9fb75d8b81
 configMapGenerator:
   - name: honcho
     files:
