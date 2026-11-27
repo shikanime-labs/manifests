@@ -12,7 +12,7 @@ images:
     newTag: 3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
   - name: qbittorrent
     newName: qbittorrentofficial/qbittorrent-nox
-    newTag: 5.2.4-1@sha256:92bfd78d731e254ba64f62b77b0696add6447a33642ee5feda106a26b285aa7f
+    newTag: 5.3.1-1@sha256:e1f616788e97894585e831da5a104aa09c6d91526fd00d5d931fff047dc3d8bf
   - name: rclone
     newName: rclone/rclone
     newTag: 1.76.0@sha256:7cbeec24a44f206067597c0368be4de90ae19a64d5113c7d1938bd737a81e466
