@@ -7,4 +7,4 @@ resources:
 images:
   - name: honcho
     newName: ghcr.io/plastic-labs/honcho
-    newTag: v3.5.0@sha256:23ff96bf62ab2ca14928e6766db1a30a7729f5b7c9e2285af0cd4a179c0d393d
+    newTag: v3.7.0@sha256:c504f51e124ee225634251b3c99cdb324667d0e7355982dad0cc7a9fb75d8b81
