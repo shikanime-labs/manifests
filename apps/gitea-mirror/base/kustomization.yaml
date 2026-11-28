@@ -6,4 +6,4 @@ resources:
 images:
   - name: gitea-mirror
     newName: ghcr.io/raylabshq/gitea-mirror
-    newTag: v3.59.0@sha256:a300171408380fa8c8c2892a9dc03273dc533a491f1daae61b997f6ba42ed60a
+    newTag: v3.59.1@sha256:7b54d4b64873e46be74e5feda150e58c0075bd3207ed2c4b03c56fde060cbd24
